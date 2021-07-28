@@ -1,0 +1,111 @@
+<div class="w-11/12 xl:w-8/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+rounded-lg z-50">
+    <div class="w-full relative p-2 bg-white rounded-lg">
+        <span onclick="closeModal()" class="rounded-full py-0.5 pb-1.5 px-2.5 font-bold text-xl bg-gray-300 cursor-pointer
+        hover:bg-gray-500 hover:text-white flex justify-center items-center absolute top-3 right-3">
+            &times;
+        </span>
+        <div class="w-full flex mt-5 mb-2">
+            <div class="w-2/5 pr-4 my-2">
+                <div class="w-full py-5  border-2 border-gray-200 border-solid">
+                    <img id="images__product__detail" src="/images/product_3.png" alt="" srcset="" class="w-full object-cover
+                    cursor-pointer">
+                </div>
+                <div class="w-full flex my-5">
+                    <div class="w-1/4">
+                        <img onclick="changeImage(this)" src="./images/product_4.png"
+                            class="w-full object-cover cursor-pointer" alt="">
+                    </div>
+                    <div class="w-1/4">
+                        <img onclick="changeImage(this)" src="./images/product_3.png"
+                            class="w-full object-cover cursor-pointer" alt="">
+                    </div>
+                    <div class="w-1/4">
+                        <img onclick="changeImage(this)" src="./images/product_3.png"
+                            class="w-full object-cover cursor-pointer" alt="">
+                    </div>
+                    <div class="w-1/4">
+                        <img onclick="changeImage(this)" src="./images/product_4.png"
+                            class="w-full object-cover cursor-pointer" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="w-3/5 pl-4 pt-1">
+                <p class="text-2xl font-semibold cursor-pointer hover:text-organce mb-3">
+                    Samsung Gear S2
+                </p>
+                <p class="mb-3 flex items-center">
+                    <span class="text-gray-700 px-2 border-l-2 border-solid 
+                    border-gray-500">Thương hiệu : </span>
+                    Samsung
+                    <span class="text-gray-700 ml-4 px-2 border-l-2 border-solid 
+                    border-gray-500">Bảo hành : </span>
+                    12 tháng
+                </p>
+                <p class="my-3 text-organce text-4xl font-semibold">
+                    3.500.000 <u>đ</u>
+                </p>
+                <ul class="text-gray-700 my-2 text-sm">
+                    <li class="my-2">
+                        Kích thước màn hình : 1,2"
+                    </li>
+                    <li class="my-2">
+                        Độ phân giải màn hình : 360 x 360 pixels
+                    </li>
+                    <li class="my-2">
+                        Luôn hiển thị : có
+                    </li>
+                    <li class="my-2">
+                        Loại màn hình : OMOLED
+                    </li>
+                    <li class="my-2">
+                        Multi-touch : Có
+                    </li>
+                    <li class="my-2">
+                        Mật độ điểm ảnh : 302ppi
+                    </li>
+                </ul>
+                <div class="w-full my-3">
+                    <p class="font-bold text-xl font-semibold">
+                        MÀU SẮC :
+                    </p>
+                    <div class="w-full flex">
+                        <div class="w-20 h-20 p-1 m-1 relative image-color">
+                            <div class="px-4 py-2 bg-organce font-semibold absolute -top-12 
+                            left-0 text-white text-xm color">
+                                Trắng
+                            </div>
+                            <img src="/images/product_3.png" class="w-16 h-16 border-2
+                            border-solid border-orangce cursor-pointer object-cover " alt="">
+                        </div>
+                        <div class="w-20 h-20 p-1 m-1  image-color relative">
+                            <div class="px-4 py-2 bg-organce font-semibold absolute -top-12 
+                            left-0 text-white text-xm color hidden">
+                                Đen
+                            </div>
+                            <img src="/images/product_4.png" class="w-16 h-16 border-2 image-color
+                            border-solid border-white cursor-pointer " alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full my-3 flex">
+                    <div class="flex w-32 rounded-full border-2 border-solid 
+                    border-gray-200">
+                        <span class="w-1/4 py-3.5 text-center cursor-pointer">
+                            <i class='bx bx-minus color-black'></i>
+                        </span>
+                        <input type="text" class="w-1/2 py-3.5 text-center font-semibold" value="1">
+                        <span class="w-1/4 text-center py-3.5 cursor-pointer">
+                            <i class='bx bx-plus'></i>
+                        </span>
+                    </div>
+                    <button type="button" class="px-10 py-3.5 rounded-full shadow-lg bg-organce 
+                    font-semibold text-sm font-semibold flex items-center text-white border-2 
+                    border-solid border-2 border-gray-100 ml-10 * hover:border-orangce">
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

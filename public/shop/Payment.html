@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        *:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="px-4 w-full xl:w-11/12 flex flex-col-reverse xl:flex-row mx-auto">
+        <div class="w-full xl:w-2/3 px-4 xl:pr-4 flex justify-end">
+            <div class="w-full">
+                <p class="text-5xl mb-3 font-semibold text-organce my-4">
+                    Xsmart
+                </p>
+                <div class="w-full flex flex-col xl:flex-row">
+                    <div class="w-full xl:w-1/2 pr-4">
+                        <div class="w-full h-10">
+                            <div class="float-left font-semibold text-xl">
+                                Thông tin nhận hàng
+                            </div>
+                            <div class="text-organce flex float-right">
+                                <p class="flex items-center cursor-pointer">
+                                    <i class='bx bxs-user-circle text-xl mr-2'></i>
+                                    Đăng nhập
+                                </p>
+                            </div>
+                        </div>
+                        <form action="" method="post" class="w-full">
+                            <input type="text" class="w-full p-2.5 rounded-lg my-3
+                            border-2 border-solid border-gray-200" placeholder="Email">
+                            <input type="text" class="w-full p-2.5 rounded-lg mb-3
+                            border-2 border-solid border-gray-200" placeholder="Họ và tên">
+                            <input type="text" class="w-full p-2.5 rounded-lg mb-3
+                            border-2 border-solid border-gray-200" placeholder="Số điện thoại">
+                            <input type="text" class="w-full p-2.5 rounded-lg mb-3
+                            border-2 border-solid border-gray-200" placeholder="Địa chỉ">
+                            <select class="w-full p-2.5 rounded-lg mb-3 border-2 border-solid 
+                            border-gray-200">
+                                <option value="">Chọn tỉnh / thành phố</option>
+                            </select>
+                            <select class="w-full p-2.5 rounded-lg mb-3 border-2 border-solid 
+                            border-gray-200">
+                                <option value="">Chọn huyện / quận</option>
+                            </select>
+                            <select class="w-full p-2.5 rounded-lg mb-3 border-2 border-solid 
+                            border-gray-200">
+                                <option value="">Chọn xã / phường</option>
+                            </select>
+                            <textarea class="w-full p-2.5 rounded-lg mb-3 border-2 border-solid 
+                            border-gray-200 resize-none h-20" name="" placeholder="Ghi chú (tùy chọn).."></textarea>
+                        </form>
+                    </div>
+                    <div class="w-full xl:w-1/2 xl:pl-4">
+                        <div class="w-full h-10">
+                            <div class="float-left font-semibold text-xl">
+                                Vận chuyển
+                            </div>
+                        </div>
+                        <div class="my-3 w-full">
+                            <div class="w-full my-3 p-3 bg-organce rounded-lg text-center text-white 
+                            font-semibold text-xm">
+                                Vui lòng nhập thông tin giao hàng
+                            </div>
+                        </div>
+                        <div class="w-full h-10 mt-5">
+                            <div class="float-left font-semibold text-xl">
+                                Thanh toán
+                            </div>
+                        </div>
+                        <div class="w-full my-3">
+                            <div class="w-full flex">
+                                <p class="w-full flex items-center">
+                                    <input type="radio" name="payment" class="transform scale-125 mr-3" checked>
+                                    Thanh toán khi giao hàng (COD)
+                                </p>
+                            </div>
+                            <div class="w-full my-3">
+                                <div class="w-full my-3 p-3 bg-organce rounded-lg text-center text-white 
+                                font-semibold text-xm">
+                                    Bạn chỉ phải thanh toán khi nhận được hàng
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full my-3">
+                            <div class="w-full flex">
+                                <p class="w-full flex items-center">
+                                    <input type="radio" name="payment" class="transform scale-125 mr-3">
+                                    Thanh toán khi giao hàng (COD)
+                                </p>
+                            </div>
+                            <div class="w-full my-3">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4">
+            <div class="w-full">
+                <p class="text-2xl font-semibold py-5 border-b-2 border-solid border-gray-200 
+                flex">
+                    Đơn hàng (2 sản phẩm)&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="bg px-6 py-2 bg-organce 
+                    text-white rounded-lg text-base font-semibold xl:hidden">Hiện sản phẩm</button>
+                </p>
+                <div class="w-full my-5 hidden xl:block">
+                    <div class="w-full flex my-5">
+                        <div class="w-1/12 flex justify-center">
+                            <span class="flex items-center">
+                                <input type="checkbox" name="" id="" class="transform scale-125">
+                            </span>
+                        </div>
+                        <div class="w-11/12 flex">
+                            <div class="w-1/5 p-1 relative">
+                                <img src="./images/product_3.png" class="w-full object-cover" alt="">
+                                <div class="w-6 h-6 rounded-full bg-organce text-white font-semibold 
+                                absolute -top-1 -right-1 flex justify-center ">
+                                    <span class="flex items-center">1</span>
+                                </div>
+                            </div>
+                            <div class="w-4/5 pl-4 flex">
+                                <div class="w-3/4 flex">
+                                    <div class="flex flex-wrap items-center">
+                                        <div>
+                                            <p class="w-full mb-2">Apple Watch Series 4</p>
+                                            <p class="text-gray-700">Màu : Trắng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-1/4 flex">
+                                    <div class="flex items-center ">
+                                        <p class="text-organce">7.760.000 <u>đ</u></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full flex my-5">
+                        <div class="w-1/12 flex justify-center">
+                            <span class="flex items-center">
+                                <input type="checkbox" name="" id="" class="transform scale-125">
+                            </span>
+                        </div>
+                        <div class="w-11/12 flex">
+                            <div class="w-1/5 p-1 relative">
+                                <img src="./images/product_3.png" class="w-full object-cover" alt="">
+                                <div class="w-6 h-6 rounded-full bg-organce text-white font-semibold 
+                                absolute -top-1 -right-1 flex justify-center ">
+                                    <span class="flex items-center">1</span>
+                                </div>
+                            </div>
+                            <div class="w-4/5 pl-4 flex">
+                                <div class="w-3/4 flex">
+                                    <div class="flex flex-wrap items-center">
+                                        <div>
+                                            <p class="w-full mb-2">Apple Watch Series 4</p>
+                                            <p class="text-gray-700">Màu : Trắng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-1/4 flex">
+                                    <div class="flex items-center text-sm">
+                                        <p class="text-organce">7.760.000 <u>đ</u></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-3 hidden xl:block">
+                <div class="py-3 w-full flex">
+                    <input type="text" name="" class="w-3/4 mt-2 p-3 rounded-l-lg border-2 border-solid 
+                    border-gray-100" placeholder="Nhập mã ưu đãi..." id="">
+                    <button type="button" class="w-1/4 p-3 mt-2 rounded-r-lg bg-organce text-white 
+                    font-semibold  border-2 border-solid border-organce shadow-lg">
+                        Áp dụng
+                    </button>
+                </div>
+                <hr class="my-3">
+                <div class="w-full py-3">
+                    <div class="w-full h-12 mb-3 flex">
+                        <p class="w-1/2 float-left flex items-center">
+                            Tạm tính
+                        </p>
+                        <p class="w-1/2 justify-end float-right flex items-center">
+                            15.520.000 <u>đ</u>
+                        </p>
+                    </div>
+                    <div class="w-full h-12 mb-3 flex">
+                        <p class="w-1/2 float-left flex items-center">
+                            Phí vận chuyển
+                        </p>
+                        <p class="w-1/2 justify-end float-right flex items-center">
+                            0 <u>đ</u>
+                        </p>
+                    </div>
+                    <hr class="my-3">
+                    <div class="w-full h-12 mb-3 flex">
+                        <p class="w-1/2 float-left flex items-center text-xl font-semibold">
+                            Tổng cộng
+                        </p>
+                        <p class="w-1/2 justify-end float-right flex items-center">
+                            15.520.000 <u>đ</u>
+                        </p>
+                    </div>
+                    <div class="w-full h-20 mb-3 flex">
+                        <p class="w-1/2 float-left flex items-center text-xl font-semibold text-organce">
+                            <span class="flex items-center">
+                                <i class='bx bxs-chevron-left mr-3'></i>
+                                Quay về giỏ hàng
+                            </span>
+                        </p>
+                        <p class="w-1/2 float-right flex justify-end items-center">
+                            <button type="button" class="py-3 px-5 bg-organce rounded-lg text-white 
+                            font-semibold">
+                                Đặt hàng
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

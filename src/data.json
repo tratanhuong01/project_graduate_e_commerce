@@ -1,0 +1,134 @@
+{
+  "products": [
+    {
+      "id": "SP1000",
+      "NameProduct": "Apple Watch Series 6 GPS 40mm viền nhôm dây cao su",
+      "UrlImage": [
+        {
+          "ID": 0,
+          "Url": "/images/product__SP100__GRAY",
+          "Color": "GRAY"
+        },
+        {
+          "ID": 1,
+          "Url": "/images/product__SP100__WHITE",
+          "Color": "WHITE"
+        },
+        {
+          "ID": 2,
+          "Url": "/images/product__SP100__PINK",
+          "Color": "PINK"
+        }
+      ],
+      "ColorProduct": [
+        {
+          "ID": 0,
+          "CodeColor": "GRAY"
+        },
+        {
+          "ID": 1,
+          "CodeColor": "WHITE"
+        },
+        {
+          "ID": 2,
+          "CodeColor": "PINK"
+        }
+      ],
+      "Price": {
+        "Price": "",
+        "Sale": ""
+      },
+      "BrandProduct": "Apple",
+      "SizeProduct": [
+        {
+          "ID": 0,
+          "Size": 40
+        },
+        {
+          "ID": 1,
+          "Size": 44
+        }
+      ],
+      "WarrantyPolicy": [
+        {
+          "ID": 0,
+          "Name": "12 Tháng"
+        },
+        {
+          "ID": 0,
+          "Name": "Đổi trả trong 1 tháng"
+        }
+      ],
+      "DetailProduct": {
+        "Screen": {
+          "SizeScreen": "1.57 Inch",
+          "ResolutionScreen": "324 x 394 pixels",
+          "ScreenTechnology": "OLED"
+        },
+        "Design": {
+          "FaceMaterial": "Ion-X strengthened glass",
+          "FaceDiameter": "",
+          "FrameMaterial": "",
+          "WireMaterial": "",
+          "PossibilityToChangeWires": true,
+          "Size": "",
+          "Weight": ""
+        },
+        "Battery": {
+          "BatteryLife": "",
+          "ChargingTime": "",
+          "ChargingPort": ""
+        },
+        "ConfigAndConnect": {
+          "CPU": "",
+          "ROM": "",
+          "OperatingSystem": "",
+          "ConnectWithOperatingSystem": "",
+          "Connect": [
+            {
+              "ID": 0,
+              "Name": ""
+            }
+          ],
+          "Sensor": [
+            {
+              "ID": 0,
+              "Name": ""
+            }
+          ]
+        },
+        "Utilities": {
+          "FeaturesForHealth": [
+            {
+              "ID": 0,
+              "Name": ""
+            }
+          ],
+          "FeaturesOther": [
+            {
+              "ID": 0,
+              "Name": ""
+            }
+          ]
+        },
+        "ShowNotify": [
+          {
+            "ID": 0,
+            "Name": ""
+          }
+        ],
+        "InformationOther": {
+          "TimeCreated": "",
+          "Language": [
+            {
+              "ID": 0,
+              "Name": ""
+            }
+          ],
+          "TheFirm": ""
+        }
+      },
+      "DescribeProduct": {}
+    }
+  ]
+}

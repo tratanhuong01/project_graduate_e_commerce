@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        *:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w-full">
+        <div class="w-full relative text-white md:text-black">
+            <div id="header" class="xl:w-4/5 bg-organce md:bg-transparent w-full mx-auto flex z-10">
+                <div class="w-1/3 pl-5 flex">
+                    <p onclick="category()" class="flex items-center cursor-pointer">
+                        <i class='bx bxs-category text-4xl mr-4'></i>
+                        <span class="text-xl font-semibold hidden md:block">Danh mục</span>
+                    </p>
+                </div>
+                <div class="w-1/3 md:w-1/3 flex justify-center relative">
+                    <img src="./images/logo.png" class="w-4/5 md:w-4/5 xl:w-7/12 p-3 flex items-center" alt="">
+                    <span class="absolute text-4xl top-1/2 transform -translate-y-1/2 left-48 
+                    font-bold hidden xl:block">XSMART</span>
+                </div>
+                <div class="w-1/3 flex justify-end">
+                    <ul class="flex items-center">
+                        <li class="p-2 hidden md:flex">
+                            <div class="flex items-center">
+                                <img src="./images/avatar.jpg" class="w-8 h-8 rounded-full mr-3" alt="">
+                                <span class="font-semibold text-xm mr-1"><a href="">Trà Hưởng</a></span>
+                                <i class='bx bxs-chevron-down'></i>
+                            </div>
+                        </li>
+                        <li class="p-2 flex relative">
+                            <i class='bx bxs-shopping-bag text-3xl'></i>
+                            <span class="w-5 h-5 rounded-full border-2 border-solid 
+                            border-white flex justify-center items-center py-0.5 font-bold 
+                            absolute right-0.5 bg-organce text-white top-0.5 text-sm">0</span>
+                        </li>
+                        <li class="p-2 flex pl-4">
+                            <i class='bx bx-search-alt-2 text-3xl flex items-center'></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="w-full bg-gray-100">
+            <div w3-include-html="components/List__Product.html"></div>
+            <div w3-include-html="components/Rule.html"></div>
+            <div w3-include-html="components/Recivice__Info.html"></div>
+            <div w3-include-html="components/Footer.html"></div>
+        </div>
+        <div id="toggel__modal__left" onclick="openModalLeft()" class="cursor-pointer top-1/3 mt-10 right-1 
+        transform -translate-y-1/2 z-50 absolute lg:hidden">
+            <span class='bx bxs-category text-organce text-5xl '></span>
+        </div>
+    </div>
+    <div class="w-full h-screen bg-opacity-50 bg-black top-0 left-0 fixed hidden" id="second">
+        <div w3-include-html="components/modals/view__product.html"></div>
+    </div>
+    <script src=" ./js/javascript.js">
+    </script>
+</body>
+
+</html>
