@@ -1,16 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 
-class ImageChild extends Component {
-  render() {
-    return (
-      <img
-        src="/images/product_1.png"
-        className="w-full p-2 cursor-pointer 
+function ImageChild(props) {
+  return (
+    <img
+      src="/images/product_1.png"
+      className="w-full p-2 cursor-pointer 
               object-cover"
-        alt=""
-      />
-    );
-  }
+      alt=""
+    />
+  );
 }
 
 export default ImageChild;

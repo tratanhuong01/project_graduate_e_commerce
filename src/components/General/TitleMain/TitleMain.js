@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-class TitleMain extends Component {
-  render() {
-    return (
-      <p
-        className="p-8 font-bold text-5xl text-center 
+function TitleMain(props) {
+  //
+  const { Content } = props;
+  //
+  return (
+    <p
+      className="p-8 font-bold text-5xl text-center 
         hover:text-organce cursor-pointer"
-      >
-        {this.props.Content}
-      </p>
-    );
-  }
+    >
+      {Content}
+    </p>
+  );
 }
 
 export default TitleMain;

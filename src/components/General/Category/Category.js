@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import * as actions from "../../../actions/index";
 import * as Config from "../../../constants/Config";
+
 const category = [
   {
     name: "Trang chủ",
@@ -39,9 +40,12 @@ const CategoryLink = ({ label, to, exact }) => {
     </Route>
   );
 };
-class Category extends Component {
-  showCategory = (category) => {
-    var result = null;
+
+function Category(props) {
+  //
+  const dispatch = useDispatch();
+  const showCategory = (category) => {
+    let result = null;
     if (category.length > 0) {
       result = category.map((item, index) => {
         return (
@@ -56,36 +60,26 @@ class Category extends Component {
     }
     return result;
   };
-  closeModal = () => {
-    this.props.closeModal();
-  };
-  render() {
-    return (
-      <>
-        <div
-          className="w-40 absolute top-1/2 left-1/2 transform 
+  //
+  return (
+    <>
+      <div
+        className="w-40 absolute top-1/2 left-1/2 transform 
             -translate-x-1/2 -translate-y-1/2 m-2"
-        >
-          <ul className="w-full text-xl font-semibold text-white">
-            {this.showCategory(category)}
-          </ul>
-        </div>
-        <span
-          onClick={this.closeModal}
-          className="font-bold text-5xl absolute top-32 right-44 
+      >
+        <ul className="w-full text-xl font-semibold text-white">
+          {showCategory(category)}
+        </ul>
+      </div>
+      <span
+        onClick={() => dispatch(actions.closeModal())}
+        className="font-bold text-5xl absolute top-32 right-44 
             text-white cursor-pointer h-0"
-        >
-          &times;
-        </span>
-      </>
-    );
-  }
+      >
+        &times;
+      </span>
+    </>
+  );
 }
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    closeModal: () => {
-      dispatch(actions.closeModal());
-    },
-  };
-};
-export default connect(null, mapDispatchToProps)(Category);
+
+export default Category;

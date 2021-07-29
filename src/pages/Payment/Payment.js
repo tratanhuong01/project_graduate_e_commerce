@@ -1,31 +1,24 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import MainPayment from "../../containers/Payment/MainPayment";
 import Second from "../../containers/Second";
 import * as actions from "../../actions/index";
-import { connect } from "react-redux";
-class Payment extends Component {
-  constructor(props) {
-    super(props);
-    this.closeModal();
-  }
+import { useDispatch } from "react-redux";
 
-  closeModal = () => {
-    this.props.closeModal();
-  };
-  render() {
-    return (
-      <>
-        <MainPayment />
-        <Second />
-      </>
-    );
-  }
+function Payment(props) {
+  //
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //
+    dispatch(actions.closeModal());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  //
+  return (
+    <>
+      <MainPayment />
+      <Second />
+    </>
+  );
 }
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    closeModal: () => {
-      dispatch(actions.closeModal());
-    },
-  };
-};
-export default connect(null, mapDispatchToProps)(Payment);
+
+export default Payment;

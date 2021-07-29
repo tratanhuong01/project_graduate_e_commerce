@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-class ItemRule extends Component {
-  render() {
-    return (
-      <div className={this.props.classNameOfTagDiv}>
-        <span className="flex items-center text-xm font-semibold">
-          <i className={this.props.classNameOfTagI}></i>
-          {this.props.Content}
-        </span>
-      </div>
-    );
-  }
+function ItemRule(props) {
+  //
+  const { classNameOfTagDiv, classNameOfTagI, Content } = props;
+  //
+  return (
+    <div className={classNameOfTagDiv}>
+      <span className="flex items-center text-xm font-semibold">
+        <i className={classNameOfTagI}></i>
+        {Content}
+      </span>
+    </div>
+  );
 }
 
 export default ItemRule;

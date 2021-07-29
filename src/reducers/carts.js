@@ -1,15 +1,16 @@
 import * as Types from "../constants/ActionTypes";
-var initialState = [];
 
-var myReducer = (state = initialState, action) => {
-  var index = -1;
+const initialState = [];
+
+const myReducer = (state = initialState, action) => {
+  let index = -1;
   switch (action.type) {
     case Types.GET_ALL_CART:
       state = action.carts;
       return [...state];
     case Types.ADD_CART:
-      var { cart, product } = action.cart;
-      var data = {
+      const { cart, product } = action.cart;
+      const data = {
         cart: cart,
         product: product,
       };
