@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Sale from "./Sale/Sale";
 import { Link } from "react-router-dom";
 import ImageMain from "./Image/ImageMain/ImageMain";

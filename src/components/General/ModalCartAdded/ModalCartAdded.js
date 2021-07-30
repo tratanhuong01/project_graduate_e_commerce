@@ -19,7 +19,7 @@ function ModalCartAdded(props) {
               className="flex justify-center items-center text-blue-500 
             font-semibold"
             >
-              <Link>Xem thêm sản phẩm</Link>
+              <Link to="">Xem thêm sản phẩm</Link>
             </div>
           </>
         ) : (
@@ -45,6 +45,7 @@ function ModalCartAdded(props) {
       <hr className="my-1"></hr>
       <div className="w-full p-2 h-16">
         <Link
+          to=""
           className="px-6 py-2 rounded-full bg-organce 
         hover:bg-white hover:border-white border-2 border-solid text-white
         border-white shadow-lg float-left flex items-center font-semibold 

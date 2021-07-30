@@ -1,6 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, Route } from "react-router-dom";
 import * as Config from "../../../constants/Config";
+import * as modalsAction from "../../../actions/modal/index";
 
 const category = [
   {
@@ -29,6 +31,7 @@ const category = [
     exact: true,
   },
 ];
+
 const CategoryLink = ({ label, to, exact }) => {
   return (
     <Route to={to} exact={exact}>
@@ -57,6 +60,7 @@ function Category(props) {
     }
     return result;
   };
+  const dispatch = useDispatch();
   //
   return (
     <>
@@ -69,6 +73,7 @@ function Category(props) {
         </ul>
       </div>
       <span
+        onClick={() => dispatch(modalsAction.closeModal())}
         className="font-bold text-5xl absolute top-32 right-44 
             text-white cursor-pointer h-0"
       >

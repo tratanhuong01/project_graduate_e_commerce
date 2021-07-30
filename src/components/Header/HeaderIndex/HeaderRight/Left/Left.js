@@ -1,9 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import * as modalsAction from "../../../../../actions/modal/index";
+
 function Left(props) {
+  //
+  const dispatch = useDispatch();
   //
   return (
     <li className="p-2 hidden md:flex">
-      {"" !== null ? (
+      {null !== null ? (
         <div className="flex items-center">
           <img
             src="/images/avatar.jpg"
@@ -20,12 +25,14 @@ function Left(props) {
       ) : (
         <div className="flex items-center flex-wrap">
           <p
+            onClick={() => dispatch(modalsAction.openModalRegister())}
             className="cursor-pointer mr-3 text-xm py-2 rounded-full hover:bg-organce hover:border-white
               bg-white border-orangce text-gray-700 px-6 font-semibold border-2 border-solid hover:text-gray-100"
           >
             Đăng kí
           </p>
           <p
+            onClick={() => dispatch(modalsAction.openModalLogin())}
             className="cursor-pointer mr-3 text-xm py-2 rounded-full hover:bg-organce hover:border-white
               bg-white border-orangce text-gray-700 px-6 font-semibold border-2 border-solid hover:text-gray-100"
           >

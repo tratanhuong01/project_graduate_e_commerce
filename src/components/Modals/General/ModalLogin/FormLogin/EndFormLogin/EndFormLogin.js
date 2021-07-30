@@ -1,6 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import * as modalsAction from "../../../../../../actions/modal/index";
 
 function EndFormLogin(props) {
+  //
+  const dispatch = useDispatch();
+  //
   return (
     <>
       <div className="w-full flex justify-center my-5">
@@ -16,7 +21,12 @@ function EndFormLogin(props) {
         <span className="text-xm mr-4 text-blue-500 cursor-pointer">
           Quên mật khẩu?
         </span>
-        <span className="text-xm cursor-pointer">Đăng kí</span>
+        <span
+          onClick={() => dispatch(modalsAction.openModalRegister())}
+          className="text-xm cursor-pointer"
+        >
+          Đăng kí
+        </span>
       </div>
     </>
   );

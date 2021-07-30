@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Sale from "./Sale/Sale";
 import ImageMain from "./Image/ImageMain/ImageMain";
 import OptionAndView from "./OptionAndView/OptionAndView";

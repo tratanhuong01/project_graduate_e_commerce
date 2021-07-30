@@ -1,6 +1,6 @@
 import React from "react";
-import FormRegister from "../../../components/General/ModalRegister/FormRegister/FormRegister";
-import CloseModal from "../../../components/General/CloseModal/CloseModal";
+import FormRegister from "./FormRegister/FormRegister";
+import CloseModal from "../../../General/CloseModal/CloseModal";
 
 function ModalRegister(props) {
   //
@@ -15,7 +15,7 @@ function ModalRegister(props) {
          overflow-y-auto scrollbar-css"
       >
         <CloseModal />
-        <div className="w-full mt-5 mb-2">
+        <div className="w-full mb-2">
           <p className="w-full flex justify-center font-semibold text-3xl py-4">
             Đăng kí
           </p>

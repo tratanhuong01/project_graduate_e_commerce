@@ -1,6 +1,7 @@
 import React from "react";
-import FormLogin from "../../../components/General/ModalLogin/FormLogin/FormLogin";
-import LoginWith from "../../../components/General/ModalLogin/LoginWith/LoginWith";
+import CloseModal from "../../../General/CloseModal/CloseModal";
+import FormLogin from "./FormLogin/FormLogin";
+import LoginWith from "./LoginWith/LoginWith";
 
 function ModalLogin(props) {
   //
@@ -11,12 +12,7 @@ function ModalLogin(props) {
       rounded-lg z-50 animate__animated animate__fadeIn"
     >
       <div className="w-full relative px-2 py-4 bg-white rounded-lg">
-        <span
-          className="rounded-full py-0.5 pb-1.5 px-2.5 font-bold text-xl bg-gray-300 cursor-pointer
-        hover:bg-gray-500 hover:text-white flex justify-center items-center absolute top-3 right-3"
-        >
-          &times;
-        </span>
+        <CloseModal />
         <div className="w-full mt-5 mb-2">
           <p className="w-full flex justify-center font-semibold text-3xl pt-4 pb-12">
             Đăng nhập
