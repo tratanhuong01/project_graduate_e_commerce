@@ -5,7 +5,10 @@ import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import ContentContact from "./ContentContact";
+
 function MainContact(props) {
+  //
+  //
   return (
     <div className="w-full">
       <div className="w-full relative text-white md:text-black">

@@ -4,6 +4,7 @@ import CloseModal from "../../../components/General/CloseModal/CloseModal";
 
 function ModalRegister(props) {
   //
+  //
   return (
     <div
       className="w-11/12 xl:w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 

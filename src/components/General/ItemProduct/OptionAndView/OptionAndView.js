@@ -1,13 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
-import * as actions from "../../../../actions/index";
 
 function OptionAndView(props) {
   //
-  const { product } = props;
-  const dispatch = useDispatch();
   //
   return (
     <div
@@ -20,14 +15,9 @@ function OptionAndView(props) {
             className="w-4/5 p-3 mx-auto rounded-full border-2 border-solid
               border-white font-bold text-black bg-white hover:bg-organce hover:text-white mb-2"
           >
-            <Link to={`/detail-product/${product.Path}`}>Tùy chọn</Link>
+            <Link to={`/detail-product/`}>Tùy chọn</Link>
           </div>
           <button
-            onClick={() => {
-              dispatch(actions.resetDetailProduct());
-              dispatch(actions.viewFastProduct(product));
-              dispatch(actions.openModalFastViewProduct(product, null));
-            }}
             type="button"
             className="w-4/5 p-3 mx-auto rounded-full border-2 border-solid
               border-white font-bold text-black bg-white hover:bg-organce hover:text-white"

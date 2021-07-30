@@ -3,6 +3,8 @@ import ProductViewLeft from "../../components/DetailProduct/ProductView/ProductV
 import ProductViewRight from "../../components/DetailProduct/ProductView/ProductViewRight/ProductViewRight";
 
 function ProductView(props) {
+  //
+  //
   return (
     <div className="w-full flex flex-col xl:flex-row">
       <ProductViewLeft />

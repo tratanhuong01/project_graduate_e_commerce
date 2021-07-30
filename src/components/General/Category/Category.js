@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, Route } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
-import * as actions from "../../../actions/index";
 import * as Config from "../../../constants/Config";
 
 const category = [
@@ -43,7 +41,6 @@ const CategoryLink = ({ label, to, exact }) => {
 
 function Category(props) {
   //
-  const dispatch = useDispatch();
   const showCategory = (category) => {
     let result = null;
     if (category.length > 0) {
@@ -72,7 +69,6 @@ function Category(props) {
         </ul>
       </div>
       <span
-        onClick={() => dispatch(actions.closeModal())}
         className="font-bold text-5xl absolute top-32 right-44 
             text-white cursor-pointer h-0"
       >

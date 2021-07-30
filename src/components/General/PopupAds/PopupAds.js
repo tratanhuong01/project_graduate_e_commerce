@@ -1,10 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import * as actions from "../../../actions/index";
 
 function PopupAds(props) {
   //
-  const dispatch = useDispatch();
   //
   return (
     <div
@@ -13,7 +10,6 @@ function PopupAds(props) {
     >
       <div className="w-full relative px-2 py-4">
         <span
-          onClick={() => dispatch(actions.closeModal())}
           className="rounded-full py-0.5 pb-1.5 px-2.5 font-bold text-xl bg-gray-300 cursor-pointer
           hover:bg-gray-500 hover:text-white flex justify-center items-center absolute top-3 right-0"
         >

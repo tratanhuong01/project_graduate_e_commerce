@@ -11,20 +11,7 @@ import { useSelector } from "react-redux";
 
 function MainCart(props) {
   //
-  const states = useSelector((state) => {
-    return {
-      carts: state.carts,
-    };
-  });
-  const { carts } = states;
-  let sumMoney = 0;
-  const showItemCartMain = carts.map((item, index) => {
-    sumMoney +=
-      item.product.Price.Price *
-      ((100 - item.product.Price.Sale) / 100) *
-      item.cart.NumberChoose;
-    return <ItemCartMain item={item} key={index} />;
-  });
+  //
   return (
     <div className="w-full">
       <div className="w-full relative text-white md:text-black">
@@ -37,8 +24,8 @@ function MainCart(props) {
           <div className="w-full mx-auto mt-5 mb-2">
             <p className="mb-3 text-2xl font-semibold">Giỏ hàng</p>
             <TitleCart />
-            {showItemCartMain}
-            <EndCart sumMoney={sumMoney} />
+            <ItemCartMain />
+            <EndCart sumMoney={"sumMoney"} />
           </div>
         </div>
         <Rule />

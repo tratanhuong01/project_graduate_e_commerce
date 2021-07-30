@@ -6,6 +6,7 @@ import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 function MainAbout(props) {
   //
+  //
   return (
     <div className="w-full">
       <div className="w-full relative text-white md:text-black">

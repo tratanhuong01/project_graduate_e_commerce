@@ -4,6 +4,8 @@ import InfoContact from "../../components/Contact/ContentContact/InfoContact/Inf
 import MapContact from "../../components/Contact/ContentContact/MapContact/MapContact";
 
 function ContentContact(props) {
+  //
+  //
   return (
     <div className="xl:w-4/5 w-full mx-auto p-4">
       <MapContact />

@@ -1,10 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import * as actions from "../../../../actions/index";
 
 function EndFormRegister(props) {
   //
-  const dispatch = useDispatch();
   //
   return (
     <>
@@ -18,12 +15,7 @@ function EndFormRegister(props) {
         </button>
       </div>
       <div className="w-full mb-5 text-xm font-semibold flex justify-center">
-        <span
-          onClick={() => dispatch(actions.openModalLogin())}
-          className="text-xm text-blue-500 cursor-pointer"
-        >
-          Đăng nhập
-        </span>
+        <span className="text-xm text-blue-500 cursor-pointer">Đăng nhập</span>
       </div>
     </>
   );

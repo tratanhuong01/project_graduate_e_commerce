@@ -1,6 +1,8 @@
 import React from "react";
 
 function BannerIndex(props) {
+  //
+  //
   return (
     <div className="w-full h-80 md:hidden">
       <img

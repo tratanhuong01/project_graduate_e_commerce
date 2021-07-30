@@ -1,17 +1,10 @@
 import React from "react";
-import ModalCartAdded from "../../../../General/ModalCartAdded/ModalCartAdded";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../../constants/Config";
-import { useSelector } from "react-redux";
+import ModalCartAdded from "../../../../General/ModalCartAdded/ModalCartAdded";
 
 function Center(props) {
   //
-  const states = useSelector((state) => {
-    return {
-      carts: state.carts,
-    };
-  });
-  const { carts } = states;
 
   return (
     <li className="py-6 px-2 flex relative cursor-pointer toggel__hover__cart_show">
@@ -23,9 +16,9 @@ function Center(props) {
             border-white flex justify-center items-center py-0.5 font-bold 
             absolute right-0.5 bg-white text-yellow-500 top-4 text-sm"
       >
-        {carts.length}
+        1
       </span>
-      <ModalCartAdded carts={carts} />
+      <ModalCartAdded />
     </li>
   );
 }

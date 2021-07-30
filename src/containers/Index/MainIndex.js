@@ -10,6 +10,8 @@ import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 
 function MainIndex(props) {
+  //
+  //
   return (
     <div className="w-full">
       <div id="main" className="w-full relative">

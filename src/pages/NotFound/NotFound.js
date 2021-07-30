@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import * as Config from "../../constants/Config";
 
 function NotFound(props) {
+  //
+  //
   return (
     <div className="w-full h-screen dark:bg-dark-main bg-gray-100">
       <div

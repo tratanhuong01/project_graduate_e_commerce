@@ -2,9 +2,14 @@ import React from "react";
 
 function ImageMain(props) {
   //
-  const { URL } = props;
   //
-  return <img src={URL} className="w-full h-64 object-cover" alt="" />;
+  return (
+    <img
+      src="/images/products/3.png"
+      className="w-full h-64 object-cover"
+      alt=""
+    />
+  );
 }
 
 export default ImageMain;

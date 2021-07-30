@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -9,15 +8,6 @@ import NotifyNumberProductSearch from "../../components/Search/NotifyNumberProdu
 
 function MainSearch(props) {
   //
-  const states = useSelector((state) => {
-    return {
-      search: state.search,
-    };
-  });
-  const { search } = states;
-  const showProductSearchs = search.map((item, index) => {
-    return <ItemProductSearch product={item} key={index} />;
-  });
   //
   return (
     <div className="w-full">
@@ -26,10 +16,9 @@ function MainSearch(props) {
       </div>
       <div className="w-full bg-gray-100">
         <div className="xl:w-4/5 w-full mx-auto p-4">
-          <NotifyNumberProductSearch number={showProductSearchs.length} />
+          <NotifyNumberProductSearch />
           <div className="w-full flex flex-wrap">
-            {showProductSearchs}
-            {showProductSearchs}
+            <ItemProductSearch />
           </div>
         </div>
         <Rule />
