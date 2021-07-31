@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import FormContact from "../../components/Contact/ContentContact/FormContact/FormContact";
 import InfoContact from "../../components/Contact/ContentContact/InfoContact/InfoContact";
 import MapContact from "../../components/Contact/ContentContact/MapContact/MapContact";

@@ -8,7 +8,7 @@ function Left(props) {
   //
   return (
     <li className="p-2 hidden md:flex">
-      {null !== null ? (
+      {"null" !== null ? (
         <div className="flex items-center">
           <img
             src="/images/avatar.jpg"

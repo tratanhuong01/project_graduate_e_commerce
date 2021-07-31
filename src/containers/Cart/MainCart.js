@@ -7,7 +7,6 @@ import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
 import TitleCart from "../../components/Cart/TitleCart/TitleCart";
 import ItemCartMain from "../../components/Cart/ItemCartMain/ItemCartMain";
 import EndCart from "../../components/Cart/EndCart/EndCart";
-import { useSelector } from "react-redux";
 
 function MainCart(props) {
   //

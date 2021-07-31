@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Rule from "../../containers/General/Rule";
