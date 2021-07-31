@@ -52,7 +52,7 @@ class InputField extends Component {
             }
           ></i>
         </div>
-        <p className="m-2 text-red-500 font-bold">
+        <p className="m-2 text-red-500 font-semibold">
           {<ErrorMessage name={name} />}
         </p>
       </>
