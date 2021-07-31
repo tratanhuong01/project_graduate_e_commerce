@@ -1,0 +1,619 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="BGkJERk3j2DIMeunngjlDvtP6VbunW6YTGDMjzXq">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/emojis.css">
+    <link rel="stylesheet" href="/css/loading.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/tailwind_second.css">
+    <link rel="stylesheet" href="/tailwind/tailwind.css">
+    <link rel="stylesheet" href="/tailwind/tailwind.custom.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&amp;display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+    <style>
+        * {
+            font-family: "Lato", sans-serif;
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        th {
+            width: 1%;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        td {
+            width: 1%;
+            white-space: nowrap;
+            text-align: center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/admin/nor.js"></script>
+    <script src="/js/admin/ajax.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/js/admin/ajax_second.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://www.gstatic.com/charts/51/loader.js"></script>
+    <link id="load-css-0" rel="stylesheet" type="text/css"
+        href="https://www.gstatic.com/charts/51/css/core/tooltip.css">
+    <link id="load-css-1" rel="stylesheet" type="text/css" href="https://www.gstatic.com/charts/51/css/util/util.css">
+    <script type="text/javascript" charset="UTF-8"
+        src="https://www.gstatic.com/charts/51/js/jsapi_compiled_default_module.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+        src="https://www.gstatic.com/charts/51/js/jsapi_compiled_graphics_module.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+        src="https://www.gstatic.com/charts/51/js/jsapi_compiled_ui_module.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+        src="https://www.gstatic.com/charts/51/js/jsapi_compiled_corechart_module.js"></script>
+</head>
+
+<body>
+    <div class="w-full flex">
+        <div class="w-1/5 shadow-lg h-screen">
+            <div class="w-full text-xl font-bold flex
+            border-solid border-gray-300 py-4 px-6">
+                ENSONET MANAGEMENT
+            </div>
+            <div class="w-full p-3">
+                <div class="w-full flex relative p-2 border-solid 
+                border-gray-300">
+                    <div class="w-1/4 text-right mr-2">
+                        <img src="/img/avatar.png" class="w-12 h-12 rounded-full" alt="">
+                    </div>
+                    <div class="w-3/4">
+                        <p class="font-bold">Trà Tấn Hưởng</p>
+                        <p>Quản trị viên</p>
+                    </div>
+                    <i class="fas fa-caret-down absolute top-1/3 right-4 cursor-pointer"></i>
+                </div>
+                <ul class="w-full p-2 hidden">
+                    <li class="w-full p-1.5 cursor-pointer">
+                        Thông tin cá nhân
+                    </li>
+                    <li class="w-full p-1.5 cursor-pointer">
+                        Chỉnh sửa
+                    </li>
+                    <li class="w-full p-1.5 cursor-pointer">
+                        Cài đặt
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full">
+                <ul class="w-full p-3">
+                    <li onclick="loadCategoryAd('dashboard',this)" class="activeBorder bg-gray-300 w-full border-sold border-blue-500 font-bold 
+                    my-1 hover:bg-gray-200 border-l-4 cursor-pointer flex pl-5 py-2 text-gray-700 
+                    items-center rounded-lg">
+                        <i class="fas fa-home text-2xl mr-3"></i>
+                        Tổng quan
+                    </li>
+                    <li onclick="loadCategoryAd('user',this)" class="w-full border-sold border-white 
+                    font-bold my-1 hover:bg-gray-200 border-l-4 cursor-pointer flex pl-5 py-2 
+                    text-gray-700 items-center rounded-lg">
+                        <i class="fas fa-user text-2xl mr-3"></i>
+                        Người dùng
+                    </li>
+                    <li onclick="loadCategoryAd('post',this)" class="w-full border-sold border-white 
+                    font-bold my-1 hover:bg-gray-200 border-l-4 cursor-pointer flex pl-5 py-2 
+                    text-gray-700 items-center rounded-lg">
+                        <i class="fas fa-marker text-2xl mr-3"></i>
+                        Bài viết
+                    </li>
+                    <li onclick="loadCategoryAd('story',this)" class="w-full border-sold border-white 
+                    font-bold my-1 hover:bg-gray-200 border-l-4 cursor-pointer flex pl-5 py-2 
+                    text-gray-700 items-center rounded-lg">
+                        <i class="fas fa-book text-2xl mr-3"></i>
+                        Story
+                    </li>
+                    <li onclick="loadCategoryAd('reply',this)" class="w-full border-sold border-white 
+                    font-bold my-1 hover:bg-gray-200 border-l-4 cursor-pointer flex pl-5 py-2 
+                    text-gray-700 items-center rounded-lg">
+                        <i class="fas fa-comment-dots text-2xl mr-3"></i>
+                        Phản hồi
+                    </li>
+                    <li onclick="loadCategoryAd('category',this)" class="w-full border-sold border-white 
+                    font-bold my-1 hover:bg-gray-200 border-l-4 cursor-pointer flex pl-5 py-2 
+                    text-gray-700 items-center rounded-lg">
+                        <i class="far fa-list-alt text-2xl mr-3"></i>
+                        Danh mục
+                    </li>
+                    <li class="w-full border-sold border-white font-bold justify-center 
+                    border-l-4 cursor-pointer flex py-2 text-white items-center">
+                        <button class="w-10/12 p-2.5 rounded-lg bg-blue-500 font-bold flex justify-center 
+                        items-center">
+                            <i class="far fa-hand-point-up text-white text-2xl mr-3"></i> Cập nhật phiên bản
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="w-4/5 h-screen" id="rightIndex">
+            <div class="w-full flex">
+                <div class="w-1/4 text-center">
+                    <div class="w-10/12 mx-auto relative">
+                        <input type="text" class="my-4 items-center rounded-3xl py-2 px-4 bg-gray-200 
+                        w-full " placeholder="Tìm kiếm...">
+                        <i class="bx bx-search absolute right-3 text-gray-600 top-1/3 text-xl"></i>
+                    </div>
+                </div>
+                <div class="w-2/4"></div>
+                <div class="w-1/4 relative">
+                    <ul class="flex justify-end mr-8">
+                        <li class="p-2 flex items-center"><i class="far fa-envelope text-2xl"></i></li>
+                        <li class="p-2 flex items-center"><i class="bx bx-bell text-2xl"></i></li>
+                        <li class="p-2 flex items-center">
+                            <div class="w-full flex relative p-2 cursor-pointer">
+                                <div class="text-right mr-2 cursor-pointer">
+                                    <img src="/img/avatar.png" class="w-9 h-9 rounded-full" alt="">
+                                </div>
+                                <div class="flex items-center">
+                                    <p class="font-bold text-sm">Trà Tấn Hưởng</p>
+                                </div>
+                                <i onclick="openModalAd('profileAdmin')"
+                                    class="fas fa-caret-down absolute top-1/3 -right-3 cursor-pointer"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="profileAdmin" class=" absolute w-full p-3 shadow-lg border-t-2 border-sold
+                     border-gray-300 hidden z-10 bg-white">
+                        <div class="w-full flex pb-2">
+                            <div class="">
+                                <img src="/img/avatar.png" class="w-16 h-16 rounded-lg" alt="">
+                            </div>
+                            <div class="ml-3">
+                                <p>Trà Tấn Hưởng</p>
+                                <p class="text-sm text-gray-600">tratanhuong01@gmail.com</p>
+                                <a href="" class="text-blue-500 text-sm">Xem thông tin</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul class="w-full">
+                            <li class="w-full p-2">Cài đặt</li>
+                            <li class="w-full p-2">
+                                <a href="http://localhost:8000/admin/logout">Đăng Xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full p-5 bg-gray-100 overflow-y-auto 
+            wrapper-content-right" style="height: 685px;max-height: 685px;" id="content">
+                <p class="text-2xl font-bold pb-3">Tổng quan trong ngày</p>
+                <ul class="w-full flex">
+                    <li class="w-1/4 mr-6 bg-yellow-500 text-white p-5 flex">
+                        <div class="text-center w-1/4 items-center">
+                            <i class="fas fa-users text-2xl my-2"></i>
+                        </div>
+                        <div class="w-3/4 text-center px-2 items-center font-bold">
+                            <p>Lượt đăng kí</p>
+                            <p>0</p>
+                        </div>
+                    </li>
+                    <li class="w-1/4 mr-6 text-white bg-green-600 p-5 flex">
+                        <div class="text-center w-1/4 items-center">
+                            <i class="fas fa-marker text-2xl my-2"></i>
+                        </div>
+                        <div class="w-3/4 text-center px-2 items-center font-bold">
+                            <p>Số bài viết</p>
+                            <p>0</p>
+                        </div>
+                    </li>
+                    <li class="w-1/4 mr-6 text-white bg-pink-400 p-5 flex">
+                        <div class="text-center w-1/4 items-center">
+                            <i class="fas fa-book text-2xl my-2"></i>
+                        </div>
+                        <div class="w-3/4 text-center px-2 items-center font-bold">
+                            <p>Số bài story</p>
+                            <p>0</p>
+                        </div>
+                    </li>
+                    <li class="w-1/4 bg-blue-600 p-5 flex text-white">
+                        <div class="text-center w-1/4 items-center">
+                            <i class="fas fa-comment-dots text-2xl my-2"></i>
+                        </div>
+                        <div class="w-3/4 text-center px-2 items-center font-bold">
+                            <p>Lượt phản hồi</p>
+                            <p>0</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="w-full py-5 flex">
+                    <div id="piechart1" class="w-1/2" style="height: 400px;">
+                        <div style="position: relative;">
+                            <div dir="ltr" style="position: relative; width: 590px; height: 400px;">
+                                <div aria-label="A chart."
+                                    style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg
+                                        width="590" height="400" aria-label="A chart." style="overflow: hidden;">
+                                        <defs id="_ABSTRACT_RENDERER_ID_0">
+                                            <filter id="_ABSTRACT_RENDERER_ID_2">
+                                                <feGaussianBlur in="SourceAlpha" stdDeviation="2"></feGaussianBlur>
+                                                <feOffset dx="1" dy="1"></feOffset>
+                                                <feComponentTransfer>
+                                                    <feFuncA type="linear" slope="0.1"></feFuncA>
+                                                </feComponentTransfer>
+                                                <feMerge>
+                                                    <feMergeNode></feMergeNode>
+                                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                                </feMerge>
+                                            </filter>
+                                        </defs>
+                                        <rect x="0" y="0" width="590" height="400" stroke="none" stroke-width="0"
+                                            fill="#ffffff"></rect>
+                                        <g><text text-anchor="start" x="113" y="54.05" font-family="Arial"
+                                                font-size="13" font-weight="bold" stroke="none" stroke-width="0"
+                                                fill="#000000">Biểu đồ người dùng</text>
+                                            <rect x="113" y="43" width="365" height="13" stroke="none" stroke-width="0"
+                                                fill-opacity="0" fill="#ffffff"></rect>
+                                        </g>
+                                        <g>
+                                            <rect x="360" y="77" width="118" height="55" stroke="none" stroke-width="0"
+                                                fill-opacity="0" fill="#ffffff"></rect>
+                                            <g column-id="Chưa xác minh">
+                                                <rect x="360" y="77" width="118" height="13" stroke="none"
+                                                    stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+                                                <g><text text-anchor="start" x="378" y="88.05" font-family="Arial"
+                                                        font-size="13" stroke="none" stroke-width="0"
+                                                        fill="#222222">Chưa xác minh</text></g>
+                                                <circle cx="366.5" cy="83.5" r="6.5" stroke="none" stroke-width="0"
+                                                    fill="#3366cc"></circle>
+                                            </g>
+                                            <g column-id="Đang xác minh">
+                                                <rect x="360" y="98" width="118" height="13" stroke="none"
+                                                    stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+                                                <g><text text-anchor="start" x="378" y="109.05" font-family="Arial"
+                                                        font-size="13" stroke="none" stroke-width="0"
+                                                        fill="#222222">Đang xác minh</text></g>
+                                                <circle cx="366.5" cy="104.5" r="6.5" stroke="none" stroke-width="0"
+                                                    fill="#dc3912"></circle>
+                                            </g>
+                                            <g column-id="Đã xác minh">
+                                                <rect x="360" y="119" width="118" height="13" stroke="none"
+                                                    stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+                                                <g><text text-anchor="start" x="378" y="130.05" font-family="Arial"
+                                                        font-size="13" stroke="none" stroke-width="0" fill="#222222">Đã
+                                                        xác minh</text></g>
+                                                <circle cx="366.5" cy="125.5" r="6.5" stroke="none" stroke-width="0"
+                                                    fill="#ff9900"></circle>
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M226,201L226,88A113,113,0,0,1,292.4197335090495,109.58107963563094L226,201A0,0,0,0,0,226,201"
+                                                stroke="#ffffff" stroke-width="1" fill="#3366cc"></path><text
+                                                text-anchor="start" x="240.58388400447336" y="120.65553430808049"
+                                                font-family="Arial" font-size="13" stroke="none" stroke-width="0"
+                                                fill="#ffffff">10%</text>
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M226,201L118.53061365864767,235.91892036436911A113,113,0,0,1,226,88L226,201A0,0,0,0,0,226,201"
+                                                stroke="#ffffff" stroke-width="1" fill="#ff9900"></path><text
+                                                text-anchor="start" x="143.72081099026397" y="155.2157228787052"
+                                                font-family="Arial" font-size="13" stroke="none" stroke-width="0"
+                                                fill="#ffffff">30%</text>
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M226,201L292.4197335090495,109.58107963563094A113,113,0,1,1,118.53061365864767,235.91892036436911L226,201A0,0,0,1,0,226,201"
+                                                stroke="#ffffff" stroke-width="1" fill="#dc3912"></path><text
+                                                text-anchor="start" x="264.064258727528" y="275.8339224948319"
+                                                font-family="Arial" font-size="13" stroke="none" stroke-width="0"
+                                                fill="#ffffff">60%</text>
+                                        </g>
+                                        <g></g>
+                                    </svg>
+                                    <div aria-label="A tabular representation of the data in the chart."
+                                        style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Task</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Chưa xác minh</td>
+                                                    <td>1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Đang xác minh</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Đã xác minh</td>
+                                                    <td>3</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div aria-hidden="true"
+                                style="display: none; position: absolute; top: 410px; left: 600px; white-space: nowrap; font-family: Arial; font-size: 13px; font-weight: bold;">
+                                3 (30%)</div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div id="piechart2" class="w-1/2" style="height: 400px;">
+                        <div style="position: relative;">
+                            <div dir="ltr" style="position: relative; width: 590px; height: 400px;">
+                                <div aria-label="A chart."
+                                    style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg
+                                        width="590" height="400" aria-label="A chart." style="overflow: hidden;">
+                                        <defs id="_ABSTRACT_RENDERER_ID_1"></defs>
+                                        <rect x="0" y="0" width="590" height="400" stroke="none" stroke-width="0"
+                                            fill="#ffffff"></rect>
+                                        <g><text text-anchor="start" x="113" y="54.05" font-family="Arial"
+                                                font-size="13" font-weight="bold" stroke="none" stroke-width="0"
+                                                fill="#000000">Biểu đồ lượt yêu cầu phản hồi</text>
+                                            <rect x="113" y="43" width="365" height="13" stroke="none" stroke-width="0"
+                                                fill-opacity="0" fill="#ffffff"></rect>
+                                        </g>
+                                        <g>
+                                            <rect x="360" y="77" width="118" height="30" stroke="none" stroke-width="0"
+                                                fill-opacity="0" fill="#ffffff"></rect>
+                                            <g column-id="Cấp Lại Tài Khoản">
+                                                <rect x="360" y="77" width="118" height="30" stroke="none"
+                                                    stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+                                                <g><text text-anchor="start" x="378" y="88.05" font-family="Arial"
+                                                        font-size="13" stroke="none" stroke-width="0" fill="#222222">Cấp
+                                                        Lại Tài</text><text text-anchor="start" x="378" y="105.05"
+                                                        font-family="Arial" font-size="13" stroke="none"
+                                                        stroke-width="0" fill="#222222">Khoản</text></g>
+                                                <circle cx="366.5" cy="83.5" r="6.5" stroke="none" stroke-width="0"
+                                                    fill="#ff9900"></circle>
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <ellipse cx="226" cy="201" rx="113" ry="113" stroke="#ffffff"
+                                                stroke-width="1" fill="#ff9900"></ellipse><text text-anchor="start"
+                                                x="209" y="205.55" font-family="Arial" font-size="13" stroke="none"
+                                                stroke-width="0" fill="#ffffff">100%</text>
+                                        </g>
+                                        <g></g>
+                                    </svg>
+                                    <div aria-label="A tabular representation of the data in the chart."
+                                        style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Task</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tích Xanh</td>
+                                                    <td>0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Quá Trình Sử Dụng</td>
+                                                    <td>0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cấp Lại Tài Khoản</td>
+                                                    <td>1</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div aria-hidden="true"
+                                style="display: none; position: absolute; top: 410px; left: 600px; white-space: nowrap; font-family: Arial; font-size: 13px;">
+                                Khoản</div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex py-5 pr-5">
+                    <div class="w-1/3 p-1 bg-white mr-2">
+                        <p class="font-bold text-xm font-bold my-2 pl-3">
+                            Người dùng đăng kí mới
+                        </p>
+                        <ul class="w-full flex flex-wrap">
+                            <li class="w-full px-2.5 pb-2.5 flex">
+                                <div class="relative mr-3">
+                                    <span class="bg-blue-500 p-1.5 rounded-full absolute top-4"></span>
+                                </div>
+                                <div class="ml-3 pt-0.5">
+                                    <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1622792457/Avatar/ohr7yxb89srga7aoggdr.jpg"
+                                        class="w-10 h-10 rounded-full mx-auto" alt=""><br>
+                                </div>
+                                <div class="pl-3">
+                                    <p class="text-gray-600 pb-0.5 font-bold break-all whitespace-nowrap">
+                                        Phương Thảo
+                                    </p>
+                                    <p class="text-sm text-gray-600">2021-06-04 14:34:55</p>
+                                </div>
+                            </li>
+                            <li class="w-full px-2.5 pb-2.5 flex">
+                                <div class="relative mr-3">
+                                    <span class="bg-blue-500 p-1.5 rounded-full absolute top-4"></span>
+                                </div>
+                                <div class="ml-3 pt-0.5">
+                                    <img src="/img/boy.jpg" class="w-10 h-10 rounded-full mx-auto" alt=""><br>
+                                </div>
+                                <div class="pl-3">
+                                    <p class="text-gray-600 pb-0.5 font-bold break-all whitespace-nowrap">
+                                        tra thuan
+                                    </p>
+                                    <p class="text-sm text-gray-600">2021-05-19 10:31:02</p>
+                                </div>
+                            </li>
+                            <li class="w-full px-2.5 pb-2.5 flex">
+                                <div class="relative mr-3">
+                                    <span class="bg-blue-500 p-1.5 rounded-full absolute top-4"></span>
+                                </div>
+                                <div class="ml-3 pt-0.5">
+                                    <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1621170459/Avatar/z9slpz5pmqv4rniswiae.png"
+                                        class="w-10 h-10 rounded-full mx-auto" alt=""><br>
+                                </div>
+                                <div class="pl-3">
+                                    <p class="text-gray-600 pb-0.5 font-bold break-all whitespace-nowrap">
+                                        Sơn Tùng
+                                    </p>
+                                    <p class="text-sm text-gray-600">2021-05-16 20:04:04</p>
+                                </div>
+                            </li>
+                            <li class="w-full px-2.5 pb-2.5 flex">
+                                <div class="relative mr-3">
+                                    <span class="bg-blue-500 p-1.5 rounded-full absolute top-4"></span>
+                                </div>
+                                <div class="ml-3 pt-0.5">
+                                    <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1620699901/Avatar/ssrtwwrhftymveemykki.jpg"
+                                        class="w-10 h-10 rounded-full mx-auto" alt=""><br>
+                                </div>
+                                <div class="pl-3">
+                                    <p class="text-gray-600 pb-0.5 font-bold break-all whitespace-nowrap">
+                                        Mèo Méo Meo Mèo Meo
+                                    </p>
+                                    <p class="text-sm text-gray-600">2021-05-11 09:20:08</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-1/3 p-1 bg-white mr-2">
+                        <p class="font-bold text-xm font-bold my-2 pl-3">
+                            Người dùng hoạt động gần đây
+                        </p>
+                        <ul class="w-full flex flex-wrap py-3">
+                            <li class="w-1/3 p-2.5 text-center">
+                                <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1623289152/Avatar/d5peo862j01zy9btpuee.jpg"
+                                    class="w-14 h-14 object-cover rounded-full mx-auto" alt=""><br>
+                                <p class="max-w-full break-all whitespace-nowrap 
+                whitespace-nowrap overflow-ellipsis overflow-hidden">
+                                    Trà Hưởng
+                                </p>
+                            </li>
+                            <li class="w-1/3 p-2.5 text-center">
+                                <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1621170459/Avatar/z9slpz5pmqv4rniswiae.png"
+                                    class="w-14 h-14 object-cover rounded-full mx-auto" alt=""><br>
+                                <p class="max-w-full break-all whitespace-nowrap 
+                whitespace-nowrap overflow-ellipsis overflow-hidden">
+                                    Sơn Tùng
+                                </p>
+                            </li>
+                            <li class="w-1/3 p-2.5 text-center">
+                                <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1621521396/Avatar/qfzqjz4texxoaslcrgmv.jpg"
+                                    class="w-14 h-14 object-cover rounded-full mx-auto" alt=""><br>
+                                <p class="max-w-full break-all whitespace-nowrap 
+                whitespace-nowrap overflow-ellipsis overflow-hidden">
+                                    Hiếu Nguyễn
+                                </p>
+                            </li>
+                            <li class="w-1/3 p-2.5 text-center">
+                                <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1619959559/Avatar/d2ec0nuvl9fdpufknf12.jpg"
+                                    class="w-14 h-14 object-cover rounded-full mx-auto" alt=""><br>
+                                <p class="max-w-full break-all whitespace-nowrap 
+                whitespace-nowrap overflow-ellipsis overflow-hidden">
+                                    Canh Nguyen
+                                </p>
+                            </li>
+                            <li class="w-1/3 p-2.5 text-center">
+                                <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1622792457/Avatar/ohr7yxb89srga7aoggdr.jpg"
+                                    class="w-14 h-14 object-cover rounded-full mx-auto" alt=""><br>
+                                <p class="max-w-full break-all whitespace-nowrap 
+                whitespace-nowrap overflow-ellipsis overflow-hidden">
+                                    Phương Thảo
+                                </p>
+                            </li>
+                            <li class="w-1/3 p-2.5 text-center">
+                                <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1619960490/Avatar/yhlpisxd31ugakdbaiuf.jpg"
+                                    class="w-14 h-14 object-cover rounded-full mx-auto" alt=""><br>
+                                <p class="max-w-full break-all whitespace-nowrap 
+                whitespace-nowrap overflow-ellipsis overflow-hidden">
+                                    Dương Sơn Bá
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-1/3 p-1 bg-white">
+                        <p class="font-bold text-xm font-bold my-2 pl-3">
+                            Phản hồi gần đây
+                        </p>
+                        <ul class="w-full flex flex-wrap">
+                            <li class="w-full px-2.5 pb-2.5 flex">
+                                <div class="relative mr-3">
+                                    <span class="bg-blue-500 p-1.5 rounded-full absolute top-4"></span>
+                                </div>
+                                <div class="ml-3 pt-0.5">
+                                    <img src="http://res.cloudinary.com/tratahuong01/image/upload/v1623289152/Avatar/d5peo862j01zy9btpuee.jpg"
+                                        class="w-10 h-10 rounded-full mx-auto 
+                    object-cover" alt=""><br>
+                                </div>
+                                <div class="pl-3">
+                                    <p class="break-all text-gray-600 pb-0.5 font-bold whitespace-nowrap">
+                                        Trà Hưởng
+                                    </p>
+                                    <p class="text-sm text-gray-600">2021-06-05 18:38:31</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    // Load google charts
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(drawChart1);
+                    google.charts.setOnLoadCallback(drawChart2);
+
+                    // Draw the chart and set the chart values
+                    function drawChart1() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Task', ''],
+                            ['Chưa xác minh', Number('1')],
+                            ['Đang xác minh', Number('6')],
+                            ['Đã xác minh', Number('3')],
+                        ]);
+
+                        // Optional; add a title and set the width and height of the chart
+                        var options = {
+                            'title': 'Biểu đồ người dùng',
+                        };
+
+                        // Display the chart inside the <div> element with id="piechart"
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+                        chart.draw(data, options);
+                    }
+
+                    function drawChart2() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Task', ''],
+                            ['Tích Xanh', Number('0')],
+                            ['Quá Trình Sử Dụng', Number('0')],
+                            ['Cấp Lại Tài Khoản', Number('1')],
+                        ]);
+
+                        // Optional; add a title and set the width and height of the chart
+                        var options = {
+                            'title': 'Biểu đồ lượt yêu cầu phản hồi',
+                        };
+
+                        // Display the chart inside the <div> element with id="piechart"
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+                        chart.draw(data, options);
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- place show modal -->
+    <div class="w-full bg-gray-500 top-0 left-0 z-50 bg-opacity-50" id="second"></div>
+    <!-- place show modal -->
+</body>
+
+</html>
