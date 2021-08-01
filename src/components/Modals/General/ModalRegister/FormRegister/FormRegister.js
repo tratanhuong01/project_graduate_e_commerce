@@ -1,18 +1,56 @@
 import { FastField, Form, Formik } from "formik";
+import { connect } from "react-redux";
 import React, { Component } from "react";
 import InputField from "../../../../../components/General/InputField/InputField";
 import EndFormRegister from "../EndFormRegister/EndFormRegister";
 import * as Config from "../../../../../constants/Config";
 import * as Yup from "yup";
+import * as usersAction from "../../../../../actions/user/index";
 class FormRegister extends Component {
-  onSubmitRegister = (data) => {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      sex: false,
+      dataSex: "Nam",
+      iconSex: "bx bx-male-sign",
+    };
+  }
+  onSubmitRegister = (data) => {
+    this.props.registerAccount(data);
+  };
   render() {
+    const { sex, dataSex, iconSex } = this.state;
+    const array = [
+      { data: "Nam", icon: "bx bx-male-sign" },
+      { data: "Nữ", icon: "bx bx-female-sign" },
+      { data: "Khác", icon: "bx bxs-user-pin" },
+    ];
+    const showData = array.map((item, index) => {
+      return dataSex === item.data ? (
+        ""
+      ) : (
+        <div
+          key={index}
+          onClick={() =>
+            this.setState({
+              dataSex: item.data,
+              sex: false,
+              iconSex: item.icon,
+            })
+          }
+          className="p-2.5 w-full hover:bg-gray-200 cursor-pointer"
+        >
+          {item.data}
+        </div>
+      );
+    });
     const validationSchema = Yup.object().shape({
-      fullName: Yup.string().required("Họ tên không được để trống !!"),
+      firstName: Yup.string().required("Họ không được để trống !!"),
+      lastName: Yup.string().required("Tên không được để trống !!"),
       email: Yup.string()
         .required("Email không được để trống !!")
         .email("Email không đúng định dạng !!"),
-      numberPhone: Yup.string()
+      phone: Yup.string()
         .matches(
           Config.REGEX_NUMBER_PHONE,
           "Số điện thoại không đúng định dạng !!"
@@ -26,13 +64,15 @@ class FormRegister extends Component {
     return (
       <Formik
         initialValues={{
-          fullName: "",
-          numberPhone: "",
+          id: "",
+          firstName: "",
+          lastName: "",
+          phone: "",
           email: "",
-          address: "",
+          sex: "Nam",
           birthday: "",
           password: "",
-          typeAccount: 0,
+          type: 0,
         }}
         validationSchema={validationSchema}
         onSubmit={this.onSubmitRegister}
@@ -42,11 +82,23 @@ class FormRegister extends Component {
           return (
             <Form>
               <FastField
-                label="Họ tên"
+                label="Họ"
                 type="text"
-                name="fullName"
+                name="firstName"
                 className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
-                placeHolder="Họ tên"
+                placeHolder="Họ"
+                icon="bx bx-user-circle"
+                value={values.fullName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                component={InputField}
+              />
+              <FastField
+                label="Tên"
+                type="text"
+                name="lastName"
+                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                placeHolder="Tên"
                 icon="bx bx-user-circle"
                 value={values.fullName}
                 onChange={handleChange}
@@ -68,7 +120,7 @@ class FormRegister extends Component {
               <FastField
                 label="Số điện thoại"
                 type="text"
-                name="numberPhone"
+                name="phone"
                 className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
                 placeHolder="Số điện thoại"
                 icon="bx bx-phone-call"
@@ -77,6 +129,35 @@ class FormRegister extends Component {
                 onBlur={handleBlur}
                 component={InputField}
               />
+              <label className="w-full text-gray-800 px-2 text-xm font-semibold">
+                Giới tính
+              </label>
+
+              <div
+                className="w-full p-2.5 border-2 border-solid pl-10 mt-2 relative
+                rounded-full border-gray-300 cursor-pointer"
+              >
+                <p
+                  onClick={() =>
+                    this.setState({
+                      sex: !sex,
+                    })
+                  }
+                  className="items-center"
+                >
+                  {dataSex}
+                </p>
+                <i className="bx bx-chevron-down absolute right-3 top-4"></i>
+                <i className={`${iconSex} absolute left-3 text-xl top-3.5`}></i>
+                {sex && (
+                  <div
+                    className="w-full bg-white border-2 border-solid border-gray-200 p-1 font-bold 
+                  absolute top-full left-0 shadow-lg z-50"
+                  >
+                    {showData}
+                  </div>
+                )}
+              </div>
               <FastField
                 label="Ngày sinh"
                 type="date"
@@ -108,4 +189,11 @@ class FormRegister extends Component {
     );
   }
 }
-export default FormRegister;
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    registerAccount: (data) => {
+      dispatch(usersAction.registerAccount(data));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(FormRegister);

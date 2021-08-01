@@ -1,13 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import CloseModal from "../../../General/CloseModal/CloseModal";
 import Button from "../Button/Button";
-
+import * as modalsAction from "../../../../actions/modal/index";
 function ModalSearchGetAccount(props) {
+  //
+  const dispatch = useDispatch();
+  //
   return (
     <div
       class="wrapper-scrollbar w-11/12 fixed top-1/2 left-1/2 p-4 opacity-100 bg-white z-50 
         border-2 border-solid border-gray-300 sm:w-4/5 sm:mt-12 lg:w-3/5 xl:w-5/12 xl:mt-4 transform 
-        -translate-y-1/2 -translate-x-1/2"
+        -translate-y-1/2 -translate-x-1/2 rounded-lg"
     >
       <div class="w-full">
         <div class="w-full">
@@ -35,7 +39,12 @@ function ModalSearchGetAccount(props) {
             label={"Tìm Kiếm"}
             addClass={"mr-4"}
           />
-          <Button backgroundColor={""} color={"text-gray-800"} label={"Hủy"} />
+          <Button
+            onClick={() => dispatch(modalsAction.closeModal())}
+            backgroundColor={""}
+            color={"text-gray-800"}
+            label={"Hủy"}
+          />
         </div>
       </div>
     </div>

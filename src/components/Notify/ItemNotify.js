@@ -6,7 +6,7 @@ function ItemNotify(props) {
       className="w-full px-4 py-4 flex items-center text-white  
       relative rounded-lg cursor-pointer bg-organce"
     >
-      <span class="bx bxs-bell-ring text-2xl"></span>
+      <span className="bx bxs-bell-ring text-2xl"></span>
       <div className="ml-4">
         <span className="text-sm font-semibold flex">
           Thêm vào giỏ hàng thành công

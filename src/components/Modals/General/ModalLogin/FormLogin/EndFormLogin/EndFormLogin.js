@@ -18,7 +18,10 @@ function EndFormLogin(props) {
         </button>
       </div>
       <div className="w-full mb-5 text-xm font-semibold flex justify-center">
-        <span className="text-xm mr-4 text-blue-500 cursor-pointer">
+        <span
+          onClick={() => dispatch(modalsAction.openModalSearchGetAccount())}
+          className="text-xm mr-4 text-blue-500 cursor-pointer"
+        >
           Quên mật khẩu?
         </span>
         <span

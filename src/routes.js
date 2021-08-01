@@ -11,6 +11,7 @@ import Search from "./pages/Search/Search";
 import * as Config from "./constants/Config";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminIndex from "./pages/Admin/AdminIndex";
+import NewsDetail from "./pages/NewsDetail/NewsDetail";
 // import { Route } from "react-router";
 const routes = [
   {
@@ -45,7 +46,7 @@ const routes = [
   },
   {
     path: Config.PAGE_NEWS,
-    exact: false,
+    exact: true,
     main: () => <News />,
   },
   {
@@ -57,6 +58,11 @@ const routes = [
     path: Config.PAGE_SEARCH,
     exact: true,
     main: () => <Search />,
+  },
+  {
+    path: `${Config.PAGE_NEWS}` + "/:slugNews",
+    exact: true,
+    main: (match) => <NewsDetail match={match} />,
   },
   {
     path: `${Config.PAGE_ADMIN}/login`,

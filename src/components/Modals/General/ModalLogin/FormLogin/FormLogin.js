@@ -70,18 +70,6 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch, props) => {
-  return {
-    // openModalRegister: () => {
-    //   dispatch(actions.openModalRegister());
-    // },
-    // closeModal: () => {
-    //   dispatch(actions.closeModal());
-    // },
-    // saveUserLogin: (user) => {
-    //   dispatch(actions.saveUserLogin(user));
-    //   dispatch(actions.checkHaveLogin(user));
-    //   dispatch(actions.getAllCartRequest(user));
-    // },
-  };
+  return {};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(FormLogin);

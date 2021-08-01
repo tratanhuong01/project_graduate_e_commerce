@@ -1,7 +1,10 @@
 import * as Types from "../../constants/ActionTypes";
+import * as modalsAction from "../../actions/modal/index";
 
 export const registerAccount = (data) => {
-  return (dispatch) => {};
+  return (dispatch) => {
+    dispatch(modalsAction.openModalTypeCode(data, "code"));
+  };
 };
 
 export const loginAccountRequest = (data) => {

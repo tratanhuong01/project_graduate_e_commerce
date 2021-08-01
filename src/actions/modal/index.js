@@ -23,3 +23,17 @@ export const openModalLogin = () => {
     type: Types.OPEN_MODAL_LOGIN,
   };
 };
+
+export const openModalSearchGetAccount = () => {
+  return {
+    type: Types.OPEN_MODAL_SEARCH_GET_ACCOUNT,
+  };
+};
+
+export const openModalTypeCode = (data, code) => {
+  return {
+    type: Types.OPEN_MODAL_TYPE_CODE,
+    data,
+    code,
+  };
+};

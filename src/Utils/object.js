@@ -6,6 +6,7 @@ export const user = {
   sex: "",
   email: "",
   phone: "",
+  password: "",
   type: 0,
   timeCreated: "",
 };
