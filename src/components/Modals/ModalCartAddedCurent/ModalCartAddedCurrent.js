@@ -1,6 +1,6 @@
 import React from "react";
-import ModalCartAddedTop from "../../../components/General/ModalCartAddedCurent/ModalCartAddedTop";
-import ModalCartAddedBottom from "../../../components/General/ModalCartAddedCurent/ModalCartAddedBottom";
+import ModalCartAddedTop from "../ModalCartAddedCurent/ModalCartAddedTop";
+import ModalCartAddedBottom from "../ModalCartAddedCurent/ModalCartAddedBottom";
 
 function ModalCartAddedCurrent(props) {
   //

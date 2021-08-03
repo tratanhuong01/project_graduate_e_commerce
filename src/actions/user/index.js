@@ -1,9 +1,20 @@
 import * as Types from "../../constants/ActionTypes";
 import * as modalsAction from "../../actions/modal/index";
+import api from "../../Utils/api";
 
 export const registerAccount = (data) => {
-  return (dispatch) => {
-    dispatch(modalsAction.openModalTypeCode(data, "code"));
+  return async (dispatch) => {
+    // dispatch(modalsAction.openModalTypeCode(data, "code"));
+    console.log(data);
+  };
+};
+
+export const sendCodeRegister = (data) => {
+  return async (dispatch) => {
+    if (data.emailOrPhone === "Email") {
+      
+    } else {
+    }
   };
 };
 

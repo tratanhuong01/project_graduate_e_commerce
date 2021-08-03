@@ -6,44 +6,55 @@ import EndFormRegister from "../EndFormRegister/EndFormRegister";
 import * as Config from "../../../../../constants/Config";
 import * as Yup from "yup";
 import * as usersAction from "../../../../../actions/user/index";
+import SelectCustom from "./SelectCustom/SelectCustom";
+import api from "../../../../../Utils/api";
 class FormRegister extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sex: false,
       dataSex: "Nam",
-      iconSex: "bx bx-male-sign",
+      validEmail: null,
+      validPhone: null,
+      emailOrPhone: "Email",
     };
   }
-  onSubmitRegister = (data) => {
-    this.props.registerAccount(data);
+  onSubmitRegister = async (data) => {
+    let formDataEmail = new FormData();
+    formDataEmail.append("email", data.email);
+    const email = await api("users/email", "POST", formDataEmail);
+    let formDataPhone = new FormData();
+    formDataPhone.append("phone", data.phone);
+    const phone = await api("users/phone", "POST", formDataPhone);
+    if (email.data.length > 0 && phone.data.length > 0) {
+      this.setState({
+        validEmail: "Email đã được sử dung !!",
+        validPhone: "Số điện thoại đã được sử dụng !!",
+      });
+    } else if (email.data.length > 0 || phone.data.length > 0) {
+      if (email.data.length > 0)
+        this.setState({
+          validEmail: "Email đã được sử dung !!",
+        });
+      else
+        this.setState({
+          validPhone: "Số điện thoại đã được sử dụng !!",
+        });
+    } else {
+      let userRegister = { ...data };
+      userRegister.sex = this.state.dataSex;
+      this.props.registerAccount({
+        user: userRegister,
+        emailOrPhone: this.state.emailOrPhone,
+      });
+    }
   };
   render() {
-    const { sex, dataSex, iconSex } = this.state;
-    const array = [
+    const { dataSex, validEmail, validPhone, emailOrPhone } = this.state;
+    const arraySex = [
       { data: "Nam", icon: "bx bx-male-sign" },
       { data: "Nữ", icon: "bx bx-female-sign" },
       { data: "Khác", icon: "bx bxs-user-pin" },
     ];
-    const showData = array.map((item, index) => {
-      return dataSex === item.data ? (
-        ""
-      ) : (
-        <div
-          key={index}
-          onClick={() =>
-            this.setState({
-              dataSex: item.data,
-              sex: false,
-              iconSex: item.icon,
-            })
-          }
-          className="p-2.5 w-full hover:bg-gray-200 cursor-pointer"
-        >
-          {item.data}
-        </div>
-      );
-    });
     const validationSchema = Yup.object().shape({
       firstName: Yup.string().required("Họ không được để trống !!"),
       lastName: Yup.string().required("Tên không được để trống !!"),
@@ -69,10 +80,15 @@ class FormRegister extends Component {
           lastName: "",
           phone: "",
           email: "",
-          sex: "Nam",
+          sex: dataSex,
           birthday: "",
           password: "",
           type: 0,
+          codeEmail: "",
+          codePhone: "",
+          isVerifyEmail: 0,
+          isVerifyPhone: 0,
+          timeCreated: "",
         }}
         validationSchema={validationSchema}
         onSubmit={this.onSubmitRegister}
@@ -82,6 +98,7 @@ class FormRegister extends Component {
           return (
             <Form>
               <FastField
+                isset={null}
                 label="Họ"
                 type="text"
                 name="firstName"
@@ -89,11 +106,12 @@ class FormRegister extends Component {
                 placeHolder="Họ"
                 icon="bx bx-user-circle"
                 value={values.fullName}
-                onChange={handleChange}
+                handleChange={handleChange}
                 onBlur={handleBlur}
                 component={InputField}
               />
               <FastField
+                isset={null}
                 label="Tên"
                 type="text"
                 name="lastName"
@@ -101,7 +119,7 @@ class FormRegister extends Component {
                 placeHolder="Tên"
                 icon="bx bx-user-circle"
                 value={values.fullName}
-                onChange={handleChange}
+                handleChange={handleChange}
                 onBlur={handleBlur}
                 component={InputField}
               />
@@ -113,9 +131,21 @@ class FormRegister extends Component {
                 placeHolder="Email"
                 icon="bx bx-mail-send"
                 value={values.email}
-                onChange={handleChange}
+                handleChange={handleChange}
                 onBlur={handleBlur}
                 component={InputField}
+                setDataIsset={() =>
+                  this.setState({
+                    validEmail: null,
+                  })
+                }
+                isset={validEmail}
+                emailOrPhone={emailOrPhone === "Email" ? true : false}
+                setDefaultSendCode={(data) => {
+                  this.setState({
+                    emailOrPhone: data,
+                  });
+                }}
               />
               <FastField
                 label="Số điện thoại"
@@ -125,51 +155,46 @@ class FormRegister extends Component {
                 placeHolder="Số điện thoại"
                 icon="bx bx-phone-call"
                 value={values.numberPhone}
-                onChange={handleChange}
+                handleChange={handleChange}
                 onBlur={handleBlur}
                 component={InputField}
+                setDataIsset={() =>
+                  this.setState({
+                    validPhone: null,
+                  })
+                }
+                isset={validPhone}
+                emailOrPhone={emailOrPhone === "Số điện thoại" ? true : false}
+                setDefaultSendCode={(data) => {
+                  this.setState({
+                    emailOrPhone: data,
+                  });
+                }}
               />
-              <label className="w-full text-gray-800 px-2 text-xm font-semibold">
-                Giới tính
-              </label>
-
-              <div
-                className="w-full p-2.5 border-2 border-solid pl-10 mt-2 relative
-                rounded-full border-gray-300 cursor-pointer"
-              >
-                <p
-                  onClick={() =>
-                    this.setState({
-                      sex: !sex,
-                    })
-                  }
-                  className="items-center"
-                >
-                  {dataSex}
-                </p>
-                <i className="bx bx-chevron-down absolute right-3 top-4"></i>
-                <i className={`${iconSex} absolute left-3 text-xl top-3.5`}></i>
-                {sex && (
-                  <div
-                    className="w-full bg-white border-2 border-solid border-gray-200 p-1 font-bold 
-                  absolute top-full left-0 shadow-lg z-50"
-                  >
-                    {showData}
-                  </div>
-                )}
-              </div>
+              <SelectCustom
+                label="Giới tính"
+                array={arraySex}
+                data={dataSex}
+                setData={(data) =>
+                  this.setState({
+                    dataSex: data,
+                  })
+                }
+              />
               <FastField
+                isset={null}
                 label="Ngày sinh"
                 type="date"
                 name="birthday"
                 className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
                 icon="bx bx-calendar-alt"
                 value={values.birthday}
-                onChange={handleChange}
+                handleChange={handleChange}
                 onBlur={handleBlur}
                 component={InputField}
               />
               <FastField
+                isset={null}
                 label="Mật khẩu"
                 type="password"
                 name="password"
@@ -177,7 +202,7 @@ class FormRegister extends Component {
                 icon="bx bx-lock-open"
                 value={values.password}
                 placeHolder="Mật khẩu"
-                onChange={handleChange}
+                handleChange={handleChange}
                 onBlur={handleBlur}
                 component={InputField}
               />

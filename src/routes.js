@@ -60,7 +60,7 @@ const routes = [
     main: () => <Search />,
   },
   {
-    path: `${Config.PAGE_NEWS}` + "/:slugNews",
+    path: Config.PAGE_NEWS + "/:slugNews",
     exact: true,
     main: (match) => <NewsDetail match={match} />,
   },

@@ -9,6 +9,10 @@ export const user = {
   password: "",
   type: 0,
   timeCreated: "",
+  codeEmail: "",
+  codePhone: "",
+  isVerifyEmail: 0,
+  isVerifyPhone: 0,
 };
 export const product = {
   id: "",
