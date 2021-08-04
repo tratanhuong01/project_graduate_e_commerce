@@ -4,15 +4,29 @@ import api from "../../Utils/api";
 
 export const registerAccount = (data) => {
   return async (dispatch) => {
-    // dispatch(modalsAction.openModalTypeCode(data, "code"));
-    console.log(data);
+    const user = await api("users", "POST", data.user);
+
+    dispatch(
+      sendCodeRegister({
+        user: user.data,
+        emailOrPhone: data.emailOrPhone,
+      })
+    );
   };
 };
 
 export const sendCodeRegister = (data) => {
   return async (dispatch) => {
+    console.log(data.emailOrPhone);
     if (data.emailOrPhone === "Email") {
-      
+      const code = await api("sendCodeEmail", "POST", data.user);
+      dispatch(
+        modalsAction.openModalTypeCode({
+          user: data.user,
+          data: data.user.email,
+          code: code.data,
+        })
+      );
     } else {
     }
   };

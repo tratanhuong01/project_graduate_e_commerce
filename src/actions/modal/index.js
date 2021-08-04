@@ -30,9 +30,10 @@ export const openModalSearchGetAccount = () => {
   };
 };
 
-export const openModalTypeCode = (data, code) => {
+export const openModalTypeCode = (user, data, code) => {
   return {
     type: Types.OPEN_MODAL_TYPE_CODE,
+    user,
     data,
     code,
   };

@@ -42,7 +42,13 @@ const myReducer = (state = initialState, action) => {
     case Types.OPEN_MODAL_TYPE_CODE:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
       state.StateModal = true;
-      state.DataModal = <ModalTypeCode />;
+      state.DataModal = (
+        <ModalTypeCode
+          user={action.user}
+          data={action.data}
+          code={action.code}
+        />
+      );
       return { ...state };
     default:
       return state;
