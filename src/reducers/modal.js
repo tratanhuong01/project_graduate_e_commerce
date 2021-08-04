@@ -1,3 +1,4 @@
+import React from "react";
 import Category from "../components/Modals/Category/Category";
 import ModalLogin from "../components/Modals/General/ModalLogin/ModalLogin";
 import ModalRegister from "../components/Modals/General/ModalRegister/ModalRegister";
@@ -6,49 +7,57 @@ import ModalTypeCode from "../components/Modals/General/ModalTypeCode/ModalTypeC
 import * as Types from "../constants/ActionTypes";
 
 const initialState = {
-  StateModal: false,
-  DataModal: "",
+  status: false,
+  data: "",
+  loading: false,
 };
 
 const myReducer = (state = initialState, action) => {
   switch (action.type) {
     case Types.OPEN_CATEGORY:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.StateModal = true;
-      state.DataModal = <Category />;
+      state.status = true;
+      state.data = <Category />;
       return { ...state };
     case Types.CLOSE_MODAL:
       document
         .getElementsByTagName("body")[0]
         .classList.remove("overflow-hidden");
-      state.StateModal = false;
-      state.DataModal = "";
+      state.status = false;
+      state.data = "";
+      state.loading = false;
       return { ...state };
     case Types.OPEN_MODAL_REGISTER:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.StateModal = true;
-      state.DataModal = <ModalRegister />;
+      state.status = true;
+      state.data = <ModalRegister />;
       return { ...state };
     case Types.OPEN_MODAL_LOGIN:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.StateModal = true;
-      state.DataModal = <ModalLogin />;
+      state.status = true;
+      state.data = <ModalLogin />;
       return { ...state };
     case Types.OPEN_MODAL_SEARCH_GET_ACCOUNT:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.StateModal = true;
-      state.DataModal = <ModalSearchGetAccount />;
+      state.status = true;
+      state.data = <ModalSearchGetAccount />;
       return { ...state };
     case Types.OPEN_MODAL_TYPE_CODE:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.StateModal = true;
-      state.DataModal = (
+      state.status = true;
+      state.data = (
         <ModalTypeCode
           user={action.user}
           data={action.data}
           code={action.code}
         />
       );
+      return { ...state };
+    case Types.ON_LOADING_MODAL:
+      state.loading = true;
+      return { ...state };
+    case Types.OFF_LOADING_MODAL:
+      state.loading = true;
       return { ...state };
     default:
       return state;

@@ -1,23 +1,30 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as modalsAction from "../../../../../actions/modal/index";
-
+import * as usersAction from "../../../../../actions/user/index";
 function Left(props) {
   //
+  const states = useSelector((state) => {
+    return {
+      user: state.user,
+    };
+  });
+  const { user } = states;
   const dispatch = useDispatch();
   //
   return (
     <li className="p-2 hidden md:flex">
-      {"null" === null ? (
+      {user !== null ? (
         <div className="flex items-center">
           <img
             src="/images/avatar.jpg"
             className="w-8 h-8 rounded-full mr-3"
             alt=""
           />
-          <span className="font-semibold text-xm mr-1">{"user.fullName"}</span>
+          <span className="font-semibold text-xm mr-1">{`${user.firstName} ${user.lastName}`}</span>
           <i className="bx bxs-chevron-down"></i>
           <i
+            onClick={() => dispatch(usersAction.logoutAccount())}
             className="bx bx-exit text-2xl bg-white ml-3 text-black p-1.5 border-2 border-solid
               rounded-full cursor-pointer hover:bg-organce hover:border-white hover:text-white"
           ></i>

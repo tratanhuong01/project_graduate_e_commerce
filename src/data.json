@@ -2,8 +2,8 @@
   "products": [
     {
       "id": "SP1000",
-      "NameProduct": "Apple Watch Series 6 GPS 40mm viền nhôm dây cao su",
-      "UrlImage": [
+      "nameProduct": "Apple Watch Series 6 GPS 40mm viền nhôm dây cao su",
+      "image": [
         {
           "ID": 0,
           "Url": "/images/product__SP100__GRAY",
@@ -20,7 +20,7 @@
           "Color": "PINK"
         }
       ],
-      "ColorProduct": [
+      "color": [
         {
           "ID": 0,
           "CodeColor": "GRAY"

@@ -38,3 +38,15 @@ export const openModalTypeCode = (user, data, code) => {
     code,
   };
 };
+
+export const onLoadingModal = () => {
+  return {
+    type: Types.ON_LOADING_MODAL,
+  };
+};
+
+export const offLoadingModal = () => {
+  return {
+    type: Types.OFF_LOADING_MODAL,
+  };
+};

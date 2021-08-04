@@ -9,14 +9,14 @@ function Modal(props) {
     };
   });
   const { modal } = states;
-  const { DataModal, StateModal } = modal;
+  const { status, data } = modal;
   //
   return (
     <div
       className={`w-full h-screen bg-opacity-50 bg-black top-0 left-0 fixed z-50 
-      ${StateModal ? "" : "hidden"}`}
+      ${status ? "" : "hidden"}`}
     >
-      {DataModal}
+      {data}
     </div>
   );
 }

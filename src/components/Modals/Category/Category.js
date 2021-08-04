@@ -4,46 +4,46 @@ import { Link, Route } from "react-router-dom";
 import * as Config from "../../../constants/Config";
 import * as modalsAction from "../../../actions/modal/index";
 
-const category = [
-  {
-    name: "Trang chủ",
-    to: Config.PAGE_INDEX,
-    exact: true,
-  },
-  {
-    name: "Sản phẩm",
-    to: Config.PAGE_PRODUCT,
-    exact: true,
-  },
-  {
-    name: "Tin tức",
-    to: Config.PAGE_NEWS,
-    exact: true,
-  },
-  {
-    name: "Giới thiệu",
-    to: Config.PAGE_ABOUT,
-    exact: true,
-  },
-  {
-    name: "Liên hệ",
-    to: Config.PAGE_CONTACT,
-    exact: true,
-  },
-];
-
-const CategoryLink = ({ label, to, exact }) => {
-  return (
-    <Route to={to} exact={exact}>
-      <li className="hover:text-organce px-2.5 py-4">
-        <Link to={to}>{label}</Link>
-      </li>
-    </Route>
-  );
-};
-
 function Category(props) {
   //
+
+  const category = [
+    {
+      name: "Trang chủ",
+      to: Config.PAGE_INDEX,
+      exact: true,
+    },
+    {
+      name: "Sản phẩm",
+      to: Config.PAGE_PRODUCT,
+      exact: true,
+    },
+    {
+      name: "Tin tức",
+      to: Config.PAGE_NEWS,
+      exact: true,
+    },
+    {
+      name: "Giới thiệu",
+      to: Config.PAGE_ABOUT,
+      exact: true,
+    },
+    {
+      name: "Liên hệ",
+      to: Config.PAGE_CONTACT,
+      exact: true,
+    },
+  ];
+
+  const CategoryLink = ({ label, to, exact }) => {
+    return (
+      <Route to={to} exact={exact}>
+        <li className="hover:text-organce px-2.5 py-4">
+          <Link to={to}>{label}</Link>
+        </li>
+      </Route>
+    );
+  };
   const showCategory = (category) => {
     let result = null;
     if (category.length > 0) {

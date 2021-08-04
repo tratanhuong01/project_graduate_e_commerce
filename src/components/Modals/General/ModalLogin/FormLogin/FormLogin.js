@@ -2,17 +2,30 @@ import { FastField, Form, Formik } from "formik";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as Yup from "yup";
+import api from "../../../../../Utils/api";
 import InputField from "../../../../General/InputField/InputField";
 import EndFormLogin from "./EndFormLogin/EndFormLogin";
+import * as modalsAction from "../../../../../actions/modal/index";
+import * as usersAction from "../../../../../actions/user/index";
+
 class FormLogin extends Component {
-  onSubmitFormLogin = (data) => {
-    var { users, saveUserLogin, closeModal } = this.props;
-    var user = this.checkIssetAccount(users, data);
-    if (user === null) {
-      alert("Error emailOrPhone or Password");
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: null,
+    };
+  }
+
+  onSubmitFormLogin = async (data) => {
+    const { closeModal, loginAccount } = this.props;
+    const user = await api("checkLogin", "POST", data);
+    if (user.data === null || user.data === "") {
+      this.setState({
+        message: "Thông tin đăng nhập không chính xác!!",
+      });
     } else {
       closeModal();
-      saveUserLogin(user);
+      loginAccount(user.data);
     }
   };
   render() {
@@ -22,6 +35,7 @@ class FormLogin extends Component {
         .email(),
       password: Yup.string().required("Mật khẩu không được để trống!!"),
     });
+    const { message } = this.state;
     return (
       <Formik
         initialValues={{ emailOrPhone: "", password: "" }}
@@ -40,9 +54,15 @@ class FormLogin extends Component {
                 placeHolder="Email hoặc số điện thoại"
                 icon="bx bx-user-circle"
                 value={values.emailOrPhone}
-                onChange={handleChange}
+                handleChange={handleChange}
+                setDataIsset={() =>
+                  this.setState({
+                    message: null,
+                  })
+                }
                 onBlur={handleBlur}
                 component={InputField}
+                isset={null}
               />
               <FastField
                 label="Mật khẩu"
@@ -52,10 +72,19 @@ class FormLogin extends Component {
                 placeHolder="Mật khẩu"
                 icon="bx bx-lock-open"
                 value={values.password}
-                onChange={handleChange}
+                handleChange={handleChange}
+                setDataIsset={() =>
+                  this.setState({
+                    message: null,
+                  })
+                }
                 onBlur={handleBlur}
                 component={InputField}
+                isset={null}
               />
+              <ul className="w-full my-2 mx-4">
+                <li className="w-full text-red-500 font-semibold">{message}</li>
+              </ul>
               <EndFormLogin openModalRegister={this.openModalRegister} />
             </Form>
           );
@@ -70,6 +99,13 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch, props) => {
-  return {};
+  return {
+    loginAccount: (user) => {
+      dispatch(usersAction.loginAccount(user));
+    },
+    closeModal: () => {
+      dispatch(modalsAction.closeModal());
+    },
+  };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(FormLogin);

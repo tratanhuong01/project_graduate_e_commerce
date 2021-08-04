@@ -1,3 +1,4 @@
+import React from "react";
 import Index from "./pages/Index/Index";
 import ListProduct from "./pages/ListProduct/ListProduct";
 import DetailProduct from "./pages/DetailProduct/DetailProduct";
@@ -70,7 +71,7 @@ const routes = [
     main: () => <AdminLogin />,
   },
   {
-    path: `${Config.PAGE_ADMIN}/dashboard`,
+    path: `${Config.PAGE_ADMIN}/:slugCategory`,
     exact: true,
     main: () => <AdminIndex />,
   },

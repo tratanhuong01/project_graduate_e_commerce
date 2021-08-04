@@ -1,4 +1,11 @@
 //
+export const ON_LOADING_MODAL = "ON_LOADING_MODAL";
+//
+export const OFF_LOADING_MODAL = "OFF_LOADING_MODAL";
+//
+export const LOGIN_USER = "LOGIN_USER";
+//
+
 export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
 //
 export const VIEW_PRODUCT = "VIEW_PRODUCT";
@@ -62,12 +69,6 @@ export const OPEN_MODAL_LOGIN = "OPEN_MODAL_LOGIN";
 export const OPEN_MODAL_REGISTER = "OPEN_MODAL_REGISTER";
 //
 export const OPEN_MODAL_SEARCH_GET_ACCOUNT = "OPEN_MODAL_SEARCH_GET_ACCOUNT";
-//
-export const GET_ALL_USERS = "GET_ALL_USERS";
-//
-export const CHECK_HAVE_LOGIN = "CHECK_HAVE_LOGIN";
-//
-export const SAVE_USER_LOGIN = "SAVE_USER_LOGIN";
 //
 export const LOGOUT_USER = "LOGOUT_USER";
 //
