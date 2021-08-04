@@ -28,6 +28,26 @@ function Category(props) {
       name: "Khuyến mãi",
       icon: "bx bx-gift",
     },
+    {
+      id: 6,
+      name: "Thiết lập",
+      icon: "fas fa-cog",
+    },
+    {
+      id: 7,
+      name: "Danh mục",
+      icon: "bx bxs-category-alt",
+    },
+    {
+      id: 8,
+      name: "Bài viết",
+      icon: "bx bx-pen",
+    },
+    {
+      id: 9,
+      name: "Liên hệ",
+      icon: "bx bx-current-location",
+    },
   ];
   const [categoryCurrent, setCategoryCurrent] = useState(0);
   const showCategorys = category.map((item, index) => {
@@ -42,7 +62,7 @@ function Category(props) {
   });
   return (
     <div className="w-full">
-      <ul className="w-full p-3">{showCategorys}</ul>
+      <ul className="w-full py-1 px-3">{showCategorys}</ul>
     </div>
   );
 }

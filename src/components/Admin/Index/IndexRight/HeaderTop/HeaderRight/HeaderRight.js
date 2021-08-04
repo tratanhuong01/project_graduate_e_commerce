@@ -7,12 +7,24 @@ function HeaderRight(props) {
   //
   return (
     <div className="w-1/4 relative">
-      <ul className="flex justify-end mr-8">
-        <li className="p-2 flex items-center">
+      <ul className="flex justify-end mr-8 items-center">
+        <li className=" flex items-center relative mx-2">
           <i className="far fa-envelope text-2xl"></i>
+          <span
+            className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white 
+          font-bold flex justify-center text-xs items-center"
+          >
+            9
+          </span>
         </li>
-        <li className="p-2 flex items-center">
-          <i className="bx bx-bell text-2xl"></i>
+        <li className="flex items-center relative mx-2">
+          <i className="far fa-bell text-2xl"></i>
+          <span
+            className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white 
+          font-bold flex justify-center text-xs items-center"
+          >
+            9
+          </span>
         </li>
         <li className="p-2 flex items-center">
           <div className="w-full flex relative p-2 cursor-pointer">

@@ -1,7 +1,30 @@
 import React from "react";
-
+import Content from "../../Category/Customer/Content/Content";
+import DataFilterOrder from "../DataFilterOrder/DataFilterOrder";
+import Filter from "./Filter/Filter";
+import OrderBy from "./OrderBy/OrderBy";
+import ConfigAdmin from "../../../../../../ConfigAdmin";
 function Control(props) {
-  return <div></div>;
+  //
+  const { type } = props;
+  let data = null;
+  switch (type) {
+    case "customer":
+      data = ConfigAdmin.customer;
+      break;
+    default:
+      break;
+  }
+  //
+  return (
+    <>
+      <div className="w-full flex py-3">
+        <Filter filter={data.filter} />
+        <OrderBy orderBy={data.orderBy} />
+      </div>
+      <DataFilterOrder />
+    </>
+  );
 }
 
 export default Control;

@@ -4,9 +4,9 @@ import HeaderRight from "./HeaderRight/HeaderRight";
 
 function HeaderTop(props) {
   return (
-    <div class="w-full flex">
+    <div className="w-full flex">
       <HeaderLeft />
-      <div class="w-2/4"></div>
+      <div className="w-2/4"></div>
       <HeaderRight />
     </div>
   );
