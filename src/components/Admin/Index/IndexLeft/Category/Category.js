@@ -7,11 +7,13 @@ function Category(props) {
       id: 0,
       name: "Tổng quan",
       icon: "fas fa-home",
+      child: [],
     },
     {
       id: 2,
       name: "Khách hàng",
       icon: "fas fa-user",
+      child: [],
     },
     {
       id: 3,

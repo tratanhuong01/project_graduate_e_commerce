@@ -1,5 +1,4 @@
 import React from "react";
-import Content from "../../Category/Customer/Content/Content";
 import DataFilterOrder from "../DataFilterOrder/DataFilterOrder";
 import Filter from "./Filter/Filter";
 import OrderBy from "./OrderBy/OrderBy";
@@ -11,6 +10,9 @@ function Control(props) {
   switch (type) {
     case "customer":
       data = ConfigAdmin.customer;
+      break;
+    case "product":
+      data = ConfigAdmin.product;
       break;
     default:
       break;

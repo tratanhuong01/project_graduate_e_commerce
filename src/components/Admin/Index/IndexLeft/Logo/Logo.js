@@ -9,6 +9,7 @@ function Logo(props) {
       <img
         src="../../../images/logo.png"
         className="flex h-14 object-cover cursor-pointer"
+        alt=""
       />
       <span
         className="font-bold text-2xl absolute top-5 left-36 text-gray-700 

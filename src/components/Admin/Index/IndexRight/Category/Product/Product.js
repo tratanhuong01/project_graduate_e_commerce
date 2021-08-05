@@ -3,7 +3,7 @@ import Control from "../../General/Control/Control";
 import Pagination from "../../General/Pagination/Pagination";
 import Table from "../../General/Table/Table";
 
-function Customer(props) {
+function Product(props) {
   return (
     <div
       className="w-full p-5 bg-gray-100 overflow-y-auto wrapper-content-right"
@@ -12,7 +12,7 @@ function Customer(props) {
       <div className="w-full flex py-2">
         <div className="w-1/3 mr-10 flex">
           <p className="text-2xl font-bold flex items-center">
-            Quản lí khách hàng
+            Quản lí sản phẩm
           </p>
         </div>
         <div className="w-2/3 flex items-center justify-end">
@@ -31,7 +31,7 @@ function Customer(props) {
           </button>
         </div>
       </div>
-      <Control type={"customer"} />
+      <Control type={"product"} />
       <div className="w-full  py-3">
         <Table />
       </div>
@@ -40,4 +40,4 @@ function Customer(props) {
   );
 }
 
-export default Customer;
+export default Product;

@@ -119,5 +119,76 @@
         ]
       }
     ]
+  },
+  "product": {
+    "filter": [
+      {
+        "name": "Giá sản phẩm",
+        "data": [
+          {
+            "id": 0,
+            "name": "0k -> 500k",
+            "type": 0
+          },
+          {
+            "id": 1,
+            "name": "500k - 1.500k",
+            "type": 1
+          },
+          {
+            "id": 2,
+            "name": "1.500k -> 3.000k",
+            "type": 0
+          },
+          {
+            "id": 3,
+            "name": "3.000k -> 7.000k",
+            "type": 0
+          },
+          {
+            "id": 4,
+            "name": "7.000k -> 10.000k",
+            "type": 0
+          },
+          {
+            "id": 5,
+            "name": "Lớn hơn 10.000k",
+            "type": 0
+          }
+        ]
+      }
+    ],
+    "orderBy": [
+      {
+        "name": "Giá nhập vào",
+        "data": [
+          {
+            "id": 0,
+            "name": "Tăng dần",
+            "type": "ASC"
+          },
+          {
+            "id": 0,
+            "name": "Giảm dần",
+            "type": "DESC"
+          }
+        ]
+      },
+      {
+        "name": "Giá bán ra",
+        "data": [
+          {
+            "id": 0,
+            "name": "Tăng dần",
+            "type": "ASC"
+          },
+          {
+            "id": 0,
+            "name": "Giảm dần",
+            "type": "DESC"
+          }
+        ]
+      }
+    ]
   }
 }

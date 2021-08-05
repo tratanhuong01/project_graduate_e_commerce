@@ -11,7 +11,7 @@ function HeaderRight(props) {
         <li className=" flex items-center relative mx-2">
           <i className="far fa-envelope text-2xl"></i>
           <span
-            className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white 
+            className="absolute -top-1 -right-2 w-4 h-4 rounded-full bg-red-500 text-white 
           font-bold flex justify-center text-xs items-center"
           >
             9

@@ -6,7 +6,7 @@ function ModalTypeCode(props) {
   //
   const [codeVerify, setCodeVerify] = useState("");
   const [message, setMessage] = useState(null);
-  const { user, data, code } = props;
+  const { data, code } = props;
   let [time, setTime] = useState("");
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
