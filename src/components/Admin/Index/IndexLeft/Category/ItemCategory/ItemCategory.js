@@ -22,8 +22,8 @@ function ItemCategory(props) {
         className={`w-full border-solid cursor-pointer flex pl-5 h-12 my-1 items-center 
         rounded-lg relative font-medium ${
           item.id === id
-            ? "border-l-4 border-gray-200 bg-gray-200 text-gray-700"
-            : "border-white text-gray-700 hover:bg-gray-200"
+            ? "border-l-4 border-gray-200 bg-gray-200 text-gray-800"
+            : "border-white text-gray-800 hover:bg-gray-200"
         }`}
       >
         <span className={`${item.icon} text-xl mr-3 flex `}></span>
@@ -39,7 +39,7 @@ function ItemCategory(props) {
               return (
                 <div
                   onClick={() => ""}
-                  className="w-full text-gray-700 flex my-0.5 h-11 items-center cursor-pointer"
+                  className="w-full text-gray-800 flex my-0.5 h-11 items-center cursor-pointer"
                   key={index}
                 >
                   <span

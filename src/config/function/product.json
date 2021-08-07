@@ -1,0 +1,18 @@
+{
+  "address": {
+    "title": "sản phẩm",
+    "data": [
+      {
+        "label": "ID sản phẩm",
+        "data": {
+          "placeHolder": "",
+          "name": "id",
+          "disabled": true
+        },
+        "type": "Input"
+      }
+    ],
+    "type": "address",
+    "table": "diachi"
+  }
+}

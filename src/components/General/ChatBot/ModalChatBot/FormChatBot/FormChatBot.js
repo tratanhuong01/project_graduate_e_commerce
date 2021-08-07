@@ -9,19 +9,28 @@ import * as Yup from "yup";
 
 class FormChatBot extends Component {
   onSubmitFormLogin = () => {
-    console.log("success");
+    console.log("oke");
   };
   render() {
     const validationSchema = Yup.object().shape({
-      nickName: Yup.string().required("dsads"),
-      nameCustomer: Yup.string().required("dsadsa"),
+      nickName: Yup.string().required("Vui lòng chọn cách xưng hô !!"),
+      nameCustomer: Yup.string().required("Tên không được để trống !!"),
       numberCustomer: Yup.string()
-        .matches(Config.REGEX_NUMBER_PHONE, "dsadsa")
-        .required("sadas"),
+        .matches(
+          Config.REGEX_NUMBER_PHONE,
+          "Số điện thoại không đúng định dạng !!"
+        )
+        .required("Số điện thoại không được để trống !!"),
+      check: Yup.boolean().oneOf([true], "Bạn phải đồng ý điều khoản trên !!"),
     });
     return (
       <Formik
-        initialValues={{ nickName: "", nameCustomer: "", numberCustomer: "" }}
+        initialValues={{
+          nickName: "",
+          nameCustomer: "",
+          numberCustomer: "",
+          check: false,
+        }}
         validationSchema={validationSchema}
         onSubmit={this.onSubmitFormLogin}
       >
@@ -61,7 +70,12 @@ class FormChatBot extends Component {
                 onBlur={handleBlur}
                 component={Input}
               />
-              <FastField component={RuleFormChatBot} />
+              <FastField
+                name="check"
+                handleChange={handleChange}
+                onBlur={handleBlur}
+                component={RuleFormChatBot}
+              />
               <div className="flex justify-center w-full py-2">
                 <button
                   type="submit"

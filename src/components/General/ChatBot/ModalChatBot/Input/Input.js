@@ -1,3 +1,4 @@
+import { ErrorMessage } from "formik";
 import React, { Component } from "react";
 
 class Input extends Component {
@@ -21,6 +22,11 @@ class Input extends Component {
           name={name}
           value={value}
         />
+        {showError && (
+          <p className="m-1 text-red-500 font-semibold">
+            <ErrorMessage name={name} />
+          </p>
+        )}
       </div>
     );
   }

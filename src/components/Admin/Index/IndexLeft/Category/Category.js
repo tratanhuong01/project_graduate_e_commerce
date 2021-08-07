@@ -13,7 +13,16 @@ function Category(props) {
       id: 2,
       name: "Khách hàng",
       icon: "bx bx-user",
-      child: [],
+      child: [
+        {
+          id: 0,
+          name: "Danh sách khách hàng",
+        },
+        {
+          id: 1,
+          name: "Nhà cung cấp",
+        },
+      ],
     },
     {
       id: 3,

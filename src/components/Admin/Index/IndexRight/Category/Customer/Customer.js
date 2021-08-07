@@ -27,7 +27,7 @@ function Customer(props) {
             className="p-2.5 w-48 flex items-center mx-2 rounded-lg"
           />
           <button className="px-5 py-2 bg-blue-500 text-white font-bold rounded-lg">
-            <i class="bx bxs-download mr-3"></i>Tải xuống
+            <i className="bx bxs-download mr-3"></i>Tải xuống
           </button>
         </div>
       </div>

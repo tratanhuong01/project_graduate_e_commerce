@@ -1,0 +1,209 @@
+{
+  "user": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Họ"
+    },
+    {
+      "id": 3,
+      "name": "Tên"
+    },
+    {
+      "id": 4,
+      "name": "Email"
+    },
+    {
+      "id": 5,
+      "name": "Số điện thoại"
+    },
+    {
+      "id": 6,
+      "name": "Ngày sinh"
+    },
+    {
+      "id": 7,
+      "name": "Giới tính"
+    },
+    {
+      "id": 8,
+      "name": "Sử dụng"
+    },
+    {
+      "id": 9,
+      "name": "Xác minh"
+    },
+    {
+      "id": 10,
+      "name": "Đơn hàng"
+    }
+  ],
+  "product": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Hình ảnh"
+    },
+    {
+      "id": 3,
+      "name": "Nhóm sản phẩm"
+    },
+    {
+      "id": 4,
+      "name": "Tên sản phẩm"
+    },
+    {
+      "id": 5,
+      "name": "Màu sắc"
+    },
+    {
+      "id": 6,
+      "name": "Thương hiệu"
+    },
+    {
+      "id": 7,
+      "name": "Kích thước"
+    },
+    {
+      "id": 8,
+      "name": "Giá nhập vào"
+    },
+    {
+      "id": 9,
+      "name": "Giá bán ra"
+    },
+    {
+      "id": 10,
+      "name": "Tình trạng"
+    },
+    {
+      "id": 11,
+      "name": "Đã bán"
+    }
+  ],
+  "color": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Mã màu"
+    },
+    {
+      "name": ""
+    }
+  ],
+  "brand": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Thương hiệu"
+    },
+    {
+      "name": ""
+    }
+  ],
+  "size": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Kích thước"
+    },
+    {
+      "name": ""
+    }
+  ],
+  "groupProduct": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Tên nhóm sản phẩm"
+    },
+    {
+      "name": ""
+    }
+  ],
+  "lỉneProduct": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Nhóm sản phẩm"
+    },
+    {
+      "id": 2,
+      "name": "Tên sản phẩm"
+    },
+    {
+      "name": ""
+    }
+  ],
+  "bill": []
+}
