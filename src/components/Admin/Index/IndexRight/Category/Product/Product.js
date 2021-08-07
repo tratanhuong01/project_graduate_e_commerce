@@ -6,7 +6,7 @@ import Table from "../../General/Table/Table";
 function Product(props) {
   return (
     <div
-      className="w-full p-5 bg-gray-100 overflow-y-auto wrapper-content-right"
+      className="w-full p-5 bg-gray-100 overflow-y-auto scrollbar-css"
       style={{ height: "685px", maxHeight: "685px" }}
     >
       <div className="w-full flex py-2">

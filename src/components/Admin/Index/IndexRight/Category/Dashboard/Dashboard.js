@@ -5,22 +5,48 @@ import NewUserRegister from "./NewUserRegister/NewUserRegister";
 import NewBill from "./NewBill/NewBill";
 import ReplyCurrent from "./ReplyCurrent/ReplyCurrent";
 function Dashboard(props) {
+  //
+  const categoryDashboard = [
+    {
+      id: 0,
+      icon: "bx bx-user",
+      label: "Lượt đăng kí",
+      bgColor: "bg-yellow-500",
+    },
+    {
+      id: 1,
+      icon: "bx bx-detail",
+      label: "Hóa đơn",
+      bgColor: "bg-green-500",
+    },
+    {
+      id: 2,
+      icon: "bx bx-money",
+      label: "Doanh thu",
+      bgColor: "bg-organce",
+    },
+    {
+      id: 3,
+      icon: "bx bx-reply",
+      label: "Phản hồi",
+      bgColor: "bg-pink-500",
+    },
+  ];
+  //
   return (
     <div
-      className="w-full p-5 bg-gray-100 overflow-y-auto wrapper-content-right"
+      className="w-full p-5 bg-gray-100 overflow-y-auto scrollbar-css"
       style={{ height: "685px", maxHeight: "685px" }}
     >
       <p className="text-2xl font-bold pb-3">Tổng quan trong ngày</p>
-      <ul className="w-full flex">
-        <ItemDashboarEveryDay />
-        <ItemDashboarEveryDay />
-        <ItemDashboarEveryDay />
-        <ItemDashboarEveryDay />
+      <ul className="w-full flex flex-wrap">
+        {categoryDashboard.map((item, index) => {
+          return <ItemDashboarEveryDay item={item} key={index} />;
+        })}
       </ul>
-      <div className="w-full flex my-4">
-        <div className="w-1/2 px-4">
+      <div className="w-full flex my-4 -ml-3 xl:flex-row flex-col">
+        <div className="w-full lg:w-1/2 px-4 my-4 xl:my-0">
           <Bar
-            className="w-1/2"
             data={{
               labels: [
                 "Africa",
@@ -52,7 +78,7 @@ function Dashboard(props) {
             }}
           />
         </div>
-        <div className="w-1/2 px-4">
+        <div className="w-full lg:w-1/2 px-4">
           <Line
             data={{
               labels: [
@@ -104,7 +130,7 @@ function Dashboard(props) {
           />
         </div>
       </div>
-      <div class="w-full flex py-5 pr-5">
+      <div className="w-full flex py-5 flex-wrap md:flex-col xl:flex-row">
         <NewUserRegister />
         <NewBill />
         <ReplyCurrent />

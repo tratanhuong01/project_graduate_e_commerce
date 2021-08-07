@@ -6,7 +6,7 @@ function HeaderTop(props) {
   return (
     <div className="w-full flex">
       <HeaderLeft />
-      <div className="w-2/4"></div>
+      <div className="w-2/4 xl:block hidden"></div>
       <HeaderRight />
     </div>
   );

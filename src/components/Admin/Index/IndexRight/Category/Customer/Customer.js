@@ -6,8 +6,8 @@ import Table from "../../General/Table/Table";
 function Customer(props) {
   return (
     <div
-      className="w-full p-5 bg-gray-100 overflow-y-auto wrapper-content-right"
-      style={{ height: "685px", maxHeight: "685px" }}
+      className="w-full p-5 bg-gray-100 overflow-y-auto h-full scrollbar-css"
+      style={{ height: "calc(100% - 76px)", maxHeight: "calc(100% - 76px)" }}
     >
       <div className="w-full flex py-2">
         <div className="w-1/3 mr-10 flex">

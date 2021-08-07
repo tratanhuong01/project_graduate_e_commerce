@@ -1,13 +1,13 @@
 import React from "react";
-import IndexLeft from "../../containers/Admin/Index/MainIndex/IndexLeft/IndexLeft";
-import IndexRight from "../../containers/Admin/Index/MainIndex/IndexRight/IndexRight";
+import MainIndex from "../../containers/Admin/Index/MainIndex/MainIndex";
+import Modal from "../../containers/Modal";
 
 function AdminIndex(props) {
   return (
-    <div className="w-full flex">
-      <IndexLeft />
-      <IndexRight />
-    </div>
+    <>
+      <MainIndex />
+      <Modal />
+    </>
   );
 }
 

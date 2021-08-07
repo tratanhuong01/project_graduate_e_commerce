@@ -6,22 +6,22 @@ function HeaderRight(props) {
   const [show, setShow] = useState(false);
   //
   return (
-    <div className="w-1/4 relative">
-      <ul className="flex justify-end mr-8 items-center">
-        <li className=" flex items-center relative mx-2">
+    <div className="w-3/4 xl:w-1/3 relative">
+      <ul className="flex justify-end xl:mr-8 mr-3 items-center">
+        <li className=" flex items-center relative mx-3 cursor-pointer">
           <i className="far fa-envelope text-2xl"></i>
           <span
             className="absolute -top-1 -right-2 w-4 h-4 rounded-full bg-red-500 text-white 
-          font-bold flex justify-center text-xs items-center"
+          font-bold flex justify-center text-xs items-center shadow-lg-red"
           >
             9
           </span>
         </li>
-        <li className="flex items-center relative mx-2">
+        <li className="flex items-center relative mx-3 cursor-pointer">
           <i className="far fa-bell text-2xl"></i>
           <span
             className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white 
-          font-bold flex justify-center text-xs items-center"
+          font-bold flex justify-center text-xs items-center shadow-lg-red"
           >
             9
           </span>
@@ -35,7 +35,7 @@ function HeaderRight(props) {
                 alt=""
               />
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center hidden lg:flex">
               <p className="font-bold text-sm">Trà Tấn Hưởng</p>
             </div>
             <i

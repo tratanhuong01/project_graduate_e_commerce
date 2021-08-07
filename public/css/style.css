@@ -26,6 +26,9 @@ button:focus {
 .border-orangce {
   border-color: #f36438;
 }
+.border-organce {
+  border-color: #f36438;
+}
 .text-organce {
   color: #f36438;
 }
@@ -44,9 +47,20 @@ button:focus {
 #main {
   background-image: none;
 }
+@media (min-width: 1280px) {
+  .item__new {
+    width: calc(100% / 3 - 8px) !important;
+  }
+}
 @media (min-width: 1024px) {
   .product__search {
     width: 23% !important;
+  }
+  .index__right {
+    width: calc(100% - 240px);
+  }
+  .item__category__dashboard {
+    width: calc(25% - 28px) !important;
   }
 }
 @media (min-width: 768px) {
@@ -68,6 +82,12 @@ button:focus {
   .product__main {
     width: 30.5% !important;
   }
+  .item__category__dashboard {
+    width: calc(50% - 24px);
+  }
+}
+.index__right {
+  width: calc(100% - 115px);
 }
 .max-h-148 {
   max-height: 600px;
@@ -120,4 +140,10 @@ button:focus {
 .scrollbar-css:hover::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 5px;
+}
+.shadow-lg-red {
+  box-shadow: 0 0 5px 0 red;
+}
+.shadow-xl-organce {
+  box-shadow: 0 0 15px 0 #f36438;
 }

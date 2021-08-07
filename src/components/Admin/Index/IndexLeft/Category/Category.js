@@ -6,49 +6,90 @@ function Category(props) {
     {
       id: 0,
       name: "Tổng quan",
-      icon: "fas fa-home",
+      icon: "bx bx-home-circle",
       child: [],
     },
     {
       id: 2,
       name: "Khách hàng",
-      icon: "fas fa-user",
+      icon: "bx bx-user",
       child: [],
     },
     {
       id: 3,
       name: "Đơn hàng",
       icon: "bx bx-detail",
+      child: [],
     },
     {
       id: 4,
       name: "Sản phẩm",
       icon: "bx bxl-product-hunt",
+      child: [
+        {
+          id: 0,
+          name: "Danh sách sản phẩm",
+        },
+        {
+          id: 1,
+          name: "Chi tiết sản phẩm",
+        },
+        {
+          id: 2,
+          name: "Danh mục sản phẩm",
+        },
+        {
+          id: 3,
+          name: "Nhóm sản phẩm",
+        },
+        {
+          id: 4,
+          name: "Dòng sản phẩm",
+        },
+      ],
     },
     {
       id: 5,
       name: "Khuyến mãi",
       icon: "bx bx-gift",
+      child: [],
     },
     {
       id: 6,
       name: "Thiết lập",
       icon: "fas fa-cog",
+      child: [],
     },
     {
       id: 7,
       name: "Danh mục",
       icon: "bx bxs-category-alt",
+      child: [
+        {
+          id: 0,
+          name: "Màu sắc",
+        },
+        {
+          id: 1,
+          name: "Kích thước",
+        },
+        {
+          id: 2,
+          name: "Thương hiệu",
+        },
+      ],
     },
     {
       id: 8,
       name: "Bài viết",
       icon: "bx bx-pen",
+      child: [],
     },
     {
       id: 9,
       name: "Liên hệ",
       icon: "bx bx-current-location",
+      child: [],
     },
   ];
   const [categoryCurrent, setCategoryCurrent] = useState(0);

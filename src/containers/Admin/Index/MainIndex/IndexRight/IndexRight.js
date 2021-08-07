@@ -1,12 +1,12 @@
 import React from "react";
-import Product from "../../../../../components/Admin/Index/IndexRight/Category/Product/Product";
+import Customer from "../../../../../components/Admin/Index/IndexRight/Category/Customer/Customer";
 import HeaderTop from "../../../../../components/Admin/Index/IndexRight/HeaderTop/HeaderTop";
 
 function IndexRight(props) {
   return (
-    <div className="w-4/5 h-screen" id="rightIndex">
+    <div className="h-screen index__right">
       <HeaderTop />
-      <Product />
+      <Customer />
     </div>
   );
 }

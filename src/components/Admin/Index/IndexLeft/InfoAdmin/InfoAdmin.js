@@ -5,17 +5,19 @@ function InfoAdmin(props) {
   //
   return (
     <div className="w-full p-3">
-      <div className="w-full flex relative p-2 border-solid border-gray-300">
-        <div className="w-1/4 text-right mr-2">
+      <div className="w-full flex justify-center relative p-2 border-solid border-gray-300">
+        <div className="w-full lg:w-auto text-right mr-2 flex justify-center ">
           <img
             src="../../images/avatar.jpg"
-            className="w-12 h-12 rounded-full"
+            className="w-14 h-14 rounded-full border-4 border-solid border-blue-500 xl:border-none"
             alt=""
           />
         </div>
-        <div className="w-3/4">
-          <p className="font-bold">Trà Tấn Hưởng</p>
-          <p>Quản trị viên</p>
+        <div className="hidden xl:flex items-center">
+          <div className="flex w-full flex-wrap items-center">
+            <p className="w-full font-bold">Trà Tấn Hưởng</p>
+            <p className="w-full">Quản trị viên</p>
+          </div>
         </div>
       </div>
     </div>

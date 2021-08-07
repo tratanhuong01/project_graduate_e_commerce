@@ -2,7 +2,7 @@ import React from "react";
 
 function HeaderLeft(props) {
   return (
-    <div className="w-1/4 text-center">
+    <div className="w-full lg:w-1/4 text-center">
       <div className="w-10/12 mx-auto relative">
         <input
           type="text"
