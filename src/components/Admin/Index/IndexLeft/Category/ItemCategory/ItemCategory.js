@@ -25,7 +25,7 @@ function ItemCategory(props) {
             dispatch(
               categoryActions.handleCategory({
                 type: item.type,
-                label: "",
+                label: item.label,
               })
             );
         }}

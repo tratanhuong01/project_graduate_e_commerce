@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ItemCategory from "./ItemCategory/ItemCategory";
-import * as Types from "../../../../../constants/admin/ActionTypes";
+
 function Category(props) {
   const category = [
     {
@@ -34,6 +34,7 @@ function Category(props) {
       name: "Đơn hàng",
       icon: "bx bx-detail",
       type: "bill",
+      label: "Quản lí đơn hàng",
       child: [],
     },
     {
@@ -44,18 +45,26 @@ function Category(props) {
         {
           id: 0,
           name: "Danh sách sản phẩm",
+          label: "Quản lí sản phẩm",
+          type: "product",
         },
         {
           id: 1,
           name: "Danh mục sản phẩm",
+          label: "Quản lí danh mục sản phẩm",
+          type: "categoryProduct",
         },
         {
           id: 2,
           name: "Nhóm sản phẩm",
+          label: "Quản lí nhóm sản phẩm",
+          type: "groupProduct",
         },
         {
           id: 3,
           name: "Dòng sản phẩm",
+          label: "Quản lí dòng sản phẩm",
+          type: "lineProduct",
         },
       ],
     },
@@ -63,8 +72,26 @@ function Category(props) {
       id: 5,
       name: "Khuyến mãi",
       icon: "bx bx-gift",
-      type: "sale",
-      child: [],
+      child: [
+        {
+          id: 0,
+          name: "Mã giảm giá",
+          label: "Quản lí mã giảm giá",
+          type: "codeSale",
+        },
+        {
+          id: 1,
+          name: "Sản phẩm giảm giá",
+          label: "Quản lí sản phẩm giảm giá",
+          type: "productSale",
+        },
+        {
+          id: 3,
+          name: "Chương trình khuyến mãi",
+          label: "Quản lí sản phẩm giảm giá",
+          type: "promotions",
+        },
+      ],
     },
     {
       id: 6,
@@ -81,14 +108,17 @@ function Category(props) {
         {
           id: 0,
           name: "Màu sắc",
+          type: "color",
         },
         {
           id: 1,
           name: "Kích thước",
+          type: "size",
         },
         {
           id: 2,
           name: "Thương hiệu",
+          type: "brand",
         },
       ],
     },

@@ -2,7 +2,7 @@ import React from "react";
 import Control from "../General/Control/Control";
 import Pagination from "../General/Pagination/Pagination";
 import Table from "../General/Table/Table";
-import loading from "../../../../../config/function/loading";
+import loading from "../../../../../config/loading";
 import Date from "../General/Date/Date";
 import ButtonAddCustom from "../General/ButtonAddCustom/ButtonAddCustom";
 import FileDown from "../General/FileDown/FileDown";
@@ -23,16 +23,30 @@ function Category(props) {
         <div className="w-auto flex items-center justify-end">
           {loading[data.type].filterAndSorter && <Date />}
           <FileDown />
-          <ButtonAddCustom />
+          {loading[data.type].modal ? <ButtonAddCustom /> : ""}
         </div>
       </div>
       {loading[data.type].filterAndSorter && (
         <Control type={data.type} data={loading[data.type]} />
       )}
       <div className="w-full  py-3">
-        <Table type={data.type} title={loading[data.type].table} />
+        {loading[data.type].modal ? (
+          <>
+            <Table type={data.type} title={loading[data.type].table} />
+            <Pagination type={data.type} />
+          </>
+        ) : (
+          <>
+            <div className="w-full flex">
+              <div className="w-2/5"></div>
+              <div className="w-3/5">
+                <Table type={data.type} title={loading[data.type].table} />
+                <Pagination type={data.type} />
+              </div>
+            </div>
+          </>
+        )}
       </div>
-      <Pagination type={data.type} />
     </div>
   );
 }
