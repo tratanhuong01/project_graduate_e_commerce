@@ -1,0 +1,9 @@
+export const HANDLE_DASHBOARD = "HANDLE_DASHBOARD";
+//
+export const HANDLE_CUSTOMER = "HANDLE_CUSTOMER";
+//
+export const HANDLE_BILL = "HANDLE_BILL";
+//
+export const HANDLE_PRODUCT = "HANDLE_PRODUCT";
+//
+export const HANDLE_SALE = "HANDLE_SALE";

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import * as categoryActions from "../../../../../../actions/admin/category/index";
 
 function ItemCategory(props) {
   //
@@ -7,6 +9,7 @@ function ItemCategory(props) {
     status: false,
   });
   const { id, item, setCategoryCurrent } = props;
+  const dispatch = useDispatch();
   //
   return (
     <>
@@ -18,9 +21,11 @@ function ItemCategory(props) {
               icon: show.status ? "bx bx-chevron-right" : "bx bx-chevron-down",
               status: !show.status,
             });
+          item.child.length === 0 &&
+            dispatch(categoryActions.handleCategory(item.types));
         }}
         className={`w-full border-solid cursor-pointer flex pl-5 h-12 my-1 items-center 
-        rounded-lg relative font-medium ${
+        rounded-lg relative  font-semibold ${
           item.id === id
             ? "border-l-4 border-gray-200 bg-gray-200 text-gray-800"
             : "border-white text-gray-800 hover:bg-gray-200"
@@ -35,17 +40,20 @@ function ItemCategory(props) {
       {show.status && (
         <div className="w-full hidden lg:block">
           {item.child.length > 0 &&
-            item.child.map((item, index) => {
+            item.child.map((dt, index) => {
               return (
                 <div
-                  onClick={() => ""}
-                  className="w-full text-gray-800 flex my-0.5 h-11 items-center cursor-pointer"
+                  onClick={() =>
+                    dispatch(categoryActions.handleCategory(item.types))
+                  }
+                  className="w-full text-gray-800 flex my-0.5 h-11 items-center cursor-pointer 
+                  font-semibold"
                   key={index}
                 >
                   <span
                     className={`bx bx-radio-circle text-xm flex mx-5`}
                   ></span>
-                  <span className="flex">{item.name}</span>
+                  <span className="flex">{dt.name}</span>
                 </div>
               );
             })}

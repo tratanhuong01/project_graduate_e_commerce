@@ -1,12 +1,21 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Customer from "../../../../../components/Admin/Index/IndexRight/Category/Customer/Customer";
 import HeaderTop from "../../../../../components/Admin/Index/IndexRight/HeaderTop/HeaderTop";
 
 function IndexRight(props) {
+  //
+  const states = useSelector((state) => {
+    return {
+      category: state.category,
+    };
+  });
+  const { category } = states;
+  //
   return (
     <div className="h-screen index__right">
       <HeaderTop />
-      <Customer />
+      {category.data}
     </div>
   );
 }

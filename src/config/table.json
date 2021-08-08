@@ -1,5 +1,5 @@
 {
-  "user": [
+  "customer": [
     {
       "name": ""
     },
@@ -48,6 +48,39 @@
       "name": "Đơn hàng"
     }
   ],
+  "manufacture": [
+    {
+      "name": ""
+    },
+    {
+      "id": 0,
+      "name": "STT"
+    },
+    {
+      "id": 1,
+      "name": "ID"
+    },
+    {
+      "id": 2,
+      "name": "Tên nhà cung cấp"
+    },
+    {
+      "id": 3,
+      "name": "Email"
+    },
+    {
+      "id": 4,
+      "name": "Số điện thoại"
+    },
+    {
+      "id": 5,
+      "name": "Tổng số đơn hàng"
+    },
+    {
+      "id": 6,
+      "name": "Tổng tiền"
+    }
+  ],
   "product": [
     {
       "name": ""
@@ -94,10 +127,15 @@
     },
     {
       "id": 10,
-      "name": "Tình trạng"
+      "name": "Nhà cung cấp"
     },
     {
       "id": 11,
+      "name": "Tình trạng"
+    },
+
+    {
+      "id": 12,
       "name": "Đã bán"
     }
   ],
