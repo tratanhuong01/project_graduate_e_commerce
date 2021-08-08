@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import ButtonAddCustom from "../ButtonAddCustom/ButtonAddCustom";
 
-function DateAndFile(props) {
+function FileDown(props) {
   //
   const [show, setShow] = useState(false);
   //
   return (
-    <div className="w-auto flex items-center justify-end">
-      <span className="mr-2 flex items-center font-bold">Từ</span>
-      <input
-        type="date"
-        className="p-2.5 w-44 flex items-center mx-2 rounded-lg"
-      />
-      <span className="mr-2 flex items-center font-bold">Đến</span>
-      <input
-        type="date"
-        className="p-2.5 w-44 flex items-center mx-2 rounded-lg"
-      />
+    <>
       <div
         onClick={() => setShow(!show)}
         className="w-40 p-3 mr-5 font-semibold flex bg-white cursor-pointer relative"
@@ -37,9 +26,8 @@ function DateAndFile(props) {
       <button className="px-5 py-2 bg-blue-500 text-white font-bold rounded-lg">
         <i className="bx bxs-download mr-3"></i>Tải xuống
       </button>
-      <ButtonAddCustom />
-    </div>
+    </>
   );
 }
 
-export default DateAndFile;
+export default FileDown;

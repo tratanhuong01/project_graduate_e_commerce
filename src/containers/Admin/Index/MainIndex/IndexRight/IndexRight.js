@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Customer from "../../../../../components/Admin/Index/IndexRight/Category/Customer/Customer";
 import HeaderTop from "../../../../../components/Admin/Index/IndexRight/HeaderTop/HeaderTop";
 
 function IndexRight(props) {

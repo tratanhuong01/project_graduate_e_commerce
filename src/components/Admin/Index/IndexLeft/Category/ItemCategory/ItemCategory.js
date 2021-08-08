@@ -22,7 +22,12 @@ function ItemCategory(props) {
               status: !show.status,
             });
           item.child.length === 0 &&
-            dispatch(categoryActions.handleCategory(item.types));
+            dispatch(
+              categoryActions.handleCategory({
+                type: item.type,
+                label: "",
+              })
+            );
         }}
         className={`w-full border-solid cursor-pointer flex pl-5 h-12 my-1 items-center 
         rounded-lg relative  font-semibold ${
@@ -44,7 +49,12 @@ function ItemCategory(props) {
               return (
                 <div
                   onClick={() =>
-                    dispatch(categoryActions.handleCategory(item.types))
+                    dispatch(
+                      categoryActions.handleCategory({
+                        type: dt.type,
+                        label: dt.label,
+                      })
+                    )
                   }
                   className="w-full text-gray-800 flex my-0.5 h-11 items-center cursor-pointer 
                   font-semibold"

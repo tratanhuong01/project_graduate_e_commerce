@@ -7,22 +7,25 @@ function Category(props) {
       id: 0,
       name: "Tổng quan",
       icon: "bx bx-home-circle",
-      types: Types.HANDLE_DASHBOARD,
+      type: "dashboard",
       child: [],
     },
     {
       id: 2,
       name: "Khách hàng",
       icon: "bx bx-user",
-      types: Types.HANDLE_CUSTOMER,
       child: [
         {
           id: 0,
-          name: "Danh sách khách hàng",
+          name: "Khách hàng",
+          type: "customer",
+          label: "Quản lí khách hàng",
         },
         {
           id: 1,
           name: "Nhà cung cấp",
+          type: "manufacture",
+          label: "Quản lí nhà cung cấp",
         },
       ],
     },
@@ -30,14 +33,13 @@ function Category(props) {
       id: 3,
       name: "Đơn hàng",
       icon: "bx bx-detail",
-      types: Types.HANDLE_BILL,
+      type: "bill",
       child: [],
     },
     {
       id: 4,
       name: "Sản phẩm",
       icon: "bx bxl-product-hunt",
-      types: Types.HANDLE_PRODUCT,
       child: [
         {
           id: 0,
@@ -45,18 +47,14 @@ function Category(props) {
         },
         {
           id: 1,
-          name: "Chi tiết sản phẩm",
-        },
-        {
-          id: 2,
           name: "Danh mục sản phẩm",
         },
         {
-          id: 3,
+          id: 2,
           name: "Nhóm sản phẩm",
         },
         {
-          id: 4,
+          id: 3,
           name: "Dòng sản phẩm",
         },
       ],
@@ -65,21 +63,20 @@ function Category(props) {
       id: 5,
       name: "Khuyến mãi",
       icon: "bx bx-gift",
-      types: Types.HANDLE_SALE,
+      type: "sale",
       child: [],
     },
     {
       id: 6,
       name: "Thiết lập",
       icon: "fas fa-cog",
-      types: Types.HANDLE_DASHBOARD,
+      type: "config",
       child: [],
     },
     {
       id: 7,
       name: "Danh mục",
       icon: "bx bxs-category-alt",
-      types: Types.HANDLE_DASHBOARD,
       child: [
         {
           id: 0,
@@ -99,14 +96,14 @@ function Category(props) {
       id: 8,
       name: "Bài viết",
       icon: "bx bx-pen",
-      types: Types.HANDLE_DASHBOARD,
+      type: "news",
       child: [],
     },
     {
       id: 9,
       name: "Liên hệ",
       icon: "bx bx-current-location",
-      types: Types.HANDLE_DASHBOARD,
+      type: "contact",
       child: [],
     },
   ];
