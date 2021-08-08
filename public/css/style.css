@@ -68,7 +68,7 @@ button:focus {
     width: 31%;
   }
   #main {
-    background-image: url(".././images/banner_1.jpg");
+    background-image: url(".././images/baner_empty.jpg");
     height: 90vh;
     background-size: cover;
     background-position: center;

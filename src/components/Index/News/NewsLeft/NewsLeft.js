@@ -27,7 +27,7 @@ function NewsLeft(props) {
       left-1/2 transform -translate-y-1/2 -translate-x-1/2 news_bntPlay"
       ></i>
       <img
-        src="./images/thumnail.jpg"
+        src="https://learningelite.clomedia.com/wp-content/uploads/sites/2/2020/06/AdobeStock_290012040_cropped-scaled.jpg"
         className="w-full max-h-148 h-full object-cover"
         alt=""
       />

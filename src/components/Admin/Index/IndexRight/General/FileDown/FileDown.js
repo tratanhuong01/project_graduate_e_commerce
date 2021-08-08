@@ -15,7 +15,7 @@ function FileDown(props) {
         {show && (
           <div
             className="w-40 bg-white border-2 border-solid border-gray-200 p-1 
-          font-semibold absolute top-full left-0 shadow-lg"
+          font-semibold absolute top-full left-0 shadow-lg z-50"
           >
             <div className="w-full p-2">Exel</div>
             <div className="w-full p-2">Word</div>

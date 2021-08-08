@@ -13,6 +13,7 @@ import * as Config from "./constants/Config";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminIndex from "./pages/Admin/AdminIndex";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
+import AddData from "./AddData";
 // import { Route } from "react-router";
 const routes = [
   {
@@ -74,6 +75,11 @@ const routes = [
     path: `${Config.PAGE_ADMIN}/:slugCategory`,
     exact: true,
     main: () => <AdminIndex />,
+  },
+  {
+    path: "/Form",
+    exact: true,
+    main: () => <AddData />,
   },
   {
     path: "",

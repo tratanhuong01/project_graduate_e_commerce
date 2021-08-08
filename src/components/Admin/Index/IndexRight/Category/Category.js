@@ -6,6 +6,7 @@ import loading from "../../../../../config/loading";
 import Date from "../General/Date/Date";
 import ButtonAddCustom from "../General/ButtonAddCustom/ButtonAddCustom";
 import FileDown from "../General/FileDown/FileDown";
+import FormNotModal from "../General/FormNotModal/FormNotModal";
 
 function Category(props) {
   //
@@ -38,8 +39,30 @@ function Category(props) {
         ) : (
           <>
             <div className="w-full flex">
-              <div className="w-2/5"></div>
+              <div className="w-2/5">
+                <FormNotModal />
+              </div>
               <div className="w-3/5">
+                <div className="w-full flex justify-end">
+                  <button
+                    className="px-7 py-2.5 font-semibold text-white bg-organce mx-2 
+                  rounded-full"
+                  >
+                    Thêm
+                  </button>
+                  <button
+                    className="px-7 py-2.5 font-semibold text-white bg-organce mx-2 
+                  rounded-full"
+                  >
+                    Sửa
+                  </button>
+                  <button
+                    className="px-7 py-2.5 font-semibold text-white bg-organce mx-2 
+                  rounded-full"
+                  >
+                    Xóa
+                  </button>
+                </div>
                 <Table type={data.type} title={loading[data.type].table} />
                 <Pagination type={data.type} />
               </div>
