@@ -2,7 +2,7 @@ import React from "react";
 
 function ItemNews(props) {
   return (
-    <div className="w-full mt-8 mb-10 flex">
+    <div className="w-11/12 mx-auto mt-8 mb-10 flex">
       <div className="w-1/4 news__left relative cursor-pointer">
         <div
           className="w-full absolute top-0 left-0 bg-black

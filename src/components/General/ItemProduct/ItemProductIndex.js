@@ -2,11 +2,7 @@ import React from "react";
 import Sale from "./Sale/Sale";
 import ImageMain from "./Image/ImageMain/ImageMain";
 import OptionAndView from "./OptionAndView/OptionAndView";
-import ArrowUp from "./TypeProduct/ArrowDown/ArrowDown";
-import ArrowDown from "./TypeProduct/ArrowDown/ArrowDown";
-import ItemTypeProduct from "./TypeProduct/ItemTypeProduct/ItemTypeProduct";
-import * as Config from "../../../constants/Config";
-import { Link } from "react-router-dom";
+import CostAndLink from "./TypeProduct/CostAndLink/CostAndLink";
 
 function ItemProductIndex(props) {
   //
@@ -18,34 +14,18 @@ function ItemProductIndex(props) {
         <div className="w-full relative h-64 mx-auto product ">
           <ImageMain />
           <OptionAndView />
-        </div>
-        <div className="w-full mx-auto p-1 flex">
-          <ArrowUp />
-          <ul className="w-11/12 flex justify-center">
-            <ItemTypeProduct />
-          </ul>
-          <ArrowDown />
-        </div>
-        <p
-          className="p-2 hover:text-organce text-center cursor-pointer 
-                    text-xm h-16 flex justify-center"
-        >
-          <span className="flex items-center font-semibold">
-            <Link to={`${Config.PAGE_DETAIL_PRODUCT}/`}>
-              {"product.NameProduct"}
-            </Link>
+          <span
+            class="bx bxs-gift text-4xl text-organce cursor-pointer 
+          absolute z-50 bottom-1 right-0"
+          ></span>
+          <span
+            className="px-2 py-1.5 rounded-full text-xs bg-organce text-white 
+          font-semibold absolute bottom-1 left-2 cursor-pointer"
+          >
+            <i class="fas fa-fire text-yellow-300 mr-2"></i>Giảm 6.500.000đ
           </span>
-        </p>
-        <p
-          className="p-2 pt-0 text-organce text-center cursor-pointer 
-                    text-xm"
-        >
-          {new Intl.NumberFormat().format(1234567)}
-          <u>đ</u>&nbsp;
-          <strike className="ml-3 text-gray-500">
-            {new Intl.NumberFormat().format(12345678)} <u>đ</u>
-          </strike>
-        </p>
+        </div>
+        <CostAndLink />
       </div>
     </>
   );

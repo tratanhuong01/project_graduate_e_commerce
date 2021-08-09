@@ -10,6 +10,11 @@ function ListProduct(props) {
       <div className="w-full flex flex-wrap my-4 z-10">
         <ItemProduct />
         <ItemProduct />
+        <ItemProduct />
+        <ItemProduct />
+        <ItemProduct />
+        <ItemProduct />
+        <ItemProduct />
       </div>
     </div>
   );

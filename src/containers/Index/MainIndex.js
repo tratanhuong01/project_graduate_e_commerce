@@ -8,6 +8,7 @@ import BannerAds from "../../components/Banner/BannerIndex/BannerAds/BannerAds";
 import News from "./News";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
+import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 
 function MainIndex(props) {
   //
@@ -23,6 +24,9 @@ function MainIndex(props) {
         <Rule />
         <SmartWatch />
         <BannerAds />
+        <CategoryProduct />
+        <CategoryProduct />
+        <CategoryProduct />
         <News />
         <ReciviceInfo />
         <EndFooter />

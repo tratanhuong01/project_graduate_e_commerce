@@ -11,6 +11,9 @@ function ImageChildTopSell(props) {
       </div>
       <ul className="flex justify-center">
         <ItemImageChildTopSell />
+        <ItemImageChildTopSell />
+        <ItemImageChildTopSell />
+        <ItemImageChildTopSell />
       </ul>
       <div className="flex justify-center">
         <span className="flex items-center cursor-pointer">

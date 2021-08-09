@@ -68,7 +68,7 @@ button:focus {
     width: 31%;
   }
   #main {
-    background-image: url(".././images/baner_empty.jpg");
+    background-image: url(".././images/banner_1.jpg");
     height: 90vh;
     background-size: cover;
     background-position: center;
@@ -138,7 +138,7 @@ button:focus {
   border-radius: 5px;
 }
 .scrollbar-css:hover::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: #f36438;
   border-radius: 5px;
 }
 .shadow-lg-red {

@@ -23,11 +23,11 @@ function MainNews(props) {
           <InfoNews />
         </div>
         <News />
-        <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto px-4">
+        <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto px-4 justify-center">
           <ItemChildNews />
           <ItemChildNews />
         </div>
-        <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto px-4">
+        <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto px-4 justify-center">
           <ItemChildNews />
           <ItemChildNews />
         </div>

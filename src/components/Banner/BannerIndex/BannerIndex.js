@@ -4,7 +4,7 @@ function BannerIndex(props) {
   //
   //
   return (
-    <div className="w-full h-80 md:hidden">
+    <div className="w-full h-80 md:hidden relative">
       <img
         src="./images/baner_empty.jpg"
         className="w-full h-68 object-cover"

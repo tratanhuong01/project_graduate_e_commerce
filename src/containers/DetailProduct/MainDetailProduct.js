@@ -7,6 +7,7 @@ import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import ProductView from "./ProductView";
 import OtherProduct from "../../components/DetailProduct/OtherProduct/OtherProduct";
 import DescribeProduct from "../../components/DetailProduct/ProductView/DescribeProduct/DescribeProduct";
+import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 
 function MainDetailProduct(props) {
   return (
@@ -20,8 +21,8 @@ function MainDetailProduct(props) {
         <div className="w-full xl:w-4/5 mx-auto p-4">
           <ProductView />
           <DescribeProduct />
-          <OtherProduct />
         </div>
+        <CategoryProduct />
         <Rule />
         <ReciviceInfo />
         <EndFooter />

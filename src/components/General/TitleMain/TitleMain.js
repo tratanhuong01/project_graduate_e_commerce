@@ -6,7 +6,7 @@ function TitleMain(props) {
   //
   return (
     <p
-      className="p-8 font-bold text-5xl text-center 
+      className="p-8 font-bold text-4xl text-center 
         hover:text-organce cursor-pointer"
     >
       {Content}

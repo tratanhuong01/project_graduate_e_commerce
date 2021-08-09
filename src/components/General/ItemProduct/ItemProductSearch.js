@@ -7,6 +7,7 @@ import ArrowUp from "./TypeProduct/ArrowDown/ArrowDown";
 import ArrowDown from "./TypeProduct/ArrowDown/ArrowDown";
 import ItemTypeProduct from "./TypeProduct/ItemTypeProduct/ItemTypeProduct";
 import * as Config from "../../../constants/Config";
+import CostAndLink from "./TypeProduct/CostAndLink/CostAndLink";
 
 function ItemProductSearch(props) {
   //
@@ -27,26 +28,7 @@ function ItemProductSearch(props) {
           </ul>
           <ArrowDown />
         </div>
-        <p
-          className="p-2 hover:text-organce text-center cursor-pointer 
-          text-xm h-16 flex justify-center"
-        >
-          <span className="flex items-center font-semibold">
-            <Link to={`${Config.PAGE_DETAIL_PRODUCT}/`}>
-              {"product.NameProduct"}
-            </Link>
-          </span>
-        </p>
-        <p
-          className="p-2 pt-0 text-organce text-center cursor-pointer 
-                  text-xm"
-        >
-          {new Intl.NumberFormat().format(123456789)}
-          <u>đ</u>&nbsp;
-          <strike className="ml-3 text-gray-500">
-            {new Intl.NumberFormat().format(12345678)} <u>đ</u>
-          </strike>
-        </p>
+        <CostAndLink />
       </div>
     </>
   );
