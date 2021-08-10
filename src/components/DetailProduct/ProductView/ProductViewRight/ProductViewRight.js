@@ -25,7 +25,9 @@ function ProductViewRight(props) {
               <input
                 type="text"
                 name="number"
+                value="1"
                 className="w-1/2 py-3.5 text-center font-semibold"
+                onChange={() => ""}
               />
               <span className="w-1/4 text-center py-3.5 cursor-pointer">
                 <i className="bx bx-plus"></i>

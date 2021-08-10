@@ -4,7 +4,9 @@ import ModalLogin from "../components/Modals/General/ModalLogin/ModalLogin";
 import ModalRegister from "../components/Modals/General/ModalRegister/ModalRegister";
 import ModalSearchGetAccount from "../components/Modals/General/ModalSearchGetAccount/ModalSearchGetAccount";
 import ModalTypeCode from "../components/Modals/General/ModalTypeCode/ModalTypeCode";
+import ModalSendRate from "../components/Modals/ModalSendRate/ModalSendRate";
 import * as Types from "../constants/ActionTypes";
+import ModalViewFastProduct from "../containers/General/ModalViewFastProduct/ModalViewFastProduct";
 
 const initialState = {
   status: false,
@@ -42,6 +44,11 @@ const myReducer = (state = initialState, action) => {
       state.status = true;
       state.data = <ModalSearchGetAccount />;
       return { ...state };
+    case Types.OPEN_MODAL_SEND_RATE:
+      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+      state.status = true;
+      state.data = <ModalSendRate />;
+      return { ...state };
     case Types.OPEN_MODAL_TYPE_CODE:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
       state.status = true;
@@ -52,6 +59,11 @@ const myReducer = (state = initialState, action) => {
           code={action.code}
         />
       );
+      return { ...state };
+    case Types.OPEN_MODAL_VIEW_FAST_PRODUCT:
+      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+      state.status = true;
+      state.data = <ModalViewFastProduct />;
       return { ...state };
     case Types.ON_LOADING_MODAL:
       state.loading = true;

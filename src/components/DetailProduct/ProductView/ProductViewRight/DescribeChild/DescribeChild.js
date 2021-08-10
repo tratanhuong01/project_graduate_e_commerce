@@ -42,7 +42,6 @@ function DescribeChild(props) {
             Xem chi tiết
           </Link>
         </li>
-        )
       </ul>
     </>
   );

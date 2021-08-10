@@ -5,9 +5,10 @@ import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import ProductView from "./ProductView";
-import OtherProduct from "../../components/DetailProduct/OtherProduct/OtherProduct";
 import DescribeProduct from "../../components/DetailProduct/ProductView/DescribeProduct/DescribeProduct";
 import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
+import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
+import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
 
 function MainDetailProduct(props) {
   return (
@@ -17,10 +18,17 @@ function MainDetailProduct(props) {
       </div>
       <div className="w-full bg-gray-100">
         <LevelUrl />
-        <hr className="my-2"></hr>
-        <div className="w-full xl:w-4/5 mx-auto p-4">
+        <div className="w-full xl:w-4/5 mx-auto p-4 bg-white">
           <ProductView />
-          <DescribeProduct />
+          <div className="w-full flex my-5 lg:flex-row flex-col">
+            <div className="w-full lg:w-7/12">
+              <DescribeProduct />
+              <RateComment />
+            </div>
+            <div className="w-full lg:w-5/12">
+              <NewsDetailProduct />
+            </div>
+          </div>
         </div>
         <CategoryProduct />
         <Rule />

@@ -4,7 +4,7 @@ function BannerSmartWatch(props) {
   //
   //
   return (
-    <div className="w-1/2 xl:block hidden px-2">
+    <div className="w-1/2 md:block hidden px-2">
       <img
         src="https://choicefullonlinestore.com/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-25-at-3.21.48-PM.jpeg"
         className="w-full p-2 object-cover"

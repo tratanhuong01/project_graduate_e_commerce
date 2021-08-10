@@ -11,6 +11,12 @@ button:focus {
     font-size: 16px;
   }
 }
+.detail__product__left {
+  max-height: 300px;
+}
+.detail__product__left__image {
+  height: 300px;
+}
 #second {
   transition: all 2s ease-in-out;
 }
@@ -47,14 +53,34 @@ button:focus {
 #main {
   background-image: none;
 }
+.item__news__detail {
+  width: 100%;
+}
 @media (min-width: 1280px) {
   .item__new {
     width: calc(100% / 3 - 8px) !important;
+  }
+  .item__news__detail {
+    width: 100%;
+  }
+}
+@media (min-width: 700px) {
+  .item__news__detail {
+    width: 46% !important;
   }
 }
 @media (min-width: 1024px) {
   .product__search {
     width: 23% !important;
+  }
+  .detail__product__left {
+    max-height: 580px !important;
+  }
+  .detail__product__left__image {
+    height: 580px !important;
+  }
+  .item__news__detail {
+    width: 100% !important;
   }
   .index__right {
     width: calc(100% - 240px);

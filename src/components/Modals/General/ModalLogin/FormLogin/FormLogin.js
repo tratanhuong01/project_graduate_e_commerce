@@ -30,9 +30,9 @@ class FormLogin extends Component {
   };
   render() {
     const validationSchema = Yup.object().shape({
-      emailOrPhone: Yup.string()
-        .required("Email hoặc số điện thoại không được để trống!!")
-        .email(),
+      emailOrPhone: Yup.string().required(
+        "Email hoặc số điện thoại không được để trống!!"
+      ),
       password: Yup.string().required("Mật khẩu không được để trống!!"),
     });
     const { message } = this.state;

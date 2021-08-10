@@ -5,6 +5,10 @@ export const OFF_LOADING_MODAL = "OFF_LOADING_MODAL";
 //
 export const LOGIN_USER = "LOGIN_USER";
 //
+export const OPEN_MODAL_SEND_RATE = "OPEN_MODAL_SEND_RATE";
+//
+export const OPEN_MODAL_VIEW_FAST_PRODUCT = "OPEN_MODAL_VIEW_FAST_PRODUCT";
+//
 
 export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
 //

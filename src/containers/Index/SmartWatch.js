@@ -12,19 +12,19 @@ function SmartWatch(props) {
         text-organce cursor-pointer"
       >
         Giá sốc{" "}
-        <i class="fas fa-bolt bg-transparent mx-2 text-5xl transform"></i> hôm
-        nay
+        <i className="fas fa-bolt bg-transparent mx-2 text-5xl transform"></i>{" "}
+        hôm nay
       </p>
       <div className="w-full">
         <div className="w-full flex p-2">
           <BannerSmartWatch />
-          <div className="w-full xl:w-1/2 flex p-2 pt-0 items-center">
+          <div className="w-full md:w-1/2 flex p-2 pt-0 items-center">
             <ItemProductIndex />
             <ItemProductIndex />
           </div>
         </div>
         <div className="w-full flex p-2">
-          <div className="w-full xl:w-1/2 flex p-2 pt-0 items-center">
+          <div className="w-full md:w-1/2 flex p-2 pt-0 items-center">
             <ItemProductIndex />
             <ItemProductIndex />
           </div>

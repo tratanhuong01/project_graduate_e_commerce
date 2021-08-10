@@ -22,7 +22,7 @@ function ReciviceInfo(props) {
             className="w-1/5 border-2 border-solid border-gray-200 
               p-3 font-semibold"
           >
-            Đăng kí
+            Gửi
           </button>
         </div>
       </div>

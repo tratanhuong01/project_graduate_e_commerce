@@ -7,6 +7,9 @@ function SizeProduct(props) {
       <p className="font-bold text-xl font-semibold">KÍCH THƯỚC :</p>
       <div className="w-full flex">
         <ItemSizeProduct />
+        <ItemSizeProduct />
+        <ItemSizeProduct />
+        <ItemSizeProduct />
       </div>
     </div>
   );

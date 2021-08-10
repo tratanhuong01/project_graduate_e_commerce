@@ -2,7 +2,7 @@ import React from "react";
 
 function ItemColorProduct(props) {
   return (
-    <div className="w-20 h-20 p-1 m-1 relative image-color">
+    <div className="w-20 h-20 p-1 m-1 relative image-color flex-shrink-0">
       <div
         className="px-4 py-2 bg-organce font-semibold absolute -top-12 
         left-0 text-white text-xm color"

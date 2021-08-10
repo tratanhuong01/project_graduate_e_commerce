@@ -2,7 +2,7 @@ import React from "react";
 
 function FormContact(props) {
   return (
-    <div className="w-2/3 xl:pr-6">
+    <div className="w-full xl:w-2/3 xl:pr-6">
       <p className="font-semibold text-3xl mb-2">Liên hệ với chúng tôi</p>
       <p className="text-xm text-gray-700">
         Để liên hệ và nhận các thông in khuyến mại sớm nhất, xin vui lòng điền

@@ -6,7 +6,7 @@ function ProductView(props) {
   //
   //
   return (
-    <div className="w-full flex flex-col xl:flex-row">
+    <div className="w-full flex flex-col xl:flex-row border-b-2 border-solid border-gray-200">
       <ProductViewLeft />
       <ProductViewRight />
     </div>

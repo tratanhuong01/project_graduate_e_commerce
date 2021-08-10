@@ -50,3 +50,15 @@ export const offLoadingModal = () => {
     type: Types.OFF_LOADING_MODAL,
   };
 };
+
+export const openModalSendRate = () => {
+  return {
+    type: Types.OPEN_MODAL_SEND_RATE,
+  };
+};
+
+export const openViewFastProduct = () => {
+  return {
+    type: Types.OPEN_MODAL_VIEW_FAST_PRODUCT,
+  };
+};
