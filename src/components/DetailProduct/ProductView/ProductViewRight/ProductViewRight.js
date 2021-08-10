@@ -1,19 +1,34 @@
 import React from "react";
 import ColorProduct from "./ColorProduct/ColorProduct";
 import DescribeChild from "./DescribeChild/DescribeChild";
-import SizeProduct from "./SizeProduct/SizeProduct";
+import MemoryProduct from "./MemoryProduct/MemoryProduct";
 
 function ProductViewRight(props) {
+  //
+  const { products } = props;
+  //
   return (
     <div className="w-full xl:w-5/12">
       <div className="w-full flex mb-2">
         <div className="w-full pl-4 pt-1">
           <p className="text-2xl font-semibold cursor-pointer hover:text-organce mb-3">
-            {"product.NameProduct"}
+            {`${products.nameLineProduct}`}
           </p>
-          <DescribeChild />
-          <ColorProduct />
-          <SizeProduct />
+          <DescribeChild products={products} />
+          {products.colorList.length > 0 && (
+            <ColorProduct
+              colors={products.colorList}
+              color={products.color}
+              images={products.imageList}
+            />
+          )}
+          {products.memoryList.length > 0 && (
+            <MemoryProduct
+              memories={products.memoryList}
+              memory={products.memory}
+            />
+          )}
+
           <div className="w-full my-3 flex ">
             <div
               className="flex w-32 rounded-full border-2 border-solid 

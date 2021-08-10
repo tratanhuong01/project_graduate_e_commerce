@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import * as Config from "../../../../../constants/Config";
 
 function CostAndLink(props) {
+  //
+  const { product } = props;
+  //
   return (
     <>
       <p
@@ -10,20 +13,28 @@ function CostAndLink(props) {
                 text-xm h-12 flex justify-center"
       >
         <span className="flex items-center font-semibold">
-          <Link to={`${Config.PAGE_DETAIL_PRODUCT}/`}>
-            {"product.NameProduct"}
-          </Link>
+          {typeof product !== "undefined" && (
+            <Link to={`${Config.PAGE_DETAIL_PRODUCT}${product.slug}`}>
+              {" "}
+              {product.nameLineProduct}
+            </Link>
+          )}
         </span>
       </p>
       <p
         className="p-2 pt-0 text-organce text-center cursor-pointer 
                 text-xm"
       >
-        {new Intl.NumberFormat().format(12345678)}
+        {new Intl.NumberFormat().format(
+          typeof product !== "undefined" &&
+            product.priceOutput * ((100 - product.sale) / 100)
+        )}
         <u>đ</u>&nbsp;
-        <strike className="ml-3 text-gray-500">
-          {new Intl.NumberFormat().format(12345678)} <u>đ</u>
-        </strike>
+        {typeof product !== "undefined" && (
+          <strike className="ml-3 text-gray-500">
+            {new Intl.NumberFormat().format(product.priceOutput)} <u>đ</u>
+          </strike>
+        )}
       </p>
     </>
   );

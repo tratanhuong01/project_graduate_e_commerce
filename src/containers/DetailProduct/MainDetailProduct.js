@@ -11,6 +11,9 @@ import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDe
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
 
 function MainDetailProduct(props) {
+  //
+  const { products } = props;
+  //
   return (
     <div className="w-full">
       <div className="w-full relative text-white md:text-black z-30">
@@ -19,7 +22,7 @@ function MainDetailProduct(props) {
       <div className="w-full bg-gray-100">
         <LevelUrl />
         <div className="w-full xl:w-4/5 mx-auto p-4 bg-white">
-          <ProductView />
+          <ProductView products={products} />
           <div className="w-full flex my-5 lg:flex-row flex-col">
             <div className="w-full lg:w-7/12">
               <DescribeProduct />
@@ -30,7 +33,7 @@ function MainDetailProduct(props) {
             </div>
           </div>
         </div>
-        <CategoryProduct />
+        {/* <CategoryProduct /> */}
         <Rule />
         <ReciviceInfo />
         <EndFooter />

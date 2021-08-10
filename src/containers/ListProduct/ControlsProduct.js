@@ -1,8 +1,4 @@
 import React from "react";
-import Brand from "../../components/ListProduct/ControlsProduct/Brand/Brand";
-import Price from "../../components/ListProduct/ControlsProduct/Price/Price";
-import Size from "../../components/ListProduct/ControlsProduct/Size/Size";
-import Color from "../../components/ListProduct/ControlsProduct/Color/Color";
 
 function ControlsProduct(props) {
   //
@@ -18,10 +14,6 @@ function ControlsProduct(props) {
             lg:p-0"
       >
         <p className="mb-6 text-2xl font-semibold">Bộ lọc</p>
-        <Brand />
-        <Price />
-        <Color />
-        <Size />
       </div>
     </div>
   );

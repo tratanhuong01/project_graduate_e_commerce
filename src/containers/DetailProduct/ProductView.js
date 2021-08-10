@@ -4,11 +4,12 @@ import ProductViewRight from "../../components/DetailProduct/ProductView/Product
 
 function ProductView(props) {
   //
+  const { products } = props;
   //
   return (
     <div className="w-full flex flex-col xl:flex-row border-b-2 border-solid border-gray-200">
-      <ProductViewLeft />
-      <ProductViewRight />
+      <ProductViewLeft products={products} />
+      <ProductViewRight products={products} />
     </div>
   );
 }

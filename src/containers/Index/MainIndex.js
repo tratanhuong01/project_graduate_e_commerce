@@ -12,6 +12,7 @@ import CategoryProduct from "../../components/General/CategoryProduct/CategoryPr
 
 function MainIndex(props) {
   //
+  const { products } = props;
   //
   return (
     <div className="w-full">
@@ -24,9 +25,9 @@ function MainIndex(props) {
         <Rule />
         <SmartWatch />
         <BannerAds />
-        <CategoryProduct />
-        <CategoryProduct />
-        <CategoryProduct />
+        {products.listProductByCategory.map((listProduct, index) => {
+          return <CategoryProduct products={listProduct} key={index} />;
+        })}
         <News />
         <ReciviceInfo />
         <EndFooter />

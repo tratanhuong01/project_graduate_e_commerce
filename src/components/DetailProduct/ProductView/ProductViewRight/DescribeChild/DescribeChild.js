@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import * as Config from "../../../../../constants/Config";
 
 function DescribeChild(props) {
+  //
+  const { products } = props;
+  //
   return (
     <>
       <div className="mb-3 flex">
@@ -13,7 +16,7 @@ function DescribeChild(props) {
           >
             Thương hiệu :
           </span>
-          {"product.BrandProduct"}
+          {products.brand}
         </p>
         <p>
           <span
@@ -26,7 +29,9 @@ function DescribeChild(props) {
         </p>
       </div>
       <p className="my-3 text-organce text-4xl font-semibold">
-        {new Intl.NumberFormat(["ban", "id"]).format(123456789)}
+        {new Intl.NumberFormat(["ban", "id"]).format(
+          products.priceOutput * ((100 - products.sale) / 100)
+        )}
         <u className="text-xl pl-2">đ</u>
       </p>
       <ul className="text-gray-700 my-2 text-sm">

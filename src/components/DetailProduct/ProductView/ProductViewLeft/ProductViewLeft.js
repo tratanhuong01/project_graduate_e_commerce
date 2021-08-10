@@ -5,6 +5,9 @@ import "react-medium-image-zoom/dist/styles.css";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 function ProductViewLeft(props) {
+  //
+  const { products } = props;
+  //
   return (
     <div className="w-full xl:w-7/12 flex" style={{ maxHeight: 580 }}>
       <ul className="w-2/12">
@@ -15,10 +18,15 @@ function ProductViewLeft(props) {
           className="w-full scrollbar-css"
           style={{ maxHeight: "calc(100% - 50px)" }}
         >
-          <ItemProductViewLeft />
-          <ItemProductViewLeft />
-          <ItemProductViewLeft />
-          <ItemProductViewLeft />
+          {products.imageList.map((image, index) => {
+            return (
+              <ItemProductViewLeft
+                image={image}
+                key={index}
+                imageCurrent={products.image}
+              />
+            );
+          })}
         </ScrollContainer>
         <li className="text-center cursor-pointer">
           <i className="bx bx-caret-down text-2xl text-gray-700"></i>
@@ -28,9 +36,7 @@ function ProductViewLeft(props) {
         <div className="w-full border-2 border-gray-200 border-solid">
           <Zoom>
             <img
-              src={
-                "https://didongviet.vn/pub/media/catalog/product//g/a/galaxy-fold3-didongviet.jpg"
-              }
+              src={products.image}
               alt=""
               className="w-full cursor-pointer"
               style={{ maxHeight: 560 }}
