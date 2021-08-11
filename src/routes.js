@@ -77,7 +77,7 @@ const routes = [
     main: () => <AdminIndex />,
   },
   {
-    path: "/Form",
+    path: "/Form/Add",
     exact: true,
     main: () => <AddData />,
   },

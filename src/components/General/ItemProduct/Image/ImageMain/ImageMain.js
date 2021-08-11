@@ -2,11 +2,11 @@ import React from "react";
 
 function ImageMain(props) {
   //
-  const { images } = props;
+  const { image } = props;
   //
   return (
     <img
-      src={typeof images !== "undefined" && images[0].src}
+      src={typeof image !== "undefined" ? image.src : ""}
       className="w-full h-64 object-cover"
       alt=""
     />

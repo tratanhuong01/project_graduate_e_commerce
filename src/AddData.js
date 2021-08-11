@@ -1,43 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import api from "./Utils/api";
-
-function removeVietnameseTones(str) {
-  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-  str = str.replace(/đ/g, "d");
-  str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
-  str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
-  str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
-  str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
-  str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
-  str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
-  str = str.replace(/Đ/g, "D");
-  // Some system encode vietnamese combining accent as individual utf-8 characters
-  // Một vài bộ encode coi các dấu mũ, dấu chữ như một kí tự riêng biệt nên thêm hai dòng này
-  str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // ̀ ́ ̃ ̉ ̣  huyền, sắc, ngã, hỏi, nặng
-  str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
-  // Remove extra spaces
-  // Bỏ các khoảng trắng liền nhau
-  str = str.replace(/ + /g, " ");
-  str = str.trim();
-  // Remove punctuations
-  // Bỏ dấu câu, kí tự đặc biệt
-  str = str.replace(
-    /!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g,
-    " "
-  );
-  return str;
-}
-
+import * as StringUtils from "./Utils/StringUtils";
 function AddData(props) {
   //
   const [listColor, setListColor] = useState([]);
-  const [listCategoryProduct, setListCategoryProduct] = useState([]);
   const [listGroupProduct, setListGroupProduct] = useState([]);
   const [listBrand, setListBrand] = useState([]);
   const [groupProduct, setGroupProduct] = useState("");
@@ -49,7 +16,6 @@ function AddData(props) {
   const [sale, setSale] = useState(0);
   const [listMemory, setListMemory] = useState([]);
   const [listMemoryChoose, setListMemoryChoose] = useState([]);
-  const [listSlug, setListSlug] = useState([]);
   const [listImage, setListImage] = useState([]);
   const [url, setUrl] = useState("");
   const convertStringToSlug = (string) => {
@@ -71,6 +37,8 @@ function AddData(props) {
       id = Number(getId.data.id.replace("SP", ""));
     }
     let listPromise = [];
+    let listIdProduct = [];
+    let listPromisePrice = [];
     if (listColorChoose.length > 0 && listMemoryChoose.length > 0) {
       listColorChoose.forEach(async (dt1, index) => {
         let image = await api("images", "POST", {
@@ -87,7 +55,7 @@ function AddData(props) {
               describeProduct: null,
               isShow: 1,
               slug: `${convertStringToSlug(
-                removeVietnameseTones(
+                StringUtils.removeVietnameseTones(
                   `${nameProduct} ${dt2.nameMemory} ${dt1.description} `
                 )
               )}`,
@@ -100,30 +68,7 @@ function AddData(props) {
               sizeProduct: null,
             })
           );
-          listPromise.push(
-            await api("productInputs", "POST", {
-              productInput: {
-                id: "",
-                amount: 10,
-                priceInput: Number(priceInput),
-                timeInput: "2021-08-08 18:30:30",
-                productInput: null,
-              },
-              id: id,
-            })
-          );
-          listPromise.push(
-            await api("productOutputs", "POST", {
-              productOutput: {
-                id: "",
-                amount: 10,
-                priceOutput: Number(priceOutput),
-                timeOutput: "2021-08-08 18:30:30",
-                productOutput: null,
-              },
-              id: id,
-            })
-          );
+          listIdProduct.push(id);
         });
       });
     } else if (listColorChoose.length === 0) {
@@ -140,7 +85,7 @@ function AddData(props) {
           describeProduct: null,
           isShow: 1,
           slug: `${convertStringToSlug(
-            removeVietnameseTones(`${nameProduct} `)
+            StringUtils.removeVietnameseTones(`${nameProduct} `)
           )}`,
           brandProduct: brand,
           colorProduct: null,
@@ -151,30 +96,7 @@ function AddData(props) {
           sizeProduct: null,
         })
       );
-      listPromise.push(
-        await api("productInputs", "POST", {
-          productInput: {
-            id: "",
-            amount: 10,
-            priceInput: Number(priceInput),
-            timeInput: "2021-08-08 18:30:30",
-            productInput: null,
-          },
-          id: id,
-        })
-      );
-      listPromise.push(
-        await api("productOutputs", "POST", {
-          productOutput: {
-            id: "",
-            amount: 10,
-            priceOutput: Number(priceOutput),
-            timeOutput: "2021-08-08 18:30:30",
-            productOutput: null,
-          },
-          id: id,
-        })
-      );
+      listIdProduct.push(id);
     } else if (listMemoryChoose.length === 0) {
       let image = await api("images", "POST", {
         id: "",
@@ -189,7 +111,7 @@ function AddData(props) {
           describeProduct: null,
           isShow: 1,
           slug: `${convertStringToSlug(
-            removeVietnameseTones(`${nameProduct} `)
+            StringUtils.removeVietnameseTones(`${nameProduct} `)
           )}`,
           brandProduct: brand,
           colorProduct: null,
@@ -200,30 +122,7 @@ function AddData(props) {
           sizeProduct: null,
         })
       );
-      listPromise.push(
-        await api("productInputs", "POST", {
-          productInput: {
-            id: "",
-            amount: 10,
-            priceInput: Number(priceInput),
-            timeInput: "2021-08-08 18:30:30",
-            productInput: null,
-          },
-          id: id,
-        })
-      );
-      listPromise.push(
-        await api("productOutputs", "POST", {
-          productOutput: {
-            id: "",
-            amount: 10,
-            priceOutput: Number(priceOutput),
-            timeOutput: "2021-08-08 18:30:30",
-            productOutput: null,
-          },
-          id: id,
-        })
-      );
+      listIdProduct.push(id);
     } else
       listColorChoose.forEach(async (dt1, index) => {
         let image = await api("images", "POST", {
@@ -239,7 +138,9 @@ function AddData(props) {
             describeProduct: null,
             isShow: 1,
             slug: `${convertStringToSlug(
-              removeVietnameseTones(`${nameProduct} ${dt1.description} `)
+              StringUtils.removeVietnameseTones(
+                `${nameProduct} ${dt1.description} `
+              )
             )}`,
             brandProduct: brand,
             colorProduct: dt1,
@@ -250,34 +151,47 @@ function AddData(props) {
             sizeProduct: null,
           })
         );
-        listPromise.push(
-          await api("productInputs", "POST", {
-            productInput: {
-              id: "",
-              amount: 10,
-              priceInput: Number(priceInput),
-              timeInput: "2021-08-08 18:30:30",
-              productInput: null,
-            },
-            id: id,
-          })
-        );
-        listPromise.push(
-          await api("productOutputs", "POST", {
-            productOutput: {
-              id: "",
-              amount: 10,
-              priceOutput: Number(priceOutput),
-              timeOutput: "2021-08-08 18:30:30",
-              productOutput: null,
-            },
-            id: id,
-          })
-        );
+        listIdProduct.push(id);
       });
 
+    listIdProduct.forEach(async (item) => {
+      listPromisePrice.push(
+        await api("productInputs", "POST", {
+          productInput: {
+            id: "",
+            amount: 10,
+            priceInput: Number(priceInput),
+            timeInput: "2021-08-08 18:30:30",
+            productInput: null,
+          },
+          id: item,
+        })
+      );
+      listPromisePrice.push(
+        await api("productOutputs", "POST", {
+          productOutput: {
+            id: "",
+            amount: 10,
+            priceOutput: Number(priceOutput),
+            timeOutput: "2021-08-08 18:30:30",
+            productOutput: null,
+          },
+          id: item,
+        })
+      );
+    });
     axios
       .all(listPromise)
+      .then(
+        axios.spread((...responses) => {
+          console.log(responses);
+        })
+      )
+      .catch((errors) => {
+        // react on errors.
+      });
+    axios
+      .all(listPromisePrice)
       .then(
         axios.spread((...responses) => {
           console.log(responses);

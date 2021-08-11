@@ -1,12 +1,12 @@
 import React from "react";
 import ItemProductViewLeft from "../ProductViewLeft/ItemProductViewLeft/ItemProductViewLeft";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
+// import Zoom from "react-medium-image-zoom";
+// import "react-medium-image-zoom/dist/styles.css";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 function ProductViewLeft(props) {
   //
-  const { products } = props;
+  const { products, imageData, setImageData } = props;
   //
   return (
     <div className="w-full xl:w-7/12 flex" style={{ maxHeight: 580 }}>
@@ -23,7 +23,8 @@ function ProductViewLeft(props) {
               <ItemProductViewLeft
                 image={image}
                 key={index}
-                imageCurrent={products.image}
+                imageData={imageData}
+                setImageData={setImageData}
               />
             );
           })}
@@ -34,14 +35,14 @@ function ProductViewLeft(props) {
       </ul>
       <div className="w-10/12 pr-4">
         <div className="w-full border-2 border-gray-200 border-solid">
-          <Zoom>
-            <img
-              src={products.image}
-              alt=""
-              className="w-full cursor-pointer"
-              style={{ maxHeight: 560 }}
-            />
-          </Zoom>
+          {/* <Zoom> */}
+          <img
+            src={imageData.src}
+            alt=""
+            className="w-full cursor-pointer"
+            style={{ maxHeight: 560 }}
+          />
+          {/* </Zoom> */}
         </div>
       </div>
     </div>

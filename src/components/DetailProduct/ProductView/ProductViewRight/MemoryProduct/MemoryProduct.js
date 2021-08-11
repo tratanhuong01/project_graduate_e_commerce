@@ -3,7 +3,7 @@ import ItemMemoryProduct from "./ItemMemoryProduct/ItemMemoryProduct";
 
 function MemoryProduct(props) {
   //
-  const { memories, memory } = props;
+  const { memories, memory, products } = props;
   //
   return (
     <div className="w-full my-3">
@@ -12,9 +12,10 @@ function MemoryProduct(props) {
         {memories.map((memoryData, index) => {
           return (
             <ItemMemoryProduct
-              memory={memoryData}
+              memoryData={memoryData}
               key={index}
               memoryCurrent={memory}
+              products={products}
             />
           );
         })}

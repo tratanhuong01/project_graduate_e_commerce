@@ -170,6 +170,11 @@ button:focus {
 .shadow-lg-red {
   box-shadow: 0 0 5px 0 red;
 }
+
+.shadow-lg-organce {
+  box-shadow: 0 0 5px 0 #f36438;
+}
+
 .shadow-xl-organce {
   box-shadow: 0 0 15px 0 #f36438;
 }

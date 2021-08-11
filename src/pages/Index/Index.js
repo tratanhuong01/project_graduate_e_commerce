@@ -16,15 +16,18 @@ function Index(props) {
   const [show, setShow] = useState(false);
   const [chatBot, setChatBot] = useState(false);
   const [dataIndex, setDataIndex] = useState(null);
-  useEffect(async () => {
+  useEffect(() => {
     //
-    dispatch(modalsAction.closeModal());
-    window.onscroll = () => {
-      if (window.scrollY > 300) setShow(true);
-      else setShow(false);
+    const fetch = async () => {
+      dispatch(modalsAction.closeModal());
+      window.onscroll = () => {
+        if (window.scrollY > 300) setShow(true);
+        else setShow(false);
+      };
+      const result = await api("getProductIndex", "GET", null);
+      setDataIndex(result.data);
     };
-    const result = await api("getProductIndex", "GET", null);
-    setDataIndex(result.data);
+    fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //

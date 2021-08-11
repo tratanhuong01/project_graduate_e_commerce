@@ -6,7 +6,7 @@ import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import ProductView from "./ProductView";
 import DescribeProduct from "../../components/DetailProduct/ProductView/DescribeProduct/DescribeProduct";
-import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
+// import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
 
