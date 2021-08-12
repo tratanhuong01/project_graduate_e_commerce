@@ -15,7 +15,10 @@ export const LOAD_PRODUCT_CHOOSE = "LOAD_PRODUCT_CHOOSE";
 //
 export const LOAD_CART = "LOAD_CART";
 //
-
+export const OPEN_MODAL_ADDED_CURRENT = "OPEN_MODAL_ADDED_CURRENT";
+//
+export const LOAD_ORDER = "LOAD_ORDER";
+//
 export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
 //
 export const VIEW_PRODUCT = "VIEW_PRODUCT";

@@ -19,6 +19,7 @@ function ListProduct(props) {
       user: state.user,
     };
   });
+  // const { match } = props;
   const { user } = states;
   useEffect(() => {
     //

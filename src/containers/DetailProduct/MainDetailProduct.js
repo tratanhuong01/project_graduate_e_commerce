@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
 import Rule from "../General/Rule";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -9,13 +9,21 @@ import DescribeProduct from "../../components/DetailProduct/ProductView/Describe
 // import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
+import ViewProductWhenScroll from "./ViewProductWhenScroll";
 
 function MainDetailProduct(props) {
   //
   const { products } = props;
+  const [show, setShow] = useState(false);
+  window.addEventListener("scroll", function () {
+    const y = window.scrollY;
+    if (y >= 600) setShow(true);
+    else setShow(false);
+  });
   //
   return (
     <div className="w-full">
+      {show && <ViewProductWhenScroll products={products} />}
       <div className="w-full relative text-white md:text-black z-30">
         <HeaderNormal />
       </div>

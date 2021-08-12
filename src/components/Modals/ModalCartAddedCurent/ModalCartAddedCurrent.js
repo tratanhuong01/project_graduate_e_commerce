@@ -1,9 +1,10 @@
 import React from "react";
-import ModalCartAddedTop from "../ModalCartAddedCurent/ModalCartAddedTop";
-import ModalCartAddedBottom from "../ModalCartAddedCurent/ModalCartAddedBottom";
+import ModalCartAddedTop from "./ModalCartAddedTop/ModalCartAddedTop";
+import ModalCartAddedBottom from "./ModalCartAddedBottom/ModalCartAddedBottom";
 
 function ModalCartAddedCurrent(props) {
   //
+  const { product } = props;
   //
   return (
     <div
@@ -11,8 +12,8 @@ function ModalCartAddedCurrent(props) {
       rounded-lg z-50 animate__animated animate__fadeIn"
     >
       <div className="w-full relative bg-white rounded-lg">
-        <ModalCartAddedTop />
-        <ModalCartAddedBottom />
+        <ModalCartAddedTop product={product} />
+        <ModalCartAddedBottom product={product} />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import CloseModal from "../../../General/CloseModal/CloseModal";
 
 function ModalCartAddedTop(props) {
   return (
@@ -10,12 +11,7 @@ function ModalCartAddedTop(props) {
         <i className="bx bx-check text-2xl mr-3"></i>Sản phẩm vừa được thêm vào
         giỏ hàng
       </p>
-      <span
-        className="rounded-full py-0.5 pb-1.5 px-2.5 font-bold text-xl bg-gray-300 cursor-pointer
-        hover:bg-gray-500 hover:text-white flex justify-center items-center absolute top-2 right-2"
-      >
-        &times;
-      </span>
+      <CloseModal />
     </div>
   );
 }

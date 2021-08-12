@@ -1,6 +1,7 @@
 import * as Types from "../../constants/ActionTypes";
 import api from "../../Utils/api";
 import { v4 as uuidv4 } from "uuid";
+import * as modalsAction from "../../actions/modal/index";
 
 export const loadCartRequest = (user) => {
   return async (dispatch) => {
@@ -24,6 +25,9 @@ export const loadCart = (carts) => {
 
 export const addCartRequest = (data) => {
   return async (dispatch) => {
+    let formData = new FormData();
+    formData.append("slug", data.idProduct);
+    const result = await api("getProductById", "POST", formData);
     if (data.user === null) {
       let listCart = [];
       if (localStorage && localStorage.getItem("carts")) {
@@ -32,9 +36,6 @@ export const addCartRequest = (data) => {
           (item) => item.idProduct === data.idProduct
         );
         if (index === -1) {
-          let formData = new FormData();
-          formData.append("slug", data.idProduct);
-          const result = await api("getProductById", "POST", formData);
           listCart.push({
             idCart: uuidv4(),
             amount: data.amount,
@@ -52,9 +53,6 @@ export const addCartRequest = (data) => {
           });
         } else listCart[index].amount += data.amount;
       } else {
-        let formData = new FormData();
-        formData.append("slug", data.idProduct);
-        const result = await api("getProductById", "POST", formData);
         listCart.push({
           idCart: uuidv4(),
           amount: data.amount,
@@ -79,6 +77,7 @@ export const addCartRequest = (data) => {
         "GET",
         null
       );
+      console.log(cartCheck);
       if (cartCheck.data === "" || cartCheck.data === null) {
         const product = await api(`products/${data.idProduct}`, "GET", null);
         const cart = {
@@ -92,13 +91,15 @@ export const addCartRequest = (data) => {
         dispatch(loadCart(carts.data));
       } else {
         let formData = new FormData();
-        formData.append("amount", data.amount);
+        formData.append("amount", data.amount + cartCheck.data.amount);
         formData.append("idUser", data.user.id);
         formData.append("idCart", cartCheck.data.id);
         const carts = await api("updateCart", "PUT", formData);
         dispatch(loadCart(carts.data));
       }
     }
+    window.scrollTo(0, 0);
+    dispatch(modalsAction.openModalAddedCurrent(result.data));
   };
 };
 

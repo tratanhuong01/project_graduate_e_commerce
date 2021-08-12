@@ -77,6 +77,11 @@ const routes = [
     main: () => <AdminIndex />,
   },
   {
+    path: `${Config.PAGE_PRODUCT}:slugLevel1/:slugLevel2`,
+    exact: true,
+    main: (match) => <ListProduct match={match} />,
+  },
+  {
     path: "/Form/Add",
     exact: true,
     main: () => <AddData />,

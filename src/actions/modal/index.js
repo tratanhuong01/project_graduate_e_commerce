@@ -62,3 +62,10 @@ export const openViewFastProduct = () => {
     type: Types.OPEN_MODAL_VIEW_FAST_PRODUCT,
   };
 };
+
+export const openModalAddedCurrent = (product) => {
+  return {
+    type: Types.OPEN_MODAL_ADDED_CURRENT,
+    product,
+  };
+};

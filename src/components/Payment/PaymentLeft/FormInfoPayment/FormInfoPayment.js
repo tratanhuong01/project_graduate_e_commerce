@@ -1,6 +1,15 @@
 import React from "react";
+// import { useSelector } from "react-redux";
 
 function FormInfoPayment(props) {
+  //
+  // const states = useSelector((state) => {
+  //   return {
+  //     user: state.user,
+  //   };
+  // });
+  // const { user } = states;
+  //
   return (
     <form action="" method="post" className="w-full">
       <input

@@ -9,16 +9,15 @@ import News from "./News";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
-
 function MainIndex(props) {
   //
   const { products } = props;
   //
   return (
     <div className="w-full">
-      <div id="main" className="w-full relative">
+      <div className="w-full relative">
         <HeaderIndex />
-        <BannerIndex />
+        {/* <BannerIndex /> */}
       </div>
       <div className="w-full">
         <TopSell />

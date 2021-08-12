@@ -1,21 +1,29 @@
 import React from "react";
 
 function Left(props) {
+  //
+  const { products } = props;
+  //
   return (
     <div className="w-1/2 flex flex-wrap">
       <div className="w-1/5">
-        <img src="\images\products\product__SP100__GRAY.png" alt="" />
+        <img src={products.image.src} alt="" />
       </div>
       <div className="w-4/5 pl-4">
-        <p className="mb-2">Apple Watch</p>
+        <p className="mb-2">{products.nameLineProduct}</p>
         <p className="text-xm">
           <span className="text-organce mr-4">
-            {new Intl.NumberFormat(["ban", "id"]).format(12345678)}
+            {new Intl.NumberFormat(["ban", "id"]).format(
+              products.priceOutput * ((100 - products.sale) / 100)
+            )}
             <u>đ</u>
           </span>
           <span className="text-gray-500 mr-4">
             <strike>
-              {new Intl.NumberFormat(["ban", "id"]).format(1234567)} <u>đ</u>
+              {new Intl.NumberFormat(["ban", "id"]).format(
+                products.priceOutput
+              )}{" "}
+              <u>đ</u>
             </strike>
           </span>
           <span className="mr-4">|</span>
