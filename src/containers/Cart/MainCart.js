@@ -3,7 +3,7 @@ import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
-import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
+import Header from "../../components/Header/Header";
 import TitleCart from "../../components/Cart/TitleCart/TitleCart";
 import ItemCartMain from "../../components/Cart/ItemCartMain/ItemCartMain";
 import EndCart from "../../components/Cart/EndCart/EndCart";
@@ -35,7 +35,7 @@ function MainCart(props) {
   return (
     <div className="w-full">
       <div className="w-full relative text-white md:text-black">
-        <HeaderNormal />
+        <Header />
       </div>
       <div className="w-full bg-gray-100">
         <LevelUrl />

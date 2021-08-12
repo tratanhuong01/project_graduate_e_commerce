@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
+import Header from "../../components/Header/Header";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -12,7 +12,7 @@ function MainContact(props) {
   return (
     <div className="w-full">
       <div className="w-full relative text-white md:text-black">
-        <HeaderNormal />
+        <Header />
       </div>
       <div className="w-full bg-gray-100">
         <LevelUrl />

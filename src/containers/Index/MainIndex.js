@@ -1,6 +1,5 @@
 import React from "react";
-import HeaderIndex from "../../components/Header/HeaderIndex/HeaderIndex";
-import BannerIndex from "../../components/Banner/BannerIndex/BannerIndex";
+import Header from "../../components/Header/Header";
 import TopSell from "./TopSell";
 import Rule from "../General/Rule";
 import SmartWatch from "./SmartWatch";
@@ -16,8 +15,7 @@ function MainIndex(props) {
   return (
     <div className="w-full">
       <div className="w-full relative">
-        <HeaderIndex />
-        {/* <BannerIndex /> */}
+        <Header />
       </div>
       <div className="w-full">
         <TopSell />

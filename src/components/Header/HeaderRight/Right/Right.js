@@ -1,5 +1,5 @@
 import React from "react";
-import ModalSearch from "../../../../../containers/General/ModalSearch/ModalSearch";
+import ModalSearch from "../../../../containers/General/ModalSearch/ModalSearch";
 
 function Right(props) {
   return (

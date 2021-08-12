@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import * as modalsAction from "../../../../actions/modal/index";
+import * as modalsAction from "../../../actions/modal/index";
 
 function HeaderLeft(props) {
   //

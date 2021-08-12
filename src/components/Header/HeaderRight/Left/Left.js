@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as modalsAction from "../../../../../actions/modal/index";
-import * as usersAction from "../../../../../actions/user/index";
-import * as cartsAction from "../../../../../actions/cart/index";
+import * as modalsAction from "../../../../actions/modal/index";
+import * as usersAction from "../../../../actions/user/index";
+import * as cartsAction from "../../../../actions/cart/index";
 
 function Left(props) {
   //

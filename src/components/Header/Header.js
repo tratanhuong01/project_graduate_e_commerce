@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderCenter from "./HeaderCenter/HeaderCenter";
-import HeaderLeft from "./HeaderIndex/HeaderLeft/HeaderLeft";
-import HeaderRight from "./HeaderIndex/HeaderRight/HeaderRight";
+import HeaderLeft from "./HeaderLeft/HeaderLeft";
+import HeaderRight from "./HeaderRight/HeaderRight";
 
 function HeaderNormal(props) {
   return (

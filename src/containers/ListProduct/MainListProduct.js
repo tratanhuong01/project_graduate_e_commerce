@@ -1,6 +1,6 @@
 import React from "react";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
-import HeaderNormal from "../../components/Header/HeaderNormal/HeaderNormal";
+import Header from "../../components/Header/Header";
 import ControlsProduct from "../ListProduct/ControlsProduct";
 import ListProduct from "./ListProduct";
 import Rule from "../../containers/General/Rule";
@@ -11,7 +11,7 @@ function MainListProduct(props) {
   return (
     <div className="w-full">
       <div className="w-full relative text-white md:text-black">
-        <HeaderNormal />
+        <Header />
       </div>
       <div className="w-full bg-gray-100">
         <LevelUrl />

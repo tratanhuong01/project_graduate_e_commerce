@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import * as Config from "../../../../constants/Config";
+import * as Config from "../../../constants/Config";
 import React from "react";
 
 function HeaderCenter(props) {
