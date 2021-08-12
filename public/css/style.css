@@ -178,3 +178,9 @@ button:focus {
 .shadow-xl-organce {
   box-shadow: 0 0 15px 0 #f36438;
 }
+.item__category:hover .data__category {
+  display: flex;
+}
+.data__category {
+  display: none;
+}

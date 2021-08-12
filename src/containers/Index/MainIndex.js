@@ -8,6 +8,8 @@ import News from "./News";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
+import CategoryIndex from "./CategoryIndex";
+import BannerIndex from "../../components/Banner/BannerIndex/BannerIndex";
 function MainIndex(props) {
   //
   const { products } = props;
@@ -18,6 +20,12 @@ function MainIndex(props) {
         <Header />
       </div>
       <div className="w-full">
+        <CategoryIndex />
+        <img
+          src="https://bizweb.dktcdn.net/100/420/160/themes/825846/assets/feature_banner.jpg?1628694566095"
+          alt=""
+          className="w-full xl:w-4/5 mx-auto my-3 h-16"
+        />
         <TopSell />
         <Rule />
         <SmartWatch />
