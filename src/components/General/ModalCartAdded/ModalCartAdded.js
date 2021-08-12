@@ -1,8 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
+import * as Config from "../../../constants/Config";
+import * as modalsAction from "../../../actions/modal/index";
 
 function ModalCartAdded(props) {
+  //
+  const dispatch = useDispatch();
+  const { carts, user } = props;
+  const sum = () => {
+    let sum = 0;
+    carts.forEach((element) => {
+      sum +=
+        element.priceOutput * ((100 - element.sale) / 100) * element.amount;
+    });
+    return sum;
+  };
+
+  //
   return (
     <div
       className="w-80 rounded-lg bg-white absolute animate__animated animate__zoomIn 
@@ -10,7 +26,7 @@ function ModalCartAdded(props) {
     border-gray-200 shadow-lg "
     >
       <div className="w-full max-h-72 overflow-y-auto p-2 scrollbar-css">
-        {-1 === 0 ? (
+        {carts.length === 0 ? (
           <>
             <p className="text-center font-semibold my-4">
               Chưa có sản phẩm nào trong giỏ hàng
@@ -23,7 +39,9 @@ function ModalCartAdded(props) {
             </div>
           </>
         ) : (
-          <ItemCart />
+          carts.map((cart, index) => {
+            return <ItemCart cart={cart} key={index} />;
+          })
         )}
       </div>
       <hr className="my-1"></hr>
@@ -38,14 +56,14 @@ function ModalCartAdded(props) {
           className="w-1/2 float-right justify-end flex items-center 
         text-organce pr-4"
         >
-          {new Intl.NumberFormat(["ban", "id"]).format(12345678)} <u>đ</u>
+          {new Intl.NumberFormat(["ban", "id"]).format(sum())} <u>đ</u>
         </div>
       </div>
 
       <hr className="my-1"></hr>
       <div className="w-full p-2 h-16">
         <Link
-          to=""
+          to={Config.PAGE_CART}
           className="px-6 py-2 rounded-full bg-organce 
         hover:bg-white hover:border-white border-2 border-solid text-white
         border-white shadow-lg float-left flex items-center font-semibold 
@@ -53,16 +71,30 @@ function ModalCartAdded(props) {
         >
           Giỏ hàng
         </Link>
-
-        <button
-          type="button"
-          className="px-6 py-2 rounded-full hover:bg-organce 
+        {!user ? (
+          <button
+            onClick={() => {
+              if (!user) dispatch(modalsAction.openModalLogin());
+            }}
+            type="button"
+            className="px-6 py-2 rounded-full hover:bg-organce 
           bg-white border-white border-2 border-solid hover:text-white
           hover:border-white shadow-lg float-right flex items-center font-semibold 
           text-black ml-2"
-        >
-          Thanh toán
-        </button>
+          >
+            Thanh toán
+          </button>
+        ) : (
+          <Link
+            to={Config.PAGE_PAYMENT}
+            className="px-6 py-2 rounded-full hover:bg-organce 
+            bg-white border-white border-2 border-solid hover:text-white
+            hover:border-white shadow-lg float-right flex items-center font-semibold 
+            text-black ml-2"
+          >
+            Thanh toán
+          </Link>
+        )}
       </div>
     </div>
   );

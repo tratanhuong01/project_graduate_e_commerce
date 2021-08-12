@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import Modal from "../../containers/Modal";
 import * as modalsAction from "../../actions/modal/index";
 import MainNewsDetail from "../../containers/NewsDetail/MainNewsDetail";
+// import * as cartsAction from "../../actions/cart/index";
+
 function NewsDetail(props) {
   //
   const dispatch = useDispatch();

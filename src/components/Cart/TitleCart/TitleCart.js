@@ -4,6 +4,15 @@ function TitleCart(props) {
   return (
     <div className="w-full bg-white hidden md:flex">
       <div
+        className="w-10 flex justify-center border-2 border-solid border-gray-100 
+        p-3 relative"
+      >
+        <input
+          type="checkbox"
+          className="transform scale-125 absolute top-1/3 left-2"
+        />
+      </div>
+      <div
         className="w-2/12 flex justify-center border-2 border-solid border-gray-100 
         p-3"
       >

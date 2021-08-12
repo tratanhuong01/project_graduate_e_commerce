@@ -4,6 +4,7 @@ import * as modalsAction from "../../actions/modal/index";
 import MainDetailProduct from "../../containers/DetailProduct/MainDetailProduct";
 import Modal from "../../containers/Modal";
 import * as productsAction from "../../actions/product/index";
+import * as cartsAction from "../../actions/cart/index";
 
 function DetailProduct(props) {
   //
@@ -12,9 +13,10 @@ function DetailProduct(props) {
   const states = useSelector((state) => {
     return {
       product: state.product,
+      user: state.user,
     };
   });
-  const { product } = states;
+  const { product, user } = states;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -24,6 +26,7 @@ function DetailProduct(props) {
       const slug = match.params.slug;
       dispatch(productsAction.loadProductChooseRequest(slug));
       dispatch(modalsAction.closeModal());
+      dispatch(cartsAction.loadCartRequest(user));
     };
     fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps

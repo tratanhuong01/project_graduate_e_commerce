@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import * as cartsAction from "../../../actions/cart/index";
 
 function ItemCartMain(props) {
   //
+  const { cart } = props;
+  const dispatch = useDispatch();
+  const [number, setNumber] = useState(cart.amount);
+  const states = useSelector((state) => {
+    return {
+      user: state.user,
+    };
+  });
+  const { user } = states;
   //
   return (
     <div className="w-full my-3 mb-5 flex md:bg-white">
+      <div className="w-10 flex justify-center p-3 relative">
+        <input
+          type="checkbox"
+          className="transform scale-125 absolute top-1/2 left-2"
+        />
+      </div>
       <div className="w-1/4 md:w-2/12 flex justify-center pb-1 md:p-3">
         <img
-          src={"url"}
+          src={cart.image.src}
           className="w-full md:w-11/12 sm:px-3 object-cover"
           alt=""
         />
@@ -21,10 +38,11 @@ function ItemCartMain(props) {
                 className="mb-2 text-gray-700 text-base hover:text-organce text-center 
                   cursor-pointer"
               >
-                <Link to={`/detail-product/`}>Iphone 7 Plus</Link>
+                <Link to={`/detail-product/`}>{cart.nameLineProduct}</Link>
               </p>
               <p className="text-gray-500 text-base  text-center">
-                Màu : Đỏ {" - "} Kích thước : 40 mm
+                {cart.color && `Màu : ${cart.color.description} - `}
+                {cart.memory && `Bộ nhớ : ${cart.memory.nameMemory}`}
               </p>
             </div>
           </div>
@@ -37,7 +55,10 @@ function ItemCartMain(props) {
                   cursor-pointer"
               >
                 <span className="md:hidden mr-3">Đơn giá :</span>
-                {new Intl.NumberFormat("ban", "id").format(987654321)} <u>đ</u>
+                {new Intl.NumberFormat("ban", "id").format(
+                  cart.priceOutput * ((100 - cart.sale) / 100)
+                )}{" "}
+                <u>đ</u>
               </p>
             </div>
           </div>
@@ -47,10 +68,20 @@ function ItemCartMain(props) {
             <div>
               <input
                 type="number"
-                name="Number"
                 className="w-28 p-3 border-2 border-solid border-gray-300 
                   rounded-full text-center font-semibold"
                 min="1"
+                value={number}
+                onChange={(event) => {
+                  setNumber(event.target.value);
+                  dispatch(
+                    cartsAction.changeAmountCartRequest({
+                      amount: event.target.value,
+                      idCart: cart.idCart,
+                      user: user,
+                    })
+                  );
+                }}
               />
             </div>
           </div>
@@ -67,7 +98,10 @@ function ItemCartMain(props) {
                 className="mb-2 text-gray-700 text-base text-organce text-center 
                   cursor-pointer"
               >
-                {new Intl.NumberFormat("ban", "id").format(123456789)} <u>đ</u>
+                {new Intl.NumberFormat("ban", "id").format(
+                  cart.priceOutput * ((100 - cart.sale) / 100) * cart.amount
+                )}{" "}
+                <u>đ</u>
               </p>
             </div>
           </div>
@@ -75,6 +109,14 @@ function ItemCartMain(props) {
         <div className="w-full sm:w-1/3 flex justify-center pb-1 md:p-3">
           <div className="flex items-center">
             <i
+              onClick={() =>
+                dispatch(
+                  cartsAction.deleteCartRequest({
+                    user: user,
+                    idCart: cart.idCart,
+                  })
+                )
+              }
               className="bx bx-trash-alt text-3xl mb-3 cursor-pointer 
               hover:text-organce"
             ></i>

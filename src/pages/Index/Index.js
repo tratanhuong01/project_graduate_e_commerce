@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as modalsAction from "../../actions/modal/index";
 import Modal from "../../containers/Modal";
 import MainIndex from "../../containers/Index/MainIndex";
@@ -9,6 +9,7 @@ import ChatBot from "../../components/General/ChatBot/ChatBot";
 import ModalChatBot from "../../components/General/ChatBot/ModalChatBot/ModalChatBot";
 import api from "../../Utils/api";
 import Loading from "../../components/General/Loading/Loading";
+import * as cartsAction from "../../actions/cart/index";
 
 function Index(props) {
   //
@@ -16,6 +17,12 @@ function Index(props) {
   const [show, setShow] = useState(false);
   const [chatBot, setChatBot] = useState(false);
   const [dataIndex, setDataIndex] = useState(null);
+  const states = useSelector((state) => {
+    return {
+      user: state.user,
+    };
+  });
+  const { user } = states;
   useEffect(() => {
     //
     const fetch = async () => {
@@ -26,6 +33,7 @@ function Index(props) {
       };
       const result = await api("getProductIndex", "GET", null);
       setDataIndex(result.data);
+      dispatch(cartsAction.loadCartRequest(user));
     };
     fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps

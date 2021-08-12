@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as modalsAction from "../../actions/modal/index";
 import ChatBot from "../../components/General/ChatBot/ChatBot";
 import ModalChatBot from "../../components/General/ChatBot/ModalChatBot/ModalChatBot";
@@ -7,12 +7,19 @@ import ScrollTop from "../../components/General/ScrollTop/ScrollTop";
 import MainListProduct from "../../containers/ListProduct/MainListProduct";
 import Modal from "../../containers/Modal";
 import Notify from "../../containers/Notify";
+import * as cartsAction from "../../actions/cart/index";
 
 function ListProduct(props) {
   //
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [chatBot, setChatBot] = useState(false);
+  const states = useSelector((state) => {
+    return {
+      user: state.user,
+    };
+  });
+  const { user } = states;
   useEffect(() => {
     //
     dispatch(modalsAction.closeModal());
@@ -20,6 +27,7 @@ function ListProduct(props) {
       if (window.scrollY > 300) setShow(true);
       else setShow(false);
     };
+    dispatch(cartsAction.loadCartRequest(user));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //

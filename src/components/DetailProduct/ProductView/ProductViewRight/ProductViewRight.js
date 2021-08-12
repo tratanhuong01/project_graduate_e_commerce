@@ -4,6 +4,7 @@ import ColorProduct from "./ColorProduct/ColorProduct";
 import DescribeChild from "./DescribeChild/DescribeChild";
 import MemoryProduct from "./MemoryProduct/MemoryProduct";
 import * as productsAction from "../../../../actions/product/index";
+import * as cartsAction from "../../../../actions/cart/index";
 
 function ProductViewRight(props) {
   //
@@ -12,9 +13,10 @@ function ProductViewRight(props) {
   const states = useSelector((state) => {
     return {
       product: state.product,
+      user: state.user,
     };
   });
-  const { product } = states;
+  const { product, user } = states;
   const [number, setNumber] = useState(1);
   //
   return (
@@ -66,7 +68,7 @@ function ProductViewRight(props) {
                 <i className="bx bx-minus color-black"></i>
               </span>
               <input
-                type="number"
+                type="text"
                 name="number"
                 value={number}
                 min={1}
@@ -81,6 +83,7 @@ function ProductViewRight(props) {
                     )
                   );
                 }}
+                disabled={true}
               />
               <span
                 onClick={() => {
@@ -98,7 +101,18 @@ function ProductViewRight(props) {
               </span>
             </div>
             <button
-              onClick={() => console.log(product)}
+              onClick={() =>
+                dispatch(
+                  cartsAction.addCartRequest({
+                    user: user,
+                    amount: number,
+                    idProduct:
+                      product.typeDisplay === 0
+                        ? product.view.idProduct
+                        : product.modal.idProduct,
+                  })
+                )
+              }
               type="button"
               className="px-10 py-3.5 rounded-full shadow-lg-organce bg-organce 
                 font-semibold text-sm font-semibold flex items-center text-white border-2 

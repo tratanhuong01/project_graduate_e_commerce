@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../../constants/Config";
 import ModalCartAdded from "../../../../General/ModalCartAdded/ModalCartAdded";
 
 function Center(props) {
   //
+  const states = useSelector((state) => {
+    return {
+      carts: state.carts,
+      user: state.user,
+    };
+  });
+  const { carts, user } = states;
 
+  useEffect(() => {}, [user, carts]);
+
+  //
   return (
     <li className="py-6 px-2 flex relative cursor-pointer toggel__hover__cart_show">
       <Link to={Config.PAGE_CART}>
@@ -16,9 +27,9 @@ function Center(props) {
             border-white flex justify-center items-center py-0.5 font-bold 
             absolute right-0.5 bg-white text-yellow-500 top-4 text-sm"
       >
-        1
+        {carts.length}
       </span>
-      <ModalCartAdded />
+      <ModalCartAdded carts={carts} user={user} />
     </li>
   );
 }

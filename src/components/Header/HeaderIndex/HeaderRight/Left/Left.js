@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as modalsAction from "../../../../../actions/modal/index";
 import * as usersAction from "../../../../../actions/user/index";
+import * as cartsAction from "../../../../../actions/cart/index";
+
 function Left(props) {
   //
   const states = useSelector((state) => {
@@ -24,7 +26,10 @@ function Left(props) {
           <span className="font-semibold text-xm mr-1">{`${user.firstName} ${user.lastName}`}</span>
           <i className="bx bxs-chevron-down"></i>
           <i
-            onClick={() => dispatch(usersAction.logoutAccount())}
+            onClick={() => {
+              dispatch(usersAction.logoutAccount());
+              dispatch(cartsAction.loadCartRequest(null));
+            }}
             className="bx bx-exit text-2xl bg-white ml-3 text-black p-1.5 border-2 border-solid
               rounded-full cursor-pointer hover:bg-organce hover:border-white hover:text-white"
           ></i>

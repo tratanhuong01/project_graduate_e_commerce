@@ -4,6 +4,7 @@ import * as Config from "../../../constants/Config";
 
 function EndCart(props) {
   //
+  const { sumMoney } = props;
   //
   return (
     <div className="w-full my-5 flex">
@@ -32,11 +33,11 @@ function EndCart(props) {
             className="w-1/2 rounded-r-full font-semibold text-base p-4 bg-white 
           text-organce border-2 border-solid border-gray-200 text-center"
           >
-            {new Intl.NumberFormat("ban", "id").format(12345678)} <u>đ</u>
+            {new Intl.NumberFormat("ban", "id").format(sumMoney)} <u>đ</u>
           </div>
         </div>
         <div className="w-full flex justify-end">
-          {"sumMoney" === 0 ? (
+          {sumMoney === 0 ? (
             <input
               type="button"
               className="px-12 py-4 text-base rounded-full shadow-lg bg-gray-500 

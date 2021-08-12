@@ -7,6 +7,7 @@ import InputField from "../../../../General/InputField/InputField";
 import EndFormLogin from "./EndFormLogin/EndFormLogin";
 import * as modalsAction from "../../../../../actions/modal/index";
 import * as usersAction from "../../../../../actions/user/index";
+import * as cartsAction from "../../../../../actions/cart/index";
 
 class FormLogin extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class FormLogin extends Component {
   }
 
   onSubmitFormLogin = async (data) => {
-    const { closeModal, loginAccount } = this.props;
+    const { closeModal, loginAccount, loadCartRequest } = this.props;
     const user = await api("checkLogin", "POST", data);
     if (user.data === null || user.data === "") {
       this.setState({
@@ -26,6 +27,7 @@ class FormLogin extends Component {
     } else {
       closeModal();
       loginAccount(user.data);
+      loadCartRequest(user.data);
     }
   };
   render() {
@@ -105,6 +107,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     closeModal: () => {
       dispatch(modalsAction.closeModal());
+    },
+    loadCartRequest: (carts) => {
+      dispatch(cartsAction.loadCartRequest(carts));
     },
   };
 };

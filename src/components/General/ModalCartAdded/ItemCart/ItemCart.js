@@ -1,22 +1,44 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as cartsAction from "../../../../actions/cart/index";
 
 function ItemCart(props) {
+  //
+  const { cart } = props;
+  const states = useSelector((state) => {
+    return {
+      user: state.user,
+    };
+  });
+  const { user } = states;
+  const dispatch = useDispatch();
+  //
   return (
     <>
       <div className="w-full py-2 flex">
         <div className="w-1/3">
-          <img src={"url"} className="w-full" alt="" />
+          <img src={cart.image.src} className="w-full" alt="" />
         </div>
         <div className="w-2/3 pl-4 relative">
-          <p className="mb-2">{"item.product.NameProduct"}</p>
-          <p className="mb-2">Màu : {"item.cart.Color"}</p>
+          <p className="mb-2">{cart.nameLineProduct}</p>
+          {cart.color && <p className="mb-2">Màu : {cart.color.description}</p>}
           <p className="text-organce mb-2">
-            {new Intl.NumberFormat(["ban", "id"]).format(12345678)}{" "}
-            <u className="mr-2">đ</u>x{7}
+            {new Intl.NumberFormat(["ban", "id"]).format(
+              cart.priceOutput * ((100 - cart.sale) / 100)
+            )}{" "}
+            <u className="mr-2">đ</u>x{cart.amount}
           </p>
           <span
+            onClick={() =>
+              dispatch(
+                cartsAction.deleteCartRequest({
+                  user: user,
+                  idCart: cart.idCart,
+                })
+              )
+            }
             className="text-2xl font-semibold hover:text-organce 
-                                            absolute right-2 bottom-2"
+            absolute right-2 bottom-2"
           >
             &times;
           </span>

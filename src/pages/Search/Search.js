@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as modalsAction from "../../actions/modal/index";
 import MainSearch from "../../containers/Search/MainSearch";
 import Modal from "../../containers/Modal";
+// import * as cartsAction from "../../actions/cart/index";
 
 function Search(props) {
   //
