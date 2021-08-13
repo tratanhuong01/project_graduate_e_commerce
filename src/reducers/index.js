@@ -5,6 +5,8 @@ import category from "./admin/category";
 import product from "./product";
 import carts from "./carts";
 import orders from "./orders";
+import listProduct from "./listProduct";
+
 const myReducer = combineReducers({
   modal,
   user,
@@ -12,6 +14,7 @@ const myReducer = combineReducers({
   product,
   carts,
   orders,
+  listProduct,
 });
 
 export default myReducer;

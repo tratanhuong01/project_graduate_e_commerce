@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as cartsAction from "../../../actions/cart/index";
+import * as Config from "../../../constants/Config";
 
 function ItemCartMain(props) {
   //
@@ -36,9 +37,11 @@ function ItemCartMain(props) {
             <div className="">
               <p
                 className="mb-2 text-gray-700 text-base hover:text-organce text-center 
-                  cursor-pointer"
+                  cursor-pointer font-semibold"
               >
-                <Link to={`/detail-product/`}>{cart.nameLineProduct}</Link>
+                <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${cart.slug}`}>
+                  {cart.nameLineProduct}
+                </Link>
               </p>
               <p className="text-gray-500 text-base  text-center">
                 {cart.color && `Màu : ${cart.color.description} - `}

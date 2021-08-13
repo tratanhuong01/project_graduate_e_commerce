@@ -18,7 +18,7 @@ function ItemProductOther(props) {
         {product.sale > 0 && <Sale sale={product.sale} />}
         <div className="w-full relative h-64 mx-auto product z-10">
           <ImageMain image={product.image} />
-          <OptionAndView />
+          <OptionAndView product={product} />
         </div>
         <CostAndLink product={product} />
       </div>

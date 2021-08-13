@@ -23,6 +23,12 @@ button:focus {
 .bg-organce {
   background-color: #f36438;
 }
+.bg-organce-second {
+  background-color: #f57953;
+}
+.bg-organce-third {
+  background-color: #f08d6f;
+}
 .hover\:bg-organce:hover {
   background-color: #f36438;
 }
@@ -55,6 +61,11 @@ button:focus {
 }
 .item__news__detail {
   width: 100%;
+}
+@media (max-width: 768px) {
+  .view__detail__product__scrollbar {
+    display: none;
+  }
 }
 @media (min-width: 1280px) {
   .item__new {
@@ -111,6 +122,19 @@ button:focus {
   .item__category__dashboard {
     width: calc(50% - 24px);
   }
+  .item__category:hover .data__category {
+    display: flex !important;
+  }
+  .data__category {
+    max-height: 384px;
+    display: none !important;
+  }
+  .category__index__left {
+    display: flex !important;
+  }
+  .toggel__hover__cart_show:hover > .modal__cart__added {
+    display: block;
+  }
 }
 .index__right {
   width: calc(100% - 115px);
@@ -148,9 +172,7 @@ button:focus {
 .modal__cart__added {
   display: none;
 }
-.toggel__hover__cart_show:hover > .modal__cart__added {
-  display: block;
-}
+
 .h-120 {
   height: 480px;
 }
@@ -178,9 +200,17 @@ button:focus {
 .shadow-xl-organce {
   box-shadow: 0 0 15px 0 #f36438;
 }
-.item__category:hover .data__category {
-  display: flex;
+.post {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
 }
-.data__category {
-  display: none;
+.post p {
+  width: 100%;
+}
+.post img {
+  margin: 8px auto;
+  object-fit: cover;
+}
+.post {
+  font-family: Arial, Helvetica, sans-serif !important;
 }

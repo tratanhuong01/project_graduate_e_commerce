@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import * as cartsAction from "../../../../actions/cart/index";
+import * as Config from "../../../../constants/Config";
 
 function ItemCart(props) {
   //
@@ -20,7 +22,12 @@ function ItemCart(props) {
           <img src={cart.image.src} className="w-full" alt="" />
         </div>
         <div className="w-2/3 pl-4 relative">
-          <p className="mb-2">{cart.nameLineProduct}</p>
+          <Link
+            to={`${Config.PAGE_DETAIL_PRODUCT}/${cart.slug}`}
+            className="mb-2  hover:text-organce font-semibold"
+          >
+            {cart.nameLineProduct}
+          </Link>
           {cart.color && <p className="mb-2">Màu : {cart.color.description}</p>}
           <p className="text-organce mb-2">
             {new Intl.NumberFormat(["ban", "id"]).format(

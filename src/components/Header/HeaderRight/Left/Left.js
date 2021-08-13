@@ -15,9 +15,9 @@ function Left(props) {
   const dispatch = useDispatch();
   //
   return (
-    <li className="p-2 hidden md:flex">
+    <li className="p-2 hidden md:flex justify-center">
       {user !== null ? (
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           <img
             src="/images/avatar.jpg"
             className="w-8 h-8 rounded-full mr-3"
@@ -35,7 +35,7 @@ function Left(props) {
           ></i>
         </div>
       ) : (
-        <div className="flex items-center flex-wrap">
+        <div className="flex items-center flex-wrap  justify-center">
           <p
             onClick={() => dispatch(modalsAction.openModalRegister())}
             className="cursor-pointer mr-3 text-xm py-2 rounded-full hover:bg-organce hover:border-white

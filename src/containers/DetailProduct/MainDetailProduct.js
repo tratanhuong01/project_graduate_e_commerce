@@ -33,7 +33,7 @@ function MainDetailProduct(props) {
           <ProductView products={products} />
           <div className="w-full flex my-5 lg:flex-row flex-col">
             <div className="w-full lg:w-7/12">
-              <DescribeProduct />
+              <DescribeProduct products={products} />
               <RateComment />
             </div>
             <div className="w-full lg:w-5/12">

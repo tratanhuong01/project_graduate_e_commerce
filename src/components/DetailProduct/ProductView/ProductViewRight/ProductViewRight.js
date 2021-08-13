@@ -30,7 +30,10 @@ function ProductViewRight(props) {
               products.color === null ? "" : `Màu ${products.color.description}`
             }`}
           </p>
-          <DescribeChild products={products} />
+          <DescribeChild
+            products={products}
+            typeDisplay={product.typeDisplay}
+          />
           {products.colorList.length > 0 && (
             <ColorProduct
               colors={products.colorList}

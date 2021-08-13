@@ -4,7 +4,7 @@ import * as Config from "../../../../../constants/Config";
 
 function DescribeChild(props) {
   //
-  const { products } = props;
+  const { products, typeDisplay } = props;
   //
   return (
     <>
@@ -16,7 +16,7 @@ function DescribeChild(props) {
           >
             Thương hiệu :
           </span>
-          {products.brand}
+          {products.brand.nameBrand}
         </p>
         <p>
           <span
@@ -38,15 +38,17 @@ function DescribeChild(props) {
         <li className="my-2">Kích thước màn hình : 1,2"</li>
         <li className="my-2">Độ phân giải màn hình : 360 x 360 pixels</li>
         <li className="my-2">Luôn hiển thị : có</li>
-        <li className="my-7">
-          <Link
-            className="bg-organce px-10 py-2.5 rounded-full 
+        {typeDisplay !== 0 && (
+          <li className="my-7">
+            <Link
+              className="bg-organce px-10 py-2.5 rounded-full 
                   text-white font-semibold"
-            to={`${Config.PAGE_DETAIL_PRODUCT}/`}
-          >
-            Xem chi tiết
-          </Link>
-        </li>
+              to={`${Config.PAGE_DETAIL_PRODUCT}/${products.slug}`}
+            >
+              Xem chi tiết
+            </Link>
+          </li>
+        )}
       </ul>
     </>
   );

@@ -3,8 +3,8 @@ export const LOGO =
   "https://bizweb.dktcdn.net/100/420/160/themes/825846/assets/logo.svg?1628694566095";
 export const NAME_LOGO = "XSMART";
 export const PAGE_INDEX = "/";
-export const PAGE_PRODUCT = "/san-pham/";
-export const PAGE_DETAIL_PRODUCT = "/chi-tiet-san-pham/";
+export const PAGE_PRODUCT = "/san-pham";
+export const PAGE_DETAIL_PRODUCT = "/chi-tiet-san-pham";
 export const PAGE_CART = "/carts";
 export const PAGE_PAYMENT = "/payment";
 export const PAGE_ABOUT = "/about";

@@ -14,7 +14,7 @@ function CostAndLink(props) {
       >
         <span className="flex items-center font-semibold">
           {typeof product !== "undefined" && (
-            <Link to={`${Config.PAGE_DETAIL_PRODUCT}${product.slug}`}>
+            <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${product.slug}`}>
               {" "}
               {product.nameLineProduct}
             </Link>

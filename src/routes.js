@@ -14,6 +14,7 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminIndex from "./pages/Admin/AdminIndex";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import AddData from "./AddData";
+import ContentWrite from "./ContentWrite";
 // import { Route } from "react-router";
 const routes = [
   {
@@ -27,7 +28,7 @@ const routes = [
     main: () => <ListProduct />,
   },
   {
-    path: Config.PAGE_DETAIL_PRODUCT + ":slug",
+    path: `${Config.PAGE_DETAIL_PRODUCT}/:slug`,
     exact: true,
     main: ({ match }) => <DetailProduct match={match} />,
   },
@@ -77,7 +78,12 @@ const routes = [
     main: () => <AdminIndex />,
   },
   {
-    path: `${Config.PAGE_PRODUCT}:slugLevel1/:slugLevel2`,
+    path: `${Config.PAGE_PRODUCT}/:slugCategoryProduct`,
+    exact: true,
+    main: (match) => <ListProduct match={match} />,
+  },
+  {
+    path: `${Config.PAGE_PRODUCT}/:slugCategoryProduct/:slugGroupProduct`,
     exact: true,
     main: (match) => <ListProduct match={match} />,
   },
@@ -85,6 +91,11 @@ const routes = [
     path: "/Form/Add",
     exact: true,
     main: () => <AddData />,
+  },
+  {
+    path: "/write",
+    exact: true,
+    main: () => <ContentWrite />,
   },
   {
     path: "",

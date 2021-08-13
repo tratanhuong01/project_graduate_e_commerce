@@ -5,7 +5,7 @@ import ProductViewRight from "../../components/DetailProduct/ProductView/Product
 function ProductView(props) {
   //
   const { products } = props;
-  const [imageData, setImageData] = useState("");
+  const [imageData, setImageData] = useState(products.image);
   useEffect(() => {
     setImageData(products.image);
   }, [products]);

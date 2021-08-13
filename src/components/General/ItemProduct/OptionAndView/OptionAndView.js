@@ -2,9 +2,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as modalsAction from "../../../../actions/modal/index";
+import * as Config from "../../../../constants/Config";
 
 function OptionAndView(props) {
   //
+  const { product } = props;
   const dispatch = useDispatch();
   //
   return (
@@ -18,10 +20,18 @@ function OptionAndView(props) {
             className="w-4/5 p-3 mx-auto rounded-full border-2 border-solid
               border-white font-bold text-black bg-white hover:bg-organce hover:text-white mb-2"
           >
-            <Link to={`/detail-product/`}>Tùy chọn</Link>
+            <Link
+              to={`${Config.PAGE_DETAIL_PRODUCT}/${
+                typeof product !== "undefined" && product.slug
+              }`}
+            >
+              Tùy chọn
+            </Link>
           </div>
           <button
-            onClick={() => dispatch(modalsAction.openViewFastProduct())}
+            onClick={() => {
+              dispatch(modalsAction.openViewFastProductRequest(product));
+            }}
             type="button"
             className="w-4/5 p-3 mx-auto rounded-full border-2 border-solid
               border-white font-bold text-black bg-white hover:bg-organce hover:text-white"

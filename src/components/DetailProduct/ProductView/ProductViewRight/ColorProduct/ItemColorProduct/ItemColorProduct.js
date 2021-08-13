@@ -38,6 +38,7 @@ function ItemColorProduct(props) {
       >
         {color.description}
       </div>
+
       <img
         onClick={() => change()}
         src={image.src}

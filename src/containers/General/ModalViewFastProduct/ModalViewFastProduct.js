@@ -4,6 +4,7 @@ import ProductView from "../../DetailProduct/ProductView";
 
 function ModalViewFastProduct(props) {
   //
+  const { product } = props;
   //
   return (
     <div
@@ -14,7 +15,7 @@ function ModalViewFastProduct(props) {
       <div className="w-full relative p-2 bg-white rounded-lg">
         <CloseModal />
         <div className="w-full flex mt-5 mb-2">
-          <ProductView />
+          <ProductView products={product} />
         </div>
       </div>
     </div>

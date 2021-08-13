@@ -6,16 +6,17 @@ import CostAndLink from "./TypeProduct/CostAndLink/CostAndLink";
 
 function ItemProduct(props) {
   //
+  const { product } = props;
   //
   return (
     <>
       <div className="w-46% m-2 bg-white relative product__main z-10">
-        <Sale />
+        {product.sale > 0 && <Sale sale={product.sale} />}
         <div className="w-full relative h-64 mx-auto product ">
-          <ImageMain />
-          <OptionAndView />
+          <ImageMain image={product.image} />
+          <OptionAndView product={product} />
         </div>
-        <CostAndLink />
+        <CostAndLink product={product} />
       </div>
     </>
   );

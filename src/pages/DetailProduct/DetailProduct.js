@@ -30,7 +30,7 @@ function DetailProduct(props) {
     };
     fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [match]);
   //
   return (
     product.view.productCurrent && (

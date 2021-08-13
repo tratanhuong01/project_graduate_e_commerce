@@ -24,6 +24,7 @@ const myReducer = (state = initialState, action) => {
     case Types.LOAD_PRODUCT_CHOOSE:
       if (action.data.typeDisplay === 0) state.view = action.data.data;
       else state.modal = action.data.data;
+      state.typeDisplay = action.data.typeDisplay;
       return { ...state };
     case Types.CHANGE_MOUNT_PRODUCT_CHOOSE:
       if (action.typeDisplay === 0) state.view.amount = action.amount;

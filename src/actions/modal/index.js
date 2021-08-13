@@ -1,4 +1,5 @@
 import * as Types from "../../constants/ActionTypes";
+import * as productsAction from "../product/index";
 
 export const openCategory = () => {
   return {
@@ -57,9 +58,29 @@ export const openModalSendRate = () => {
   };
 };
 
-export const openViewFastProduct = () => {
+export const openViewFastProductRequest = (product) => {
+  return async (dispatch) => {
+    await dispatch(
+      productsAction.loadProductChoose({
+        data: {
+          amount: 1,
+          idProduct: product.idProduct,
+          color: product.color,
+          memory: product.memory,
+          productCurrent: product,
+          slug: typeof product !== "undefined" && product.slug,
+        },
+        typeDisplay: 1,
+      })
+    );
+    await dispatch(openViewFastProduct(product));
+  };
+};
+
+export const openViewFastProduct = (product) => {
   return {
     type: Types.OPEN_MODAL_VIEW_FAST_PRODUCT,
+    product,
   };
 };
 

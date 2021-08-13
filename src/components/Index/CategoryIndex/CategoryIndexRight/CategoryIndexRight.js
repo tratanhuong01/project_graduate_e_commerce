@@ -3,7 +3,7 @@ import React from "react";
 function CategoryIndexRight(props) {
   return (
     <div
-      className="w-3/4 px-2 relative w-full flex"
+      className="w-full md:w-3/4 px-2 relative flex"
       style={{ height: 384, maxHeight: 384 }}
     >
       <div className="w-12 h-12 bg-white bg-opacity-50 rounded-full cursor-pointer absolute top-1/2 transform -translate-y-1/2 left-3 z-20 flex justify-center items-center">

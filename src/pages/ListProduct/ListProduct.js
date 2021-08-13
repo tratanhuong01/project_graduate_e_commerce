@@ -8,6 +8,8 @@ import MainListProduct from "../../containers/ListProduct/MainListProduct";
 import Modal from "../../containers/Modal";
 import Notify from "../../containers/Notify";
 import * as cartsAction from "../../actions/cart/index";
+import Loading from "../../components/General/Loading/Loading";
+import * as listProductsAction from "../../actions/listProduct/index";
 
 function ListProduct(props) {
   //
@@ -17,10 +19,11 @@ function ListProduct(props) {
   const states = useSelector((state) => {
     return {
       user: state.user,
+      listProduct: state.listProduct,
     };
   });
-  // const { match } = props;
-  const { user } = states;
+  const { match } = props;
+  const { user, listProduct } = states;
   useEffect(() => {
     //
     dispatch(modalsAction.closeModal());
@@ -29,10 +32,23 @@ function ListProduct(props) {
       else setShow(false);
     };
     dispatch(cartsAction.loadCartRequest(user));
+    dispatch(
+      listProductsAction.loadListProductRequest({
+        slugCategoryProduct: match.match.params.slugCategoryProduct,
+        slugGroupProduct:
+          typeof match.match.params.slugGroupProduct === "undefined"
+            ? null
+            : match.match.params.slugGroupProduct,
+      })
+    );
+    return function cleanup() {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {}, [listProduct]);
   //
-  return (
+  return listProduct.products === null ? (
+    <Loading />
+  ) : (
     <>
       <MainListProduct />
       <Modal />

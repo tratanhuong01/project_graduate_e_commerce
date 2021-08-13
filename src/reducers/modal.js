@@ -64,7 +64,7 @@ const myReducer = (state = initialState, action) => {
     case Types.OPEN_MODAL_VIEW_FAST_PRODUCT:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
       state.status = true;
-      state.data = <ModalViewFastProduct />;
+      state.data = <ModalViewFastProduct product={action.product} />;
       return { ...state };
     case Types.OPEN_MODAL_ADDED_CURRENT:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
