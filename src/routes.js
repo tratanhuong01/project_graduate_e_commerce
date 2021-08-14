@@ -48,9 +48,14 @@ const routes = [
     main: () => <About />,
   },
   {
-    path: Config.PAGE_NEWS,
+    path: `${Config.PAGE_NEWS}`,
     exact: true,
     main: () => <News />,
+  },
+  {
+    path: `${Config.PAGE_NEWS}/:slug`,
+    exact: true,
+    main: (match) => <NewsDetail match={match} />,
   },
   {
     path: Config.PAGE_CONTACT,

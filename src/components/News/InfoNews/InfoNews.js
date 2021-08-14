@@ -1,15 +1,22 @@
 import React from "react";
+import NewsLeft from "../../Index/News/NewsLeft/NewsLeft";
 
 function InfoNews(props) {
   return (
     <>
-      <p className="font-semibold text-2xl text-center my-4">Tin tức</p>
-      <p className="text-sm text-gray-700 w-2/3 my-3 mx-auto text-center">
-        Đầu tiên, việc cải tiến và tạo nên thiết bị mới là cả một cuộc cách mạng
-        về công nghệ. Smart Watch ra đời nhằm hỗ trợ tối đa cho thao tác hằng
-        ngày, chẳng hạn bạn có thể trả lời/ từ chối cuộc gọi, điều khiển trình
-        nghe nhạc, xem ảnh, kiểm tra % pin smartphone, xem thông báo.....
-      </p>
+      <div className="w-full flex flex-wrap">
+        <div className="w-full lg:w-3/5 p-1 pt-2 pb-3 flex">
+          <NewsLeft />
+        </div>
+        <div className="w-full lg:w-2/5 px-2 my-2 md:flex lg:flex-col xl:pt-0.5">
+          <div className="w-full md:w-1/2 lg:w-full mr-2 lg:mr-0">
+            <NewsLeft />
+          </div>
+          <div className="w-full md:w-1/2 lg:w-full ">
+            <NewsLeft />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -45,7 +45,7 @@ function MainIndex(props) {
         {products.listProductByCategory.map((listProduct, index) => {
           return <CategoryProduct products={listProduct} key={index} />;
         })}
-        <News />
+        <News news={products.newsList} />
         <ReciviceInfo />
         <EndFooter />
       </div>

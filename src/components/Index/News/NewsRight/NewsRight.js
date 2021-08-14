@@ -2,11 +2,14 @@ import React from "react";
 import ItemNews from "../NewsRight/ItemNews/ItemNews";
 
 function NewsRight(props) {
+  //
+  const { news, subClass } = props;
+  //
   return (
-    <div className="w-full sm:w-1.2 px-2 flex flex-wrap items-center">
-      <ItemNews />
-      <ItemNews />
-      <ItemNews />
+    <div className={`w-full mt-10 flex flex-wrap items-center ${subClass}`}>
+      {news.map((newData, index) => {
+        return <ItemNews newData={newData} key={index} />;
+      })}
     </div>
   );
 }

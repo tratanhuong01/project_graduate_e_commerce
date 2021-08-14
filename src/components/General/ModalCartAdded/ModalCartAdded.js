@@ -22,8 +22,9 @@ function ModalCartAdded(props) {
   return (
     <div
       className="w-80 rounded-lg bg-white absolute animate__animated animate__zoomIn 
-    top-20 right-1/4 text-gray-700 z-50 modal__cart__added border-2 border-solid 
-    border-gray-200 shadow-lg "
+      text-gray-700 z-50 modal__cart__added border-2 border-solid 
+      border-gray-200 shadow-lg m-4"
+      style={{ right: "-25%", top: "65px" }}
     >
       <div className="w-full max-h-72 overflow-y-auto p-2 scrollbar-css">
         {carts.length === 0 ? (
@@ -65,9 +66,9 @@ function ModalCartAdded(props) {
         <Link
           to={Config.PAGE_CART}
           className="px-6 py-2 rounded-full bg-organce 
-        hover:bg-white hover:border-white border-2 border-solid text-white
-        border-white shadow-lg float-left flex items-center font-semibold 
-        hover:text-black ml-2"
+          hover:bg-white hover:border-white border-2 border-solid text-white
+          border-white shadow-lg float-left flex items-center font-semibold 
+          hover:text-black ml-2"
         >
           Giỏ hàng
         </Link>
@@ -77,10 +78,13 @@ function ModalCartAdded(props) {
               if (!user) dispatch(modalsAction.openModalLogin());
             }}
             type="button"
-            className="px-6 py-2 rounded-full hover:bg-organce 
-          bg-white border-white border-2 border-solid hover:text-white
-          hover:border-white shadow-lg float-right flex items-center font-semibold 
-          text-black ml-2"
+            className={`px-6 py-2 rounded-full border-white border-2 border-solid hover:text-white hover:border-white shadow-lg float-right flex items-center font-semibold 
+             ml-2 ${
+               sum() === 0
+                 ? "bg-gray-500 cursor-not-allowed text-white"
+                 : "hover:bg-organce bg-white"
+             } `}
+            disabled={sum() === 0 ? true : false}
           >
             Thanh toán
           </button>

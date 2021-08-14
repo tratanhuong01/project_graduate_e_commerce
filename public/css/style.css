@@ -32,6 +32,9 @@ button:focus {
 .hover\:bg-organce:hover {
   background-color: #f36438;
 }
+.hover\:bg-organce-important:hover {
+  background-color: #f36438 !important;
+}
 .hover\:border-organce:hover {
   border-color: #f36438;
 }
@@ -62,6 +65,12 @@ button:focus {
 .item__news__detail {
   width: 100%;
 }
+.element__hover:hover .element__show {
+  display: flex;
+}
+.element__show {
+  display: none;
+}
 @media (max-width: 768px) {
   .view__detail__product__scrollbar {
     display: none;
@@ -78,6 +87,9 @@ button:focus {
 @media (min-width: 700px) {
   .item__news__detail {
     width: 46% !important;
+  }
+  .item__child__news__item {
+    width: 50%;
   }
 }
 @media (min-width: 1024px) {
@@ -98,6 +110,9 @@ button:focus {
   }
   .item__category__dashboard {
     width: calc(25% - 28px) !important;
+  }
+  .item__child__news__item {
+    width: 29%;
   }
 }
 @media (min-width: 768px) {
@@ -213,4 +228,31 @@ button:focus {
 }
 .post {
   font-family: Arial, Helvetica, sans-serif !important;
+}
+.instgram {
+  background: "#f09433";
+  background: -moz-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
 }

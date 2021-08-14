@@ -25,17 +25,21 @@ function Index(props) {
   const { user } = states;
   useEffect(() => {
     //
+    let mounted = true;
     const fetch = async () => {
-      dispatch(modalsAction.closeModal());
-      window.onscroll = () => {
-        if (window.scrollY > 300) setShow(true);
-        else setShow(false);
-      };
-      const result = await api("getProductIndex", "GET", null);
-      setDataIndex(result.data);
-      dispatch(cartsAction.loadCartRequest(user));
+      if (mounted) {
+        dispatch(modalsAction.closeModal());
+        window.onscroll = () => {
+          if (window.scrollY > 300) setShow(true);
+          else setShow(false);
+        };
+        const result = await api("getProductIndex", "GET", null);
+        setDataIndex(result.data);
+        dispatch(cartsAction.loadCartRequest(user));
+      }
     };
     fetch();
+    return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //
