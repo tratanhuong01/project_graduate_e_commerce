@@ -43,7 +43,7 @@ function ItemNews(props) {
   newData = typeof newData !== "undefined" ? newData : dataDemo;
   //
   return (
-    <div className={`w-full mx-auto my-3 mb-10 flex ${subClass}`}>
+    <div className={`w-full mx-auto my-3 flex ${subClass}`}>
       <div className="w-1/4 news__left relative cursor-pointer">
         <img
           src={newData.thumbnail}

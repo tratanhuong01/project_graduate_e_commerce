@@ -18,7 +18,11 @@ function HeaderContent(props) {
         </span>
         <span className="bx bx-comment-detail mr-2 text-sm"></span>
         <span className="mr-3 hover:text-organce cursor-pointer text-sm">
-          (03 bình luận)
+          ({new Intl.NumberFormat().format(3)} bình luận)
+        </span>
+        <span className="fas fa-eye mr-2 text-sm"></span>
+        <span className="mr-3 hover:text-organce cursor-pointer text-sm">
+          ({new Intl.NumberFormat().format(newsDetail.view)} lượt xem)
         </span>
       </div>
     </div>

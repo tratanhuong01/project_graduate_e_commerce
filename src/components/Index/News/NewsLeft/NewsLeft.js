@@ -57,7 +57,7 @@ function NewsLeft(props) {
       >
         <Link
           to={`${Config.PAGE_NEWS}/${newData.slug}`}
-          className="font-semibold text-gray-100"
+          className="font-semibold text-gray-100 hover:text-organce"
         >
           {newData.title}
         </Link>

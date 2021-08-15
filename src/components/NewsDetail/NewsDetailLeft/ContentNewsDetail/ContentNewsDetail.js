@@ -15,7 +15,7 @@ function ContentNewsDetail(props) {
         dangerouslySetInnerHTML={{ __html: newsDetail.content }}
       ></div>
       <FooterContent />
-      <AuthorPost />
+      <AuthorPost newsDetail={newsDetail} />
     </div>
   );
 }

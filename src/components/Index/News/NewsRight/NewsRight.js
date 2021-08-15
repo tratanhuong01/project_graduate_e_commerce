@@ -6,7 +6,7 @@ function NewsRight(props) {
   const { news, subClass } = props;
   //
   return (
-    <div className={`w-full mt-10 flex flex-wrap items-center ${subClass}`}>
+    <div className={`w-full mt-2 flex flex-wrap items-center ${subClass}`}>
       {news.map((newData, index) => {
         return <ItemNews newData={newData} key={index} />;
       })}

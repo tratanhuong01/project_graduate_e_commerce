@@ -11,7 +11,7 @@ function ItemCategoryIndexLeft(props) {
     <li className="w-full item__category relative flex-wrap">
       <Link
         to={`${Config.PAGE_PRODUCT}/${groups.categoryProduct.slugCategoryProduct}`}
-        className="w-full flex items-center p-2.5 flex border-2 border-solid border-gray-200 
+        className="w-full flex items-center p-2.5 flex border-b-2 border-solid border-gray-200 
         cursor-pointer hover:text-organce hidden md:flex"
       >
         <span className={`${icon} text-2xl mr-3 `}></span>
@@ -40,12 +40,12 @@ function ItemCategoryIndexLeft(props) {
           show ? "flex flex-wrap" : "hidden"
         } border-2 border-solid left-0 md:left-full`}
       >
-        <div className="w-full font-semibold text-black">
+        <div className="w-full font-semibold text-black shadow-lg">
           {groups.groupProductList.map((group, index) => {
             return (
               <Link
                 to={`${Config.PAGE_PRODUCT}/${groups.categoryProduct.slugCategoryProduct}/${group.slugGroupProduct}`}
-                className="w-full p-2.5 flex border-2 border-solid border-gray-200 
+                className="w-full p-2.5 flex border-b-2 border-solid border-gray-200 
                 cursor-pointer hover:text-organce"
                 key={index}
               >

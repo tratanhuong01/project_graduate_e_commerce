@@ -2,6 +2,9 @@ import React from "react";
 import ItemCommentPost from "./ItemCommentPost/ItemCommentPost";
 
 function CommentPost(props) {
+  //
+  const { comments } = props;
+  //
   return (
     <div className="w-full p-2 my-5">
       <div className="flex text-xl my-3">
@@ -11,9 +14,11 @@ function CommentPost(props) {
         >
           BÌNH LUẬN
         </p>
-        <p className="flex items-center text-gray-700">( 03 )</p>
+        <p className="flex items-center text-gray-700">( {comments.length} )</p>
       </div>
-      <ItemCommentPost />
+      {comments.map((comment, index) => {
+        return <ItemCommentPost comment={comment} key={index} />;
+      })}
     </div>
   );
 }

@@ -27,13 +27,14 @@ function NewsDetail(props) {
       dispatch(cartsAction.loadCartRequest(user));
       let formData = new FormData();
       formData.append("slug", match.match.params.slug);
+      await api("updateViewNews", "PUT", formData);
       const result = await api("getNewsBySlug", "POST", formData);
       setNewsDetail(result.data);
     };
     if (mounted) fetch();
     return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [match]);
   //
   return newsDetail ? (
     <>

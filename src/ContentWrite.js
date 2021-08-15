@@ -4,6 +4,8 @@ import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import "../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import api from "./Utils/api";
+import * as StringUtils from "./Utils/StringUtils";
+
 function ContentWrite(props) {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [title, setTitle] = useState("");
@@ -48,8 +50,8 @@ function ContentWrite(props) {
       timeCreated: null,
       content: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       view: 0,
+      slug: StringUtils.removeVietnameseTones(title),
     };
-    console.log(data);
     await api("news", "POST", data);
 
     console.log("success");
