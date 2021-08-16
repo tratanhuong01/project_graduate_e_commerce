@@ -2,12 +2,12 @@ import React from "react";
 
 function TypeContentComment(props) {
   return (
-    <div className="w-11/12 ml-auto hidden">
+    <div className="w-full p-2 ml-auto">
       <div className="w-full flex my-3">
         <img
           src="http://www.thetahmid.com/themes/tennews-v1.1/images/comm-1.jpg"
           alt=""
-          className="w-12 h-12 rounded-full mr-4"
+          className="w-14 h-14 rounded-full mr-4"
         />
         <input
           type="text"

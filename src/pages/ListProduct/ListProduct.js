@@ -26,22 +26,25 @@ function ListProduct(props) {
   const { user, listProduct } = states;
   useEffect(() => {
     //
-    dispatch(modalsAction.closeModal());
-    window.onscroll = () => {
-      if (window.scrollY > 300) setShow(true);
-      else setShow(false);
-    };
-    dispatch(cartsAction.loadCartRequest(user));
-    dispatch(
-      listProductsAction.loadListProductRequest({
-        slugCategoryProduct: match.match.params.slugCategoryProduct,
-        slugGroupProduct:
-          typeof match.match.params.slugGroupProduct === "undefined"
-            ? null
-            : match.match.params.slugGroupProduct,
-      })
-    );
-    return function cleanup() {};
+    let mounted = true;
+    if (mounted) {
+      dispatch(modalsAction.closeModal());
+      window.onscroll = () => {
+        if (window.scrollY > 300) setShow(true);
+        else setShow(false);
+      };
+      dispatch(cartsAction.loadCartRequest(user));
+      dispatch(
+        listProductsAction.loadListProductRequest({
+          slugCategoryProduct: match.match.params.slugCategoryProduct,
+          slugGroupProduct:
+            typeof match.match.params.slugGroupProduct === "undefined"
+              ? null
+              : match.match.params.slugGroupProduct,
+        })
+      );
+    }
+    return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {}, [listProduct]);

@@ -8,7 +8,7 @@ function AddData(props) {
   const [listGroupProduct, setListGroupProduct] = useState([]);
   const [listBrand, setListBrand] = useState([]);
   const [groupProduct, setGroupProduct] = useState("");
-  const [brand, setBrand] = useState("");
+  const [brand, setBrand] = useState(null);
   const [listColorChoose, setListColorChoose] = useState([]);
   const [nameProduct, setNameProduct] = useState("");
   const [priceInput, setPriceInput] = useState("");
@@ -68,10 +68,10 @@ function AddData(props) {
               sizeProduct: null,
             })
           );
-          listIdProduct.push(id);
+          listIdProduct.push(`SP${id}`);
         });
       });
-    } else if (listColorChoose.length === 0) {
+    } else if (listColorChoose.length === 0 && listMemoryChoose.length === 0) {
       let image = await api("images", "POST", {
         id: "",
         alt: "",
@@ -96,35 +96,10 @@ function AddData(props) {
           sizeProduct: null,
         })
       );
-      listIdProduct.push(id);
-    } else if (listMemoryChoose.length === 0) {
-      let image = await api("images", "POST", {
-        id: "",
-        alt: "",
-        src: listImage[0],
-        type: 0,
-      });
-      id++;
-      listPromise.push(
-        api("products", "POST", {
-          id: `SP${id}`,
-          describeProduct: null,
-          isShow: 1,
-          slug: `${convertStringToSlug(
-            StringUtils.removeVietnameseTones(`${nameProduct} `)
-          )}`,
-          brandProduct: brand,
-          colorProduct: null,
-          imageProduct: image.data,
-          lineProduct: lineProduct.data,
-          memoryProduct: null,
-          userProduct: null,
-          sizeProduct: null,
-        })
-      );
-      listIdProduct.push(id);
-    } else
-      listColorChoose.forEach(async (dt1, index) => {
+      listIdProduct.push(`SP${id}`);
+    } else {
+      for (let index = 0; index < listColorChoose.length; index++) {
+        const dt1 = listColorChoose[index];
         let image = await api("images", "POST", {
           id: "",
           alt: "",
@@ -133,7 +108,7 @@ function AddData(props) {
         });
         id++;
         listPromise.push(
-          api("products", "POST", {
+          await api("products", "POST", {
             id: `SP${id}`,
             describeProduct: null,
             isShow: 1,
@@ -151,18 +126,19 @@ function AddData(props) {
             sizeProduct: null,
           })
         );
-        listIdProduct.push(id);
-      });
-
+        listIdProduct.push(`SP${id}`);
+      }
+    }
+    console.log(listIdProduct);
     listIdProduct.forEach(async (item) => {
       listPromisePrice.push(
         await api("productInputs", "POST", {
           productInput: {
-            id: "",
+            id: null,
             amount: 10,
             priceInput: Number(priceInput),
             timeInput: "2021-08-08 18:30:30",
-            productInput: null,
+            productInputs: null,
           },
           id: item,
         })
@@ -170,33 +146,36 @@ function AddData(props) {
       listPromisePrice.push(
         await api("productOutputs", "POST", {
           productOutput: {
-            id: "",
+            id: null,
             amount: 10,
             priceOutput: Number(priceOutput),
             timeOutput: "2021-08-08 18:30:30",
-            productOutput: null,
+            productOutputs: null,
+          },
+          id: item,
+        })
+      );
+      listPromisePrice.push(
+        await api("sales", "POST", {
+          sale: {
+            id: null,
+            productSale: null,
+            percent: sale,
+            timeStart: "08-12-2021 15:19:09",
+            timeEnd: "08-09-2021 15:19:09",
           },
           id: item,
         })
       );
     });
+
     axios
       .all(listPromise)
-      .then(
-        axios.spread((...responses) => {
-          console.log(responses);
-        })
-      )
-      .catch((errors) => {
-        // react on errors.
-      });
+      .then(axios.spread((...responses) => {}))
+      .catch((errors) => {});
     axios
       .all(listPromisePrice)
-      .then(
-        axios.spread((...responses) => {
-          console.log(responses);
-        })
-      )
+      .then(axios.spread((...responses) => {}))
       .catch((errors) => {
         // react on errors.
       });

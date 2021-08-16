@@ -38,7 +38,7 @@ function Index(props) {
         dispatch(cartsAction.loadCartRequest(user));
       }
     };
-    fetch();
+    if (mounted) fetch();
     return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

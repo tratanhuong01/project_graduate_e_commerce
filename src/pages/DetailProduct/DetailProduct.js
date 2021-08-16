@@ -22,13 +22,15 @@ function DetailProduct(props) {
   }, []);
   useEffect(() => {
     //
+    let mounted = true;
     const fetch = async () => {
       const slug = match.params.slug;
       dispatch(productsAction.loadProductChooseRequest(slug));
       dispatch(modalsAction.closeModal());
       dispatch(cartsAction.loadCartRequest(user));
     };
-    fetch();
+    if (mounted) fetch();
+    return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match]);
   //

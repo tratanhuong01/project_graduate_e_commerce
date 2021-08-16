@@ -40,7 +40,10 @@ function ItemCategoryIndexLeft(props) {
           show ? "flex flex-wrap" : "hidden"
         } border-2 border-solid left-0 md:left-full`}
       >
-        <div className="w-full font-semibold text-black shadow-lg">
+        <div
+          className="w-full font-semibold text-black shadow-lg overflow-y-auto scrollbar-css"
+          style={{ maxHeight: 384 }}
+        >
           {groups.groupProductList.map((group, index) => {
             return (
               <Link

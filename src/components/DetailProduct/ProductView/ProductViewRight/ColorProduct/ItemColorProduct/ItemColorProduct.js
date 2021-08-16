@@ -20,14 +20,19 @@ function ItemColorProduct(props) {
     formData.append("idColor", color.id);
     formData.append(
       "idMemory",
-      product.typeDisplay === 0
-        ? product.view.memory.id
-        : product.modal.memory.id
+      products.memory !== null
+        ? ` ${
+            product.typeDisplay === 0
+              ? product.view.memory.id
+              : product.modal.memory.id
+          }`
+        : ""
     );
     formData.append("idLineProduct", products.idLineProduct);
     let result = await api(`getSlug`, "POST", formData);
     if (product.typeDisplay === 0) history.push(result.data);
-    await dispatch(productsAction.loadProductChooseRequest(result.data));
+    if (result.data)
+      await dispatch(productsAction.loadProductChooseRequest(result.data));
   };
   //
   return (
