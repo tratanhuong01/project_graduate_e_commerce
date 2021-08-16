@@ -12,7 +12,7 @@ function OptionAndView(props) {
   return (
     <div
       className="w-full hidden bg-pink-500 bg-opacity-30 h-64 absolute top-0
-        left-0 justify-center items-product animate__animated animate__fadeIn"
+        left-0 justify-center data__category animate__animated animate__fadeIn"
     >
       <div className="w-full flex items-center">
         <div className="w-full text-center">

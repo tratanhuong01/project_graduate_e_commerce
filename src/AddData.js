@@ -50,7 +50,7 @@ function AddData(props) {
         listMemoryChoose.forEach(async (dt2) => {
           id++;
           listPromise.push(
-            api("products", "POST", {
+            await api("products", "POST", {
               id: `SP${id}`,
               describeProduct: null,
               isShow: 1,
@@ -80,7 +80,7 @@ function AddData(props) {
       });
       id++;
       listPromise.push(
-        api("products", "POST", {
+        await api("products", "POST", {
           id: `SP${id}`,
           describeProduct: null,
           isShow: 1,

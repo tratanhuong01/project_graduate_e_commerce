@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Rule from "../General/Rule";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -15,11 +15,18 @@ function MainDetailProduct(props) {
   //
   const { products } = props;
   const [show, setShow] = useState(false);
-  window.addEventListener("scroll", function () {
-    const y = window.scrollY;
-    if (y >= 600) setShow(true);
-    else setShow(false);
-  });
+  useEffect(() => {
+    //
+    document.title = products.nameLineProduct;
+
+    window.addEventListener("scroll", function () {
+      const y = window.scrollY;
+      if (y >= 600) setShow(true);
+      else setShow(false);
+    });
+    return () => setShow(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   //
   return (
     <div className="w-full">
@@ -34,7 +41,7 @@ function MainDetailProduct(props) {
           <div className="w-full flex my-5 lg:flex-row flex-col">
             <div className="w-full lg:w-7/12">
               <DescribeProduct products={products} />
-              <RateComment />
+              <RateComment products={products} />
             </div>
             <div className="w-full lg:w-5/12">
               <NewsDetailProduct />

@@ -8,6 +8,19 @@ function DescribeChild(props) {
   //
   return (
     <>
+      <div
+        className="text-green-700 my-3 font-semibold hover:text-green-500 
+      cursor-pointer"
+      >
+        Tiết kiệm hơn :
+        <span className="font-bold mx-1">
+          {new Intl.NumberFormat().format(
+            products.priceOutput * (products.sale / 100)
+          )}
+          đ
+        </span>
+        so với giá niêm yết
+      </div>
       <div className="mb-3 flex">
         <p>
           <span
@@ -32,7 +45,17 @@ function DescribeChild(props) {
         {new Intl.NumberFormat(["ban", "id"]).format(
           products.priceOutput * ((100 - products.sale) / 100)
         )}
-        <u className="text-xl pl-2">đ</u>
+        <u className="text-xl pl-2 mr-3">đ</u>
+        <strike className="text-gray-600 font-semibold text-xl mr-2">
+          {new Intl.NumberFormat().format(products.priceOutput)}đ
+        </strike>
+        <span
+          className="bg-red-500 font-semibold text-xs p-1.5 cursor-pointer rounded-r-2xl 
+          z-10 text-white pl-2 absolute hover:bg-red-600"
+          style={{ transform: "translate(10px,10px)" }}
+        >
+          Khuyến mãi -{products.sale} %
+        </span>
       </p>
       <ul className="text-gray-700 my-2 text-sm">
         <li className="my-2">Kích thước màn hình : 1,2"</li>

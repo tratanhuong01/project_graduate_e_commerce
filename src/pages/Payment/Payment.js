@@ -21,6 +21,7 @@ function Payment(props) {
 
   useEffect(() => {
     //
+    document.title = "Thanh toán";
     dispatch(cartsAction.loadCartRequest(user));
     dispatch(modalsAction.closeModal());
     // eslint-disable-next-line react-hooks/exhaustive-deps

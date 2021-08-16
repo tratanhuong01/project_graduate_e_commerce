@@ -29,6 +29,7 @@ function NewsDetail(props) {
       formData.append("slug", match.match.params.slug);
       await api("updateViewNews", "PUT", formData);
       const result = await api("getNewsBySlug", "POST", formData);
+      if (result.data) document.title = result.data.news.title;
       setNewsDetail(result.data);
     };
     if (mounted) fetch();

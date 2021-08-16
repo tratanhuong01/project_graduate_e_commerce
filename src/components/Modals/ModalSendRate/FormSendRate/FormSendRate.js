@@ -7,7 +7,7 @@ import ImageRate from "../../../DetailProduct/ProductView/RateComment/ImageRate/
 
 class FormSendRate extends Component {
   onSendRate = (data) => {
-    console.log(data);
+    console.log({ ...data, star: this.props.indexStar });
   };
   render() {
     const validationSchema = Yup.object().shape({

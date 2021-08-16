@@ -6,14 +6,15 @@ import CostAndLink from "./TypeProduct/CostAndLink/CostAndLink";
 
 function ItemProductIndex(props) {
   //
+  const { product } = props;
   //
   return (
     <>
       <div className="w-1/2 p-2 relative z-40">
-        {<Sale />}
-        <div className="w-full relative h-64 mx-auto product ">
-          <ImageMain />
-          <OptionAndView />
+        {product.sale > 0 && <Sale sale={product.sale} />}
+        <div className="w-full relative md:h-80 xl:h-64 mx-auto item__category ">
+          <ImageMain image={product.image} />
+          <OptionAndView product={product} />
           <span
             className="bx bxs-gift text-4xl text-organce cursor-pointer 
           absolute z-50 bottom-1 right-0"
@@ -22,10 +23,14 @@ function ItemProductIndex(props) {
             className="px-2 py-1.5 rounded-full text-xs bg-organce text-white 
           font-semibold absolute bottom-1 left-2 cursor-pointer"
           >
-            <i className="fas fa-fire text-yellow-300 mr-2"></i>Giảm 6.500.000đ
+            <i className="fas fa-fire text-yellow-300 mr-2"></i>Giảm{" "}
+            {new Intl.NumberFormat().format(
+              product.priceOutput * (product.sale / 100)
+            )}
+            đ
           </span>
         </div>
-        <CostAndLink />
+        <CostAndLink product={product} />
       </div>
     </>
   );

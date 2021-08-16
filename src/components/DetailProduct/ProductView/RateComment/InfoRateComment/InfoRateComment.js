@@ -7,6 +7,7 @@ import * as modalsAction from "../../../../../actions/modal/index";
 function InfoRateComment(props) {
   //
   const dispatch = useDispatch();
+  const { products } = props;
   //
   return (
     <div className="w-full flex bg-gray-100 p-2 border-2 border-solid border-gray-200">
@@ -19,7 +20,7 @@ function InfoRateComment(props) {
         </div>
         <p className="w-full text-center my-1 text-gray-700">(111 đánh giá)</p>
         <button
-          onClick={() => dispatch(modalsAction.openModalSendRate())}
+          onClick={() => dispatch(modalsAction.openModalSendRate(products))}
           className="px-6 py-2.5 rounded-full bg-organce text-white font-semibold 
           my-5 text-sm mx-auto"
         >

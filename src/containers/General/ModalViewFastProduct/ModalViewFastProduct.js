@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import CloseModal from "../../../components/General/CloseModal/CloseModal";
 import ProductView from "../../DetailProduct/ProductView";
 
 function ModalViewFastProduct(props) {
   //
-  const { product } = props;
+  const states = useSelector((state) => {
+    return {
+      product: state.product,
+    };
+  });
+  const { product } = states;
+
+  useEffect(() => {}, [product]);
   //
   return (
     <div
@@ -15,7 +23,7 @@ function ModalViewFastProduct(props) {
       <div className="w-full relative p-2 bg-white rounded-lg">
         <CloseModal />
         <div className="w-full flex mt-5 mb-2">
-          <ProductView products={product} />
+          <ProductView products={product.modal.productCurrent} />
         </div>
       </div>
     </div>

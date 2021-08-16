@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import api from "../../../../../../Utils/api";
@@ -18,22 +18,22 @@ function ItemColorProduct(props) {
   const change = async () => {
     let formData = new FormData();
     formData.append("idColor", color.id);
-    formData.append(
-      "idMemory",
-      products.memory !== null
-        ? ` ${
-            product.typeDisplay === 0
-              ? product.view.memory.id
-              : product.modal.memory.id
-          }`
-        : ""
-    );
+    if (products.memory !== null)
+      formData.append(
+        "idMemory",
+        product.typeDisplay === 0
+          ? product.view.memory.id
+          : product.modal.memory.id
+      );
+    else formData.append("idMemory", "");
     formData.append("idLineProduct", products.idLineProduct);
     let result = await api(`getSlug`, "POST", formData);
     if (product.typeDisplay === 0) history.push(result.data);
-    if (result.data)
-      await dispatch(productsAction.loadProductChooseRequest(result.data));
+    dispatch(
+      productsAction.loadProductChooseRequest(result.data, product.typeDisplay)
+    );
   };
+  useEffect(() => {}, [products]);
   //
   return (
     <div className="w-14 h-14 p-2 relative image-color flex-shrink-0">

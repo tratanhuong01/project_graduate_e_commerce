@@ -12,7 +12,7 @@ function ItemProduct(props) {
     <>
       <div className="w-46% m-2 bg-white relative product__main z-10">
         {product.sale > 0 && <Sale sale={product.sale} />}
-        <div className="w-full relative h-64 mx-auto product ">
+        <div className="w-full relative h-64 mx-auto item__category ">
           <ImageMain image={product.image} />
           <OptionAndView product={product} />
         </div>

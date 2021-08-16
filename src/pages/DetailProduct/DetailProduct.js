@@ -25,7 +25,7 @@ function DetailProduct(props) {
     let mounted = true;
     const fetch = async () => {
       const slug = match.params.slug;
-      dispatch(productsAction.loadProductChooseRequest(slug));
+      dispatch(productsAction.loadProductChooseRequest(slug, 0));
       dispatch(modalsAction.closeModal());
       dispatch(cartsAction.loadCartRequest(user));
     };
@@ -34,13 +34,13 @@ function DetailProduct(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match]);
   //
-  return (
-    product.view.productCurrent && (
-      <>
-        <MainDetailProduct products={product.view.productCurrent} />
-        <Modal />
-      </>
-    )
+  return product.view.productCurrent ? (
+    <>
+      <MainDetailProduct products={product.view.productCurrent} />
+      <Modal />
+    </>
+  ) : (
+    "Not product"
   );
 }
 

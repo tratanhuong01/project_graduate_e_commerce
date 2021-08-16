@@ -9,6 +9,8 @@ function About(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     //
+    document.title = "Giới thiệu";
+
     dispatch(modalsAction.closeModal());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

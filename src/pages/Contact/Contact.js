@@ -16,6 +16,8 @@ function Contact(props) {
   const { user } = states;
   useEffect(() => {
     //
+    document.title = "Liên hệ";
+
     dispatch(modalsAction.closeModal());
     dispatch(cartsAction.loadCartRequest(user));
     // eslint-disable-next-line react-hooks/exhaustive-deps

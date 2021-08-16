@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import TopSell from "./TopSell";
 import Rule from "../General/Rule";
-import SmartWatch from "./SmartWatch";
+import TopSaleToday from "./TopSaleToday";
 import BannerAds from "../../components/Banner/BannerIndex/BannerAds/BannerAds";
 import News from "./News";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -40,7 +40,7 @@ function MainIndex(props) {
         /> */}
         <TopSell />
         <Rule />
-        <SmartWatch />
+        <TopSaleToday products={products.listProductSaleToday} />
         <BannerAds />
         {products.listProductByCategory.map((listProduct, index) => {
           return <CategoryProduct products={listProduct} key={index} />;

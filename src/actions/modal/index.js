@@ -52,9 +52,10 @@ export const offLoadingModal = () => {
   };
 };
 
-export const openModalSendRate = () => {
+export const openModalSendRate = (products) => {
   return {
     type: Types.OPEN_MODAL_SEND_RATE,
+    products,
   };
 };
 

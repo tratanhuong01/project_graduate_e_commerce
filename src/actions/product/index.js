@@ -9,7 +9,7 @@ export const changeAmountProductChoose = (typeDisplay, amount) => {
   };
 };
 
-export const loadProductChooseRequest = (slug) => {
+export const loadProductChooseRequest = (slug, typeDisplay) => {
   return async (dispatch) => {
     let formData = new FormData();
     formData.append("slug", slug);
@@ -24,7 +24,7 @@ export const loadProductChooseRequest = (slug) => {
           productCurrent: result.data,
           slug: slug,
         },
-        typeDisplay: 0,
+        typeDisplay: typeDisplay,
       })
     );
   };

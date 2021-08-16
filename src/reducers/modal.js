@@ -48,7 +48,7 @@ const myReducer = (state = initialState, action) => {
     case Types.OPEN_MODAL_SEND_RATE:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
       state.status = true;
-      state.data = <ModalSendRate />;
+      state.data = <ModalSendRate products={action.products} />;
       return { ...state };
     case Types.OPEN_MODAL_TYPE_CODE:
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");

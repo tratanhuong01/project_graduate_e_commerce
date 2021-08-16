@@ -28,6 +28,8 @@ function ListProduct(props) {
     //
     let mounted = true;
     if (mounted) {
+      document.title = "Sản phẩm";
+
       dispatch(modalsAction.closeModal());
       window.onscroll = () => {
         if (window.scrollY > 300) setShow(true);

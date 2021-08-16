@@ -25,7 +25,9 @@ function ItemMemoryProduct(props) {
     formData.append("idLineProduct", products.idLineProduct);
     let result = await api(`getSlug`, "POST", formData);
     if (product.typeDisplay === 0) history.push(result.data);
-    await dispatch(productsAction.loadProductChooseRequest(result.data));
+    dispatch(
+      productsAction.loadProductChooseRequest(result.data, product.typeDisplay)
+    );
   };
   //
   return (

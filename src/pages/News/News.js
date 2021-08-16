@@ -10,6 +10,7 @@ function News(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     //
+    document.title = "Tin tức";
     dispatch(modalsAction.closeModal());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

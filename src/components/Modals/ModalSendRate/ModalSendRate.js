@@ -7,6 +7,7 @@ function ModalSendRate(props) {
   const [indexStar, setIndexStar] = useState(1);
   const prevStar = useRef(indexStar);
   const arrayDemo = [1, 2, 3, 4, 5];
+  const { products } = props;
   //
   return (
     <div
@@ -18,7 +19,7 @@ function ModalSendRate(props) {
       <div className="w-full mb-1 mt-8 flex justify-center flex-col text-center">
         <p className="text-xm">Đánh giá sản phẩm</p>
         <p className="text-xl font-bold mt-1 mb-3">
-          POCO X3 Pro 6GB/128GB Chính Hãng
+          {products.nameLineProduct}
         </p>
       </div>
       <div className="w-full my-1 flex px-9">
@@ -44,7 +45,7 @@ function ModalSendRate(props) {
           })}
         </>
       </div>
-      <FormSendRate />
+      <FormSendRate indexStar={indexStar} products={products} />
     </div>
   );
 }

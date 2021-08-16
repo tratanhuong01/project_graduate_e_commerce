@@ -16,6 +16,8 @@ function Cart(props) {
   const { user } = states;
   useEffect(() => {
     //
+    document.title = "Giỏ hàng";
+
     dispatch(modalsAction.closeModal());
     dispatch(cartsAction.loadCartRequest(user));
     // eslint-disable-next-line react-hooks/exhaustive-deps
