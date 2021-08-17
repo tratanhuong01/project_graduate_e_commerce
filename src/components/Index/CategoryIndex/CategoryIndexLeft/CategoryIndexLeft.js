@@ -1,26 +1,29 @@
-import React from "react";
-import CategoryIndexLeftTop from "./CategoryIndexLeftTop/CategoryIndexLeftTop";
+import React, { useEffect, useState } from "react";
+import api from "../../../../Utils/api";
 import ItemCategoryIndexLeft from "./ItemCategoryIndexLeft/ItemCategoryIndexLeft";
 
 function CategoryIndexLeft(props) {
   //
-  const { products, menu, setMenu } = props;
+  const [categorys, setCategorys] = useState([]);
+  useEffect(() => {
+    //
+    const fetch = async () => {
+      const categoryResult = await api(
+        "getCategoryByGroupProducts",
+        "GET",
+        null
+      );
+      setCategorys(categoryResult.data);
+    };
+    fetch();
+    return () => setCategorys([]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   //
   return (
-    <div
-      className={`${
-        menu ? "" : "hidden"
-      } w-2/3 fixed top-0 left-0 md:relative md:w-56 lg:w-1/4 bg-white md:bg-transparent z-main 
-      h-screen md:h-auto max-h-full overflow-y-auto md:overflow-visible scrollbar-css category__index__left`}
-    >
-      <ul className="w-full relative shadow-lg">
-        <div className="w-full p-2 md:hidden">
-          <CategoryIndexLeftTop
-            setMenu={(state) => setMenu(state)}
-            menu={menu}
-          />
-        </div>
-        {products.listCategoryByGroupProduct.map((item, index) => {
+    categorys.length > 0 && (
+      <ul className="w-full relative shadow-lg bg-white text-gray-800">
+        {categorys.map((item, index) => {
           return (
             <ItemCategoryIndexLeft
               groups={item}
@@ -31,7 +34,7 @@ function CategoryIndexLeft(props) {
           );
         })}
       </ul>
-    </div>
+    )
   );
 }
 

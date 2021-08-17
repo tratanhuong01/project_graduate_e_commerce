@@ -4,6 +4,8 @@ import * as modalsAction from "../../actions/modal/index";
 import Modal from "../../containers/Modal";
 import MainContact from "../../containers/Contact/MainContact";
 import * as cartsAction from "../../actions/cart/index";
+import useScrollEvent from "../../hook/useScrollEvent";
+import ScrollTop from "../../components/General/ScrollTop/ScrollTop";
 
 function Contact(props) {
   //
@@ -13,6 +15,7 @@ function Contact(props) {
       user: state.user,
     };
   });
+  const { show, subClassMenu } = useScrollEvent();
   const { user } = states;
   useEffect(() => {
     //
@@ -25,7 +28,8 @@ function Contact(props) {
   //
   return (
     <>
-      <MainContact />
+      {show && <ScrollTop />}
+      <MainContact subClassMenu={subClassMenu} />
       <Modal />
     </>
   );

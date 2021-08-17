@@ -5,6 +5,8 @@ import MainDetailProduct from "../../containers/DetailProduct/MainDetailProduct"
 import Modal from "../../containers/Modal";
 import * as productsAction from "../../actions/product/index";
 import * as cartsAction from "../../actions/cart/index";
+import useScrollEvent from "../../hook/useScrollEvent";
+import ScrollTop from "../../components/General/ScrollTop/ScrollTop";
 
 function DetailProduct(props) {
   //
@@ -17,9 +19,8 @@ function DetailProduct(props) {
     };
   });
   const { product, user } = states;
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { show, subClassMenu } = useScrollEvent();
+
   useEffect(() => {
     //
     let mounted = true;
@@ -36,7 +37,11 @@ function DetailProduct(props) {
   //
   return product.view.productCurrent ? (
     <>
-      <MainDetailProduct products={product.view.productCurrent} />
+      {show && <ScrollTop />}
+      <MainDetailProduct
+        products={product.view.productCurrent}
+        subClassMenu={subClassMenu}
+      />
       <Modal />
     </>
   ) : (

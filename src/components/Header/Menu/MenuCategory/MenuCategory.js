@@ -42,7 +42,7 @@ function MenuCategory(props) {
               : "hover:border-organce border-white hover:text-organce "
           }`}
         >
-          <Link to={to}>{label}</Link>
+          {Config.PAGE_PRODUCT === to ? label : <Link to={to}>{label}</Link>}
         </li>
       </Route>
     );

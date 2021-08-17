@@ -6,12 +6,20 @@ import ListProduct from "./ListProduct";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
+import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 
 function MainListProduct(props) {
+  //
   const [show, setShow] = useState(false);
+  const { subClassMenu } = props;
+  const [menu, setMenu] = useState(false);
+
+  //
   return (
     <div className="w-full">
-      <Header />
+      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
+      <MainCategory menu={menu} setMenu={setMenu} />
+
       <div className="w-full bg-gray-100">
         <LevelUrl />
         <hr className="my-2"></hr>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -8,6 +8,7 @@ import TitleCart from "../../components/Cart/TitleCart/TitleCart";
 import ItemCartMain from "../../components/Cart/ItemCartMain/ItemCartMain";
 import EndCart from "../../components/Cart/EndCart/EndCart";
 import { useSelector } from "react-redux";
+import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 
 function MainCart(props) {
   //
@@ -17,6 +18,8 @@ function MainCart(props) {
     };
   });
   const { carts } = states;
+
+  const [menu, setMenu] = useState(false);
 
   const sum = () => {
     let sum = 0;
@@ -29,12 +32,15 @@ function MainCart(props) {
 
   const sumMoney = sum();
 
+  const { subClassMenu } = props;
+
   useEffect(() => {}, [carts]);
 
   //
   return (
     <div className="w-full">
-      <Header />
+      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
+      <MainCategory menu={menu} setMenu={setMenu} />
       <div className="w-full bg-gray-100">
         <LevelUrl />
         <hr className="my-2"></hr>

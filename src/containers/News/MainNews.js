@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Rule from "../../containers/General/Rule";
@@ -8,13 +8,18 @@ import ItemChildNews from "../../components/News/ItemChildNews/ItemChildNews";
 import InfoNews from "../../components/News/InfoNews/InfoNews";
 import ItemCategoryNews from "../../components/News/ItemCategoryNews/ItemCategoryNews";
 import NewsViewMost from "../../components/General/NewsViewMost/NewsViewMost";
+import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 
 function MainNews(props) {
   //
+  const { subClassMenu } = props;
+  const [menu, setMenu] = useState(false);
+
   //
   return (
     <div className="w-full">
-      <Header />
+      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
+      <MainCategory menu={menu} setMenu={setMenu} />
 
       <div className="w-full">
         <LevelUrl />

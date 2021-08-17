@@ -12,19 +12,11 @@ function ItemCategoryIndexLeft(props) {
       <Link
         to={`${Config.PAGE_PRODUCT}/${groups.categoryProduct.slugCategoryProduct}`}
         className="w-full flex items-center p-2.5 flex border-b-2 border-solid border-gray-200 
-        cursor-pointer hover:text-organce hidden md:flex"
+        cursor-pointer hover:text-organce flex"
       >
         <span className={`${icon} text-2xl mr-3 `}></span>
         <span className="font-semibold">{label}</span>
       </Link>
-      <button
-        onClick={() => setShow(!show)}
-        className="w-full flex items-center p-2.5 flex border-2 border-solid border-gray-200 
-        cursor-pointer hover:text-organce flex md:hidden"
-      >
-        <span className={`${icon} text-2xl mr-3 `}></span>
-        <span className="font-semibold">{label}</span>
-      </button>
       <div
         onClick={() => setShow(!show)}
         className={`cursor-pointer absolute top-3 right-2 md:hidden`}

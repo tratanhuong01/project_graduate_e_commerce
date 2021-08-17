@@ -13,7 +13,7 @@ function Modal(props) {
   //
   return (
     <div
-      className={`w-full h-screen bg-opacity-50 bg-black top-0 left-0 fixed z-50 
+      className={`w-full h-screen bg-opacity-50 bg-black top-0 left-0 fixed z-main  
       ${status ? "" : "hidden"}`}
     >
       {data}

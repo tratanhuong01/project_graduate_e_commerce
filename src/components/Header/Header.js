@@ -4,15 +4,18 @@ import HeaderLeft from "./HeaderLeft/HeaderLeft";
 import HeaderRight from "./HeaderRight/HeaderRight";
 import HeaderTop from "./HeaderTop/HeaderTop";
 import Menu from "./Menu/Menu";
+import MenuCategory from "./Menu/MenuCategory/MenuCategory";
 
 function Header(props) {
   //
-  const { menu, setMenu } = props;
+  const { menu, setMenu, subClassMenu } = props;
   //
   return (
     <>
       <HeaderTop />
-      <div className="w-full bg-white lg:sticky top-0 z-second relative">
+      <div
+        className={`w-full bg-white lg:sticky top-0 z-main relative ${subClassMenu}`}
+      >
         <div className="xl:w-4/5 w-full mx-auto flex text-gray-800">
           <div className="w-1/5 md:hidden flex items-center ml-3">
             <div
@@ -24,11 +27,21 @@ function Header(props) {
             </div>
           </div>
           <HeaderLeft />
-          <HeaderCenter />
+          {subClassMenu && (
+            <div
+              className={`hidden md:flex md:w-8/12 lg:w-3/5 items-center justify-end menu `}
+            >
+              <div className="md:w-full md:mx-4 lg:mx-0 lg:w-10/12 flex item-center ">
+                <MenuCategory />
+              </div>
+            </div>
+          )}
+          {!subClassMenu && <HeaderCenter />}
+
           <HeaderRight />
         </div>
       </div>
-      <Menu />
+      <Menu menu={menu} setMenu={setMenu} />
     </>
   );
 }

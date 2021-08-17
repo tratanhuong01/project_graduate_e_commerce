@@ -10,13 +10,14 @@ import ModalChatBot from "../../components/General/ChatBot/ModalChatBot/ModalCha
 import api from "../../Utils/api";
 import Loading from "../../components/General/Loading/Loading";
 import * as cartsAction from "../../actions/cart/index";
+import useScrollEvent from "../../hook/useScrollEvent";
 
 function Index(props) {
   //
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
   const [chatBot, setChatBot] = useState(false);
   const [dataIndex, setDataIndex] = useState(null);
+  const { show, subClassMenu } = useScrollEvent();
   const states = useSelector((state) => {
     return {
       user: state.user,
@@ -28,10 +29,6 @@ function Index(props) {
     const fetch = async () => {
       document.title = "Trang chủ";
       dispatch(modalsAction.closeModal());
-      window.onscroll = () => {
-        if (window.scrollY > 300) setShow(true);
-        else setShow(false);
-      };
       const result = await api("getProductIndex", "GET", null);
       setDataIndex(result.data);
       dispatch(cartsAction.loadCartRequest(user));
@@ -45,7 +42,7 @@ function Index(props) {
     <Loading />
   ) : (
     <>
-      <MainIndex products={dataIndex} />
+      <MainIndex products={dataIndex} subClassMenu={subClassMenu} />
       <Modal isPopup={true} />
       <Notify />
       {show && <ScrollTop />}

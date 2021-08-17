@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Rule from "../General/Rule";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -9,31 +9,25 @@ import DescribeProduct from "../../components/DetailProduct/ProductView/Describe
 // import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
-// import ViewProductWhenScroll from "./ViewProductWhenScroll";
+import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 
 function MainDetailProduct(props) {
   //
-  const { products } = props;
-  // const [show, setShow] = useState(false);
+  const { products, subClassMenu } = props;
+  const [menu, setMenu] = useState(false);
+
+  //
   useEffect(() => {
     //
     document.title = products.nameLineProduct;
-
-    // window.addEventListener("scroll", function () {
-    //   const y = window.scrollY;
-    //   if (y >= 600) setShow(true);
-    //   else setShow(false);
-    // });
-    // return () => setShow(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //
   return (
     <div className="w-full">
-      {/* {show && <ViewProductWhenScroll products={products} />} */}
-      <div className="w-full relative text-white md:text-black z-30">
-        <Header />
-      </div>
+      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
+      <MainCategory menu={menu} setMenu={setMenu} />
+
       <div className="w-full bg-gray-100">
         <LevelUrl />
         <div className="w-full xl:w-4/5 mx-auto p-4 bg-white">

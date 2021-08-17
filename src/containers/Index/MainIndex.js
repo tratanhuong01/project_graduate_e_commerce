@@ -8,24 +8,22 @@ import News from "./News";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
-import CategoryIndex from "./CategoryIndex";
 import HorizontalCategory from "../../components/Index/HorizontalCategory/HorizontalCategory";
-// import BannerIndex from "../../components/Banner/BannerIndex/BannerIndex";
+import SliderProduct from "./SliderProduct";
+import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
+
 function MainIndex(props) {
   //
-  const { products } = props;
+  const { products, subClassMenu } = props;
   const [menu, setMenu] = useState(false);
   //
   return (
     <div className="w-full">
-      <Header setMenu={setMenu} menu={menu} />
+      <Header setMenu={setMenu} menu={menu} subClassMenu={subClassMenu} />
       <div className="w-full">
-        <CategoryIndex
-          products={products}
-          menu={menu}
-          setMenu={(state) => setMenu(state)}
-        />
+        <SliderProduct />
         <HorizontalCategory products={products} />
+        <MainCategory menu={menu} setMenu={setMenu} />
         <img
           src="https://bizweb.dktcdn.net/100/420/160/themes/825846/assets/feature_banner.jpg?1628694566095"
           alt=""

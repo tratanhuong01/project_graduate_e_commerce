@@ -10,11 +10,12 @@ import Notify from "../../containers/Notify";
 import * as cartsAction from "../../actions/cart/index";
 import Loading from "../../components/General/Loading/Loading";
 import * as listProductsAction from "../../actions/listProduct/index";
+import useScrollEvent from "../../hook/useScrollEvent";
 
 function ListProduct(props) {
   //
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
+  const { show, subClassMenu } = useScrollEvent();
   const [chatBot, setChatBot] = useState(false);
   const states = useSelector((state) => {
     return {
@@ -29,12 +30,7 @@ function ListProduct(props) {
     let mounted = true;
     if (mounted) {
       document.title = "Sản phẩm";
-
       dispatch(modalsAction.closeModal());
-      window.onscroll = () => {
-        if (window.scrollY > 300) setShow(true);
-        else setShow(false);
-      };
       dispatch(cartsAction.loadCartRequest(user));
       dispatch(
         listProductsAction.loadListProductRequest({
@@ -48,14 +44,14 @@ function ListProduct(props) {
     }
     return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [match]);
   useEffect(() => {}, [listProduct]);
   //
   return listProduct.products === null ? (
     <Loading />
   ) : (
     <>
-      <MainListProduct />
+      <MainListProduct subClassMenu={subClassMenu} />
       <Modal />
       <Notify />
       {show && <ScrollTop />}

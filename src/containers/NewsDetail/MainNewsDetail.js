@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Header from "../../components/Header/Header";
+import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 import NewsDetailLeft from "../../components/NewsDetail/NewsDetailLeft/NewsDetailLeft";
 import NewsDetailRight from "../../components/NewsDetail/NewsDetailRight/NewsDetailRight";
 import Rule from "../General/Rule";
 
 function MainNewsDetail(props) {
   //
-  const { newsDetail } = props;
+  const { newsDetail, subClassMenu } = props;
+  const [menu, setMenu] = useState(false);
+
   //
   return (
     <div className="w-full">
-      <Header />
+      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
+      <MainCategory menu={menu} setMenu={setMenu} />
 
       <div className="w-full">
         <LevelUrl />

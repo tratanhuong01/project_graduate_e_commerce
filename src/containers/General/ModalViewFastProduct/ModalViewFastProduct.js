@@ -20,7 +20,7 @@ function ModalViewFastProduct(props) {
         rounded-lg z-50 overflow-y-auto scrollbar-css"
       style={{ maxHeight: "90vh" }}
     >
-      <div className="w-full relative p-2 bg-white rounded-lg">
+      <div className="w-full relative px-2 py-8 bg-white rounded-lg">
         <CloseModal />
         <div className="w-full flex mt-5 mb-2">
           <ProductView products={product.modal.productCurrent} />

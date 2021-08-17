@@ -25,7 +25,7 @@ const routes = [
   {
     path: Config.PAGE_PRODUCT,
     exact: true,
-    main: () => <ListProduct />,
+    main: (match) => <ListProduct match={match} />,
   },
   {
     path: `${Config.PAGE_DETAIL_PRODUCT}/:slug`,
