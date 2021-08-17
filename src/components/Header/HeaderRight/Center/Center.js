@@ -18,14 +18,14 @@ function Center(props) {
 
   //
   return (
-    <li className="py-6 px-2 flex relative cursor-pointer toggel__hover__cart_show">
+    <li className="py-6 px-2 flex relative cursor-pointer toggel__hover__cart_show cursor-pointer">
       <Link to={Config.PAGE_CART}>
-        <i className="bx bxs-shopping-bag text-3xl"></i>
+        <i className="bx bx-shopping-bag text-3xl flex items-center cursor-pointer"></i>
       </Link>
       <span
-        className="w-5 h-5 rounded-full border-2 border-solid 
-            border-white flex justify-center items-center py-0.5 font-bold 
-            absolute right-0.5 bg-white text-yellow-500 top-4 text-sm"
+        className="w-5 h-5 rounded-full border border-solid text-white
+            border-organce flex justify-center items-center py-0.5 font-bold 
+            absolute right-0.5 bg-organce bottom-5 text-xs"
       >
         {carts.length}
       </span>

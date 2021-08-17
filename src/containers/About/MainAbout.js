@@ -9,9 +9,7 @@ function MainAbout(props) {
   //
   return (
     <div className="w-full">
-      <div className="w-full relative text-white md:text-black">
-        <Header />
-      </div>
+      <Header />
       <div className="w-full bg-gray-100">
         <p className="text-3xl font-bold text-center py-12">Giới thiệu</p>
         <LevelUrl />

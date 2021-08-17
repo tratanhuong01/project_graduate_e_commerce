@@ -10,7 +10,7 @@ function TopSaleToday(props) {
   useEffect(() => {}, [products]);
   //
   return (
-    <div className="w-full md:w-11/12 xl:w-4/5 mx-auto p-4">
+    <div className="w-full xl:w-4/5 mx-auto">
       <p
         className="p-8 italic font-bold text-4xl text-center 
         text-organce cursor-pointer"

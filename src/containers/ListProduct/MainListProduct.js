@@ -11,9 +11,7 @@ function MainListProduct(props) {
   const [show, setShow] = useState(false);
   return (
     <div className="w-full">
-      <div className="w-full relative text-white md:text-black">
-        <Header />
-      </div>
+      <Header />
       <div className="w-full bg-gray-100">
         <LevelUrl />
         <hr className="my-2"></hr>

@@ -10,7 +10,7 @@ function CategoryIndexLeft(props) {
     <div
       className={`${
         menu ? "" : "hidden"
-      } w-2/3 fixed top-0 left-0 md:relative md:w-56 lg:w-1/4 bg-white md:bg-transparent z-50 
+      } w-2/3 fixed top-0 left-0 md:relative md:w-56 lg:w-1/4 bg-white md:bg-transparent z-main 
       h-screen md:h-auto max-h-full overflow-y-auto md:overflow-visible scrollbar-css category__index__left`}
     >
       <ul className="w-full relative shadow-lg">

@@ -1,6 +1,6 @@
 export const API_URL = "http://localhost:3333";
 export const LOGO =
-  "https://bizweb.dktcdn.net/100/420/160/themes/825846/assets/logo.svg?1628694566095";
+  "https://upload.wikimedia.org/wikipedia/commons/1/1e/SMART-LOGO.jpg";
 export const NAME_LOGO = "XSMART";
 export const PAGE_INDEX = "/";
 export const PAGE_PRODUCT = "/san-pham";

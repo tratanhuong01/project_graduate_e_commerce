@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Rule from "../General/Rule";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
@@ -9,28 +9,28 @@ import DescribeProduct from "../../components/DetailProduct/ProductView/Describe
 // import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
-import ViewProductWhenScroll from "./ViewProductWhenScroll";
+// import ViewProductWhenScroll from "./ViewProductWhenScroll";
 
 function MainDetailProduct(props) {
   //
   const { products } = props;
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   useEffect(() => {
     //
     document.title = products.nameLineProduct;
 
-    window.addEventListener("scroll", function () {
-      const y = window.scrollY;
-      if (y >= 600) setShow(true);
-      else setShow(false);
-    });
-    return () => setShow(false);
+    // window.addEventListener("scroll", function () {
+    //   const y = window.scrollY;
+    //   if (y >= 600) setShow(true);
+    //   else setShow(false);
+    // });
+    // return () => setShow(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //
   return (
     <div className="w-full">
-      {show && <ViewProductWhenScroll products={products} />}
+      {/* {show && <ViewProductWhenScroll products={products} />} */}
       <div className="w-full relative text-white md:text-black z-30">
         <Header />
       </div>

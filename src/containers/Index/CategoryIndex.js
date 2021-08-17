@@ -7,7 +7,7 @@ function CategoryIndex(props) {
   const { products, menu, setMenu } = props;
   //
   return (
-    <div className="w-full md:w-11/12 xl:w-4/5 mx-auto m-4 flex bg-white relative">
+    <div className="w-full xl:w-4/5 mx-auto px-3 my-4 flex bg-white relative">
       <CategoryIndexLeft
         products={products}
         menu={menu}

@@ -16,21 +16,23 @@ function CostAndLink(props) {
           {typeof product !== "undefined" && (
             <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${product.slug}`}>
               {" "}
-              {product.nameLineProduct}
+              {product.nameLineProduct.length > 40
+                ? product.nameLineProduct.substring(0, 40) + "..."
+                : product.nameLineProduct}
             </Link>
           )}
         </span>
       </p>
       <p
         className="p-2 pt-0 text-organce text-center cursor-pointer 
-                text-xm"
+        text-xm"
       >
         {new Intl.NumberFormat().format(
           typeof product !== "undefined" &&
             product.priceOutput * ((100 - product.sale) / 100)
         )}
         <u>đ</u>&nbsp;
-        {typeof product !== "undefined" && (
+        {typeof product !== "undefined" && product.sale > 0 && (
           <strike className="ml-3 text-gray-500">
             {new Intl.NumberFormat().format(product.priceOutput)} <u>đ</u>
           </strike>

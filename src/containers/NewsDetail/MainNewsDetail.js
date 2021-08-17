@@ -13,9 +13,8 @@ function MainNewsDetail(props) {
   //
   return (
     <div className="w-full">
-      <div className="w-full relative text-white md:text-black">
-        <Header />
-      </div>
+      <Header />
+
       <div className="w-full">
         <LevelUrl />
         <hr className="my-2"></hr>

@@ -26,6 +26,12 @@ button:focus {
 .bg-organce-second {
   background-color: #f57953;
 }
+.header__top span {
+  font-size: 15px !important;
+}
+.header__top p {
+  font-size: 15px !important;
+}
 .bg-organce-third {
   background-color: #f08d6f;
 }
@@ -65,11 +71,15 @@ button:focus {
 .item__news__detail {
   width: 100%;
 }
-.element__hover:hover .element__show {
-  display: flex;
-}
+
 .element__show {
   display: none;
+}
+.z-second {
+  z-index: 9999999999;
+}
+.z-main {
+  z-index: 99999999999999;
 }
 @media (max-width: 768px) {
   .view__detail__product__scrollbar {
@@ -90,6 +100,9 @@ button:focus {
   }
   .item__child__news__item {
     width: 50%;
+  }
+  .element__hover:hover .element__show {
+    display: flex;
   }
 }
 @media (min-width: 1024px) {
