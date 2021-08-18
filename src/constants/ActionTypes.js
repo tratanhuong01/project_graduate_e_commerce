@@ -52,3 +52,5 @@ export const OPEN_MODAL_SEARCH_GET_ACCOUNT = "OPEN_MODAL_SEARCH_GET_ACCOUNT";
 export const LOGOUT_USER = "LOGOUT_USER";
 //
 export const ADD_USER = "ADD_USER";
+//
+export const SET_POPUP_ADS = "SET_POPUP_ADS";

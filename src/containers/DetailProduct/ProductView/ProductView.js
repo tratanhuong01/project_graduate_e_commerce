@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ProductViewLeft from "../../components/DetailProduct/ProductView/ProductViewLeft/ProductViewLeft";
-import ProductViewRight from "../../components/DetailProduct/ProductView/ProductViewRight/ProductViewRight";
+import ProductViewLeft from "../../../components/DetailProduct/ProductView/ProductViewLeft/ProductViewLeft";
+import ProductViewRight from "../../../components/DetailProduct/ProductView/ProductViewRight/ProductViewRight";
 
 function ProductView(props) {
   //

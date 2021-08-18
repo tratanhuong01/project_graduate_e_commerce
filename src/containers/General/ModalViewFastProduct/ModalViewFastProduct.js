@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import CloseModal from "../../../components/General/CloseModal/CloseModal";
-import ProductView from "../../DetailProduct/ProductView";
+import ProductView from "../../DetailProduct/ProductView/ProductView";
 
 function ModalViewFastProduct(props) {
   //

@@ -9,16 +9,13 @@ function Menu(props) {
         className="xl:w-4/5 px-3 w-full mx-auto flex text-gray-800 
       hidden lg:flex"
       >
-        <div
-          className="w-1/4 flex items-center justify-start"
-          style={{ fontFamily: "sans-serif" }}
-        >
+        <div className="w-1/4 flex items-center justify-start">
           <div
             className="w-60 bg-organce cursor-pointer text-white font-bold 
             text-xm flex p-2.5 lg:relative data__hover"
           >
             DANH MỤC SẢN PHẨM
-            <span className="bx bx-list-ul ml-3 text-2xl flex items-center"></span>
+            <span className="fas fa-bars ml-3 text-xm flex items-center"></span>
             <div className="w-60 absolute top-full left-0 z-second hover__show">
               <CategoryIndexLeft />
             </div>

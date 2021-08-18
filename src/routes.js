@@ -15,6 +15,8 @@ import AdminIndex from "./pages/Admin/AdminIndex";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import AddData from "./AddData";
 import ContentWrite from "./ContentWrite";
+import Wishlist from "./pages/Wishlist/Wishlist";
+import Profile from "./pages/Profile/Profile";
 // import { Route } from "react-router";
 const routes = [
   {
@@ -66,6 +68,16 @@ const routes = [
     path: Config.PAGE_SEARCH,
     exact: true,
     main: () => <Search />,
+  },
+  {
+    path: Config.PAGE_WISHLIST,
+    exact: true,
+    main: () => <Wishlist />,
+  },
+  {
+    path: Config.PAGE_PROFILE_USER,
+    exact: true,
+    main: () => <Profile />,
   },
   {
     path: Config.PAGE_NEWS + "/:slugNews",

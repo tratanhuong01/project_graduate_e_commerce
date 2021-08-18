@@ -4,7 +4,7 @@ import Rule from "../General/Rule";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
-import ProductView from "./ProductView";
+import ProductView from "./ProductView/ProductView";
 import DescribeProduct from "../../components/DetailProduct/ProductView/DescribeProduct/DescribeProduct";
 // import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";

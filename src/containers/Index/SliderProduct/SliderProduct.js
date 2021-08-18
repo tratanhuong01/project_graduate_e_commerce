@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import SliderProductLeft from "../../components/Index/SliderProduct/SliderProductLeft/SliderProductLeft";
-import SliderProductRight from "../../components/Index/SliderProduct/SliderProductRight/SliderProductRight";
+import SliderProductLeft from "../../../components/Index/SliderProduct/SliderProductLeft/SliderProductLeft";
+import SliderProductRight from "../../../components/Index/SliderProduct/SliderProductRight/SliderProductRight";
 
 function SliderProduct(props) {
   const sliders = [

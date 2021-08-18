@@ -4,7 +4,7 @@ import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
-import ContentContact from "./ContentContact";
+import ContentContact from "./ContentContact/ContentContact";
 import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 
 function MainContact(props) {

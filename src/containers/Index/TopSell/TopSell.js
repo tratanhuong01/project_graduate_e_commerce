@@ -1,7 +1,7 @@
 import React from "react";
-import ImageChildTopSell from "../../components/Index/TopSell/ImageChildTopSell";
-import ImageTopSell from "../../components/Index/TopSell/ImageTopSell";
-import InfoTopSell from "../../components/Index/TopSell/InfoTopSell";
+import ImageChildTopSell from "../../../components/Index/TopSell/ImageChildTopSell";
+import ImageTopSell from "../../../components/Index/TopSell/ImageTopSell";
+import InfoTopSell from "../../../components/Index/TopSell/InfoTopSell";
 
 function TopSell(props) {
   return (

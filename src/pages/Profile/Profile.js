@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useScrollEvent from "../../hook/useScrollEvent";
+import * as cartsAction from "../../actions/cart/index";
 import * as modalsAction from "../../actions/modal/index";
+import Loading from "../../components/General/Loading/Loading";
 import Modal from "../../containers/Modal";
-import MainIndex from "../../containers/Index/MainIndex";
 import Notify from "../../containers/Notify";
 import ScrollTop from "../../components/General/ScrollTop/ScrollTop";
 import ChatBot from "../../components/General/ChatBot/ChatBot";
 import ModalChatBot from "../../components/General/ChatBot/ModalChatBot/ModalChatBot";
-import api from "../../Utils/api";
-import Loading from "../../components/General/Loading/Loading";
-import * as cartsAction from "../../actions/cart/index";
-import useScrollEvent from "../../hook/useScrollEvent";
+import MainProfile from "../../containers/Profile/MainProfile";
 
-function Index(props) {
+function Profile(props) {
   //
   const dispatch = useDispatch();
   const [chatBot, setChatBot] = useState(false);
-  const [dataIndex, setDataIndex] = useState(null);
   const { show, subClassMenu } = useScrollEvent();
   const states = useSelector((state) => {
     return {
@@ -27,23 +25,20 @@ function Index(props) {
   useEffect(() => {
     //
     const fetch = async () => {
-      document.title = "Trang chủ";
+      document.title = "Tài khoản của tôi";
       dispatch(modalsAction.closeModal());
-      dispatch(modalsAction.setPopupAds());
-      const result = await api("getProductIndex", "GET", null);
-      setDataIndex(result.data);
       dispatch(cartsAction.loadCartRequest(user));
     };
     fetch();
-    return () => setDataIndex(null);
+    return () => "";
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //
-  return dataIndex === null ? (
+  return "null" === null ? (
     <Loading />
   ) : (
     <>
-      <MainIndex products={dataIndex} subClassMenu={subClassMenu} />
+      <MainProfile />
       <Modal isPopup={true} />
       <Notify />
       {show && <ScrollTop />}
@@ -53,4 +48,4 @@ function Index(props) {
   );
 }
 
-export default Index;
+export default Profile;

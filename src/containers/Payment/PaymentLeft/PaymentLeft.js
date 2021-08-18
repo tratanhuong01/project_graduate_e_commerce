@@ -1,9 +1,9 @@
 import React from "react";
-import TitlePayment from "../../components/Payment/PaymentLeft/TitlePayment/TitlePayment";
-import Logo from "../../components/Payment/PaymentLeft/Logo/Logo";
-import FormInfoPayment from "../../components/Payment/PaymentLeft/FormInfoPayment/FormInfoPayment";
-import InfoTransport from "../../components/Payment/PaymentLeft/InfoTransport/InfoTransport";
-import PaymentMethod from "../../components/Payment/PaymentLeft/PaymentMethod/PaymentMethod";
+import TitlePayment from "../../../components/Payment/PaymentLeft/TitlePayment/TitlePayment";
+import Logo from "../../../components/Payment/PaymentLeft/Logo/Logo";
+import FormInfoPayment from "../../../components/Payment/PaymentLeft/FormInfoPayment/FormInfoPayment";
+import InfoTransport from "../../../components/Payment/PaymentLeft/InfoTransport/InfoTransport";
+import PaymentMethod from "../../../components/Payment/PaymentLeft/PaymentMethod/PaymentMethod";
 
 function PaymentLeft(props) {
   //

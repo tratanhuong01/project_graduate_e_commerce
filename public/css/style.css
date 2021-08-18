@@ -90,9 +90,13 @@ button:focus {
 .category__index__left {
   z-index: 9999999999999999;
 }
+
 @media (max-width: 768px) {
   .view__detail__product__scrollbar {
     display: none;
+  }
+  .list__product__left {
+    z-index: 9999584395435854835 !important;
   }
 }
 @media (min-width: 1280px) {

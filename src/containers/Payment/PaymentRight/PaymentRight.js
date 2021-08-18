@@ -1,8 +1,8 @@
 import React from "react";
-import NumberProduct from "../../components/Payment/PaymentRight/NumberProduct/NumberProduct";
-import ItemProductPayment from "../../components/Payment/PaymentRight/ItemProductPayment/ItemProductPayment";
-import ApplyCode from "../../components/Payment/PaymentRight/ApplyCode/ApplyCode";
-import EndPayment from "../../components/Payment/PaymentRight/EndPayment/EndPayment";
+import NumberProduct from "../../../components/Payment/PaymentRight/NumberProduct/NumberProduct";
+import ItemProductPayment from "../../../components/Payment/PaymentRight/ItemProductPayment/ItemProductPayment";
+import ApplyCode from "../../../components/Payment/PaymentRight/ApplyCode/ApplyCode";
+import EndPayment from "../../../components/Payment/PaymentRight/EndPayment/EndPayment";
 import { useSelector } from "react-redux";
 
 function PaymentRight(props) {

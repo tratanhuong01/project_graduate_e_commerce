@@ -1,8 +1,8 @@
 import React from "react";
-import Brand from "../../components/ListProduct/ControlsProduct/Brand/Brand";
-import Color from "../../components/ListProduct/ControlsProduct/Color/Color";
-import Memory from "../../components/ListProduct/ControlsProduct/Memory/Memory";
-import Price from "../../components/ListProduct/ControlsProduct/Price/Price";
+import Brand from "../../../components/ListProduct/ControlsProduct/Brand/Brand";
+import Color from "../../../components/ListProduct/ControlsProduct/Color/Color";
+import Memory from "../../../components/ListProduct/ControlsProduct/Memory/Memory";
+import Price from "../../../components/ListProduct/ControlsProduct/Price/Price";
 
 function ControlsProduct(props) {
   //
@@ -13,7 +13,7 @@ function ControlsProduct(props) {
       className={`${
         show ? "" : "hidden"
       } xl:block w-72 lg:w-1/4 lg:relative fixed top-0 lg:top-auto list__product__left 
-      lg:right-auto right-0 lg:bg-transparent bg-white z-main lg:z-0 lg:block lg:pr-4`}
+      lg:right-auto right-0 lg:bg-transparent bg-white lg:z-0 lg:block lg:pr-4`}
     >
       <span
         onClick={() => setShow(!show)}

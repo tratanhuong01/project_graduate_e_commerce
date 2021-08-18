@@ -91,3 +91,9 @@ export const openModalAddedCurrent = (product) => {
     product,
   };
 };
+
+export const setPopupAds = () => {
+  return {
+    type: Types.SET_POPUP_ADS,
+  };
+};

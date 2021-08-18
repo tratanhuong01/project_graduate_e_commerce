@@ -1,6 +1,6 @@
 import React from "react";
-import PaymentLeft from "./PaymentLeft";
-import PaymentRight from "./PaymentRight";
+import PaymentLeft from "./PaymentLeft/PaymentLeft";
+import PaymentRight from "./PaymentRight/PaymentRight";
 
 function MainPayment(props) {
   return (

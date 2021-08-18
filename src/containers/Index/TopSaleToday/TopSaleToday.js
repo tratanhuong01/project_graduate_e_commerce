@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import BannerTopSaleToday from "../../components/Banner/BannerIndex/BannerSmartWatch/BannerTopSaleToday";
-import ItemProductIndex from "../../components/General/ItemProduct/ItemProductIndex";
+import BannerTopSaleToday from "../../../components/Banner/BannerIndex/BannerSmartWatch/BannerTopSaleToday";
+import ItemProductIndex from "../../../components/General/ItemProduct/ItemProductIndex";
 
 function TopSaleToday(props) {
   //

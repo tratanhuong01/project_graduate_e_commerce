@@ -1,4 +1,5 @@
 import React from "react";
+import PopupAds from "../components/General/PopupAds/PopupAds";
 import Category from "../components/Modals/Category/Category";
 import ModalLogin from "../components/Modals/General/ModalLogin/ModalLogin";
 import ModalRegister from "../components/Modals/General/ModalRegister/ModalRegister";
@@ -76,6 +77,11 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.OFF_LOADING_MODAL:
       state.loading = true;
+      return { ...state };
+    case Types.SET_POPUP_ADS:
+      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+      state.status = true;
+      state.data = <PopupAds />;
       return { ...state };
     default:
       return state;

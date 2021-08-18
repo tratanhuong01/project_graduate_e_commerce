@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
-import TopSell from "./TopSell";
+import TopSell from "./TopSell/TopSell";
 import Rule from "../General/Rule";
-import TopSaleToday from "./TopSaleToday";
+import TopSaleToday from "./TopSaleToday/TopSaleToday";
 import BannerAds from "../../components/Banner/BannerIndex/BannerAds/BannerAds";
-import News from "./News";
+import News from "./News/News";
 import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 import HorizontalCategory from "../../components/Index/HorizontalCategory/HorizontalCategory";
-import SliderProduct from "./SliderProduct";
+import SliderProduct from "./SliderProduct/SliderProduct";
 import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 
 function MainIndex(props) {

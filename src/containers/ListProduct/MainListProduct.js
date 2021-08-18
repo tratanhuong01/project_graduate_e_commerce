@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import Header from "../../components/Header/Header";
-import ControlsProduct from "../ListProduct/ControlsProduct";
-import ListProduct from "./ListProduct";
+import ControlsProduct from "../ListProduct/ControlsProduct/ControlsProduct";
+import ListProduct from "./ListProduct/ListProduct";
 import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
