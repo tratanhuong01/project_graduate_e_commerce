@@ -90,7 +90,15 @@ button:focus {
 .category__index__left {
   z-index: 9999999999999999;
 }
-
+.text-green {
+  color: #2dc258;
+}
+.bg-green {
+  background-color: #2dc258;
+}
+.border-green {
+  border-color: #2dc258;
+}
 @media (max-width: 768px) {
   .view__detail__product__scrollbar {
     display: none;

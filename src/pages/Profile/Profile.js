@@ -15,13 +15,14 @@ function Profile(props) {
   //
   const dispatch = useDispatch();
   const [chatBot, setChatBot] = useState(false);
-  const { show, subClassMenu } = useScrollEvent();
+  const { show } = useScrollEvent();
   const states = useSelector((state) => {
     return {
       user: state.user,
     };
   });
   const { user } = states;
+  const { match } = props;
   useEffect(() => {
     //
     const fetch = async () => {
@@ -38,7 +39,7 @@ function Profile(props) {
     <Loading />
   ) : (
     <>
-      <MainProfile />
+      <MainProfile match={match} />
       <Modal isPopup={true} />
       <Notify />
       {show && <ScrollTop />}

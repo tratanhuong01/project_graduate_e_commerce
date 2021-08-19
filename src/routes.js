@@ -17,7 +17,7 @@ import AddData from "./AddData";
 import ContentWrite from "./ContentWrite";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import Profile from "./pages/Profile/Profile";
-// import { Route } from "react-router";
+
 const routes = [
   {
     path: Config.PAGE_INDEX,
@@ -75,9 +75,9 @@ const routes = [
     main: () => <Wishlist />,
   },
   {
-    path: Config.PAGE_PROFILE_USER,
+    path: `${Config.PAGE_PROFILE_USER}/:slugProfile`,
     exact: true,
-    main: () => <Profile />,
+    main: (match) => <Profile match={match} />,
   },
   {
     path: Config.PAGE_NEWS + "/:slugNews",

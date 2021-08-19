@@ -43,13 +43,13 @@ function FormAccount(props) {
         </div>
         <div className="flex py-3 items-center mt-0.5">
           <div className="w-32 border-2 border-solid border-gray-300 p-2 cursor-pointer mr-4">
-            Ngày 1 <i class="bx bx-chevron-down ml-3"></i>
+            Ngày 1 <i className="bx bx-chevron-down ml-3"></i>
           </div>
           <div className="w-32 border-2 border-solid border-gray-300 p-2 cursor-pointer mr-4">
-            Tháng 1 <i class="bx bx-chevron-down ml-3"></i>
+            Tháng 1 <i className="bx bx-chevron-down ml-3"></i>
           </div>
           <div className="w-32 border-2 border-solid border-gray-300 p-2 cursor-pointer mr-4">
-            Năm 2001 <i class="bx bx-chevron-down ml-3"></i>
+            Năm 2001 <i className="bx bx-chevron-down ml-3"></i>
           </div>
         </div>
         <button className="bg-organce px-6 py-2 my-3 text-white font-semibold">

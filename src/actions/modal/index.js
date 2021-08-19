@@ -1,12 +1,6 @@
 import * as Types from "../../constants/ActionTypes";
 import * as productsAction from "../product/index";
 
-export const openCategory = () => {
-  return {
-    type: Types.OPEN_CATEGORY,
-  };
-};
-
 export const closeModal = () => {
   return {
     type: Types.CLOSE_MODAL,

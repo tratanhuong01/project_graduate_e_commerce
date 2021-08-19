@@ -1,45 +1,17 @@
-//
+// --------load modal-------- //
 export const ON_LOADING_MODAL = "ON_LOADING_MODAL";
 //
 export const OFF_LOADING_MODAL = "OFF_LOADING_MODAL";
-//
-export const LOGIN_USER = "LOGIN_USER";
 //
 export const OPEN_MODAL_SEND_RATE = "OPEN_MODAL_SEND_RATE";
 //
 export const OPEN_MODAL_VIEW_FAST_PRODUCT = "OPEN_MODAL_VIEW_FAST_PRODUCT";
 //
-export const CHANGE_MOUNT_PRODUCT_CHOOSE = "CHANGE_MOUNT_PRODUCT_CHOOSE";
-//
-export const LOAD_PRODUCT_CHOOSE = "LOAD_PRODUCT_CHOOSE";
-//
-export const LOAD_CART = "LOAD_CART";
-//
-export const OPEN_MODAL_ADDED_CURRENT = "OPEN_MODAL_ADDED_CURRENT";
-//
-export const LOAD_ORDER = "LOAD_ORDER";
-//
-export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
-//
-export const VIEW_PRODUCT = "VIEW_PRODUCT";
-//
-export const LOAD_LIST_PRODUCT = "LOAD_LIST_PRODUCT";
-//
-export const ASC_OR_DESC_NUMBER_PRODUCT = "ASC_OR_DESC_NUMBER_PRODUCT";
-//
-export const ADD_CART = "ADD_CART";
-//
-export const GET_ALL_CART = "GET_ALL_CART";
-//
 export const SHOW_MODAL_ADD_CART_CURRENT = "SHOW_MODAL_ADD_CART_CURRENT";
 //
 export const CLOSE_MODAL = "CLOSE_MODAL";
 //
-export const SCROLL_TOP = "SCROLL_TOP";
-//
-export const OPEN_CATEGORY = "OPEN_CATEGORY";
-//
-export const DELETE_CART_BY_ID = "DELETE_CART_BY_ID";
+export const OPEN_MODAL_ADDED_CURRENT = "OPEN_MODAL_ADDED_CURRENT";
 //
 export const OPEN_MODAL_TYPE_CODE = "OPEN_MODAL_TYPE_CODE";
 //
@@ -48,9 +20,58 @@ export const OPEN_MODAL_LOGIN = "OPEN_MODAL_LOGIN";
 export const OPEN_MODAL_REGISTER = "OPEN_MODAL_REGISTER";
 //
 export const OPEN_MODAL_SEARCH_GET_ACCOUNT = "OPEN_MODAL_SEARCH_GET_ACCOUNT";
+// --------modal-------- //
+
+// --------user-------- //
+export const LOGIN_USER = "LOGIN_USER";
 //
 export const LOGOUT_USER = "LOGOUT_USER";
 //
 export const ADD_USER = "ADD_USER";
+// --------user-------- //
+
+// --------product-------- //
+export const CHANGE_MOUNT_PRODUCT_CHOOSE = "CHANGE_MOUNT_PRODUCT_CHOOSE";
+//
+export const LOAD_PRODUCT_CHOOSE = "LOAD_PRODUCT_CHOOSE";
+//
+export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
+//
+export const VIEW_PRODUCT = "VIEW_PRODUCT";
+//
+export const LOAD_LIST_PRODUCT = "LOAD_LIST_PRODUCT";
+//
+export const ASC_OR_DESC_NUMBER_PRODUCT = "ASC_OR_DESC_NUMBER_PRODUCT";
+// --------prodocut-------- //
+
+// --------bill-------- //
+export const LOAD_ORDER = "LOAD_ORDER";
+// --------bill-------- //
+
+// --------cart-------- //
+export const LOAD_CART = "LOAD_CART";
+//
+export const ADD_CART = "ADD_CART";
+//
+export const GET_ALL_CART = "GET_ALL_CART";
+//
+export const DELETE_CART_BY_ID = "DELETE_CART_BY_ID";
+// --------cart-------- //
+
+//-------- -------- //
+export const SCROLL_TOP = "SCROLL_TOP";
 //
 export const SET_POPUP_ADS = "SET_POPUP_ADS";
+//-------- -------- //
+
+//-------- profile -------- //
+export const LOAD_DATA_REQUEST = "LOAD_DATA_REQUEST";
+//
+export const LOAD_PROFILE_MAIN = "LOADING_PROFILE_MAIN";
+//
+export const LOAD_BANK = "LOAD_BANK";
+//
+export const LOAD_ADDRESS = "LOAD_ADDRESS";
+//
+export const LOAD_CHANGE_PASSWORD = "LOAD_CHANGE_PASSWORD";
+//-------- profile -------- //

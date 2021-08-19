@@ -18,11 +18,6 @@ const initialState = {
 
 const myReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Types.OPEN_CATEGORY:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
-      state.data = <Category />;
-      return { ...state };
     case Types.CLOSE_MODAL:
       document
         .getElementsByTagName("body")[0]

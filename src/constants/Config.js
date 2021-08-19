@@ -16,3 +16,10 @@ export const PAGE_PROFILE_USER = "/thong-tin-nguoi-dung";
 export const PAGE_ADMIN = "/manager/admin";
 export const REGEX_NUMBER_PHONE =
   /^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/;
+
+export const PROFILE_INFO = "ho-so";
+export const PROFILE_BANK = "ngan-hang";
+export const PROFILE_ADDRESS = "dia-chi";
+export const PROFILE_CHANGE_PASSWORD = "doi-mat-khau";
+export const PROFILE_BILL = "don-hang";
+export const PROFILE_NOTIFY = "thong-bao";

@@ -1,0 +1,23 @@
+import React from "react";
+
+function DetailBillTop(props) {
+  return (
+    <div className="w-full flex items-center">
+      <div className="w-1/2 py-2 mb-3 cursor-pointer text-gray-600 flex items-center ">
+        <span className="bx bx-left-arrow-alt mr-2 text-xl"></span>
+        <span className="text-xl">TRỞ LẠI</span>
+      </div>
+      <div className="w-1/2 flex justify-end items-center ">
+        <span className="mr-3 font-semibold text-gray-600">
+          ID ĐƠN HÀNG. 210605H8PS6G3D
+        </span>
+        |
+        <span className="ml-3 font-semibold text-organce">
+          ĐƠN HÀNG ĐÃ GIAO
+        </span>
+      </div>
+    </div>
+  );
+}
+
+export default DetailBillTop;

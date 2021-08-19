@@ -10,7 +10,7 @@ import Rule from "../General/Rule";
 
 function MainProfile(props) {
   //
-  const { subClassMenu } = props;
+  const { subClassMenu, match } = props;
   const [menu, setMenu] = useState(false);
   //
   return (
@@ -21,8 +21,8 @@ function MainProfile(props) {
       <div className="w-full">
         <LevelUrl />
         <div className="w-full xl:w-4/5 mx-auto px-3 my-2 flex">
-          <ProfileLeft />
-          <ProfileRight />
+          <ProfileLeft match={match} />
+          <ProfileRight match={match} />
         </div>
         <Rule />
         <ReciviceInfo />

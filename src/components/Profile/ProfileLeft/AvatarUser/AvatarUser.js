@@ -12,7 +12,7 @@ function AvatarUser(props) {
       <div className="my-2 flex-col flex ml-5 font-semibold">
         <span className="mb-1 text-xm">Trà Hưởng</span>
         <span className="text-sm text-gray-600">
-          <i class="bx bxs-edit-alt mr-2"></i>Chỉnh sửa
+          <i className="bx bxs-edit-alt mr-2"></i>Chỉnh sửa
         </span>
       </div>
       {/* <div
