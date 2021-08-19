@@ -1,6 +1,5 @@
 import React from "react";
 import PopupAds from "../components/General/PopupAds/PopupAds";
-import Category from "../components/Modals/Category/Category";
 import ModalLogin from "../components/Modals/General/ModalLogin/ModalLogin";
 import ModalRegister from "../components/Modals/General/ModalRegister/ModalRegister";
 import ModalSearchGetAccount from "../components/Modals/General/ModalSearchGetAccount/ModalSearchGetAccount";

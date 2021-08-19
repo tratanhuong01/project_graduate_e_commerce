@@ -1,12 +1,23 @@
 import * as Types from "../../constants/ActionTypes";
 
-export const loadProfileMainRequest = () => {
-  return (dispatch) => {
-    dispatch(loadProfileMain());
+export const loadDetailBill = (bill) => {
+  return {
+    type: Types.LOAD_DETAIL_BILL,
+    bill,
   };
 };
-export const loadProfileMain = () => {
+export const returnProfile = () => {
   return {
-    type: Types.LOAD_PROFILE_MAIN,
+    type: Types.RETURN_PROFILE,
+  };
+};
+export const loadEmailEdit = () => {
+  return {
+    type: Types.LOAD_EMAIL_EDIT,
+  };
+};
+export const loadPhoneEdit = () => {
+  return {
+    type: Types.LOAD_PHONE_EDIT,
   };
 };

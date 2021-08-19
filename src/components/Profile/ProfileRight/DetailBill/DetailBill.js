@@ -3,6 +3,7 @@ import ItemBillContent from "../MyBill/ItemBill/ItemBillContent/ItemBillContent"
 import CostDetailBill from "./CostDetailBill/CostDetailBill";
 import DetailBillTop from "./DetailBillTop/DetailBillTop";
 import InfoDetailBill from "./InfoDetailBill/InfoDetailBill";
+import MethodPayment from "./MethodPayment/MethodPayment";
 import StatusDetailBill from "./StatusDetailBill/StatusDetailBill";
 
 function DetailBill(props) {
@@ -11,8 +12,9 @@ function DetailBill(props) {
       <DetailBillTop />
       <StatusDetailBill />
       <InfoDetailBill />
-      <ItemBillContent />
+      <ItemBillContent cost={true} />
       <CostDetailBill />
+      <MethodPayment />
     </div>
   );
 }

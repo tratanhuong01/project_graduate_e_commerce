@@ -65,13 +65,11 @@ export const SET_POPUP_ADS = "SET_POPUP_ADS";
 //-------- -------- //
 
 //-------- profile -------- //
-export const LOAD_DATA_REQUEST = "LOAD_DATA_REQUEST";
+export const LOAD_DETAIL_BILL = "LOAD_DETAIL_BILL";
 //
-export const LOAD_PROFILE_MAIN = "LOADING_PROFILE_MAIN";
+export const RETURN_PROFILE = "RETURN_PROFILE";
 //
-export const LOAD_BANK = "LOAD_BANK";
+export const LOAD_EMAIL_EDIT = "LOAD_EMAIL_EDIT";
 //
-export const LOAD_ADDRESS = "LOAD_ADDRESS";
-//
-export const LOAD_CHANGE_PASSWORD = "LOAD_CHANGE_PASSWORD";
+export const LOAD_PHONE_EDIT = "LOAD_PHONE_EDIT";
 //-------- profile -------- //

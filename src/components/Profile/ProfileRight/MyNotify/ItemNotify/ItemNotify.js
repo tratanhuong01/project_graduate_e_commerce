@@ -1,8 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import * as profilesAction from "../../../../../actions/profile/index";
 
 function ItemNotify(props) {
+  //
+  const dispatch = useDispatch();
+  //
   return (
-    <div className="w-full my-2 p-2 flex items-center hover:bg-gray-100 cursor-pointer">
+    <div
+      onClick={() => dispatch(profilesAction.loadDetailBill(null))}
+      className="w-full my-2 p-2 flex items-center hover:bg-gray-100 cursor-pointer"
+    >
       <div className="w-3/4 flex items-center">
         <img
           src="https://cf.shopee.vn/file/30cfbf2972827fc710796675e7c4f281"

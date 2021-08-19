@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ItemBillContent(props) {
+  //
+  const { cost } = props;
+  //
   return (
     <>
       <div className="w-full flex items-center text-gray-600">
@@ -21,14 +24,16 @@ function ItemBillContent(props) {
         </div>
         <div className="w-1/3 flex items-center justify-end">60.000đ</div>
       </div>
-      <div
-        className="w-full flex my-2 py-3 flex items-center 
-      justify-end text-organce font-semibold"
-      >
-        <span className="bx bx-check-shield text-2xl mr-3"></span>
-        <span className="text-gray-600 mr-3">Tổng số tiền :</span>
-        <span className="text-2xl">76.000 đ</span>
-      </div>
+      {!cost && (
+        <div
+          className="w-full flex my-2 py-3 flex items-center 
+          justify-end text-organce font-semibold"
+        >
+          <span className="bx bx-check-shield text-2xl mr-3"></span>
+          <span className="text-gray-600 mr-3">Tổng số tiền :</span>
+          <span className="text-2xl">76.000 đ</span>
+        </div>
+      )}
     </>
   );
 }

@@ -14,7 +14,6 @@ function Right(props) {
         className="w-5 h-5 rounded-full border border-solid text-white
         border-organce flex justify-center items-center font-bold 
         absolute right-2.5 bg-organce bottom-5 text-xs"
-        style={{ transform: "translateY(2px)" }}
       >
         0
       </span>

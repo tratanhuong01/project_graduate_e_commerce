@@ -1,6 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import * as profilesAction from "../../../../../actions/profile/index";
 
 function FormAccount(props) {
+  //
+  const dispatch = useDispatch();
+  //
   return (
     <div className="w-3/4 flex">
       <div className="w-1/4 flex-col flex ">
@@ -23,13 +28,19 @@ function FormAccount(props) {
         </div>
         <div className="flex py-3 items-center">
           tr******@gmail.com{" "}
-          <span className="text-blue-500 cursor-pointer ml-3 font-semibold">
+          <span
+            onClick={() => dispatch(profilesAction.loadEmailEdit())}
+            className="text-blue-500 cursor-pointer ml-3 font-semibold"
+          >
             Chỉnh sửa
           </span>
         </div>
         <div className="flex py-3 items-center">
           035******5{" "}
-          <span className="text-blue-500 cursor-pointer ml-3 font-semibold">
+          <span
+            onClick={() => dispatch(profilesAction.loadPhoneEdit())}
+            className="text-blue-500 cursor-pointer ml-3 font-semibold"
+          >
             Chỉnh sửa
           </span>
         </div>

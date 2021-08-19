@@ -24,7 +24,7 @@ function Center(props) {
       </Link>
       <span
         className="w-5 h-5 rounded-full border border-solid text-white
-            border-organce flex justify-center items-center py-0.5 font-bold 
+            border-organce flex justify-center items-center font-bold 
             absolute right-0.5 bg-organce bottom-5 text-xs"
       >
         {carts.length}
