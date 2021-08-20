@@ -3,6 +3,9 @@ import CategoryIndexLeft from "../../Index/CategoryIndex/CategoryIndexLeft/Categ
 import MenuCategory from "./MenuCategory/MenuCategory";
 
 function Menu(props) {
+  //
+  const { categorys } = props;
+  //
   return (
     <div className="w-full bg-white">
       <div
@@ -17,7 +20,7 @@ function Menu(props) {
             DANH MỤC SẢN PHẨM
             <span className="fas fa-bars ml-3 text-xm flex items-center"></span>
             <div className="w-60 absolute top-full left-0 z-second hover__show">
-              <CategoryIndexLeft />
+              <CategoryIndexLeft categorys={categorys} />
             </div>
           </div>
         </div>

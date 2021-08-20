@@ -6,18 +6,24 @@ import Header from "../../components/Header/Header";
 import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 import NewsDetailLeft from "../../components/NewsDetail/NewsDetailLeft/NewsDetailLeft";
 import NewsDetailRight from "../../components/NewsDetail/NewsDetailRight/NewsDetailRight";
+import useCategoryList from "../../hook/useCategoryList";
 import Rule from "../General/Rule";
 
 function MainNewsDetail(props) {
   //
   const { newsDetail, subClassMenu } = props;
   const [menu, setMenu] = useState(false);
-
+  const categorys = useCategoryList();
   //
   return (
     <div className="w-full">
-      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
-      <MainCategory menu={menu} setMenu={setMenu} />
+      <Header
+        subClassMenu={subClassMenu}
+        menu={menu}
+        setMenu={setMenu}
+        categorys={categorys}
+      />
+      <MainCategory menu={menu} setMenu={setMenu} categorys={categorys} />
 
       <div className="w-full">
         <LevelUrl />

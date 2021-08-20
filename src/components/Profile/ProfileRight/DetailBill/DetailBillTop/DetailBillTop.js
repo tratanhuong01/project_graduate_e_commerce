@@ -8,7 +8,7 @@ function DetailBillTop(props) {
   //
   return (
     <div className="w-full flex items-center">
-      <div className="w-1/2 py-2 mb-3 cursor-pointer text-gray-600 flex items-center ">
+      <div className="w-1/3 py-2 mb-3 cursor-pointer text-gray-600 flex items-center ">
         <div
           onClick={() => dispatch(profilesAction.returnProfile())}
           className="flex items-center"
@@ -17,7 +17,7 @@ function DetailBillTop(props) {
           <span className="text-xl">TRỞ LẠI</span>
         </div>
       </div>
-      <div className="w-1/2 flex justify-end items-center ">
+      <div className="w-2/3 flex justify-end items-center ">
         <span className="mr-3 font-semibold text-gray-600">
           ID ĐƠN HÀNG. 210605H8PS6G3D
         </span>

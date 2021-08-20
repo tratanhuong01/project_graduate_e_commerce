@@ -7,7 +7,7 @@ function FormAccount(props) {
   const dispatch = useDispatch();
   //
   return (
-    <div className="w-3/4 flex">
+    <div className="w-full md:w-3/4 flex">
       <div className="w-1/4 flex-col flex ">
         <div className="flex py-3 items-center">Tên đăng nhập</div>
         <div className="flex py-3 items-center my-3">Họ tên</div>
@@ -17,7 +17,9 @@ function FormAccount(props) {
         <div className="flex py-5 items-center">Ngày sinh</div>
       </div>
       <div className="w-3/4">
-        <div className="flex py-3 items-center">tratanhuong01</div>
+        <div className="flex py-3 items-center justify-center lg:justify-start">
+          tratanhuong01
+        </div>
         <div className="flex items-center my-3">
           <input
             type="text"
@@ -52,15 +54,15 @@ function FormAccount(props) {
           <input type="radio" name="sex" className="transform scale-125" />
           <span className="mx-2 mr-6">Khác</span>
         </div>
-        <div className="flex py-3 items-center mt-0.5">
-          <div className="w-32 border-2 border-solid border-gray-300 p-2 cursor-pointer mr-4">
-            Ngày 1 <i className="bx bx-chevron-down ml-3"></i>
+        <div className="flex py-3 items-center mt-0.5 text-sm">
+          <div className="w-auto border-2 border-solid border-gray-300 px-1 py-2 cursor-pointer mr-2">
+            Ngày 1 <i className="bx bx-chevron-down ml-1"></i>
           </div>
-          <div className="w-32 border-2 border-solid border-gray-300 p-2 cursor-pointer mr-4">
-            Tháng 1 <i className="bx bx-chevron-down ml-3"></i>
+          <div className="w-auto border-2 border-solid border-gray-300 px-1 py-2 cursor-pointer mr-2">
+            Tháng 1 <i className="bx bx-chevron-down ml-1"></i>
           </div>
-          <div className="w-32 border-2 border-solid border-gray-300 p-2 cursor-pointer mr-4">
-            Năm 2001 <i className="bx bx-chevron-down ml-3"></i>
+          <div className="w-auto border-2 border-solid border-gray-300 px-1 py-2 cursor-pointer mr-2">
+            Năm 2001 <i className="bx bx-chevron-down ml-1"></i>
           </div>
         </div>
         <button className="bg-organce px-6 py-2 my-3 text-white font-semibold">

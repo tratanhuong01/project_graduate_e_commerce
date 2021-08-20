@@ -91,3 +91,22 @@ export const setPopupAds = () => {
     type: Types.SET_POPUP_ADS,
   };
 };
+
+export const openModalAddAddress = () => {
+  return {
+    type: Types.OPEN_MODAL_ADD_ADDRESS,
+  };
+};
+
+export const openModalEditAddress = (address) => {
+  return {
+    type: Types.OPEN_MODAL_EDIT_ADDRESS,
+    address,
+  };
+};
+
+export const openModalAddBank = () => {
+  return {
+    type: Types.OPEN_MODAL_ADD_BANK,
+  };
+};

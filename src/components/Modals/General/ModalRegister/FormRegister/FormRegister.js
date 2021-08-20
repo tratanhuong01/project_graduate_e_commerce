@@ -102,7 +102,7 @@ class FormRegister extends Component {
                 label="Họ"
                 type="text"
                 name="firstName"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 placeHolder="Họ"
                 icon="bx bx-user-circle"
                 value={values.fullName}
@@ -115,7 +115,7 @@ class FormRegister extends Component {
                 label="Tên"
                 type="text"
                 name="lastName"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 placeHolder="Tên"
                 icon="bx bx-user-circle"
                 value={values.fullName}
@@ -127,7 +127,7 @@ class FormRegister extends Component {
                 label="Email"
                 type="email"
                 name="email"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 placeHolder="Email"
                 icon="bx bx-mail-send"
                 value={values.email}
@@ -151,7 +151,7 @@ class FormRegister extends Component {
                 label="Số điện thoại"
                 type="text"
                 name="phone"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 placeHolder="Số điện thoại"
                 icon="bx bx-phone-call"
                 value={values.numberPhone}
@@ -186,7 +186,7 @@ class FormRegister extends Component {
                 label="Ngày sinh"
                 type="date"
                 name="birthday"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 icon="bx bx-calendar-alt"
                 value={values.birthday}
                 handleChange={handleChange}
@@ -198,7 +198,7 @@ class FormRegister extends Component {
                 label="Mật khẩu"
                 type="password"
                 name="password"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 icon="bx bx-lock-open"
                 value={values.password}
                 placeHolder="Mật khẩu"

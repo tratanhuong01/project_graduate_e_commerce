@@ -1,24 +1,9 @@
-import React, { useEffect, useState } from "react";
-import api from "../../../../Utils/api";
+import React from "react";
 import ItemCategoryIndexLeft from "./ItemCategoryIndexLeft/ItemCategoryIndexLeft";
 
 function CategoryIndexLeft(props) {
   //
-  const [categorys, setCategorys] = useState([]);
-  useEffect(() => {
-    //
-    const fetch = async () => {
-      const categoryResult = await api(
-        "getCategoryByGroupProducts",
-        "GET",
-        null
-      );
-      setCategorys(categoryResult.data);
-    };
-    fetch();
-    return () => setCategorys([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { categorys } = props;
   //
   return (
     categorys.length > 0 && (

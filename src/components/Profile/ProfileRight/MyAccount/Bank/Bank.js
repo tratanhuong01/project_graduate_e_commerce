@@ -1,15 +1,21 @@
 import React from "react";
 import ItemBank from "./ItemBank/ItemBank";
+import * as modalsAction from "../../../../../actions/modal/index";
+import { useDispatch } from "react-redux";
 
 function Bank(props) {
+  //
+  const dispatch = useDispatch();
+  //
   return (
     <div className="w-full">
       <div className="w-full flex text-gray-600 mb-5">
-        <div className="w-1/2 flex items-center font-semibold text-2xl">
+        <div className="w-1/2 flex items-center font-semibold text-xl lg:text-2xl">
           Tài khoản ngân hàng của tôi
         </div>
         <div className="w-1/2 justify-end flex">
           <button
+            onClick={() => dispatch(modalsAction.openModalAddBank())}
             className="p-2.5 flex items-center text-white font-semibold 
           bg-organce"
           >

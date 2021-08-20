@@ -3,7 +3,7 @@ import React from "react";
 function UpdateAvatar(props) {
   return (
     <div
-      className="w-1/4 flex items-center justify-center border-l-2 border-solid 
+      className="w-full md:w-1/4 mb-6 md:mb-0 flex items-center justify-center border-l-2 border-solid 
     border-gray-100"
     >
       <div className="flex items-center flex-col">
@@ -18,7 +18,7 @@ function UpdateAvatar(props) {
         >
           Chọn ảnh
         </button>
-        <p className="heading-1 text-sm">
+        <p className="heading-1 text-sm text-center">
           Dụng lượng file tối đa 1 MB
           <br /> Định dạng:.JPEG, .PNG
         </p>

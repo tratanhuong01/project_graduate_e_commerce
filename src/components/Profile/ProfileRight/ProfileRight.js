@@ -53,11 +53,13 @@ function ProfileRight(props) {
   });
   const { profile } = states;
   useEffect(() => {
+    //
     dispatch(profilesAction.returnProfile());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match]);
   //
   return (
-    <div className="w-3/4">
+    <div className="w-full md:w-3/4">
       {profile.data ? (
         profile.data
       ) : (

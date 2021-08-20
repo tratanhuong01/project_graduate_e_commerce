@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import TopSell from "./TopSell/TopSell";
 import Rule from "../General/Rule";
@@ -11,19 +11,27 @@ import CategoryProduct from "../../components/General/CategoryProduct/CategoryPr
 import HorizontalCategory from "../../components/Index/HorizontalCategory/HorizontalCategory";
 import SliderProduct from "./SliderProduct/SliderProduct";
 import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
+import api from "../../Utils/api";
+import useCategoryList from "../../hook/useCategoryList";
 
 function MainIndex(props) {
   //
   const { products, subClassMenu } = props;
   const [menu, setMenu] = useState(false);
+  const categorys = useCategoryList();
   //
   return (
     <div className="w-full">
-      <Header setMenu={setMenu} menu={menu} subClassMenu={subClassMenu} />
+      <Header
+        setMenu={setMenu}
+        menu={menu}
+        subClassMenu={subClassMenu}
+        categorys={categorys}
+      />
       <div className="w-full">
         <SliderProduct />
         <HorizontalCategory products={products} />
-        <MainCategory menu={menu} setMenu={setMenu} />
+        <MainCategory menu={menu} setMenu={setMenu} categorys={categorys} />
         <img
           src="https://bizweb.dktcdn.net/100/420/160/themes/825846/assets/feature_banner.jpg?1628694566095"
           alt=""

@@ -6,6 +6,7 @@ import ModalSearchGetAccount from "../components/Modals/General/ModalSearchGetAc
 import ModalTypeCode from "../components/Modals/General/ModalTypeCode/ModalTypeCode";
 import ModalCartAddedCurrent from "../components/Modals/ModalCartAddedCurent/ModalCartAddedCurrent";
 import ModalSendRate from "../components/Modals/ModalSendRate/ModalSendRate";
+import ModalAddress from "../components/Modals/Profile/ModalAddress/ModalAddress";
 import * as Types from "../constants/ActionTypes";
 import ModalViewFastProduct from "../containers/General/ModalViewFastProduct/ModalViewFastProduct";
 
@@ -76,6 +77,21 @@ const myReducer = (state = initialState, action) => {
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
       state.status = true;
       state.data = <PopupAds />;
+      return { ...state };
+    case Types.OPEN_MODAL_ADD_ADDRESS:
+      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+      state.status = true;
+      state.data = <ModalAddress />;
+      return { ...state };
+    case Types.OPEN_MODAL_EDIT_ADDRESS:
+      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+      state.status = true;
+      state.data = <ModalAddress address={action.address} />;
+      return { ...state };
+    case Types.OPEN_MODAL_ADD_BANK:
+      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+      state.status = true;
+      state.data = <ModalAddress address={action.address} />;
       return { ...state };
     default:
       return state;

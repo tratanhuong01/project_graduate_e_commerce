@@ -4,6 +4,7 @@ function HeaderCenter(props) {
   //
   const [show, setShow] = useState(false);
   const text = useRef("");
+  const { categorys } = props;
   //
   return (
     <div className="hidden md:flex md:w-8/12 lg:w-3/5 items-center justify-end">
@@ -27,12 +28,13 @@ function HeaderCenter(props) {
           <span className="bx bx-chevron-down ml-3"></span>
           {show ? (
             <div className="w-full absolute top-full left-0 bg-white z-50">
-              <div className="w-full p-2 border-solid border-gray-200 border-b-2 border-t-2 flex font-semibold justify-center items-center cursor-pointer">
-                Điện thoại
-              </div>
-              <div className="w-full p-2 border-solid border-gray-200 border-b-2 border-t-2 flex font-semibold justify-center items-center cursor-pointer">
-                Đồng hồ
-              </div>
+              {categorys.map((category, index) => {
+                return (
+                  <div className="w-full p-2 border-solid border-gray-200 border-b-2 flex font-semibold justify-center items-center cursor-pointer hover:bg-gray-100">
+                    {category.categoryProduct.nameCategoryProduct}
+                  </div>
+                );
+              })}
             </div>
           ) : (
             ""

@@ -4,8 +4,9 @@ import React, { Component } from "react";
 class InputField extends Component {
   render() {
     const {
-      setDefaultSendCode,
-      emailOrPhone,
+      double,
+      // setDefaultSendCode,
+      // emailOrPhone,
       setDataIsset,
       handleChange,
       isset,
@@ -22,31 +23,19 @@ class InputField extends Component {
     const { name } = field;
     const { errors, touched } = form;
     const showError = errors[name] && touched[name];
-    const radio = () => {
-      if (label === "Email" || label === "Số điện thoại")
-        return (
-          <div className="flex">
-            <input
-              type="radio"
-              name="emailOrPhone"
-              checked={emailOrPhone}
-              onChange={() => {
-                setDefaultSendCode(label);
-              }}
-              className="mx-4 mt-2 flex items-center"
-            />
-          </div>
-        );
 
-      return "";
-    };
     return (
       <>
-        <label className="w-full text-gray-800 px-2 text-xm font-semibold flex">
-          {label}
-          {radio()}
-        </label>
-        <div className="w-full relative">
+        <div
+          className={`${double ? "w-1/2 mx-2 relative" : "w-full relative"}`}
+        >
+          <label
+            className={`${
+              showError || isset !== null ? "text-red-500" : "text-gray-800"
+            } text-xs px-1 bg-white absolute top-0 left-3 font-semibold flex`}
+          >
+            {label}
+          </label>
           <input
             type={type}
             {...field}
@@ -56,7 +45,7 @@ class InputField extends Component {
               className +
               `${
                 showError || isset !== null
-                  ? " border-red-500"
+                  ? " text-red-500 border-red-500"
                   : " border-gray-300"
               }`
             }
@@ -76,10 +65,10 @@ class InputField extends Component {
               }`
             }
           ></i>
+          <p className="m-2 text-xs w-full text-red-500 font-semibold">
+            {showError || isset === null ? <ErrorMessage name={name} /> : isset}
+          </p>
         </div>
-        <p className="m-2 text-red-500 font-semibold">
-          {showError || isset === null ? <ErrorMessage name={name} /> : isset}
-        </p>
       </>
     );
   }

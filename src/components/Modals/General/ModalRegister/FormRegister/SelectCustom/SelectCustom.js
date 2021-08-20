@@ -27,8 +27,8 @@ function SelectCustom(props) {
         {label}
       </label>
       <div
-        className="w-full p-2.5 border-2 border-solid pl-10 mt-2 relative
-        rounded-full border-gray-300 cursor-pointer bg-gray-300 font-semibold"
+        className="w-full p-2.5 my-3 border-2 border-solid pl-10 mt-2 relative
+        rounded-lg border-gray-300 cursor-pointer bg-gray-100 font-semibold"
       >
         <p onClick={() => setModal(!modal)} className="items-center">
           {data}

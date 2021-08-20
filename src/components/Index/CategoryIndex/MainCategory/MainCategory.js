@@ -6,7 +6,7 @@ import ItemCategoryProduct from "./ItemCategoryProduct/ItemCategoryProduct";
 
 function MainCategory(props) {
   //
-  const { menu, setMenu } = props;
+  const { menu, setMenu, categorys } = props;
   const category = [
     {
       name: "Trang chủ",
@@ -43,7 +43,11 @@ function MainCategory(props) {
     return (
       <Route to={to} exact={exact}>
         {to === Config.PAGE_PRODUCT ? (
-          <ItemCategoryProduct label={label} icon={icon} />
+          <ItemCategoryProduct
+            label={label}
+            icon={icon}
+            categorys={categorys}
+          />
         ) : (
           <Link
             to={to}

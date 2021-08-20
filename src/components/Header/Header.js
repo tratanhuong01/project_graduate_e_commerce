@@ -8,7 +8,7 @@ import MenuCategory from "./Menu/MenuCategory/MenuCategory";
 
 function Header(props) {
   //
-  const { menu, setMenu, subClassMenu } = props;
+  const { menu, setMenu, subClassMenu, categorys } = props;
   //
   return (
     <>
@@ -36,12 +36,12 @@ function Header(props) {
               </div>
             </div>
           )}
-          {!subClassMenu && <HeaderCenter />}
+          {!subClassMenu && <HeaderCenter categorys={categorys} />}
 
           <HeaderRight />
         </div>
       </div>
-      <Menu menu={menu} setMenu={setMenu} />
+      <Menu menu={menu} setMenu={setMenu} categorys={categorys} />
     </>
   );
 }

@@ -19,25 +19,32 @@ function ItemStatusDetailBill(props) {
           <span
             className={`w-20 ${
               statusLineLeft ? "bg-green" : "bg-gray-400"
-            } h-1 absolute right-full`}
+            } h-1 absolute right-full z-0`}
           ></span>
         )}
-        <i
-          className={`${icon} text-3xl ${
-            statusLineLeft ? "text-green" : "text-gray-400"
-          }`}
-        ></i>
+        <div
+          className="w-14 h-14 rounded-full flex items-center justify-center absolute top-0 left-0 z-50 
+        bg-white"
+        >
+          <i
+            className={`${icon} text-3xl ${
+              statusLineLeft ? "text-green" : "text-gray-400"
+            }`}
+          ></i>
+        </div>
         {right && (
           <span
             className={`w-20 ${
               statusLineRight ? "bg-green" : "bg-gray-400"
-            } h-1 absolute left-full`}
+            } h-1 absolute left-full z-0`}
           ></span>
         )}
       </div>
-      <div className="h-12 flex items-center flex-col">
-        <p className="text-gray-600 font-semibold my-1 text-sm">{label}</p>
-        <p className="text-gray-400 font-semibold text-xs flex items-center">
+      <div className="h-12 flex items-center flex-col w-full px-1">
+        <p className="text-gray-600 font-semibold my-1 text-sm text-center">
+          {label}
+        </p>
+        <p className="text-gray-400 font-semibold text-xs flex items-center text-center ">
           {statusLineLeft ? "16:30:30 16-08-2021" : ""}
         </p>
       </div>

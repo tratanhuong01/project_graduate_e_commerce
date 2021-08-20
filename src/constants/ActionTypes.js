@@ -20,6 +20,12 @@ export const OPEN_MODAL_LOGIN = "OPEN_MODAL_LOGIN";
 export const OPEN_MODAL_REGISTER = "OPEN_MODAL_REGISTER";
 //
 export const OPEN_MODAL_SEARCH_GET_ACCOUNT = "OPEN_MODAL_SEARCH_GET_ACCOUNT";
+//
+export const OPEN_MODAL_ADD_BANK = "OPEN_MODAL_ADD_BANK";
+//
+export const OPEN_MODAL_ADD_ADDRESS = "OPEN_MODAL_ADD_ADDRESS";
+//
+export const OPEN_MODAL_EDIT_ADDRESS = "OPEN_MODAL_EDIT_ADDRESS";
 // --------modal-------- //
 
 // --------user-------- //

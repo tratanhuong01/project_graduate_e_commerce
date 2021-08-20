@@ -7,18 +7,24 @@ import Rule from "../../containers/General/Rule";
 import ReciveInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
 import EndFooter from "../../components/Footer/EndFooter/EndFooter";
 import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
+import useCategoryList from "../../hook/useCategoryList";
 
 function MainListProduct(props) {
   //
   const [show, setShow] = useState(false);
   const { subClassMenu } = props;
   const [menu, setMenu] = useState(false);
-
+  const categorys = useCategoryList();
   //
   return (
     <div className="w-full">
-      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
-      <MainCategory menu={menu} setMenu={setMenu} />
+      <Header
+        subClassMenu={subClassMenu}
+        menu={menu}
+        setMenu={setMenu}
+        categorys={categorys}
+      />
+      <MainCategory menu={menu} setMenu={setMenu} categorys={categorys} />
 
       <div className="w-full bg-gray-100">
         <LevelUrl />

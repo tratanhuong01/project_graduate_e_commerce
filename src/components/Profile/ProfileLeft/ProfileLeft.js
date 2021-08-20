@@ -7,7 +7,7 @@ function ProfileLeft(props) {
   const { match } = props;
   //
   return (
-    <div className="w-1/4">
+    <div className="w-full md:w-1/4 ">
       <AvatarUser />
       <CategoryProfile match={match} />
     </div>

@@ -52,7 +52,7 @@ class FormLogin extends Component {
                 label="Email hoặc số điện thoại"
                 type="text"
                 name="emailOrPhone"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 placeHolder="Email hoặc số điện thoại"
                 icon="bx bx-user-circle"
                 value={values.emailOrPhone}
@@ -70,7 +70,7 @@ class FormLogin extends Component {
                 label="Mật khẩu"
                 type="password"
                 name="password"
-                className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
+                className="w-full rounded-lg p-2.5 border-2 border-solid pl-10 mt-2"
                 placeHolder="Mật khẩu"
                 icon="bx bx-lock-open"
                 value={values.password}

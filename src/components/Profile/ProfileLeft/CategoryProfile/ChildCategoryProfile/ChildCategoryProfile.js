@@ -34,7 +34,7 @@ function ChildCategoryProfile(props) {
   //
   return (
     index >= 0 && (
-      <div className="w-full pl-9">
+      <div className="w-full pl-9 ">
         {category.map((item, index) => {
           return (
             <Route key={index}>

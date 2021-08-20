@@ -10,7 +10,7 @@ function ItemBillBottom(props) {
       <div className="w-2/3 flex justify-end items-center">
         <button
           className="border-2 border-solid border-organce px-4 py-2 text-white mr-6 font-semibold 
-        text-sm bg-organce"
+        text-sm bg-organce hidden"
         >
           Mua lần nữa
         </button>

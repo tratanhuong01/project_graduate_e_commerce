@@ -4,7 +4,7 @@ import CategoryIndexLeft from "../../CategoryIndexLeft/CategoryIndexLeft";
 function ItemCategoryProduct(props) {
   //
   const [show, setShow] = useState(false);
-  const { label, icon } = props;
+  const { label, icon, categorys } = props;
   //
   return (
     <div className="w-full relative flex-wrap">
@@ -31,7 +31,7 @@ function ItemCategoryProduct(props) {
           show ? "flex flex-wrap" : "hidden"
         } border-2 border-solid left-0 md:left-full`}
       >
-        <CategoryIndexLeft />
+        <CategoryIndexLeft categorys={categorys} />
       </div>
     </div>
   );

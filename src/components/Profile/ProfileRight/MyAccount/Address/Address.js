@@ -1,7 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import ItemAddress from "./ItemAddress/ItemAddress";
+import * as modalsAction from "../../../../../actions/modal/index";
 
 function Address(props) {
+  //
+  const dispatch = useDispatch();
+  //
   return (
     <div className="w-full">
       <div className="w-full flex text-gray-600 mb-5">
@@ -10,6 +15,7 @@ function Address(props) {
         </div>
         <div className="w-1/2 justify-end flex">
           <button
+            onClick={() => dispatch(modalsAction.openModalAddAddress())}
             className="p-2.5 flex items-center text-white font-semibold 
           bg-organce"
           >

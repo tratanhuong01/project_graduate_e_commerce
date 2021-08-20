@@ -9,17 +9,23 @@ import InfoNews from "../../components/News/InfoNews/InfoNews";
 import ItemCategoryNews from "../../components/News/ItemCategoryNews/ItemCategoryNews";
 import NewsViewMost from "../../components/General/NewsViewMost/NewsViewMost";
 import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
+import useCategoryList from "../../hook/useCategoryList";
 
 function MainNews(props) {
   //
   const { subClassMenu } = props;
   const [menu, setMenu] = useState(false);
-
+  const categorys = useCategoryList();
   //
   return (
     <div className="w-full">
-      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
-      <MainCategory menu={menu} setMenu={setMenu} />
+      <Header
+        subClassMenu={subClassMenu}
+        menu={menu}
+        setMenu={setMenu}
+        categorys={categorys}
+      />
+      <MainCategory menu={menu} setMenu={setMenu} categorys={categorys} />
 
       <div className="w-full">
         <LevelUrl />

@@ -2,7 +2,7 @@ import React from "react";
 
 function AvatarUser(props) {
   return (
-    <div className="w-full relative flex items-center ">
+    <div className="w-full relative items-center hidden md:flex">
       <img
         src="https://cf.shopee.vn/file/e4e139c5df5bff16e526b4fe1c31e7e8_tn"
         alt=""

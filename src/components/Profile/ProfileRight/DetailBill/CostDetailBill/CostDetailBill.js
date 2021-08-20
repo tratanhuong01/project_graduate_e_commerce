@@ -3,7 +3,7 @@ import React from "react";
 function CostDetailBill(props) {
   return (
     <div className="w-full flex">
-      <div className="w-3/4 flex flex-col text-xs text-gray-600">
+      <div className="w-2/3 lg:w-3/4 flex flex-col text-xs text-gray-600">
         <div
           className="w-full flex items-center justify-end py-4 border-b-2 border-solid 
         border-gray-100 border-r-2 pr-3"
@@ -29,7 +29,7 @@ function CostDetailBill(props) {
           Tổng số tiền
         </div>
       </div>
-      <div className="w-1/4 flex flex-col text-xs text-gray-600">
+      <div className="w-1/3 lg:w-1/4 flex flex-col text-xs text-gray-600">
         <div
           className="w-full flex items-center justify-end py-4 border-b-2 border-solid 
         border-gray-100"

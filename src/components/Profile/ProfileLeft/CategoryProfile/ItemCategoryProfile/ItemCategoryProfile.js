@@ -9,7 +9,8 @@ function ItemCategoryProfile(props) {
     <>
       <div
         onClick={() => onClick()}
-        className="w-full my-2 py-2 flex items-center"
+        className="w-1/3 md:w-full my-2 py-2 flex items-center justify-center md:justify-start 
+        relative"
       >
         <span className={`${icon} ${color} text-2xl flex mr-3`}></span>
         <span
@@ -21,8 +22,13 @@ function ItemCategoryProfile(props) {
         >
           {label}
         </span>
+        <div className="w-80 absolute md:relative bg-white top-10 md:top-auto left-2 hidden">
+          {active && <ChildCategoryProfile match={match} />}
+        </div>
       </div>
-      {active && <ChildCategoryProfile match={match} />}
+      <div className="w-full hidden md:block">
+        {active && <ChildCategoryProfile match={match} />}
+      </div>
     </>
   );
 }

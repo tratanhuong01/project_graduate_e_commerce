@@ -15,14 +15,14 @@ function ItemRule(props) {
 
       <div className="w-2/3 lg:hidden flex ml-3">
         <span
-          className="flex items-center text-xm font-semibold 
+          className="flex items-center text-sm font-semibold 
         hover:text-organce cursor-pointer"
         >
           {Content}
         </span>
       </div>
       <span
-        className={`hidden lg:flex items-center text-xm font-semibold 
+        className={`hidden lg:flex items-center text-sm font-semibold 
         hover:text-organce cursor-pointer`}
       >
         {Content}

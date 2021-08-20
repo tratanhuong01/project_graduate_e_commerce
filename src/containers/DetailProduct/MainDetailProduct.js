@@ -10,12 +10,13 @@ import DescribeProduct from "../../components/DetailProduct/ProductView/Describe
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
 import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
+import useCategoryList from "../../hook/useCategoryList";
 
 function MainDetailProduct(props) {
   //
   const { products, subClassMenu } = props;
   const [menu, setMenu] = useState(false);
-
+  const categorys = useCategoryList();
   //
   useEffect(() => {
     //
@@ -25,8 +26,13 @@ function MainDetailProduct(props) {
   //
   return (
     <div className="w-full">
-      <Header subClassMenu={subClassMenu} menu={menu} setMenu={setMenu} />
-      <MainCategory menu={menu} setMenu={setMenu} />
+      <Header
+        subClassMenu={subClassMenu}
+        menu={menu}
+        setMenu={setMenu}
+        categorys={categorys}
+      />
+      <MainCategory menu={menu} setMenu={setMenu} categorys={categorys} />
 
       <div className="w-full bg-gray-100">
         <LevelUrl />
