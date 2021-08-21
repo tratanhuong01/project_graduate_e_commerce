@@ -4,6 +4,11 @@ import ItemAddress from "./ItemAddress/ItemAddress";
 import * as modalsAction from "../../../../../actions/modal/index";
 import api from "../../../../../Utils/api";
 
+async function deleteAddress(address) {
+  const result = await api(`addresses/${address.id}`, "DELETE", null);
+  return result.data;
+}
+
 function Address(props) {
   //
   const dispatch = useDispatch();
@@ -37,7 +42,9 @@ function Address(props) {
         <div className="w-1/2 justify-end flex">
           <button
             type="button"
-            onClick={() => dispatch(modalsAction.openModalAddAddress())}
+            onClick={() =>
+              dispatch(modalsAction.openModalAddress(null, setAddresses))
+            }
             className="p-2.5 flex items-center text-white font-semibold 
             bg-organce"
           >
@@ -48,7 +55,15 @@ function Address(props) {
       </div>
       {addresses.length > 0 ? (
         addresses.map((address, index) => {
-          return <ItemAddress address={address} key={index} user={user} />;
+          return (
+            <ItemAddress
+              address={address}
+              key={index}
+              user={user}
+              setAddresses={setAddresses}
+              deleteAddress={deleteAddress}
+            />
+          );
         })
       ) : (
         <div

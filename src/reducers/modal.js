@@ -57,11 +57,13 @@ const myReducer = (state = initialState, action) => {
     case Types.SET_POPUP_ADS:
       state.data = <PopupAds />;
       return { ...state };
-    case Types.OPEN_MODAL_ADD_ADDRESS:
-      state.data = <ModalAddress />;
-      return { ...state };
-    case Types.OPEN_MODAL_EDIT_ADDRESS:
-      state.data = <ModalAddress address={action.address} />;
+    case Types.OPEN_MODAL_ADDRESS:
+      state.data = (
+        <ModalAddress
+          address={action.address}
+          setAddresses={(addresses) => action.setAddresses(addresses)}
+        />
+      );
       return { ...state };
     case Types.OPEN_MODAL_ADD_BANK:
       state.data = <ModalAddress address={action.address} />;

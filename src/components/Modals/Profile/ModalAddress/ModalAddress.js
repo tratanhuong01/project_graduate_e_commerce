@@ -1,7 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import FormAddress from "./FormAddress/FormAddress";
 
 function ModalAddress(props) {
+  //
+  const { address, setAddresses } = props;
+  const user = useSelector((state) => state.user);
+  //
   return (
     <div
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 
@@ -12,7 +17,11 @@ function ModalAddress(props) {
         Địa chỉ mới
       </div>
       <hr className="mb-3" />
-      <FormAddress />
+      <FormAddress
+        address={address}
+        setAddresses={(addresses) => setAddresses(addresses)}
+        user={user}
+      />
     </div>
   );
 }

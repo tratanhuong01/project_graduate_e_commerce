@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
 import MainProfile from "../../containers/Profile/MainProfile";
-import { Redirect } from "react-router-dom";
 
 function Profile(props) {
   //

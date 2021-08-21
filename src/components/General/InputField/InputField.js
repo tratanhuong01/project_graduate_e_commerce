@@ -5,8 +5,6 @@ class InputField extends Component {
   render() {
     const {
       double,
-      // setDefaultSendCode,
-      // emailOrPhone,
       setDataIsset,
       handleChange,
       isset,
@@ -19,6 +17,7 @@ class InputField extends Component {
       field,
       value,
       form,
+      onClick,
     } = this.props;
     const { name } = field;
     const { errors, touched } = form;
@@ -41,6 +40,7 @@ class InputField extends Component {
             {...field}
             name={name}
             id={id}
+            onClick={() => (typeof onClick === "undefined" ? "" : onClick())}
             className={
               className +
               `${

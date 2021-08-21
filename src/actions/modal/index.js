@@ -92,16 +92,11 @@ export const setPopupAds = () => {
   };
 };
 
-export const openModalAddAddress = () => {
+export const openModalAddress = (address, setAddresses) => {
   return {
-    type: Types.OPEN_MODAL_ADD_ADDRESS,
-  };
-};
-
-export const openModalEditAddress = (address) => {
-  return {
-    type: Types.OPEN_MODAL_EDIT_ADDRESS,
-    address,
+    type: Types.OPEN_MODAL_ADDRESS,
+    address: address,
+    setAddresses: setAddresses,
   };
 };
 

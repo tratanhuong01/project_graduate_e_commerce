@@ -23,9 +23,8 @@ export const OPEN_MODAL_SEARCH_GET_ACCOUNT = "OPEN_MODAL_SEARCH_GET_ACCOUNT";
 //
 export const OPEN_MODAL_ADD_BANK = "OPEN_MODAL_ADD_BANK";
 //
-export const OPEN_MODAL_ADD_ADDRESS = "OPEN_MODAL_ADD_ADDRESS";
-//
-export const OPEN_MODAL_EDIT_ADDRESS = "OPEN_MODAL_EDIT_ADDRESS";
+export const OPEN_MODAL_ADDRESS = "OPEN_MODAL_ADD_ADDRESS";
+
 // --------modal-------- //
 
 // --------user-------- //

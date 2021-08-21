@@ -9,8 +9,8 @@ function FooterFormAddress(props) {
   return (
     <div className="w-full px-2.5 flex justify-end mt-5 mb-1">
       <button
-        type="button"
-        className="bg-organce opacity-50 px-4 py-2 font-semibold 
+        type="submit"
+        className="bg-organce px-4 py-2 font-semibold 
         text-white border-2 border-solid border-organce"
       >
         Thêm địa chỉ
