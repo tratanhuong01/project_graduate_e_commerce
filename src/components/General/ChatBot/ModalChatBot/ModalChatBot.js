@@ -3,14 +3,14 @@ import FormChatBot from "./FormChatBot/FormChatBot";
 
 function ModalChatBot(props) {
   //
-  const { setChatBot } = props;
+  const { setChatBots } = props;
   //
   return (
     <div className="fixed right-8 bottom-8 z-40" style={{ width: 360 }}>
       <div className="w-full rounded-lg bg-white shadow-lg h-full  ">
         <div className="w-full bg-organce py-2 relative h-10 rounded-t-lg">
           <span
-            onClick={() => setChatBot(false)}
+            onClick={() => setChatBots(false)}
             className="absolute top-1.5 cursor-pointer right-3 text-xl text-white"
           >
             &times;

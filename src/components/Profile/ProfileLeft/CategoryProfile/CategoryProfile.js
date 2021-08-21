@@ -5,7 +5,7 @@ import * as Config from "../../../../constants/Config";
 
 function CategoryProfile(props) {
   //
-  const { match } = props;
+  const { slug } = props;
   const history = useHistory();
   //
   return (
@@ -18,7 +18,7 @@ function CategoryProfile(props) {
         icon={"bx bx-user"}
         color={"text-blue-500"}
         active={true}
-        match={match}
+        match={slug}
       />
       <ItemCategoryProfile
         onClick={() =>
@@ -28,7 +28,7 @@ function CategoryProfile(props) {
         icon={"bx bxl-paypal"}
         color={"text-blue-500"}
         slug={Config.PROFILE_BILL}
-        match={match}
+        match={slug}
       />
       <ItemCategoryProfile
         onClick={() =>
@@ -38,7 +38,7 @@ function CategoryProfile(props) {
         icon={"bx bx-bell"}
         color={"text-organce"}
         slug={Config.PROFILE_NOTIFY}
-        match={match}
+        match={slug}
       />
     </div>
   );

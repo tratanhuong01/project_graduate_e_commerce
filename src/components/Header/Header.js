@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import useCategoryList from "../../hook/useCategoryList";
+import useScrollMenu from "../../hook/useScrollMenu";
+import MainCategory from "../Index/CategoryIndex/MainCategory/MainCategory";
 import HeaderCenter from "./HeaderCenter/HeaderCenter";
 import HeaderLeft from "./HeaderLeft/HeaderLeft";
 import HeaderRight from "./HeaderRight/HeaderRight";
@@ -8,7 +11,9 @@ import MenuCategory from "./Menu/MenuCategory/MenuCategory";
 
 function Header(props) {
   //
-  const { menu, setMenu, subClassMenu, categorys } = props;
+  const [menu, setMenu] = useState(false);
+  const categorys = useCategoryList();
+  const subClassMenu = useScrollMenu();
   //
   return (
     <>
@@ -42,6 +47,7 @@ function Header(props) {
         </div>
       </div>
       <Menu menu={menu} setMenu={setMenu} categorys={categorys} />
+      <MainCategory menu={menu} setMenu={setMenu} categorys={categorys} />
     </>
   );
 }

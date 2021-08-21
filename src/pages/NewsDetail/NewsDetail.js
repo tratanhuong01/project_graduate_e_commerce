@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../../containers/Modal";
 import * as modalsAction from "../../actions/modal/index";
 import MainNewsDetail from "../../containers/NewsDetail/MainNewsDetail";
 import * as cartsAction from "../../actions/cart/index";
 import api from "../../Utils/api";
 import Loading from "../../components/General/Loading/Loading";
-import ScrollTop from "../../components/General/ScrollTop/ScrollTop";
-import useScrollEvent from "../../hook/useScrollEvent";
 
 function NewsDetail(props) {
   //
@@ -17,7 +14,6 @@ function NewsDetail(props) {
       user: state.user,
     };
   });
-  const { show, subClassMenu } = useScrollEvent();
   const { user } = states;
   const { match } = props;
   const [newsDetail, setNewsDetail] = useState(null);
@@ -42,9 +38,7 @@ function NewsDetail(props) {
   //
   return newsDetail ? (
     <>
-      {show && <ScrollTop />}
-      <MainNewsDetail newsDetail={newsDetail} subClassMenu={subClassMenu} />
-      <Modal />
+      <MainNewsDetail newsDetail={newsDetail} />
     </>
   ) : (
     <Loading />

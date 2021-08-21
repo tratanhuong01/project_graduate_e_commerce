@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as Config from "../../../constants/Config";
 import Address from "./MyAccount/Address/Address";
@@ -13,7 +13,7 @@ import * as profilesAction from "../../../actions/profile/index";
 function ProfileRight(props) {
   //
   const dispatch = useDispatch();
-  const { match } = props;
+  const { slug } = props;
   const routesChild = [
     {
       to: `${Config.PAGE_PROFILE_USER}/${Config.PROFILE_INFO}`,
@@ -50,13 +50,16 @@ function ProfileRight(props) {
     return {
       profile: state.profile,
     };
-  });
+  }, shallowEqual);
   const { profile } = states;
   useEffect(() => {
     //
+    let unmounted = false;
+    if (unmounted) return;
     dispatch(profilesAction.returnProfile());
+    return () => (unmounted = true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [match]);
+  }, [slug]);
   //
   return (
     <div className="w-full md:w-3/4">

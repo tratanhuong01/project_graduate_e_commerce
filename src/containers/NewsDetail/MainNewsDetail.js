@@ -1,30 +1,14 @@
-import React, { useState } from "react";
-import EndFooter from "../../components/Footer/EndFooter/EndFooter";
-import ReciviceInfo from "../../components/Footer/ReciviceInfo/ReciviceInfo";
+import React from "react";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
-import Header from "../../components/Header/Header";
-import MainCategory from "../../components/Index/CategoryIndex/MainCategory/MainCategory";
 import NewsDetailLeft from "../../components/NewsDetail/NewsDetailLeft/NewsDetailLeft";
 import NewsDetailRight from "../../components/NewsDetail/NewsDetailRight/NewsDetailRight";
-import useCategoryList from "../../hook/useCategoryList";
-import Rule from "../General/Rule";
 
 function MainNewsDetail(props) {
   //
-  const { newsDetail, subClassMenu } = props;
-  const [menu, setMenu] = useState(false);
-  const categorys = useCategoryList();
+  const { newsDetail } = props;
   //
   return (
     <div className="w-full">
-      <Header
-        subClassMenu={subClassMenu}
-        menu={menu}
-        setMenu={setMenu}
-        categorys={categorys}
-      />
-      <MainCategory menu={menu} setMenu={setMenu} categorys={categorys} />
-
       <div className="w-full">
         <LevelUrl />
         <hr className="my-2"></hr>
@@ -32,9 +16,6 @@ function MainNewsDetail(props) {
           <NewsDetailLeft newsDetail={newsDetail} />
           <NewsDetailRight />
         </div>
-        <Rule />
-        <ReciviceInfo />
-        <EndFooter />
       </div>
     </div>
   );

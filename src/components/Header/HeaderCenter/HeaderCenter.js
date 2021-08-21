@@ -5,6 +5,10 @@ function HeaderCenter(props) {
   const [show, setShow] = useState(false);
   const text = useRef("");
   const { categorys } = props;
+  const [data, setData] = useState({
+    name: "Tất cả danh mục",
+    id: "",
+  });
   //
   return (
     <div className="hidden md:flex md:w-8/12 lg:w-3/5 items-center justify-end">
@@ -22,15 +26,34 @@ function HeaderCenter(props) {
         />
         <div
           onClick={() => setShow(!show)}
-          className="w-52 lg:w-48 py-2.5 px-1 border-solid border-gray-200 border-l-2 border-r-2 flex font-semibold justify-center items-center relative cursor-pointer"
+          className="w-52 lg:w-48 py-2.5 px-1  border-solid border-gray-200 border-l-2 border-r-2 flex font-semibold justify-center items-center relative cursor-pointer"
         >
-          <div>Tất cả danh mục</div>
+          <div className="text-sm">{data.name}</div>
           <span className="bx bx-chevron-down ml-3"></span>
           {show ? (
             <div className="w-full absolute top-full left-0 bg-white z-50">
+              <div
+                onClick={() =>
+                  setData({
+                    name: "Tất cả danh mục",
+                    id: "",
+                  })
+                }
+                className="w-full text-sm p-2 border-solid border-gray-200 border-b-2 flex font-semibold justify-center items-center cursor-pointer hover:bg-gray-100"
+              >
+                Tất cả danh mục
+              </div>
               {categorys.map((category, index) => {
                 return (
-                  <div className="w-full p-2 border-solid border-gray-200 border-b-2 flex font-semibold justify-center items-center cursor-pointer hover:bg-gray-100">
+                  <div
+                    onClick={() =>
+                      setData({
+                        name: category.categoryProduct.nameCategoryProduct,
+                        id: category.categoryProduct.id,
+                      })
+                    }
+                    className="w-full text-sm p-2 border-solid border-gray-200 border-b-2 flex font-semibold justify-center items-center cursor-pointer hover:bg-gray-100"
+                  >
                     {category.categoryProduct.nameCategoryProduct}
                   </div>
                 );

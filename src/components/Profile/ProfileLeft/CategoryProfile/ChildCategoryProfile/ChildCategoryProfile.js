@@ -26,11 +26,9 @@ function ChildCategoryProfile(props) {
       exact: true,
     },
   ];
-  const { match } = props;
-  const index = category.findIndex(
-    (item) => item.to === match.match.params.slugProfile
-  );
-  useEffect(() => {}, [match]);
+  const { slug } = props;
+  const index = category.findIndex((item) => item.to === slug);
+  useEffect(() => {}, [slug]);
   //
   return (
     index >= 0 && (
@@ -42,9 +40,7 @@ function ChildCategoryProfile(props) {
                 <Link
                   to={`${Config.PAGE_PROFILE_USER}/${item.to}`}
                   className={`font-semibold ${
-                    match.match.params.slugProfile === item.to
-                      ? "text-organce"
-                      : "hover:text-organce"
+                    slug === item.to ? "text-organce" : "hover:text-organce"
                   } cursor-pointer`}
                 >
                   {item.name}

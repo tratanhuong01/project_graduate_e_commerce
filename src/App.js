@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MainApp from "./MainApp";
 import routes from "./routes";
 
 function App(props) {
   const showAllLinks = (routes) => {
-    var result = null;
+    let result = null;
     if (routes.length > 0) {
       result = routes.map((route, index) => {
         return (
@@ -22,7 +23,9 @@ function App(props) {
 
   return (
     <Router>
-      <Switch>{showAllLinks(routes)}</Switch>
+      <MainApp>
+        <Switch>{showAllLinks(routes)}</Switch>
+      </MainApp>
     </Router>
   );
 }

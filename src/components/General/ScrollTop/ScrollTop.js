@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useScrollTop from "../../../hook/useScrollTop";
 
 function ScrollTop(props) {
   //
-
+  const show = useScrollTop();
+  useEffect(() => {}, [show]);
   //
   return (
-    <div
-      onClick={() => window.scrollTo(0, 0)}
-      className="fixed right-5 transform -translate-y-1/2 rounded-full bg-organce flex items-center 
-    justify-center w-12 h-12 z-50"
-      style={{ top: "calc(50% - 32px)" }}
-    >
-      <span
-        className="bx bx-arrow-to-top text-2xl flex items-center cursor-pointer
-      justify-center text-white "
-      ></span>
-    </div>
+    show && (
+      <div
+        onClick={() => window.scrollTo(0, 0)}
+        className="fixed right-5 transform -translate-y-1/2 rounded-full bg-organce flex items-center 
+        justify-center w-12 h-12 z-50"
+        style={{ top: "calc(50% - 32px)" }}
+      >
+        <span
+          className="bx bx-arrow-to-top text-2xl flex items-center cursor-pointer
+          justify-center text-white "
+        ></span>
+      </div>
+    )
   );
 }
 

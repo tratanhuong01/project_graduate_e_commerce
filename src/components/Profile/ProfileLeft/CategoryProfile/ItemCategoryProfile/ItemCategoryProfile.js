@@ -15,19 +15,17 @@ function ItemCategoryProfile(props) {
         <span className={`${icon} ${color} text-2xl flex mr-3`}></span>
         <span
           className={`font-semibold ${
-            match.match.params.slugProfile === slug
-              ? "text-organce"
-              : "hover:text-organce"
+            match === slug ? "text-organce" : "hover:text-organce"
           } cursor-pointer`}
         >
           {label}
         </span>
         <div className="w-80 absolute md:relative bg-white top-10 md:top-auto left-2 hidden">
-          {active && <ChildCategoryProfile match={match} />}
+          {active && <ChildCategoryProfile slug={match} />}
         </div>
       </div>
       <div className="w-full hidden md:block">
-        {active && <ChildCategoryProfile match={match} />}
+        {active && <ChildCategoryProfile slug={match} />}
       </div>
     </>
   );

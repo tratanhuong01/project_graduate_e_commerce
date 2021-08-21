@@ -11,44 +11,29 @@ import * as Types from "../constants/ActionTypes";
 import ModalViewFastProduct from "../containers/General/ModalViewFastProduct/ModalViewFastProduct";
 
 const initialState = {
-  status: false,
-  data: "",
+  data: null,
   loading: false,
 };
 
 const myReducer = (state = initialState, action) => {
   switch (action.type) {
     case Types.CLOSE_MODAL:
-      document
-        .getElementsByTagName("body")[0]
-        .classList.remove("overflow-hidden");
-      state.status = false;
-      state.data = "";
+      state.data = null;
       state.loading = false;
       return { ...state };
     case Types.OPEN_MODAL_REGISTER:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalRegister />;
       return { ...state };
     case Types.OPEN_MODAL_LOGIN:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalLogin />;
       return { ...state };
     case Types.OPEN_MODAL_SEARCH_GET_ACCOUNT:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalSearchGetAccount />;
       return { ...state };
     case Types.OPEN_MODAL_SEND_RATE:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalSendRate products={action.products} />;
       return { ...state };
     case Types.OPEN_MODAL_TYPE_CODE:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = (
         <ModalTypeCode
           user={action.user}
@@ -58,13 +43,9 @@ const myReducer = (state = initialState, action) => {
       );
       return { ...state };
     case Types.OPEN_MODAL_VIEW_FAST_PRODUCT:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalViewFastProduct product={action.product} />;
       return { ...state };
     case Types.OPEN_MODAL_ADDED_CURRENT:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalCartAddedCurrent product={action.product} />;
       return { ...state };
     case Types.ON_LOADING_MODAL:
@@ -74,23 +55,15 @@ const myReducer = (state = initialState, action) => {
       state.loading = true;
       return { ...state };
     case Types.SET_POPUP_ADS:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <PopupAds />;
       return { ...state };
     case Types.OPEN_MODAL_ADD_ADDRESS:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalAddress />;
       return { ...state };
     case Types.OPEN_MODAL_EDIT_ADDRESS:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalAddress address={action.address} />;
       return { ...state };
     case Types.OPEN_MODAL_ADD_BANK:
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-      state.status = true;
       state.data = <ModalAddress address={action.address} />;
       return { ...state };
     default:

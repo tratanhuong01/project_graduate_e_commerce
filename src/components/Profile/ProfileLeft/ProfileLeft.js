@@ -4,12 +4,12 @@ import CategoryProfile from "./CategoryProfile/CategoryProfile";
 
 function ProfileLeft(props) {
   //
-  const { match } = props;
+  const { slug } = props;
   //
   return (
     <div className="w-full md:w-1/4 ">
       <AvatarUser />
-      <CategoryProfile match={match} />
+      <CategoryProfile slug={slug} />
     </div>
   );
 }

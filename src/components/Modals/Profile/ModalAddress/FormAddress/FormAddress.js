@@ -6,8 +6,6 @@ import CreateAddress from "./CreateAddress/CreateAddress";
 import TypeAddress from "./TypeAddress/TypeAddress";
 import FooterFormAddress from "./FooterFormAddress/FooterFormAddress";
 import WarningFormAddress from "./WarningFormAddress/WarningFormAddress";
-import * as modalsAction from "../../../../../actions/modal/index";
-import { connect } from "react-redux";
 
 class FormAddress extends Component {
   constructor(props) {
@@ -104,11 +102,4 @@ class FormAddress extends Component {
     );
   }
 }
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    returnProfile: () => {
-      dispatch(modalsAction.closeModal());
-    },
-  };
-};
-export default connect(null, mapDispatchToProps)(FormAddress);
+export default FormAddress;

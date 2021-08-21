@@ -75,7 +75,7 @@ const routes = [
     main: () => <Wishlist />,
   },
   {
-    path: `${Config.PAGE_PROFILE_USER}/:slugProfile`,
+    path: `${Config.PAGE_PROFILE_USER}/:slug`,
     exact: true,
     main: (match) => <Profile match={match} />,
   },
