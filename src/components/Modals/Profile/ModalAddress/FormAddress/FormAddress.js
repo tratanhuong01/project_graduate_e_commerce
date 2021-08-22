@@ -154,8 +154,8 @@ class FormAddress extends Component {
               <div className="w-full my-4 px-2 relative z-10">
                 <input
                   type="text"
-                  className="w-full p-2.5 border-2 border-solid border-gray-300 
-                  text-gray-800 rounded-lg"
+                  className="w-full p-2.5 border-2 border-solid border-gray-300 dark:border-dark-third 
+                  text-gray-800 dark:text-white dark:bg-dark-third rounded-lg"
                   placeholder="Địa chỉ cụ thể.."
                   value={this.state.details}
                   onChange={(event) =>
@@ -174,7 +174,7 @@ class FormAddress extends Component {
                 }
                 typeAddress={this.state.typeAddress}
               />
-              <div className="mx-3 my-5 flex font-semibold text-gray-600">
+              <div className="mx-3 my-5 flex font-semibold text-gray-600  dark:text-white">
                 <input
                   type="checkbox"
                   className="transform scale-125 mr-3 mt-1.5"
@@ -189,7 +189,10 @@ class FormAddress extends Component {
                 Đặt làm địa chỉ mặc định
               </div>
               <hr className="mt-5" />
-              <FooterFormAddress returnProfile={returnProfile} />
+              <FooterFormAddress
+                address={this.state.address}
+                returnProfile={returnProfile}
+              />
             </Form>
           );
         }}

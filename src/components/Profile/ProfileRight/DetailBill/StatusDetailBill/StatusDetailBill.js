@@ -46,7 +46,7 @@ function StatusDetailBill(props) {
           icon={"fas fa-star"}
         />
       </div>
-      <div className="w-full lg:my-3 flex items-cente text-gray-600 mt-12">
+      <div className="w-full lg:my-3 flex items-cente text-gray-600 dark:text-white mt-12">
         <div className="w-1/2 flex text-xs items-center">
           Cảm ơn bạn đã mua sắm tại shop
         </div>

@@ -20,7 +20,7 @@ function UpdateAvatar(props) {
           />
           <div
             className="px-4 py-1.5 border-2 border-solid border-gray-300 text-gray-800 
-            font-semibold my-4"
+            font-semibold my-4 dark:text-white"
           >
             Chọn ảnh
           </div>

@@ -5,7 +5,7 @@ import StatusBill from "./StatusBill/StatusBill";
 
 function MyBill(props) {
   return (
-    <div className="w-full">
+    <div className="w-full dark:text-white">
       <StatusBill />
       <InputSearchBill />
       <ItemBill />

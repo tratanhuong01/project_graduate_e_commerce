@@ -22,8 +22,8 @@ function ModalCartAdded(props) {
   return (
     <div
       className="w-80 rounded-lg bg-white absolute animate__animated animate__zoomIn 
-      text-gray-700 z-50 modal__cart__added border-2 border-solid 
-      border-gray-200 shadow-lg m-4"
+      text-gray-700 z-50 modal__cart__added border-2 border-solid dark:border-dark-second
+      border-gray-200 shadow-lg m-4 dark:bg-dark-main dark:text-white"
       style={{ right: "-25%", top: "65px" }}
     >
       <div className="w-full max-h-72 overflow-y-auto p-2 scrollbar-css">
@@ -45,7 +45,7 @@ function ModalCartAdded(props) {
           })
         )}
       </div>
-      <hr className="my-1"></hr>
+      <hr className="my-1 dark:border-dark-second"></hr>
       <div className="w-full flex p-2 h-12">
         <div
           className="w-1/2 float-left justify-start flex items-center 
@@ -61,7 +61,7 @@ function ModalCartAdded(props) {
         </div>
       </div>
 
-      <hr className="my-1"></hr>
+      <hr className="my-1 dark:border-dark-second"></hr>
       <div className="w-full p-2 h-16">
         <Link
           to={Config.PAGE_CART}
@@ -78,7 +78,7 @@ function ModalCartAdded(props) {
               if (!user) dispatch(modalsAction.openModalLogin());
             }}
             type="button"
-            className={`px-6 py-2 rounded-full border-white border-2 border-solid hover:text-white hover:border-white shadow-lg float-right flex items-center font-semibold 
+            className={`px-6 py-2 rounded-full border-white border-2 border-solid hover:text-white hover:border-white shadow-lg float-right flex items-center font-semibold  dark:text-black 
              ml-2 ${
                sum() === 0
                  ? "bg-gray-500 cursor-not-allowed text-white"
@@ -94,7 +94,7 @@ function ModalCartAdded(props) {
             className="px-6 py-2 rounded-full hover:bg-organce 
             bg-white border-white border-2 border-solid hover:text-white
             hover:border-white shadow-lg float-right flex items-center font-semibold 
-            text-black ml-2"
+            text-black ml-2 dark:text-black"
           >
             Thanh toán
           </Link>

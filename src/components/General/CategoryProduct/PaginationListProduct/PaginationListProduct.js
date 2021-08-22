@@ -12,7 +12,7 @@ function PaginationListProduct(props) {
   //
   return (
     <div className="w-full flex justify-center">
-      <ul className="flex items-center jusitfy-center">
+      <ul className="flex items-center jusitfy-center dark:text-white">
         {arrayNew.map((item, index) => {
           return (
             <ItemPaginationListProduct

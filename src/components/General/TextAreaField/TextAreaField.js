@@ -28,7 +28,11 @@ class TextAreaField extends Component {
             id={id}
             className={
               className +
-              `${showError ? " border-red-500" : " border-gray-300"}`
+              `${
+                showError
+                  ? " border-red-500"
+                  : " border-gray-300 dark:bg-dark-third dark:border-dark-third"
+              }`
             }
             invalid={typeof showError === "undefined" ? "false" : "true"}
             placeholder={placeHolder}

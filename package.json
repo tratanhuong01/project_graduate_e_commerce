@@ -24,6 +24,7 @@
     "react-indiana-drag-scroll": "^2.0.1",
     "react-medium-image-zoom": "^4.3.4",
     "react-redux": "^7.2.4",
+    "react-router-breadcrumbs-hoc": "^4.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",

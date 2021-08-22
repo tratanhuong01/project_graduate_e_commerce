@@ -20,7 +20,10 @@ function NewsSameRight(props) {
   return news ? (
     <>
       <div className="mb-8 ml-2">
-        <span className="py-2 border-b-2 border-solid border-organce font-semibold text-xl text-gray-600">
+        <span
+          className="py-2 border-b-2 border-solid border-organce font-semibold text-xl 
+        text-gray-600 dark:text-white"
+        >
           GẦN ĐÂY
         </span>
       </div>

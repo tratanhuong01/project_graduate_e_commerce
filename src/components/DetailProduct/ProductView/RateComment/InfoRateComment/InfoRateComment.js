@@ -10,7 +10,7 @@ function InfoRateComment(props) {
   const { products } = props;
   //
   return (
-    <div className="w-full flex bg-gray-100 p-2 border-2 border-solid border-gray-200">
+    <div className="w-full flex bg-gray-100 dark:bg-dark-third dark:border-dark-third p-2 border-2 border-solid border-gray-200">
       <div className="w-5/12 md:w-1/3 flex flex-wrap ỉtems-center jusitify-center">
         <p className="text-center text-organce pt-2 font-semibold text-4xl w-full">
           4.6/5
@@ -18,7 +18,9 @@ function InfoRateComment(props) {
         <div className="text-yellow-500 my-1 w-full flex justify-center">
           <Star fontSize="text-xl" />
         </div>
-        <p className="w-full text-center my-1 text-gray-700">(111 đánh giá)</p>
+        <p className="w-full text-center my-1 text-gray-700 dark:text-gray-300">
+          (111 đánh giá)
+        </p>
         <button
           onClick={() => dispatch(modalsAction.openModalSendRate(products))}
           className="px-6 py-2.5 rounded-full bg-organce text-white font-semibold 

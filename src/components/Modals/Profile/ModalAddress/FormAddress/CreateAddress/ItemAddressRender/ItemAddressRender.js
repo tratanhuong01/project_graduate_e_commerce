@@ -21,7 +21,7 @@ function ItemAddressRender(props) {
   return (
     <div
       className="w-full text-gray-800 h-56 max-h-56 overflow-y-auto my-1 
-        scrollbar-css"
+        scrollbar-css  dark:border-dark-third dark:text-white"
     >
       {dataRender.map((item, index) => {
         return (

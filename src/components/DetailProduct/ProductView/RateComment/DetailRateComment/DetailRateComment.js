@@ -5,7 +5,10 @@ import ItemDetailRateComment from "./ItemDetailRateComment/ItemDetailRateComment
 function DetailRateComment(props) {
   return (
     <>
-      <div className="w-full flex flex-wrap p-2 border-2 border-solid border-gray-200">
+      <div
+        className="w-full flex flex-wrap p-2 border-2 border-solid border-gray-200 
+      dark:border-dark-third mt-3"
+      >
         <ItemDetailRateComment />
         <ItemDetailRateComment />
         <ItemDetailRateComment />

@@ -11,7 +11,7 @@ function ItemCategoryProduct(props) {
       <div
         onClick={() => setShow(!show)}
         className="w-full flex items-center p-2.5 flex border-2 border-solid border-gray-200 
-        cursor-pointer hover:text-organce flex md:hidden"
+        cursor-pointer hover:text-organce flex md:hidden dark:border-dark-third"
       >
         <span className={`${icon} text-2xl mr-3 `}></span>
         <span className="font-semibold">{label}</span>
@@ -27,7 +27,7 @@ function ItemCategoryProduct(props) {
         ></i>
       </div>
       <div
-        className={`w-full md:w-64 pl-5 relative md:absolute -top-1 bg-white z-50 overflow-y-auto scrollbar-css  data__category ${
+        className={`w-full md:w-64 pl-5 relative md:absolute -top-1 bg-white z-50 overflow-y-auto scrollbar-css  data__category dark:bg-dark-third ${
           show ? "flex flex-wrap" : "hidden"
         } border-2 border-solid left-0 md:left-full`}
       >

@@ -9,7 +9,7 @@ import myReducer from "./reducers";
 const store = createStore(myReducer, applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App />,
   </Provider>,
   document.getElementById("root")
 );

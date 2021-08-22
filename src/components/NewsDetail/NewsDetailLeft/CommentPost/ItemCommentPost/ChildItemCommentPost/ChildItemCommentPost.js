@@ -16,7 +16,7 @@ function ChildItemCommentPost(props) {
         alt=""
         className="w-14 h-14 rounded-full mr-4"
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col dark:text-white">
         <Link to="" className="font-semibold mb-2 flex">
           {comment.commentUser === null ? (
             comment.fullName
@@ -30,11 +30,11 @@ function ChildItemCommentPost(props) {
         <span className="text-gray-500 text-xs mb-1">
           {comment.timeCreated}
         </span>
-        <p className="text-gray-800">{comment.content}</p>
+        <p className="text-gray-800 dark:text-white">{comment.content}</p>
       </div>
       {user && (
         <button
-          className="p-1 text-xs rounded-lg font-semibold text-gray-700 border-organce 
+          className="p-1 text-xs rounded-lg font-semibold text-gray-700 border-organce dark:text-white 
           border-2 border-solid hover:bg-organce hover:text-white absolute top-1 right-1"
         >
           Phản hồi

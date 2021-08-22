@@ -4,7 +4,7 @@ import ItemNotify from "./ItemNotify/ItemNotify";
 function MyNotify(props) {
   return (
     <div className="w-full">
-      <div className="w-full flex text-gray-600 justify-end">
+      <div className="w-full flex text-gray-600 dark:text-white justify-end">
         <button
           className="p-1 text-white font-semibold 
           bg-organce"

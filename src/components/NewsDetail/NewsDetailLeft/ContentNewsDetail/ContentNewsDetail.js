@@ -8,7 +8,7 @@ function ContentNewsDetail(props) {
   const { newsDetail } = props;
   //
   return (
-    <div className="w-full ">
+    <div className="w-full  dark:text-white">
       <HeaderContent newsDetail={newsDetail} />
       <div
         className="my-5 post w-full"

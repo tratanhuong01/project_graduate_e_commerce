@@ -17,7 +17,7 @@ function ItemCartMain(props) {
   const { user } = states;
   //
   return (
-    <div className="w-full my-3 mb-5 flex md:bg-white">
+    <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white">
       <div className="w-10 flex justify-center p-3 relative">
         <input
           type="checkbox"
@@ -37,13 +37,13 @@ function ItemCartMain(props) {
             <div className="">
               <p
                 className="mb-2 text-gray-700 text-base hover:text-organce text-center 
-                  cursor-pointer font-semibold"
+                  cursor-pointer font-semibold  dark:text-white"
               >
                 <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${cart.slug}`}>
                   {cart.nameLineProduct}
                 </Link>
               </p>
-              <p className="text-gray-500 text-base  text-center">
+              <p className="text-gray-500 text-base  text-center dark:text-gray-300">
                 {cart.color && `Màu : ${cart.color.description} - `}
                 {cart.memory && `Bộ nhớ : ${cart.memory.nameMemory}`}
               </p>
@@ -55,7 +55,7 @@ function ItemCartMain(props) {
             <div className="">
               <p
                 className="mb-2 text-gray-700 text-base text-organce text-center 
-                  cursor-pointer"
+                  cursor-pointer  dark:text-white"
               >
                 <span className="md:hidden mr-3">Đơn giá :</span>
                 {new Intl.NumberFormat("ban", "id").format(
@@ -72,7 +72,7 @@ function ItemCartMain(props) {
               <input
                 type="number"
                 className="w-28 p-3 border-2 border-solid border-gray-300 
-                  rounded-full text-center font-semibold"
+                  rounded-full text-center font-semibold dark:bg-dark-third dark:border-dark-third"
                 min="1"
                 value={number}
                 onChange={(event) => {

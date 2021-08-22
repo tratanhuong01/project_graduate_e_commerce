@@ -7,7 +7,7 @@ function ApplyCode(props) {
         type="text"
         name=""
         className="w-3/4 mt-2 p-3 rounded-l-lg border-2 border-solid 
-            border-gray-100"
+         border-gray-100 dark:bg-dark-third dark:border-dark-third"
         placeholder="Nhập mã ưu đãi (Nếu có)..."
         id=""
       />

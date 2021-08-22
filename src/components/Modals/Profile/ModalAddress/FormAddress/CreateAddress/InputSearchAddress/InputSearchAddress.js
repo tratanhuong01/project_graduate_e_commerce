@@ -40,7 +40,7 @@ function InputSearchAddress(props) {
       }}
       value={search}
       className="w-full rounded-lg text-gray-800 border-2 border-solid border-gray-300 
-        mt-3 p-2"
+        mt-3 p-2 dark:text-white dark:border-dark-third dark:bg-dark-third"
     />
   );
 }

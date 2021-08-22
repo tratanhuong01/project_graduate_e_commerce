@@ -51,7 +51,7 @@ function ItemCart(props) {
           </span>
         </div>
       </div>
-      <hr className="my-2"></hr>
+      <hr className="my-2  dark:border-dark-second"></hr>
     </>
   );
 }

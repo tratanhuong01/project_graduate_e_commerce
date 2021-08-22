@@ -35,7 +35,7 @@ function Address(props) {
   //
   return addresses ? (
     <div className="w-full">
-      <div className="w-full flex text-gray-600 mb-5">
+      <div className="w-full flex text-gray-600 mb-5 dark:text-white">
         <div className="w-1/2 flex items-center font-semibold text-2xl">
           Địa chỉ của tôi
         </div>

@@ -1,7 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useLocation,
+} from "react-router-dom";
 import MainApp from "./MainApp";
 import routes from "./routes";
+import * as Config from "./constants/Config";
 
 function App(props) {
   const showAllLinks = (routes) => {
@@ -17,15 +23,23 @@ function App(props) {
           />
         );
       });
-      return result;
     }
+    return result;
   };
-
+  const Interfaces = () => {
+    const location = useLocation();
+    const data = showAllLinks(routes);
+    return location.pathname === Config.PAGE_PAYMENT ? (
+      <Switch>{data}</Switch>
+    ) : (
+      <MainApp>
+        <Switch>{data}</Switch>
+      </MainApp>
+    );
+  };
   return (
     <Router>
-      <MainApp>
-        <Switch>{showAllLinks(routes)}</Switch>
-      </MainApp>
+      <Interfaces />
     </Router>
   );
 }

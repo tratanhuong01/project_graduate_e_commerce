@@ -9,7 +9,7 @@ function PaymentLeft(props) {
   //
   //
   return (
-    <div className="w-full xl:w-2/3 px-4 xl:pr-4 flex justify-end">
+    <div className="w-full xl:w-2/3 px-4 xl:pr-4 flex justify-end dark:text-white">
       <div className="w-full">
         <Logo />
         <div className="w-full flex flex-col xl:flex-row">

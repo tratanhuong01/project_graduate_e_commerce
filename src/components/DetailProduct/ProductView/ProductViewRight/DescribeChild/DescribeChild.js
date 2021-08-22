@@ -27,7 +27,7 @@ function DescribeChild(props) {
         <p>
           <span
             className="text-gray-700 px-2 border-l-2 border-solid 
-            border-gray-500"
+            border-gray-500 dark:text-gray-300"
           >
             Thương hiệu :
           </span>
@@ -36,7 +36,7 @@ function DescribeChild(props) {
         <p>
           <span
             className="text-gray-700 ml-4 px-2 border-l-2 border-solid 
-            border-gray-500"
+            border-gray-500 dark:text-gray-300"
           >
             Bảo hành :{" "}
           </span>
@@ -49,7 +49,7 @@ function DescribeChild(props) {
         )}
         <u className="text-xl pl-2 mr-3">đ</u>
         {products.sale > 0 && (
-          <strike className="text-gray-600 font-semibold text-xl mr-2">
+          <strike className="text-gray-600 font-semibold text-xl mr-2 dark:text-gray-300">
             {new Intl.NumberFormat().format(products.priceOutput)}đ
           </strike>
         )}
@@ -63,7 +63,7 @@ function DescribeChild(props) {
           </span>
         )}
       </p>
-      <ul className="text-gray-700 my-2 text-sm">
+      <ul className="text-gray-700 my-2 text-sm dark:text-gray-300">
         <li className="my-2">Kích thước màn hình : 1,2"</li>
         <li className="my-2">Độ phân giải màn hình : 360 x 360 pixels</li>
         <li className="my-2">Luôn hiển thị : có</li>

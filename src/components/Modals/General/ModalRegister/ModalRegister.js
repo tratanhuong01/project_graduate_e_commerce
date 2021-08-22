@@ -16,11 +16,11 @@ function ModalRegister(props) {
   return (
     <div
       className="w-11/12 xl:w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-        rounded-lg z-50 animate__animated animate__fadeIn h-85vh"
+        rounded-lg z-50 animate__animated animate__fadeIn h-85vh bg-white dark:bg-dark-second dark:text-white"
     >
       {modal.loading && <LoadingModal />}
       <div
-        className="w-full relative px-2 bg-white rounded-lg max-h-full 
+        className="w-full relative px-2 rounded-lg max-h-full 
          overflow-y-auto scrollbar-css"
       >
         <CloseModal />

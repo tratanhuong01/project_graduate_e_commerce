@@ -11,6 +11,21 @@ button:focus {
     font-size: 16px;
   }
 }
+.dark .post span {
+  color: white !important;
+}
+.dark\:text-black {
+  color: black;
+}
+.post span {
+  background: transparent !important;
+}
+.post p {
+  background: transparent !important;
+}
+.post div {
+  background: transparent !important;
+}
 .detail__product__left {
   max-height: 300px;
 }

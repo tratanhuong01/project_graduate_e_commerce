@@ -14,7 +14,7 @@ function ListWishlist(props) {
   const { carts } = states;
   //
   return (
-    <div className="px-3 w-full xl:w-4/5 mx-auto">
+    <div className="px-3 w-full xl:w-4/5 mx-auto dark:text-white">
       <TitleWishlist />
       {carts.map((cart, index) => {
         return <ItemWishlist wishList={cart} key={index} />;

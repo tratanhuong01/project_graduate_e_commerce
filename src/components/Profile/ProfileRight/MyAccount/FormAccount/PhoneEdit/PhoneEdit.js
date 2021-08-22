@@ -9,14 +9,14 @@ function PhoneEdit(props) {
   const [password, setPassword] = useState("");
   //
   return (
-    <div className="w-full text-gray-800">
+    <div className="w-full text-gray-800 dark:text-white">
       <p className="text-xl font-semibold">Đổi Số Điện Thoại</p>
       <p className="text-sm pb-6 ">
         Để đảm bảo tính bảo mật, vui lòng làm theo các bước sau để đổi số điện
         thoại
       </p>
       <hr className="mb-3" />
-      <div className="w-full flex text-gray-600">
+      <div className="w-full flex text-gray-600 dark:text-white">
         <div className="w-1/4 flex-col flex items-end">
           <div className="flex my-2.5 py-3 items-center">Số điện thoại</div>
           <div className="flex my-6 items-center">
@@ -31,7 +31,8 @@ function PhoneEdit(props) {
             <input
               type="password"
               onChange={(event) => setPassword(event.target.value)}
-              className="w-1/2 p-2 border border-solid border-gray-300"
+              className="w-1/2 p-2 border border-solid border-gray-300 dark:border-dark-third 
+              dark:bg-dark-third"
               placeholder={
                 isCorrect ? "Nhập số điện thoại mới..." : "Nhập mật khẩu...."
               }

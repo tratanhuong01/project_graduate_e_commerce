@@ -16,16 +16,16 @@ function MainDetailProduct(props) {
   }, []);
   //
   return (
-    <div className="w-full bg-gray-100">
+    <div className="w-full bg-gray-100 dark:bg-dark-second">
       <LevelUrl />
-      <div className="w-full xl:w-4/5 mx-auto p-4 bg-white">
+      <div className="w-full xl:w-4/5 mx-auto p-4 bg-white dark:bg-dark-second dark:text-white">
         <ProductView products={products} />
         <div className="w-full flex my-5 lg:flex-row flex-col">
           <div className="w-full lg:w-7/12">
             <DescribeProduct products={products} />
             <RateComment products={products} />
           </div>
-          <div className="w-full lg:w-5/12">
+          <div className="w-full lg:w-5/12 ml-5">
             <NewsDetailProduct />
           </div>
         </div>

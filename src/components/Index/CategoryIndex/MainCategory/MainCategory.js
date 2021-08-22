@@ -52,7 +52,7 @@ function MainCategory(props) {
           <Link
             to={to}
             className="w-full flex items-center p-2.5 flex border-b-2 border-solid border-gray-200 
-            cursor-pointer hover:text-organce"
+            cursor-pointer hover:text-organce  dark:border-dark-third"
           >
             <span className={`${icon} text-2xl mr-3 `}></span>
             <span className="font-semibold">{label}</span>
@@ -84,7 +84,7 @@ function MainCategory(props) {
       className={`${
         menu ? "" : "hidden"
       } w-2/3 fixed top-0 left-0 md:relative md:w-56 lg:w-full bg-white text-gray-800 
-        h-screen md:h-auto max-h-full overflow-y-auto md:overflow-visible scrollbar-css category__index__left`}
+        h-screen md:h-auto max-h-full overflow-y-auto md:overflow-visible scrollbar-css category__index__left dark:bg-dark-main dark:text-white`}
     >
       <div className="w-full p-2 md:hidden">
         <CategoryIndexLeftTop setMenu={(state) => setMenu(state)} menu={menu} />

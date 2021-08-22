@@ -19,11 +19,13 @@ function CommentPost(props) {
       <div className="flex text-xl my-3">
         <p
           className="p-2 border-b-2 border-solid border-organce 
-        text-gray-700 flex items-center"
+        text-gray-700 flex items-center dark:text-white"
         >
           BÌNH LUẬN
         </p>
-        <p className="flex items-center text-gray-700">( {comments.length} )</p>
+        <p className="flex items-center text-gray-700  dark:text-white">
+          ( {comments.length} )
+        </p>
       </div>
       {user && <TypeContentComment user={user} />}
       <div className="w-full">

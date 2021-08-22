@@ -11,8 +11,8 @@ function TypeContentComment(props) {
         />
         <input
           type="text"
-          className="w-full p-2 rounded-full border-2 border-solid 
-            border-gray-200"
+          className="w-full p-2 rounded-full border-2 border-solid dark:text-white 
+            border-gray-200  dark:bg-dark-third dark:border-dark-second"
           placeholder="Nhập nội dung..."
         ></input>
         <button

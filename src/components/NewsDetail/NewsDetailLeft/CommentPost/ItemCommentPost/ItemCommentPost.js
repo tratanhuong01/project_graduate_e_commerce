@@ -14,7 +14,7 @@ function ItemCommentPost(props) {
   //
   return (
     <>
-      <div className="w-full p-2 flex relative">
+      <div className="w-full p-2 flex relative dark:text-white">
         <ChildItemCommentPost comment={comment.comment} user={user} />
       </div>
       <div className="w-11/12 ml-auto border-l-2 border-solid border-gray-200">

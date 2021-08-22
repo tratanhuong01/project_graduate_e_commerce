@@ -8,13 +8,13 @@ function ChangePassword(props) {
   const dispatch = useDispatch();
   //
   return (
-    <div className="w-full text-gray-800 ml-0 md:ml-4 lg:pl-0">
+    <div className="w-full text-gray-800 dark:text-white ml-0 md:ml-4 lg:pl-0">
       <p className="text-xl font-semibold mt-1.5 lg:mt-0">Đổi Mật Khẩu</p>
       <p className="text-sm pb-6 ">
         Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho người khác
       </p>
       <hr className="mb-3" />
-      <div className="w-full flex text-gray-600">
+      <div className="w-full flex text-gray-600 dark:text-white">
         <div className="w-1/3 lg:w-1/4 flex-col flex items-end">
           <div className="flex my-2.5 py-3 items-center">Mật khẩu hiện tại</div>
           <div className="flex my-5 items-center">Mật khẩu mới</div>
@@ -24,7 +24,8 @@ function ChangePassword(props) {
           <div className="flex py-3 items-center">
             <input
               type="password"
-              className="w-2/3 lg:w-1/2 p-2 border border-solid border-gray-300"
+              className="w-2/3 lg:w-1/2 p-2 border border-solid border-gray-300 dark:border-dark-second 
+              dark:bg-dark-third"
               placeholder=""
             />
             <span

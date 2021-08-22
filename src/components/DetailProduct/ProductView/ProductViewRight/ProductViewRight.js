@@ -82,7 +82,7 @@ function ProductViewRight(props) {
                 value={number}
                 min={1}
                 max={30}
-                className="w-1/2 py-3.5 text-center font-semibold"
+                className="w-1/2 py-3.5 text-center font-semibold dark:bg-dark-second"
                 onChange={(event) => {
                   setNumber(event.target.value);
                   dispatch(

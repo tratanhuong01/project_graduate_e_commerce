@@ -13,7 +13,6 @@ function About(props) {
   return (
     <>
       <MainAbout />
-      <Modal />
     </>
   );
 }

@@ -7,10 +7,10 @@ function ItemWishlist(props) {
   const { wishList } = props;
   //
   return (
-    <div className="w-full bg-white flex">
+    <div className="w-full flex">
       <div
         className="w-1/2 flex justify-center border-2 border-solid border-gray-100 
-        p-3  text-gray-800"
+        p-3  text-gray-800 dark:text-white dark:border-dark-third"
       >
         <div className="w-full flex items-center">
           <img
@@ -41,13 +41,15 @@ function ItemWishlist(props) {
       <div className="w-1/2 flex justify-center">
         <div
           className="w-3/5 md:w-2/5 flex justify-center items-center border-2 border-solid border-gray-100 
-        p-3"
+        p-3  dark:border-dark-third"
         >
-          <span className="flex font-semibold text-gray-800">1.450.000 đ</span>
+          <span className="flex font-semibold text-gray-800 dark:text-white">
+            1.450.000 đ
+          </span>
         </div>
         <div
           className="w-1/5 md:w-2/5 flex justify-center border-2 border-solid border-gray-100 
-        p-3 font-semibold items-center"
+        p-3 font-semibold items-center  dark:border-dark-third"
         >
           <span
             className="fas fa-cart-plus text-2xl md:text-xl mr-2 flex md:hidden cursor-pointer 
@@ -66,11 +68,11 @@ function ItemWishlist(props) {
         </div>
         <div
           className="w-1/5 flex justify-center items-center border-2 border-solid border-gray-100 
-        p-3"
+        p-3 dark:border-dark-third"
         >
           <span
             className="bx bx-trash-alt text-2xl md:text-3xl text-gray-800 cursor-pointer 
-              hover:text-organce"
+              hover:text-organce dark:text-white"
           ></span>
         </div>
       </div>

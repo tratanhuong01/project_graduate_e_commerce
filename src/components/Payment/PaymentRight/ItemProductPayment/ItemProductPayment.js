@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ItemProductPayment(props) {
+function  ItemProductPayment(props) {
   //
   const { item } = props;
   //

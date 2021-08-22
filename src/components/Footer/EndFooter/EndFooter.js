@@ -1,8 +1,10 @@
 import React from "react";
+import notify from "../../../assets/images/notify.png";
+import payment from "../../../assets/images/payment.png";
 
 function EndFooter(props) {
   return (
-    <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto my-3 p-4 dark:text-gray-300">
+    <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto px-4 py-7 dark:text-gray-300">
       <div className="w-full text-center md:text-left md:w-1/4 px-2">
         <div className="w-full flex h-32">
           <span className="text-4xl flex items-center font-semibold">
@@ -93,13 +95,13 @@ function EndFooter(props) {
           <p className="flex items-center text-xl">Được chứng nhận</p>
         </div>
         <p className="w-full flex flex-wrap mb-5 justify-center">
-          <img src="./images/thongbao.png" alt="" />
+          <img src={notify} alt="" />
         </p>
         <div className="w-full flex h-20">
           <p className="flex items-center text-xl">Hình thức thanh toán</p>
         </div>
-        <p className="w-full flex flex-wrap mb-5 justify-center">
-          <img src="./images/payment.png" alt="" />
+        <p className="w-full flex flex-wrap pb-5 justify-center">
+          <img src={payment} alt="" />
         </p>
       </div>
     </div>

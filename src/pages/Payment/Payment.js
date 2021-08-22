@@ -22,9 +22,9 @@ function Payment(props) {
   }, []);
   //
   return orders !== null ? (
-    <>
+    <div className="w-full dark:bg-dark-second">
       <MainPayment />
-    </>
+    </div>
   ) : (
     <Loading />
   );

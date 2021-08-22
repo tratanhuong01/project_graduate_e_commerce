@@ -13,7 +13,7 @@ function MyAccount(props) {
   const { user } = states;
   //
   return (
-    <div className="w-full text-gray-800">
+    <div className="w-full text-gray-800 dark:text-white">
       <p className="text-xl font-semibold">Hồ Sơ Của Tôi</p>
       <p className="text-sm pb-6 ">
         Quản lý thông tin hồ sơ để bảo mật tài khoản

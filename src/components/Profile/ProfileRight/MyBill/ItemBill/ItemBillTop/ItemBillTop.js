@@ -14,7 +14,7 @@ function ItemBillTop(props) {
           Giao hàng thành công
         </div>
         <div className="flex items-center">
-          <i className="far fa-question-circle text-xl mx-3 text-gray-600"></i>
+          <i className="far fa-question-circle text-xl mx-3 text-gray-600 dark:text-white"></i>
           <span className="text-organce flex">ĐÃ GIAO</span>
         </div>
       </div>

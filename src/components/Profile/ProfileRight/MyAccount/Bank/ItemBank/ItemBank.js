@@ -4,7 +4,7 @@ function ItemBank(props) {
   return (
     <div
       className="w-full flex my-5 items-center relative pb-3 border-solid 
-    border-gray-200 border-b-2"
+    border-gray-200 border-b-2 dark:text-white text-gray-600"
     >
       <div
         className="w-20 h-20 p-1 border-2 border-solid border-gray-300 
@@ -14,15 +14,15 @@ function ItemBank(props) {
           <i className="bx bxs-bank text-6xl text-gray-100"></i>
         </div>
       </div>
-      <div className="flex items-center flex-col justify-center ml-2 text-gray-600 ml-4 text-sm lg:text-xm">
+      <div className="flex items-center flex-col justify-center ml-2 ml-4 text-sm lg:text-xm">
         <p className="text-center">VIETINBANK - NH CONG THUONG VIET NAM</p>
         <p>STK : 10*******6</p>
         <p>Họ Và Tên : Tra Tan Huong</p>
         <p>Chi nhánh : CN Quang Nam</p>
       </div>
       <div
-        className="text-gray-600 text-sm absolute top-0 flex flex-col right-0 
-      lg:relative lg:top-auto lg:block lg:ml-6"
+        className="text-sm absolute top-0 flex flex-col right-0 
+      lg:relative lg:top-auto lg:block lg:ml-6 "
       >
         <span className="mb-0.5">Đã kiểm tra</span>
         <button
@@ -32,7 +32,7 @@ function ItemBank(props) {
           Mặc định
         </button>
       </div>
-      <div className="absolute right-0 bottom-2 lg:bottom-auto text-gray-600">
+      <div className="absolute right-0 bottom-2 lg:bottom-auto">
         <span className="mx-2 underline cursor-pointer">Xóa</span>
         <button className="border-2 border-solid border-gray-300 px-3 py-1 text-sm lg:text-xm lg:py-2 ml-5">
           Thiết lập mặc định

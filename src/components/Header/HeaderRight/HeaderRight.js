@@ -1,6 +1,7 @@
 import React from "react";
 import useCart from "../../../hook/useCart";
 import Center from "./Center/Center";
+import Left from "./Left/Left";
 import Right from "./Right/Right";
 
 function HeaderRight(props) {
@@ -12,6 +13,7 @@ function HeaderRight(props) {
       <ul className="flex items-center">
         <Center />
         <Right />
+        <Left />
       </ul>
     </div>
   );

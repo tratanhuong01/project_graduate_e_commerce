@@ -16,7 +16,7 @@ function StatusBill(props) {
   //
   return (
     <>
-      <div className="w-full text-gray-600 shadow-md hidden sm:flex">
+      <div className="w-full text-gray-600  dark:text-white  shadow-md hidden sm:flex">
         {status.map((name, index) => {
           return (
             <ItemStatusBill
@@ -31,7 +31,7 @@ function StatusBill(props) {
       <div
         onClick={() => setShow(!show)}
         className="w-full px-3 py-2 rounded-lg border-2 border-solid border-gray-300 
-        font-semibold text-gray-800 relative cursor-pointer sm:hidden"
+        font-semibold text-gray-800 dark:text-white relative cursor-pointer sm:hidden"
       >
         {data}
         <span className="bx bx-chevron-down text-xl absolute top-2 right-2"></span>

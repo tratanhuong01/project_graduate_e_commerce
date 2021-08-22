@@ -7,7 +7,7 @@ function ItemBillContent(props) {
   //
   return (
     <>
-      <div className="w-full flex items-center text-gray-600">
+      <div className="w-full flex items-center text-gray-600 dark:text-white">
         <div className="w-2/3 flex items-center">
           <img
             src="https://cf.shopee.vn/file/30cfbf2972827fc710796675e7c4f281"
@@ -30,7 +30,9 @@ function ItemBillContent(props) {
           justify-end text-organce font-semibold"
         >
           <span className="bx bx-check-shield text-2xl mr-3"></span>
-          <span className="text-gray-600 mr-3">Tổng số tiền :</span>
+          <span className="text-gray-600 dark:text-gray-300 mr-3">
+            Tổng số tiền :
+          </span>
           <span className="text-2xl">76.000 đ</span>
         </div>
       )}

@@ -20,7 +20,7 @@ function FormAccount(props) {
         <div className="w-full flex items-center my-3">
           <input
             type="text"
-            className="w-1/2 mr-5 p-2 border border-solid 
+            className="w-1/2 mr-5 p-2 border border-solid dark:bg-dark-third dark:border-dark-second 
             border-gray-300"
             placeholder="Nhập họ"
             value={user.firstName}
@@ -28,7 +28,7 @@ function FormAccount(props) {
           />
           <input
             type="text"
-            className="w-1/2 p-2 mr-2 border border-solid 
+            className="w-1/2 p-2 mr-2 border border-solid dark:bg-dark-third dark:border-dark-second 
             border-gray-300"
             placeholder="Nhập tên"
             value={user.lastName}
@@ -85,7 +85,7 @@ function FormAccount(props) {
         <div className="flex py-3 items-center mt-0.5 text-sm">
           <input
             type="date"
-            className="w-auto border-2 border-solid border-gray-300 px-1 py-2 cursor-pointer mr-2"
+            className="w-auto border-2 border-solid border-gray-300 px-1 py-2 cursor-pointer mr-2 dark:bg-dark-third dark:border-dark-second dark:text-white"
             value={`${user.birthday.split(" ")[0].split("-")[2]}-${
               user.birthday.split(" ")[0].split("-")[0]
             }-${user.birthday.split(" ")[0].split("-")[1]}`}

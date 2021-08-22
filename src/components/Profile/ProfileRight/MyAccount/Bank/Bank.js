@@ -9,7 +9,7 @@ function Bank(props) {
   //
   return (
     <div className="w-full">
-      <div className="w-full flex text-gray-600 mb-5">
+      <div className="w-full flex text-gray-600 mb-5 dark:text-white">
         <div className="w-1/2 flex items-center font-semibold text-xl lg:text-2xl">
           Tài khoản ngân hàng của tôi
         </div>

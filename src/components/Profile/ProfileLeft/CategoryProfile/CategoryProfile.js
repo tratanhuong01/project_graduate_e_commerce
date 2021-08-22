@@ -9,7 +9,7 @@ function CategoryProfile(props) {
   const history = useHistory();
   //
   return (
-    <div className="w-full flex md:block mb-3 md:my-8 text-gray-800">
+    <div className="w-full flex md:block mb-3 md:my-8 text-gray-800 dark:text-white">
       <ItemCategoryProfile
         onClick={() =>
           history.push(`${Config.PAGE_PROFILE_USER}/${Config.PROFILE_INFO}`)

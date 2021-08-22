@@ -15,7 +15,7 @@ function PaymentRight(props) {
   const { orders } = states;
   //
   return (
-    <div className="w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4">
+    <div className="w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4 dark:text-white">
       <div className="w-full">
         <NumberProduct />
         <div className="w-full my-5 hidden xl:block">

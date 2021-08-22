@@ -10,7 +10,7 @@ function ItemNumberStar(props) {
       ${
         current === true
           ? "border-organce text-organce font-semibold"
-          : "border-gray-300 font-semibold text-gray-700"
+          : "border-gray-300 dark:text-white font-semibold text-gray-700"
       }`}
     >
       {content}

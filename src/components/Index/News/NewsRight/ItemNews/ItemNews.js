@@ -63,7 +63,7 @@ function ItemNews(props) {
             <button className="bg-organce mr-3 px-3 py-1 rounded-full text-xs text-gray-100 font-semibold">
               {newData.categoryNews.nameCategoryNews}
             </button>
-            <span className="flex items-center text-sm font-semibold">
+            <span className="flex items-center text-sm font-semibold dark:text-gray-300">
               {newData.timeCreated}
             </span>
           </p>

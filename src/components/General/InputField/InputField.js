@@ -30,8 +30,10 @@ class InputField extends Component {
         >
           <label
             className={`${
-              showError || isset !== null ? "text-red-500" : "text-gray-800"
-            } text-xs px-1 bg-white absolute top-0 left-3 font-semibold flex`}
+              showError || isset !== null
+                ? "text-red-500 z-50 dark:bg-dark-second"
+                : "text-gray-800 dark:text-white"
+            } text-xs px-1 absolute top-0 left-3 font-semibold flex`}
           >
             {label}
           </label>
@@ -43,10 +45,10 @@ class InputField extends Component {
             onClick={() => (typeof onClick === "undefined" ? "" : onClick())}
             className={
               className +
-              `${
+              ` dark:bg-dark-third dark:text-white ${
                 showError || isset !== null
                   ? " text-red-500 border-red-500"
-                  : " border-gray-300"
+                  : " border-gray-300 dark:border-dark-third "
               }`
             }
             invalid={typeof showError === "undefined" ? "false" : "true"}
@@ -61,7 +63,9 @@ class InputField extends Component {
             className={
               `${icon} absolute top-5 left-2 text-2xl ` +
               `${
-                showError || isset !== null ? " text-red-500" : " text-gray-800"
+                showError || isset !== null
+                  ? " text-red-500"
+                  : " text-gray-800 dark:text-white"
               }`
             }
           ></i>

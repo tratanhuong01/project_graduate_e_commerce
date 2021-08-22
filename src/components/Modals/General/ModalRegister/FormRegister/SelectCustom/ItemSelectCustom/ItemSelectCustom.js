@@ -11,7 +11,7 @@ function ItemSelectCustom(props) {
         setModal(!modal);
         setIcon(item.icon);
       }}
-      className="p-2.5 w-full hover:bg-gray-200 cursor-pointer"
+      className="p-2.5 w-full hover:bg-gray-200 cursor-pointer dark:hover:bg-dark-third"
     >
       {item.data}
     </div>

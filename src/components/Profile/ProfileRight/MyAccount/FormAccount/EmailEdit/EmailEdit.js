@@ -9,13 +9,13 @@ function EmailEdit(props) {
   const [password, setPassword] = useState("");
   //
   return (
-    <div className="w-full text-gray-800">
+    <div className="w-full text-gray-800 dark:text-white">
       <p className="text-xl font-semibold">Đổi email</p>
       <p className="text-sm pb-6 ">
         Để cập nhật email mới, vui lòng xác nhận bằng cách nhập mật khẩu
       </p>
       <hr className="mb-3" />
-      <div className="w-full flex text-gray-600">
+      <div className="w-full flex text-gray-600 dark:text-white">
         <div className="w-1/4 flex-col flex items-end">
           <div className="flex my-2.5 py-3 items-center">Email</div>
           <div className="flex my-6 items-center">
@@ -30,7 +30,8 @@ function EmailEdit(props) {
             <input
               type="password"
               onChange={(event) => setPassword(event.target.value)}
-              className="w-1/2 p-2 border border-solid border-gray-300"
+              className="w-1/2 p-2 border border-solid border-gray-300 dark:border-dark-third 
+              dark:bg-dark-third"
               placeholder={
                 isCorrect ? "Nhập email mới..." : "Nhập mật khẩu...."
               }

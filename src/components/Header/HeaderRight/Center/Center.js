@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../constants/Config";
 import ModalCartAdded from "../../../General/ModalCartAdded/ModalCartAdded";
+import * as cartsAction from "../../../../actions/cart/index";
 
 function Center(props) {
   //
+  const dispatch = useDispatch();
   const states = useSelector((state) => {
     return {
       carts: state.carts,
@@ -14,7 +16,9 @@ function Center(props) {
   });
   const { carts, user } = states;
 
-  useEffect(() => {}, [user, carts]);
+  useEffect(() => {
+    dispatch(cartsAction.loadCartRequest(user));
+  }, [user]);
 
   //
   return (

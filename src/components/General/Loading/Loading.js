@@ -2,7 +2,7 @@ import React from "react";
 
 function Loading(props) {
   return (
-    <div className="w-full h-screen relative bg-white">
+    <div className="w-full h-screen relative bg-white dark:bg-dark-second">
       <img
         src="/images/loading.gif"
         alt=""

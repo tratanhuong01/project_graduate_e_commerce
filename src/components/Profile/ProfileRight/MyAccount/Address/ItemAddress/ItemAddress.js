@@ -9,8 +9,8 @@ function ItemAddress(props) {
   const dispatch = useDispatch();
   //
   return (
-    <div className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative">
-      <div className="w-full xl:w-3/4 flex text-gray-600">
+    <div className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600">
+      <div className="w-full xl:w-3/4 flex">
         <div className="w-1/4 flex-col flex items-end">
           <div className="flex py-2 items-center">Họ và tên</div>
           <div className="flex py-2 items-center">Số điện thoại</div>
@@ -54,7 +54,7 @@ function ItemAddress(props) {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-4 xl:relative xl:bottom-auto xl:w-1/4 lg:flex flex-col items-end text-gray-600 right-2">
+      <div className="absolute bottom-4 xl:relative xl:bottom-auto xl:w-1/4 lg:flex flex-col items-end  right-2">
         <div className="flex">
           <span
             onClick={() =>
@@ -64,15 +64,17 @@ function ItemAddress(props) {
           >
             Sửa
           </span>
-          <span
-            onClick={async () => {
-              let data = await deleteAddress(address);
-              setAddresses(data);
-            }}
-            className="mx-2 underline cursor-pointer mb-4 ml-4"
-          >
-            Xóa
-          </span>
+          {address.isDefault === 0 && (
+            <span
+              onClick={async () => {
+                let data = await deleteAddress(address);
+                setAddresses(data);
+              }}
+              className="mx-2 underline cursor-pointer mb-4 ml-4"
+            >
+              Xóa
+            </span>
+          )}
         </div>
 
         {address.isDefault === 0 && (

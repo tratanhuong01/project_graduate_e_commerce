@@ -37,10 +37,10 @@ function CreateAddress(props) {
 
   //
   return (
-    <div className="w-full px-2 my-1 bg-white absolute top-full left-0 z-20">
+    <div className="w-full px-2 my-1 bg-white absolute top-full left-0 z-20 dark:bg-dark-second">
       <div
-        className="p-1 border-2 border-solid border-gray-300 
-        text-gray-400 shadow-sm"
+        className="p-1 border-2 border-solid border-gray-300 dark:bg-dark-second 
+        text-gray-400 shadow-sm dark:border-dark-third dark:text-white"
       >
         <ul className="w-full flex">
           {data.map((item, index) => {
