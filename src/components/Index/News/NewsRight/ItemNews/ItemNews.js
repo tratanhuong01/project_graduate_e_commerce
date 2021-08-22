@@ -51,7 +51,7 @@ function ItemNews(props) {
           alt=""
         />
       </div>
-      <div className="w-3/4 flex px-4 relative">
+      <div className="w-3/4 flex px-4 relative dark:text-gray-300">
         <div className="w-full absolute top-1/2 transform -translate-y-1/2">
           <Link
             to={`${Config.PAGE_NEWS}/${newData.slug}`}

@@ -39,7 +39,7 @@ function MenuCategory(props) {
           ${
             location.pathname === to
               ? "border-organce text-organce "
-              : "hover:border-organce border-white hover:text-organce "
+              : "hover:border-organce border-white hover:text-organce dark:border-dark-second "
           }`}
         >
           {Config.PAGE_PRODUCT === to ? label : <Link to={to}>{label}</Link>}
@@ -63,7 +63,11 @@ function MenuCategory(props) {
     }
     return result;
   };
-  return <ul className="flex font-semibold">{showCategory(category)}</ul>;
+  return (
+    <ul className="flex font-semibold dark:text-gray-300">
+      {showCategory(category)}
+    </ul>
+  );
 }
 
 export default MenuCategory;

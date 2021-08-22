@@ -18,7 +18,7 @@ function MainNews(props) {
       <div className="xl:w-4/5 w-full flex flex-col lg:flex-row mx-auto px-4 justify-center">
         <div className="w-full lg:w-2/3">
           <div className="mb-8 ml-2">
-            <span className="py-2 border-b-2 border-solid border-organce font-semibold text-xl text-gray-600">
+            <span className="py-2 border-b-2 border-solid border-organce font-semibold text-xl text-gray-600 dark:text-white">
               NỔI BẬT
             </span>
           </div>

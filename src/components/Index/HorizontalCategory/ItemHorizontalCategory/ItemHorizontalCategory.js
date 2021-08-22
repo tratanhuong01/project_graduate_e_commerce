@@ -17,10 +17,10 @@ function ItemHorizontalCategory(props) {
         );
       }}
       className="w-28 lg:w-36 h-24 hover:text-organce font-semibold flex flex-wrap 
-    justify-center items-center cursor-pointer"
+    justify-center items-center cursor-pointer dark:text-white"
     >
       <div
-        className={`w-16 h-16 rounded-full border-2 border-solid border-gray-200 flex justify-center items-center`}
+        className={`w-16 h-16 rounded-full border-2 border-solid border-gray-200 flex justify-center items-center dark:border-dark-third`}
       >
         <span className={`${item.categoryProduct.icon} text-4xl`}></span>
       </div>

@@ -12,7 +12,7 @@ function CostAndLink(props) {
         className="p-2 hover:text-organce text-center cursor-pointer 
                 text-xm h-12 flex justify-center"
       >
-        <span className="flex items-center font-semibold">
+        <span className="flex items-center font-semibold dark:text-white hover:text-organce">
           {typeof product !== "undefined" && (
             <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${product.slug}`}>
               {" "}
@@ -25,7 +25,7 @@ function CostAndLink(props) {
       </p>
       <p
         className="p-2 pt-0 text-organce text-center cursor-pointer 
-        text-xm"
+        text-xm font-semibold"
       >
         {new Intl.NumberFormat().format(
           typeof product !== "undefined" &&
@@ -33,7 +33,7 @@ function CostAndLink(props) {
         )}
         <u>đ</u>&nbsp;
         {typeof product !== "undefined" && product.sale > 0 && (
-          <strike className="ml-3 text-gray-500">
+          <strike className="ml-3 text-gray-500 dark:text-gray-300">
             {new Intl.NumberFormat().format(product.priceOutput)} <u>đ</u>
           </strike>
         )}

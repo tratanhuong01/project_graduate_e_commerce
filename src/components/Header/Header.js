@@ -19,16 +19,16 @@ function Header(props) {
     <>
       <HeaderTop />
       <div
-        className={`w-full bg-white lg:sticky top-0 z-main relative ${subClassMenu}`}
+        className={`w-full bg-white dark:bg-dark-second lg:sticky top-0 z-main relative ${subClassMenu}`}
       >
         <div className="xl:w-4/5 w-full mx-auto flex text-gray-800">
           <div className="w-1/5 md:hidden flex items-center ml-3">
             <div
               onClick={() => setMenu(!menu)}
-              className="w-12 h-12 rounded-full bg-white flex justify-center 
-              items-center "
+              className="w-12 h-12 rounded-full bg-white dark:bg-dark-second flex justify-center 
+              items-center dark:text-gray-300"
             >
-              <i className="bx bx-list-ul cursor-pointer text-5xl flex"></i>
+              <i className="bx bx-list-ul cursor-pointer text-4xl flex"></i>
             </div>
           </div>
           <HeaderLeft />

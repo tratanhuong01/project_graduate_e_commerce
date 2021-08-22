@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as modalsAction from "../../../../../../actions/modal/index";
+import api from "../../../../../../Utils/api";
 
 function ItemAddress(props) {
   //
-  const { address, deleteAddress, setAddresses } = props;
+  const { address, deleteAddress, setAddresses, user } = props;
   const dispatch = useDispatch();
   //
   return (
@@ -25,13 +26,12 @@ function ItemAddress(props) {
               {address.isDefault === 1 && (
                 <button
                   className="rounded-full px-5 py-1 bg-green-500 text-white font-semibold ml-4 
-                text-xs mb-2 lg:mb-0"
+                  text-xs mb-2 lg:mb-0"
                 >
                   Mặc định
                 </button>
               )}
-              {address.typeAddress === 0 && ""}
-              {address.typeAddress === 1 && (
+              {address.typeAddress === 0 && (
                 <button className="rounded-full px-5 py-1 border-organce border-solid border text-white font-semibold ml-4 text-xs text-organce mb-2 lg:mb-0">
                   Nhà riêng
                 </button>
@@ -47,9 +47,9 @@ function ItemAddress(props) {
           <div className="flex py-1.5 items-center">
             <ul className="flex flex-col">
               <li>{address.details}</li>
-              <li>Xã {address.wards}</li>
-              <li>Huyện {address.district}</li>
-              <li>Tỉnh {address.cityProvince}</li>
+              <li>{address.wards}</li>
+              <li>{address.district}</li>
+              <li>{address.cityProvince}</li>
             </ul>
           </div>
         </div>
@@ -76,7 +76,23 @@ function ItemAddress(props) {
         </div>
 
         {address.isDefault === 0 && (
-          <button className="border-2 border-solid border-gray-300 px-3 py-2 ml-5">
+          <button
+            onClick={() => {
+              let unmounted = false;
+              async function fetch() {
+                const result = await api(
+                  `setDefaultAddress/${user.id}/${address.id}`,
+                  "PUT",
+                  null
+                );
+                if (unmounted) return;
+                setAddresses(result.data);
+              }
+              fetch();
+              return () => (unmounted = true);
+            }}
+            className="border-2 border-solid border-gray-300 px-3 py-2 ml-5"
+          >
             Thiết lập mặc định
           </button>
         )}

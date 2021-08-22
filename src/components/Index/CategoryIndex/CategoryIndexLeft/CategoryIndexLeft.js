@@ -7,7 +7,10 @@ function CategoryIndexLeft(props) {
   //
   return (
     categorys.length > 0 && (
-      <ul className="w-full relative shadow-lg bg-white text-gray-800">
+      <ul
+        className="w-full relative shadow-lg bg-white dark:bg-dark-third dark:text-white text-gray-800 
+      dark:border-dark-third"
+      >
         {categorys.map((item, index) => {
           return (
             <ItemCategoryIndexLeft

@@ -20,14 +20,20 @@ function NewsViewMost(props) {
   return news ? (
     <>
       <div className="mb-8 ml-2">
-        <span className="py-2 border-b-2 border-solid border-organce font-semibold text-xl text-gray-600">
+        <span
+          className="py-2 border-b-2 border-solid border-organce font-semibold text-xl text-gray-600
+        dark:text-white"
+        >
           YÊU THÍCH
         </span>
       </div>
       <div className="w-full my-4 flex-wrap flex">
         {news.map((newData, index) => {
           return (
-            <div className="w-full md:w-1/2 xl:w-full" key={index}>
+            <div
+              className="w-full md:w-1/2 xl:w-full dark:text-gray-300"
+              key={index}
+            >
               <ItemNewsViewMost newData={newData} />
             </div>
           );

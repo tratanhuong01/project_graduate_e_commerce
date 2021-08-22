@@ -17,7 +17,7 @@ function HeaderTop(props) {
   const dispatch = useDispatch();
   //
   return (
-    <div className="xl:w-4/5 hidden px-3 w-full mx-auto md:flex text-gray-500 text-xs my-4 items-center header__top">
+    <div className="xl:w-4/5 hidden px-3 w-full mx-auto md:flex text-gray-500 dark:text-gray-300 text-xs py-4 items-center header__top">
       <div className="md:w-3/12 lg:w-1/2 flex items-center">
         <ColorWebsite />
         <span className="bx bx-phone ml-3 mr-2"></span>

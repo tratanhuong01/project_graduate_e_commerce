@@ -12,7 +12,7 @@ function ItemCategoryIndexLeft(props) {
       <Link
         to={`${Config.PAGE_PRODUCT}/${groups.categoryProduct.slugCategoryProduct}`}
         className="w-full flex items-center p-2.5 flex border-b-2 border-solid border-gray-200 
-        cursor-pointer hover:text-organce flex"
+        cursor-pointer hover:text-organce flex  dark:border-dark-third"
       >
         <span className={`${icon} text-2xl mr-3 `}></span>
         <span className="font-semibold">{label}</span>
@@ -28,7 +28,7 @@ function ItemCategoryIndexLeft(props) {
         ></i>
       </div>
       <div
-        className={`w-full md:w-64 relative md:absolute -top-1 bg-white z-50 overflow-y-auto scrollbar-css  data__category ${
+        className={`w-full md:w-64 relative md:absolute -top-1 bg-white z-50 overflow-y-auto scrollbar-css  data__category dark:bg-dark-third   dark:border-dark-second ${
           show ? "flex flex-wrap" : "hidden"
         } border-2 border-solid left-0 md:left-full`}
       >
@@ -41,7 +41,7 @@ function ItemCategoryIndexLeft(props) {
               <Link
                 to={`${Config.PAGE_PRODUCT}/${groups.categoryProduct.slugCategoryProduct}/${group.slugGroupProduct}`}
                 className="w-full p-2.5 flex border-b-2 border-solid border-gray-200 
-                cursor-pointer hover:text-organce"
+                cursor-pointer hover:text-organce dark:text-white dark:border-dark-third"
                 key={index}
               >
                 {group.nameGroupProduct}

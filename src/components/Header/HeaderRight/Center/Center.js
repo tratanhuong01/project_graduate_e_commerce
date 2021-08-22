@@ -18,7 +18,7 @@ function Center(props) {
 
   //
   return (
-    <li className="py-6 px-2 flex relative cursor-pointer toggel__hover__cart_show cursor-pointer">
+    <li className="py-6 px-2 flex dark:text-gray-300 relative cursor-pointer toggel__hover__cart_show cursor-pointer">
       <Link to={Config.PAGE_CART}>
         <i className="bx bx-shopping-bag text-3xl flex items-center cursor-pointer"></i>
       </Link>

@@ -7,7 +7,7 @@ function MainContact(props) {
   useEffect(() => {}, []);
   //
   return (
-    <div className="w-full bg-gray-100">
+    <div className="w-full bg-gray-100 dark:bg-dark-second dark:text-white">
       <LevelUrl />
       <ContentContact />
       <hr className="my-2"></hr>

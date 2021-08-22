@@ -10,11 +10,7 @@ function ItemProductOther(props) {
   //
   return (
     <>
-      <div
-        className={
-          "w-46% m-2 bg-white relative product__search flex-shrink-0 z-40"
-        }
-      >
+      <div className={"w-46% m-2 relative product__search flex-shrink-0 z-40"}>
         {product.sale > 0 && <Sale sale={product.sale} />}
         <div className="w-full relative h-64 mx-auto item__category z-10">
           <ImageMain image={product.image} />

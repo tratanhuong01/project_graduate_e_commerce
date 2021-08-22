@@ -5,7 +5,7 @@ import * as Config from "../../../constants/Config";
 
 function InfoTopSell(props) {
   return (
-    <div className="w-full md:w-1/2 px-4">
+    <div className="w-full md:w-1/2 px-4 dark:text-white">
       <TitleMain Content={"SẢN PHẨM BÁN CHẠY"} />
       <p className="text-2xl hover:text-organce font-semibold pt-5">
         <Link to={`${Config.PAGE_DETAIL_PRODUCT}/`}>

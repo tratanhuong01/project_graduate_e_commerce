@@ -6,7 +6,7 @@ function Right(props) {
   //
   //
   return (
-    <li className="flex px-4 py-6 relative toggel__hover__cart_show cursor-pointer">
+    <li className="flex px-4 py-6  dark:text-gray-300 relative toggel__hover__cart_show cursor-pointer">
       <Link to={Config.PAGE_WISHLIST}>
         <i className="bx bx-heart text-3xl flex items-center "></i>
       </Link>

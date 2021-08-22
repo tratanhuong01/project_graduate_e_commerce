@@ -7,7 +7,7 @@ function Menu(props) {
   const { categorys } = props;
   //
   return (
-    <div className="w-full bg-white">
+    <div className="w-full">
       <div
         className="xl:w-4/5 px-3 w-full mx-auto flex text-gray-800 
       hidden lg:flex"
@@ -24,13 +24,13 @@ function Menu(props) {
             </div>
           </div>
         </div>
-        <div className="w-2/4 ml-6">
+        <div className="w-2/4 ml-6  dark:text-gray-300">
           <MenuCategory />
         </div>
         <div className="w-1/4 flex items-center justify-end">
           <button
             className="px-5 py-1 text-sm rounded-full border-2 border-solid border-organce 
-            text-organce bg-white font-semibold flex"
+            text-organce dark:text-white font-semibold flex"
           >
             Xem chi tiết
           </button>

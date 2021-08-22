@@ -8,7 +8,7 @@ function MainListProduct(props) {
   const [show, setShow] = useState(false);
   //
   return (
-    <div className="w-full bg-gray-100">
+    <div className="w-full bg-gray-100 dark:bg-dark-second dark:text-gray-300">
       <LevelUrl />
       <hr className="my-2"></hr>
       <div className="w-full xl:w-4/5 mx-auto p-4">

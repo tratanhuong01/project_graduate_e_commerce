@@ -2,7 +2,10 @@ import React from "react";
 
 function ItemChildNews(props) {
   return (
-    <div className="xl:w-60 w-full item__child__news__item px-2 xl:mr-6 my-2 bg-white relative">
+    <div
+      className="xl:w-60 w-full item__child__news__item px-2 xl:mr-6 my-2 bg-white relative 
+    dark:bg-dark-second dark:text-gray-300"
+    >
       <div className="w-full mx-auto my-3 mb-5 ">
         <div className="w-full news__left relative cursor-pointer">
           <img

@@ -23,7 +23,7 @@ function SliderProduct(props) {
   const [show, setShow] = useState(true);
   const [current, setCurrent] = useState(sliders[index]);
   return (
-    <ScrollContainer className="w-full max-w-full my-4 flex slider__index__main">
+    <ScrollContainer className="w-full max-w-full my-4 flex slider__index__main bg-gray-100 dark:bg-dark-main">
       <div className="w-full flex flex-shrink-0 relative data__hover">
         <div
           onClick={() => {
@@ -36,7 +36,7 @@ function SliderProduct(props) {
               }, 500);
             }
           }}
-          className="w-12 h-12 bg-white rounded-full cursor-pointer absolute top-1/2 transform -translate-y-1/2 left-3 z-20 flex justify-center items-center text-organce animate__animated animate__fadeInLeft hover__show stop__animation"
+          className="w-12 h-12 bg-white rounded-full cursor-pointer absolute top-1/2 transform -translate-y-1/2 left-3 z-20 flex justify-center items-center text-organce animate__animated animate__fadeInLeft hover__show stop__animation dark:bg-dark-third"
         >
           <span className="bx bx-chevron-left text-4xl flex"></span>
         </div>
@@ -57,7 +57,7 @@ function SliderProduct(props) {
               }, 500);
             }
           }}
-          className="w-12 h-12 bg-white rounded-full cursor-pointer absolute top-1/2 transform -translate-y-1/2 right-3 z-20 flex justify-center items-center text-organce animate__animated animate__fadeInRight hover__show stop__animation"
+          className="w-12 h-12 bg-white rounded-full cursor-pointer absolute top-1/2 transform -translate-y-1/2 right-3 z-20 flex justify-center items-center text-organce animate__animated animate__fadeInRight hover__show stop__animation  dark:bg-dark-third"
         >
           <span className="bx bx-chevron-right text-4xl flex"></span>
         </div>

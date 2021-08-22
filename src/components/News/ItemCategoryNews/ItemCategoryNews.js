@@ -4,7 +4,7 @@ import NewsLeft from "../../Index/News/NewsLeft/NewsLeft";
 
 function ItemCategoryNews(props) {
   return (
-    <div className="w-full lg:w-1/3 mx-2">
+    <div className="w-full lg:w-1/3 mx-2 dark:text-gray-300">
       <div className="w-full h-10">
         <p
           className="py-2 text-xl font-semibold float-left border-b-2 border-solid 

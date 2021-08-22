@@ -14,7 +14,7 @@ function MainApp(props) {
   //
   return (
     <>
-      <div className="w-full">
+      <div className="w-full dark:bg-dark-second">
         <Header />
         {props.children}
         <Rule />

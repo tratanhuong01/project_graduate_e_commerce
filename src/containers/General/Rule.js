@@ -5,7 +5,7 @@ function Rule(props) {
   //
   //
   return (
-    <div className="xl:w-4/5 w-full mx-auto p-4 flex-col md:flex md:flex-row">
+    <div className="xl:w-4/5 w-full mx-auto p-4 flex-col md:flex md:flex-row dark:text-white">
       <ItemRule
         classNameOfTagDiv={"w-full md:w-1/4 my-2 justify-center flex  md:flex"}
         classNameOfTagI={"bx bxs-check-shield text-5xl text-green-500 mr-3"}
