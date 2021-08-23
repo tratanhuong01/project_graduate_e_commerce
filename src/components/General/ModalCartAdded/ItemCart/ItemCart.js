@@ -19,7 +19,11 @@ function ItemCart(props) {
     <>
       <div className="w-full py-2 flex">
         <div className="w-1/3">
-          <img src={cart.image.src} className="w-full" alt="" />
+          <img
+            src={cart.image.src}
+            className="w-full h-24 object-contain"
+            alt=""
+          />
         </div>
         <div className="w-2/3 pl-4 relative">
           <Link

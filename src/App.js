@@ -29,7 +29,8 @@ function App(props) {
   const Interfaces = () => {
     const location = useLocation();
     const data = showAllLinks(routes);
-    return location.pathname === Config.PAGE_PAYMENT ? (
+    return location.pathname === Config.PAGE_PAYMENT ||
+      location.pathname.indexOf(Config.PAGE_ADMIN) !== -1 ? (
       <Switch>{data}</Switch>
     ) : (
       <MainApp>

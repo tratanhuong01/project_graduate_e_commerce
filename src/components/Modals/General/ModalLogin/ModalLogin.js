@@ -9,7 +9,7 @@ function ModalLogin(props) {
   return (
     <div
       className="w-11/12 xl:w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-      rounded-lg z-50 animate__animated animate__fadeIn dark:bg-dark-second"
+      rounded-lg z-50 animate__animated animate__fadeIn dark:bg-dark-second bg-white"
     >
       <div className="w-full relative px-2 py-4 dark:text-white rounded-lg">
         <CloseModal />

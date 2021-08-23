@@ -7,7 +7,7 @@ function ImageMain(props) {
   return (
     <img
       src={typeof image !== "undefined" ? image.src : ""}
-      className="w-full h-64 object-cover"
+      className="w-full h-64 object-contain"
       alt=""
     />
   );

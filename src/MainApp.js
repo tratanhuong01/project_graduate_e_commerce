@@ -10,7 +10,6 @@ import Notify from "./containers/Notify";
 
 function MainApp(props) {
   //
-
   //
   return (
     <>

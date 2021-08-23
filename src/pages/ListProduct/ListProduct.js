@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MainListProduct from "../../containers/ListProduct/MainListProduct";
 import Loading from "../../components/General/Loading/Loading";
 import * as listProductsAction from "../../actions/listProduct/index";
+import useResetPage from "../../hook/useResetPage";
 
 function ListProduct(props) {
   //
@@ -18,7 +19,6 @@ function ListProduct(props) {
     //
     let unmounted = false;
     if (unmounted) return;
-    document.title = "Sản phẩm";
     dispatch(
       listProductsAction.loadListProductRequest({
         slugCategoryProduct: slugCategoryProduct,
@@ -30,6 +30,7 @@ function ListProduct(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slugCategoryProduct, slugGroupProduct]);
   useEffect(() => {}, [listProduct]);
+  useResetPage("Sản phẩm");
   //
   return listProduct.products === null ? <Loading /> : <MainListProduct />;
 }

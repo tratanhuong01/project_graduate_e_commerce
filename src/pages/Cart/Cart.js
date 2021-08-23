@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MainCart from "../../containers/Cart/MainCart";
 import Modal from "../../containers/Modal";
+import useResetPage from "../../hook/useResetPage";
 
 function Cart(props) {
   //
-  useEffect(() => {
-    //
-    document.title = "Giỏ hàng";
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useResetPage("Giỏ hàng");
   //
   return (
     <>

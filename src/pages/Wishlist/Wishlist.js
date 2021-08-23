@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MainWishlist from "../../containers/Wishlist/MainWishlist";
+import useResetPage from "../../hook/useResetPage";
 function Wishlist(props) {
   //
-  useEffect(() => {
-    //
-    document.title = "Yêu thích";
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useResetPage("Yêu thích");
   //
   return <MainWishlist />;
 }

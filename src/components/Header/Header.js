@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useCategoryList from "../../hook/useCategoryList";
-import useScrollMenu from "../../hook/useScrollMenu";
 import MainCategory from "../Index/CategoryIndex/MainCategory/MainCategory";
 import HeaderCenter from "./HeaderCenter/HeaderCenter";
 import HeaderLeft from "./HeaderLeft/HeaderLeft";
@@ -13,7 +12,15 @@ function Header(props) {
   //
   const [menu, setMenu] = useState(false);
   const categorys = useCategoryList();
-  const subClassMenu = useScrollMenu();
+  const [subClassMenu, setSubClassMenu] = useState(null);
+  useEffect(() => {
+    //
+    window.onscroll = () => {
+      if (window.scrollY > 30) setSubClassMenu("shadow-lg");
+      else setSubClassMenu(null);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   //
   return (
     <>

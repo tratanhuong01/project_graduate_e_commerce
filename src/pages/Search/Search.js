@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MainSearch from "../../containers/Search/MainSearch";
+import useResetPage from "../../hook/useResetPage";
 
 function Search(props) {
   //
-  useEffect(() => {
-    //
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useResetPage(null);
   //
   return (
     <>

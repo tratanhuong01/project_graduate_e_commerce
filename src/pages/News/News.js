@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MainNews from "../../containers/News/MainNews";
+import useResetPage from "../../hook/useResetPage";
 
 function News(props) {
   //
-
-  useEffect(() => {
-    //
-    document.title = "Tin tức";
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useResetPage("Tin tức");
   //
   return <MainNews />;
 }

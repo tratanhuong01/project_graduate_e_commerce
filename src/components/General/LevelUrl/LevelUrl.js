@@ -1,7 +1,7 @@
 import withBreadcrumbs from "react-router-breadcrumbs-hoc";
 import { NavLink } from "react-router-dom";
 import routes from "../../../routes";
-import React from "react";
+
 const LevelUrl = ({ breadcrumbs }) => (
   <div className="w-full flex xl:w-4/5 mx-auto p-4 dark:text-white font-semibold">
     {breadcrumbs.map(({ match, breadcrumb }) => (
@@ -9,7 +9,7 @@ const LevelUrl = ({ breadcrumbs }) => (
         key={match.url}
         className="px-2 border-r-2 border-solid border-gray-500 dark:border-gay-300"
       >
-        <NavLink to={match.url}>{breadcrumb}</NavLink>
+        <NavLink  to={match.url}>{breadcrumb}</NavLink>
       </span>
     ))}
   </div>

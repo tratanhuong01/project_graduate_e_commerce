@@ -114,6 +114,10 @@ button:focus {
 .border-green {
   border-color: #2dc258;
 }
+.product__search {
+  width: 46% !important;
+}
+
 @media (max-width: 768px) {
   .view__detail__product__scrollbar {
     display: none;
@@ -136,6 +140,10 @@ button:focus {
 .hover__show {
   display: none;
 }
+.slider__index__main {
+  height: 300px;
+  max-height: 300px;
+}
 @media (max-width: 700px) {
   .stop__animation {
     animation: none !important;
@@ -152,45 +160,9 @@ button:focus {
     display: flex;
   }
 }
-@media (min-width: 1024px) {
-  .product__search {
-    width: 23% !important;
-  }
-  .detail__product__left {
-    max-height: 580px !important;
-  }
-  .detail__product__left__image {
-    height: 580px !important;
-  }
-  .item__news__detail {
-    width: 100% !important;
-  }
-  .index__right {
-    width: calc(100% - 240px);
-  }
-  .item__category__dashboard {
-    width: calc(25% - 28px) !important;
-  }
-  .item__child__news__item {
-    width: 29%;
-  }
-}
-.slider__index__main {
-  height: 300px;
-  max-height: 300px;
-}
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
 @media (min-width: 768px) {
   .product__search {
-    width: 31%;
+    width: 31% !important;
   }
   .category__index__left {
     z-index: 10;
@@ -231,6 +203,40 @@ button:focus {
     max-height: 600px;
   }
 }
+@media (min-width: 1024px) {
+  .product__search {
+    width: 23% !important;
+  }
+  .detail__product__left {
+    max-height: 580px !important;
+  }
+  .detail__product__left__image {
+    height: 580px !important;
+  }
+  .item__news__detail {
+    width: 100% !important;
+  }
+  .index__right {
+    width: calc(100% - 240px);
+  }
+  .item__category__dashboard {
+    width: calc(25% - 28px) !important;
+  }
+  .item__child__news__item {
+    width: 29%;
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .index__right {
   width: calc(100% - 115px);
 }

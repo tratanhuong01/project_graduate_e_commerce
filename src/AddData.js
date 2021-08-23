@@ -47,8 +47,9 @@ function AddData(props) {
           src: listImage[index],
           type: 0,
         });
-        listMemoryChoose.forEach(async (dt2) => {
+        for (let index = 0; index < listMemoryChoose.length; index++) {
           id++;
+          const element = listMemoryChoose[index];
           listPromise.push(
             await api("products", "POST", {
               id: `SP${id}`,
@@ -56,20 +57,20 @@ function AddData(props) {
               isShow: 1,
               slug: `${convertStringToSlug(
                 StringUtils.removeVietnameseTones(
-                  `${nameProduct} ${dt2.nameMemory} ${dt1.description} `
+                  `${nameProduct} ${element.nameMemory} ${dt1.description} `
                 )
               )}`,
               brandProduct: brand,
               colorProduct: dt1,
               imageProduct: image.data,
               lineProduct: lineProduct.data,
-              memoryProduct: dt2,
+              memoryProduct: element,
               userProduct: null,
               sizeProduct: null,
             })
           );
           listIdProduct.push(`SP${id}`);
-        });
+        }
       });
     } else if (listColorChoose.length === 0 && listMemoryChoose.length === 0) {
       let image = await api("images", "POST", {
@@ -99,6 +100,7 @@ function AddData(props) {
       listIdProduct.push(`SP${id}`);
     } else {
       for (let index = 0; index < listColorChoose.length; index++) {
+        id++;
         const dt1 = listColorChoose[index];
         let image = await api("images", "POST", {
           id: "",
@@ -106,7 +108,6 @@ function AddData(props) {
           src: listImage[index],
           type: 0,
         });
-        id++;
         listPromise.push(
           await api("products", "POST", {
             id: `SP${id}`,
@@ -129,7 +130,6 @@ function AddData(props) {
         listIdProduct.push(`SP${id}`);
       }
     }
-    console.log(listIdProduct);
     listIdProduct.forEach(async (item) => {
       listPromisePrice.push(
         await api("productInputs", "POST", {

@@ -18,7 +18,7 @@ function ItemWishlist(props) {
             alt=""
             className="w-20 h-20 md:w-28 md:h-28 rounded-lg object-cover"
           />
-          <div className="w-9/12 flex items-center justify-start flex-col pl-3">
+          <div className="w-9/12 flex items-center justify-start flex-col pl-3 text-center">
             <Link
               to={`${Config.PAGE_DETAIL_PRODUCT}/${wishList.slug}`}
               className="font-semibold mb-1.5 hover:text-organce"

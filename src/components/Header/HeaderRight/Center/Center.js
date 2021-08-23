@@ -17,7 +17,9 @@ function Center(props) {
   const { carts, user } = states;
 
   useEffect(() => {
+    //
     dispatch(cartsAction.loadCartRequest(user));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   //

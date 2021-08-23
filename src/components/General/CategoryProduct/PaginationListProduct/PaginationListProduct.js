@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemPaginationListProduct from "./ItemPaginationListProduct/ItemPaginationListProduct";
 
 function PaginationListProduct(props) {
   //
-  const { products } = props;
-  const [active, setActive] = useState(0);
+  const { products, active, setActive, idCategoryProduct } = props;
   let arrayNew = [];
   for (let index = 0; index < Math.ceil(products.length / 4); index++) {
     arrayNew.push(index);
   }
   //
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full justify-center hidden lg:flex">
       <ul className="flex items-center jusitfy-center dark:text-white">
         {arrayNew.map((item, index) => {
           return (
@@ -20,6 +19,7 @@ function PaginationListProduct(props) {
               key={index}
               setActive={setActive}
               index={index}
+              idCategoryProduct={idCategoryProduct}
             />
           );
         })}

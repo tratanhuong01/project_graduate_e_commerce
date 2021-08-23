@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MainDetailProduct from "../../containers/DetailProduct/MainDetailProduct";
 import * as productsAction from "../../actions/product/index";
 import Loading from "../../components/General/Loading/Loading";
+import useResetPage from "../../hook/useResetPage";
 
 function DetailProduct(props) {
   //
@@ -15,7 +16,7 @@ function DetailProduct(props) {
     };
   });
   const { product } = states;
-
+  useResetPage(null);
   useEffect(() => {
     //
     window.scrollTo(0, 0);

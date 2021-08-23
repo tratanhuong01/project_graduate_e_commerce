@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as modalsAction from "../../actions/modal/index";
 import MainNewsDetail from "../../containers/NewsDetail/MainNewsDetail";
 import * as cartsAction from "../../actions/cart/index";
 import api from "../../Utils/api";
 import Loading from "../../components/General/Loading/Loading";
+import useResetPage from "../../hook/useResetPage";
 
 function NewsDetail(props) {
   //
@@ -22,7 +22,6 @@ function NewsDetail(props) {
     let mounted = true;
     const fetch = async () => {
       window.scrollTo(0, 0);
-      dispatch(modalsAction.closeModal());
       dispatch(cartsAction.loadCartRequest(user));
       let formData = new FormData();
       formData.append("slug", match.match.params.slug);
@@ -35,6 +34,7 @@ function NewsDetail(props) {
     return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [match]);
+  useResetPage(null);
   //
   return newsDetail ? (
     <>
