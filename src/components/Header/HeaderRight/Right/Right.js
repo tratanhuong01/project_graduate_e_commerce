@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../constants/Config";
 
 function Right(props) {
   //
+  const wishLists = useSelector((state) => state.wishLists);
   //
   return (
     <li className="flex px-4 py-6  dark:text-gray-300 relative toggel__hover__cart_show cursor-pointer">
@@ -15,7 +17,7 @@ function Right(props) {
         border-organce flex justify-center items-center font-bold 
         absolute right-2.5 bg-organce bottom-5 text-xs"
       >
-        0
+        {wishLists.length}
       </span>
     </li>
   );

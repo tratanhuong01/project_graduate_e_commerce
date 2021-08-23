@@ -105,3 +105,16 @@ export const openModalAddBank = () => {
     type: Types.OPEN_MODAL_ADD_BANK,
   };
 };
+
+export const openModalChangeAddressPayment = (
+  addresses,
+  address,
+  setAddress
+) => {
+  return {
+    type: Types.OPEN_MODAL_CHANGE_ADDRESS_PAYMENT,
+    addresses,
+    address,
+    setAddress,
+  };
+};

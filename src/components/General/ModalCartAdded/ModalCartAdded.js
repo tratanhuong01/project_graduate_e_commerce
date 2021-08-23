@@ -11,7 +11,7 @@ function ModalCartAdded(props) {
   const { carts, user } = props;
   const sum = () => {
     let sum = 0;
-    carts.forEach((element) => {
+    carts.list.forEach((element) => {
       sum +=
         element.priceOutput * ((100 - element.sale) / 100) * element.amount;
     });
@@ -27,7 +27,7 @@ function ModalCartAdded(props) {
       style={{ right: "-25%", top: "65px" }}
     >
       <div className="w-full max-h-72 overflow-y-auto p-2 scrollbar-css">
-        {carts.length === 0 ? (
+        {carts.list.length === 0 ? (
           <>
             <p className="text-center font-semibold my-4">
               Chưa có sản phẩm nào trong giỏ hàng
@@ -40,8 +40,10 @@ function ModalCartAdded(props) {
             </div>
           </>
         ) : (
-          carts.map((cart, index) => {
-            return <ItemCart cart={cart} key={index} />;
+          carts.list.map((cart, index) => {
+            return (
+              <ItemCart cart={cart} key={index} carts={carts} user={user} />
+            );
           })
         )}
       </div>

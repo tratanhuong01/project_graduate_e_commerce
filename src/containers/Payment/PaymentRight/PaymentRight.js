@@ -17,16 +17,18 @@ function PaymentRight(props) {
   return (
     <div className="w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4 dark:text-white">
       <div className="w-full">
-        <NumberProduct />
+        <NumberProduct orders={orders} />
         <div className="w-full my-5 hidden xl:block">
-          {orders.map((item, index) => {
-            return <ItemProductPayment item={item} key={index} />;
+          {orders.list.map((item, index) => {
+            return (
+              <ItemProductPayment item={item} key={index} orders={orders} />
+            );
           })}
         </div>
         <hr className="my-3 hidden xl:block"></hr>
         <ApplyCode />
         <hr className="my-3"></hr>
-        <EndPayment sumMoney={""} />
+        <EndPayment sumMoney={orders.money} />
       </div>
     </div>
   );

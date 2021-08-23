@@ -1,18 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as cartsAction from "../../../../actions/cart/index";
 import * as Config from "../../../../constants/Config";
 
 function ItemCart(props) {
   //
-  const { cart } = props;
-  const states = useSelector((state) => {
-    return {
-      user: state.user,
-    };
-  });
-  const { user } = states;
+  const { cart, carts, user } = props;
   const dispatch = useDispatch();
   //
   return (
@@ -40,14 +34,22 @@ function ItemCart(props) {
             <u className="mr-2">đ</u>x{cart.amount}
           </p>
           <span
-            onClick={() =>
+            onClick={() => {
               dispatch(
                 cartsAction.deleteCartRequest({
                   user: user,
                   idCart: cart.idCart,
                 })
-              )
-            }
+              );
+              const index = carts.main.findIndex(
+                (item) => item.idCart === cart.idCart
+              );
+              if (index !== -1) {
+                let cloneCartPayment = [...carts.main];
+                cloneCartPayment.splice(index, 1);
+                dispatch(cartsAction.loadCartMain(cloneCartPayment));
+              }
+            }}
             className="text-2xl font-semibold hover:text-organce 
             absolute right-2 bottom-2"
           >

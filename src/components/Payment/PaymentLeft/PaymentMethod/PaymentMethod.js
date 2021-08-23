@@ -34,7 +34,7 @@ function PaymentMethod(props) {
               name="payment"
               className="transform scale-125 mr-3"
             />
-            Thanh toán khi giao hàng (COD)
+            Thanh toán bằng thẻ ngân hàng (COD)
           </p>
         </div>
         <div className="w-full my-3"></div>

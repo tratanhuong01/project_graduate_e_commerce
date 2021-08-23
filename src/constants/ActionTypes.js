@@ -24,7 +24,9 @@ export const OPEN_MODAL_SEARCH_GET_ACCOUNT = "OPEN_MODAL_SEARCH_GET_ACCOUNT";
 export const OPEN_MODAL_ADD_BANK = "OPEN_MODAL_ADD_BANK";
 //
 export const OPEN_MODAL_ADDRESS = "OPEN_MODAL_ADD_ADDRESS";
-
+//
+export const OPEN_MODAL_CHANGE_ADDRESS_PAYMENT =
+  "OPEN_MODAL_CHANGE_ADDRESS_PAYMENT";
 // --------modal-------- //
 
 // --------user-------- //
@@ -61,6 +63,10 @@ export const ADD_CART = "ADD_CART";
 export const GET_ALL_CART = "GET_ALL_CART";
 //
 export const DELETE_CART_BY_ID = "DELETE_CART_BY_ID";
+//
+export const LOAD_CART_MAIN = "LOAD_CART_MAIN";
+//
+export const LOAD_MONEY_CART = "LOAD_MONEY_CART";
 // --------cart-------- //
 
 //-------- -------- //
@@ -78,3 +84,13 @@ export const LOAD_EMAIL_EDIT = "LOAD_EMAIL_EDIT";
 //
 export const LOAD_PHONE_EDIT = "LOAD_PHONE_EDIT";
 //-------- profile -------- //
+
+//-------- profile -------- //
+export const LOAD_MONEY_ORDER = "LOAD_MONEY_ORDER";
+//-------- profile -------- //
+
+//-------- wish list -------- //
+export const ADD_WISHLIST = "ADD_WISHLIST";
+//
+export const LOAD_WISHLIST = "LOAD_WISHLIST";
+//-------- wish list -------- //

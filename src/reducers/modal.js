@@ -6,6 +6,7 @@ import ModalSearchGetAccount from "../components/Modals/General/ModalSearchGetAc
 import ModalTypeCode from "../components/Modals/General/ModalTypeCode/ModalTypeCode";
 import ModalCartAddedCurrent from "../components/Modals/ModalCartAddedCurent/ModalCartAddedCurrent";
 import ModalSendRate from "../components/Modals/ModalSendRate/ModalSendRate";
+import ModalChangeAddressPayment from "../components/Modals/Payment/ModalChangeAddressPayment/ModalChangeAddressPayment";
 import ModalAddress from "../components/Modals/Profile/ModalAddress/ModalAddress";
 import * as Types from "../constants/ActionTypes";
 import ModalViewFastProduct from "../containers/General/ModalViewFastProduct/ModalViewFastProduct";
@@ -67,6 +68,15 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.OPEN_MODAL_ADD_BANK:
       state.data = <ModalAddress address={action.address} />;
+      return { ...state };
+    case Types.OPEN_MODAL_CHANGE_ADDRESS_PAYMENT:
+      state.data = (
+        <ModalChangeAddressPayment
+          address={action.address}
+          addresses={action.addresses}
+          setAddress={(address) => action.setAddress(address)}
+        />
+      );
       return { ...state };
     default:
       return state;

@@ -41,8 +41,10 @@ function EndPayment(props) {
         <p className="w-1/2 float-right flex justify-end items-center">
           <button
             type="button"
-            className="py-3 px-5 bg-organce rounded-lg text-white 
-          font-semibold"
+            className={`py-3 px-5 ${
+              sumMoney === 0 ? "bg-gray-500 cursor-not-allowed" : "bg-organce"
+            } rounded-lg text-white 
+            font-semibold`}
           >
             Đặt hàng
           </button>

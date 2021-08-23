@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as Config from "../../../constants/Config";
+import * as ordersAction from "../../../actions/order/index";
+import { useDispatch } from "react-redux";
 
 function EndCart(props) {
   //
-  const { sumMoney } = props;
+  const { sumMoney, carts } = props;
+  const history = useHistory();
+  const dispatch = useDispatch();
   //
   return (
     <div className="w-full my-5 flex dark:text-white">
@@ -37,26 +41,23 @@ function EndCart(props) {
           </div>
         </div>
         <div className="w-full flex justify-end">
-          {sumMoney === 0 ? (
-            <input
-              type="button"
-              className="px-12 py-4 text-base rounded-full shadow-lg bg-gray-500 
-              font-semibold flex items-center text-white border-solid border-2 border-gray-100 
-              ml-10 * items-center cursor-not-allowed"
-              value="Thanh toán"
-              onChange={() => ""}
-              disabled={true}
-            />
-          ) : (
-            <Link
-              to={Config.PAGE_PAYMENT}
-              className="px-12 py-4 text-base rounded-full shadow-lg bg-organce 
-              font-semibold flex items-center text-white border-solid border-2 border-gray-100 
-              ml-10 * hover:border-organce  flex hover:bg-white hover:text-black items-center"
-            >
-              Thanh toán
-            </Link>
-          )}
+          <button
+            onClick={() => {
+              if (sumMoney === 0) return;
+              else {
+                dispatch(ordersAction.loadOrder(carts.main));
+                history.push(Config.PAGE_PAYMENT);
+              }
+            }}
+            className={`px-12 py-4 text-base rounded-full shadow-lg
+            font-semibold flex items-center text-white border-solid border-2 border-gray-100 
+            ml-10 * items-center ${
+              sumMoney === 0 ? "cursor-not-allowed  bg-gray-500" : "bg-organce"
+            } `}
+            disabled={sumMoney === 0 && true}
+          >
+            Thanh toán
+          </button>
         </div>
       </div>
     </div>

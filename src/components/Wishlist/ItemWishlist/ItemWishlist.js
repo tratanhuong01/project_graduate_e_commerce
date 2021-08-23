@@ -1,9 +1,13 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../constants/Config";
+import * as wishListsAction from "../.././../actions/wishList/index";
 
 function ItemWishlist(props) {
   //
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const { wishList } = props;
   //
   return (
@@ -71,6 +75,14 @@ function ItemWishlist(props) {
         p-3 dark:border-dark-third"
         >
           <span
+            onClick={() =>
+              dispatch(
+                wishListsAction.deleteWishListRequest({
+                  idWishList: wishList.idWishList,
+                  user: user,
+                })
+              )
+            }
             className="bx bx-trash-alt text-2xl md:text-3xl text-gray-800 cursor-pointer 
               hover:text-organce dark:text-white"
           ></span>

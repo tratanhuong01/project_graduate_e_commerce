@@ -1,27 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function  ItemProductPayment(props) {
+function ItemProductPayment(props) {
   //
   const { item } = props;
   //
   return (
     <div className="w-full flex my-5">
-      <div className="w-1/12 flex justify-center">
-        <span className="flex items-center">
-          <input
-            type="checkbox"
-            className="transform scale-125"
-            onChange={() => ""}
-          />
-        </span>
-      </div>
-      <div className="w-11/12 flex">
+      <div className="w-full flex">
         <div className="w-1/5 p-1 relative">
           <img src={item.image.src} className="w-full object-cover" alt="" />
           <div
             className="w-6 h-6 rounded-full bg-organce text-white font-semibold 
-          absolute -top-1 -right-1 flex justify-center "
+            absolute -top-1 -right-1 flex justify-center "
           >
             <span className="flex items-center">{item.amount}</span>
           </div>

@@ -33,7 +33,7 @@ function Center(props) {
             border-organce flex justify-center items-center font-bold 
             absolute right-0.5 bg-organce bottom-5 text-xs"
       >
-        {carts.length}
+        {carts.list.length}
       </span>
       <ModalCartAdded carts={carts} user={user} />
     </li>

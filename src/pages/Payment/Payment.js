@@ -1,39 +1,36 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import MainPayment from "../../containers/Payment/MainPayment";
-import Loading from "../../components/General/Loading/Loading";
-import * as ordersAction from "../../actions/order/index";
 import useResetPage from "../../hook/useResetPage";
 import Modal from "../../containers/Modal";
 import { Redirect } from "react-router-dom";
 
 function Payment(props) {
   //
-  const dispatch = useDispatch();
-  const states = useSelector((state) => {
+  const { user, orders } = useSelector((state) => {
     return {
       user: state.user,
       orders: state.orders,
     };
   });
-  const { orders, user } = states;
-
   useEffect(() => {
-    //
-    dispatch(ordersAction.loadOrder([]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    window.onbeforeunload = (event) => {
+      const e = event || window.event;
+      // Cancel the event
+      e.preventDefault();
+      if (e) {
+        e.returnValue = ""; // Legacy method for cross browser support
+      }
+      return ""; // Legacy method for cross browser support
+    };
   }, []);
   useResetPage("Thanh toán");
   //
-  return user ? (
-    orders !== null ? (
-      <div className="w-full dark:bg-dark-second">
-        <MainPayment />
-        <Modal />
-      </div>
-    ) : (
-      <Loading />
-    )
+  return user && orders.list.length > 0 ? (
+    <div className="w-full dark:bg-dark-second">
+      <MainPayment />
+      <Modal />
+    </div>
   ) : (
     <Redirect to=""></Redirect>
   );

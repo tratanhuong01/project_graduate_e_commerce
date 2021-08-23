@@ -11,7 +11,7 @@ function TitlePayment(props) {
   useEffect(() => {}, [user]);
   //
   return (
-    <div className="w-full h-10">
+    <div className="w-full h-10 mb-3.5">
       <div className="float-left font-semibold text-xl">
         Thông tin nhận hàng
       </div>

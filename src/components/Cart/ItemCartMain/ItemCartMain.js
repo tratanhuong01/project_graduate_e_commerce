@@ -6,15 +6,10 @@ import * as Config from "../../../constants/Config";
 
 function ItemCartMain(props) {
   //
-  const { cart } = props;
+  const { cart, carts, status } = props;
   const dispatch = useDispatch();
   const [number, setNumber] = useState(cart.amount);
-  const states = useSelector((state) => {
-    return {
-      user: state.user,
-    };
-  });
-  const { user } = states;
+  const user = useSelector((state) => state.user);
   //
   return (
     <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white">
@@ -22,6 +17,19 @@ function ItemCartMain(props) {
         <input
           type="checkbox"
           className="transform scale-125 absolute top-1/2 left-2"
+          onChange={(event) => {
+            if (event.target.checked)
+              dispatch(cartsAction.loadCartMain([...carts.main, cart]));
+            else {
+              const index = carts.main.findIndex(
+                (item) => item.idCart === cart.idCart
+              );
+              let cloneCartPayment = [...carts.main];
+              cloneCartPayment.splice(index, 1);
+              dispatch(cartsAction.loadCartMain(cloneCartPayment));
+            }
+          }}
+          checked={status}
         />
       </div>
       <div className="w-1/4 md:w-2/12 flex justify-center pb-1 md:p-3">
@@ -84,6 +92,14 @@ function ItemCartMain(props) {
                       user: user,
                     })
                   );
+                  const index = carts.main.findIndex(
+                    (item) => item.idCart === cart.idCart
+                  );
+                  if (index !== -1) {
+                    let cloneCartPayment = [...carts.main];
+                    cloneCartPayment[index].amount = event.target.value;
+                    dispatch(cartsAction.loadCartMain(cloneCartPayment));
+                  }
                 }}
               />
             </div>
@@ -112,14 +128,22 @@ function ItemCartMain(props) {
         <div className="w-full sm:w-1/3 flex justify-center pb-1 md:p-3">
           <div className="flex items-center">
             <i
-              onClick={() =>
+              onClick={() => {
                 dispatch(
                   cartsAction.deleteCartRequest({
                     user: user,
                     idCart: cart.idCart,
                   })
-                )
-              }
+                );
+                const index = carts.main.findIndex(
+                  (item) => item.idCart === cart.idCart
+                );
+                if (index !== -1) {
+                  let cloneCartPayment = [...carts.main];
+                  cloneCartPayment.splice(index, 1);
+                  dispatch(cartsAction.loadCartMain(cloneCartPayment));
+                }
+              }}
               className="bx bx-trash-alt text-3xl mb-3 cursor-pointer 
               hover:text-organce"
             ></i>

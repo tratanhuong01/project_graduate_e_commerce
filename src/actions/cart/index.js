@@ -151,3 +151,17 @@ export const changeAmountCartRequest = (data) => {
     }
   };
 };
+
+export const loadCartMain = (carts) => {
+  return {
+    type: Types.LOAD_CART_MAIN,
+    carts,
+  };
+};
+
+export const loadMoneyCart = (carts) => {
+  return {
+    type: Types.LOAD_MONEY_CART,
+    carts,
+  };
+};

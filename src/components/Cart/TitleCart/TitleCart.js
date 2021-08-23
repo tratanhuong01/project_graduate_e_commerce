@@ -1,6 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import * as cartsAction from "../../../actions/cart/index";
 
 function TitleCart(props) {
+  //
+  const { carts } = props;
+  const dispatch = useDispatch();
+  //
   return (
     <div className="w-full bg-white hidden md:flex dark:bg-dark-second">
       <div
@@ -10,6 +16,16 @@ function TitleCart(props) {
         <input
           type="checkbox"
           className="transform scale-125 absolute top-1/3 left-2"
+          onChange={(event) => {
+            if (event.target.checked)
+              dispatch(cartsAction.loadCartMain([...carts.list]));
+            else dispatch(cartsAction.loadCartMain([]));
+          }}
+          checked={
+            carts.list.length === carts.main.length && carts.list.length > 0
+              ? true
+              : false
+          }
         />
       </div>
       <div
