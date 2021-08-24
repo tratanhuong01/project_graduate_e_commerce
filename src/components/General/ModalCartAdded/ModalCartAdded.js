@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
 import * as Config from "../../../constants/Config";
 import * as modalsAction from "../../../actions/modal/index";
+import * as ordersAction from "../../../actions/order/index";
 
 function ModalCartAdded(props) {
   //
+  const history = useHistory();
   const dispatch = useDispatch();
   const { carts, user } = props;
   const sum = () => {
@@ -80,26 +82,32 @@ function ModalCartAdded(props) {
               if (!user) dispatch(modalsAction.openModalLogin());
             }}
             type="button"
-            className={`px-6 py-2 rounded-full border-white border-2 border-solid hover:text-white hover:border-white shadow-lg float-right flex items-center font-semibold  dark:text-black 
+            className={`px-6 py-2 rounded-full border-white border-2 border-solid hover:text-white hover:border-white shadow-lg float-right flex items-center font-semibold 
              ml-2 ${
                sum() === 0
-                 ? "bg-gray-500 cursor-not-allowed text-white"
-                 : "hover:bg-organce bg-white"
+                 ? "bg-gray-500 cursor-not-allowed text-gray-100"
+                 : "hover:bg-organce bg-white  text-gray-800"
              } `}
             disabled={sum() === 0 ? true : false}
           >
             Thanh toán
           </button>
         ) : (
-          <Link
-            to={Config.PAGE_PAYMENT}
+          <button
+            onClick={() => {
+              if (sum() === 0) return;
+              else {
+                dispatch(ordersAction.loadOrder(carts.list));
+                history.push(Config.PAGE_PAYMENT);
+              }
+            }}
             className="px-6 py-2 rounded-full hover:bg-organce 
             bg-white border-white border-2 border-solid hover:text-white
             hover:border-white shadow-lg float-right flex items-center font-semibold 
             text-black ml-2 dark:text-black"
           >
             Thanh toán
-          </Link>
+          </button>
         )}
       </div>
     </div>

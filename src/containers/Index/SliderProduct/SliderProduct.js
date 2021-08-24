@@ -7,7 +7,7 @@ function SliderProduct(props) {
   const sliders = [
     {
       type: "ĐIỆN THOẠI HUAWEI",
-      image: "http://www.thetahmid.com/themes/xemart-v1.0/images/sm-1.png",
+      image: `https://www.jungle.lk/wp-content/uploads/2018/06/Huawei-P20-Pro-Mobile-Phone-Midnight-Blue.png`,
       name: "Huawei Honor 8x | 8x Max",
       slogan: "Thương hiệu tạo nên đẳng cấp",
     },

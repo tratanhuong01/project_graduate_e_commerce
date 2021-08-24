@@ -8,7 +8,7 @@ function NewsViewMost(props) {
     //
     let mounted = true;
     const fetch = async () => {
-      const result = await api("getBestNews", "GET", null);
+      const result = await api("getListNewsMostView", "GET", null);
       setNews(result.data);
     };
     if (mounted) {

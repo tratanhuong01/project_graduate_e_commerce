@@ -77,7 +77,6 @@ export const addCartRequest = (data) => {
         "GET",
         null
       );
-      console.log(cartCheck);
       if (cartCheck.data === "" || cartCheck.data === null) {
         const product = await api(`products/${data.idProduct}`, "GET", null);
         const cart = {

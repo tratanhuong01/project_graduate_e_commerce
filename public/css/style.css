@@ -11,6 +11,21 @@ button:focus {
     font-size: 16px;
   }
 }
+
+.post p {
+  width: 100%;
+  line-height: 1.8em !important;
+}
+.post img {
+  margin: 1em auto;
+  object-fit: cover;
+}
+.post {
+  font-family: sans-serif !important;
+}
+.post ul li {
+  list-style-type: disc;
+}
 .dark .post span {
   color: white !important;
 }
@@ -19,6 +34,7 @@ button:focus {
 }
 .post span {
   background: transparent !important;
+  line-height: 12px;
 }
 .post p {
   background: transparent !important;
@@ -323,20 +339,7 @@ button:focus {
 .shadow-xl-organce {
   box-shadow: 0 0 15px 0 #f36438;
 }
-.post {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 16px;
-}
-.post p {
-  width: 100%;
-}
-.post img {
-  margin: 8px auto;
-  object-fit: cover;
-}
-.post {
-  font-family: Arial, Helvetica, sans-serif !important;
-}
+
 .instgram {
   background: "#f09433";
   background: -moz-linear-gradient(

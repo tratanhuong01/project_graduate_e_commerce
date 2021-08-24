@@ -1,11 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../constants/Config";
+import * as wishListsAction from "../../../../actions/wishList/index";
 
 function Right(props) {
   //
-  const wishLists = useSelector((state) => state.wishLists);
+  const dispatch = useDispatch();
+  const { user, wishLists } = useSelector((state) => {
+    return {
+      wishLists: state.wishLists,
+      user: state.user,
+    };
+  });
+  useEffect(() => {
+    //
+    dispatch(wishListsAction.loadWishListRequest(user));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   //
   return (
     <li className="flex px-4 py-6  dark:text-gray-300 relative toggel__hover__cart_show cursor-pointer">

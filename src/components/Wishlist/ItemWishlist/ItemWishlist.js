@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../constants/Config";
 import * as wishListsAction from "../.././../actions/wishList/index";
+import * as cartsAction from "../.././../actions/cart/index";
 
 function ItemWishlist(props) {
   //
@@ -65,7 +66,18 @@ function ItemWishlist(props) {
             hover:bg-white hover:text-gray-800 hidden md:flex"
           >
             <span className="fas fa-cart-plus text-3xl md:text-xl mr-2 flex "></span>
-            <span className="md:flex hidden text-xs md:text-sm">
+            <span
+              onClick={() =>
+                dispatch(
+                  cartsAction.addCartRequest({
+                    user: user,
+                    amount: 1,
+                    idProduct: wishList.idProduct,
+                  })
+                )
+              }
+              className="md:flex hidden text-xs md:text-sm"
+            >
               Thêm giỏ hàng
             </span>
           </button>
@@ -78,7 +90,7 @@ function ItemWishlist(props) {
             onClick={() =>
               dispatch(
                 wishListsAction.deleteWishListRequest({
-                  idWishList: wishList.idWishList,
+                  idCart: wishList.idCart,
                   user: user,
                 })
               )

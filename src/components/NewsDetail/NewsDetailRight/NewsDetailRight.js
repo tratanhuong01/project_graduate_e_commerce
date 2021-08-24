@@ -4,10 +4,13 @@ import FollowUs from "./FollowUs/FollowUs";
 import NewsSameRight from "./NewsSameRight/NewsSameRight";
 
 function NewsDetailRight(props) {
+  //
+  const { newsDetail } = props;
+  //
   return (
     <div className="w-full lg:w-1/3 lg:ml-5 mt-5 lg:mt-0">
       <FollowUs />
-      <NewsSameRight />
+      <NewsSameRight news={newsDetail.newsSameList} />
       <NewsViewMost />
     </div>
   );

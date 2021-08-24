@@ -1,12 +1,24 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../General/Pagination/Pagination";
 import ItemWishlist from "./ItemWishlist/ItemWishlist";
 import TitleWishlist from "./TitleWishlist/TitleWishlist";
+import * as wishListsAction from "../../actions/wishList/index";
 
 function ListWishlist(props) {
   //
-  const wishLists = useSelector((state) => state.wishLists);
+  const dispatch = useDispatch();
+  const { user, wishLists } = useSelector((state) => {
+    return {
+      wishLists: state.wishLists,
+      user: state.user,
+    };
+  });
+  useEffect(() => {
+    //
+    dispatch(wishListsAction.loadWishListRequest(user));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   //
   return wishLists.length > 0 ? (
     <div className="px-3 w-full xl:w-4/5 mx-auto dark:text-white">

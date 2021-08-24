@@ -1,6 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import * as Config from "../../../constants/Config";
 function ItemChildNews(props) {
+  //
+  const { newData } = props;
+  //
   return (
     <div
       className="xl:w-60 w-full item__child__news__item px-2 xl:mr-6 my-2 bg-white relative 
@@ -9,22 +13,25 @@ function ItemChildNews(props) {
       <div className="w-full mx-auto my-3 mb-5 ">
         <div className="w-full news__left relative cursor-pointer">
           <img
-            src="http://www.thetahmid.com/themes/tennews-v1.1/images/popular-2.jpg"
+            src={newData.thumbnail}
             className="w-full h-60 lg:h-36 object-cover"
             alt=""
           />
         </div>
         <div className="w-full flex px-1 relative">
           <div className="w-full">
-            <p className="mb-2 text-xm font-semibold cursor-pointer hover:text-organce">
-              Chi tiết smartwatch mới nhất của samsung
-            </p>
-            <p className="text-gray-500 w-full flex">
-              <button className="bg-organce mr-3 px-3 py-1 rounded-full text-xs text-gray-100 font-semibold">
-                Công nghệ
+            <Link
+              to={`${Config.PAGE_NEWS}/${newData.slug}`}
+              className="text-xm font-semibold cursor-pointer hover:text-organce"
+            >
+              {newData.title.substring(0, 50) + "..."}
+            </Link>
+            <p className="text-gray-500 w-full flex mt-2">
+              <button className="bg-organce mr-3 px-1.5 py-1 rounded-full text-xs text-gray-100 font-semibold">
+                {newData.categoryNews.nameCategoryNews}
               </button>
-              <span className="flex items-center text-sm font-semibold">
-                29/05/2021
+              <span className="flex items-center text-sm font-semibold float-right">
+                {newData.timeCreated.split(" ")[0]}
               </span>
             </p>
           </div>

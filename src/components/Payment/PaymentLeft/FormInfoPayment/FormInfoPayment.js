@@ -52,10 +52,13 @@ function FormInfoPayment(props) {
       <textarea
         className="w-full p-2.5 rounded-lg mb-3 border-2 border-solid border-gray-200 resize-none h-20 dark:bg-dark-third dark:border-dark-third"
         placeholder="Ghi chú (tùy chọn).."
-        onChange={(event) => setNote(event.target.value)}
-      >
-        {note}
-      </textarea>
+        onChange={(event) => {
+          if (event.target.value.length > 300)
+            alert("Không được quá 300 kí tự");
+          else setNote(event.target.value);
+        }}
+        defaultValue={note}
+      ></textarea>
     </form>
   );
 }

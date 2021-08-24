@@ -29,7 +29,7 @@ function InfoTransport(props) {
                 ${address.cityProvince}`}
               </ul>
             </div>
-            <p className="my-1">{`Ghi chú : ${note}`}</p>
+            <p className="my-1 break-words">{`Ghi chú : ${note}`}</p>
           </>
         ) : (
           <div

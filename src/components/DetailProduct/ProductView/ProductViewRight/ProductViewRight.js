@@ -5,6 +5,7 @@ import DescribeChild from "./DescribeChild/DescribeChild";
 import MemoryProduct from "./MemoryProduct/MemoryProduct";
 import * as productsAction from "../../../../actions/product/index";
 import * as cartsAction from "../../../../actions/cart/index";
+import WishListStatus from "./WishListStatus/WishListStatus";
 
 function ProductViewRight(props) {
   //
@@ -23,12 +24,7 @@ function ProductViewRight(props) {
     <div className="w-full xl:w-5/12">
       <div className="w-full flex mb-2">
         <div className="w-full pl-4 pt-1 relative">
-          <div
-            className="w-14 h-14 rounded-full bg-gray-100 flex items-center 
-            justify-center absolute top-10 right-1 cursor-pointer"
-          >
-            <span className="bx bxs-heart text-3xl text-red-500 flex"></span>
-          </div>
+          <WishListStatus user={user} idProduct={products.idProduct} />
           <p className="text-2xl font-semibold cursor-pointer hover:text-organce mb-3">
             {`${products.nameLineProduct} ${
               products.memory === null ? "" : products.memory.nameMemory

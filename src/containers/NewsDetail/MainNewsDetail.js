@@ -14,7 +14,7 @@ function MainNewsDetail(props) {
         <hr className="my-2"></hr>
         <div className="xl:w-4/5 w-full mx-auto p-4 flex flex-col lg:flex-row">
           <NewsDetailLeft newsDetail={newsDetail} />
-          <NewsDetailRight />
+          <NewsDetailRight newsDetail={newsDetail} />
         </div>
       </div>
     </div>

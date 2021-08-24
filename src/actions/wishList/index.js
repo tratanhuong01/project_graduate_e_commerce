@@ -40,7 +40,7 @@ export const addWishListRequest = (data) => {
         );
         if (index === -1) {
           listWishList.push({
-            idWishList: uuidv4(),
+            idCart: uuidv4(),
             amount: data.amount,
             brand: result.data.brand,
             color: result.data.color,
@@ -54,10 +54,10 @@ export const addWishListRequest = (data) => {
             sale: result.data.sale,
             slug: result.data.slug,
           });
-        } else listWishList[index].amount += data.amount;
+        } else listWishList.splice(index, 1);
       } else {
         listWishList.push({
-          idWishList: uuidv4(),
+          idCart: uuidv4(),
           amount: data.amount,
           brand: result.data.brand,
           color: result.data.color,
@@ -75,29 +75,29 @@ export const addWishListRequest = (data) => {
       localStorage.setItem("wishLists", JSON.stringify(listWishList));
       dispatch(loadWishList(listWishList));
     } else {
-      const wistListCheck = await api(
+      const wishListCheck = await api(
         `checkWishList/${data.user.id}/${data.idProduct}`,
         "GET",
         null
       );
-      if (wistListCheck.data === "" || wistListCheck.data === null) {
+      if (wishListCheck.data === "" || wishListCheck.data === null) {
         const product = await api(`products/${data.idProduct}`, "GET", null);
         const wishList = {
           id: 0,
-          userWishList: data.user,
-          productWishList: product.data,
+          wishListUser: data.user,
+          wishListProduct: product.data,
           amount: data.amount,
           timeCreated: "",
         };
         const wishLists = await api("wishLists", "POST", wishList);
         dispatch(loadWishList(wishLists.data));
       } else {
-        let formData = new FormData();
-        formData.append("amount", data.amount + wistListCheck.data.amount);
-        formData.append("idUser", data.user.id);
-        formData.append("idWishList", wistListCheck.data.id);
-        const wishLists = await api("updateWishList", "PUT", formData);
-        dispatch(loadWishList(wishLists.data));
+        dispatch(
+          deleteWishListRequest({
+            user: data.user,
+            idCart: wishListCheck.data.id,
+          })
+        );
       }
     }
   };
@@ -114,7 +114,7 @@ export const deleteWishListRequest = (data) => {
   return async (dispatch) => {
     if (data.user) {
       const result = await api(
-        `wishLists/${data.user.id}/${data.idWishList}`,
+        `wishLists/${data.user.id}/${data.idCart}`,
         "DELETE",
         null
       );
@@ -126,7 +126,7 @@ export const deleteWishListRequest = (data) => {
         dispatch(loadWishList([]));
       } else {
         const index = wishLists.findIndex(
-          (wishList) => wishList.idWishList === data.idWishList
+          (wishList) => wishList.idCart === data.idCart
         );
         if (index !== -1) wishLists.splice(index, 1);
         localStorage.setItem("wishLists", JSON.stringify(wishLists));
