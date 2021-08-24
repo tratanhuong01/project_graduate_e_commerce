@@ -10,8 +10,6 @@ import News from "./pages/News/News";
 import Contact from "./pages/Contact/Contact";
 import Search from "./pages/Search/Search";
 import * as Config from "./constants/Config";
-import AdminLogin from "./pages/Admin/AdminLogin";
-import AdminIndex from "./pages/Admin/AdminIndex";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import AddData from "./AddData";
 import ContentWrite from "./ContentWrite";
@@ -107,18 +105,6 @@ const routes = [
     path: Config.PAGE_NEWS + "/:slugNews",
     exact: true,
     main: (match) => <NewsDetail match={match} />,
-    once: false,
-  },
-  {
-    path: `${Config.PAGE_ADMIN}/login`,
-    exact: true,
-    main: () => <AdminLogin />,
-    once: false,
-  },
-  {
-    path: `${Config.PAGE_ADMIN}/:slugCategory`,
-    exact: true,
-    main: () => <AdminIndex />,
     once: false,
   },
   {

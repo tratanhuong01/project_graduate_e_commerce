@@ -1,4 +1,0 @@
-export const HANDLE_DASHBOARD = "HANDLE_DASHBOARD";
-//
-export const HANDLE_CATEGORY = "HANDLE_CATEGORY";
-//
