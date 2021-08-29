@@ -7,7 +7,7 @@ import RateComment from "../../components/DetailProduct/ProductView/RateComment/
 
 function MainDetailProduct(props) {
   //
-  const { products } = props;
+  const { products, slug } = props;
   //
   useEffect(() => {
     //
@@ -23,7 +23,7 @@ function MainDetailProduct(props) {
         <div className="w-full flex my-5 lg:flex-row flex-col">
           <div className="w-full lg:w-7/12">
             <DescribeProduct products={products} />
-            <RateComment products={products} />
+            <RateComment products={products} slug={slug} />
           </div>
           <div className="w-full lg:w-5/12 ml-5">
             <NewsDetailProduct />

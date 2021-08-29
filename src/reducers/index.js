@@ -7,7 +7,7 @@ import orders from "./orders";
 import listProduct from "./listProduct";
 import profile from "./profile";
 import wishLists from "./wishLists";
-
+import reviewProduct from "./reviewProduct";
 const myReducer = combineReducers({
   modal,
   user,
@@ -17,6 +17,7 @@ const myReducer = combineReducers({
   listProduct,
   profile,
   wishLists,
+  reviewProduct,
 });
 
 export default myReducer;

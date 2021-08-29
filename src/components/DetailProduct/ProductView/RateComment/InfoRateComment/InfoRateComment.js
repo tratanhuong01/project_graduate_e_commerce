@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Star from "../Star/Star";
 import ItemNumberStar from "./ItemNumberStar/ItemNumberStar";
-import * as modalsAction from "../../../../../actions/modal/index";
-
+import ButtonSendRate from "../ButtonSendRate/ButtonSendRate";
+import * as reviewProductsAction from "../../../../../actions/reviewProduct/index";
 function InfoRateComment(props) {
   //
   const dispatch = useDispatch();
-  const { products, reviewAll } = props;
+  const { products, reviewAll, active } = props;
   const percent = () => {
     let result = "";
     result =
@@ -26,6 +26,38 @@ function InfoRateComment(props) {
     return { top: ((result * 10) / 2).toFixed(1), bottom: (5).toFixed(1) };
   };
   const data = percent();
+  const stars = [
+    {
+      name: `Tất cả (${reviewAll.sumAll})`,
+      query: { all: "reviewProductsAll", once: "reviewProducts" },
+      star: -1,
+    },
+    {
+      name: `5 sao (${reviewAll.fiveStar})`,
+      query: { all: "reviewProductByStarAll", once: "reviewProductByStar" },
+      star: 5,
+    },
+    {
+      name: `4 sao (${reviewAll.fourStar})`,
+      query: { all: "reviewProductByStarAll", once: "reviewProductByStar" },
+      star: 4,
+    },
+    {
+      name: `3 sao (${reviewAll.threeStar})`,
+      query: { all: "reviewProductByStarAll", once: "reviewProductByStar" },
+      star: 3,
+    },
+    {
+      name: `2 sao (${reviewAll.twoStar})`,
+      query: { all: "reviewProductByStarAll", once: "reviewProductByStar" },
+      star: 2,
+    },
+    {
+      name: `1 sao (${reviewAll.oneStar})`,
+      query: { all: "reviewProductByStarAll", once: "reviewProductByStar" },
+      star: 1,
+    },
+  ];
   //
   return (
     <div className="w-full flex bg-gray-100 dark:bg-dark-third dark:border-dark-third p-2 border-2 border-solid border-gray-200">
@@ -39,40 +71,28 @@ function InfoRateComment(props) {
         <p className="w-full text-center my-1 text-gray-700 dark:text-gray-300">
           ({reviewAll.sumReview} đánh giá)
         </p>
-        <button
-          onClick={() => dispatch(modalsAction.openModalSendRate(products))}
-          className="px-6 py-2.5 rounded-full bg-organce text-white font-semibold 
-          my-5 text-sm mx-auto"
-        >
-          Gửi đánh giá của bạn
-        </button>
+        <ButtonSendRate products={products} />
       </div>
       <div className="w-7/12 md:w-2/3 flex items-center px-4">
         <div className="flex flex-wrap">
-          <ItemNumberStar
-            content={`Tất cả (${reviewAll.sumReview})`}
-            current={true}
-          />
-          <ItemNumberStar
-            content={`5 sao (${reviewAll.fiveStar})`}
-            current={false}
-          />
-          <ItemNumberStar
-            content={`4 sao (${reviewAll.fourStar})`}
-            current={false}
-          />
-          <ItemNumberStar
-            content={`3 sao (${reviewAll.threeStar})`}
-            current={false}
-          />
-          <ItemNumberStar
-            content={`2 sao (${reviewAll.twoStar})`}
-            current={false}
-          />
-          <ItemNumberStar
-            content={`1 sao (${reviewAll.oneStar})`}
-            current={false}
-          />
+          {stars.map((star, index) => {
+            return (
+              <ItemNumberStar
+                key={index}
+                active={active}
+                onClick={() => {
+                  dispatch(
+                    reviewProductsAction.loadReviewProductActiveStarRequest({
+                      star,
+                      products,
+                      reviewAll,
+                    })
+                  );
+                }}
+                star={star}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

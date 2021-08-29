@@ -2,18 +2,21 @@ import React from "react";
 
 function ItemNumberStar(props) {
   //
-  const { current, content } = props;
+  const { active, star, onClick } = props;
   //
   return (
     <button
+      onClick={() => {
+        onClick();
+      }}
       className={`px-6 m-1 py-2 rounded-lg border-2 border-solid 
       ${
-        current === true
+        star.star === active
           ? "border-organce text-organce font-semibold"
           : "border-gray-300 dark:text-white font-semibold text-gray-700"
       }`}
     >
-      {content}
+      {star.name}
     </button>
   );
 }

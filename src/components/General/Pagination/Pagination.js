@@ -1,42 +1,29 @@
-import React, { useState } from "react";
-import api from "../../../Utils/api";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ItemPagination from "./ItemPagination/ItemPagination";
-
+import * as reviewProductsAction from "../../../actions/reviewProduct/index";
 function Pagination(props) {
   //
-  const [index, setIndex] = useState(0);
-  const { reviewAll, products, setReviews } = props;
+  const dispatch = useDispatch();
+  const { reviewAll, products, index, active } = useSelector(
+    (state) => state.reviewProduct
+  );
   let array = [];
   for (let index = 0; index < Math.ceil(reviewAll.sumReview / 5); index++)
     array.push(index);
-
   //
   return (
     <ul className="flex justify-end items-center dark:text-white">
       <li
         onClick={() => {
           if (index === 0) return;
-          setIndex(index - 1);
-          let unmounted = false;
-          async function fetch() {
-            const result = await api(
-              `reviewProducts/${products.idProduct}/${(index - 1) * 5}/5`
-            );
-            if (unmounted) return;
-            setReviews(result.data);
-            window.scrollTo(
-              0,
-              document
-                .getElementById("detailRateComment")
-                .getBoundingClientRect().top +
-                window.scrollY -
-                100
-            );
-          }
-          fetch();
-          return () => {
-            unmounted = true;
-          };
+          dispatch(
+            reviewProductsAction.loadReviewProductByIndexPageRequest({
+              index: index - 1,
+              active,
+              products,
+            })
+          );
         }}
         className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5
         border-solid border-gray-500 flex justify-center items-center ${
@@ -51,41 +38,31 @@ function Pagination(props) {
             key={pos}
             item={item}
             index={pos}
-            setIndex={setIndex}
             indexCurrent={index}
             products={products}
-            setReviews={setReviews}
+            active={active}
           />
         );
       })}
       <li
         onClick={() => {
-          if (index === Math.ceil(reviewAll.sumReview / 5) - 1) return;
-          setIndex(index + 1);
-          let unmounted = false;
-          async function fetch() {
-            const result = await api(
-              `reviewProducts/${products.idProduct}/${(index + 1) * 5}/5`
-            );
-            if (unmounted) return;
-            setReviews(result.data);
-            window.scrollTo(
-              0,
-              document
-                .getElementById("detailRateComment")
-                .getBoundingClientRect().top +
-                window.scrollY -
-                100
-            );
-          }
-          fetch();
-          return () => {
-            unmounted = true;
-          };
+          if (
+            index === Math.ceil(reviewAll.sumReview / 5) - 1 ||
+            reviewAll.sumReview === 0
+          )
+            return;
+          dispatch(
+            reviewProductsAction.loadReviewProductByIndexPageRequest({
+              index: index + 1,
+              active,
+              products,
+            })
+          );
         }}
         className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5
         border-solid border-gray-500 flex justify-center items-center ${
-          index === Math.ceil(reviewAll.sumReview / 5) - 1
+          index === Math.ceil(reviewAll.sumReview / 5) - 1 ||
+          reviewAll.sumReview === 0
             ? "opacity-50 cursor-not-allowed"
             : " cursor-pointer "
         }`}

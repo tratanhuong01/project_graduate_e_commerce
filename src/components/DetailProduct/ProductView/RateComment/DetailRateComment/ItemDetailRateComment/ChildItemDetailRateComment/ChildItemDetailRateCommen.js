@@ -1,30 +1,20 @@
-import React, { useState } from "react";
-import Star from "../../Star/Star";
+import React from "react";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import FormReplyReview from "../../FormReplyReview/FormReplyReview";
-import ChildItemDetailRateCommen from "./ChildItemDetailRateComment/ChildItemDetailRateCommen";
-
-function ItemDetailRateComment(props) {
+function ChildItemDetailRateCommen(props) {
   //
   const { review } = props;
-  const [show, setShow] = useState(false);
   //
   return (
-    <div className="w-full p-2 mb-1">
+    <div className="w-full ml-auto pl-4 border-l-4 border-solid border-gray-400">
       <div className="w-full my-1 flex">
         <span className="font-semibold mr-3">
-          {review.reviewProduct.userReviewProduct
-            ? `${review.reviewProduct.userReviewProduct.firstName} ${review.reviewProduct.userReviewProduct.lastName}`
-            : review.reviewProduct.fullName}
+          {review.userReviewProduct
+            ? `${review.userReviewProduct.firstName} ${review.userReviewProduct.lastName}`
+            : review.fullName}
         </span>
-        <div className="flex items-center text-yellow-500">
-          <Star star={review.reviewProduct.star} />
-        </div>
       </div>
-      <div className="w-full my-1 flex items-center">
-        {review.reviewProduct.content}
-      </div>
+      <div className="w-full my-1 flex items-center">{review.content}</div>
       <div className="w-full flex my-1 hidden">
         <Zoom>
           <img
@@ -50,12 +40,6 @@ function ItemDetailRateComment(props) {
       </div>
       <div className="w-full flex my-1">
         <ul className="flex font-semibold">
-          <li
-            onClick={() => setShow(!show)}
-            className="mr-1 text-organce text-sm cursor-pointer"
-          >
-            {show ? "Đóng" : "Gửi trả lời"}
-          </li>
           <li className="flex mx-1 items-center">
             <span className="flex items-center w-1.5 h-1.5 rounded-full bg-gray-500"></span>
           </li>
@@ -74,19 +58,11 @@ function ItemDetailRateComment(props) {
           <li className="flex mx-1 items-center">
             <span className="flex items-center w-1.5 h-1.5 rounded-full bg-gray-500"></span>
           </li>
-          <li className="mx-1 text-gray-500 text-sm">
-            {review.reviewProduct.timeCreated}
-          </li>
+          <li className="mx-1 text-gray-500 text-sm">{review.timeCreated}</li>
         </ul>
-      </div>
-      <div className="w-95% ml-auto">
-        {review.reviewProductList.map((item, index) => {
-          return <ChildItemDetailRateCommen key={index} review={item} />;
-        })}
-        {show && <FormReplyReview review={review} setShow={setShow} />}
       </div>
     </div>
   );
 }
 
-export default ItemDetailRateComment;
+export default ChildItemDetailRateCommen;

@@ -1,33 +1,22 @@
 import React from "react";
-import api from "../../../../Utils/api";
+import { useDispatch } from "react-redux";
+import * as reviewProductsAction from "../../../../actions/reviewProduct/index";
 
 function ItemPagination(props) {
   //
-  const { index, indexCurrent, setIndex, products, setReviews } = props;
+  const dispatch = useDispatch();
+  const { index, indexCurrent, products, active } = props;
   //
   return (
     <li
       onClick={() => {
-        setIndex(index);
-        let unmounted = false;
-        async function fetch() {
-          const result = await api(
-            `reviewProducts/${products.idProduct}/${index * 5}/5`
-          );
-          if (unmounted) return;
-          setReviews(result.data);
-          window.scrollTo(
-            0,
-            document.getElementById("detailRateComment").getBoundingClientRect()
-              .top +
-              window.scrollY -
-              100
-          );
-        }
-        fetch();
-        return () => {
-          unmounted = true;
-        };
+        dispatch(
+          reviewProductsAction.loadReviewProductByIndexPageRequest({
+            index: index,
+            active,
+            products,
+          })
+        );
       }}
       className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5 cursor-pointer 
         border-solid ${

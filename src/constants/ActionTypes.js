@@ -94,3 +94,14 @@ export const ADD_WISHLIST = "ADD_WISHLIST";
 //
 export const LOAD_WISHLIST = "LOAD_WISHLIST";
 //-------- wish list -------- //
+
+// -------- review product --------- //
+export const LOAD_REVIEW_PRODUCT_DATA = "LOAD_REVIEW_PRODUCT_DATA";
+//
+export const LOAD_REVIEW_PRODUCT_INDEX_PAGE = "";
+//
+export const LOAD_REVIEW_PRODUCT_ACTIVE_STAR =
+  "LOAD_REVIEW_PRODUCT_ACTIVE_STAR";
+//
+export const ADD_REVIEW_PRODUCT = "ADD_REVIEW_PRODUCT";
+// --------- review product ----------//

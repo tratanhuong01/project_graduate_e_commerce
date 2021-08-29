@@ -4,7 +4,7 @@ import ItemDetailRateComment from "./ItemDetailRateComment/ItemDetailRateComment
 
 function DetailRateComment(props) {
   //
-  const { reviewAll, reviews, index, setIndex, setReviews, products } = props;
+  const { reviews } = props;
   //
   return (
     <>
@@ -13,19 +13,21 @@ function DetailRateComment(props) {
       dark:border-dark-third mt-3"
         id="detailRateComment"
       >
-        {reviews.map((review, index) => {
-          return <ItemDetailRateComment review={review} key={index} />;
-        })}
+        {reviews.length <= 0 ? (
+          <div className="w-full text-gray-600 font-semibold py-2.5 px-5 text-center texts-sm">
+            Không có bất cứ đánh giá nào.
+          </div>
+        ) : (
+          reviews.map((review, index) => {
+            return <ItemDetailRateComment review={review} key={index} />;
+          })
+        )}
       </div>
-      <div className="w-full flex justify-end my-2">
-        <Pagination
-          reviewAll={reviewAll}
-          index={index}
-          setIndex={setIndex}
-          products={products}
-          setReviews={setReviews}
-        />
-      </div>
+      {reviews.length > 0 && (
+        <div className="w-full flex justify-end my-2">
+          <Pagination />
+        </div>
+      )}
     </>
   );
 }

@@ -26,7 +26,7 @@ function DetailProduct(props) {
   //
   return product.view.productCurrent ? (
     <>
-      <MainDetailProduct products={product.view.productCurrent} />
+      <MainDetailProduct products={product.view.productCurrent} slug={slug} />
     </>
   ) : (
     <Loading />
