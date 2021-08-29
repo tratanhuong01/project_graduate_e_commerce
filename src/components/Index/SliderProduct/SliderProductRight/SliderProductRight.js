@@ -1,8 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import * as Config from "../../../../constants/Config";
 
 function SliderProductRight(props) {
   //
   const { current } = props;
+  const history = useHistory();
   //
   return (
     <div
@@ -12,15 +15,22 @@ function SliderProductRight(props) {
     >
       <div className="flex flex-col">
         <p className="text-organce font-semibold text-xm md:text-2xl mb-4 ">
-          {current.type}
+          {current.slideProduct.lineProduct.groupProduct.nameGroupProduct}
         </p>
         <p className="text-gray-700 dark:text-white font-bold text-2xl md:text-5xl mb-2">
-          {current.name}
+          {current.slideProduct.lineProduct.nameLineProduct}
         </p>
         <p className="text-gray-500 dark:text-gray-300 font-semibold text-sm md:text-xl mb-6">
           {current.slogan}
         </p>
-        <button className="w-32 py-1.5 md:w-40 md:py-2.5 text-xs md:text-sm rounded-full border-2 border-white border-solid dark:bg-dark-main bg-organce text-white font-semibold">
+        <button
+          onClick={() =>
+            history.push(
+              `${Config.PAGE_DETAIL_PRODUCT}/${current.slideProduct.slug}`
+            )
+          }
+          className="w-32 py-1.5 md:w-40 md:py-2.5 text-xs md:text-sm rounded-full border-2 border-white border-solid dark:bg-dark-main bg-organce text-white font-semibold"
+        >
           Xem chi tiết
         </button>
       </div>

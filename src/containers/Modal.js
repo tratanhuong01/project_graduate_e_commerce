@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 function Modal(props) {
@@ -9,14 +9,6 @@ function Modal(props) {
     };
   });
   const { modal } = states;
-  useEffect(() => {
-    if (modal.data)
-      document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
-    else
-      document
-        .getElementsByTagName("body")[0]
-        .classList.remove("overflow-hidden");
-  }, [modal]);
   //
   return (
     <div
