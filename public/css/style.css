@@ -102,6 +102,13 @@ button:focus {
 .item__news__detail {
   width: 100%;
 }
+.arrow-up-popup {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid white;
+  top: -12px;
+  left: 24px;
+}
 
 .element__show {
   display: none;

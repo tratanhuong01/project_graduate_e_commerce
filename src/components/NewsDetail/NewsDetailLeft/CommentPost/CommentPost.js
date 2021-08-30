@@ -41,7 +41,7 @@ function CommentPost(props) {
     fetch();
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [newsDetail]);
   const [show, setShow] = useState(true);
   //
   return (
