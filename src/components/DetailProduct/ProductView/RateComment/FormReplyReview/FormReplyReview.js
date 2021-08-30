@@ -32,8 +32,10 @@ function FormReplyReview(props) {
     shouldUnregister: false,
   });
   useEffect(() => {
+    //
     setValue("fullName", user ? `${user.firstName} ${user.lastName}` : "");
     setValue("email", user ? `${user.email}` : "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const onSubmit = (data) => {
     dispatch(

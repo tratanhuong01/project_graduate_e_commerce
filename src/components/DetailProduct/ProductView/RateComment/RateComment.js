@@ -8,7 +8,7 @@ import * as reviewProductsAction from "../../../../actions/reviewProduct/index";
 function RateComment(props) {
   //
   const dispatch = useDispatch();
-  const { products } = props;
+  const { products, slug } = props;
   const { reviews, reviewAll, active, index } = useSelector(
     (state) => state.reviewProduct
   );
@@ -32,7 +32,7 @@ function RateComment(props) {
       unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
+  }, [products, slug]);
   //
   return reviews && reviewAll ? (
     <div className="w-full">

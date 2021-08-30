@@ -8,6 +8,7 @@ import listProduct from "./listProduct";
 import profile from "./profile";
 import wishLists from "./wishLists";
 import reviewProduct from "./reviewProduct";
+import news from "./news";
 const myReducer = combineReducers({
   modal,
   user,
@@ -18,6 +19,7 @@ const myReducer = combineReducers({
   profile,
   wishLists,
   reviewProduct,
+  news,
 });
 
 export default myReducer;

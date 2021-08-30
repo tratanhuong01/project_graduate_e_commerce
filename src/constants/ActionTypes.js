@@ -105,3 +105,11 @@ export const LOAD_REVIEW_PRODUCT_ACTIVE_STAR =
 //
 export const ADD_REVIEW_PRODUCT = "ADD_REVIEW_PRODUCT";
 // --------- review product ----------//
+
+// -------- news --------- //
+export const LOAD_NEWS_DATA = "LOAD_NEWS_DATA";
+//
+export const LOAD_NEWS_INDEX_PAGE = "";
+//
+export const ADD_NEWS = "ADD_NEWS";
+// -------- news --------- //

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function ChildItemCommentPost(props) {
   //
-  const { comment, user } = props;
+  const { comment, show, setShow } = props;
   //
   return (
     <>
@@ -11,7 +11,7 @@ function ChildItemCommentPost(props) {
         src={
           comment.commentUser === null
             ? "https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png"
-            : "http://www.thetahmid.com/themes/tennews-v1.1/images/comm-1.jpg"
+            : comment.commentUser.avatar
         }
         alt=""
         className="w-14 h-14 rounded-full mr-4"
@@ -32,12 +32,15 @@ function ChildItemCommentPost(props) {
         </span>
         <p className="text-gray-800 dark:text-white">{comment.content}</p>
       </div>
-      {user && (
+      {comment.level === 1 && (
         <button
+          onClick={() => {
+            setShow(!show);
+          }}
           className="p-1 text-xs rounded-lg font-semibold text-gray-700 border-organce dark:text-white 
           border-2 border-solid hover:bg-organce hover:text-white absolute top-1 right-1"
         >
-          Phản hồi
+          {show ? "Đóng" : "Phản hồi"}
         </button>
       )}
     </>
