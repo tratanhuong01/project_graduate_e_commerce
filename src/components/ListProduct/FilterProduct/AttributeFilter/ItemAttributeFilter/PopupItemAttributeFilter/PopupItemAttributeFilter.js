@@ -15,8 +15,8 @@ function PopupItemAttributeFilter(props) {
         className="w-full h-full relative overflow-y-auto scrollbar-css"
         style={{
           width: 500,
-          height: 200,
-          maxHeight: 200,
+          maxWidth: 500,
+          maxHeight: 150,
         }}
       >
         {props.children}

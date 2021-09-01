@@ -7,6 +7,7 @@ import ListProduct from "./ListProduct/ListProduct";
 function MainListProduct(props) {
   //
   // const [show, setShow] = useState(false);
+  const { slug } = props;
   //
   return (
     <div className="w-full dark:bg-dark-second dark:text-gray-300">
@@ -14,7 +15,7 @@ function MainListProduct(props) {
       <hr className="w-full xl:w-4/5  mx-auto my-2"></hr>
       <div className="w-full xl:w-4/5 mx-auto p-4">
         <div className="w-full mx-auto mb-2">
-          <FilterProduct />
+          <FilterProduct slug={slug} />
           {/* <ControlsProduct setShow={setShow} show={show} /> */}
           <ListProduct />
         </div>

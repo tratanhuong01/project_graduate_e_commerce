@@ -9,7 +9,7 @@ function ItemBrand(props) {
       <img
         src="https://cdn.tgdd.vn/Brand/1/OnePlus42-b_36.jpg"
         alt=""
-        className="w-full h-6 object-cover"
+        className="w-full h-5 object-cover"
       />
     </div>
   );
