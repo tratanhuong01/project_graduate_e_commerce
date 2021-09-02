@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as modalsAction from "../../actions/modal/index";
 import MainIndex from "../../containers/Index/MainIndex";
-import api from "../../Utils/api";
 import Loading from "../../components/General/Loading/Loading";
 import useResetPage from "../../hook/useResetPage";
-
+import * as productApi from "../../api/productApi";
 function Index(props) {
   //
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ function Index(props) {
     //
     const fetch = async () => {
       dispatch(modalsAction.setPopupAds());
-      const result = await api("getProductIndex", "GET", null);
+      const result = await productApi.getProductIndex();
       setDataIndex(result.data);
     };
     fetch();

@@ -1,6 +1,6 @@
 import * as Types from "../../constants/ActionTypes";
-import api from "../../Utils/api";
 import * as modalsAction from "../../actions/modal/index";
+import * as reviewProductApi from "../../api/reviewProductApi";
 
 export const loadReviewProductData = (data) => {
   return {
@@ -12,12 +12,11 @@ export const loadReviewProductData = (data) => {
 export const loadReviewProductByIndexPageRequest = (data) => {
   return async (dispatch) => {
     const { index, products, active } = data;
-    const result = await api(
-      active === -1
-        ? `reviewProducts/${products.idProduct}/${index * 5}/5`
-        : `reviewProductByStar/${products.idProduct}/${active}/${index * 5}/5`,
-      "GET",
-      null
+    const result = await reviewProductApi.getReviewProductByProductLimitPage(
+      products.idProduct,
+      active,
+      index * 5,
+      5
     );
     dispatch(
       loadReviewProductByIndexPage({
@@ -46,23 +45,21 @@ export const loadReviewProductByIndexPage = (data) => {
 export const loadReviewProductActiveStarRequest = (data) => {
   return async (dispatch) => {
     const { star, products, reviewAll } = data;
-    const result_1 = await api(
-      star.star === -1
-        ? `${star.query.once}/${products.idProduct}/0/5`
-        : `${star.query.once}/${products.idProduct}/${star.star}/0/5`,
-      "GET",
-      null
+    const result_1 = await reviewProductApi.getReviewProductByProductLimitStar(
+      star.query.once,
+      star.star,
+      products.idProduct,
+      0,
+      5
     );
-    const result_2 = await api(
-      star.star === -1
-        ? `${star.query.all}/${products.idProduct}`
-        : `${star.query.all}/${products.idProduct}/${star.star}`,
-      "GET",
-      null
+    const result_2 = await reviewProductApi.getAllReviewProductByProduct(
+      star.query.all,
+      products.idProduct,
+      star.star
     );
     let clone = { ...reviewAll };
     if (star.star === -1) clone.sumReview = result_2.data.sumReview;
-    else clone.sumReview = result_2.data;
+    else clone.sumReview = result_2.data.length;
     dispatch(
       loadReviewProductActiveStar({
         reviews: result_1.data,
@@ -86,7 +83,7 @@ export const addReviewProductRequest = (data) => {
   return async (dispatch) => {
     const { user, fullName, email, content, indexStar, products, active } =
       data;
-    const reviewProducts = {
+    const reviewProduct = {
       id: -1,
       userReviewProduct: user,
       productReview: null,
@@ -102,20 +99,19 @@ export const addReviewProductRequest = (data) => {
       type: 1,
       timeCreated: "08-29-2021 08:40:09",
     };
-    await api(`reviewProducts/${products.idProduct}`, "POST", reviewProducts);
-    const result_1 = await api(
-      active === -1
-        ? `reviewProducts/${products.idProduct}/${0}/5`
-        : `reviewProductByStar/${products.idProduct}/${active}/${0}/5`,
-      "GET",
-      null
+    await reviewProductApi.addReviewProductByProduct(
+      products.idProduct,
+      reviewProduct
     );
-    const result_2 = await api(
-      active === -1
-        ? `reviewProductsAll/${products.idProduct}`
-        : `reviewProductByStarAll/${products.idProduct}/${active}`,
-      "GET",
-      null
+    const result_1 = await reviewProductApi.getReviewProductByProductLimitPage(
+      products.idProduct,
+      active,
+      0,
+      5,
+      true
+    );
+    const result_2 = await reviewProductApi.getReviewProductByProductMain(
+      products.idProduct
     );
     dispatch(modalsAction.closeModal());
     dispatch(
@@ -134,7 +130,7 @@ export const addReviewProduct = (data) => {
 export const replyReviewProduct = (data) => {
   return async (dispatch) => {
     const { user, fullName, email, content, products, active, review } = data;
-    const reviewProducts = {
+    const reviewProduct = {
       id: -1,
       userReviewProduct: user,
       productReview: null,
@@ -150,20 +146,18 @@ export const replyReviewProduct = (data) => {
       type: 1,
       timeCreated: "08-29-2021 08:40:09",
     };
-    await api(`reviewProducts/${products.idProduct}`, "POST", reviewProducts);
-    const result_1 = await api(
-      active === -1
-        ? `reviewProducts/${products.idProduct}/${0}/5`
-        : `reviewProductByStar/${products.idProduct}/${active}/${0}/5`,
-      "GET",
-      null
+    await reviewProductApi.addReviewProductByProduct(
+      products.idProduct,
+      reviewProduct
     );
-    const result_2 = await api(
-      active === -1
-        ? `reviewProductsAll/${products.idProduct}`
-        : `reviewProductByStarAll/${products.idProduct}/${active}`,
-      "GET",
-      null
+    const result_1 = await reviewProductApi.getReviewProductByProductLimitPage(
+      products.idProduct,
+      active,
+      0,
+      5
+    );
+    const result_2 = await reviewProductApi.getReviewProductByProductMain(
+      products.idProduct
     );
     dispatch(modalsAction.closeModal());
     dispatch(

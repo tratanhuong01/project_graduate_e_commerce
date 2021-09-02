@@ -1,5 +1,5 @@
 import * as Types from "../../constants/ActionTypes";
-import api from "../../Utils/api";
+import * as commentApi from "../../api/commentApi";
 
 export const addCommentRequest = (data) => {
   return async (dispatch) => {
@@ -15,9 +15,9 @@ export const addCommentRequest = (data) => {
       content: content,
       timeCreated: "",
     };
-    await api(`comments`, "POST", comment);
-    const result_1 = await api(`comments/${news.id}/${0}/5`, "GET", null);
-    const result_2 = await api(`commentsAll/${news.id}`, "GET", null);
+    await commentApi.addCommentByNews(comment);
+    const result_1 = await commentApi.getCommentByNewsLimit(news.id, 0, 5);
+    const result_2 = await commentApi.getAllCommentByNews(news.id);
     dispatch(
       addComment({
         comments: result_1.data,
@@ -44,21 +44,17 @@ export const loadNewsData = (data) => {
 export const loadNewsIndexPageRequest = (data) => {
   return async (dispatch) => {
     const { index, news } = data;
-    const result = await api(`comments/${news.id}/${index * 5}/5`, "GET", null);
+    const result = await commentApi.getCommentByNewsLimit(
+      news.id,
+      index * 5,
+      5
+    );
     dispatch(
       loadNewsIndexPage({
         comments: result.data,
         index: index,
       })
     );
-    if (document.getElementById("detailRateComment"))
-      window.scrollTo(
-        0,
-        document.getElementById("detailRateComment").getBoundingClientRect()
-          .top +
-          window.scrollY -
-          100
-      );
   };
 };
 
@@ -78,18 +74,18 @@ export const replyCommentRequest = (data) => {
       fullName: user !== null ? null : fullName,
       email: user !== null ? null : email,
       level: 2,
-      reply: commentReply.id,
+      reply: commentReply ? commentReply.id : null,
       commentNews: news,
       content: content,
       timeCreated: "",
     };
-    await api(`comments`, "POST", comment);
-    const result_1 = await api(
-      `comments/${news.id}/${index * 5}/5`,
-      "GET",
-      null
+    await commentApi.addCommentByNews(comment);
+    const result_1 = await commentApi.getCommentByNewsLimit(
+      news.id,
+      index * 5,
+      5
     );
-    const result_2 = await api(`commentsAll/${news.id}`, "GET", null);
+    const result_2 = await commentApi.getAllCommentByNews(news.id);
     dispatch(
       addComment({
         comments: result_1.data,

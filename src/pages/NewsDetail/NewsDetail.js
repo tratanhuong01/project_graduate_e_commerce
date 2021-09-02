@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import MainNewsDetail from "../../containers/NewsDetail/MainNewsDetail";
-import api from "../../Utils/api";
 import Loading from "../../components/General/Loading/Loading";
 import useResetPage from "../../hook/useResetPage";
-
+import * as newsApi from "../../api/newsApi";
 function NewsDetail(props) {
   //
   const { match } = props;
@@ -13,10 +12,8 @@ function NewsDetail(props) {
     let mounted = true;
     const fetch = async () => {
       window.scrollTo(0, 0);
-      let formData = new FormData();
-      formData.append("slug", match.match.params.slug);
-      await api("updateViewNews", "PUT", formData);
-      const result = await api("getNewsBySlug", "POST", formData);
+      await newsApi.updateViewNews(match.match.params.slug);
+      const result = await newsApi.getNewsBySlug(match.match.params.slug);
       if (result.data) document.title = result.data.news.title;
       setNewsDetail(result.data);
     };

@@ -1,6 +1,7 @@
 import * as Types from "../../constants/ActionTypes";
-import api from "../../Utils/api";
 import { v4 as uuidv4 } from "uuid";
+import * as wishListApi from "../../api/wishListApi";
+import * as productApi from "../../api/productApi";
 
 export const loadWishListRequest = (user) => {
   return async (dispatch) => {
@@ -9,11 +10,7 @@ export const loadWishListRequest = (user) => {
         dispatch(loadWishList(JSON.parse(localStorage.getItem("wishLists"))));
       else dispatch(loadWishList([]));
     } else {
-      const wishLists = await api(
-        `getAllWishListByIdUser/${user.id}`,
-        "GET",
-        null
-      );
+      const wishLists = await wishListApi.getAllWishListByIdUser(user.id);
       dispatch(loadWishList(wishLists.data));
     }
   };
@@ -30,7 +27,7 @@ export const addWishListRequest = (data) => {
   return async (dispatch) => {
     let formData = new FormData();
     formData.append("slug", data.idProduct);
-    const result = await api("getProductById", "POST", formData);
+    const result = await productApi.getProductByIdProduct(data.idProduct);
     if (data.user === null) {
       let listWishList = [];
       if (localStorage && localStorage.getItem("wishLists")) {
@@ -75,21 +72,19 @@ export const addWishListRequest = (data) => {
       localStorage.setItem("wishLists", JSON.stringify(listWishList));
       dispatch(loadWishList(listWishList));
     } else {
-      const wishListCheck = await api(
-        `checkWishList/${data.user.id}/${data.idProduct}`,
-        "GET",
-        null
+      const wishListCheck = await wishListApi.checkWishList(
+        data.user.id,
+        data.idProduct
       );
       if (wishListCheck.data === "" || wishListCheck.data === null) {
-        const product = await api(`products/${data.idProduct}`, "GET", null);
-        const wishList = {
+        const product = await productApi.getProductByIdProduct(data.idProduct);
+        const wishLists = await wishListApi.addWishListByIdUser({
           id: 0,
           wishListUser: data.user,
           wishListProduct: product.data,
           amount: data.amount,
           timeCreated: "",
-        };
-        const wishLists = await api("wishLists", "POST", wishList);
+        });
         dispatch(loadWishList(wishLists.data));
       } else {
         dispatch(
@@ -113,10 +108,9 @@ export const addWishList = (data) => {
 export const deleteWishListRequest = (data) => {
   return async (dispatch) => {
     if (data.user) {
-      const result = await api(
-        `wishLists/${data.user.id}/${data.idCart}`,
-        "DELETE",
-        null
+      const result = await wishListApi.deleteWishListByIdUser(
+        data.user.id,
+        data.idCart
       );
       dispatch(loadWishList(result.data));
     } else {

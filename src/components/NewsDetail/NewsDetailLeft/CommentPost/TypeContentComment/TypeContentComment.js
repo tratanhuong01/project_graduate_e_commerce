@@ -30,7 +30,7 @@ function TypeContentComment(props) {
     if (level === 1)
       dispatch(
         newsAction.addCommentRequest(
-          Object.assign(data, { user, news: news.news })
+          Object.assign(data, { user, news: news.news, commentReply: comment })
         )
       );
     else

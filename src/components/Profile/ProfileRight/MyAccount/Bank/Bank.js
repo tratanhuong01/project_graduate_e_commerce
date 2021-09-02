@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import ItemBank from "./ItemBank/ItemBank";
 import * as modalsAction from "../../../../../actions/modal/index";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../../../../../Utils/api";
-
+import * as profilesApi from "../../../../../api/profileApi";
 function Bank(props) {
   //
   const dispatch = useDispatch();
@@ -13,7 +12,7 @@ function Bank(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(`banks/${user.id}`, "GET", null);
+      const result = await profilesApi.getBankByIdUser(user.id);
       if (unmounted) return;
       setBanks(result.data);
     }

@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ItemAddress from "./ItemAddress/ItemAddress";
 import * as modalsAction from "../../../../../actions/modal/index";
-import api from "../../../../../Utils/api";
-
+import * as profileApi from "../../../../../api/profileApi";
 async function deleteAddress(address) {
-  const result = await api(`addresses/${address.id}`, "DELETE", null);
+  const result = await profileApi.deleteAddress(address.id);
   return result.data;
 }
 
@@ -21,7 +20,7 @@ function Address(props) {
   useEffect(() => {
     let unmounted = false;
     async function fetch() {
-      const result = await api(`addresses/${user.id}`, "GET", null);
+      const result = await profileApi.getAddressByIdUser(user.id);
       // In case the component was mounted, cancel set state here. Because it's not effect
       if (unmounted) return;
       setAddresses(result.data);

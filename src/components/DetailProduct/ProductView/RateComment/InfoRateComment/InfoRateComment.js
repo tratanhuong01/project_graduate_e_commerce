@@ -69,7 +69,7 @@ function InfoRateComment(props) {
           <Star fontSize="text-xl" star={data.top} />
         </div>
         <p className="w-full text-center my-1 text-gray-700 dark:text-gray-300">
-          ({reviewAll.sumReview} đánh giá)
+          ({reviewAll.sumAll} đánh giá)
         </p>
         <ButtonSendRate products={products} />
       </div>

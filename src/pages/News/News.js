@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "../../components/General/Loading/Loading";
 import MainNews from "../../containers/News/MainNews";
 import useResetPage from "../../hook/useResetPage";
-import api from "../../Utils/api";
-
+import * as newsApi from "../../api/newsApi";
 function News(props) {
   //
   useResetPage("Tin tức");
@@ -12,7 +11,7 @@ function News(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api("getNewsPage", "GET", null);
+      const result = await newsApi.getNewsPage();
       if (unmounted) return;
       setNews(result.data);
     }

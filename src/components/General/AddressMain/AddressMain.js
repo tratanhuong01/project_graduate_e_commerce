@@ -6,10 +6,10 @@ function AddressMain(props) {
   //
   return (
     <>
-      <div class="w-1/4 flex-col flex items-end">
-        <div class="flex py-0.5 items-center">Họ và tên</div>
-        <div class="flex py-0.5 items-center">Số điện thoại</div>
-        <div class="flex py-0.5 items-center">Địa chỉ</div>
+      <div className="w-1/4 flex-col flex items-end">
+        <div className="flex py-0.5 items-center">Họ và tên</div>
+        <div className="flex py-0.5 items-center">Số điện thoại</div>
+        <div className="flex py-0.5 items-center">Địa chỉ</div>
       </div>
       <div className="w-3/4  ml-6 lg">
         <div className="w-full py-0.5 flex">
@@ -21,7 +21,7 @@ function AddressMain(props) {
             {address.isDefault === 1 && (
               <button
                 className="rounded-full px-5 py-1 bg-green-500 text-white font-semibold ml-4 
-            text-xs mb-2 lg:mb-0"
+              text-xs mb-2 lg:mb-0"
               >
                 Mặc định
               </button>

@@ -7,10 +7,9 @@ import FooterFormAddress from "./FooterFormAddress/FooterFormAddress";
 import WarningFormAddress from "./WarningFormAddress/WarningFormAddress";
 import NameAndPhone from "./NameAndPhone/NameAndPhone";
 import FullAddressContent from "./FullAddressContent/FullAddressContent";
-import api from "../../../../../Utils/api";
 import * as modalsAction from "../../../../../actions/modal/index";
 import { connect } from "react-redux";
-
+import * as profileApi from "../../../../../api/profileApi";
 class FormAddress extends Component {
   constructor(props) {
     super(props);
@@ -63,7 +62,7 @@ class FormAddress extends Component {
     data.phone = dataFormik.numberPhone;
     data.typeAddress = this.state.typeAddress;
     data.isDefault = this.state.isDefault;
-    const result = await api("addresses", "POST", data);
+    const result = await profileApi.addAddressByIdUser(data);
     this.setAddresses([...result.data]);
     this.props.closeModal();
   };

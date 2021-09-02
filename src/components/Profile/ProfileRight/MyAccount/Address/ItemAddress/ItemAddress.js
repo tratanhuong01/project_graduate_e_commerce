@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as modalsAction from "../../../../../../actions/modal/index";
-import api from "../../../../../../Utils/api";
 import AddressMain from "../../../../../General/AddressMain/AddressMain";
+import * as profileApi from "../../../../../../api/profileApi";
 
 function ItemAddress(props) {
   //
@@ -42,10 +42,9 @@ function ItemAddress(props) {
             onClick={() => {
               let unmounted = false;
               async function fetch() {
-                const result = await api(
-                  `setDefaultAddress/${user.id}/${address.id}`,
-                  "PUT",
-                  null
+                const result = await profileApi.setDefaultAddressByIdUser(
+                  user.id,
+                  address.id
                 );
                 if (unmounted) return;
                 setAddresses(result.data);

@@ -1,11 +1,10 @@
 import * as Types from "../../constants/ActionTypes";
 import * as modalsAction from "../../actions/modal/index";
-import api from "../../Utils/api";
-
+import * as userApi from "../../api/userApi";
 export const registerAccount = (data) => {
   return async (dispatch) => {
     dispatch(modalsAction.onLoadingModal());
-    const user = await api("users", "POST", data.user);
+    const user = await userApi.addUser(data.user);
     dispatch(
       sendCodeRegister({
         user: user.data,
@@ -18,7 +17,7 @@ export const registerAccount = (data) => {
 export const sendCodeRegister = (data) => {
   return async (dispatch) => {
     if (data.emailOrPhone === "Email") {
-      const code = await api("sendCodeEmail", "POST", data.user);
+      const code = await userApi.sendCodeEmail(data.user);
       dispatch(modalsAction.offLoadingModal());
       dispatch(
         modalsAction.openModalTypeCode(data.user, data.user.email, code.data)
