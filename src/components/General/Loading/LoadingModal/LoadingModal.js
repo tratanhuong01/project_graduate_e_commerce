@@ -3,7 +3,7 @@ import React from "react";
 function LoadingModal(props) {
   return (
     <div
-      className="w-full h-full fixed top-0 left-0 bg-opacity-50 z-50
+      className="w-full h-full fixed top-0 left-0 bg-opacity-50 z-40
     bg-white"
     >
       <div className="w-full h-full relative">

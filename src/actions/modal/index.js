@@ -118,3 +118,10 @@ export const openModalChangeAddressPayment = (
     setAddress,
   };
 };
+
+export const openModalInfoDetailProduct = (idLineProduct) => {
+  return {
+    type: Types.OPEN_MODAL_INFO_DETAIL_PRODUCT,
+    idLineProduct,
+  };
+};

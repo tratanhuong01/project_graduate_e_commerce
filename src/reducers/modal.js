@@ -5,6 +5,7 @@ import ModalRegister from "../components/Modals/General/ModalRegister/ModalRegis
 import ModalSearchGetAccount from "../components/Modals/General/ModalSearchGetAccount/ModalSearchGetAccount";
 import ModalTypeCode from "../components/Modals/General/ModalTypeCode/ModalTypeCode";
 import ModalCartAddedCurrent from "../components/Modals/ModalCartAddedCurent/ModalCartAddedCurrent";
+import ModalInfoDetailProduct from "../components/Modals/ModalInfoDetailProduct/ModalInfoDetailProduct";
 import ModalSendRate from "../components/Modals/ModalSendRate/ModalSendRate";
 import ModalChangeAddressPayment from "../components/Modals/Payment/ModalChangeAddressPayment/ModalChangeAddressPayment";
 import ModalAddress from "../components/Modals/Profile/ModalAddress/ModalAddress";
@@ -76,6 +77,11 @@ const myReducer = (state = initialState, action) => {
           addresses={action.addresses}
           setAddress={(address) => action.setAddress(address)}
         />
+      );
+      return { ...state };
+    case Types.OPEN_MODAL_INFO_DETAIL_PRODUCT:
+      state.data = (
+        <ModalInfoDetailProduct idLineProduct={action.idLineProduct} />
       );
       return { ...state };
     default:

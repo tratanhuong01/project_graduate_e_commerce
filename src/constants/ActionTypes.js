@@ -27,6 +27,8 @@ export const OPEN_MODAL_ADDRESS = "OPEN_MODAL_ADD_ADDRESS";
 //
 export const OPEN_MODAL_CHANGE_ADDRESS_PAYMENT =
   "OPEN_MODAL_CHANGE_ADDRESS_PAYMENT";
+//
+export const OPEN_MODAL_INFO_DETAIL_PRODUCT = "OPEN_MODAL_INFO_DETAIL_PRODUCT";
 // --------modal-------- //
 
 // --------user-------- //

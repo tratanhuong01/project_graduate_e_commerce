@@ -10,7 +10,7 @@ function DescribeProduct(props) {
     <>
       <p className="font-bold mb-3 text-2xl">Mô tả sản phẩm</p>
       <p className="font-bold mb-3 text-3xl">{products.nameLineProduct}</p>
-      <div className="w-full my-6 px-4 overflow-hidden" style={minHeight}>
+      <div className="w-full my-6 px-1 overflow-hidden" style={minHeight}>
         <div
           className="w-full my-2 post"
           dangerouslySetInnerHTML={{ __html: products.describeProduct }}

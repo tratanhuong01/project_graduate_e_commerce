@@ -8,9 +8,9 @@ function ItemProductViewLeft(props) {
     <li onClick={() => setImageData(image)} className="w-full p-3">
       <img
         src={image.src}
-        className={`w-full border-2 border-solid ${
+        className={`w-full p-1 border-2 border-solid ${
           imageData.id === image.id ? "border-orangce" : "hover:border-organce"
-        } cursor-pointer 
+        } cursor-pointer  object-contain
          `}
         alt=""
       />

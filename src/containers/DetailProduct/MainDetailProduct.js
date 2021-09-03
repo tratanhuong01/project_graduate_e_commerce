@@ -4,6 +4,7 @@ import ProductView from "./ProductView/ProductView";
 import DescribeProduct from "../../components/DetailProduct/ProductView/DescribeProduct/DescribeProduct";
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
+import TechnicalDataSmall from "../../components/DetailProduct/ProductView/TechnicalDataSmall/TechnicalDataSmall";
 
 function MainDetailProduct(props) {
   //
@@ -26,6 +27,7 @@ function MainDetailProduct(props) {
             <RateComment products={products} slug={slug} />
           </div>
           <div className="w-full lg:w-5/12 ml-5">
+            <TechnicalDataSmall products={products} />
             <NewsDetailProduct />
           </div>
         </div>

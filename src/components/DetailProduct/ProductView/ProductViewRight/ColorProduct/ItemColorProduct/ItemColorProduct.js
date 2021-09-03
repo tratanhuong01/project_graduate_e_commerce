@@ -47,7 +47,7 @@ function ItemColorProduct(props) {
       <img
         onClick={() => change()}
         src={image.src}
-        className={`w-10 h-10 border-2 border-solid cursor-pointer object-cover image-color 
+        className={`w-10 p-0.5 h-10 border-2 border-solid cursor-pointer object-cover image-color 
         ${
           imageData.id === image.id
             ? "border-organce"

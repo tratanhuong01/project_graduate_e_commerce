@@ -20,7 +20,11 @@ function MainIndex(props) {
       <TopSaleToday products={products.listProductSaleToday} />
       <BannerAds />
       {products.listProductByCategory.map((listProduct, index) => {
-        return <CategoryProduct products={listProduct} key={index} />;
+        return listProduct.listProductCategory.length <= 0 ? (
+          ""
+        ) : (
+          <CategoryProduct products={listProduct} key={index} />
+        );
       })}
       <News news={products.newsList} />
     </div>
