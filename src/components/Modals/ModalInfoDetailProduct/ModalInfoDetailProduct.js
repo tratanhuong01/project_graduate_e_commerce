@@ -27,7 +27,7 @@ function ModalInfoDetailProduct(props) {
     return () => {
       unmounted = false;
     };
-    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const Component = () =>
     index === 0 ? (

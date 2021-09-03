@@ -7,17 +7,18 @@ function ItemHorizontalCategory(props) {
   return (
     <div
       onClick={() => {
-        window.scrollTo(
-          0,
-          document
-            .getElementById(`${item.categoryProduct.id}`)
-            .getBoundingClientRect().top +
-            window.scrollY -
-            100
-        );
+        if (document.getElementById(`${item.categoryProduct.id}`))
+          window.scrollTo(
+            0,
+            document
+              .getElementById(`${item.categoryProduct.id}`)
+              .getBoundingClientRect().top +
+              window.scrollY -
+              100
+          );
       }}
-      className="w-28 lg:w-36 h-24 hover:text-organce font-semibold flex flex-wrap 
-    justify-center items-center cursor-pointer dark:text-white"
+      className={`w-28 lg:w-36 h-24 hover:text-organce font-semibold flex flex-wrap 
+      justify-center items-center dark:text-white cursor-pointer `}
     >
       <div
         className={`w-16 h-16 rounded-full border-2 border-solid border-gray-200 flex justify-center items-center dark:border-dark-third`}
