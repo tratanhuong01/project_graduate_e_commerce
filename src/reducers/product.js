@@ -16,7 +16,7 @@ const initialState = {
     productCurrent: null,
   },
   typeDisplay: 0,
-  slug: "",
+  slug: null,
 };
 
 const myReducer = (state = initialState, action) => {

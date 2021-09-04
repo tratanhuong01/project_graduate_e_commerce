@@ -35,7 +35,7 @@ function ListProduct(props) {
   return listProduct.products === null ? (
     <Loading />
   ) : (
-    <MainListProduct slug={slugGroupProduct} />
+    <MainListProduct slug={listProduct.slug} />
   );
 }
 

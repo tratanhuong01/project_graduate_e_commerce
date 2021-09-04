@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import api from "../../../../Utils/api";
 import ItemAttributeFilter from "./ItemAttributeFilter/ItemAttributeFilter";
 import Brand from "./ItemAttributeFilter/PopupItemAttributeFilter/Brand/Brand";
 import ItemMain from "./ItemAttributeFilter/PopupItemAttributeFilter/ItemMain/ItemMain";
 import Price from "./ItemAttributeFilter/PopupItemAttributeFilter/Price/Price";
-
+import * as listProductsAction from "../../../../actions/listProduct/index";
 function AttributeFilter(props) {
   //
   const { slug } = props;
   const [filters, setFilters] = useState([]);
   const [index, setIndex] = useState(-1);
+  const dispatch = useDispatch();
   useEffect(() => {
     //
     let unmounted = false;
-    async function fetch() {
-      const result = await api(`getFilterByGroupProduct/${slug}`);
-      if (unmounted) return;
-      setFilters(result.data);
+    if (slug) {
+      async function fetch() {
+        const result = await api(`getFilterByGroupProduct/${slug}`);
+        if (unmounted) return;
+        dispatch(listProductsAction.resetAllFilterSorterSearchListProduct());
+        setFilters(result.data);
+      }
+      fetch();
     }
-    fetch();
     return () => {
       unmounted = false;
     };
@@ -26,7 +31,7 @@ function AttributeFilter(props) {
   }, [slug]);
   //
   return (
-    <div className="w-full flex flex-wrap mb-5 -ml-2">
+    <div className="w-full flex flex-wrap mb-3 -ml-2">
       <ItemAttributeFilter
         onClick={(index) => setIndex(index)}
         name="Hãng"
@@ -46,12 +51,14 @@ function AttributeFilter(props) {
       {filters.map((item, pos) => {
         return (
           <ItemAttributeFilter
+            key={pos}
             onClick={(index) => setIndex(index)}
             name={item.groupFilterProduct.nameGroupFilterProduct}
             index={pos + 2}
             indexCurrent={index}
           >
             <ItemMain
+              setIndex={setIndex}
               list={item.functionProductList}
               name="nameFunctionProduct"
             />

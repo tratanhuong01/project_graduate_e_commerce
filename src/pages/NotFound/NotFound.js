@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import * as Config from "../../constants/Config";
 
 function NotFound(props) {
   //
@@ -17,18 +15,9 @@ function NotFound(props) {
         <p className="font-bold text-xl text-center dark:text-white">
           Trang này không hiển thị
         </p>
-        <p className="text-gray-600 text-xm dark:text-white">
+        <p className="text-gray-800 text-xm dark:text-white">
           Có thể liên kết đã hỏng hoặc trang đã bị gỡ. Hãy kiểm tra xem liên kết
           mà bạn đang cố mở có chính xác không.
-        </p>
-        <p className="text-center my-6">
-          <Link
-            to={Config.PAGE_PRODUCT}
-            className="px-3 py-3 bg-1877F2 rounded-lg 
-            font-bold text-white text-blue-500"
-          >
-            Xem sản phẩm
-          </Link>
         </p>
       </div>
     </div>
