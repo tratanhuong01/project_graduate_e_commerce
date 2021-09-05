@@ -27,7 +27,7 @@ function AttributeFilter(props) {
     return () => {
       unmounted = false;
     };
-    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
   //
   return (

@@ -31,8 +31,8 @@ function ItemMain(props) {
             className={`px-2 py-1 m-2 rounded-full p-1 border-2 border-solid text-sm 
             ${
               state === -1
-                ? " border-gray-300 hover:border-organce "
-                : " border-organce "
+                ? " border-gray-300 hover:border-organce hover:text-organce "
+                : " border-organce text-organce "
             }`}
           >
             {item[name]}
