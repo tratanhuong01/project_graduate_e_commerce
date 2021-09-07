@@ -55,21 +55,29 @@ export const resetFilterProduct = () => {
 };
 
 export const addFilterProductRequest = (data) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     const { filters, item } = data;
     const index = filters.findIndex((filter) => filter.id === item.id);
-    if (index === -1)
-      dispatch(
-        addFilterProduct([
-          ...filters,
-          {
-            id: item.id,
-            data: item.data,
-            name: item.name,
-          },
-        ])
-      );
-    else dispatch(removeFilterProductRequest(data));
+    if (index === -1) {
+      let clone = [
+        ...filters,
+        {
+          id: item.id,
+          data: item.data,
+          name: item.name,
+          query: item.query,
+        },
+      ];
+      dispatch(addFilterProduct(clone));
+      let stringQuery = "";
+      clone.forEach((element) => {
+        console.log(element);
+        stringQuery += `${element.query}=${element.data.id}&`;
+      });
+      stringQuery = stringQuery.substring(0, stringQuery.length - 1);
+      const result = await api(`productsFilter?${stringQuery}`, "GET", null);
+      dispatch(loadListProduct(result.data));
+    } else dispatch(removeFilterProductRequest(data));
   };
 };
 
@@ -98,5 +106,11 @@ export const addFilterProduct = (data) => {
 export const resetAllFilterSorterSearchListProduct = () => {
   return {
     type: Types.RESET_ALL_FILTER_SORTER_SEARCH_LIST_PRODUCT,
+  };
+};
+
+export const loadingListProduct = () => {
+  return {
+    type: Types.LOADING_LIST_PRODUCT,
   };
 };

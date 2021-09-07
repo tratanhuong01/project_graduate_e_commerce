@@ -32,11 +32,7 @@ function ListProduct(props) {
   useEffect(() => {}, [listProduct]);
   useResetPage("Sản phẩm");
   //
-  return listProduct.products === null ? (
-    <Loading />
-  ) : (
-    <MainListProduct slug={listProduct.slug} />
-  );
+  return <MainListProduct slug={listProduct.slug} />;
 }
 
 export default ListProduct;

@@ -1,11 +1,12 @@
 import React from "react";
 import ItemProduct from "../../../components/General/ItemProduct/ItemProduct";
+import ItemProductLoading from "../../../components/General/ItemProduct/ItemProductLoading/ItemProductLoading";
 
 function ListProduct(props) {
   //
   const { listProduct } = props;
   //
-  return (
+  return listProduct.products ? (
     <div className="w-full mx-auto ">
       <div className="w-full flex flex-wrap my-4 z-10">
         {listProduct.products.map((product, index) => {
@@ -45,6 +46,19 @@ function ListProduct(props) {
             <i className="bx bxs-chevrons-right"></i>
           </li>
         </ul>
+      </div>
+    </div>
+  ) : (
+    <div className="w-full mx-auto ">
+      <div className="w-full flex flex-wrap my-4 z-10">
+        <ItemProductLoading />
+        <ItemProductLoading />
+        <ItemProductLoading />
+        <ItemProductLoading />
+        <ItemProductLoading />
+        <ItemProductLoading />
+        <ItemProductLoading />
+        <ItemProductLoading />
       </div>
     </div>
   );

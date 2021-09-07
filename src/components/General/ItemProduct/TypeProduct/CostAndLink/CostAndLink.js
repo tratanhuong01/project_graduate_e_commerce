@@ -15,10 +15,14 @@ function CostAndLink(props) {
         <span className="flex items-center font-semibold dark:text-white hover:text-organce">
           {typeof product !== "undefined" && (
             <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${product.slug}`}>
-              {" "}
-              {product.nameLineProduct.length > 40
-                ? product.nameLineProduct.substring(0, 40) + "..."
-                : product.nameLineProduct}
+              {product.nameLineProduct.length > 50
+                ? product.nameLineProduc.substring(0, 50) + "..."
+                : product.nameLineProduct +
+                  ` ${product.memory ? product.memory.nameMemory + " " : ""}${
+                    product.color
+                      ? "Màu " + product.color.description.toLowerCase()
+                      : ""
+                  }`}
             </Link>
           )}
         </span>

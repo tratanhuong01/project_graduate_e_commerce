@@ -62,6 +62,8 @@ export const RESET_ALL_FILTER_SORTER_SEARCH_LIST_PRODUCT =
 export const ADD_FILTER_PRODUCT = "ADD_FILTER_PRODUCT";
 //
 export const REMOVE_FILTER_PRODUCT = "REMOVE_FILTER_PRODUCT";
+//
+export const LOADING_LIST_PRODUCT = "LOADING_LIST_PRODUCT";
 // --------prodocut-------- //
 
 // --------bill-------- //

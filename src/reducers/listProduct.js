@@ -31,6 +31,9 @@ const myReducer = (state = initialState, action) => {
       state.search = null;
       state.slug = null;
       return { ...state };
+    case Types.LOADING_LIST_PRODUCT:
+      state.products = null;
+      return { ...state };
     default:
       return state;
   }

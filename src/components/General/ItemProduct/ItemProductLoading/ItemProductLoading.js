@@ -2,7 +2,7 @@ import React from "react";
 
 function ItemProductLoading(props) {
   return (
-    <div className={"m-2 relative product__search flex-shrink-0 z-40"}>
+    <div className={"m-2.5 relative product__search flex-shrink-0 z-40"}>
       <div class="w-full relative md:h-80 xl:h-64 mx-auto item__category ">
         <img
           src="https://berryphan.com/wp-content/themes/fox/images/placeholder.jpg"

@@ -27,7 +27,7 @@ export const addWishListRequest = (data) => {
   return async (dispatch) => {
     let formData = new FormData();
     formData.append("slug", data.idProduct);
-    const result = await productApi.getProductByIdProduct(data.idProduct);
+    const result = await productApi.getProductFullByIdProduct(data.idProduct);
     if (data.user === null) {
       let listWishList = [];
       if (localStorage && localStorage.getItem("wishLists")) {

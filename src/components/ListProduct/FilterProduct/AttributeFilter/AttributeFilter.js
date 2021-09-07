@@ -38,7 +38,7 @@ function AttributeFilter(props) {
         index={0}
         indexCurrent={index}
       >
-        <Brand />
+        <Brand setIndex={setIndex} />
       </ItemAttributeFilter>
       <ItemAttributeFilter
         onClick={(index) => setIndex(index)}

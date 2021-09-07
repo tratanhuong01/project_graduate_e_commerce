@@ -16,6 +16,7 @@ function ItemMain(props) {
           <div
             onClick={() => {
               setIndex(-1);
+              dispatch(listProductsAction.loadListProduct());
               dispatch(
                 listProductsAction.addFilterProductRequest({
                   filters: listProduct.filters,
@@ -23,6 +24,7 @@ function ItemMain(props) {
                     id: item.id,
                     data: item,
                     name: item.nameFunctionProduct,
+                    query: "feature",
                   },
                 })
               );

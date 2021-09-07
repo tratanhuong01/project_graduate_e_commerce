@@ -23,7 +23,8 @@ function FilterProduct(props) {
               <ItemSelected
                 key={index}
                 item={item}
-                onClick={() =>
+                onClick={() => {
+                  dispatch(listProductsAction.loadListProduct());
                   dispatch(
                     listProductsAction.removeFilterProductRequest({
                       filters: listProduct.filters,
@@ -33,8 +34,8 @@ function FilterProduct(props) {
                         name: item.data.name,
                       },
                     })
-                  )
-                }
+                  );
+                }}
               />
             );
           })}
