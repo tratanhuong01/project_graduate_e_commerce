@@ -33,13 +33,13 @@ function ProductViewLeft(props) {
           <i className="bx bx-caret-down text-2xl text-gray-700"></i>
         </li>
       </ul>
-      <div className="w-10/12 pr-4">
-        <div className="w-full border-2 border-gray-200 border-solid">
+      <div className="w-10/12 pr-4 relative">
+        <div className="w-full flex items-center absolute top-1/2 left-0 transform -translate-y-1/2">
           {/* <Zoom> */}
           <img
             src={imageData.src}
             alt=""
-            className="w-full cursor-pointer"
+            className="w-full object-cover"
             style={{ maxHeight: 560 }}
           />
           {/* </Zoom> */}

@@ -8,6 +8,6 @@ export const addUser = (user) => {
 
 export const sendCodeEmail = (user) => {
   //
-  return api("sendCodeMail", "POST", user);
+  return api("sendCodeEmail", "POST", user);
   //
 };
