@@ -28,8 +28,6 @@ const myReducer = (state = initialState, action) => {
     case Types.RESET_ALL_FILTER_SORTER_SEARCH_LIST_PRODUCT:
       state.filters = [];
       state.sorter = [];
-      state.search = null;
-      state.slug = null;
       return { ...state };
     case Types.LOADING_LIST_PRODUCT:
       state.products = null;

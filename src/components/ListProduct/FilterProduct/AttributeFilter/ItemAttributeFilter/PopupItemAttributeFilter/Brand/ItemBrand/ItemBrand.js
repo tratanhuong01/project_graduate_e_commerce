@@ -20,6 +20,7 @@ function ItemBrand(props) {
               name: brand.nameBrand,
               query: "brand",
             },
+            slug: listProduct.slug,
           })
         );
       }}

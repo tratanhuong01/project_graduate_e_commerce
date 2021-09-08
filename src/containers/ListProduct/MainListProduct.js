@@ -7,7 +7,6 @@ import { NotFound } from "http-errors";
 function MainListProduct(props) {
   //
   const listProduct = useSelector((state) => state.listProduct);
-  const { slug } = props;
   //
   return (
     <div className="w-full dark:bg-dark-second dark:text-gray-300">
@@ -18,7 +17,7 @@ function MainListProduct(props) {
           <NotFound />
         ) : (
           <div className="w-full mx-auto mb-2">
-            <FilterProduct slug={slug} />
+            <FilterProduct />
             <ListProduct listProduct={listProduct} />
           </div>
         )}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import api from "../../../../Utils/api";
 import ItemAttributeFilter from "./ItemAttributeFilter/ItemAttributeFilter";
 import Brand from "./ItemAttributeFilter/PopupItemAttributeFilter/Brand/Brand";
@@ -8,7 +8,8 @@ import Price from "./ItemAttributeFilter/PopupItemAttributeFilter/Price/Price";
 import * as listProductsAction from "../../../../actions/listProduct/index";
 function AttributeFilter(props) {
   //
-  const { slug } = props;
+  const listProduct = useSelector((state) => state.listProduct);
+  const { slug } = listProduct;
   const [filters, setFilters] = useState([]);
   const [index, setIndex] = useState(-1);
   const dispatch = useDispatch();
@@ -37,8 +38,9 @@ function AttributeFilter(props) {
         name="Hãng"
         index={0}
         indexCurrent={index}
+        slug={slug}
       >
-        <Brand setIndex={setIndex} />
+        <Brand setIndex={setIndex} slug={slug} />
       </ItemAttributeFilter>
       <ItemAttributeFilter
         onClick={(index) => setIndex(index)}

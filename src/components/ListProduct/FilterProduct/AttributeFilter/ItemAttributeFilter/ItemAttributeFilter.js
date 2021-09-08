@@ -3,7 +3,7 @@ import PopupItemAttributeFilter from "./PopupItemAttributeFilter/PopupItemAttrib
 
 function ItemAttributeFilter(props) {
   //
-  const { name, index, indexCurrent, onClick } = props;
+  const { name, index, indexCurrent, onClick, slug } = props;
   //
   return (
     <div
@@ -23,7 +23,9 @@ function ItemAttributeFilter(props) {
         <i className="bx bx-chevron-down ml-1 mt-1 text-xl"></i>
       </div>
       {index === indexCurrent && (
-        <PopupItemAttributeFilter>{props.children}</PopupItemAttributeFilter>
+        <PopupItemAttributeFilter slug={slug}>
+          {props.children}
+        </PopupItemAttributeFilter>
       )}
     </div>
   );

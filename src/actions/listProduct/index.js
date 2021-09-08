@@ -17,17 +17,14 @@ export const loadListProductRequest = (slug) => {
       (item) => item.slugCategoryProduct === slug.slugCategoryProduct
     );
     if (index !== -1) {
-      formData.append("slugCategoryProduct", slug.slugCategoryProduct);
-      formData.append(
-        "slugGroupProduct",
-        result.data[index].typeCategoryProduct === 0
-          ? slug.slugGroupProduct
-          : slug.slugCategoryProduct
-      );
       products = await api(
-        "getProductBySlugCategoryAndSlugGroup",
-        "POST",
-        formData
+        `productsFilter?slugGroupProduct=${
+          result.data[index].typeCategoryProduct === 0
+            ? slug.slugGroupProduct
+            : slug.slugCategoryProduct
+        }`,
+        "GET",
+        null
       );
       dispatch(loadListProduct(products.data));
       dispatch(
@@ -48,6 +45,18 @@ export const loadSlugCondition = (slug) => {
   };
 };
 
+export const resetFilterProductRequest = (slug) => {
+  return async (dispatch) => {
+    const result = await api(
+      `productsFilter?slugGroupProduct=${slug}`,
+      "GET",
+      null
+    );
+    dispatch(loadListProduct(result.data));
+    dispatch(resetFilterProduct());
+  };
+};
+
 export const resetFilterProduct = () => {
   return {
     type: Types.RESET_FILTER_PRODUCT,
@@ -56,7 +65,7 @@ export const resetFilterProduct = () => {
 
 export const addFilterProductRequest = (data) => {
   return async (dispatch) => {
-    const { filters, item } = data;
+    const { filters, item, slug } = data;
     const index = filters.findIndex((filter) => filter.id === item.id);
     if (index === -1) {
       let clone = [
@@ -71,20 +80,32 @@ export const addFilterProductRequest = (data) => {
       dispatch(addFilterProduct(clone));
       let stringQuery = "";
       clone.forEach((element) => {
-        console.log(element);
-        stringQuery += `${element.query}=${element.data.id}&`;
+        stringQuery += `&${element.query}=${element.data.id}`;
       });
-      stringQuery = stringQuery.substring(0, stringQuery.length - 1);
-      const result = await api(`productsFilter?${stringQuery}`, "GET", null);
+      const result = await api(
+        `productsFilter?slugGroupProduct=${slug}${stringQuery}`,
+        "GET",
+        null
+      );
       dispatch(loadListProduct(result.data));
     } else dispatch(removeFilterProductRequest(data));
   };
 };
 
 export const removeFilterProductRequest = (data) => {
-  return (dispatch) => {
-    const { filters, item } = data;
+  return async (dispatch) => {
+    const { filters, item, slug } = data;
     let clone = filters.filter((filter) => filter.id !== item.id);
+    let stringQuery = "";
+    clone.forEach((element) => {
+      stringQuery += `&${element.query}=${element.data.id}`;
+    });
+    const result = await api(
+      `productsFilter?slugGroupProduct=${slug}${stringQuery}`,
+      "GET",
+      null
+    );
+    dispatch(loadListProduct(result.data));
     dispatch(removeFilterProduct(clone));
   };
 };

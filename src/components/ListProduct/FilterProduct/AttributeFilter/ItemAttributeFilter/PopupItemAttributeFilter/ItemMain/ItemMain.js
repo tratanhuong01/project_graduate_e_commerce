@@ -26,6 +26,7 @@ function ItemMain(props) {
                     name: item.nameFunctionProduct,
                     query: "feature",
                   },
+                  slug: listProduct.slug,
                 })
               );
             }}

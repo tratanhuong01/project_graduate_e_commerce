@@ -4,6 +4,7 @@ import api from "../../../../../../../Utils/api";
 import { useSelector } from "react-redux";
 function Brand(props) {
   //
+
   const { setIndex } = props;
   const [brands, setBrands] = useState([]);
   const listProduct = useSelector((state) => state.listProduct);
@@ -11,7 +12,11 @@ function Brand(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api("brandsAll", "GET", null);
+      const result = await api(
+        `brands/slugGroupProduct/${listProduct.slug}`,
+        "GET",
+        null
+      );
       if (unmounted) return;
       setBrands(result.data);
     }
@@ -20,7 +25,7 @@ function Brand(props) {
       unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [listProduct.slug]);
   //
   return (
     <div className="w-full flex flex-wrap">

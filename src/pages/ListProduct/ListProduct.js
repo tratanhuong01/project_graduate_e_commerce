@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainListProduct from "../../containers/ListProduct/MainListProduct";
-import Loading from "../../components/General/Loading/Loading";
+// import Loading from "../../components/General/Loading/Loading";
 import * as listProductsAction from "../../actions/listProduct/index";
 import useResetPage from "../../hook/useResetPage";
 
@@ -29,7 +29,7 @@ function ListProduct(props) {
     return () => (unmounted = true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slugCategoryProduct, slugGroupProduct]);
-  useEffect(() => {}, [listProduct]);
+  useEffect(() => {}, [listProduct.slug]);
   useResetPage("Sản phẩm");
   //
   return <MainListProduct slug={listProduct.slug} />;

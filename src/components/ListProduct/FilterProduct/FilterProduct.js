@@ -7,14 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 function FilterProduct(props) {
   //
-  const { slug } = props;
   const listProduct = useSelector((state) => state.listProduct);
   const dispatch = useDispatch();
   useEffect(() => {}, [listProduct.filters]);
   //
   return (
     <div className="w-full mx-auto">
-      <AttributeFilter slug={slug} />
+      <AttributeFilter />
       <FooterFilterProduct />
       {listProduct.filters.length > 0 && (
         <div className="w-full my-3 flex flex-wrap">
@@ -40,7 +39,11 @@ function FilterProduct(props) {
             );
           })}
           <div
-            onClick={() => dispatch(listProductsAction.resetFilterProduct())}
+            onClick={() =>
+              dispatch(
+                listProductsAction.resetFilterProductRequest(listProduct.slug)
+              )
+            }
             className={`border-2 border-solid border-organce text-white px-1 py-0.5 rounded-lg font-semibold text-sm bg-organce cursor-pointer flex items-center m-1`}
           >
             Bỏ hết
