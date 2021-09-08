@@ -48,7 +48,7 @@ function AttributeFilter(props) {
         index={1}
         indexCurrent={index}
       >
-        <Price />
+        <Price setIndex={setIndex} />
       </ItemAttributeFilter>
       {filters.map((item, pos) => {
         return (

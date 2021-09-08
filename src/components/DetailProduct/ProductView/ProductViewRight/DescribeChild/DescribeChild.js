@@ -64,9 +64,6 @@ function DescribeChild(props) {
         )}
       </p>
       <ul className="text-gray-700 my-2 text-sm dark:text-gray-300">
-        <li className="my-2">Kích thước màn hình : 1,2"</li>
-        <li className="my-2">Độ phân giải màn hình : 360 x 360 pixels</li>
-        <li className="my-2">Luôn hiển thị : có</li>
         {typeDisplay !== 0 && (
           <li className="my-7">
             <Link

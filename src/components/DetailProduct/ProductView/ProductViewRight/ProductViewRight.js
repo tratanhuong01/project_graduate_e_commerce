@@ -6,6 +6,7 @@ import MemoryProduct from "./MemoryProduct/MemoryProduct";
 import * as productsAction from "../../../../actions/product/index";
 import * as cartsAction from "../../../../actions/cart/index";
 import WishListStatus from "./WishListStatus/WishListStatus";
+import PromotionGift from "./PromotionGift/PromotionGift";
 
 function ProductViewRight(props) {
   //
@@ -36,6 +37,7 @@ function ProductViewRight(props) {
             products={products}
             typeDisplay={product.typeDisplay}
           />
+          <PromotionGift />
           {products.colorList.length > 0 && (
             <ColorProduct
               colors={products.colorList}
@@ -52,7 +54,23 @@ function ProductViewRight(props) {
               products={products}
             />
           )}
-
+          <div className="w-full my-2 hidden">
+            <div
+              className="w-full rounded-full p-1 mx-2 bg-white hover:bg-organce hover:text-white 
+            border-2 border-solid border-organce hover:border-white font-semibold flex flex-col 
+            items-center cursor-pointer"
+            >
+              <p className="mb-1">Mua ngay</p>
+              <p className="text-xs">Giao hàng tận nơi</p>
+            </div>
+            <div
+              className="w-full mt-3 rounded-full p-1 mx-2 bg-white hover:bg-organce hover:text-white 
+            border-2 border-solid border-organce hover:border-white font-semibold flex flex-col items-center"
+            >
+              <p className="mb-1">Mua ngay</p>
+              <p className="text-xs">Visa,Master,JCB</p>
+            </div>
+          </div>
           <div className="w-full my-3 flex ">
             <div
               className="flex w-32 rounded-full border-2 border-solid 
@@ -120,8 +138,8 @@ function ProductViewRight(props) {
               }
               type="button"
               className="px-10 py-3.5 rounded-full shadow-lg-organce bg-organce 
-                font-semibold text-sm font-semibold flex items-center text-white border-2 
-                border-solid border-2 border-gray-100 ml-10 * hover:border-orangce"
+                font-semibold text-smflex items-center text-white border-2 
+                border-solid border-gray-100 ml-10 * hover:border-orangce"
             >
               Thêm vào giỏ hàng
             </button>

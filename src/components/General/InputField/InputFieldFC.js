@@ -38,7 +38,7 @@ function InputFieldFC(props) {
             ` dark:bg-dark-third dark:text-white ${
               showError
                 ? " text-red-500 border-red-500"
-                : " border-gray-300 dark:border-dark-third "
+                : " border-gray-300 dark:border-dark-third focus:border-blue-500"
             }`
           }
           placeholder={placeHolder}

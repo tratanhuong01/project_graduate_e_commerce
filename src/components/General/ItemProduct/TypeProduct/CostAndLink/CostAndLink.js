@@ -27,6 +27,13 @@ function CostAndLink(props) {
           )}
         </span>
       </p>
+      <div className="flex justify-center items-center my-2">
+        <span className="bx bxs-star text-yellow-500 mr-1"></span>
+        <span className="bx bxs-star text-yellow-500 mr-1"></span>
+        <span className="bx bxs-star text-yellow-500 mr-1"></span>
+        <span className="bx bxs-star text-yellow-500 mr-1"></span>
+        <span className="bx bxs-star text-yellow-500 mr-1"></span>
+      </div>
       <p
         className="p-2 pt-0 text-organce text-center cursor-pointer 
         text-xm font-semibold"

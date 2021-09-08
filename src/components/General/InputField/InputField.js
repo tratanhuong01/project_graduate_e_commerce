@@ -48,7 +48,7 @@ class InputField extends Component {
               ` dark:bg-dark-third dark:text-white ${
                 showError || isset !== null
                   ? " text-red-500 border-red-500"
-                  : " border-gray-300 dark:border-dark-third "
+                  : " border-gray-300 dark:border-dark-third focus:border-blue-500"
               }`
             }
             invalid={typeof showError === "undefined" ? "false" : "true"}

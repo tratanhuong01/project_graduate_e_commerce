@@ -32,6 +32,7 @@ function FilterProduct(props) {
                         data: item.data,
                         name: item.data.name,
                       },
+                      slug: listProduct.slug,
                     })
                   );
                 }}

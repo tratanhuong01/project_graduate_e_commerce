@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.2.0",
     "@hookform/resolvers": "^2.8.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -14,6 +15,7 @@
     "draftjs-to-html": "^0.9.1",
     "formik": "^2.2.9",
     "html-to-draft": "^0.1.6",
+    "init": "^0.1.2",
     "json-server": "^0.16.3",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -32,14 +34,15 @@
     "reactrangeslider": "^3.0.6",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "tailwindcss-cli": "^0.1.2",
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "set PORT=3000 && react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "set PORT=3000 && craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -59,5 +62,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }

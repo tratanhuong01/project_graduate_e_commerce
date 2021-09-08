@@ -11,7 +11,6 @@ export const loadListProduct = (products) => {
 export const loadListProductRequest = (slug) => {
   return async (dispatch) => {
     let products = null;
-    const formData = new FormData();
     const result = await api("categoryProductsAll", "GET", null);
     const index = result.data.findIndex(
       (item) => item.slugCategoryProduct === slug.slugCategoryProduct
@@ -75,12 +74,15 @@ export const addFilterProductRequest = (data) => {
           data: item.data,
           name: item.name,
           query: item.query,
+          type: item.type,
         },
       ];
       dispatch(addFilterProduct(clone));
       let stringQuery = "";
+
       clone.forEach((element) => {
-        stringQuery += `&${element.query}=${element.data.id}`;
+        if (element.type === 0) stringQuery += `&${element.query}`;
+        else stringQuery += `&${element.query}=${element.data.id}`;
       });
       const result = await api(
         `productsFilter?slugGroupProduct=${slug}${stringQuery}`,
