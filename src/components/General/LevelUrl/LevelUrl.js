@@ -1,18 +1,20 @@
-import withBreadcrumbs from "react-router-breadcrumbs-hoc";
+import React from "react";
+import { Breadcrumbs } from "react-breadcrumbs-dynamic";
 import { NavLink } from "react-router-dom";
-import routes from "../../../routes";
 
-const LevelUrl = ({ breadcrumbs }) => (
-  <div className="w-full flex xl:w-4/5 mx-auto p-4 dark:text-white font-semibold">
-    {breadcrumbs.map(({ match, breadcrumb }) => (
-      <span
-        key={match.url}
-        className="px-2 border-r-2 border-solid border-gray-500 dark:border-gay-300"
-      >
-        <NavLink  to={match.url}>{breadcrumb}</NavLink>
-      </span>
-    ))}
-  </div>
-);
+const LevelUrl = (props) => {
+  return (
+    <div className="w-full flex xl:w-4/5 mx-auto p-4 dark:text-white font-semibold">
+      <Breadcrumbs
+        separator={<span className="mx-1"> /</span>}
+        item={NavLink}
+        finalItem={"span"}
+        finalProps={{
+          style: { color: "#f36438" },
+        }}
+      />
+    </div>
+  );
+};
 
-export default withBreadcrumbs(routes)(LevelUrl);
+export default LevelUrl;

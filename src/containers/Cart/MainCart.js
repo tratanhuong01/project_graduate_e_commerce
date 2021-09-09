@@ -6,6 +6,9 @@ import EndCart from "../../components/Cart/EndCart/EndCart";
 import * as cartsAction from "../../actions/cart/index";
 
 import { useDispatch, useSelector } from "react-redux";
+import { PAGE_CART } from "../../constants/Config";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+
 function MainCart(props) {
   //
   const states = useSelector((state) => {
@@ -32,6 +35,7 @@ function MainCart(props) {
   //
   return (
     <div className="w-full bg-gray-100 dark:bg-dark-second dark:text-white">
+      <BreadcrumbsItem to={PAGE_CART}>Giỏ hàng</BreadcrumbsItem>
       <LevelUrl />
       <hr className="my-2"></hr>
       <div className="w-full xl:w-4/5 mx-auto p-4">

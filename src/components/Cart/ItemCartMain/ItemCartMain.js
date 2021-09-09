@@ -90,6 +90,7 @@ function ItemCartMain(props) {
                       amount: event.target.value,
                       idCart: cart.idCart,
                       user: user,
+                      status: status,
                     })
                   );
                   const index = carts.main.findIndex(

@@ -1832,6 +1832,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
+"@types/react-breadcrumbs-dynamic@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-breadcrumbs-dynamic/-/react-breadcrumbs-dynamic-1.0.3.tgz#8d47cf63e4b5a3d6b3901b966adb9b731fd1f217"
+  integrity sha512-RwHsLO6/K+lo/9589epjPgvcEqUFjCoXWBpWW2oxOf0bGp6PhS27NUAXSoBQS/Khss65iVICJJoxGymv/T5YMA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-redux@^7.1.16":
   version "7.1.18"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.18.tgz#2bf8fd56ebaae679a90ebffe48ff73717c438e04"
@@ -10053,6 +10060,13 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-breadcrumbs-dynamic@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-breadcrumbs-dynamic/-/react-breadcrumbs-dynamic-1.2.1.tgz#7e9f046f717b45fc4e56d23d73fe81b212615472"
+  integrity sha512-6vw1RHQ2cHaHptRVQ+pwt6Vej/O6NGNBnEzC5fgW53ZhwABKtNW2xpljPppF+L8hVkNDBdjKSVMYp9K2U1j9qw==
+  dependencies:
+    react-through "^1.1.4"
+
 react-chartjs-2@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-3.0.4.tgz#88e14c6b4d577941c736f0657b071c8273916652"
@@ -10292,6 +10306,11 @@ react-scripts@4.0.3:
     workbox-webpack-plugin "5.1.4"
   optionalDependencies:
     fsevents "^2.1.3"
+
+react-through@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-through/-/react-through-1.1.4.tgz#163485b56bb03ddd2e5f971ada50a57e76737b78"
+  integrity sha512-7VuRPSfKS3ihmMlTgQwOspjd+TV3u7tpFs07MMgLVA0g/bH7UHodKLpGS1LgJJlWTUqJKeN4wT9getqGUN37iA==
 
 react-universal-interface@^0.6.2:
   version "0.6.2"

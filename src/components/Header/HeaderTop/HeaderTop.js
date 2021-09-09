@@ -33,10 +33,7 @@ function HeaderTop(props) {
             <>
               <li className="flex items-center">
                 <div className="bx bx-bell ml-1 mr-2 text-2xl relative">
-                  <span
-                    className="w-4 h-4 rounded-full flex justify-center items-center bg-organce 
-                  text-xs text-white absolute -top-2 -right-1"
-                  >
+                  <span className="w-4 h-4 rounded-full flex bg-organce text-white absolute -top-1 -right-1 justify-center items-center">
                     3
                   </span>
                 </div>

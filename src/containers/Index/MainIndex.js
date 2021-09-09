@@ -7,6 +7,7 @@ import News from "./News/News";
 import CategoryProduct from "../../components/General/CategoryProduct/CategoryProduct";
 import HorizontalCategory from "../../components/Index/HorizontalCategory/HorizontalCategory";
 import SliderProduct from "./SliderProduct/SliderProduct";
+
 function MainIndex(props) {
   //
   const { products } = props;

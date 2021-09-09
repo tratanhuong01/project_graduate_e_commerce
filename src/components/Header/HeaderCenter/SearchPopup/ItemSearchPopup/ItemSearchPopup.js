@@ -7,7 +7,7 @@ function ItemSearchPopup(props) {
   const { product } = props;
   //
   return (
-    <div className="w-full p-2 border-b-2 border-solid border-gray-300 flex items-center">
+    <div className="w-full p-2 border-b-2 border-solid border-gray-100 shadow-sm flex items-center">
       <img
         src={product.image.src}
         alt=""

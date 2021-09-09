@@ -1,6 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as profilesAction from "../../../../../actions/profile/index";
+import {
+  PAGE_PROFILE_USER,
+  PROFILE_INFO,
+} from "../../../../../constants/Config";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 
 function FormAccount(props) {
   //
@@ -9,6 +14,9 @@ function FormAccount(props) {
   //
   return (
     <div className="w-full md:w-3/4 flex">
+      <BreadcrumbsItem to={`${PAGE_PROFILE_USER}/${PROFILE_INFO}`}>
+        Hồ sơ
+      </BreadcrumbsItem>
       <div className="w-1/4 flex-col flex ">
         <div className="flex py-3 items-center my-3">Họ và tên</div>
         <div className="flex py-3 items-center">Email</div>

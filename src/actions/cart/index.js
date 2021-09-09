@@ -17,10 +17,11 @@ export const loadCartRequest = (user) => {
   };
 };
 
-export const loadCart = (carts) => {
+export const loadCart = (carts, status) => {
   return {
     type: Types.LOAD_CART,
     carts,
+    status,
   };
 };
 
@@ -135,7 +136,7 @@ export const changeAmountCartRequest = (data) => {
       let index = listCart.findIndex((item) => item.idCart === data.idCart);
       if (index !== -1) listCart[index].amount = data.amount;
       localStorage.setItem("carts", JSON.stringify(listCart));
-      dispatch(loadCart(listCart));
+      dispatch(loadCart(listCart, data.status));
     }
   };
 };

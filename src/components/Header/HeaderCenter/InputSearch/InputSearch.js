@@ -9,6 +9,7 @@ function InputSearch(props) {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
+    //
     let timeOut;
     if (keyword.length > 0) {
       timeOut = setTimeout(async () => {
@@ -27,11 +28,12 @@ function InputSearch(props) {
     return () => {
       clearTimeout(timeOut);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   //
   return (
-    <div className="md:w-8/12 rounded-full relative">
+    <div id="search__popup__main" className="md:w-8/12 rounded-full relative">
       <input
         placeholder="Nhập tên sản phẩm..."
         className="w-full p-2.5 text-gray-800 dark:text-gray-300 rounded-full"

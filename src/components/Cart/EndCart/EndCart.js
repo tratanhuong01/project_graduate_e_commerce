@@ -17,9 +17,8 @@ function EndCart(props) {
           <Link
             to={Config.PAGE_PRODUCT}
             className="w-full px-5 py-3.5 rounded-full shadow-lg bg-white  
-            font-semibold text-sm font-semibold flex items-center border-2 font-semibold
-            border-solid border-2 border-orangce * hover:bg-organce hover:text-white flex 
-            items-center hover:border-white dark:bg-dark-third"
+            font-semibold text-sm border-2 border-solid  border-orangce * hover:bg-organce 
+            hover:text-white flex items-center hover:border-white dark:bg-dark-third"
           >
             Tiếp tục mua hàng
           </Link>
@@ -50,7 +49,7 @@ function EndCart(props) {
               }
             }}
             className={`px-12 py-4 text-base rounded-full shadow-lg
-            font-semibold flex items-center text-white border-solid border-2 border-gray-100 
+            font-semibold flex text-white border-solid border-2 border-gray-100 
             ml-10 * items-center ${
               sumMoney === 0 ? "cursor-not-allowed  bg-gray-500" : "bg-organce"
             } `}

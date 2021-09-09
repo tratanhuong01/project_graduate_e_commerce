@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import ItemAddress from "./ItemAddress/ItemAddress";
 import * as modalsAction from "../../../../../actions/modal/index";
 import * as profileApi from "../../../../../api/profileApi";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import {
+  PAGE_PROFILE_USER,
+  PROFILE_ADDRESS,
+} from "../../../../../constants/Config";
+
 async function deleteAddress(address) {
   const result = await profileApi.deleteAddress(address.id);
   return result.data;
@@ -34,6 +40,9 @@ function Address(props) {
   //
   return addresses ? (
     <div className="w-full">
+      <BreadcrumbsItem to={`${PAGE_PROFILE_USER}/${PROFILE_ADDRESS}`}>
+        Địa chỉ
+      </BreadcrumbsItem>
       <div className="w-full flex text-gray-600 mb-5 dark:text-white">
         <div className="w-1/2 flex items-center font-semibold text-2xl">
           Địa chỉ của tôi

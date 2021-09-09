@@ -10,10 +10,11 @@ const myReducer = (state = initialState, action) => {
   let sum = 0;
   switch (action.type) {
     case Types.LOAD_CART:
-      action.carts.forEach((element) => {
-        sum +=
-          element.priceOutput * ((100 - element.sale) / 100) * element.amount;
-      });
+      if (action.status !== false)
+        action.carts.forEach((element) => {
+          sum +=
+            element.priceOutput * ((100 - element.sale) / 100) * element.amount;
+        });
       state.money = sum;
       state.list = action.carts;
       return { ...state };

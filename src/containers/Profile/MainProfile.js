@@ -2,6 +2,8 @@ import React from "react";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import ProfileLeft from "../../components/Profile/ProfileLeft/ProfileLeft";
 import ProfileRight from "../../components/Profile/ProfileRight/ProfileRight";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import { PAGE_PROFILE_USER } from "../../constants/Config";
 
 function MainProfile(props) {
   //
@@ -10,6 +12,9 @@ function MainProfile(props) {
   return (
     <div className="w-full">
       <div className="w-full">
+        <BreadcrumbsItem to={PAGE_PROFILE_USER}>
+          Thông tin cá nhân
+        </BreadcrumbsItem>
         <LevelUrl />
         <div className="w-full xl:w-4/5 flex-col md:flex-row mx-auto px-3 my-2 flex">
           <ProfileLeft slug={slug} />

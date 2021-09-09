@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import CategorySearch from "./CategorySearch/CategorySearch";
 import InputSearch from "./InputSearch/InputSearch";
 
@@ -9,6 +9,7 @@ function HeaderCenter(props) {
     name: "Tất cả danh mục",
     id: "",
   });
+  const ref = useRef(null);
   //
   return (
     <div className="hidden md:flex md:w-8/12 lg:w-3/5 items-center justify-end ">
@@ -17,7 +18,14 @@ function HeaderCenter(props) {
         border-organce rounded-full"
       >
         <InputSearch data={data} />
-        <CategorySearch data={data} setData={setData} categorys={categorys} />
+        <div ref={ref}>
+          <CategorySearch
+            refWrap={ref}
+            data={data}
+            setData={setData}
+            categorys={categorys}
+          />
+        </div>
         <div className="w-1/12 flex items-center justify-center cursor-pointer">
           <span className="bx bx-search text-2xl text-organce px-2"></span>
         </div>

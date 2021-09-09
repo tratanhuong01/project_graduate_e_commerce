@@ -5,7 +5,8 @@ import DescribeProduct from "../../components/DetailProduct/ProductView/Describe
 import NewsDetailProduct from "../../components/DetailProduct/ProductView/NewsDetailProduct/NewsDetailProduct";
 import RateComment from "../../components/DetailProduct/ProductView/RateComment/RateComment";
 import TechnicalDataSmall from "../../components/DetailProduct/ProductView/TechnicalDataSmall/TechnicalDataSmall";
-
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import { PAGE_DETAIL_PRODUCT } from "../../constants/Config";
 function MainDetailProduct(props) {
   //
   const { products, slug } = props;
@@ -18,6 +19,17 @@ function MainDetailProduct(props) {
   //
   return (
     <div className="w-full bg-gray-100 dark:bg-dark-second">
+      <BreadcrumbsItem to={PAGE_DETAIL_PRODUCT}>
+        Chi tiết sản phẩm
+      </BreadcrumbsItem>
+      <BreadcrumbsItem to={`${PAGE_DETAIL_PRODUCT}/${products.slug}`}>
+        {products.nameLineProduct +
+          ` ${products.memory ? products.memory.nameMemory + " " : ""}${
+            products.color
+              ? "Màu " + products.color.description.toLowerCase()
+              : ""
+          }`}
+      </BreadcrumbsItem>
       <LevelUrl />
       <div className="w-full xl:w-4/5 mx-auto p-4 bg-white dark:bg-dark-second dark:text-white">
         <ProductView products={products} />

@@ -8,6 +8,7 @@ import {
 import MainApp from "./MainApp";
 import routes from "./routes";
 import * as Config from "./constants/Config";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 
 function App(props) {
   const showAllLinks = (routes) => {
@@ -40,6 +41,9 @@ function App(props) {
   };
   return (
     <Router>
+      <BreadcrumbsItem glyph="" to={"/"}>
+        Trang chủ
+      </BreadcrumbsItem>
       <Interfaces />
     </Router>
   );

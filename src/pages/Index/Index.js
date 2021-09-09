@@ -5,6 +5,7 @@ import MainIndex from "../../containers/Index/MainIndex";
 import Loading from "../../components/General/Loading/Loading";
 import useResetPage from "../../hook/useResetPage";
 import * as productApi from "../../api/productApi";
+
 function Index(props) {
   //
   const dispatch = useDispatch();

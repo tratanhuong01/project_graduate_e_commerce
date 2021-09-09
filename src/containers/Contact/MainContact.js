@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import LevelUrl from "../../components/General/LevelUrl/LevelUrl";
 import ContentContact from "./ContentContact/ContentContact";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import { PAGE_CONTACT } from "../../constants/Config";
 
 function MainContact(props) {
   //
-  useEffect(() => {}, []);
   //
   return (
     <div className="w-full bg-gray-100 dark:bg-dark-second dark:text-white">
+      <BreadcrumbsItem glyph="" to={PAGE_CONTACT}>
+        Tin tức
+      </BreadcrumbsItem>
       <LevelUrl />
       <ContentContact />
       <hr className="my-2"></hr>

@@ -3,6 +3,12 @@ import ItemBank from "./ItemBank/ItemBank";
 import * as modalsAction from "../../../../../actions/modal/index";
 import { useDispatch, useSelector } from "react-redux";
 import * as profilesApi from "../../../../../api/profileApi";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import {
+  PAGE_PROFILE_USER,
+  PROFILE_BANK,
+} from "../../../../../constants/Config";
+
 function Bank(props) {
   //
   const dispatch = useDispatch();
@@ -25,6 +31,9 @@ function Bank(props) {
   //
   return banks ? (
     <div className="w-full">
+      <BreadcrumbsItem to={`${PAGE_PROFILE_USER}/${PROFILE_BANK}`}>
+        Ngân hàng
+      </BreadcrumbsItem>
       <div className="w-full flex text-gray-600 mb-5 dark:text-white">
         <div className="w-1/2 flex items-center font-semibold text-xl lg:text-2xl">
           Tài khoản ngân hàng của tôi
@@ -47,7 +56,7 @@ function Bank(props) {
       ) : (
         <div
           className="w-full h-80 flex items-center justify-center text-xl 
-        text-gray-600 hidden"
+        text-gray-600"
         >
           Bạn chưa thêm bất kì thẻ nào
         </div>

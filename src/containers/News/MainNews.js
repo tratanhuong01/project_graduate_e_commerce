@@ -5,6 +5,8 @@ import InfoNews from "../../components/News/InfoNews/InfoNews";
 import ItemCategoryNews from "../../components/News/ItemCategoryNews/ItemCategoryNews";
 import NewsViewMost from "../../components/General/NewsViewMost/NewsViewMost";
 import Pagination from "../../components/General/Pagination/Pagination";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import { PAGE_NEWS } from "../../constants/Config";
 
 function MainNews(props) {
   //
@@ -12,6 +14,7 @@ function MainNews(props) {
   //
   return (
     <div className="w-full">
+      <BreadcrumbsItem to={PAGE_NEWS}>Tin tức</BreadcrumbsItem>
       <LevelUrl />
       <hr className="my-2"></hr>
       <div className="xl:w-4/5 w-full mx-auto p-4">

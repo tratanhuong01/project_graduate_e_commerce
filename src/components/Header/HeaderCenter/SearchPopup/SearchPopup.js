@@ -7,7 +7,10 @@ function SearchPopup(props) {
   const { loading, products } = props;
   //
   return (
-    <div className="absolute border-2 border-solid border-gray-200 shadow-xl top-full mt-1 left-0 bg-white dark:bg-dark-second rounded-b-lg w-full ">
+    <div
+      className="absolute border-2 border-solid border-gray-200 shadow-xl top-full mt-1 left-0 bg-white dark:bg-dark-second rounded-b-lg w-full "
+      id="search__popup"
+    >
       {loading && (
         <div className="w-full p-3 flex items-center justify-center">
           <i className="fas fa-circle-notch fa-spin text-4xl text-organce"></i>
