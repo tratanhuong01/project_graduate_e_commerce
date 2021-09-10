@@ -66,10 +66,6 @@ export const REMOVE_FILTER_PRODUCT = "REMOVE_FILTER_PRODUCT";
 export const LOADING_LIST_PRODUCT = "LOADING_LIST_PRODUCT";
 // --------prodocut-------- //
 
-// --------bill-------- //
-export const LOAD_ORDER = "LOAD_ORDER";
-// --------bill-------- //
-
 // --------cart-------- //
 export const LOAD_CART = "LOAD_CART";
 //
@@ -127,4 +123,12 @@ export const LOAD_NEWS_DATA = "LOAD_NEWS_DATA";
 export const LOAD_NEWS_INDEX_PAGE = "";
 //
 export const ADD_NEWS = "ADD_NEWS";
+// -------- news --------- //
+
+// -------- news --------- //
+export const LOAD_ORDER = "LOAD_ORDER";
+//
+export const LOAD_INFO_ADDRESS_PAYMENT = "LOAD_INFO_ADDRESS_PAYMENT";
+//
+export const UPDATE_ADDRESS_PAYMENT = "UPDATE_ADDRESS_PAYMENT";
 // -------- news --------- //

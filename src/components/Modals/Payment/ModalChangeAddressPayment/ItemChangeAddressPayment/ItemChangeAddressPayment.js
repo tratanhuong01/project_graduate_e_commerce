@@ -2,11 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import * as modalsAction from "../../../../../actions/modal/index";
 import AddressMain from "../../../../General/AddressMain/AddressMain";
+import * as ordersAction from "../../../../../actions/order/index";
 
 function ItemChangeAddressPayment(props) {
   //
   const dispatch = useDispatch();
-  const { address, setAddress, addressCurrent } = props;
+  const { address, addressCurrent } = props;
   //
   return (
     <div class="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600">
@@ -15,7 +16,7 @@ function ItemChangeAddressPayment(props) {
           type="radio"
           name="address"
           onChange={() => {
-            setAddress(address);
+            dispatch(ordersAction.loadInfoAddressPayment(address));
             dispatch(modalsAction.closeModal());
           }}
           className="transform scale-150 "

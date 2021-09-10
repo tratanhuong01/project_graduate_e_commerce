@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import * as cartsAction from "../../../actions/cart/index";
-import * as Config from "../../../constants/Config";
+import InfoProductCart from "./InfoProductCart/InfoProductCart";
 
 function ItemCartMain(props) {
   //
@@ -40,40 +39,7 @@ function ItemCartMain(props) {
         />
       </div>
       <div className="w-2/4 md:w-7/12 flex justify-center flex-col md:flex-row">
-        <div className="w-full md:w-2/4 flex justify-center pb-1 md:p-3">
-          <div className="flex items-center">
-            <div className="">
-              <p
-                className="mb-2 text-gray-700 text-base hover:text-organce text-center 
-                  cursor-pointer font-semibold  dark:text-white"
-              >
-                <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${cart.slug}`}>
-                  {cart.nameLineProduct}
-                </Link>
-              </p>
-              <p className="text-gray-500 text-base  text-center dark:text-gray-300">
-                {cart.color && `Màu : ${cart.color.description} - `}
-                {cart.memory && `Bộ nhớ : ${cart.memory.nameMemory}`}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="w-full md:w-1/4 flex justify-center pb-1 md:p-3">
-          <div className="flex items-center">
-            <div className="">
-              <p
-                className="mb-2 text-gray-700 text-base text-organce text-center 
-                  cursor-pointer  dark:text-white"
-              >
-                <span className="md:hidden mr-3">Đơn giá :</span>
-                {new Intl.NumberFormat("ban", "id").format(
-                  cart.priceOutput * ((100 - cart.sale) / 100)
-                )}{" "}
-                <u>đ</u>
-              </p>
-            </div>
-          </div>
-        </div>
+        <InfoProductCart cart={cart} />
         <div className="w-full md:w-1/4 flex justify-center pb-1 md:p-3">
           <div className="flex items-center">
             <div>
@@ -84,21 +50,26 @@ function ItemCartMain(props) {
                 min="1"
                 value={number}
                 onChange={(event) => {
-                  setNumber(event.target.value);
+                  let data = event.target.value;
+                  if (data > 50) data = 50;
+                  else if (data < 1) {
+                    data = 1;
+                  } else data = event.target.value;
                   dispatch(
                     cartsAction.changeAmountCartRequest({
-                      amount: event.target.value,
+                      amount: data,
                       idCart: cart.idCart,
                       user: user,
                       status: status,
                     })
                   );
+                  setNumber(data);
                   const index = carts.main.findIndex(
                     (item) => item.idCart === cart.idCart
                   );
                   if (index !== -1) {
                     let cloneCartPayment = [...carts.main];
-                    cloneCartPayment[index].amount = event.target.value;
+                    cloneCartPayment[index].amount = data;
                     dispatch(cartsAction.loadCartMain(cloneCartPayment));
                   }
                 }}

@@ -1,6 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function PaymentMethod(props) {
+  //
+  const orders = useSelector((state) => state.orders);
+  //
   return (
     <>
       <div className="w-full h-10 mt-5">
@@ -13,6 +17,8 @@ function PaymentMethod(props) {
               type="radio"
               name="payment"
               className="transform scale-125 mr-3"
+              onChange={() => ""}
+              checked={orders.paymentMethod === 0 ? true : false}
             />
             Thanh toán khi giao hàng (COD)
           </p>
@@ -33,6 +39,8 @@ function PaymentMethod(props) {
               type="radio"
               name="payment"
               className="transform scale-125 mr-3"
+              onChange={() => ""}
+              checked={orders.paymentMethod === 1 ? true : false}
             />
             Thanh toán bằng thẻ ngân hàng (COD)
           </p>

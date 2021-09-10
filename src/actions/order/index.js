@@ -12,3 +12,18 @@ export const loadMoneyOrder = (orders) => {
     orders,
   };
 };
+
+export const loadInfoAddressPayment = (address) => {
+  return {
+    type: Types.LOAD_INFO_ADDRESS_PAYMENT,
+    address,
+  };
+};
+
+export const updateAddressPayment = (item, index) => {
+  return {
+    type: Types.UPDATE_ADDRESS_PAYMENT,
+    item,
+    index,
+  };
+};

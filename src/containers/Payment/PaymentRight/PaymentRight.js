@@ -16,7 +16,7 @@ function PaymentRight(props) {
   //
   return (
     <div className="w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4 dark:text-white">
-      <div className="w-full">
+      <div className="w-full font-semibold">
         <NumberProduct orders={orders} />
         <div className="w-full my-5 hidden xl:block">
           {orders.list.map((item, index) => {

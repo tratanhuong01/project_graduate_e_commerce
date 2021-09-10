@@ -9,7 +9,10 @@ function ProductViewLeft(props) {
   const { products, imageData, setImageData } = props;
   //
   return (
-    <div className="w-full xl:w-7/12 flex" style={{ maxHeight: 580 }}>
+    <div
+      className="w-full xl:w-7/12 flex"
+      style={{ maxHeight: 580, height: 580 }}
+    >
       <ul className="w-2/12">
         <li className="text-center cursor-pointer">
           <i className="bx bx-caret-up text-2xl text-gray-700"></i>

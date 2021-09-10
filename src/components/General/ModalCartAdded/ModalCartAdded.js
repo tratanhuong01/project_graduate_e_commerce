@@ -76,39 +76,22 @@ function ModalCartAdded(props) {
         >
           Giỏ hàng
         </Link>
-        {!user ? (
-          <button
-            onClick={() => {
-              if (!user) dispatch(modalsAction.openModalLogin());
-            }}
-            type="button"
-            className={`px-6 py-2 rounded-full border-white border-2 border-solid hover:text-white hover:border-white shadow-lg float-right flex items-center font-semibold 
-             ml-2 ${
-               sum() === 0
-                 ? "bg-gray-500 cursor-not-allowed text-gray-100"
-                 : "hover:bg-organce bg-white  text-gray-800"
-             } `}
-            disabled={sum() === 0 ? true : false}
-          >
-            Thanh toán
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              if (sum() === 0) return;
-              else {
-                dispatch(ordersAction.loadOrder(carts.list));
-                history.push(Config.PAGE_PAYMENT);
-              }
-            }}
-            className="px-6 py-2 rounded-full hover:bg-organce 
+
+        <button
+          onClick={() => {
+            if (sum() === 0) return;
+            else {
+              dispatch(ordersAction.loadOrder(carts.list));
+              history.push(Config.PAGE_PAYMENT);
+            }
+          }}
+          className="px-6 py-2 rounded-full hover:bg-organce 
             bg-white border-white border-2 border-solid hover:text-white
             hover:border-white shadow-lg float-right flex items-center font-semibold 
             text-black ml-2 dark:text-black"
-          >
-            Thanh toán
-          </button>
-        )}
+        >
+          Thanh toán
+        </button>
       </div>
     </div>
   );
