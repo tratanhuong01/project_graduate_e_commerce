@@ -6,6 +6,8 @@ const initialState = {
   sorter: [],
   search: null,
   slug: null,
+  name: "",
+  type: 0,
 };
 
 const myReducer = (state = initialState, action) => {
@@ -15,6 +17,8 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.LOAD_SLUG_CONDITION:
       state.slug = action.slug;
+      state.name = action.name;
+      state.type = action.typeCategory;
       return { ...state };
     case Types.RESET_FILTER_PRODUCT:
       state.filters = [];

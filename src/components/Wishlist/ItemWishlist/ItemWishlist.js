@@ -21,7 +21,7 @@ function ItemWishlist(props) {
           <img
             src={wishList.image.src}
             alt=""
-            className="w-20 h-20 md:w-28 md:h-28 rounded-lg object-cover"
+            className="w-20 h-20 md:w-28 md:h-28 rounded-lg object-contain"
           />
           <div className="w-9/12 flex items-center justify-start flex-col pl-3 text-center">
             <Link

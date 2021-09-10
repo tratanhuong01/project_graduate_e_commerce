@@ -11,36 +11,58 @@ export const loadListProduct = (products) => {
 export const loadListProductRequest = (slug) => {
   return async (dispatch) => {
     let products = null;
-    const result = await api("categoryProductsAll", "GET", null);
-    const index = result.data.findIndex(
+    const category = await api("categoryProductsAll", "GET", null);
+    const group = await api("groupProductsAll", "GET", null);
+    const indexCategory = category.data.findIndex(
       (item) => item.slugCategoryProduct === slug.slugCategoryProduct
     );
-    if (index !== -1) {
-      products = await api(
-        `productsFilter?slugGroupProduct=${
-          result.data[index].typeCategoryProduct === 0
-            ? slug.slugGroupProduct
-            : slug.slugCategoryProduct
-        }`,
-        "GET",
-        null
-      );
+    const indexGroup = group.data.findIndex(
+      (item) =>
+        item.slugGroupProduct === slug.slugCategoryProduct ||
+        item.slugGroupProduct === slug.slugGroupProduct
+    );
+    if (indexCategory !== -1) {
+      const type =
+        category.data[indexCategory].typeCategoryProduct === 0 &&
+        slug.slugGroupProduct === null
+          ? true
+          : false;
+      if (type)
+        products = await api(
+          `getProductByCategory/${category.data[indexCategory].id}`,
+          "GET",
+          null
+        );
+      else
+        products = await api(
+          `productsFilter?slugGroupProduct=${
+            category.data[indexCategory].typeCategoryProduct === 0
+              ? slug.slugGroupProduct
+              : slug.slugCategoryProduct
+          }`,
+          "GET",
+          null
+        );
+
+      const slugAction =
+        category.data[indexCategory].typeCategoryProduct === 0
+          ? slug.slugGroupProduct
+          : slug.slugCategoryProduct;
+      const nameAction = group.data[indexGroup]
+        ? group.data[indexGroup].nameGroupProduct
+        : category.data[indexCategory].nameCategoryProduct;
       dispatch(loadListProduct(products.data));
-      dispatch(
-        loadSlugCondition(
-          result.data[index].typeCategoryProduct === 0
-            ? slug.slugGroupProduct
-            : slug.slugCategoryProduct
-        )
-      );
-    } else dispatch(loadListProduct(""));
+      dispatch(loadSlugCondition(slugAction, nameAction, type));
+    } else dispatch(loadListProduct(null));
   };
 };
 
-export const loadSlugCondition = (slug) => {
+export const loadSlugCondition = (slug, name, typeCategory) => {
   return {
     type: Types.LOAD_SLUG_CONDITION,
     slug,
+    name,
+    typeCategory,
   };
 };
 

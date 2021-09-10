@@ -4,7 +4,6 @@ import MainListProduct from "../../containers/ListProduct/MainListProduct";
 // import Loading from "../../components/General/Loading/Loading";
 import * as listProductsAction from "../../actions/listProduct/index";
 import useResetPage from "../../hook/useResetPage";
-
 function ListProduct(props) {
   //
   const dispatch = useDispatch();
@@ -32,7 +31,11 @@ function ListProduct(props) {
   useEffect(() => {}, [listProduct.slug]);
   useResetPage("Sản phẩm");
   //
-  return <MainListProduct slug={listProduct.slug} />;
+  return (
+    <>
+      <MainListProduct slug={listProduct.slug} />;
+    </>
+  );
 }
 
 export default ListProduct;

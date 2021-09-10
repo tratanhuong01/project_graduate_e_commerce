@@ -7,7 +7,7 @@ function MemoryProduct(props) {
   //
   return (
     <div className="w-full my-3">
-      <p className="font-bold text-xl font-semibold">KÍCH THƯỚC :</p>
+      <p className="font-bold text-xl mb-1">BỘ NHỚ :</p>
       <div className="w-full flex">
         {memories.map((memoryData, index) => {
           return (

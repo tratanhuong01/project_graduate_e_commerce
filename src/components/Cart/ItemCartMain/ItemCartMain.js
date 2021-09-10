@@ -12,8 +12,8 @@ function ItemCartMain(props) {
   const user = useSelector((state) => state.user);
   //
   return (
-    <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white">
-      <div className="w-10 flex justify-center p-3 relative">
+    <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white h-28">
+      <div className="w-10 flex justify-center px-3 relative">
         <input
           type="checkbox"
           className="transform scale-125 absolute top-1/2 left-2"
@@ -35,7 +35,7 @@ function ItemCartMain(props) {
       <div className="w-1/4 md:w-2/12 flex justify-center pb-1 md:p-3">
         <img
           src={cart.image.src}
-          className="w-full md:w-11/12 sm:px-3 object-cover"
+          className="w-full md:w-11/12 sm:px-3 object-contain"
           alt=""
         />
       </div>

@@ -39,7 +39,7 @@ function ProductViewLeft(props) {
           <img
             src={imageData.src}
             alt=""
-            className="w-full object-cover"
+            className="w-full object-contain"
             style={{ maxHeight: 560 }}
           />
           {/* </Zoom> */}
