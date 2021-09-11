@@ -1,28 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ItemProductBill from "./ItemProductBill/ItemProductBill";
 
 function ItemBillContent(props) {
   //
-  const { cost } = props;
+  const { cost, bill } = props;
+  const calcBill = () => {
+    let sum = 0;
+    if (bill)
+      bill.billDetailList.forEach((element) => {
+        sum +=
+          element.productFull.priceOutput *
+          ((100 - element.productFull.sale) / 100);
+      });
+    return sum;
+  };
   //
   return (
     <>
-      <div className="w-full flex items-center text-gray-600 dark:text-white">
-        <div className="w-2/3 flex items-center">
-          <img
-            src="https://cf.shopee.vn/file/30cfbf2972827fc710796675e7c4f281"
-            alt=""
-            className="w-24 h-24 p-1 rounded-lg object-over"
-          />
-          <div className="flex ml-4 flex-col">
-            <Link to="" className="mb-1 font-semibold hover:text-organce">
-              Iphone 12 pro max 512GB chính hãng VN
-            </Link>
-            <p>Số lương : 1</p>
-            <p>Màu : Đen</p>
-          </div>
-        </div>
-        <div className="w-1/3 flex items-center justify-end">60.000đ</div>
+      <div className="w-full relative">
+        {bill &&
+          bill.billDetailList.map((product, index) => {
+            return <ItemProductBill product={product} key={index} />;
+          })}
       </div>
       {!cost && (
         <div
@@ -33,7 +32,9 @@ function ItemBillContent(props) {
           <span className="text-gray-600 dark:text-gray-300 mr-3">
             Tổng số tiền :
           </span>
-          <span className="text-2xl">76.000 đ</span>
+          <span className="text-2xl">
+            {new Intl.NumberFormat().format(calcBill())}đ
+          </span>
         </div>
       )}
     </>

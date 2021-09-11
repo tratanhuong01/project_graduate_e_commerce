@@ -38,7 +38,7 @@ function ModalInfoDetailProduct(props) {
   //
   return (
     <div
-      className="w-11/12 xl:w-2/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+      className="w-11/12 xl:w-3/5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
         rounded-lg z-0 animate__animated animate__fadeIn bg-white"
     >
       <div

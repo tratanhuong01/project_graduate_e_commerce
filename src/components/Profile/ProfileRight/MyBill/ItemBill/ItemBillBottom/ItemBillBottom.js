@@ -2,7 +2,7 @@ import React from "react";
 
 function ItemBillBottom(props) {
   return (
-    <div className="w-full flex items-center text-gray-600 dark:text-gray-300">
+    <div className="w-full flex items-center text-gray-600 dark:text-gray-300 mb-5">
       <div className="w-1/3 flex py-1 font-semibold flex-col">
         <span className="text-xs">Sản phẩm này sẽ được gửi đi trước</span>
         <span className="text-green-500 text-xs">20-08-2021</span>

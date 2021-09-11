@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
 import * as Config from "../../../constants/Config";
-import * as modalsAction from "../../../actions/modal/index";
 import * as ordersAction from "../../../actions/order/index";
 
 function ModalCartAdded(props) {

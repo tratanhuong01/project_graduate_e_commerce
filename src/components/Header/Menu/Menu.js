@@ -9,7 +9,7 @@ function Menu(props) {
   return (
     <div className="w-full">
       <div
-        className="xl:w-4/5 px-3 w-full mx-auto flex text-gray-800 
+        className="xl:w-4/5 px-3 w-full mx-auto text-gray-800 
       hidden lg:flex"
       >
         <div className="w-1/4 flex items-center justify-start">

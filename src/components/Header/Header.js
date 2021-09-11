@@ -26,7 +26,7 @@ function Header(props) {
     <>
       <HeaderTop />
       <div
-        className={`w-full bg-white dark:bg-dark-second lg:sticky top-0 z-main relative ${subClassMenu}`}
+        className={`w-full bg-white dark:bg-dark-second lg:sticky top-0 z-50 relative ${subClassMenu}`}
       >
         <div className="xl:w-4/5 w-full mx-auto flex text-gray-800">
           <div className="w-1/5 md:hidden flex items-center ml-3">

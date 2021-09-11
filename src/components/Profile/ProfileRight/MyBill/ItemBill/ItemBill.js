@@ -4,14 +4,17 @@ import ItemBillContent from "./ItemBillContent/ItemBillContent";
 import ItemBillTop from "./ItemBillTop/ItemBillTop";
 
 function ItemBill(props) {
+  //
+  const { bill } = props;
+  //
   return (
-    <div>
-      <ItemBillTop />
+    <>
+      <ItemBillTop bill={bill} />
       <hr className="my-3" />
-      <ItemBillContent />
+      <ItemBillContent bill={bill} />
       <hr className="my-3" />
       <ItemBillBottom />
-    </div>
+    </>
   );
 }
 

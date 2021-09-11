@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as ordersAction from "../../../../actions/order/index";
+import { PAGE_PAYMENT } from "../../../../constants/Config";
 
 function ModalCartAddedBottom(props) {
   //
@@ -41,21 +42,21 @@ function ModalCartAddedBottom(props) {
         <div className="w-1/2 flex">
           <p className="flex items-center hover:text-organce text-gray-700 cursor-pointer">
             <i className="bx bx-caret-right mr-3"></i>
-            Giỏ hàng của bạn hiện có (<span>{carts.length}</span>) sản phẩm
+            Giỏ hàng của bạn hiện có (<span>{carts.list.length}</span>) sản phẩm
           </p>
         </div>
         <div className=" w-1/2 flex justify-end">
           <div className="flex items-center">
             <button
               onClick={() => {
-                dispatch(ordersAction.loadOrder(carts));
-                history.push("../payment");
+                const productCart = carts.list.filter(
+                  (cart) => cart.idProduct === product.idProduct
+                );
+                dispatch(ordersAction.loadOrder(productCart));
+                history.push(`${PAGE_PAYMENT}`);
               }}
               button="button"
-              className="px-10 py-3.5 rounded-full shadow-lg bg-organce 
-                  font-semibold text-sm font-semibold flex items-center text-white border-2 
-                  border-solid border-2 border-gray-100 ml-10 * hover:border-orangce flex 
-                  items-center"
+              className="px-10 py-3.5 rounded-full shadow-lg bg-organce text-sm font-semibold flex text-white  border-gray-100 ml-10 * hover:border-orangce items-center"
             >
               Tiến hành thanh toán&nbsp;&nbsp;
               <i className="bx bx-right-arrow-alt text-2xl"></i>

@@ -49,7 +49,9 @@ function ItemWishlist(props) {
         p-3  dark:border-dark-third"
         >
           <span className="flex font-semibold text-gray-800 dark:text-white">
-            1.450.000 đ
+            {new Intl.NumberFormat("ban", "id").format(
+              wishList.priceOutput * ((100 - wishList.sale) / 100)
+            )}{" "}
           </span>
         </div>
         <div

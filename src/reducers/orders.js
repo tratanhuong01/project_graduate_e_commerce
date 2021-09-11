@@ -4,6 +4,7 @@ const initialState = {
   list: [],
   money: 0,
   voucher: null,
+  fee: 23500,
   sale: 0,
   infoPayment: {
     address: "",

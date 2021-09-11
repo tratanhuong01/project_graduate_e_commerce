@@ -30,6 +30,7 @@ function SelectCustom(props) {
         ? { [attribute]: `${dataProps}` }
         : { [attribute]: `Chọn ${table}` }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [list, dataProps]);
   //
   return (

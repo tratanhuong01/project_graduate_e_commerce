@@ -12,7 +12,21 @@ button:focus {
     font-size: 16px;
   }
 }
-
+#notify__popup::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  z-index: 0;
+  right: 20px;
+  border: 10px solid;
+  border-color: transparent transparent white transparent;
+}
+#notify__popup {
+  display: none;
+}
+.notify__cursor:hover #notify__popup {
+  display: block;
+}
 .post p {
   width: 100%;
   line-height: 1.8em !important;

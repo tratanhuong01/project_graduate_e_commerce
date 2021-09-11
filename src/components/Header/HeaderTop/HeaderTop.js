@@ -4,6 +4,7 @@ import * as usersAction from "../../../actions/user";
 import * as modalsAction from "../../../actions/modal/index";
 import { Link } from "react-router-dom";
 import * as Config from "../../../constants/Config";
+import PopupNotify from "./PopupNotify/PopupNotify";
 
 function HeaderTop(props) {
   //
@@ -31,7 +32,7 @@ function HeaderTop(props) {
         <ul className="flex justify-end items-center font-semibold">
           {user && (
             <>
-              <li className="flex items-center">
+              <li className="flex items-center relative notify__cursor">
                 <div className="bx bx-bell ml-1 mr-2 text-2xl relative">
                   <span className="w-4 h-4 rounded-full flex bg-organce text-white absolute -top-1 -right-1 justify-center items-center">
                     3
@@ -40,6 +41,7 @@ function HeaderTop(props) {
                 <span className="mr-4 hover:text-organce cursor-pointer">
                   Thông báo
                 </span>
+                <PopupNotify />
               </li>
               <li className="flex items-center">
                 <Link

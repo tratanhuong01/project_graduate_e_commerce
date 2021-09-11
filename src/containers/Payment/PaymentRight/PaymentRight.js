@@ -10,9 +10,10 @@ function PaymentRight(props) {
   const states = useSelector((state) => {
     return {
       orders: state.orders,
+      user: state.user,
     };
   });
-  const { orders } = states;
+  const { orders, user } = states;
   //
   return (
     <div className="w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4 dark:text-white">
@@ -25,10 +26,14 @@ function PaymentRight(props) {
             );
           })}
         </div>
-        <hr className="my-3 hidden xl:block"></hr>
-        <ApplyCode />
+        {user && (
+          <>
+            <hr className="my-3 hidden xl:block"></hr>
+            <ApplyCode />
+          </>
+        )}
         <hr className="my-3"></hr>
-        <EndPayment sumMoney={orders.money} />
+        <EndPayment sumMoney={orders.money} fee={orders.fee} />
       </div>
     </div>
   );

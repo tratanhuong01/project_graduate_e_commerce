@@ -4,7 +4,7 @@ import * as Config from "../../../../constants/Config";
 
 function EndPayment(props) {
   //
-  const { sumMoney } = props;
+  const { sumMoney, fee } = props;
 
   return (
     <div className="w-full py-3">
@@ -17,7 +17,7 @@ function EndPayment(props) {
       <div className="w-full h-12 mb-3 flex">
         <p className="w-1/2 float-left flex items-center">Phí vận chuyển</p>
         <p className="w-1/2 justify-end float-right flex items-center">
-          0 <u>đ</u>
+          {new Intl.NumberFormat("ban", "id").format(fee)} <u>đ</u>
         </p>
       </div>
       <hr className="my-3"></hr>
@@ -26,7 +26,7 @@ function EndPayment(props) {
           Tổng cộng
         </p>
         <p className="w-1/2 justify-end float-right flex items-center">
-          {new Intl.NumberFormat("ban", "id").format(sumMoney)} <u>đ</u>
+          {new Intl.NumberFormat("ban", "id").format(sumMoney + fee)} <u>đ</u>
         </p>
       </div>
       <div className="w-full h-20 mb-3 flex">

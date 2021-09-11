@@ -5,12 +5,13 @@ function InfoTransport(props) {
   //
   const orders = useSelector((state) => state.orders);
   useEffect(() => {}, [orders]);
-  console.log(orders);
   //
   return (
     <>
       <div className="w-full h-10">
-        <div className="float-left font-semibold text-xl">Vận chuyển</div>
+        <div className="float-left font-semibold text-xl">
+          Thông tin vận chuyển
+        </div>
       </div>
       <div className="my-3 w-full font-semibold text-gray-900 dark:text-gray-300">
         {orders.infoPayment.status ? (
