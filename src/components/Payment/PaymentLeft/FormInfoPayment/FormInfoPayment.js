@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddressPayment from "./AddressPayment/AddressPayment";
 import * as ordersAction from "../../../../actions/order/index";
+import InputFieldFC from "../../../General/InputField/InputFieldFC";
 
 function FormInfoPayment(props) {
   //
-  const { address } = props;
+  const { address, register, errors, setValue } = props;
   const { user, orders } = useSelector((state) => {
     return {
       orders: state.orders,
@@ -13,38 +14,50 @@ function FormInfoPayment(props) {
     };
   });
   const dispatch = useDispatch();
-  useEffect(() => {}, [orders, user]);
+  useEffect(() => {
+    //
+    setValue("fullName", orders.infoPayment.fullName);
+    setValue("phone", orders.infoPayment.phone);
+    setValue("address", orders.infoPayment.address);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orders, user]);
   //
   return (
-    <form action="" method="post" className="w-full dark:text-white">
-      <input
+    <div className="w-full dark:text-white">
+      <InputFieldFC
         type="text"
-        className="w-full p-2.5 rounded-lg mb-3 border-2 border-solid border-gray-200 dark:bg-dark-third 
+        className="w-full p-2.5 rounded-lg border-2 border-solid border-gray-200 dark:bg-dark-third 
         dark:border-dark-third"
-        placeholder="Họ và tên"
-        value={orders.infoPayment.fullName}
-        onChange={(event) =>
-          dispatch(ordersAction.updateAddressPayment(event.target.value, 5))
+        name="fullName"
+        register={register}
+        showError={errors["fullName"]}
+        placeHolder="Nhập họ và tên"
+        onChange={(item) =>
+          dispatch(ordersAction.updateAddressPayment(item, 5))
         }
       />
-      <input
+      <InputFieldFC
         type="text"
-        className="w-full p-2.5 rounded-lg mb-3 border-2 border-solid border-gray-200 dark:bg-dark-third 
+        className="w-full p-2.5 rounded-lg border-2 border-solid border-gray-200 dark:bg-dark-third 
         dark:border-dark-third"
-        placeholder="Số điện thoại"
-        value={orders.infoPayment.phone}
-        onChange={(event) =>
-          dispatch(ordersAction.updateAddressPayment(event.target.value, 6))
+        name="phone"
+        register={register}
+        showError={errors["phone"]}
+        placeHolder="Nhập số điện thoại"
+        onChange={(item) =>
+          dispatch(ordersAction.updateAddressPayment(item, 6))
         }
       />
-      <input
+      <InputFieldFC
         type="text"
-        className="w-full p-2.5 rounded-lg mb-3 border-2 border-solid border-gray-200 dark:bg-dark-third 
+        className="w-full p-2.5 rounded-lg border-2 border-solid border-gray-200 dark:bg-dark-third 
         dark:border-dark-third"
-        placeholder="Chi tiết địa chỉ"
-        value={orders.infoPayment.address}
-        onChange={(event) =>
-          dispatch(ordersAction.updateAddressPayment(event.target.value, 3))
+        name="address"
+        register={register}
+        showError={errors["address"]}
+        placeHolder="Nhập chi tiết địa chỉ"
+        onChange={(item) =>
+          dispatch(ordersAction.updateAddressPayment(item, 3))
         }
       />
       <AddressPayment address={address} />
@@ -59,7 +72,7 @@ function FormInfoPayment(props) {
         }}
         defaultValue={orders.infoPayment.note}
       ></textarea>
-    </form>
+    </div>
   );
 }
 

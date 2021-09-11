@@ -1,40 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TitlePayment from "../../../components/Payment/PaymentLeft/TitlePayment/TitlePayment";
 import Logo from "../../../components/Payment/PaymentLeft/Logo/Logo";
 import FormInfoPayment from "../../../components/Payment/PaymentLeft/FormInfoPayment/FormInfoPayment";
 import InfoTransport from "../../../components/Payment/PaymentLeft/InfoTransport/InfoTransport";
 import PaymentMethod from "../../../components/Payment/PaymentLeft/PaymentMethod/PaymentMethod";
-import api from "../../../Utils/api";
-import { useDispatch, useSelector } from "react-redux";
 import * as modalsAction from "../../../actions/modal/index";
-import * as ordersAction from "../../../actions/order/index";
+import { useDispatch } from "react-redux";
 
 function PaymentLeft(props) {
   //
-  const [addresses, setAddresses] = useState(null);
-  const [address, setAddress] = useState(null);
-  const user = useSelector((state) => state.user);
+  const { user, address, setAddress, addresses, register, errors, setValue } =
+    props;
   const dispatch = useDispatch();
-  useEffect(() => {
-    //
-    let unmounted = false;
-    async function fetch() {
-      const result = await api(`addresses/${user.id}`, "GET", null);
-      if (unmounted) return;
-      setAddresses(result.data);
-      if (result.data.length > 0) {
-        const index = result.data.findIndex((item) => item.isDefault === 1);
-        if (index !== -1) setAddress(result.data[index]);
-        dispatch(ordersAction.loadInfoAddressPayment(result.data[index]));
-      }
-    }
-    if (user) fetch();
-    else dispatch(ordersAction.loadInfoAddressPayment(null));
-    return () => {
-      unmounted = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
 
   return (
     <div className="w-full xl:w-2/3 px-4 xl:pr-4 flex justify-end dark:text-white">
@@ -43,7 +20,11 @@ function PaymentLeft(props) {
         <div className="w-full flex flex-col xl:flex-row lg:mt-3">
           <div className="w-full xl:w-1/2 pr-4">
             <TitlePayment />
-            <FormInfoPayment />
+            <FormInfoPayment
+              register={register}
+              errors={errors}
+              setValue={setValue}
+            />
             {user && (
               <div className="w-full flex my-1 justify-end">
                 <span

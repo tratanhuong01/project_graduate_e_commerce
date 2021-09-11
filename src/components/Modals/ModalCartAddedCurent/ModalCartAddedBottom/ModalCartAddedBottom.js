@@ -49,7 +49,7 @@ function ModalCartAddedBottom(props) {
           <div className="flex items-center">
             <button
               onClick={() => {
-                const productCart = carts.list.filter(
+                let productCart = carts.list.filter(
                   (cart) => cart.idProduct === product.idProduct
                 );
                 dispatch(ordersAction.loadOrder(productCart));

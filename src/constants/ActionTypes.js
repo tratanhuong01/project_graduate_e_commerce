@@ -125,10 +125,14 @@ export const LOAD_NEWS_INDEX_PAGE = "";
 export const ADD_NEWS = "ADD_NEWS";
 // -------- news --------- //
 
-// -------- news --------- //
+// -------- orders --------- //
 export const LOAD_ORDER = "LOAD_ORDER";
 //
 export const LOAD_INFO_ADDRESS_PAYMENT = "LOAD_INFO_ADDRESS_PAYMENT";
 //
 export const UPDATE_ADDRESS_PAYMENT = "UPDATE_ADDRESS_PAYMENT";
-// -------- news --------- //
+//
+export const CHECK_ORDERS_IS_OUT_OF_STOCK = "CHECK_ORDERS_IS_OUT_OF_STOCK";
+//
+export const UPDATE_ORDER_IS_OUT_OF_STOCK = "UPDATE_ORDER_IS_OUT_OF_STOCK";
+// -------- orders --------- //

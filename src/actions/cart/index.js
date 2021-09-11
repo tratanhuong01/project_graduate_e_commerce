@@ -12,7 +12,7 @@ export const loadCartRequest = (user) => {
       else dispatch(loadCart([]));
     else {
       const carts = await cartApi.getAllCartByIdUser(user.id);
-      dispatch(loadCart(carts.data));
+      dispatch(loadCart(carts.data, true));
     }
   };
 };

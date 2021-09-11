@@ -8,9 +8,7 @@ function ItemBillContent(props) {
     let sum = 0;
     if (bill)
       bill.billDetailList.forEach((element) => {
-        sum +=
-          element.productFull.priceOutput *
-          ((100 - element.productFull.sale) / 100);
+        sum += element.billDetail.price * element.billDetail.amount;
       });
     return sum;
   };

@@ -16,7 +16,10 @@ function PaymentRight(props) {
   const { orders, user } = states;
   //
   return (
-    <div className="w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4 dark:text-white">
+    <div
+      className={`w-full xl:w-1/3 xl:h-screen overflow-auto py-3 px-4 dark:text-white 
+       ${orders.outOfStock ? "opacity-50" : ""}`}
+    >
       <div className="w-full font-semibold">
         <NumberProduct orders={orders} />
         <div className="w-full my-5 hidden xl:block">
@@ -26,14 +29,16 @@ function PaymentRight(props) {
             );
           })}
         </div>
-        {user && (
+        {user && !orders.outOfStock ? (
           <>
             <hr className="my-3 hidden xl:block"></hr>
             <ApplyCode />
           </>
+        ) : (
+          ""
         )}
         <hr className="my-3"></hr>
-        <EndPayment sumMoney={orders.money} fee={orders.fee} />
+        <EndPayment sumMoney={orders.money} fee={orders.fee} orders={orders} />
       </div>
     </div>
   );

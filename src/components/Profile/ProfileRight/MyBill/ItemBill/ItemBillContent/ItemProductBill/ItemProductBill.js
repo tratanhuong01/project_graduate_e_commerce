@@ -43,11 +43,8 @@ function ItemProductBill(props) {
         </div>
       </div>
       <div className="w-1/3 flex items-center justify-end font-semibold">
-        {new Intl.NumberFormat().format(
-          product.productFull.priceOutput *
-            ((100 - product.productFull.sale) / 100)
-        )}
-        đ
+        {new Intl.NumberFormat().format(product.billDetail.price)}đ x{" "}
+        {product.billDetail.amount}
       </div>
     </div>
   );

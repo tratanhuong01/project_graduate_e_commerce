@@ -12,13 +12,13 @@ function InputFieldFC(props) {
     register,
     name,
     showError,
+    onChange,
   } = props;
-  const Field = register(name);
-
+  const Field = register(name, { required: true });
   return (
     <>
       <div className={`${double ? "w-1/2 mx-2 relative" : "w-full relative"}`}>
-        {label !== "" && (
+        {label && (
           <label
             className={`${
               showError
@@ -41,6 +41,10 @@ function InputFieldFC(props) {
                 : " border-gray-300 dark:border-dark-third focus:border-blue-500"
             }`
           }
+          onChange={(e) => {
+            onChange(e.target.value);
+            if (typeof register === "function") Field.onChange(e);
+          }}
           placeholder={placeHolder}
           disabled={disabled}
         />

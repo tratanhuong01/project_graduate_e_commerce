@@ -4,7 +4,7 @@ import * as Config from "../../../../constants/Config";
 
 function EndPayment(props) {
   //
-  const { sumMoney, fee } = props;
+  const { sumMoney, fee, orders } = props;
 
   return (
     <div className="w-full py-3">
@@ -29,27 +29,29 @@ function EndPayment(props) {
           {new Intl.NumberFormat("ban", "id").format(sumMoney + fee)} <u>đ</u>
         </p>
       </div>
-      <div className="w-full h-20 mb-3 flex">
-        <p className="w-1/2 float-left flex items-center text-xl font-semibold text-organce">
-          <span className="flex items-center">
-            <Link to={Config.PAGE_CART}>
-              <i className="bx bxs-chevron-left mr-3"></i>
-              Quay về giỏ hàng
-            </Link>
-          </span>
-        </p>
-        <p className="w-1/2 float-right flex justify-end items-center">
-          <button
-            type="button"
-            className={`py-3 px-5 ${
-              sumMoney === 0 ? "bg-gray-500 cursor-not-allowed" : "bg-organce"
-            } rounded-lg text-white 
+      {!orders.outOfStock && (
+        <div className="w-full h-20 mb-3 flex">
+          <p className="w-1/2 float-left flex items-center text-xl font-semibold text-organce">
+            <span className="flex items-center">
+              <Link to={Config.PAGE_CART}>
+                <i className="bx bxs-chevron-left mr-3"></i>
+                Quay về giỏ hàng
+              </Link>
+            </span>
+          </p>
+          <p className="w-1/2 float-right flex justify-end items-center">
+            <button
+              type="submit"
+              className={`py-3 px-5 ${
+                sumMoney === 0 ? "bg-gray-500 cursor-not-allowed" : "bg-organce"
+              } rounded-lg text-white 
             font-semibold`}
-          >
-            Đặt hàng
-          </button>
-        </p>
-      </div>
+            >
+              Đặt hàng
+            </button>
+          </p>
+        </div>
+      )}
     </div>
   );
 }

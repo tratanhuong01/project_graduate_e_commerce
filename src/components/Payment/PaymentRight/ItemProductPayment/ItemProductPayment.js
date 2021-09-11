@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PAGE_DETAIL_PRODUCT } from "../../../../constants/Config";
 
 function ItemProductPayment(props) {
   //
@@ -22,7 +23,7 @@ function ItemProductPayment(props) {
             <div className="flex flex-wrap items-center">
               <div>
                 <p className="w-full mb-2">
-                  <Link to={`/detail-product/${item.slug}`}>
+                  <Link to={`${PAGE_DETAIL_PRODUCT}/${item.slug}`}>
                     {item.nameLineProduct}
                   </Link>
                 </p>

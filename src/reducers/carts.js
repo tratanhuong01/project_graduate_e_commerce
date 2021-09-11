@@ -15,7 +15,7 @@ const myReducer = (state = initialState, action) => {
           sum +=
             element.priceOutput * ((100 - element.sale) / 100) * element.amount;
         });
-      state.money = sum;
+      // state.money = sum;
       state.list = action.carts;
       return { ...state };
     case Types.LOAD_CART_MAIN:

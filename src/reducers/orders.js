@@ -17,6 +17,9 @@ const initialState = {
     phone: "",
   },
   paymentMethod: 0,
+  outOfStock: false,
+  listOutOfStock: [],
+  loading: true,
 };
 
 const myReducer = (state = initialState, action) => {
@@ -102,6 +105,21 @@ const myReducer = (state = initialState, action) => {
         default:
           break;
       }
+      return { ...state };
+    case Types.CHECK_ORDERS_IS_OUT_OF_STOCK:
+      state.loading = false;
+      state.outOfStock = action.orders.length > 0 ? true : false;
+      state.listOutOfStock = action.orders;
+      return { ...state };
+    case Types.UPDATE_ORDER_IS_OUT_OF_STOCK:
+      state.list = action.list;
+      state.outOfStock = false;
+      state.listOutOfStock = [];
+      action.list.forEach((element) => {
+        sum +=
+          element.priceOutput * ((100 - element.sale) / 100) * element.amount;
+      });
+      state.money = sum;
       return { ...state };
     default:
       return state;
