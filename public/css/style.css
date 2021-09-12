@@ -12,6 +12,29 @@ button:focus {
     font-size: 16px;
   }
 }
+.item__voucher {
+  width: calc(50% - 24px);
+  background: radial-gradient(
+    circle at 0 0.25rem,
+    transparent 0,
+    transparent 0.1875rem,
+    #f36438 0
+  );
+  background-size: 0.25rem 0.625rem;
+  background-repeat: repeat-y;
+}
+.disabled__voucher .disabled__voucher__child {
+  background-color: #ccc;
+}
+.item__voucher .item__voucher__child {
+  background-color: #f36438;
+}
+.disabled__voucher {
+  background: #ccc !important;
+}
+.disabled__voucher {
+  opacity: 0.7 !important;
+}
 #notify__popup::before {
   content: "";
   position: absolute;

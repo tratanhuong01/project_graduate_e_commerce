@@ -32,6 +32,16 @@ function CategoryProfile(props) {
       />
       <ItemCategoryProfile
         onClick={() =>
+          history.push(`${Config.PAGE_PROFILE_USER}/${Config.PROFILE_VOUCHER}`)
+        }
+        label={"Voucher"}
+        icon={"bx bx-spreadsheet"}
+        color={"text-indigo-500"}
+        slug={Config.PROFILE_VOUCHER}
+        match={slug}
+      />
+      <ItemCategoryProfile
+        onClick={() =>
           history.push(`${Config.PAGE_PROFILE_USER}/${Config.PROFILE_NOTIFY}`)
         }
         label={"Thông báo"}

@@ -24,3 +24,4 @@ export const PROFILE_CHANGE_PASSWORD = "doi-mat-khau";
 export const PROFILE_BILL = "don-hang";
 export const PROFILE_NOTIFY = "thong-bao";
 export const PROFILE_DETAIL_BILL = "chi-tiet-don-hang";
+export const PROFILE_VOUCHER = "ma-giam-gia";

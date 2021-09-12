@@ -9,6 +9,7 @@ import MyAccount from "./MyAccount/MyAccount";
 import MyBill from "./MyBill/MyBill";
 import MyNotify from "./MyNotify/MyNotify";
 import * as profilesAction from "../../../actions/profile/index";
+import MyVoucher from "./MyVoucher/MyVoucher";
 
 function ProfileRight(props) {
   //
@@ -45,7 +46,13 @@ function ProfileRight(props) {
       exact: true,
       component: () => <MyNotify />,
     },
+    {
+      to: `${Config.PAGE_PROFILE_USER}/${Config.PROFILE_VOUCHER}`,
+      exact: true,
+      component: () => <MyVoucher />,
+    },
   ];
+
   const states = useSelector((state) => {
     return {
       profile: state.profile,

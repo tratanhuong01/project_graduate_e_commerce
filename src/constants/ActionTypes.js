@@ -94,6 +94,8 @@ export const RETURN_PROFILE = "RETURN_PROFILE";
 export const LOAD_EMAIL_EDIT = "LOAD_EMAIL_EDIT";
 //
 export const LOAD_PHONE_EDIT = "LOAD_PHONE_EDIT";
+//
+export const VIEW_HISTORY_VOUCHER = "VIEW_HISTORY_VOUCHER";
 //-------- profile -------- //
 
 //-------- profile -------- //

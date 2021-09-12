@@ -14,6 +14,7 @@ function MyBill(props) {
   useEffect(() => {
     //
     let unmounted = false;
+
     async function fetch() {
       const result = await api(
         `bills?type=${0}&idUser=${user.id}&offset=${0}&limit=${5}`,
@@ -23,9 +24,13 @@ function MyBill(props) {
       if (unmounted) return;
       setBills(result.data);
     }
-    fetch();
+    const timeOut = setTimeout(() => {
+      fetch();
+    }, 500);
+
     return () => {
       unmounted = true;
+      clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

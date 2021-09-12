@@ -31,14 +31,18 @@ function Address(props) {
       if (unmounted) return;
       setAddresses(result.data);
     }
-    fetch();
+    const timeOut = setTimeout(() => {
+      fetch();
+    }, 500);
+
     return () => {
       unmounted = true;
+      clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //
-  return addresses ? (
+  return (
     <div className="w-full">
       <BreadcrumbsItem to={`${PAGE_PROFILE_USER}/${PROFILE_ADDRESS}`}>
         Địa chỉ
@@ -54,40 +58,42 @@ function Address(props) {
               dispatch(modalsAction.openModalAddress(null, setAddresses))
             }
             className="p-2.5 flex items-center text-white font-semibold 
-            bg-organce"
+          bg-organce"
           >
             <span className="bx bx-plus text-2xl mr-1"></span>
             <span className="text-sm">Thêm địa chỉ</span>
           </button>
         </div>
       </div>
-      {addresses.length > 0 ? (
-        addresses.map((address, index) => {
-          return (
-            <ItemAddress
-              address={address}
-              key={index}
-              user={user}
-              setAddresses={setAddresses}
-              deleteAddress={deleteAddress}
-            />
-          );
-        })
+      {addresses ? (
+        addresses.length > 0 ? (
+          addresses.map((address, index) => {
+            return (
+              <ItemAddress
+                address={address}
+                key={index}
+                user={user}
+                setAddresses={setAddresses}
+                deleteAddress={deleteAddress}
+              />
+            );
+          })
+        ) : (
+          <div
+            className="w-full h-80 flex items-center justify-center text-xl 
+        text-gray-600"
+          >
+            Bạn chưa thêm bất kì địa chỉ nào
+          </div>
+        )
       ) : (
-        <div
-          className="w-full h-80 flex items-center justify-center text-xl 
-          text-gray-600"
-        >
-          Bạn chưa thêm bất kì địa chỉ nào
+        <div className="w-full relative">
+          <i
+            className="fas fa-circle-notch fa-spin text-5xl text-organce absolute top-32 left-1/2 transform 
+             -translate-x-1/2"
+          ></i>
         </div>
       )}
-    </div>
-  ) : (
-    <div className="w-full relative">
-      <i
-        className="fas fa-circle-notch fa-spin text-5xl text-organce absolute top-32 left-1/2 transform 
-      -translate-x-1/2"
-      ></i>
     </div>
   );
 }

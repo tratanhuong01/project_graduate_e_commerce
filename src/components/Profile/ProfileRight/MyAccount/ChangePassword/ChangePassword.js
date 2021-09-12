@@ -27,13 +27,14 @@ function ChangePassword(props) {
           <div className="flex my-5 items-center">Mật khẩu mới</div>
           <div className="flex my-5 items-center">Nhập lại mật khẩu mới</div>
         </div>
-        <div className="w-2/3 lg:w-3/4 ml-6">
+        <form className="w-2/3 lg:w-3/4 ml-6">
           <div className="flex py-3 items-center">
             <input
               type="password"
               className="w-2/3 lg:w-1/2 p-2 border border-solid border-gray-300 dark:border-dark-second 
               dark:bg-dark-third"
               placeholder=""
+              autoComplete="off"
             />
             <span
               onClick={() => dispatch(modalsAction.openModalSearchGetAccount())}
@@ -47,7 +48,7 @@ function ChangePassword(props) {
           <button className="bg-organce opacity-50 cursor-not-allowed px-6 py-2 my-3 text-white font-semibold">
             Lưu
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

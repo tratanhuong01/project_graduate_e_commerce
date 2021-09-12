@@ -22,14 +22,18 @@ function Bank(props) {
       if (unmounted) return;
       setBanks(result.data);
     }
-    fetch();
+    const timeOut = setTimeout(() => {
+      fetch();
+    }, 500);
+
     return () => {
       unmounted = true;
+      clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //
-  return banks ? (
+  return (
     <div className="w-full">
       <BreadcrumbsItem to={`${PAGE_PROFILE_USER}/${PROFILE_BANK}`}>
         Ngân hàng
@@ -49,25 +53,27 @@ function Bank(props) {
           </button>
         </div>
       </div>
-      {banks.length > 0 ? (
-        banks.map((bank, index) => {
-          return <ItemBank bank={bank} key={index} />;
-        })
-      ) : (
-        <div
-          className="w-full h-80 flex items-center justify-center text-xl 
+      {banks ? (
+        banks.length > 0 ? (
+          banks.map((bank, index) => {
+            return <ItemBank bank={bank} key={index} />;
+          })
+        ) : (
+          <div
+            className="w-full h-80 flex items-center justify-center text-xl 
         text-gray-600"
-        >
-          Bạn chưa thêm bất kì thẻ nào
+          >
+            Bạn chưa thêm bất kì thẻ nào
+          </div>
+        )
+      ) : (
+        <div className="w-full relative">
+          <i
+            className="fas fa-circle-notch fa-spin text-5xl text-organce absolute top-32 left-1/2 transform 
+    -translate-x-1/2"
+          ></i>
         </div>
       )}
-    </div>
-  ) : (
-    <div className="w-full relative">
-      <i
-        className="fas fa-circle-notch fa-spin text-5xl text-organce absolute top-32 left-1/2 transform 
-    -translate-x-1/2"
-      ></i>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import DetailBill from "../components/Profile/ProfileRight/DetailBill/DetailBill";
 import EmailEdit from "../components/Profile/ProfileRight/MyAccount/FormAccount/EmailEdit/EmailEdit";
 import PhoneEdit from "../components/Profile/ProfileRight/MyAccount/FormAccount/PhoneEdit/PhoneEdit";
+import HistoryVoucher from "../components/Profile/ProfileRight/MyVoucher/HistoryVoucher/HistoryVoucher";
 import * as Types from "../constants/ActionTypes";
 
 const initialState = {
@@ -21,6 +22,9 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.RETURN_PROFILE:
       state.data = null;
+      return { ...state };
+    case Types.VIEW_HISTORY_VOUCHER:
+      state.data = <HistoryVoucher />;
       return { ...state };
     default:
       return state;

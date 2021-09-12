@@ -8,6 +8,7 @@ function InputChangePassword(props) {
         className="w-2/3 lg:w-1/2 p-2 border border-solid border-gray-300 dark:border-dark-second 
         dark:bg-dark-third"
         placeholder=""
+        autoComplete="off"
       />
     </div>
   );

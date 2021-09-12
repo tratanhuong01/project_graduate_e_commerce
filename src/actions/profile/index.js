@@ -21,3 +21,8 @@ export const loadPhoneEdit = () => {
     type: Types.LOAD_PHONE_EDIT,
   };
 };
+export const viewHistoryVoucher = () => {
+  return {
+    type: Types.VIEW_HISTORY_VOUCHER,
+  };
+};
