@@ -125,3 +125,15 @@ export const openModalInfoDetailProduct = (idLineProduct) => {
     idLineProduct,
   };
 };
+
+export const openModalChangeVoucher = () => {
+  return {
+    type: Types.OPEN_MODAL_CHANGE_VOUCHER,
+  };
+};
+
+export const orderSuccess = () => {
+  return {
+    type: Types.ORDER_SUCCESS,
+  };
+};

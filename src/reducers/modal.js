@@ -8,6 +8,8 @@ import ModalCartAddedCurrent from "../components/Modals/ModalCartAddedCurent/Mod
 import ModalInfoDetailProduct from "../components/Modals/ModalInfoDetailProduct/ModalInfoDetailProduct";
 import ModalSendRate from "../components/Modals/ModalSendRate/ModalSendRate";
 import ModalChangeAddressPayment from "../components/Modals/Payment/ModalChangeAddressPayment/ModalChangeAddressPayment";
+import ModalChangeVoucher from "../components/Modals/Payment/ModalChangeVoucher/ModalChangeVoucher";
+import ModalOrderSuccess from "../components/Modals/Payment/ModalOrderSuccess/ModalOrderSuccess";
 import ModalAddress from "../components/Modals/Profile/ModalAddress/ModalAddress";
 import * as Types from "../constants/ActionTypes";
 import ModalViewFastProduct from "../containers/General/ModalViewFastProduct/ModalViewFastProduct";
@@ -83,6 +85,12 @@ const myReducer = (state = initialState, action) => {
       state.data = (
         <ModalInfoDetailProduct idLineProduct={action.idLineProduct} />
       );
+      return { ...state };
+    case Types.OPEN_MODAL_CHANGE_VOUCHER:
+      state.data = <ModalChangeVoucher />;
+      return { ...state };
+    case Types.ORDER_SUCCESS:
+      state.data = <ModalOrderSuccess />;
       return { ...state };
     default:
       return state;

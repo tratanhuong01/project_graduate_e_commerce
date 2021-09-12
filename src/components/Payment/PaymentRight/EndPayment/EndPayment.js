@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../constants/Config";
 
 function EndPayment(props) {
   //
   const { sumMoney, fee, orders } = props;
-
+  useEffect(() => {}, [orders]);
   return (
     <div className="w-full py-3">
       <div className="w-full h-12 mb-3 flex">
@@ -20,13 +20,22 @@ function EndPayment(props) {
           {new Intl.NumberFormat("ban", "id").format(fee)} <u>đ</u>
         </p>
       </div>
+      <div className="w-full h-12 mb-3 flex">
+        <p className="w-1/2 float-left flex items-center">Giảm giá</p>
+        <p className="w-1/2 justify-end float-right flex items-center">
+          -{new Intl.NumberFormat("ban", "id").format(orders.sale)} <u>đ</u>
+        </p>
+      </div>
       <hr className="my-3"></hr>
       <div className="w-full h-12 mb-3 flex">
         <p className="w-1/2 float-left flex items-center text-xl font-semibold">
           Tổng cộng
         </p>
         <p className="w-1/2 justify-end float-right flex items-center">
-          {new Intl.NumberFormat("ban", "id").format(sumMoney + fee)} <u>đ</u>
+          {new Intl.NumberFormat("ban", "id").format(
+            sumMoney + fee - orders.sale
+          )}{" "}
+          <u>đ</u>
         </p>
       </div>
       {!orders.outOfStock && (

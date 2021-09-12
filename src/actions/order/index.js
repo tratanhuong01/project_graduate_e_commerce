@@ -1,4 +1,5 @@
 import * as Types from "../../constants/ActionTypes";
+import api from "../../Utils/api";
 
 export const loadOrder = (orders) => {
   return {
@@ -55,5 +56,47 @@ export const updateOrderIsOutOfStock = (list) => {
   return {
     type: Types.UPDATE_ORDER_IS_OUT_OF_STOCK,
     list,
+  };
+};
+
+export const updateVoucherOrders = (voucher, remove) => {
+  return {
+    type: Types.UPDATE_VOUCHER_ORDERS,
+    voucher,
+    remove,
+  };
+};
+
+export const addOrderRequest = (data) => {
+  return async (dispatch) => {
+    const order = await api("bills", "POST", {
+      id: null,
+      billUser: data.user,
+      status: 0,
+      paymentMethodBill: {
+        id: 1,
+        namePaymentMethod: "Thanh toán khi nhận hàng",
+        typePaymentMethod: 0,
+        isShow: 0,
+      },
+      bank: null,
+      address: `${data.address.detail} , ${data.address.ward} , ${data.address.district} , 
+      ${data.address.cityProvice}`,
+      sale: data.sale,
+      fee: data.fee,
+      total: data.money,
+      timeCreated: "09-11-2021 05:45:41",
+    });
+    for (let index = 0; index < data.orders.length; index++) {
+      const item = data.orders[index];
+      const product = await api(`products/${item.idProduct}`, "GET", null);
+      await api("billDetails", "POST", {
+        id: null,
+        billDetail: order.data,
+        productDetailBill: product.data,
+        price: item.priceOutput * ((100 - item.sale) / 100),
+        amount: item.amount,
+      });
+    }
   };
 };

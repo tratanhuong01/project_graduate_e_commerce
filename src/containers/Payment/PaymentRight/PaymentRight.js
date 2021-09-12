@@ -29,13 +29,11 @@ function PaymentRight(props) {
             );
           })}
         </div>
-        {user && !orders.outOfStock ? (
+        {user && !orders.outOfStock && (
           <>
             <hr className="my-3 hidden xl:block"></hr>
             <ApplyCode />
           </>
-        ) : (
-          ""
         )}
         <hr className="my-3"></hr>
         <EndPayment sumMoney={orders.money} fee={orders.fee} orders={orders} />

@@ -9,6 +9,7 @@ import Loading from "../../components/General/Loading/Loading";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as ValidForm from "./ValidForm";
+import * as modalsAction from "../../actions/modal/index";
 
 function MainPayment(props) {
   //
@@ -58,13 +59,16 @@ function MainPayment(props) {
     <Loading />
   ) : (
     <form
-      onSubmit={handleSubmit((data) => console.log(data, orders))}
+      onSubmit={handleSubmit(() =>
+        dispatch(ordersAction.addOrderRequest(orders))
+      )}
       className="px-4 w-full xl:w-11/12 flex flex-col-reverse xl:flex-row mx-auto"
     >
       {orders.outOfStock ? (
         <OutOfStock />
       ) : (
         <PaymentLeft
+          user={user}
           errors={errors}
           register={register}
           setValue={setValue}

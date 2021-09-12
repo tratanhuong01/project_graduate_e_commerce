@@ -121,6 +121,26 @@ const myReducer = (state = initialState, action) => {
       });
       state.money = sum;
       return { ...state };
+    case Types.UPDATE_VOUCHER_ORDERS:
+      if (action.remove) {
+        state.voucher = null;
+        state.sale = 0;
+      } else {
+        state.voucher = action.voucher;
+        if (action.voucher) {
+          switch (action.voucher.discountCode.type) {
+            case 0:
+              state.sale = state.fee;
+              break;
+            case 1:
+              state.sale = action.voucher.max;
+              break;
+            default:
+              break;
+          }
+        }
+      }
+      return { ...state };
     default:
       return state;
   }

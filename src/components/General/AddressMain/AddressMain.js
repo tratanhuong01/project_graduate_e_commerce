@@ -15,7 +15,7 @@ function AddressMain(props) {
         <div className="w-full py-0.5 flex">
           <div className="flex items-center">{`${address.fullName}`}</div>
           <div
-            className="absolute top-5 right-2 lg:relative top-auto left-auto flex 
+            className="absolute right-2 lg:relative top-auto left-auto flex 
          items-center flex-col lg:flex-row"
           >
             {address.isDefault === 1 && (

@@ -2,12 +2,12 @@ import React from "react";
 
 function ItemVoucher(props) {
   //
-  const { voucher, disabled } = props;
+  const { voucher, disabled, full } = props;
   //
   return (
     <div
       className={`m-3 pl-1 h-28 flex shadow-lg item__voucher relative ${
-        disabled ? "disabled__voucher" : "item__voucher"
+        disabled ? "disabled__voucher" : full ? "w-full" : "item__voucher"
       }`}
     >
       <span
