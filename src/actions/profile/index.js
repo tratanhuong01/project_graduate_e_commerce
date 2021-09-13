@@ -1,9 +1,9 @@
 import * as Types from "../../constants/ActionTypes";
 
-export const loadDetailBill = (bill) => {
+export const loadDetailBill = (billProps) => {
   return {
     type: Types.LOAD_DETAIL_BILL,
-    bill,
+    billProps,
   };
 };
 export const returnProfile = () => {

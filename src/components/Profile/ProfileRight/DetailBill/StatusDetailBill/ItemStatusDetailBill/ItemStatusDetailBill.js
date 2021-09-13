@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function ItemStatusDetailBill(props) {
   //
-  const { left, right, statusLineLeft, statusLineRight, icon, label } = props;
+  const {
+    left,
+    right,
+    statusLineLeft,
+    statusLineRight,
+    icon,
+    label,
+    time,
+    bill,
+    visibled,
+  } = props;
+  useEffect(() => {}, [bill]);
   //
   return (
     <div
-      className="flex items-center justify-center flex-col"
+      className={`flex items-center justify-center flex-col ${
+        visibled ? "" : "invisible"
+      }`}
       style={{ width: "calc(100% / 5)" }}
     >
       <div
@@ -17,7 +30,7 @@ function ItemStatusDetailBill(props) {
       >
         {left && (
           <span
-            className={`w-20 ${
+            className={`${visibled ? "w-96" : "w-20"} ${
               statusLineLeft ? "bg-green" : "bg-gray-400"
             } h-1 absolute right-full z-0`}
           ></span>
@@ -34,7 +47,7 @@ function ItemStatusDetailBill(props) {
         </div>
         {right && (
           <span
-            className={`w-20 ${
+            className={`${visibled ? "w-96" : "w-20"} ${
               statusLineRight ? "bg-green" : "bg-gray-400"
             } h-1 absolute left-full z-0`}
           ></span>
@@ -45,7 +58,7 @@ function ItemStatusDetailBill(props) {
           {label}
         </p>
         <p className="text-gray-400 font-semibold text-xs flex items-center text-center  dark:text-gray-300">
-          {statusLineLeft ? "16:30:30 16-08-2021" : ""}
+          {time ? time : ""}
         </p>
       </div>
     </div>

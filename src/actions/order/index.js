@@ -79,16 +79,18 @@ export const addOrderRequest = (data) => {
         typePaymentMethod: 0,
         isShow: 0,
       },
+      fullName: data.infoPayment.fullName,
       bank: null,
-      address: `${data.address.detail} , ${data.address.ward} , ${data.address.district} , 
-      ${data.address.cityProvice}`,
+      address: `${data.infoPayment.address} , ${data.infoPayment.ward} , ${data.infoPayment.district} , 
+      ${data.infoPayment.cityProvince}`,
+      note: data.infoPayment.note,
       sale: data.sale,
       fee: data.fee,
       total: data.money,
       timeCreated: "09-11-2021 05:45:41",
     });
-    for (let index = 0; index < data.orders.length; index++) {
-      const item = data.orders[index];
+    for (let index = 0; index < data.list.length; index++) {
+      const item = data.list[index];
       const product = await api(`products/${item.idProduct}`, "GET", null);
       await api("billDetails", "POST", {
         id: null,
@@ -98,5 +100,6 @@ export const addOrderRequest = (data) => {
         amount: item.amount,
       });
     }
+    dispatch({ type: Types.ORDER_SUCCESS });
   };
 };

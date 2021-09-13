@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as profilesAction from "../../../../../actions/profile/index";
+import StatusBill from "../../MyBill/ItemBill/StatusBill";
 
 function DetailBillTop(props) {
   //
   const dispatch = useDispatch();
+  const { bill } = props;
+  useEffect(() => {}, [bill]);
   //
   return (
-    <div className="w-full flex items-center">
+    <div className="w-full flex mb-3 items-center">
       <div
-        className="w-1/3 py-2 mb-3 cursor-pointer text-gray-600 flex items-center 
+        className="w-1/3 cursor-pointer text-gray-600 flex items-center 
       dark:text-white"
       >
         <div
@@ -22,12 +25,10 @@ function DetailBillTop(props) {
       </div>
       <div className="w-2/3 flex justify-end items-center ">
         <span className="mr-3 font-semibold dark:text-white">
-          ID ĐƠN HÀNG. 210605H8PS6G3D &nbsp;&nbsp;&nbsp;|
+          ID ĐƠN HÀNG. {bill ? bill.bill.id : "..."} &nbsp;&nbsp;&nbsp;|
         </span>
 
-        <span className="ml-1 font-semibold text-organce">
-          ĐƠN HÀNG ĐÃ GIAO
-        </span>
+        {bill ? <StatusBill status={bill.bill.status} /> : ""}
       </div>
     </div>
   );

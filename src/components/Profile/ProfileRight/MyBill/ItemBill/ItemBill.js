@@ -13,7 +13,7 @@ function ItemBill(props) {
       <hr className="my-3" />
       <ItemBillContent bill={bill} />
       <hr className="my-3" />
-      <ItemBillBottom />
+      <ItemBillBottom bill={bill} />
     </>
   );
 }

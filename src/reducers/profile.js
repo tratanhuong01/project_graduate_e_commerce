@@ -12,7 +12,7 @@ const initialState = {
 const myReducer = (state = initialState, action) => {
   switch (action.type) {
     case Types.LOAD_DETAIL_BILL:
-      state.data = <DetailBill bill={action.bill} />;
+      state.data = <DetailBill billProps={action.billProps} />;
       return { ...state };
     case Types.LOAD_EMAIL_EDIT:
       state.data = <EmailEdit />;
