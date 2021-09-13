@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import api from "../../../../Utils/api";
 import SearchPopup from "../SearchPopup/SearchPopup";
 
@@ -30,7 +31,11 @@ function InputSearch(props) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
-
+  const location = useLocation();
+  useEffect(() => {
+    setProducts(null);
+    setKeyword("");
+  }, [location.pathname]);
   //
   return (
     <div id="search__popup__main" className="md:w-8/12 rounded-full relative">

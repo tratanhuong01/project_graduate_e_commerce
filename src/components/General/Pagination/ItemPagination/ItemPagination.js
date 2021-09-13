@@ -7,7 +7,7 @@ function ItemPagination(props) {
   return (
     <li
       onClick={() => {
-        dispatch(index);
+        if (index !== indexCurrent) dispatch(index);
       }}
       className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5 cursor-pointer 
         border-solid ${

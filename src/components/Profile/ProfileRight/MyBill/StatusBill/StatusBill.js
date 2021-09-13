@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { SET_LOADING_BILL_USER } from "../../../../../constants/ActionTypes";
 import ItemStatusBill from "./ItemStatusBill/ItemStatusBill";
 
 function StatusBill(props) {
   //
   const [show, setShow] = useState(false);
-  const { status, data, setData, setBills } = props;
+  const { status, data, setData } = props;
+  const dispatch = useDispatch();
   //
   return (
     <>
@@ -13,7 +16,7 @@ function StatusBill(props) {
           return (
             <ItemStatusBill
               onClick={() => {
-                setBills(null);
+                dispatch({ type: SET_LOADING_BILL_USER, status: true });
                 setData(item);
               }}
               active={data.type === item.type ? true : false}

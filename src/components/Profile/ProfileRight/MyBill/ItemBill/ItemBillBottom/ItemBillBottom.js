@@ -1,10 +1,19 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { LOAD_DETAIL_BILL } from "../../../../../../constants/ActionTypes";
-import api from "../../../../../../Utils/api";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  LOAD_DETAIL_BILL,
+  SET_LOADING_BILL_USER,
+} from "../../../../../../constants/ActionTypes";
+import * as billsAction from "../../../../../../actions/bill/index";
 function ItemBillBottom(props) {
   //
-  const { bill, setBills } = props;
+  const { bill, data } = props;
+  const { user, bills } = useSelector((state) => {
+    return {
+      user: state.user,
+      bills: state.bills,
+    };
+  });
   const dispatch = useDispatch();
   //
   return (
@@ -32,13 +41,16 @@ function ItemBillBottom(props) {
         </button>
         {bill.bill.status === 0 && (
           <button
-            onClick={async () => {
-              await api(
-                `bills/update/status/?idBill=${bill.bill.id}&status=-1`,
-                "GET",
-                null
+            onClick={() => {
+              dispatch({ type: SET_LOADING_BILL_USER, status: true });
+              dispatch(
+                billsAction.cancelOrderRequest({
+                  user,
+                  index: bills.index,
+                  type: data.type,
+                  bill: bill,
+                })
               );
-              setBills(null);
             }}
             className="border-2 ml-6 border-solid border-organce px-4 py-2 font-semibold text-sm"
           >

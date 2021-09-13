@@ -25,7 +25,7 @@ function ItemDetailRateComment(props) {
       <div className="w-full my-1 flex items-center">
         {review.reviewProduct.content}
       </div>
-      <div className="w-full flex my-1 hidden">
+      <div className="w-full my-1 hidden">
         <Zoom>
           <img
             src="https://bizweb.dktcdn.net/100/420/160/files/co-nen-mua-poco-x3-pro-1.jpg?v=1623732159363"

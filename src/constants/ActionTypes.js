@@ -144,3 +144,13 @@ export const UPDATE_ORDER_IS_OUT_OF_STOCK = "UPDATE_ORDER_IS_OUT_OF_STOCK";
 //
 export const UPDATE_VOUCHER_ORDERS = "UPDATE_VOUCHER_ORDERS";
 // -------- orders --------- //
+
+// -------- bills --------- //
+export const LOAD_BILL_USER = "LOAD_BILL_USER";
+//
+export const SET_LOADING_BILL_USER = "SET_LOADING_BILL_USER";
+//
+export const LOAD_BILL_USER_BY_INDEX = "LOAD_BILL_USER_BY_INDEX";
+//
+export const SEARCH_BILL = "SEARCH_BILL";
+// -------- bills --------- //

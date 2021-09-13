@@ -11,15 +11,19 @@ function ItemStatusDetailBill(props) {
     label,
     time,
     bill,
-    visibled,
+    visible,
+    invisible,
   } = props;
+  const string = () => {
+    if (invisible && visible === -1) return "";
+    if (!invisible && visible === -1) return "invisible";
+    if (!invisible && visible !== -1) return "";
+  };
   useEffect(() => {}, [bill]);
   //
   return (
     <div
-      className={`flex items-center justify-center flex-col ${
-        visibled ? "" : "invisible"
-      }`}
+      className={`flex items-center justify-center flex-col ${string()}`}
       style={{ width: "calc(100% / 5)" }}
     >
       <div
@@ -30,7 +34,7 @@ function ItemStatusDetailBill(props) {
       >
         {left && (
           <span
-            className={`${visibled ? "w-96" : "w-20"} ${
+            className={`${visible === -1 ? "w-96" : "w-20"} ${
               statusLineLeft ? "bg-green" : "bg-gray-400"
             } h-1 absolute right-full z-0`}
           ></span>
@@ -47,7 +51,7 @@ function ItemStatusDetailBill(props) {
         </div>
         {right && (
           <span
-            className={`${visibled ? "w-96" : "w-20"} ${
+            className={`${visible === -1 ? "w-96" : "w-20"} ${
               statusLineRight ? "bg-green" : "bg-gray-400"
             } h-1 absolute left-full z-0`}
           ></span>

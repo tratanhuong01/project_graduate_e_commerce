@@ -16,7 +16,8 @@ function StatusDetailBill(props) {
         statusLineLeft: true,
         statusLineRight: false,
         time: " ",
-        visible: false,
+        visible: null,
+        invisible: false,
       },
       {
         type: 1,
@@ -27,7 +28,8 @@ function StatusDetailBill(props) {
         statusLineLeft: false,
         statusLineRight: false,
         time: " ",
-        visible: false,
+        visible: null,
+        invisible: false,
       },
       {
         type: 1,
@@ -38,7 +40,8 @@ function StatusDetailBill(props) {
         statusLineLeft: false,
         statusLineRight: false,
         time: false,
-        visible: false,
+        visible: null,
+        invisible: false,
       },
       {
         type: 2,
@@ -49,7 +52,8 @@ function StatusDetailBill(props) {
         statusLineLeft: false,
         statusLineRight: false,
         time: false,
-        visible: false,
+        visible: null,
+        invisible: false,
       },
       {
         type: 3,
@@ -60,20 +64,22 @@ function StatusDetailBill(props) {
         statusLineLeft: false,
         statusLineRight: false,
         time: " ",
-        visible: false,
+        visible: null,
+        invisible: false,
       },
     ];
     for (let index = 0; index < arrayStatus.length; index++) {
       const element = arrayStatus[index];
+      arrayStatus[index].visible = bill.bill.status;
       if (element.type === bill.bill.status) pos = index;
     }
     if (pos === 0) {
     } else {
       if (bill.bill.status === -1) {
-        arrayStatus[0].visible = true;
         arrayStatus[0].statusLineRight = true;
-        arrayStatus[arrayStatus.length - 1].visible = true;
+        arrayStatus[0].invisible = true;
         arrayStatus[arrayStatus.length - 1].statusLineLeft = true;
+        arrayStatus[arrayStatus.length - 1].invisible = true;
         arrayStatus[arrayStatus.length - 1].name = "Đơn hàng đã bị hủy";
         arrayStatus[arrayStatus.length - 1].icon = "far fa-times-circle";
       } else
@@ -107,7 +113,8 @@ function StatusDetailBill(props) {
               statusLineRight={item.statusLineRight}
               icon={item.icon}
               bill={bill}
-              visibled={item.visible}
+              visible={item.visible}
+              invisible={item.invisible}
             />
           );
         })}

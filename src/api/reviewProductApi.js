@@ -30,15 +30,13 @@ export const getReviewProductByProductLimitPage = (
   all
 ) => {
   //
-  return api(
+  const endPoint =
     active === -1
-      ? `reviewProducts/${idProduct}${all ? `/${offset}/${limit}` : ""}`
+      ? `reviewProducts/${idProduct}${`/${offset}/${limit}`}`
       : `reviewProductByStar${all ? "All" : ""}/${idProduct}/${active}${
           all ? "" : `/${offset}/${limit}`
-        }`,
-    "GET",
-    null
-  );
+        }`;
+  return api(endPoint, "GET", null);
   //
 };
 

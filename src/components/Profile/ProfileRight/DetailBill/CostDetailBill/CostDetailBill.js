@@ -1,6 +1,16 @@
 import React from "react";
 
 function CostDetailBill(props) {
+  //
+  const { bill } = props;
+  const sum = () => {
+    let sum = 0;
+    bill.billDetailList.forEach((item) => {
+      sum += item.billDetail.price * item.billDetail.amount;
+    });
+    return sum;
+  };
+  //
   return (
     <div className="w-full flex">
       <div className="w-2/3 lg:w-3/4 flex flex-col text-xs text-gray-600 dark:text-white">
@@ -34,25 +44,25 @@ function CostDetailBill(props) {
           className="w-full flex items-center justify-end py-4 border-b-2 border-solid 
         border-gray-100"
         >
-          60.000đ
+          {new Intl.NumberFormat().format(sum())} đ
         </div>
         <div
           className="w-full flex items-center justify-end py-4 border-b-2 border-solid 
         border-gray-100"
         >
-          34.000đ
+          {new Intl.NumberFormat().format(bill.bill.fee)} d
         </div>
         <div
           className="w-full flex items-center justify-end py-4 border-b-2 border-solid 
         border-gray-100"
         >
-          24.000đ
+          {new Intl.NumberFormat().format(bill.bill.sale)} đ
         </div>
         <div
           className="w-full flex items-center justify-end py-4 border-b-2 border-solid 
         border-gray-100 text-organce text-2xl font-semibold"
         >
-          40.000đ
+          {new Intl.NumberFormat().format(bill.bill.total)} đ
         </div>
       </div>
     </div>

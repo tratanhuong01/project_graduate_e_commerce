@@ -9,7 +9,7 @@ function HeaderCenter(props) {
     name: "Tất cả danh mục",
     id: "",
   });
-  const ref = useRef(null);
+  const refWrap = useRef(null);
   //
   return (
     <div className="hidden md:flex md:w-8/12 lg:w-3/5 items-center justify-end ">
@@ -18,9 +18,9 @@ function HeaderCenter(props) {
         border-organce rounded-full"
       >
         <InputSearch data={data} />
-        <div ref={ref}>
+        <div ref={refWrap}>
           <CategorySearch
-            refWrap={ref}
+            refWrap={refWrap}
             data={data}
             setData={setData}
             categorys={categorys}

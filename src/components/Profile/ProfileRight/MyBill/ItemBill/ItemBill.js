@@ -5,16 +5,19 @@ import ItemBillTop from "./ItemBillTop/ItemBillTop";
 
 function ItemBill(props) {
   //
-  const { bill } = props;
+  const { bill, data } = props;
   //
   return (
-    <>
+    <div
+      className="w-full bg-gray-50 border-2 border-solid border-gray-200 shadow-lg 
+    p-2 mb-5"
+    >
       <ItemBillTop bill={bill} />
       <hr className="my-3" />
       <ItemBillContent bill={bill} />
       <hr className="my-3" />
-      <ItemBillBottom bill={bill} />
-    </>
+      <ItemBillBottom bill={bill} data={data} />
+    </div>
   );
 }
 

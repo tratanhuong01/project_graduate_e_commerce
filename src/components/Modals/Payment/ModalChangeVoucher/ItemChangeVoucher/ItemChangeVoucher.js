@@ -23,10 +23,25 @@ function ItemChangeVoucher(props) {
           checked={
             orders.voucher && voucher.id === orders.voucher.id ? true : false
           }
+          disabled={
+            voucher.discountCode.type === 1 &&
+            voucher.discountCode.min >= orders.money
+              ? true
+              : false
+          }
         />
       </div>
       <div className="w-11/12 flex">
-        <ItemVoucher voucher={voucher} full={true} />
+        <ItemVoucher
+          voucher={voucher}
+          full={true}
+          disabled={
+            voucher.discountCode.type === 1 &&
+            voucher.discountCode.min >= orders.money
+              ? true
+              : false
+          }
+        />
       </div>
     </div>
   );

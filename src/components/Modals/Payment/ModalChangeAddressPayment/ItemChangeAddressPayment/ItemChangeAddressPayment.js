@@ -10,7 +10,7 @@ function ItemChangeAddressPayment(props) {
   const { address, addressCurrent } = props;
   //
   return (
-    <div class="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600">
+    <div className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600">
       <div className="w-2/12 flex items-center justify-center">
         <input
           type="radio"
@@ -23,7 +23,7 @@ function ItemChangeAddressPayment(props) {
           checked={address.id === addressCurrent.id ? true : false}
         />
       </div>
-      <div class="w-10/12 flex">
+      <div className="w-10/12 flex">
         <AddressMain address={address} />
       </div>
     </div>

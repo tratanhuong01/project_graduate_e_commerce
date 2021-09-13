@@ -3,12 +3,19 @@ import React from "react";
 function ItemVoucher(props) {
   //
   const { voucher, disabled, full } = props;
+  const check = () => {
+    if (full)
+      if (disabled) return "w-full disabled__voucher";
+      else return "w-full";
+    else {
+      if (disabled) return "item__voucher disabled__voucher";
+      else return "item__voucher";
+    }
+  };
   //
   return (
     <div
-      className={`m-3 pl-1 h-28 flex shadow-lg item__voucher relative ${
-        disabled ? "disabled__voucher" : full ? "w-full" : "item__voucher"
-      }`}
+      className={`m-3 pl-1 h-28 flex shadow-lg item__voucher relative ${check()}`}
     >
       <span
         className="border-2 border-solid border-yellow shadow-sm px-1 -ml-0.5 mb-1 text-xs 

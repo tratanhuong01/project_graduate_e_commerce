@@ -49,6 +49,8 @@ const myReducer = (state = initialState, action) => {
         state.infoPayment.fullName = action.address.fullName;
         state.infoPayment.phone = action.address.phone;
         state.infoPayment.status = true;
+        state.voucher = null;
+        state.sale = 0;
       } else {
         state.voucher = null;
         state.sale = 0;
@@ -133,7 +135,7 @@ const myReducer = (state = initialState, action) => {
               state.sale = state.fee;
               break;
             case 1:
-              state.sale = action.voucher.max;
+              state.sale = action.voucher.discountCode.max;
               break;
             default:
               break;

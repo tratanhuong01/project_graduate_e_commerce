@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ItemPagination from "./ItemPagination/ItemPagination";
 
 function Pagination(props) {
@@ -7,6 +7,7 @@ function Pagination(props) {
   let array = [];
   for (let index = 0; index < Math.ceil(length / limit); index++)
     array.push(index);
+  useEffect(() => {}, [index]);
   //
   return (
     <ul className="flex justify-end items-center dark:text-white">

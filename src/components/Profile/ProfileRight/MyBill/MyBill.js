@@ -4,13 +4,21 @@ import ItemBill from "./ItemBill/ItemBill";
 import StatusBill from "./StatusBill/StatusBill";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { PAGE_PROFILE_USER, PROFILE_BILL } from "../../../../constants/Config";
-import api from "../../../../Utils/api";
-import { useSelector } from "react-redux";
+import * as billsAction from "../../../../actions/bill/index";
+import { useDispatch, useSelector } from "react-redux";
+import Pagination from "../../../General/Pagination/Pagination";
+import { SET_LOADING_BILL_USER } from "../../../../constants/ActionTypes";
+import NotBill from "../DetailBill/NotBill/NotBill";
 
 function MyBill(props) {
   //
-  const user = useSelector((state) => state.user);
-  const [bills, setBills] = useState(null);
+  const { bills, user } = useSelector((state) => {
+    return {
+      user: state.user,
+      bills: state.bills,
+    };
+  });
+  const dispatch = useDispatch();
   const status = [
     { type: -2, name: "Tất cả" },
     { type: 0, name: "Chờ xác nhận" },
@@ -22,23 +30,19 @@ function MyBill(props) {
   const [data, setData] = useState(status[0]);
   useEffect(() => {
     //
-    let unmounted = false;
-
-    async function fetch() {
-      const result = await api(
-        `bills?type=${data.type}&idUser=${user.id}&offset=${0}&limit=${5}`,
-        "GET",
-        null
-      );
-      if (unmounted) return;
-      setBills(result.data);
-    }
+    window.scrollTo(0, 0);
+    dispatch(billsAction.setLoadingBillUser(true));
     const timeOut = setTimeout(() => {
-      fetch();
+      dispatch(
+        billsAction.loadBillsUserRequest({
+          user,
+          type: data.type,
+          index: 0,
+        })
+      );
     }, 500);
 
     return () => {
-      unmounted = true;
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,21 +53,45 @@ function MyBill(props) {
       <BreadcrumbsItem to={`${PAGE_PROFILE_USER}/${PROFILE_BILL}`}>
         Đơn hàng
       </BreadcrumbsItem>
-      <StatusBill
-        data={data}
-        status={status}
-        setData={setData}
-        setBills={setBills}
-      />
-      <InputSearchBill />
-      {bills ? (
-        bills.map((bill, index) => {
-          return <ItemBill bill={bill} key={index} setBills={setBills} />;
-        })
-      ) : (
+      <StatusBill data={data} status={status} setData={setData} />
+      {data.type === -2 && <InputSearchBill data={data} />}
+      {bills.loading ? (
         <div className="w-full h-32 flex items-center justify-center">
           <i className="fas fa-circle-notch fa-spin text-4xl text-organce"></i>
         </div>
+      ) : bills.listCurrent.length <= 0 ? (
+        <NotBill />
+      ) : (
+        <>
+          {bills.listCurrent.map((bill, index) => {
+            return <ItemBill bill={bill} key={index} data={data} />;
+          })}
+          {bills.list.length > 0 && (
+            <div className="w-full flex justify-center my-5">
+              <Pagination
+                index={bills.index}
+                length={bills.list.length}
+                dispatch={(index) => {
+                  window.scrollTo(0, 150);
+                  dispatch({ type: SET_LOADING_BILL_USER, status: true });
+                  const timeOut = setTimeout(() => {
+                    dispatch(
+                      billsAction.loadBillsUserByIndexRequest({
+                        user,
+                        type: data.type,
+                        index,
+                      })
+                    );
+                  }, 500);
+                  return () => {
+                    clearTimeout(timeOut);
+                  };
+                }}
+                limit={5}
+              />
+            </div>
+          )}
+        </>
       )}
     </div>
   );

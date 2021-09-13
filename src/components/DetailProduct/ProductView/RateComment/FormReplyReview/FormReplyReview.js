@@ -83,6 +83,7 @@ function FormReplyReview(props) {
       <div className="w-full flex items-center">
         <div className="w-9/12">
           <InputFieldFC
+            onChange={(value) => setValue(value)}
             register={register}
             showError={errors["content"]}
             label=""

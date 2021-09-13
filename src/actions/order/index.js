@@ -80,14 +80,18 @@ export const addOrderRequest = (data) => {
         isShow: 0,
       },
       fullName: data.infoPayment.fullName,
+      phone: data.infoPayment.phone,
       bank: null,
       address: `${data.infoPayment.address} , ${data.infoPayment.ward} , ${data.infoPayment.district} , 
       ${data.infoPayment.cityProvince}`,
       note: data.infoPayment.note,
       sale: data.sale,
       fee: data.fee,
-      total: data.money,
-      timeCreated: "09-11-2021 05:45:41",
+      total: data.money + data.fee - data.sale,
+      timeCreated: null,
+      timeCompleted: null,
+      timeIntend: null,
+      timeApproval: null,
     });
     for (let index = 0; index < data.list.length; index++) {
       const item = data.list[index];

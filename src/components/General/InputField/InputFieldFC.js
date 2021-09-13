@@ -50,7 +50,7 @@ function InputFieldFC(props) {
         />
         <i
           className={
-            `${icon} absolute top-5 left-2 text-2xl ` +
+            `${icon} absolute top-4 left-2 text-2xl ` +
             `${showError ? " text-red-500" : " text-gray-800 dark:text-white"}`
           }
         ></i>

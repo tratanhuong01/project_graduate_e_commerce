@@ -2,6 +2,9 @@ import React from "react";
 import TreeProcess from "./TreeProcess/TreeProcess";
 
 function InfoDetailBill(props) {
+  //
+  const { bill } = props;
+  //
   return (
     <div className="w-full my-3 flex flex-col lg:flex-row">
       <div
@@ -9,11 +12,13 @@ function InfoDetailBill(props) {
       dark:text-white"
       >
         <p className="text-xl lg:text-2xl mb-2 lg:mb-6">Địa chỉ nhận hàng</p>
-        <p className="text-xl lg:text-sm font-semibold ">Trà Hưởng</p>
-        <p className="text-sm lg:text-xs">(+84) 354114665</p>
-        <p className="text-sm lg:text-xs">
-          Tổ 1 Thôn Bình An, Xã Bình Định Bắc, Huyện Thăng Bình, Quảng Nam
+        <p className="text-xl lg:text-sm font-semibold ">
+          {bill.bill.fullName}
         </p>
+        <p className="text-sm lg:text-xs">
+          (+84) {bill.bill.phone.substring(1)}
+        </p>
+        <p className="text-sm lg:text-xs">{bill.bill.address}</p>
       </div>
       <div className="w-full lg:w-3/4 flex pl-6 border-l-2 border-solid border-gray-200">
         <div className="w-40">

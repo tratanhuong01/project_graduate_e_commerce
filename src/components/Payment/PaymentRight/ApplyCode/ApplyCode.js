@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as ordersAction from "../../../../actions/order/index";
 import * as modalsAction from "../../../../actions/modal/index";
@@ -43,6 +43,7 @@ function ApplyCode(props) {
     }
     setLoading(false);
   };
+  useEffect(() => {}, [user, orders]);
   //
   return (
     <>
