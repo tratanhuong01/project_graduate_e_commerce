@@ -1,9 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import * as listProductsAction from "../../../../actions/listProduct/index";
 
 function FooterFilterProduct(props) {
   //
   const listProduct = useSelector((state) => state.listProduct);
+  const dispatch = useDispatch();
   //
   return (
     <div className="w-full flex">
@@ -28,13 +30,30 @@ function FooterFilterProduct(props) {
         </ul>
       </div>
       <div className="w-1/3 flex justify-end items-center">
-        <select className="py-1 pr-4 pl-1 rounded-sm border-2 border-solid border-gray-300">
-          <option>Mới nhất</option>
-          <option>Bán chạy</option>
-          <option>Khuyến mãi</option>
-          <option>Giá từ thấp đến cao</option>
-          <option>Giá từ cao đến thấp</option>
-          <option>Theo lượt đánh giá</option>
+        <select
+          onChange={(event) => {
+            dispatch(listProductsAction.loadingListProduct());
+            const timeOut = setTimeout(() => {
+              dispatch(
+                listProductsAction.loadListProductSorterRequest({
+                  filters: listProduct.filters,
+                  sorter: event.target.value,
+                  slug: listProduct.slug,
+                })
+              );
+            }, 500);
+            return () => {
+              clearTimeout(timeOut);
+            };
+          }}
+          className="py-1 pr-4 pl-1 rounded-sm border-2 border-solid border-gray-300"
+        >
+          <option value="0">Mới nhất</option>
+          <option value="1">Bán chạy</option>
+          <option value="2">Khuyến mãi</option>
+          <option value="4">Giá từ thấp đến cao</option>
+          <option value="3">Giá từ cao đến thấp</option>
+          <option value="5">Theo lượt đánh giá</option>
         </select>
       </div>
     </div>

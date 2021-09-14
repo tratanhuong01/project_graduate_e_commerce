@@ -21,15 +21,11 @@ function MainListProduct(props) {
       <LevelUrl />
       <hr className="w-full xl:w-4/5  mx-auto my-2"></hr>
       <div className="w-full xl:w-4/5 mx-auto p-4">
-        {listProduct.products === "" ? (
-          <NotFound />
-        ) : (
-          <div className="w-full mx-auto mb-2">
-            {listProduct.type && <GroupProduct />}
-            <FilterProduct />
-            <ListProduct listProduct={listProduct} />
-          </div>
-        )}
+        <div className="w-full mx-auto mb-2">
+          {listProduct.type && <GroupProduct />}
+          <FilterProduct />
+          <ListProduct listProduct={listProduct} />
+        </div>
       </div>
     </div>
   );

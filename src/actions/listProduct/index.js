@@ -53,7 +53,8 @@ export const loadListProductRequest = (slug) => {
         : category.data[indexCategory].nameCategoryProduct;
       dispatch(loadListProduct(products.data));
       dispatch(loadSlugCondition(slugAction, nameAction, type));
-    } else dispatch(loadListProduct(null));
+    } else dispatch(loadListProduct([]));
+    dispatch(loadingListProduct(false));
   };
 };
 
@@ -112,6 +113,7 @@ export const addFilterProductRequest = (data) => {
         null
       );
       dispatch(loadListProduct(result.data));
+      dispatch(loadingListProduct(false));
     } else dispatch(removeFilterProductRequest(data));
   };
 };
@@ -131,6 +133,7 @@ export const removeFilterProductRequest = (data) => {
     );
     dispatch(loadListProduct(result.data));
     dispatch(removeFilterProduct(clone));
+    dispatch(loadingListProduct(false));
   };
 };
 
@@ -154,8 +157,40 @@ export const resetAllFilterSorterSearchListProduct = () => {
   };
 };
 
-export const loadingListProduct = () => {
+export const loadingListProduct = (loading = false) => {
   return {
     type: Types.LOADING_LIST_PRODUCT,
+    loading,
+  };
+};
+
+export const loadListProductSorterRequest = (data) => {
+  return async (dispatch) => {
+    const { filters, sorter, slug } = data;
+    let stringQuery = "";
+
+    if (filters.length > 0)
+      filters.forEach((element) => {
+        if (element.type === 0) stringQuery += `&${element.query}`;
+        else stringQuery += `&${element.query}=${element.data.id}`;
+      });
+    stringQuery += `&filter=${sorter}`;
+
+    const result = await api(
+      `productsFilter?slugGroupProduct=${slug}${stringQuery}`,
+      "GET",
+      null
+    );
+    console.log(result);
+    dispatch(loadListProduct(result.data));
+    dispatch(loadingListProduct(false));
+    dispatch(loadListProductSorter(sorter));
+  };
+};
+
+export const loadListProductSorter = (sorter) => {
+  return {
+    type: Types.LOAD_LIST_PRODUCT_SORTER,
+    sorter,
   };
 };

@@ -10,20 +10,25 @@ function ItemPrice(props) {
     <div
       onClick={() => {
         setIndex(-1);
-        dispatch(listProductsAction.loadListProduct(null));
-        dispatch(
-          listProductsAction.addFilterProductRequest({
-            filters: listProduct.filters,
-            item: {
-              id: price.id,
-              data: price,
-              name: price.name,
-              query: `priceFrom=${price.from}&priceTo=${price.to}`,
-              type: 0,
-            },
-            slug: listProduct.slug,
-          })
-        );
+        dispatch(listProductsAction.loadingListProduct(true));
+        const timeOut = setTimeout(() => {
+          dispatch(
+            listProductsAction.addFilterProductRequest({
+              filters: listProduct.filters,
+              item: {
+                id: price.id,
+                data: price,
+                name: price.name,
+                query: `priceFrom=${price.from}&priceTo=${price.to}`,
+                type: 0,
+              },
+              slug: listProduct.slug,
+            })
+          );
+        }, 500);
+        return () => {
+          clearTimeout(timeOut);
+        };
       }}
       className="px-2 m-2 rounded-full p-1 border-2 border-solid border-gray-300 hover:border-organce 
     text-sm"

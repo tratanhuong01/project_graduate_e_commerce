@@ -16,16 +16,17 @@ function ListProduct(props) {
   const { listProduct } = states;
   useEffect(() => {
     //
-    let unmounted = false;
-    if (unmounted) return;
-    dispatch(
-      listProductsAction.loadListProductRequest({
-        slugCategoryProduct: slugCategoryProduct,
-        slugGroupProduct:
-          typeof slugGroupProduct === "undefined" ? null : slugGroupProduct,
-      })
-    );
-    return () => (unmounted = true);
+    const timeOut = setTimeout(() => {
+      dispatch(
+        listProductsAction.loadListProductRequest({
+          slugCategoryProduct: slugCategoryProduct,
+          slugGroupProduct:
+            typeof slugGroupProduct === "undefined" ? null : slugGroupProduct,
+        })
+      );
+    }, 500);
+
+    return () => clearTimeout(timeOut);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slugCategoryProduct, slugGroupProduct]);
   useEffect(() => {}, [listProduct.slug]);

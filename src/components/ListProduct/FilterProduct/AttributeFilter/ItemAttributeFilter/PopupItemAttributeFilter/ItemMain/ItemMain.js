@@ -16,19 +16,24 @@ function ItemMain(props) {
           <div
             onClick={() => {
               setIndex(-1);
-              dispatch(listProductsAction.loadListProduct());
-              dispatch(
-                listProductsAction.addFilterProductRequest({
-                  filters: listProduct.filters,
-                  item: {
-                    id: item.id,
-                    data: item,
-                    name: item.nameFunctionProduct,
-                    query: "feature",
-                  },
-                  slug: listProduct.slug,
-                })
-              );
+              dispatch(listProductsAction.loadingListProduct(true));
+              const timeOut = setTimeout(() => {
+                dispatch(
+                  listProductsAction.addFilterProductRequest({
+                    filters: listProduct.filters,
+                    item: {
+                      id: item.id,
+                      data: item,
+                      name: item.nameFunctionProduct,
+                      query: "feature",
+                    },
+                    slug: listProduct.slug,
+                  })
+                );
+              }, 500);
+              return () => {
+                clearTimeout(timeOut);
+              };
             }}
             key={index}
             className={`px-2 py-1 m-2 rounded-full p-1 border-2 border-solid text-sm 

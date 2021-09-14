@@ -7,7 +7,7 @@ function ListProduct(props) {
   //
   const { listProduct } = props;
   //
-  return listProduct.products ? (
+  return !listProduct.loading ? (
     listProduct.products.length > 0 ? (
       <div className="w-full mx-auto ">
         <div className="w-full flex flex-wrap my-4 z-10">

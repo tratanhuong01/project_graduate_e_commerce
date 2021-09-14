@@ -71,21 +71,21 @@ export const loadBillsUserByIndex = (index, list) => {
 
 export const searchBillRequest = (data) => {
   return async (dispatch) => {
-    // const list = await api(
-    //   `bills/search/?keyword=${data.keyword}&idUser=${
-    //     data.idUser
-    //   }&offset=${0}&limit=5`,
-    //   "GET",
-    //   null
-    // );
-    const listCurrent = await api(
+    const list = await api(
       `bills/search/?keyword=${data.keyword}&idUser=${
-        data.idUser
-      }&offset=${0}&limit=5`,
+        data.user.id
+      }&type=${-2}&offset=${0}&limit=5&type=${0}`,
       "GET",
       null
     );
-    dispatch(loadBillsUser([], listCurrent.data, 0));
+    const listCurrent = await api(
+      `bills/search/?keyword=${data.keyword}&idUser=${
+        data.user.id
+      }&offset=${0}&limit=5&type=${0}`,
+      "GET",
+      null
+    );
+    dispatch(loadBillsUser(list.data, listCurrent.data, 0));
     dispatch(setLoadingBillUser(false));
   };
 };

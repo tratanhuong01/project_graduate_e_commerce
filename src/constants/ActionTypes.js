@@ -68,6 +68,8 @@ export const ADD_FILTER_PRODUCT = "ADD_FILTER_PRODUCT";
 export const REMOVE_FILTER_PRODUCT = "REMOVE_FILTER_PRODUCT";
 //
 export const LOADING_LIST_PRODUCT = "LOADING_LIST_PRODUCT";
+//
+export const LOAD_LIST_PRODUCT_SORTER = "LOAD_LIST_PRODUCT_SORTER";
 // --------prodocut-------- //
 
 // --------cart-------- //

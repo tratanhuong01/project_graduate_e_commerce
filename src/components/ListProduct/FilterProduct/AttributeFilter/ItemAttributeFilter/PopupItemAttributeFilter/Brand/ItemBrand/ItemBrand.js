@@ -10,19 +10,24 @@ function ItemBrand(props) {
     <div
       onClick={() => {
         setIndex(-1);
-        dispatch(listProductsAction.loadListProduct(null));
-        dispatch(
-          listProductsAction.addFilterProductRequest({
-            filters: listProduct.filters,
-            item: {
-              id: brand.id,
-              data: brand,
-              name: brand.nameBrand,
-              query: "brand",
-            },
-            slug: listProduct.slug,
-          })
-        );
+        dispatch(listProductsAction.loadingListProduct(true));
+        const timeOut = setTimeout(() => {
+          dispatch(
+            listProductsAction.addFilterProductRequest({
+              filters: listProduct.filters,
+              item: {
+                id: brand.id,
+                data: brand,
+                name: brand.nameBrand,
+                query: "brand",
+              },
+              slug: listProduct.slug,
+            })
+          );
+        }, 500);
+        return () => {
+          clearTimeout(timeOut);
+        };
       }}
       className={`w-21% border-2 border-solid  px-1 py-2 rounded-full 
       m-2 ${
