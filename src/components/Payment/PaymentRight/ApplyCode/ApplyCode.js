@@ -43,7 +43,7 @@ function ApplyCode(props) {
     }
     setLoading(false);
   };
-  useEffect(() => {}, [user, orders]);
+  useEffect(() => {}, [user, orders.infoPayment.voucher]);
   //
   return (
     <>

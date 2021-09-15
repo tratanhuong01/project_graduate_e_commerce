@@ -4,7 +4,7 @@ import ItemChangeAddressPayment from "./ItemChangeAddressPayment/ItemChangeAddre
 
 function ModalChangeAddressPayment(props) {
   //
-  const { addresses, address } = props;
+  const { addresses, address, setAddress } = props;
   //
   return (
     <div
@@ -26,6 +26,7 @@ function ModalChangeAddressPayment(props) {
               address={item}
               key={index}
               addressCurrent={address}
+              setAddress={setAddress}
             />
           );
         })}

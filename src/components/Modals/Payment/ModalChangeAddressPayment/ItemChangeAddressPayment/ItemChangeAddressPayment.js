@@ -7,7 +7,7 @@ import * as ordersAction from "../../../../../actions/order/index";
 function ItemChangeAddressPayment(props) {
   //
   const dispatch = useDispatch();
-  const { address, addressCurrent } = props;
+  const { address, addressCurrent, setAddress } = props;
   //
   return (
     <div className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600">
@@ -18,6 +18,7 @@ function ItemChangeAddressPayment(props) {
           onChange={() => {
             dispatch(ordersAction.loadInfoAddressPayment(address));
             dispatch(modalsAction.closeModal());
+            setAddress(address);
           }}
           className="transform scale-150 "
           checked={address.id === addressCurrent.id ? true : false}

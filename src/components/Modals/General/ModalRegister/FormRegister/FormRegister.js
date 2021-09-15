@@ -75,7 +75,7 @@ class FormRegister extends Component {
     return (
       <Formik
         initialValues={{
-          id: "",
+          id: null,
           firstName: "",
           lastName: "",
           phone: "",

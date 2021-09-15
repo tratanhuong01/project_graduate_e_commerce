@@ -104,6 +104,13 @@ export const addOrderRequest = (data) => {
         amount: item.amount,
       });
     }
+    if (data.voucher) {
+      await api(
+        `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.discountCode.id}&idUser=${data.voucher.userDiscountCode.id}&isUsed=1`,
+        "GET",
+        null
+      );
+    }
     dispatch({ type: Types.ORDER_SUCCESS });
   };
 };

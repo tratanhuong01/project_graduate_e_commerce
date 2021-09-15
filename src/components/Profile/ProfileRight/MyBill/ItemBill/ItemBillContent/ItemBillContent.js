@@ -31,7 +31,10 @@ function ItemBillContent(props) {
             Tổng số tiền :
           </span>
           <span className="text-2xl">
-            {new Intl.NumberFormat().format(calcBill())}đ
+            {new Intl.NumberFormat().format(
+              calcBill() + bill.bill.fee - bill.bill.sale
+            )}
+            đ
           </span>
         </div>
       )}

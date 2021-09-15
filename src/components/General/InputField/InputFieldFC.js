@@ -54,7 +54,7 @@ function InputFieldFC(props) {
             `${showError ? " text-red-500" : " text-gray-800 dark:text-white"}`
           }
         ></i>
-        <p className="m-2 text-xs w-full text-red-500 font-semibold">
+        <p className="my-2 text-sm w-full text-red-500 font-semibold">
           {showError && showError.message}
         </p>
       </div>

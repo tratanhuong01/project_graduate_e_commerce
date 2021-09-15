@@ -12,12 +12,17 @@ function Header(props) {
   //
   const [menu, setMenu] = useState(false);
   const categorys = useCategoryList();
-  const [subClassMenu, setSubClassMenu] = useState(null);
+  const [subClassMenu, setSubClassMenu] = useState(false);
   useEffect(() => {
     //
-    window.onscroll = () => {
-      if (window.scrollY > 30) setSubClassMenu("shadow-lg");
-      else setSubClassMenu(null);
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 130)
+        if (subClassMenu) return;
+        else setSubClassMenu(true);
+      else setSubClassMenu(false);
+    });
+    return () => {
+      window.removeEventListener("scroll");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -26,7 +31,9 @@ function Header(props) {
     <>
       <HeaderTop />
       <div
-        className={`w-full bg-white dark:bg-dark-second lg:sticky top-0 z-50 relative ${subClassMenu}`}
+        className={`w-full bg-white dark:bg-dark-second lg:sticky top-0 z-50 relative ${
+          subClassMenu ? "shadow-lg" : ""
+        }`}
       >
         <div className="xl:w-4/5 w-full mx-auto flex text-gray-800">
           <div className="w-1/5 md:hidden flex items-center ml-3">
