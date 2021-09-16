@@ -54,15 +54,15 @@ function NewsLeft(props) {
       <div
         className={`absolute ${
           subClass__ ? subClass__ : "bottom-0"
-        } left-0 w-full bg-transparent p-3 
+        } left-0 w-full bg-transparent p-3
         bg-black bg-opacity-50 ${news__view}`}
       >
-        <div className="w-full">
+        <div className="w-full h-12 flex items-center">
           <Link
             to={`${Config.PAGE_NEWS}/${newData.slug}`}
             className="font-semibold text-gray-100 hover:text-organce"
           >
-            {newData.title}
+            {newData.title.substring(0, 65).replace(",", "") + "..."}
           </Link>
         </div>
         <div className="flex">

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import OutOfStock from "../../components/Payment/OutOfStock/OutOfStock";
-import api from "../../Utils/api";
 import PaymentLeft from "./PaymentLeft/PaymentLeft";
 import PaymentRight from "./PaymentRight/PaymentRight";
 import * as ordersAction from "../../actions/order/index";
@@ -9,7 +8,7 @@ import Loading from "../../components/General/Loading/Loading";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as ValidForm from "./ValidForm";
-// import * as modalsAction from "../../actions/modal/index";
+import * as profileApi from "../../api/profileApi";
 
 function MainPayment(props) {
   //
@@ -36,7 +35,7 @@ function MainPayment(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(`addresses/${user.id}`, "GET", null);
+      const result = await profileApi.getAddressByIdUser(user.id);
       if (unmounted) return;
       setAddresses(result.data);
       if (result.data.length > 0) {

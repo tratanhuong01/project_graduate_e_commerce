@@ -10,6 +10,7 @@ function ItemCategorySearch(props) {
         setData({
           name: category.categoryProduct.nameCategoryProduct,
           id: category.categoryProduct.id,
+          slug: category.categoryProduct.slugCategoryProduct,
         })
       }
       className="w-full text-sm p-2 border-solid border-gray-200 border-b-2 flex font-semibold justify-center items-center cursor-pointer hover:bg-gray-100 dark:border-dark-second 

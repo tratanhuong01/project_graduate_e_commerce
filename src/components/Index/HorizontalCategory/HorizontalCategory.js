@@ -6,7 +6,7 @@ function HorizontalCategory(props) {
   const { products } = props;
   //
   return (
-    <div className="xl:w-4/5 mx-auto w-full flex flex-wrap my-3 justify-center">
+    <div className="xl:w-4/5 mx-auto w-full flex flex-wrap my-3 justify-center text-gray-800">
       {products.listCategoryByGroupProduct.map((item, index) => {
         return (
           <ItemHorizontalCategory

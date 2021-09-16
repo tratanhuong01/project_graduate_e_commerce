@@ -1,5 +1,5 @@
 import * as Types from "../../constants/ActionTypes";
-import api from "../../Utils/api";
+import * as productApi from "../../api/productApi";
 
 export const changeAmountProductChoose = (typeDisplay, amount) => {
   return {
@@ -13,7 +13,7 @@ export const loadProductChooseRequest = (slug, typeDisplay) => {
   return async (dispatch) => {
     let formData = new FormData();
     formData.append("slug", slug);
-    const result = await api("getProductBySlug", "POST", formData);
+    const result = await productApi.getProductFullBySlugFDT(formData);
     dispatch(
       loadProductChoose({
         data: {

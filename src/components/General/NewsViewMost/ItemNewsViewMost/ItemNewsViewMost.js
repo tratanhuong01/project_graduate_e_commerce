@@ -21,7 +21,7 @@ function ItemNewsViewMost(props) {
             className="text-xm font-semibold cursor-pointer hover:text-organce"
             to={`${Config.PAGE_NEWS}/${newData.slug}`}
           >
-            {newData.title}
+            {newData.title.substring(0, 65).replace(",", "") + "..."}
           </Link>
           <p className="text-gray-500 w-full flex mt-2">
             <i className="bx bxs-star mr-0.5 text-yellow-500"></i>

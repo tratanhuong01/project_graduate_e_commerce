@@ -20,9 +20,9 @@ function PopupAds(props) {
           &times;
         </span>
         <img
-          src="https://cf.shopee.vn/file/8ebff5880bec9707bc93bda3f25f4882_xxhdpi"
+          src="https://cf.shopee.vn/file/a9825e88bb54c824feb6def6e57bd0c4_xxhdpi"
           alt=""
-          className="w-full h-120 object-cover cursor-pointer"
+          className="w-full h-120 object-contain cursor-pointer"
         />
       </div>
     </div>

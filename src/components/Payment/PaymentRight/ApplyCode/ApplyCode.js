@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as ordersAction from "../../../../actions/order/index";
 import * as modalsAction from "../../../../actions/modal/index";
-import api from "../../../../Utils/api";
 import ItemVoucher from "../../../Profile/ProfileRight/MyVoucher/ItemVoucher/ItemVoucher";
+import * as voucherApi from "../../../../api/voucherApi";
 
 function ApplyCode(props) {
   //
@@ -18,17 +18,8 @@ function ApplyCode(props) {
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
   const appleCode = async () => {
-    const valid = await api(
-      `discountCodes/check/valid/?code=${code}`,
-      "GET",
-      null
-    );
-    const isUsed = await api(
-      `discountCodes/check/isUsed/?code=${code}&idUser=${user.id}&isUsed=1`,
-      "GET",
-      null
-    );
-
+    const valid = await voucherApi.checkDiscountCodeValid(code);
+    const isUsed = await voucherApi.checkDiscountCodeIsUsed(code, user.id);
     if (valid.data === "")
       setError("Mã giảm giá không hợp lệ hoặc đã được sử dụng !");
     else {

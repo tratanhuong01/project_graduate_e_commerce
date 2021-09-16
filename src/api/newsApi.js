@@ -17,3 +17,7 @@ export const getNewsBySlug = (slug) => {
   return api("getNewsBySlug", "POST", formData);
   //
 };
+
+export const getListNewsMostView = () => {
+  return api("getListNewsMostView", "GET", null);
+};

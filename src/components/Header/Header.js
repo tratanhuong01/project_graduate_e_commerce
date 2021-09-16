@@ -21,9 +21,9 @@ function Header(props) {
         else setSubClassMenu(true);
       else setSubClassMenu(false);
     });
-    return () => {
-      window.removeEventListener("scroll");
-    };
+    // return () => {
+    //   window.removeEventListener("scroll");
+    // };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //

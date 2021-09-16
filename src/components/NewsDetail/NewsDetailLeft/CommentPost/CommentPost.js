@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../../../../Utils/api";
 import Pagination from "../../../General/Pagination/Pagination";
 import FormCommentNews from "../FormCommentNews/FormCommentNews";
 import ItemCommentPost from "./ItemCommentPost/ItemCommentPost";
 import TypeContentComment from "./TypeContentComment/TypeContentComment";
 import * as newsAction from "../../../../actions/news/index";
+import * as commentApi from "../../../../api/commentApi";
+
 function CommentPost(props) {
   //
   const { newsDetail } = props;
@@ -20,15 +21,11 @@ function CommentPost(props) {
   useEffect(() => {
     //
     async function fetch() {
-      const result_1 = await api(
-        `commentsAll/${newsDetail.news.id}`,
-        "GET",
-        null
-      );
-      const result_2 = await api(
-        `comments/${newsDetail.news.id}/0/5`,
-        "GET",
-        null
+      const result_1 = await commentApi.getAllCommentByNews(newsDetail.news.id);
+      const result_2 = await commentApi.getCommentByNewsLimit(
+        newsDetail.news.id,
+        0,
+        5
       );
       dispatch(
         newsAction.loadNewsData({

@@ -6,7 +6,7 @@ import MemoryProduct from "./MemoryProduct/MemoryProduct";
 import * as productsAction from "../../../../actions/product/index";
 import * as cartsAction from "../../../../actions/cart/index";
 import WishListStatus from "./WishListStatus/WishListStatus";
-import PromotionGift from "./PromotionGift/PromotionGift";
+// import PromotionGift from "./PromotionGift/PromotionGift";
 
 function ProductViewRight(props) {
   //
@@ -37,7 +37,15 @@ function ProductViewRight(props) {
             products={products}
             typeDisplay={product.typeDisplay}
           />
-          <PromotionGift />
+          {products.itemCurrent === 0 && (
+            <p
+              className="text-white bg-red-500 font-semibold py-1 px-2 my-6 rounded-full border-2 border-solid 
+            border-red-500 w-64 text-center "
+            >
+              Sản phẩm hiện tại đã hết hàng
+            </p>
+          )}
+          {/* <PromotionGift /> */}
           {products.colorList.length > 0 && (
             <ColorProduct
               colors={products.colorList}

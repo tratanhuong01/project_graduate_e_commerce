@@ -39,6 +39,12 @@ function OutOfStock(props) {
         {orders.listOutOfStock.map((order, index) => {
           return <ItemOutOfStock order={order} key={index} />;
         })}
+        <div className="my-2 flex items-center font-semibold text-red-500 text-sm">
+          <i className="fas fa-exclamation-triangle mr-2 text-yellow-500 text-sm"></i>
+          Bạn có thể bấm tiếp tục hệ thống sẽ bỏ qua những sản phẩm hết hàng đó
+          và cập nhật số lượng sản phẩm còn lại của cửa hàng . Bạn có thể trở về
+          giỏ hàng của mình nếu không bấm TIẾP TỤC.
+        </div>
         <div className="w-full h-20 flex mb-32">
           <p className="w-1/2 float-left flex items-center text-xl font-semibold text-organce">
             <span className="flex items-center">
@@ -52,12 +58,16 @@ function OutOfStock(props) {
             <button
               onClick={() => {
                 let clone = [...orders.list];
-                orders.listOutOfStock.forEach((element) => {
-                  const index = clone.findIndex(
-                    (order) => (order.idCart = element.idCart)
-                  );
-                  if (index !== -1) clone[index].amount = 5;
-                });
+                let listOutOfStock = orders.listOutOfStock;
+                for (let pos = 0; pos < listOutOfStock.length; pos++) {
+                  const element = listOutOfStock[pos];
+                  let num = -1;
+                  for (let index = 0; index < clone.length; index++)
+                    if (clone[index].idCart === element.item.idCart)
+                      num = index;
+                  if (num !== -1) clone[num].amount = element.itemCurrent;
+                  if (element.itemCurrent === 0) clone.splice(num, 1);
+                }
                 dispatch(ordersAction.updateOrderIsOutOfStock(clone));
               }}
               type="button"

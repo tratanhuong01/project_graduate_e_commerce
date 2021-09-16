@@ -2,12 +2,10 @@ import React from "react";
 
 function NotifyNumberProductSearch(props) {
   //
-  const { number } = props;
+  const { products } = props;
   return (
-    <p className="font-semibold text-3xl mt-3 mb-6">
-      {number !== 0
-        ? `CÓ ${number} KẾT QUẢ TÌM KIẾM PHÙ HỢP`
-        : "KHÔNG TÌM THẤY BẤT KỲ KẾT QUẢ NÀO VỚI TỪ KHÓA TRÊN."}
+    <p className="font-semibold text-2xl p-2 py-5 bg-white mt-3 mb-6">
+      {`CÓ ${products.length} KẾT QUẢ TÌM KIẾM PHÙ HỢP`}
     </p>
   );
 }

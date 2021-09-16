@@ -9,7 +9,7 @@ import FilterVoucher from "./FilterVoucher/FilterVoucher";
 import InputAddVoucher from "./InputAddVoucher/InputAddVoucher";
 import ItemVoucher from "./ItemVoucher/ItemVoucher";
 import * as profilesAction from "../../../../actions/profile/index";
-import api from "../../../../Utils/api";
+import * as voucherApi from "../../../../api/voucherApi";
 
 function MyVoucher(props) {
   //
@@ -21,9 +21,7 @@ function MyVoucher(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        `discountCodeUsers?idUser=${user.id}&isUsed=0&type=${data}`
-      );
+      const result = await voucherApi.getDiscountCodeByIdUser(user.id, 0, data);
       if (unmounted) return;
       setVouchers(result.data);
     }

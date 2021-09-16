@@ -6,6 +6,10 @@
   --tw-bg-opacity: 1;
   border-color: rgba(24, 25, 26, var(--tw-bg-opacity));
 }
+.dark .dark\:border-dark-second {
+  --tw-bg-opacity: 1;
+  border-color: rgba(36, 37, 38, var(--tw-bg-opacity));
+}
 .dark .dark\:bg-dark-second {
   --tw-bg-opacity: 1;
   background-color: rgba(36, 37, 38, var(--tw-bg-opacity));

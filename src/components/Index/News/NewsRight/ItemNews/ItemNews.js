@@ -57,7 +57,7 @@ function ItemNews(props) {
             to={`${Config.PAGE_NEWS}/${newData.slug}`}
             className=" text-xm font-semibold cursor-pointer hover:text-organce"
           >
-            {newData.title}
+            {newData.title.substring(0, 65).replace(",", "") + "..."}
           </Link>
           <p className="text-gray-500 w-full flex mt-2">
             <button className="bg-organce mr-3 px-3 py-1 rounded-full text-xs text-gray-100 font-semibold">

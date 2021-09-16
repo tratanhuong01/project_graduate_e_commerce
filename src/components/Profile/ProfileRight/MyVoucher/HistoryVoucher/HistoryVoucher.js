@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as profilesAction from "../../../../../actions/profile/index";
-import api from "../../../../../Utils/api";
 import ItemVoucher from "../ItemVoucher/ItemVoucher";
+import * as voucherApi from "../../../../../api/voucherApi";
 
 function HistoryVoucher(props) {
   //
@@ -14,10 +14,10 @@ function HistoryVoucher(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        `discountCodeUsers?idUser=${user.id}&isUsed=${data}&type=${
-          data === 0 ? 1 : 0
-        }`
+      const result = await voucherApi.getDiscountCodeByIdUser(
+        user.id,
+        data,
+        data === 0 ? 1 : 0
       );
       if (unmounted) return;
       setVouchers(result.data);

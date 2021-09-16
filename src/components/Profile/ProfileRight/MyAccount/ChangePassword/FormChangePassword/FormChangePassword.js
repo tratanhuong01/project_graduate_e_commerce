@@ -1,18 +1,31 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { OPEN_MODAL_SEARCH_GET_ACCOUNT } from "../../../../../../constants/ActionTypes";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  // LOGOUT_USER,
+  // OPEN_MODAL_LOGIN,
+  OPEN_MODAL_SEARCH_GET_ACCOUNT,
+} from "../../../../../../constants/ActionTypes";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputFieldFC from "../../../../../General/InputField/InputFieldFC";
+import api from "../../../../../../Utils/api";
 
 function FormChangePassword(props) {
   //
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const validationSchema = Yup.object().shape({
-    passwordCurrent: Yup.string().required(
-      "Mật khẩu hiện tại không được để trống!!"
-    ),
+    passwordCurrent: Yup.string()
+      .required("Mật khẩu hiện tại không được để trống!!")
+      .test("checkPassword", "Mật khẩu không chính xác", async (value) => {
+        const result = await api(
+          `users/password/?idUser=${user.id}&password=${value}`,
+          "GET",
+          null
+        );
+        return result.data;
+      }),
     passwordNew: Yup.string()
       .required("Mật khẩu mới không được để trống!!")
       .notOneOf(
@@ -28,6 +41,7 @@ function FormChangePassword(props) {
     handleSubmit,
     formState: { errors },
     formState,
+    setValue,
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(validationSchema),
@@ -36,7 +50,18 @@ function FormChangePassword(props) {
   //
   return (
     <form
-      onSubmit={handleSubmit((data) => "")}
+      onSubmit={handleSubmit(async (data) => {
+        await api(
+          `users/password/update/?idUser=${user.id}&password=${data.passwordConfirmation}`,
+          "GET",
+          null
+        );
+        setValue("passwordCurrent", "");
+        setValue("passwordNew", "");
+        setValue("passwordConfirmation", "");
+        // dispatch({ type: LOGOUT_USER });
+        // dispatch({ type: OPEN_MODAL_LOGIN });
+      })}
       className="w-full text-gray-600 dark:text-white pt-6"
     >
       <div className="w-full flex my-3">
@@ -54,6 +79,7 @@ function FormChangePassword(props) {
             border-gray-300"
               name="passwordCurrent"
               placeholder=""
+              autoComplete={true}
             />
           </div>
           <span
@@ -77,6 +103,7 @@ function FormChangePassword(props) {
                 dark:bg-dark-third"
             name="passwordNew"
             placeholder=""
+            autoComplete={true}
           />
         </div>
       </div>
@@ -95,6 +122,7 @@ function FormChangePassword(props) {
                 dark:bg-dark-third"
             name="passwordConfirmation"
             placeholder=""
+            autoComplete={true}
           />
         </div>
       </div>
@@ -107,7 +135,7 @@ function FormChangePassword(props) {
             className={`bg-organce ${
               formState.isValid ? "" : "opacity-50 cursor-not-allowed"
             } px-6 py-2 my-3 text-white font-semibold`}
-            disabled-={formState.isValid ? false : false}
+            disabled={formState.isValid ? false : true}
           >
             Lưu
           </button>

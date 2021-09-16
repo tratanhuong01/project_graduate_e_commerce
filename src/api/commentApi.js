@@ -12,8 +12,8 @@ export const getAllCommentByNews = (idNews) => {
   //
 };
 
-export const getCommentByNewsLimit = (idNews, offset, limit) => {
+export const getCommentByNewsLimit = (idNews, index, limit) => {
   //
-  return api(`comments/${idNews}/${offset}/${limit}`, "GET", null);
+  return api(`comments/${idNews}/${index * limit}/${limit}`, "GET", null);
   //
 };

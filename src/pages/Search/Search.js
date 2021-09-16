@@ -4,11 +4,13 @@ import useResetPage from "../../hook/useResetPage";
 
 function Search(props) {
   //
+  const params = new URLSearchParams(window.location.search);
   useResetPage(null);
+
   //
   return (
     <>
-      <MainSearch />
+      <MainSearch slug={params.get("slug")} keyword={params.get("query")} />
     </>
   );
 }

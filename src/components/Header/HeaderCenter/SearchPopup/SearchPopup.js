@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PAGE_SEARCH } from "../../../../constants/Config";
 import ItemSearchPopup from "./ItemSearchPopup/ItemSearchPopup";
 
 function SearchPopup(props) {
   //
-  const { loading, products } = props;
+  const { loading, products, keyword, data } = props;
   //
   return (
     <div
@@ -21,7 +22,9 @@ function SearchPopup(props) {
       })}
       {!loading && (
         <div className="w-full p-3 flex items-center justify-center text-organce font-semibold">
-          <Link to="">Xem tất cả</Link>
+          <Link to={`${PAGE_SEARCH}?query=${keyword}&slug=${data.slug}`}>
+            Xem tất cả
+          </Link>
         </div>
       )}
     </div>

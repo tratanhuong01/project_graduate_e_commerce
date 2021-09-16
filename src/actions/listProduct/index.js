@@ -1,5 +1,5 @@
 import * as Types from "../../constants/ActionTypes";
-import api from "../../Utils/api";
+import * as productApi from "../../api/productApi";
 
 export const loadListProduct = (products) => {
   return {
@@ -11,8 +11,8 @@ export const loadListProduct = (products) => {
 export const loadListProductRequest = (slug) => {
   return async (dispatch) => {
     let products = null;
-    const category = await api("categoryProductsAll", "GET", null);
-    const group = await api("groupProductsAll", "GET", null);
+    const category = await productApi.getAllCategoryProduct();
+    const group = await productApi.getAllGroupProduct();
     const indexCategory = category.data.findIndex(
       (item) => item.slugCategoryProduct === slug.slugCategoryProduct
     );
@@ -28,22 +28,16 @@ export const loadListProductRequest = (slug) => {
           ? true
           : false;
       if (type)
-        products = await api(
-          `getProductByCategory/${category.data[indexCategory].id}`,
-          "GET",
-          null
+        products = await productApi.getProductByCategory(
+          category.data[indexCategory].id
         );
       else
-        products = await api(
-          `productsFilter?slugGroupProduct=${
-            category.data[indexCategory].typeCategoryProduct === 0
-              ? slug.slugGroupProduct
-              : slug.slugCategoryProduct
-          }`,
-          "GET",
-          null
+        products = await productApi.getProductFilterByGroupProduct(
+          category.data[indexCategory].typeCategoryProduct === 0
+            ? slug.slugGroupProduct
+            : slug.slugCategoryProduct,
+          ""
         );
-
       const slugAction =
         category.data[indexCategory].typeCategoryProduct === 0
           ? slug.slugGroupProduct
@@ -69,11 +63,7 @@ export const loadSlugCondition = (slug, name, typeCategory) => {
 
 export const resetFilterProductRequest = (slug) => {
   return async (dispatch) => {
-    const result = await api(
-      `productsFilter?slugGroupProduct=${slug}`,
-      "GET",
-      null
-    );
+    const result = await productApi.getProductFilterByGroupProduct(slug, "");
     dispatch(loadListProduct(result.data));
     dispatch(resetFilterProduct());
   };
@@ -107,10 +97,9 @@ export const addFilterProductRequest = (data) => {
         if (element.type === 0) stringQuery += `&${element.query}`;
         else stringQuery += `&${element.query}=${element.data.id}`;
       });
-      const result = await api(
-        `productsFilter?slugGroupProduct=${slug}${stringQuery}`,
-        "GET",
-        null
+      const result = await productApi.getProductFilterByGroupProduct(
+        slug,
+        stringQuery
       );
       dispatch(loadListProduct(result.data));
       dispatch(loadingListProduct(false));
@@ -126,10 +115,9 @@ export const removeFilterProductRequest = (data) => {
     clone.forEach((element) => {
       stringQuery += `&${element.query}=${element.data.id}`;
     });
-    const result = await api(
-      `productsFilter?slugGroupProduct=${slug}${stringQuery}`,
-      "GET",
-      null
+    const result = await productApi.getProductFilterByGroupProduct(
+      slug,
+      stringQuery
     );
     dispatch(loadListProduct(result.data));
     dispatch(removeFilterProduct(clone));
@@ -176,12 +164,10 @@ export const loadListProductSorterRequest = (data) => {
       });
     stringQuery += `&filter=${sorter}`;
 
-    const result = await api(
-      `productsFilter?slugGroupProduct=${slug}${stringQuery}`,
-      "GET",
-      null
+    const result = await productApi.getProductFilterByGroupProduct(
+      slug,
+      stringQuery
     );
-    console.log(result);
     dispatch(loadListProduct(result.data));
     dispatch(loadingListProduct(false));
     dispatch(loadListProductSorter(sorter));

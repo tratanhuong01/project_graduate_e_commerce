@@ -8,7 +8,7 @@ function ColorProduct(props) {
   //
   return (
     <div className="w-full my-3">
-      <p className="font-bold text-xl font-semibold">MÀU SẮC :</p>
+      <p className="font-bold text-xl">MÀU SẮC :</p>
       <div className="w-full max-w-full flex scrollbar-css flex-shink">
         {colors.map((color, index) => {
           return (

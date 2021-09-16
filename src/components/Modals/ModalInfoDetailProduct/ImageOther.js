@@ -32,18 +32,13 @@ function ImageOther(props) {
             </div>
             <div className="w-3/5 relative flex " id="slide">
               <ScrollContainer
-                className={`w-full max-w-full flex overflow-hidden overflow-scroll scrollbar-css`}
+                className={`w-full max-w-full flex overflow-hidden scrollbar-css`}
               >
-                {images.map((image, pos) => {
-                  return (
-                    <img
-                      key={pos}
-                      src={image.src}
-                      alt=""
-                      className={`w-full h-80 object-cover z-0 rounded-lg  flex flex-shrink-0`}
-                    />
-                  );
-                })}
+                <img
+                  src={images[index].src}
+                  alt=""
+                  className={`w-full h-80 object-cover z-0 rounded-lg  flex flex-shrink-0`}
+                />
               </ScrollContainer>
             </div>
             <div className="w-1/5 flex items-center justify-start pl-6">

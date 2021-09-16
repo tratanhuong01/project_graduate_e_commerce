@@ -1,4 +1,6 @@
 import * as Types from "../../constants/ActionTypes";
+import * as productApi from "../../api/productApi";
+import * as billApi from "../../api/billApi";
 import api from "../../Utils/api";
 
 export const loadOrder = (orders) => {
@@ -7,6 +9,7 @@ export const loadOrder = (orders) => {
     orders,
   };
 };
+
 export const loadMoneyOrder = (orders) => {
   return {
     type: Types.LOAD_MONEY_ORDER,
@@ -35,9 +38,15 @@ export const checkOrderIsOutOfStockRequest = (carts) => {
     let orders = [];
     for (let index = 0; index < carts.length; index++) {
       const element = carts[index];
-      if (element.amount > 5) {
+      const result = await productApi.getItemCurrentByIdProduct(
+        element.idProduct
+      );
+      if (element.amount > 5 || element.amount > result.data) {
         count++;
-        orders.push(element);
+        orders.push({
+          item: element,
+          itemCurrent: result.data <= 5 ? result.data : 5,
+        });
       }
     }
     if (count > 0) dispatch(checkOrderIsOutOfStock(orders));
@@ -69,7 +78,7 @@ export const updateVoucherOrders = (voucher, remove) => {
 
 export const addOrderRequest = (data) => {
   return async (dispatch) => {
-    const order = await api("bills", "POST", {
+    const order = await billApi.addBill({
       id: null,
       billUser: data.user,
       status: 0,
@@ -95,14 +104,18 @@ export const addOrderRequest = (data) => {
     });
     for (let index = 0; index < data.list.length; index++) {
       const item = data.list[index];
-      const product = await api(`products/${item.idProduct}`, "GET", null);
-      await api("billDetails", "POST", {
+      const product = await productApi.getProductByIdProduct(item.idProduct);
+      billApi.addBillDetail({
         id: null,
         billDetail: order.data,
         productDetailBill: product.data,
         price: item.priceOutput * ((100 - item.sale) / 100),
         amount: item.amount,
       });
+      await productApi.updateItemCurrentAndItemSold(
+        item.amount,
+        item.idProduct
+      );
     }
     if (data.voucher) {
       await api(

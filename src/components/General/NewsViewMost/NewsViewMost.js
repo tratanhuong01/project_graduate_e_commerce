@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../Utils/api";
 import ItemNewsViewMost from "./ItemNewsViewMost/ItemNewsViewMost";
+import * as newsApi from "../../../api/newsApi";
 
 function NewsViewMost(props) {
   const [news, setNews] = useState(null);
@@ -8,12 +8,11 @@ function NewsViewMost(props) {
     //
     let mounted = true;
     const fetch = async () => {
-      const result = await api("getListNewsMostView", "GET", null);
+      const result = await newsApi.getListNewsMostView();
+      if (mounted) return;
       setNews(result.data);
     };
-    if (mounted) {
-      fetch();
-    }
+    fetch();
     return () => (mounted = false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

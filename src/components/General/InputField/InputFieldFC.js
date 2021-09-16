@@ -13,6 +13,7 @@ function InputFieldFC(props) {
     name,
     showError,
     onChange,
+    autoComplete,
   } = props;
   const Field = register(name, { required: true });
   return (
@@ -47,6 +48,8 @@ function InputFieldFC(props) {
           }}
           placeholder={placeHolder}
           disabled={disabled}
+          autoComplete={autoComplete ? "on" : "off"}
+          spellCheck={true}
         />
         <i
           className={

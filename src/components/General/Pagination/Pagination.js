@@ -10,7 +10,7 @@ function Pagination(props) {
   useEffect(() => {}, [index]);
   //
   return (
-    <ul className="flex justify-end items-center dark:text-white">
+    <ul className="flex justify-center items-center dark:text-white">
       <li
         onClick={() => {
           if (index === 0) return;
