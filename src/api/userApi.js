@@ -11,3 +11,7 @@ export const sendCodeEmail = (user) => {
   return api("sendCodeEmail", "POST", user);
   //
 };
+
+export const getTeleSupport = () => {
+  return api(`getTeleSupport`, "GET", null);
+};
