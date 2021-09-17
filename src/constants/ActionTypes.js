@@ -156,3 +156,15 @@ export const LOAD_BILL_USER_BY_INDEX = "LOAD_BILL_USER_BY_INDEX";
 //
 export const SEARCH_BILL = "SEARCH_BILL";
 // -------- bills --------- //
+
+// -------- messages --------- //
+export const START_CHAT_SUPPORT_LIVE = "START_CHAT_SUPPORT_LIVE";
+//
+export const LOAD_MESSAGES_SUPPORT_LIVE = "LOAD_MESSAGES_SUPPORT_LIVE";
+//
+export const UPDATE_ADMIN_SUPPORT_LIVE = "UPDATE_ADMIN_SUPPORT_LIVE";
+//
+export const UPDATE_GROUP_SUPPORT_LIVE = "UPDATE_GROUP_SUPPORT_LIVE";
+//
+export const UPDATE_FIRST_SUPPORT_LIVE = "UPDATE_FIRST_SUPPORT_LIVE";
+// -------- messages --------- //

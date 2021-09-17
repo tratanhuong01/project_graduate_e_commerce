@@ -1,25 +1,50 @@
 import React, { forwardRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 import ItemChat from "./ItemChat/ItemChat";
+import ItemChatFirst from "./ItemChatFirst";
+import ItemLoadingChat from "./ItemLoadingChat/ItemLoadingChat";
 
 function ContentChatRight(props, refData) {
   //
-  const { message, scrollBottomContent } = props;
+  const { scrollBottomContent } = props;
+  const messages = useSelector((state) => state.messages);
   useEffect(() => {
     scrollBottomContent();
+    //
   }, [scrollBottomContent]);
   //
-  return (
+  return messages.list.messagesList ? (
     <div
       ref={refData}
       className="w-full px-1 flex-1 flex items-start py-5 flex-col overflow-y-auto 
-    scrollbar-css"
+        scrollbar-css overflow-x-hidden"
     >
-      {message.messagesList.map((item, index) => {
-        if (item.userMessages)
-          return <ItemChat key={index} type={0} item={item} />;
-        else return <ItemChat key={index} type={1} item={item} />;
+      {messages.list.messagesList.map((item, index) => {
+        if (messages.first) {
+          if (item.userMessages)
+            return <ItemChat key={index} type={0} item={item} />;
+          else return <ItemChat key={index} type={1} item={item} />;
+        } else {
+          if (item.typeMessages === 1)
+            return (
+              <ItemChatFirst
+                key={index}
+                item={item}
+                admin={messages.admin}
+                type={0}
+              />
+            );
+          else {
+            if (item.userMessages)
+              return <ItemChat key={index} type={0} item={item} />;
+            else return <ItemChat key={index} type={1} item={item} />;
+          }
+        }
       })}
+      {messages.typing && <ItemLoadingChat admin={messages.admin} />}
     </div>
+  ) : (
+    ""
   );
 }
 

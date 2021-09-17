@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function ContentChatTop(props) {
   //
-  const { setInfoChat, userSupport } = props;
+  const messages = useSelector((state) => state.messages);
+  const { setInfoChat } = props;
   //
   return (
     <div
@@ -12,14 +14,14 @@ function ContentChatTop(props) {
       <div className="flex">
         <div className="w-12 h-12 relative">
           <img
-            src={userSupport.avatar}
+            src={messages.admin.avatar}
             alt=""
             className="w-12 h-12 rounded-full object-cover"
           />
           <span className="w-3 h-3 rounded-full absolute bottom-0 right-0 bg-green-500"></span>
         </div>
         <span className="font-semibold flex items-center pl-4 flex-wrap">
-          {`${userSupport.firstName} ${userSupport.lastName}`}
+          {`${messages.admin.firstName} ${messages.admin.lastName}`}
           <span className="text-gray-600 text-xs w-full">Đang hoạt động</span>
         </span>
       </div>

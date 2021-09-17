@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import api from "../../../../Utils/api";
-
+import { useSelector } from "react-redux";
+import * as messagesApi from "../../../../api/messagesApi";
 function ControlChatRight(props) {
   //
-  const { send, setSend, message, scrollBottomContent } = props;
+  const { send, setSend, scrollBottomContent } = props;
+  const messages = useSelector((state) => state.messages);
   const [content, setContent] = useState("");
   const sendMessage = async () => {
-    await api(`messages`, "POST", {
+    await messagesApi.addMessages({
       id: null,
       userMessages: null,
-      groupChatMessages: message.groupChat,
+      groupChatMessages: messages.group,
       guest: null,
       content: content,
       images: null,
@@ -19,6 +20,7 @@ function ControlChatRight(props) {
     setSend(!send);
     setContent("");
     scrollBottomContent();
+    messages.socket.emit("chatMessage", messages.admin.id);
   };
   //
   return (

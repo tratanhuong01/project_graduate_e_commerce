@@ -1,6 +1,8 @@
 import React from "react";
 
 function WaitingUserSupport(props) {
+  //
+  //
   return (
     <div
       className="fixed right-8 bottom-8 z-second"

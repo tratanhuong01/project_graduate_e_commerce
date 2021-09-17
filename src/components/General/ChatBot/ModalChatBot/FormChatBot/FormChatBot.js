@@ -6,18 +6,20 @@ import RuleFormChatBot from "./RuleFormChatBot/RuleFormChatBot";
 import Select from "./Select/Select";
 import InputFieldFC from "../../../InputField/InputFieldFC";
 import { REGEX_NUMBER_PHONE } from "../../../../../constants/Config";
-import * as messagesApi from "../../../../../api/messagesApi";
 import TextAreaFieldFC from "../../../TextAreaField/TextAreaFieldFC";
+import * as messagesAction from "../../../../../actions/messages/index";
+import { useDispatch, useSelector } from "react-redux";
 
 function FormChatBot(props) {
-  const { setGroupChat, userSupport } = props;
   const validationSchema = Yup.object().shape({
     nickName: Yup.string().required("Vui lòng chọn cách xưng hô !!"),
     nameCustomer: Yup.string().required("Tên không được để trống !!"),
     numberCustomer: Yup.string()
       .matches(REGEX_NUMBER_PHONE, "Số điện thoại không đúng định dạng !!")
       .required("Số điện thoại không được để trống !!"),
-    content: Yup.string().required("Số điện thoại không được để trống !!"),
+    content: Yup.string()
+      .required("Nội dung không được để trống !!")
+      .max(200, "Nội dung không được quá 200 kí tự !"),
     check: Yup.boolean().oneOf([true], "Bạn phải đồng ý điều khoản trên !!"),
   });
   const {
@@ -29,50 +31,24 @@ function FormChatBot(props) {
     resolver: yupResolver(validationSchema),
     shouldUnregister: false,
   });
+  const messages = useSelector((state) => state.messages);
+  const dispatch = useDispatch();
   return (
     <form
-      onSubmit={handleSubmit(async (data) => {
-        const groupChat = await messagesApi.addGroupChat({
-          id: null,
-          fullName: data.nameCustomer,
-          phone: data.numberCustomer,
-          sex: data.nickName,
-          avatar: "https://vacpa.edu.vn/Content/images/avatar/avatar.png",
-          typeGroupChat: 0,
-          timeCreated: null,
-        });
-        await messagesApi.addMessages({
-          id: null,
-          userMessages: userSupport,
-          groupChatMessages: groupChat.data,
-          guest: null,
-          content: `🥰🥰 Chào mừng ${data.nickName} đã đến với hsmart , ${data.nickName} cần hổ trợ gì ạ ? 🥰🥰 `,
-          images: null,
-          timeCreated: null,
-          typeMessages: 0,
-        });
-        await messagesApi.addMessages({
-          id: null,
-          userMessages: null,
-          groupChatMessages: groupChat.data,
-          guest: null,
-          content: data.content,
-          images: null,
-          timeCreated: null,
-          typeMessages: 0,
-        });
-        await messagesApi.addMessages({
-          id: null,
-          userMessages: null,
-          groupChatMessages: groupChat.data,
-          guest: null,
-          content: null,
-          images: null,
-          timeCreated: null,
-          typeMessages: -1,
-        });
-        setGroupChat(groupChat.data);
+      onSubmit={handleSubmit((data) => {
+        dispatch(
+          messagesAction.startChatSupportLiveRequest({
+            name: data.nameCustomer,
+            nickName: data.nickName,
+            phone: data.numberCustomer,
+            content: data.content,
+            admin: messages.admin,
+            socket: messages.socket,
+          })
+        );
       })}
+      className="w-full overflow-y-auto scrollbar-css px-3"
+      style={{ height: 400, maxHeight: 400 }}
     >
       <Select
         register={register}

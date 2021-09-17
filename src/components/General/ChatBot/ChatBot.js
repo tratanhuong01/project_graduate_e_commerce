@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from "react";
 import SupportLiveRight from "../SupportLiveChat/SupportLiveRight";
 import ModalChatBot from "./ModalChatBot/ModalChatBot";
-import * as userApi from "../../../api/userApi";
 import WaitingUserSupport from "./ModalChatBot/WaitingUserSupport/WaitingUserSupport";
+import * as messagesAction from "../../../actions/messages/index";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function ChatBot(props) {
   //
   const [infoChat, setInfoChat] = useState(false);
-  const [groupChat, setGroupChat] = useState(null);
-  const [userSupport, setUserSupport] = useState(null);
+  const dispatch = useDispatch();
+  const messages = useSelector((state) => state.messages);
   useEffect(() => {
     //
     let timeOut;
-    let unmounted = false;
-    async function fetch() {
-      const result = await userApi.getTeleSupport();
-      if (unmounted) return;
-      setUserSupport(result.data);
-    }
-    if (groupChat === null)
+    if (messages.group === null)
       if (infoChat) {
         timeOut = setTimeout(() => {
-          fetch();
+          dispatch(messagesAction.randomUserSupportLiveRequest());
         }, 2000);
       }
     return () => {
-      unmounted = true;
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,20 +41,12 @@ function ChatBot(props) {
         </div>
       )}
       {infoChat ? (
-        userSupport === null || userSupport === "" ? (
+        messages.admin === null || messages.admin === "" ? (
           <WaitingUserSupport />
-        ) : groupChat ? (
-          <SupportLiveRight
-            setInfoChat={setInfoChat}
-            groupChat={groupChat}
-            userSupport={userSupport}
-          />
+        ) : messages.group ? (
+          <SupportLiveRight setInfoChat={setInfoChat} />
         ) : (
-          <ModalChatBot
-            setInfoChat={setInfoChat}
-            setGroupChat={setGroupChat}
-            userSupport={userSupport}
-          />
+          <ModalChatBot setInfoChat={setInfoChat} />
         )
       ) : (
         ""

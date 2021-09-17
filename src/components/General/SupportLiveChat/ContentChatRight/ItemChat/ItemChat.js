@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 function ItemChat(props) {
   //
   const { type, item } = props;
+  const ref = useRef(null);
+  useEffect(() => {
+    //
+    if (ref.current && type === 0)
+      if (ref.current.offsetWidth < 56)
+        ref.current.style.maxWidth = "calc(75%)";
 
+    //
+  }, [ref]);
   //
   return (
     <div
-      title="3727438274837824"
+      title={item.timeCreated}
       className={`w-full flex my-2 ${
         type === 0 ? "justify-start" : "justify-end "
       } `}
@@ -30,6 +38,7 @@ function ItemChat(props) {
           </div>
         )}
         <div
+          ref={ref}
           className={`ml-4 rounded-lg p-2 ${
             type === 0 ? "bg-gray-200 text-gray-700 " : "bg-organce text-white"
           }`}
