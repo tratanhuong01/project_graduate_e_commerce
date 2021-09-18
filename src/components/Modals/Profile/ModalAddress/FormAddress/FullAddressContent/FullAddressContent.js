@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function FullAddressContent(props) {
   //
   const { check, setShow, content, reset } = props;
+  useEffect(() => {}, [check]);
   //
   return (
     <>
@@ -22,18 +23,17 @@ function FullAddressContent(props) {
         )}
       </div>
       <span
-        className="bx bx-chevron-down absolute top-3 text-gray-600 
+        className="bx bx-chevron-down absolute top-1.5 text-gray-600 
         right-5 text-2xl"
       ></span>
       <div
         onClick={() => {
-          reset({
-            cityProvince: { name: "" },
-            district: { name: "" },
-            wards: { name: "" },
-          });
+          reset("");
+          reset("");
+          reset("");
+          reset("");
         }}
-        className="w-4 h-4 rounded-full bg-gray-500 text-white flex justify-center items-center text-sm  absolute top-4 right-11 cursor-pointer"
+        className="w-4 h-4 rounded-full bg-gray-500 text-white flex justify-center items-center text-sm  absolute top-4 right-14 cursor-pointer"
       >
         <i className="bx bx-x"></i>
       </div>

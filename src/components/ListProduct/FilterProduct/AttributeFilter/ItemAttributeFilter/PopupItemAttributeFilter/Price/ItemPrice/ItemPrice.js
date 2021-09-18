@@ -22,6 +22,8 @@ function ItemPrice(props) {
                 query: `priceFrom=${price.from}&priceTo=${price.to}`,
                 type: 0,
               },
+              sorter: listProduct.sorter,
+              typeProduct: listProduct.typeProduct,
               slug: listProduct.slug,
             })
           );

@@ -6,6 +6,10 @@ function FooterFilterProduct(props) {
   //
   const listProduct = useSelector((state) => state.listProduct);
   const dispatch = useDispatch();
+  const check = (item) => {
+    const index = listProduct.typeProduct.findIndex((dt) => dt === item);
+    return index !== -1 ? true : false;
+  };
   //
   return (
     <div className="w-full flex">
@@ -16,16 +20,54 @@ function FooterFilterProduct(props) {
             thoại
           </li>
           <li className="pr-3 mr-3 flex items-center">
-            <input type="checkbox" className="transform scale-150 mr-2" />
+            <input
+              onChange={(event) => {
+                dispatch(listProductsAction.loadingListProduct());
+                const timeOut = setTimeout(() => {
+                  dispatch(
+                    listProductsAction.loadListProductByTypeProductRequest({
+                      filters: listProduct.filters,
+                      type: event.target.checked ? 0 : 1,
+                      slug: listProduct.slug,
+                      typeProduct: listProduct.typeProduct,
+                      item: 0,
+                    })
+                  );
+                }, 500);
+                return () => {
+                  clearTimeout(timeOut);
+                };
+              }}
+              type="checkbox"
+              className="transform scale-150 mr-2"
+              checked={check(0)}
+            />
             <span>Mới</span>
           </li>
           <li className="pr-3 mr-3 flex items-center">
-            <input type="checkbox" className="transform scale-150 mr-2" />
+            <input
+              onChange={(event) => {
+                dispatch(listProductsAction.loadingListProduct());
+                const timeOut = setTimeout(() => {
+                  dispatch(
+                    listProductsAction.loadListProductByTypeProductRequest({
+                      filters: listProduct.filters,
+                      type: event.target.checked ? 0 : 1,
+                      slug: listProduct.slug,
+                      typeProduct: listProduct.typeProduct,
+                      item: 1,
+                    })
+                  );
+                }, 500);
+                return () => {
+                  clearTimeout(timeOut);
+                };
+              }}
+              type="checkbox"
+              className="transform scale-150 mr-2"
+              checked={check(1)}
+            />
             <span>Cũ</span>
-          </li>
-          <li className="pr-3 mr-3 flex items-center">
-            <input type="checkbox" className="transform scale-150 mr-2" />
-            <span>Trả góp 0%</span>
           </li>
         </ul>
       </div>
@@ -39,6 +81,7 @@ function FooterFilterProduct(props) {
                   filters: listProduct.filters,
                   sorter: event.target.value,
                   slug: listProduct.slug,
+                  typeProduct: listProduct.typeProduct,
                 })
               );
             }, 500);
@@ -48,6 +91,7 @@ function FooterFilterProduct(props) {
           }}
           className="py-1 pr-4 pl-1 rounded-sm border-2 border-solid border-gray-300"
         >
+          <option value="0">Tất cả</option>
           <option value="0">Mới nhất</option>
           <option value="1">Bán chạy</option>
           <option value="2">Khuyến mãi</option>

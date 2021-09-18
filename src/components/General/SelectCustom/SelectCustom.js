@@ -59,7 +59,9 @@ function SelectCustom(props) {
         }`}
       >
         <i className="bx bx-chevron-down absolute top-1.5 right-3 text-3xl"></i>
-        <span>{concat ? `${content[attribute]}` : content[attribute]}</span>
+        <span>
+          {concat ? `${concat} ${content[attribute]}` : content[attribute]}
+        </span>
       </div>
       {show && (
         <div className="w-full bg-white absolute top-full left-0 right-0 z-50">

@@ -52,6 +52,18 @@ function MainPayment(props) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+  useEffect(() => {
+    if (user && orders.infoPayment.ward)
+      dispatch(
+        ordersAction.calcalatorFeeRequest({
+          districtTo: JSON.parse(orders.infoPayment.district).DistrictID,
+          WardCode: JSON.parse(orders.infoPayment.ward).WardCode,
+          mode: 0,
+        })
+      );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, orders.infoPayment.ward, address]);
   useEffect(() => {}, [orders.loading]);
   //
   return orders.loading ? (

@@ -3,7 +3,8 @@ import * as Types from "../constants/ActionTypes";
 const initialState = {
   products: [],
   filters: [],
-  sorter: 0,
+  sorter: -1,
+  typeProduct: [],
   search: null,
   slug: null,
   name: "",
@@ -39,6 +40,9 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.LOAD_LIST_PRODUCT_SORTER:
       state.sorter = action.sorter;
+      return { ...state };
+    case Types.LOAD_LIST_PRODUCT_TYPE_PRODUCT:
+      state.typeProduct = action.typeProduct;
       return { ...state };
     default:
       return state;

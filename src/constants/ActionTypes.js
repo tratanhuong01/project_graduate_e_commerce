@@ -70,6 +70,8 @@ export const REMOVE_FILTER_PRODUCT = "REMOVE_FILTER_PRODUCT";
 export const LOADING_LIST_PRODUCT = "LOADING_LIST_PRODUCT";
 //
 export const LOAD_LIST_PRODUCT_SORTER = "LOAD_LIST_PRODUCT_SORTER";
+//
+export const LOAD_LIST_PRODUCT_TYPE_PRODUCT = "LOAD_LIST_PRODUCT_TYPE_PRODUCT";
 // --------prodocut-------- //
 
 // --------cart-------- //
@@ -145,6 +147,8 @@ export const CHECK_ORDERS_IS_OUT_OF_STOCK = "CHECK_ORDERS_IS_OUT_OF_STOCK";
 export const UPDATE_ORDER_IS_OUT_OF_STOCK = "UPDATE_ORDER_IS_OUT_OF_STOCK";
 //
 export const UPDATE_VOUCHER_ORDERS = "UPDATE_VOUCHER_ORDERS";
+//
+export const UPDATE_FEE_OR_SERVICE_ORDER = "UPDATE_FEE_OR_SERVICE_ORDER";
 // -------- orders --------- //
 
 // -------- bills --------- //

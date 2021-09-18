@@ -21,6 +21,8 @@ function ItemBrand(props) {
                 name: brand.nameBrand,
                 query: "brand",
               },
+              typeProduct: listProduct.typeProduct,
+              sorter: listProduct.sorter,
               slug: listProduct.slug,
             })
           );

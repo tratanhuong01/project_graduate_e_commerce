@@ -9,8 +9,7 @@ function ItemChat(props) {
     if (ref.current && type === 0)
       if (ref.current.offsetWidth < 56)
         ref.current.style.maxWidth = "calc(75%)";
-
-    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref]);
   //
   return (

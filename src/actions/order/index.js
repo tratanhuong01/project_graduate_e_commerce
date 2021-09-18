@@ -2,6 +2,7 @@ import * as Types from "../../constants/ActionTypes";
 import * as productApi from "../../api/productApi";
 import * as billApi from "../../api/billApi";
 import api from "../../Utils/api";
+import * as addressApi from "../../api/addressApi";
 
 export const loadOrder = (orders) => {
   return {
@@ -125,5 +126,54 @@ export const addOrderRequest = (data) => {
       );
     }
     dispatch({ type: Types.ORDER_SUCCESS });
+  };
+};
+
+export const calcalatorFeeRequest = (data) => {
+  return async (dispatch) => {
+    // const { districtFrom, districtTo, serviceID, mode } = data;
+    if (data.mode === 0) {
+      const result = await addressApi.getSerivce({
+        districtTo: data.districtTo,
+      });
+      dispatch(calcalatorFee(result.data.data, 0));
+      if (result.data.data) {
+        dispatch(
+          calcalatorFeeRequestTwo({
+            service: result.data.data[0],
+            districtTo: data.districtTo,
+            WardCode: data.WardCode,
+          })
+        );
+      }
+    }
+  };
+};
+
+export const calcalatorFeeRequestTwo = (data) => {
+  return async (dispatch) => {
+    dispatch(calcalatorFee(data.service, 2));
+    const resultTwo = await addressApi.calcalatorFee({
+      districtTo: data.districtTo,
+      ServiceID: data.service.service_id,
+      WardCode: data.WardCode,
+    });
+    const resultOne = await addressApi.calcalatorDeliveryTime({
+      districtTo: data.districtTo,
+      ServiceID: data.service.service_id,
+      WardCode: data.WardCode,
+    });
+    dispatch(calcalatorFee(resultTwo.data.data.total, 1));
+    const timestamp = resultOne.data.data.leadtime;
+    const date = new Date(timestamp * 1000);
+    dispatch(calcalatorFee(date.toLocaleDateString("en-US"), 3));
+  };
+};
+
+export const calcalatorFee = (data, mode) => {
+  return {
+    type: Types.UPDATE_FEE_OR_SERVICE_ORDER,
+    data,
+    mode,
   };
 };

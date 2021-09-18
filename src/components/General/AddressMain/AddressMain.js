@@ -42,9 +42,9 @@ function AddressMain(props) {
         <div className="flex py-0.5 items-center">
           <ul className="flex flex-col">
             <li>{address.details}</li>
-            <li>{address.wards}</li>
-            <li>{address.district}</li>
-            <li>{address.cityProvince}</li>
+            <li>{JSON.parse(address.wards).WardName}</li>
+            <li>{JSON.parse(address.district).DistrictName}</li>
+            <li>{"Tỉnh " + JSON.parse(address.cityProvince).ProvinceName}</li>
           </ul>
         </div>
       </div>

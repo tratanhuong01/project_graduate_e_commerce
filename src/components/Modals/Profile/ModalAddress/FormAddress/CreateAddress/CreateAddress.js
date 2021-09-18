@@ -1,40 +1,33 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import InputSearchAddress from "./InputSearchAddress/InputSearchAddress";
 import ItemAddressRender from "./ItemAddressRender/ItemAddressRender";
+import * as addressApi from "../../../../../../api/addressApi";
 
 function CreateAddress(props) {
   //
   const [list, setList] = useState([]);
   const [listCurrent, setListCurrent] = useState([]);
   const [current, setCurrent] = useState(0);
-  const [type, setType] = useState("p");
-  const { setProvince, setDistrict, setWards, setShow } = props;
+  const { setProvince, setDistrict, setWards, setShow, setFullAddress } = props;
   const data = ["Tỉnh/Thành phố", "Quận/Huyện", "Phường/Xã"];
+  const [item, setItem] = useState(null);
   const [search, setSearch] = useState("");
   useEffect(() => {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await axios.get(
-        `https://provinces.open-api.vn/api/p?depth=2`
-      );
+      const result = await addressApi.getAddress({
+        data: null,
+        name: "province",
+      });
       if (unmounted) return;
-      setList(result.data);
-      setListCurrent(result.data);
+      setList(result.data.data);
+      setListCurrent(result.data.data);
     }
     fetch();
     return () => (unmounted = true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  let dataSearch = list;
-  let dataRender = listCurrent;
-  if (list.hasOwnProperty("districts")) dataSearch = list.districts;
-  if (listCurrent.hasOwnProperty("districts"))
-    dataRender = listCurrent.districts;
-  if (list.hasOwnProperty("wards")) dataSearch = list.wards;
-  if (listCurrent.hasOwnProperty("wards")) dataRender = listCurrent.wards;
-
   //
   return (
     <div className="w-full px-2 my-1 bg-white absolute top-full left-0 z-20 dark:bg-dark-second">
@@ -60,23 +53,25 @@ function CreateAddress(props) {
           })}
         </ul>
         <InputSearchAddress
-          type={type}
           current={current}
-          dataSearch={dataSearch}
+          list={list}
           setListCurrent={setListCurrent}
           search={search}
           setSearch={setSearch}
+          item={item}
+          setItem={setItem}
         />
         <ItemAddressRender
-          dataRender={dataRender}
+          listCurrent={listCurrent}
+          setFullAddress={setFullAddress}
           setSearch={setSearch}
           setProvince={setProvince}
-          setType={setType}
           setWards={setWards}
           setShow={setShow}
           setCurrent={setCurrent}
           setDistrict={setDistrict}
-          type={type}
+          item={item}
+          setItem={setItem}
           setList={setList}
           setListCurrent={setListCurrent}
           current={current}

@@ -17,7 +17,7 @@ function ItemChatFirst(props) {
     return () => {
       clearTimeout(timeOut);
     };
-    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return first ? (
     <ItemChat item={item} type={type} />

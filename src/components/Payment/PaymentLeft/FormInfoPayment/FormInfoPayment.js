@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddressPayment from "./AddressPayment/AddressPayment";
 import * as ordersAction from "../../../../actions/order/index";
 import InputFieldFC from "../../../General/InputField/InputFieldFC";
+import SelectCustom from "../../../General/SelectCustom/SelectCustom";
 
 function FormInfoPayment(props) {
   //
@@ -61,6 +62,32 @@ function FormInfoPayment(props) {
         }
       />
       <AddressPayment address={address} />
+      <SelectCustom
+        list={orders.service}
+        className={
+          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 relative"
+        }
+        attribute={"short_name"}
+        placeHolder={"Dịch vụ vận chuyển"}
+        table={"dịch vụ vận chuyển"}
+        setData={(item) => {
+          console.log(item);
+          dispatch(
+            ordersAction.calcalatorFeeRequestTwo({
+              service: item,
+              districtTo: JSON.parse(orders.infoPayment.district).DistrictID,
+              WardCode: JSON.parse(orders.infoPayment.ward).WardCode,
+            })
+          );
+        }}
+        dataProps={
+          orders.serviceChoose
+            ? orders.serviceChoose.short_name === "Đi bộ"
+              ? "Đường bộ"
+              : "Đường hàng không"
+            : null
+        }
+      />
       <textarea
         className="w-full p-2.5 rounded-lg mb-3 border-2 border-solid border-gray-200 resize-none h-20 dark:bg-dark-third dark:border-dark-third"
         placeholder="Ghi chú (tùy chọn).."

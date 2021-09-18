@@ -19,7 +19,10 @@ const initialState = {
   paymentMethod: 0,
   outOfStock: false,
   listOutOfStock: [],
+  service: [],
+  serviceChoose: null,
   loading: true,
+  deliveryTime: null,
 };
 
 const myReducer = (state = initialState, action) => {
@@ -74,7 +77,6 @@ const myReducer = (state = initialState, action) => {
               state.infoPayment[obj] !== null
             )
               count++;
-
       if (count === 5) state.infoPayment.status = true;
 
       switch (action.index) {
@@ -139,6 +141,24 @@ const myReducer = (state = initialState, action) => {
               break;
           }
         }
+      }
+      return { ...state };
+    case Types.UPDATE_FEE_OR_SERVICE_ORDER:
+      switch (action.mode) {
+        case 0:
+          state.service = action.data;
+          break;
+        case 1:
+          state.fee = action.data;
+          break;
+        case 2:
+          state.serviceChoose = action.data;
+          break;
+        case 3:
+          state.deliveryTime = action.data;
+          break;
+        default:
+          break;
       }
       return { ...state };
     default:
