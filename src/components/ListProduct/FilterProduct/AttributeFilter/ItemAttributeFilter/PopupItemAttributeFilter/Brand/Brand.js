@@ -13,7 +13,9 @@ function Brand(props) {
     let unmounted = false;
     async function fetch() {
       const result = await api(
-        `brands/slugGroupProduct/${listProduct.slug}`,
+        listProduct.slug
+          ? `brands/slugGroupProduct/${listProduct.slug}`
+          : `brandsAll`,
         "GET",
         null
       );

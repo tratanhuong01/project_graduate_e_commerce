@@ -1,5 +1,6 @@
 import api from "../Utils/api";
 
+
 export const addBill = (bill) => {
   return api("bills", "POST", bill);
 };

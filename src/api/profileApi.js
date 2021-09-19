@@ -1,8 +1,12 @@
 import api from "../Utils/api";
 
-export const deleteAddress = (id) => {
+export const deleteAddress = (idAddress, idUser) => {
   //
-  return api(`addresses/${id}`, "DELETE", null);
+  return api(
+    `addresses?idAddress=${idAddress}&idUser=${idUser}`,
+    "DELETE",
+    null
+  );
   //
 };
 
@@ -20,7 +24,7 @@ export const setDefaultAddressByIdUser = (idUser, idAddress) => {
 
 export const addAddressByIdUser = (address) => {
   //
-  return api("addresses", "POST", address);
+  return api(`addresses?idUser=${address.addressUser.id}`, "POST", address);
   //
 };
 

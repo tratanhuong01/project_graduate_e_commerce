@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../../constants/Config";
+import Star from "../../../../DetailProduct/ProductView/RateComment/Star/Star";
 
 function CostAndLink(props) {
   //
@@ -27,12 +28,8 @@ function CostAndLink(props) {
           )}
         </span>
       </p>
-      <div className="flex justify-center items-center my-2">
-        <span className="bx bxs-star text-yellow-500 mr-1"></span>
-        <span className="bx bxs-star text-yellow-500 mr-1"></span>
-        <span className="bx bxs-star text-yellow-500 mr-1"></span>
-        <span className="bx bxs-star text-yellow-500 mr-1"></span>
-        <span className="bx bxs-star text-yellow-500 mr-1"></span>
+      <div className="flex justify-center items-center my-2 text-yellow-500">
+        <Star star={product.review / 10} />
       </div>
       <p
         className="p-2 pt-0 text-organce text-center cursor-pointer 

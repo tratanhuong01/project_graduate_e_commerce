@@ -21,7 +21,7 @@ function ItemHorizontalCategory(props) {
       justify-center items-center dark:text-white cursor-pointer `}
     >
       <div
-        className={`w-16 h-16 rounded-full border-2 border-solid border-gray-200 flex justify-center items-center dark:border-dark-third`}
+        className={`w-16 h-16 rounded-full border-2 border-solid border-gray-200 flex justify-center items-center dark:border-dark-third rotate360Deg `}
       >
         <span className={`${item.categoryProduct.icon} text-4xl`}></span>
       </div>

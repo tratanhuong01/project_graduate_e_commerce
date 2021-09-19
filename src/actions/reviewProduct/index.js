@@ -1,6 +1,7 @@
 import * as Types from "../../constants/ActionTypes";
 import * as modalsAction from "../../actions/modal/index";
 import * as reviewProductApi from "../../api/reviewProductApi";
+import * as productApi from "../../api/productApi";
 
 export const loadReviewProductData = (data) => {
   return {
@@ -112,6 +113,23 @@ export const addReviewProductRequest = (data) => {
     );
     const result_2 = await reviewProductApi.getReviewProductByProductMain(
       products.idProduct
+    );
+    let result =
+      (result_2.data.oneStar * 5 * 1 +
+        result_2.data.twoStar * 5 * 2 +
+        result_2.data.threeStar * 5 * 3 +
+        result_2.data.fourStar * 5 * 4 +
+        result_2.data.fiveStar * 5 * 5) /
+      ((result_2.data.oneStar +
+        result_2.data.twoStar +
+        result_2.data.threeStar +
+        result_2.data.fourStar +
+        result_2.data.fiveStar) *
+        5 *
+        5);
+    await productApi.updateReviewProduct(
+      products.idProduct,
+      ((result * 10) / 2).toFixed(1) * 10
     );
     dispatch(modalsAction.closeModal());
     dispatch(

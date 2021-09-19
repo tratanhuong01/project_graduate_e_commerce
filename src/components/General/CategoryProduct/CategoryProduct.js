@@ -38,7 +38,7 @@ function CategoryProduct(props) {
       )}
 
       <ScrollContainer
-        className={`w-full max-w-full flex overflow-hidden overflow-scroll scrollbar-css
+        className={`w-full max-w-full flex overflow-hidden scrollbar-css
          ${products.idCategoryProduct}`}
       >
         {products.listProductCategory.map((product, index) => {

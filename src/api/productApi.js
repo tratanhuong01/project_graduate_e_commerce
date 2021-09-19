@@ -64,9 +64,21 @@ export const getProductByCategory = (id) => {
 };
 
 export const getProductFilterByGroupProduct = (slug, query) => {
-  return api(`productsFilter?slugGroupProduct=${slug}${query}`, "GET", null);
+  return api(
+    `productsFilter?data=1&${slug ? "slugGroupProduct=" + slug : ""}${query}`,
+    "GET",
+    null
+  );
 };
 
 export const groupProductsBySlugCategory = (categorySlug) => {
   return api(`groupProductsBySlugCategory/${categorySlug}`, "GET", null);
+};
+
+export const updateReviewProduct = (idProduct, review) => {
+  return api(
+    `infoProducts/review/update/?idProduct=${idProduct}&review=${review}`,
+    "PUT",
+    null
+  );
 };

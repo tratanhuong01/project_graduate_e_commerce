@@ -4,7 +4,7 @@ import ItemPopupNotify from "./ItemPopupNotify/ItemPopupNotify";
 function PopupNotify(props) {
   return (
     <div
-      className="rounded-sm absolute -top-5 mt-16 mx-5 right-0  z-main border-2 border-solid 
+      className="rounded-sm absolute -top-10 mt-20 mx-5 right-0  z-main border-2 border-solid 
       border-gray-200 animate__animated animate__zoomIn"
       style={{
         width: 380,

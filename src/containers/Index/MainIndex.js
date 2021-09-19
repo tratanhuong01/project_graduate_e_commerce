@@ -15,7 +15,10 @@ function MainIndex(props) {
   return (
     <div className="w-full">
       <SliderProduct />
-      <HorizontalCategory products={products} />
+      <HorizontalCategory
+        className="xl:w-4/5 mx-auto w-full flex flex-wrap my-3 justify-center text-gray-800"
+        categorys={products.listCategoryByGroupProduct}
+      />
       <TopSell products={products.listProductTopSell[0]} />
       <Rule />
       <TopSaleToday products={products.listProductSaleToday} />

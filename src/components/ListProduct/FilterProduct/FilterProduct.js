@@ -13,7 +13,7 @@ function FilterProduct(props) {
   //
   return (
     <div className="w-full mx-auto">
-      <AttributeFilter />
+      {!listProduct.type && <AttributeFilter />}
       <FooterFilterProduct />
       {listProduct.filters.length > 0 && (
         <div className="w-full my-3 flex flex-wrap">

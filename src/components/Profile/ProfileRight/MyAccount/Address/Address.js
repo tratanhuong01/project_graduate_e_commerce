@@ -10,7 +10,10 @@ import {
 } from "../../../../../constants/Config";
 
 async function deleteAddress(address) {
-  const result = await profileApi.deleteAddress(address.id);
+  const result = await profileApi.deleteAddress(
+    address.id,
+    address.addressUser.id
+  );
   return result.data;
 }
 
