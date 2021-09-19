@@ -92,8 +92,10 @@ export const addOrderRequest = (data) => {
       fullName: data.infoPayment.fullName,
       phone: data.infoPayment.phone,
       bank: null,
-      address: `${data.infoPayment.address} , ${data.infoPayment.ward} , ${data.infoPayment.district} , 
-      ${data.infoPayment.cityProvince}`,
+      address: `${data.infoPayment.address} , ${
+        JSON.parse(data.infoPayment.ward).WardName
+      } , ${JSON.parse(data.infoPayment.district).DistrictName} , 
+      ${JSON.parse(data.infoPayment.cityProvince).ProvinceName}`,
       note: data.infoPayment.note,
       sale: data.sale,
       fee: data.fee,
@@ -166,7 +168,15 @@ export const calcalatorFeeRequestTwo = (data) => {
     dispatch(calcalatorFee(resultTwo.data.data.total, 1));
     const timestamp = resultOne.data.data.leadtime;
     const date = new Date(timestamp * 1000);
-    dispatch(calcalatorFee(date.toLocaleDateString("en-US"), 3));
+    const dateArray = date.toLocaleDateString("en-US").split("/");
+    dispatch(
+      calcalatorFee(
+        `${dateArray[1] < 10 ? `0${dateArray[1]}` : dateArray[1]}/${
+          dateArray[0] < 10 ? `0${dateArray[0]}` : dateArray[0]
+        }/${dateArray[2]}`,
+        3
+      )
+    );
   };
 };
 

@@ -11,7 +11,7 @@ function ItemNewsViewMost(props) {
       <div className="w-1/4 news__left relative cursor-pointer">
         <img
           src={newData.thumbnail}
-          className="w-full h-24 rounded-lg object-cover"
+          className="w-full h-16 rounded-lg object-cover"
           alt=""
         />
       </div>

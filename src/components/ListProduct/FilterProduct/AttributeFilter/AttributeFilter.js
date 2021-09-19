@@ -15,12 +15,13 @@ function AttributeFilter(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     //
+
     let unmounted = false;
     if (slug) {
       async function fetch() {
+        dispatch(listProductsAction.resetAllFilterSorterSearchListProduct());
         const result = await api(`getFilterByGroupProduct/${slug}`);
         if (unmounted) return;
-        dispatch(listProductsAction.resetAllFilterSorterSearchListProduct());
         setFilters(result.data);
       }
       fetch();
@@ -32,24 +33,28 @@ function AttributeFilter(props) {
   }, [slug]);
   //
   return (
-    <div className="w-full flex flex-wrap mb-3 -ml-2">
-      <ItemAttributeFilter
-        onClick={(index) => setIndex(index)}
-        name="Hãng"
-        index={0}
-        indexCurrent={index}
-        slug={slug}
-      >
-        <Brand setIndex={setIndex} slug={slug} />
-      </ItemAttributeFilter>
-      <ItemAttributeFilter
-        onClick={(index) => setIndex(index)}
-        name="Giá"
-        index={1}
-        indexCurrent={index}
-      >
-        <Price setIndex={setIndex} />
-      </ItemAttributeFilter>
+    <div className="w-full flex flex-wrap mb-3 -ml-2 z-0">
+      {listProduct.products && (
+        <>
+          <ItemAttributeFilter
+            onClick={(index) => setIndex(index)}
+            name="Hãng"
+            index={0}
+            indexCurrent={index}
+            slug={slug}
+          >
+            <Brand setIndex={setIndex} slug={slug} />
+          </ItemAttributeFilter>
+          <ItemAttributeFilter
+            onClick={(index) => setIndex(index)}
+            name="Giá"
+            index={1}
+            indexCurrent={index}
+          >
+            <Price setIndex={setIndex} />
+          </ItemAttributeFilter>
+        </>
+      )}
       {filters.map((item, pos) => {
         return (
           <ItemAttributeFilter

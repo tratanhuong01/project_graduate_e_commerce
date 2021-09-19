@@ -26,43 +26,52 @@ export const loadListProduct = (products) => {
 export const loadListProductRequest = (slug) => {
   return async (dispatch) => {
     let products = null;
-    const category = await productApi.getAllCategoryProduct();
-    const group = await productApi.getAllGroupProduct();
-    const indexCategory = category.data.findIndex(
-      (item) => item.slugCategoryProduct === slug.slugCategoryProduct
-    );
-    const indexGroup = group.data.findIndex(
-      (item) =>
-        item.slugGroupProduct === slug.slugCategoryProduct ||
-        item.slugGroupProduct === slug.slugGroupProduct
-    );
-    if (indexCategory !== -1) {
-      const type =
-        category.data[indexCategory].typeCategoryProduct === 0 &&
-        slug.slugGroupProduct === null
-          ? true
-          : false;
-      if (type)
-        products = await productApi.getProductByCategory(
-          category.data[indexCategory].id
-        );
-      else
-        products = await productApi.getProductFilterByGroupProduct(
+    if (
+      typeof slug.slugGroupProduct === "undefined" &&
+      typeof slug.slugCategoryProduct === "undefined"
+    ) {
+      const all = await productApi.getProductAllCategory(12, 0, 1);
+      dispatch(loadListProduct(all.data));
+      dispatch(loadSlugCondition(null, null, false));
+    } else {
+      const category = await productApi.getAllCategoryProduct();
+      const group = await productApi.getAllGroupProduct();
+      const indexCategory = category.data.findIndex(
+        (item) => item.slugCategoryProduct === slug.slugCategoryProduct
+      );
+      const indexGroup = group.data.findIndex(
+        (item) =>
+          item.slugGroupProduct === slug.slugCategoryProduct ||
+          item.slugGroupProduct === slug.slugGroupProduct
+      );
+      if (indexCategory !== -1) {
+        const type =
+          category.data[indexCategory].typeCategoryProduct === 0 &&
+          slug.slugGroupProduct === slug.slugCategoryProduct
+            ? true
+            : false;
+        if (type)
+          products = await productApi.getProductByCategory(
+            category.data[indexCategory].id
+          );
+        else
+          products = await productApi.getProductFilterByGroupProduct(
+            category.data[indexCategory].typeCategoryProduct === 0
+              ? slug.slugGroupProduct
+              : slug.slugCategoryProduct,
+            ""
+          );
+        const slugAction =
           category.data[indexCategory].typeCategoryProduct === 0
             ? slug.slugGroupProduct
-            : slug.slugCategoryProduct,
-          ""
-        );
-      const slugAction =
-        category.data[indexCategory].typeCategoryProduct === 0
-          ? slug.slugGroupProduct
-          : slug.slugCategoryProduct;
-      const nameAction = group.data[indexGroup]
-        ? group.data[indexGroup].nameGroupProduct
-        : category.data[indexCategory].nameCategoryProduct;
-      dispatch(loadListProduct(products.data));
-      dispatch(loadSlugCondition(slugAction, nameAction, type));
-    } else dispatch(loadListProduct([]));
+            : slug.slugCategoryProduct;
+        const nameAction = group.data[indexGroup]
+          ? group.data[indexGroup].nameGroupProduct
+          : category.data[indexCategory].nameCategoryProduct;
+        dispatch(loadListProduct(products.data));
+        dispatch(loadSlugCondition(slugAction, nameAction, type));
+      } else dispatch(loadListProduct([]));
+    }
     dispatch(loadingListProduct(false));
   };
 };

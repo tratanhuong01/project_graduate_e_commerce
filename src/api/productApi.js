@@ -24,9 +24,13 @@ export const getProductByIdProduct = (idProduct) => {
   //
 };
 
-export const getProductBySlug = () => {
+export const getProductAllCategory = (limit, index, type) => {
   //
-  return;
+  return api(
+    `productsAll/main/?offset=${0}&limit=${12}&type=${type}`,
+    "GET",
+    null
+  );
   //
 };
 
@@ -61,4 +65,8 @@ export const getProductByCategory = (id) => {
 
 export const getProductFilterByGroupProduct = (slug, query) => {
   return api(`productsFilter?slugGroupProduct=${slug}${query}`, "GET", null);
+};
+
+export const groupProductsBySlugCategory = (categorySlug) => {
+  return api(`groupProductsBySlugCategory/${categorySlug}`, "GET", null);
 };

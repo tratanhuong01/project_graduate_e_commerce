@@ -1,7 +1,7 @@
 import * as Types from "../constants/ActionTypes";
 
 const initialState = {
-  products: [],
+  products: null,
   filters: [],
   sorter: -1,
   typeProduct: [],

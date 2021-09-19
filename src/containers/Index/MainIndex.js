@@ -16,7 +16,7 @@ function MainIndex(props) {
     <div className="w-full">
       <SliderProduct />
       <HorizontalCategory products={products} />
-      <TopSell />
+      <TopSell products={products.listProductTopSell[0]} />
       <Rule />
       <TopSaleToday products={products.listProductSaleToday} />
       <BannerAds />

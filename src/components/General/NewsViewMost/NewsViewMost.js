@@ -6,14 +6,14 @@ function NewsViewMost(props) {
   const [news, setNews] = useState(null);
   useEffect(() => {
     //
-    let mounted = true;
+    let unmounted = false;
     const fetch = async () => {
       const result = await newsApi.getListNewsMostView();
-      if (mounted) return;
+      if (unmounted) return;
       setNews(result.data);
     };
     fetch();
-    return () => (mounted = false);
+    return () => (unmounted = true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return news ? (

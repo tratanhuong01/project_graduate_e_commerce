@@ -9,7 +9,7 @@ function FilterProduct(props) {
   //
   const listProduct = useSelector((state) => state.listProduct);
   const dispatch = useDispatch();
-  useEffect(() => {}, [listProduct.filters]);
+  useEffect(() => {}, [listProduct.filters, listProduct.slug]);
   //
   return (
     <div className="w-full mx-auto">
@@ -32,6 +32,8 @@ function FilterProduct(props) {
                         data: item.data,
                         name: item.data.name,
                       },
+                      typeProduct: listProduct.typeProduct,
+                      sorter: listProduct.sorter,
                       slug: listProduct.slug,
                     })
                   );

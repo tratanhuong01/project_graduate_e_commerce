@@ -12,7 +12,7 @@
   animation-iteration-count: infinite;
   animation-name: placeHolderShimmer;
   animation-timing-function: linear;
-  background: gray;
+  background: #43464b;
   background: linear-gradient(to right, #c7c1c1 8%, #cecccc 18%, #d6d4d4 33%);
   background-size: 1000px 104px;
   position: relative;
@@ -36,8 +36,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotElastic 1s infinite linear;
 }
 
@@ -54,8 +54,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotElasticBefore 1s infinite linear;
 }
 
@@ -64,8 +64,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotElasticAfter 1s infinite linear;
 }
 
@@ -134,9 +134,9 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  box-shadow: 9999px 0 0 -5px #9880ff;
+  background-color: #43464b;
+  color: #43464b;
+  box-shadow: 9999px 0 0 -5px #43464b;
   animation: dotPulse 1.5s infinite linear;
   animation-delay: 0.25s;
 }
@@ -150,58 +150,58 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
 }
 
 .dot-pulse::before {
-  box-shadow: 9984px 0 0 -5px #9880ff;
+  box-shadow: 9984px 0 0 -5px #43464b;
   animation: dotPulseBefore 1.5s infinite linear;
   animation-delay: 0s;
 }
 
 .dot-pulse::after {
-  box-shadow: 10014px 0 0 -5px #9880ff;
+  box-shadow: 10014px 0 0 -5px #43464b;
   animation: dotPulseAfter 1.5s infinite linear;
   animation-delay: 0.5s;
 }
 
 @keyframes dotPulseBefore {
   0% {
-    box-shadow: 9984px 0 0 -5px #9880ff;
+    box-shadow: 9984px 0 0 -5px #43464b;
   }
   30% {
-    box-shadow: 9984px 0 0 2px #9880ff;
+    box-shadow: 9984px 0 0 2px #43464b;
   }
   60%,
   100% {
-    box-shadow: 9984px 0 0 -5px #9880ff;
+    box-shadow: 9984px 0 0 -5px #43464b;
   }
 }
 
 @keyframes dotPulse {
   0% {
-    box-shadow: 9999px 0 0 -5px #9880ff;
+    box-shadow: 9999px 0 0 -5px #43464b;
   }
   30% {
-    box-shadow: 9999px 0 0 2px #9880ff;
+    box-shadow: 9999px 0 0 2px #43464b;
   }
   60%,
   100% {
-    box-shadow: 9999px 0 0 -5px #9880ff;
+    box-shadow: 9999px 0 0 -5px #43464b;
   }
 }
 
 @keyframes dotPulseAfter {
   0% {
-    box-shadow: 10014px 0 0 -5px #9880ff;
+    box-shadow: 10014px 0 0 -5px #43464b;
   }
   30% {
-    box-shadow: 10014px 0 0 2px #9880ff;
+    box-shadow: 10014px 0 0 2px #43464b;
   }
   60%,
   100% {
-    box-shadow: 10014px 0 0 -5px #9880ff;
+    box-shadow: 10014px 0 0 -5px #43464b;
   }
 }
 
@@ -215,8 +215,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFlashing 1s infinite linear alternate;
   animation-delay: 0.5s;
 }
@@ -234,8 +234,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFlashing 1s infinite alternate;
   animation-delay: 0s;
 }
@@ -245,15 +245,15 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFlashing 1s infinite alternate;
   animation-delay: 1s;
 }
 
 @keyframes dotFlashing {
   0% {
-    background-color: #9880ff;
+    background-color: #43464b;
   }
   50%,
   100% {
@@ -271,8 +271,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
 }
 
 .dot-collision::before,
@@ -288,8 +288,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotCollisionBefore 2s infinite ease-in;
 }
 
@@ -298,8 +298,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotCollisionAfter 2s infinite ease-in;
   animation-delay: 1s;
 }
@@ -338,8 +338,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
 }
 
 .dot-revolution::before,
@@ -355,8 +355,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   transform-origin: 5px 20px;
   animation: dotRevolution 1.4s linear infinite;
 }
@@ -367,8 +367,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   transform-origin: 5px 35px;
   animation: dotRevolution 1s linear infinite;
 }
@@ -393,24 +393,24 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff, 10014px 0 0 0 #9880ff;
+  background-color: #43464b;
+  color: #43464b;
+  box-shadow: 9984px 0 0 0 #43464b, 9999px 0 0 0 #43464b, 10014px 0 0 0 #43464b;
   animation: dotCarousel 1.5s infinite linear;
 }
 
 @keyframes dotCarousel {
   0% {
-    box-shadow: 9984px 0 0 -1px #9880ff, 9999px 0 0 1px #9880ff,
-      10014px 0 0 -1px #9880ff;
+    box-shadow: 9984px 0 0 -1px #43464b, 9999px 0 0 1px #43464b,
+      10014px 0 0 -1px #43464b;
   }
   50% {
-    box-shadow: 10014px 0 0 -1px #9880ff, 9984px 0 0 -1px #9880ff,
-      9999px 0 0 1px #9880ff;
+    box-shadow: 10014px 0 0 -1px #43464b, 9984px 0 0 -1px #43464b,
+      9999px 0 0 1px #43464b;
   }
   100% {
-    box-shadow: 9999px 0 0 1px #9880ff, 10014px 0 0 -1px #9880ff,
-      9984px 0 0 -1px #9880ff;
+    box-shadow: 9999px 0 0 1px #43464b, 10014px 0 0 -1px #43464b,
+      9984px 0 0 -1px #43464b;
   }
 }
 
@@ -425,40 +425,40 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff, 10014px 0 0 0 #9880ff;
+  background-color: #43464b;
+  color: #43464b;
+  box-shadow: 9984px 0 0 0 #43464b, 9999px 0 0 0 #43464b, 10014px 0 0 0 #43464b;
   animation: dotTyping 1.5s infinite linear;
 }
 
 @keyframes dotTyping {
   0% {
-    box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
-      10014px 0 0 0 #9880ff;
+    box-shadow: 9984px 0 0 0 #43464b, 9999px 0 0 0 #43464b,
+      10014px 0 0 0 #43464b;
   }
   16.667% {
-    box-shadow: 9984px -10px 0 0 #9880ff, 9999px 0 0 0 #9880ff,
-      10014px 0 0 0 #9880ff;
+    box-shadow: 9984px -10px 0 0 #43464b, 9999px 0 0 0 #43464b,
+      10014px 0 0 0 #43464b;
   }
   33.333% {
-    box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
-      10014px 0 0 0 #9880ff;
+    box-shadow: 9984px 0 0 0 #43464b, 9999px 0 0 0 #43464b,
+      10014px 0 0 0 #43464b;
   }
   50% {
-    box-shadow: 9984px 0 0 0 #9880ff, 9999px -10px 0 0 #9880ff,
-      10014px 0 0 0 #9880ff;
+    box-shadow: 9984px 0 0 0 #43464b, 9999px -10px 0 0 #43464b,
+      10014px 0 0 0 #43464b;
   }
   66.667% {
-    box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
-      10014px 0 0 0 #9880ff;
+    box-shadow: 9984px 0 0 0 #43464b, 9999px 0 0 0 #43464b,
+      10014px 0 0 0 #43464b;
   }
   83.333% {
-    box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
-      10014px -10px 0 0 #9880ff;
+    box-shadow: 9984px 0 0 0 #43464b, 9999px 0 0 0 #43464b,
+      10014px -10px 0 0 #43464b;
   }
   100% {
-    box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
-      10014px 0 0 0 #9880ff;
+    box-shadow: 9984px 0 0 0 #43464b, 9999px 0 0 0 #43464b,
+      10014px 0 0 0 #43464b;
   }
 }
 
@@ -473,8 +473,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   transform-origin: 5px 15px;
   animation: dotWindmill 2s infinite linear;
 }
@@ -492,8 +492,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
 }
 
 .dot-windmill::after {
@@ -502,8 +502,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
 }
 
 @keyframes dotWindmill {
@@ -527,65 +527,65 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  box-shadow: 9991px -16px 0 0 #9880ff, 9991px 0 0 0 #9880ff,
-    10007px 0 0 0 #9880ff;
+  background-color: #43464b;
+  color: #43464b;
+  box-shadow: 9991px -16px 0 0 #43464b, 9991px 0 0 0 #43464b,
+    10007px 0 0 0 #43464b;
   animation: dotBricks 2s infinite ease;
 }
 
 @keyframes dotBricks {
   0% {
-    box-shadow: 9991px -16px 0 0 #9880ff, 9991px 0 0 0 #9880ff,
-      10007px 0 0 0 #9880ff;
+    box-shadow: 9991px -16px 0 0 #43464b, 9991px 0 0 0 #43464b,
+      10007px 0 0 0 #43464b;
   }
   8.333% {
-    box-shadow: 10007px -16px 0 0 #9880ff, 9991px 0 0 0 #9880ff,
-      10007px 0 0 0 #9880ff;
+    box-shadow: 10007px -16px 0 0 #43464b, 9991px 0 0 0 #43464b,
+      10007px 0 0 0 #43464b;
   }
   16.667% {
-    box-shadow: 10007px -16px 0 0 #9880ff, 9991px -16px 0 0 #9880ff,
-      10007px 0 0 0 #9880ff;
+    box-shadow: 10007px -16px 0 0 #43464b, 9991px -16px 0 0 #43464b,
+      10007px 0 0 0 #43464b;
   }
   25% {
-    box-shadow: 10007px -16px 0 0 #9880ff, 9991px -16px 0 0 #9880ff,
-      9991px 0 0 0 #9880ff;
+    box-shadow: 10007px -16px 0 0 #43464b, 9991px -16px 0 0 #43464b,
+      9991px 0 0 0 #43464b;
   }
   33.333% {
-    box-shadow: 10007px 0 0 0 #9880ff, 9991px -16px 0 0 #9880ff,
-      9991px 0 0 0 #9880ff;
+    box-shadow: 10007px 0 0 0 #43464b, 9991px -16px 0 0 #43464b,
+      9991px 0 0 0 #43464b;
   }
   41.667% {
-    box-shadow: 10007px 0 0 0 #9880ff, 10007px -16px 0 0 #9880ff,
-      9991px 0 0 0 #9880ff;
+    box-shadow: 10007px 0 0 0 #43464b, 10007px -16px 0 0 #43464b,
+      9991px 0 0 0 #43464b;
   }
   50% {
-    box-shadow: 10007px 0 0 0 #9880ff, 10007px -16px 0 0 #9880ff,
-      9991px -16px 0 0 #9880ff;
+    box-shadow: 10007px 0 0 0 #43464b, 10007px -16px 0 0 #43464b,
+      9991px -16px 0 0 #43464b;
   }
   58.333% {
-    box-shadow: 9991px 0 0 0 #9880ff, 10007px -16px 0 0 #9880ff,
-      9991px -16px 0 0 #9880ff;
+    box-shadow: 9991px 0 0 0 #43464b, 10007px -16px 0 0 #43464b,
+      9991px -16px 0 0 #43464b;
   }
   66.666% {
-    box-shadow: 9991px 0 0 0 #9880ff, 10007px 0 0 0 #9880ff,
-      9991px -16px 0 0 #9880ff;
+    box-shadow: 9991px 0 0 0 #43464b, 10007px 0 0 0 #43464b,
+      9991px -16px 0 0 #43464b;
   }
   75% {
-    box-shadow: 9991px 0 0 0 #9880ff, 10007px 0 0 0 #9880ff,
-      10007px -16px 0 0 #9880ff;
+    box-shadow: 9991px 0 0 0 #43464b, 10007px 0 0 0 #43464b,
+      10007px -16px 0 0 #43464b;
   }
   83.333% {
-    box-shadow: 9991px -16px 0 0 #9880ff, 10007px 0 0 0 #9880ff,
-      10007px -16px 0 0 #9880ff;
+    box-shadow: 9991px -16px 0 0 #43464b, 10007px 0 0 0 #43464b,
+      10007px -16px 0 0 #43464b;
   }
   91.667% {
-    box-shadow: 9991px -16px 0 0 #9880ff, 9991px 0 0 0 #9880ff,
-      10007px -16px 0 0 #9880ff;
+    box-shadow: 9991px -16px 0 0 #43464b, 9991px 0 0 0 #43464b,
+      10007px -16px 0 0 #43464b;
   }
   100% {
-    box-shadow: 9991px -16px 0 0 #9880ff, 9991px 0 0 0 #9880ff,
-      10007px 0 0 0 #9880ff;
+    box-shadow: 9991px -16px 0 0 #43464b, 9991px 0 0 0 #43464b,
+      10007px 0 0 0 #43464b;
   }
 }
 
@@ -599,8 +599,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFloating 3s infinite cubic-bezier(0.15, 0.6, 0.9, 0.1);
 }
 
@@ -617,8 +617,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFloatingBefore 3s infinite ease-in-out;
 }
 
@@ -627,8 +627,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFloatingAfter 3s infinite cubic-bezier(0.4, 0, 1, 1);
 }
 
@@ -685,9 +685,9 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  box-shadow: 9999px 22.5px 0 -5px #9880ff;
+  background-color: #43464b;
+  color: #43464b;
+  box-shadow: 9999px 22.5px 0 -5px #43464b;
   animation: dotFire 1.5s infinite linear;
   animation-delay: -0.85s;
 }
@@ -701,31 +701,31 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
 }
 
 .dot-fire::before {
-  box-shadow: 9999px 22.5px 0 -5px #9880ff;
+  box-shadow: 9999px 22.5px 0 -5px #43464b;
   animation: dotFire 1.5s infinite linear;
   animation-delay: -1.85s;
 }
 
 .dot-fire::after {
-  box-shadow: 9999px 22.5px 0 -5px #9880ff;
+  box-shadow: 9999px 22.5px 0 -5px #43464b;
   animation: dotFire 1.5s infinite linear;
   animation-delay: -2.85s;
 }
 
 @keyframes dotFire {
   1% {
-    box-shadow: 9999px 22.5px 0 -5px #9880ff;
+    box-shadow: 9999px 22.5px 0 -5px #43464b;
   }
   50% {
-    box-shadow: 9999px -5.625px 0 2px #9880ff;
+    box-shadow: 9999px -5.625px 0 2px #43464b;
   }
   100% {
-    box-shadow: 9999px -22.5px 0 -5px #9880ff;
+    box-shadow: 9999px -22.5px 0 -5px #43464b;
   }
 }
 
@@ -741,8 +741,8 @@
   border-radius: 5px;
   background-color: transparent;
   color: transparent;
-  box-shadow: 0 -18px 0 0 #9880ff, 12.72984px -12.72984px 0 0 #9880ff,
-    18px 0 0 0 #9880ff, 12.72984px 12.72984px 0 0 rgba(152, 128, 255, 0),
+  box-shadow: 0 -18px 0 0 #43464b, 12.72984px -12.72984px 0 0 #43464b,
+    18px 0 0 0 #43464b, 12.72984px 12.72984px 0 0 rgba(152, 128, 255, 0),
     0 18px 0 0 rgba(152, 128, 255, 0),
     -12.72984px 12.72984px 0 0 rgba(152, 128, 255, 0),
     -18px 0 0 0 rgba(152, 128, 255, 0),
@@ -753,8 +753,8 @@
 @keyframes dotSpin {
   0%,
   100% {
-    box-shadow: 0 -18px 0 0 #9880ff, 12.72984px -12.72984px 0 0 #9880ff,
-      18px 0 0 0 #9880ff, 12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
+    box-shadow: 0 -18px 0 0 #43464b, 12.72984px -12.72984px 0 0 #43464b,
+      18px 0 0 0 #43464b, 12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
       0 18px 0 -5px rgba(152, 128, 255, 0),
       -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
       -18px 0 0 -5px rgba(152, 128, 255, 0),
@@ -762,16 +762,16 @@
   }
   12.5% {
     box-shadow: 0 -18px 0 -5px rgba(152, 128, 255, 0),
-      12.72984px -12.72984px 0 0 #9880ff, 18px 0 0 0 #9880ff,
-      12.72984px 12.72984px 0 0 #9880ff, 0 18px 0 -5px rgba(152, 128, 255, 0),
+      12.72984px -12.72984px 0 0 #43464b, 18px 0 0 0 #43464b,
+      12.72984px 12.72984px 0 0 #43464b, 0 18px 0 -5px rgba(152, 128, 255, 0),
       -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
       -18px 0 0 -5px rgba(152, 128, 255, 0),
       -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0);
   }
   25% {
     box-shadow: 0 -18px 0 -5px rgba(152, 128, 255, 0),
-      12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0), 18px 0 0 0 #9880ff,
-      12.72984px 12.72984px 0 0 #9880ff, 0 18px 0 0 #9880ff,
+      12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0), 18px 0 0 0 #43464b,
+      12.72984px 12.72984px 0 0 #43464b, 0 18px 0 0 #43464b,
       -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
       -18px 0 0 -5px rgba(152, 128, 255, 0),
       -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0);
@@ -779,8 +779,8 @@
   37.5% {
     box-shadow: 0 -18px 0 -5px rgba(152, 128, 255, 0),
       12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0),
-      18px 0 0 -5px rgba(152, 128, 255, 0), 12.72984px 12.72984px 0 0 #9880ff,
-      0 18px 0 0 #9880ff, -12.72984px 12.72984px 0 0 #9880ff,
+      18px 0 0 -5px rgba(152, 128, 255, 0), 12.72984px 12.72984px 0 0 #43464b,
+      0 18px 0 0 #43464b, -12.72984px 12.72984px 0 0 #43464b,
       -18px 0 0 -5px rgba(152, 128, 255, 0),
       -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0);
   }
@@ -788,8 +788,8 @@
     box-shadow: 0 -18px 0 -5px rgba(152, 128, 255, 0),
       12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0),
       18px 0 0 -5px rgba(152, 128, 255, 0),
-      12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 0 #9880ff,
-      -12.72984px 12.72984px 0 0 #9880ff, -18px 0 0 0 #9880ff,
+      12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 0 #43464b,
+      -12.72984px 12.72984px 0 0 #43464b, -18px 0 0 0 #43464b,
       -12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0);
   }
   62.5% {
@@ -797,25 +797,25 @@
       12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0),
       18px 0 0 -5px rgba(152, 128, 255, 0),
       12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
-      0 18px 0 -5px rgba(152, 128, 255, 0), -12.72984px 12.72984px 0 0 #9880ff,
-      -18px 0 0 0 #9880ff, -12.72984px -12.72984px 0 0 #9880ff;
+      0 18px 0 -5px rgba(152, 128, 255, 0), -12.72984px 12.72984px 0 0 #43464b,
+      -18px 0 0 0 #43464b, -12.72984px -12.72984px 0 0 #43464b;
   }
   75% {
-    box-shadow: 0 -18px 0 0 #9880ff,
+    box-shadow: 0 -18px 0 0 #43464b,
       12.72984px -12.72984px 0 -5px rgba(152, 128, 255, 0),
       18px 0 0 -5px rgba(152, 128, 255, 0),
       12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
       0 18px 0 -5px rgba(152, 128, 255, 0),
-      -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 0 #9880ff,
-      -12.72984px -12.72984px 0 0 #9880ff;
+      -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 0 #43464b,
+      -12.72984px -12.72984px 0 0 #43464b;
   }
   87.5% {
-    box-shadow: 0 -18px 0 0 #9880ff, 12.72984px -12.72984px 0 0 #9880ff,
+    box-shadow: 0 -18px 0 0 #43464b, 12.72984px -12.72984px 0 0 #43464b,
       18px 0 0 -5px rgba(152, 128, 255, 0),
       12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
       0 18px 0 -5px rgba(152, 128, 255, 0),
       -12.72984px 12.72984px 0 -5px rgba(152, 128, 255, 0),
-      -18px 0 0 -5px rgba(152, 128, 255, 0), -12.72984px -12.72984px 0 0 #9880ff;
+      -18px 0 0 -5px rgba(152, 128, 255, 0), -12.72984px -12.72984px 0 0 #43464b;
   }
 }
 
@@ -830,9 +830,9 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  box-shadow: 9999px 0 0 0 #9880ff;
+  background-color: #43464b;
+  color: #43464b;
+  box-shadow: 9999px 0 0 0 #43464b;
   animation: dotFalling 1s infinite linear;
   animation-delay: 0.1s;
 }
@@ -849,8 +849,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFallingBefore 1s infinite linear;
   animation-delay: 0s;
 }
@@ -859,8 +859,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotFallingAfter 1s infinite linear;
   animation-delay: 0.2s;
 }
@@ -872,7 +872,7 @@
   25%,
   50%,
   75% {
-    box-shadow: 9999px 0 0 0 #9880ff;
+    box-shadow: 9999px 0 0 0 #43464b;
   }
   100% {
     box-shadow: 9999px 15px 0 0 rgba(152, 128, 255, 0);
@@ -886,7 +886,7 @@
   25%,
   50%,
   75% {
-    box-shadow: 9984px 0 0 0 #9880ff;
+    box-shadow: 9984px 0 0 0 #43464b;
   }
   100% {
     box-shadow: 9984px 15px 0 0 rgba(152, 128, 255, 0);
@@ -900,7 +900,7 @@
   25%,
   50%,
   75% {
-    box-shadow: 10014px 0 0 0 #9880ff;
+    box-shadow: 10014px 0 0 0 #43464b;
   }
   100% {
     box-shadow: 10014px 15px 0 0 rgba(152, 128, 255, 0);
@@ -917,8 +917,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   transform: scale(1.25, 1.25);
   animation: dotStretching 2s infinite ease-in;
 }
@@ -935,8 +935,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotStretchingBefore 2s infinite ease-in;
 }
 
@@ -944,8 +944,8 @@
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
+  background-color: #43464b;
+  color: #43464b;
   animation: dotStretchingAfter 2s infinite ease-in;
 }
 

@@ -27,12 +27,7 @@ function FullAddressContent(props) {
         right-5 text-2xl"
       ></span>
       <div
-        onClick={() => {
-          reset("");
-          reset("");
-          reset("");
-          reset("");
-        }}
+        onClick={() => reset("")}
         className="w-4 h-4 rounded-full bg-gray-500 text-white flex justify-center items-center text-sm  absolute top-4 right-14 cursor-pointer"
       >
         <i className="bx bx-x"></i>

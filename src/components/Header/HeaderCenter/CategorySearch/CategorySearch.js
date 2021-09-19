@@ -10,7 +10,7 @@ function CategorySearch(props) {
   return (
     <div
       id="category__search"
-      className=" w-52 lg:w-48 py-2.5 px-1 border-solid border-gray-200 border-l-2 border-r-2 flex font-semibold justify-center items-center relative cursor-pointer  dark:text-gray-300"
+      className=" w-52 lg:w-48 py-2.5 px-1 border-solid border-gray-200 border-l-2 border-r-2 flex font-semibold justify-center items-center relative cursor-pointer z-main bg-white  dark:text-gray-300"
     >
       <div className="text-sm">{data.name}</div>
       <span className="bx bx-chevron-down ml-3"></span>

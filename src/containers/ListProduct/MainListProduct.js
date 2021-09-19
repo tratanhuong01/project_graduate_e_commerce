@@ -22,8 +22,12 @@ function MainListProduct(props) {
       <hr className="w-full xl:w-4/5  mx-auto my-2"></hr>
       <div className="w-full xl:w-4/5 mx-auto p-4">
         <div className="w-full mx-auto mb-2">
-          {listProduct.type && <GroupProduct />}
-          <FilterProduct />
+          {listProduct.slug && (
+            <>
+              {listProduct.type === true && <GroupProduct />}
+              {!listProduct.type && <FilterProduct />}
+            </>
+          )}
           <ListProduct listProduct={listProduct} />
         </div>
       </div>
