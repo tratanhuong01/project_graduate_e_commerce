@@ -12,6 +12,7 @@ function CategoryProduct(props) {
       <HorizontalCategory
         categorys={categorys}
         className="w-full mx-auto flex justify-center"
+        link={true}
       />
     </div>
   );

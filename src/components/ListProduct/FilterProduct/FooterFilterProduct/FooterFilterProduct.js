@@ -16,8 +16,8 @@ function FooterFilterProduct(props) {
       <div className="w-2/3 flex items-center">
         <ul className="w-full flex">
           <li className="pr-3 font-semibold mr-3">
-            {listProduct.products ? listProduct.products.length : "..."} điện
-            thoại
+            {listProduct.products ? listProduct.products.length : "..."}{" "}
+            {listProduct.name ? listProduct.name : "sản phẩm"}
           </li>
           <li className="pr-3 mr-3 flex items-center">
             <input

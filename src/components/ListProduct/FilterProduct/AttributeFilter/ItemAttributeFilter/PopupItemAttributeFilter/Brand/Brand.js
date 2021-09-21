@@ -31,18 +31,24 @@ function Brand(props) {
   //
   return (
     <div className="w-full flex flex-wrap">
-      {brands.map((brand, index) => {
-        const state = listProduct.filters.findIndex((dt) => dt.id === brand.id);
-        return (
-          <ItemBrand
-            brand={brand}
-            key={index}
-            state={state}
-            setIndex={setIndex}
-            listProduct={listProduct}
-          />
-        );
-      })}
+      {brands.length > 0 ? (
+        brands.map((brand, index) => {
+          const state = listProduct.filters.findIndex(
+            (dt) => dt.id === brand.id
+          );
+          return (
+            <ItemBrand
+              brand={brand}
+              key={index}
+              state={state}
+              setIndex={setIndex}
+              listProduct={listProduct}
+            />
+          );
+        })
+      ) : (
+        <div className="p-2.5 font-semibold text-gray-600">Đang cập nhật</div>
+      )}
     </div>
   );
 }

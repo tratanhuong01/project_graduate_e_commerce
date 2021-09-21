@@ -7,8 +7,8 @@ button:focus {
 * {
   font-size: 14px;
 }
-
-.rotate360Deg:hover {
+.item__horizontal__category:hover .item__horizontal__category--circle {
+  border-color: #f36438;
   -webkit-animation: spin 1.2s linear infinite;
   -moz-animation: spin 1.2s linear infinite;
   animation: spin 1.2s linear infinite;

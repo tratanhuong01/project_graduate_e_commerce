@@ -3,13 +3,14 @@ import ItemHorizontalCategory from "./ItemHorizontalCategory/ItemHorizontalCateg
 
 function HorizontalCategory(props) {
   //
-  const { categorys, className } = props;
+  const { categorys, className, link } = props;
   //
   return (
     <div className={className}>
       {categorys.map((item, index) => {
         return (
           <ItemHorizontalCategory
+            link={link}
             item={item}
             key={index}
             categorys={categorys}
