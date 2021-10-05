@@ -1,18 +1,16 @@
 import * as Types from "../constants/ActionTypes";
 
 let initialState = null;
-if (localStorage && localStorage.getItem("user"))
-  initialState = JSON.parse(localStorage.getItem("user"));
 
 const myReducer = (state = initialState, action) => {
   switch (action.type) {
     case Types.LOGIN_USER:
-      localStorage.setItem("user", JSON.stringify(action.user));
-      state = action.user;
+      localStorage.setItem("userToken", action.user.token);
+      state = action.user.user;
       return state;
     case Types.LOGOUT_USER:
       state = null;
-      localStorage.removeItem("user");
+      localStorage.removeItem("userToken");
       return state;
     default:
       return state;

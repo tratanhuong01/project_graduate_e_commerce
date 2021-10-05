@@ -4,6 +4,7 @@ import MainPayment from "../../containers/Payment/MainPayment";
 import useResetPage from "../../hook/useResetPage";
 import Modal from "../../containers/Modal";
 import { Redirect } from "react-router-dom";
+import { PAGE_CART } from "../../constants/Config";
 
 function Payment(props) {
   //
@@ -27,7 +28,7 @@ function Payment(props) {
       <Modal />
     </div>
   ) : (
-    <Redirect to=""></Redirect>
+    <Redirect to={PAGE_CART}></Redirect>
   );
 }
 

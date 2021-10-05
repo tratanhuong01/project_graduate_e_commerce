@@ -5,12 +5,7 @@ import * as Config from "../../../../constants/Config";
 
 function AvatarUser(props) {
   //
-  const states = useSelector((state) => {
-    return {
-      user: state.user,
-    };
-  });
-  const { user } = states;
+  const user = useSelector((state) => state.user);
   //
   return (
     <div className="w-full relative items-center hidden md:flex">

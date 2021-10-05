@@ -1,8 +1,13 @@
 import api from "../Utils/api";
 
+const token =
+  localStorage && localStorage.getItem("userToken")
+    ? { Authorization: localStorage.getItem("userToken") }
+    : {};
+
 export const addReviewProductByProduct = (idProduct, reviewProduct) => {
   //
-  return api(`reviewProducts/${idProduct}`, "POST", reviewProduct);
+  return api(`reviewProducts/${idProduct}`, "POST", reviewProduct, token);
   //
 };
 
@@ -11,14 +16,15 @@ export const getAllReviewProductByProduct = (query, idProduct, star) => {
   return api(
     star === -1 ? `${query}/${idProduct}` : `${query}/${idProduct}/${star}`,
     "GET",
-    null
+    null,
+    token
   );
   //
 };
 
 export const getReviewProductByProductMain = (idProduct) => {
   //
-  return api(`reviewProductsAll/${idProduct}`, "GET", null);
+  return api(`reviewProductsAll/${idProduct}`, "GET", null, token);
   //
 };
 
@@ -36,7 +42,7 @@ export const getReviewProductByProductLimitPage = (
       : `reviewProductByStar${all ? "All" : ""}/${idProduct}/${active}${
           all ? "" : `/${offset}/${limit}`
         }`;
-  return api(endPoint, "GET", null);
+  return api(endPoint, "GET", null, token);
   //
 };
 
@@ -53,7 +59,8 @@ export const getReviewProductByProductLimitStar = (
       ? `${query}/${idProduct}/${offset}/${limit}`
       : `${query}/${idProduct}/${star}/${offset}/${limit}`,
     "GET",
-    null
+    null,
+    token
   );
   //
 };

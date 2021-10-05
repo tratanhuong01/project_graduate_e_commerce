@@ -19,15 +19,15 @@ class FormLogin extends Component {
 
   onSubmitFormLogin = async (data) => {
     const { closeModal, loginAccount, loadCartRequest } = this.props;
-    const user = await api("checkLogin", "POST", data);
-    if (user.data === null || user.data === "") {
+    const result = await api("checkLoginJWT", "POST", data);
+    if (result.data === null || result.data === "") {
       this.setState({
         message: "Thông tin đăng nhập không chính xác!!",
       });
     } else {
       closeModal();
-      loginAccount(user.data);
-      loadCartRequest(user.data);
+      loginAccount(result.data);
+      loadCartRequest(result.data.user);
     }
   };
   render() {

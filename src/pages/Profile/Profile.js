@@ -11,7 +11,11 @@ function Profile(props) {
   useResetPage("Tài khoản của tôi");
   useEffect(() => {}, [user]);
   //
-  return !user ? <Redirect to=""></Redirect> : <MainProfile slug={slug} />;
+  return !user && !localStorage.getItem("userToken") ? (
+    <Redirect to=""></Redirect>
+  ) : (
+    <MainProfile slug={slug} />
+  );
 }
 
 export default Profile;

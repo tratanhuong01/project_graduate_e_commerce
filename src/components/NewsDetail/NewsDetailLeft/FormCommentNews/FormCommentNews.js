@@ -74,6 +74,7 @@ function FormCommentNews(props) {
               className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
               placeHolder="Nhập họ tên của bạn"
               icon="bx bx-user"
+              onChange={() => ""}
               disabled={user ? true : false}
             />
           </div>
@@ -84,6 +85,7 @@ function FormCommentNews(props) {
               label="Email của bạn"
               type="text"
               name="email"
+              onChange={() => ""}
               className="w-full rounded-full p-2.5 border-2 border-solid pl-10 mt-2"
               placeHolder="Nhập email của bạn"
               icon="bx bx-mail-send"
@@ -96,6 +98,7 @@ function FormCommentNews(props) {
             register={register}
             showError={errors["content"]}
             label="Nội dung"
+            onChange={() => ""}
             name="content"
             className="w-full rounded-lg p-2.5 border-2 border-solid h-32 resize-none mt-2"
             placeHolder="Nhập nội dung"

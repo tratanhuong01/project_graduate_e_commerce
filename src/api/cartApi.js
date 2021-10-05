@@ -1,14 +1,19 @@
 import api from "../Utils/api";
 
+const token =
+  localStorage && localStorage.getItem("userToken")
+    ? { Authorization: localStorage.getItem("userToken") }
+    : {};
+
 export const getAllCartByIdUser = (idUser) => {
   //
-  return api(`carts/${idUser}/user`, "GET", null);
+  return api(`carts/${idUser}/user`, "GET", null, token);
   //
 };
 
 export const checkCart = (idUser, idProduct) => {
   //
-  return api(`check-cart/${idUser}/${idProduct}`, "GET", null);
+  return api(`check-cart/${idUser}/${idProduct}`, "GET", null, token);
   //
 };
 
@@ -18,7 +23,7 @@ export const updateCartByIdUser = (data) => {
   formData.append("amount", data.amount);
   formData.append("idUser", data.idUser);
   formData.append("idCart", data.idCart);
-  return api("update-cart", "PUT", formData);
+  return api("update-cart", "PUT", formData, token);
   //
 };
 
@@ -33,6 +38,6 @@ export const deleteCartByIdUser = (data) => {
 
 export const addCartByIdUser = (cart) => {
   //
-  return api("carts", "POST", cart);
+  return api("carts", "POST", cart, token);
   //
 };

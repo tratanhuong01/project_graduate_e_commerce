@@ -20,17 +20,16 @@ function ApplyCode(props) {
   const appleCode = async () => {
     const valid = await voucherApi.checkDiscountCodeValid(code);
     const isUsed = await voucherApi.checkDiscountCodeIsUsed(code, user.id);
-    if (valid.data === "")
+    if (
+      valid.data === "" ||
+      isUsed.data ||
+      valid.data.min > orders.money ||
+      valid.data.max > orders.money
+    )
       setError("Mã giảm giá không hợp lệ hoặc đã được sử dụng !");
     else {
-      if (isUsed.data)
-        setError("Mã giảm giá không hợp lệ hoặc đã được sử dụng !");
-      else {
-        setError(null);
-        dispatch(
-          ordersAction.updateVoucherOrders({ discountCode: valid.data })
-        );
-      }
+      setError(null);
+      dispatch(ordersAction.updateVoucherOrders({ discountCode: valid.data }));
     }
     setLoading(false);
   };

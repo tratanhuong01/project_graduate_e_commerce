@@ -23,8 +23,8 @@ function ModalCartAdded(props) {
   return (
     <div
       className="w-80 rounded-lg bg-white absolute animate__animated animate__zoomIn 
-      text-gray-700 z-50 modal__cart__added border-2 border-solid dark:border-dark-second
-      border-gray-200 shadow-lg m-4 dark:bg-dark-main dark:text-white"
+      text-gray-700  modal__cart__added border-2 border-solid dark:border-dark-second
+      border-gray-200 shadow-lg m-4 dark:bg-dark-main dark:text-white z-main "
       style={{ right: "-25%", top: "65px" }}
     >
       <div className="w-full max-h-72 overflow-y-auto p-2 scrollbar-css">

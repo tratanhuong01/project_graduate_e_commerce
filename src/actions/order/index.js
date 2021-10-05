@@ -121,11 +121,18 @@ export const addOrderRequest = (data) => {
       );
     }
     if (data.voucher) {
-      await api(
-        `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.discountCode.id}&idUser=${data.voucher.userDiscountCode.id}&isUsed=1`,
-        "GET",
-        null
-      );
+      if (data.voucher.discountCode)
+        await api(
+          `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.discountCode.id}&idUser=${data.voucher.userDiscountCode.id}&isUsed=1`,
+          "GET",
+          null
+        );
+      else
+        await api(
+          `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.id}&idUser=${data.user.id}&isUsed=1`,
+          "GET",
+          null
+        );
     }
     dispatch({ type: Types.ORDER_SUCCESS });
   };

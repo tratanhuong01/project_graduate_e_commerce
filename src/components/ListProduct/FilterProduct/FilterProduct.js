@@ -12,7 +12,7 @@ function FilterProduct(props) {
   useEffect(() => {}, [listProduct.filters, listProduct.slug]);
   //
   return (
-    <div className="w-full mx-auto">
+    <div className="w-full mx-auto z-0">
       {!listProduct.type && <AttributeFilter />}
       <FooterFilterProduct />
       {listProduct.filters.length > 0 && (

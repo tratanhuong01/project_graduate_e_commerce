@@ -1,6 +1,7 @@
 import * as Types from "../../constants/ActionTypes";
 import * as modalsAction from "../../actions/modal/index";
 import * as userApi from "../../api/userApi";
+
 export const registerAccount = (data) => {
   return async (dispatch) => {
     dispatch(modalsAction.onLoadingModal());
@@ -41,5 +42,14 @@ export const loginAccount = (user) => {
 export const logoutAccount = () => {
   return {
     type: Types.LOGOUT_USER,
+  };
+};
+
+export const loadUserRequest = () => {
+  return async (dispatch) => {
+    if (localStorage && localStorage.getItem("userToken")) {
+      const user = await userApi.getInfoUserFromTokenJWT();
+      dispatch(loginAccount(user.data));
+    }
   };
 };

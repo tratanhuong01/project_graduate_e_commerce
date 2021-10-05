@@ -7,7 +7,7 @@ function ItemAttributeFilter(props) {
   //
   return (
     <div
-      className={`mx-2 px-2 mb-2 py-0.5 rounded flex items-center relative border-2 border-solid z-50
+      className={`mx-2 px-2 mb-2 py-0.5 rounded flex items-center relative border-2 border-solid z-0
       shadow-sm cursor-pointer border-gray-300 ${
         index === indexCurrent ? "bg-gray-100" : "hover:bg-gray-100"
       } text-gray-800`}

@@ -73,7 +73,7 @@ function MainPayment(props) {
       onSubmit={handleSubmit(() =>
         dispatch(ordersAction.addOrderRequest({ ...orders, user }))
       )}
-      className="px-4 w-full xl:w-11/12 flex flex-col-reverse xl:flex-row mx-auto"
+      className="px-4 w-full xl:w-11/12 flex flex-col xl:flex-row mx-auto"
     >
       {orders.outOfStock ? (
         <OutOfStock />

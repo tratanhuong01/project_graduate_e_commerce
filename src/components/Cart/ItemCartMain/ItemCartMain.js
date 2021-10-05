@@ -11,7 +11,7 @@ function ItemCartMain(props) {
   const user = useSelector((state) => state.user);
   //
   return (
-    <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white h-28">
+    <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white lg:h-28">
       <div className="w-10 flex justify-center px-3 relative">
         <input
           type="checkbox"

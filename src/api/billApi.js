@@ -1,16 +1,20 @@
 import api from "../Utils/api";
 
+const token =
+  localStorage && localStorage.getItem("userToken")
+    ? { Authorization: localStorage.getItem("userToken") }
+    : {};
 
 export const addBill = (bill) => {
-  return api("bills", "POST", bill);
+  return api("bills", "POST", bill, token);
 };
 
 export const addBillDetail = (billDetail) => {
-  return api("billDetails", "POST", billDetail);
+  return api("billDetails", "POST", billDetail, token);
 };
 
 export const getBillMain = (type, idUser) => {
-  return api(`billsAll?type=${type}&idUser=${idUser}`, "GET", null);
+  return api(`billsAll?type=${type}&idUser=${idUser}`, "GET", null, token);
 };
 
 export const getBillLimit = (type, idUser, index, limit) => {
@@ -19,19 +23,26 @@ export const getBillLimit = (type, idUser, index, limit) => {
       index * limit
     }&limit=${limit}`,
     "GET",
-    null
+    null,
+    token
   );
 };
 
 export const cancelBill = (idBill) => {
-  return api(`bills/update/status/?idBill=${idBill}&status=-1`, "GET", null);
+  return api(
+    `bills/update/status/?idBill=${idBill}&status=-1`,
+    "GET",
+    null,
+    token
+  );
 };
 
 export const searchBillMain = (keyword, idUser) => {
   return api(
     `bills/search/?keyword=${keyword}&idUser=${idUser}&type=${-2}&offset=${0}&limit=5&type=${0}`,
     "GET",
-    null
+    null,
+    token
   );
 };
 
@@ -41,6 +52,7 @@ export const searchBillLimit = (keyword, idUser, index, limit) => {
       index * limit
     }&limit=${limit}&type=${0}`,
     "GET",
-    null
+    null,
+    token
   );
 };
