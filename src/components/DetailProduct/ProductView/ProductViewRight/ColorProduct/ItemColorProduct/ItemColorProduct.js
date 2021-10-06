@@ -7,12 +7,12 @@ import * as productsAction from "../../../../../../actions/product/index";
 function ItemColorProduct(props) {
   //
   const { color, image, imageData, products } = props;
-  const states = useSelector((state) => {
+  const { product, headers } = useSelector((state) => {
     return {
       product: state.product,
+      headers: state.headers,
     };
   });
-  const { product } = states;
   const dispatch = useDispatch();
   const history = useHistory();
   const change = async () => {
@@ -27,10 +27,14 @@ function ItemColorProduct(props) {
       );
     else formData.append("idMemory", "");
     formData.append("idLineProduct", products.idLineProduct);
-    let result = await api(`getSlug`, "POST", formData);
+    let result = await api(`getSlug`, "POST", formData, headers);
     if (product.typeDisplay === 0) history.push(result.data);
     dispatch(
-      productsAction.loadProductChooseRequest(result.data, product.typeDisplay)
+      productsAction.loadProductChooseRequest(
+        result.data,
+        product.typeDisplay,
+        headers
+      )
     );
   };
   useEffect(() => {}, [products]);

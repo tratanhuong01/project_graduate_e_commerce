@@ -9,11 +9,11 @@ export const changeAmountProductChoose = (typeDisplay, amount) => {
   };
 };
 
-export const loadProductChooseRequest = (slug, typeDisplay) => {
+export const loadProductChooseRequest = (slug, typeDisplay, headers) => {
   return async (dispatch) => {
     let formData = new FormData();
     formData.append("slug", slug);
-    const result = await productApi.getProductFullBySlugFDT(formData);
+    const result = await productApi.getProductFullBySlugFDT(formData, headers);
     dispatch(
       loadProductChoose({
         data: {

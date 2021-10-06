@@ -9,15 +9,29 @@ function RateComment(props) {
   //
   const dispatch = useDispatch();
   const { products, slug } = props;
-  const { reviews, reviewAll, active, index } = useSelector(
-    (state) => state.reviewProduct
-  );
+  const { reviewProduct, headers } = useSelector((state) => {
+    return {
+      reviewProduct: state.reviewProduct,
+      headers: state.headers,
+    };
+  });
+  const { reviews, reviewAll, active, index } = reviewProduct;
   useEffect(() => {
     //
     let unmounted = false;
     async function fetch() {
-      const result_1 = await api(`reviewProductsAll/${products.idProduct}`);
-      const result_2 = await api(`reviewProducts/${products.idProduct}/0/5`);
+      const result_1 = await api(
+        `reviewProductsAll/${products.idProduct}`,
+        "GET",
+        null,
+        headers
+      );
+      const result_2 = await api(
+        `reviewProducts/${products.idProduct}/0/5`,
+        "GET",
+        null,
+        headers
+      );
       if (unmounted) return;
       dispatch(
         reviewProductsAction.loadReviewProductData({

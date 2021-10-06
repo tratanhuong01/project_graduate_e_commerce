@@ -14,10 +14,11 @@ function MainPayment(props) {
   //
   const [addresses, setAddresses] = useState(null);
   const [address, setAddress] = useState(null);
-  const { user, orders } = useSelector((state) => {
+  const { user, orders, headers } = useSelector((state) => {
     return {
       user: state.user,
       orders: state.orders,
+      headers: state.headers,
     };
   });
   const {
@@ -35,7 +36,7 @@ function MainPayment(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await profileApi.getAddressByIdUser(user.id);
+      const result = await profileApi.getAddressByIdUser(user.id, headers);
       if (unmounted) return;
       setAddresses(result.data);
       if (result.data.length > 0) {
@@ -46,7 +47,7 @@ function MainPayment(props) {
     }
     if (user) fetch();
     else dispatch(ordersAction.loadInfoAddressPayment(null));
-    dispatch(ordersAction.checkOrderIsOutOfStockRequest(orders.list));
+    dispatch(ordersAction.checkOrderIsOutOfStockRequest(orders.list, headers));
     return () => {
       unmounted = false;
     };
@@ -71,7 +72,7 @@ function MainPayment(props) {
   ) : (
     <form
       onSubmit={handleSubmit(() =>
-        dispatch(ordersAction.addOrderRequest({ ...orders, user }))
+        dispatch(ordersAction.addOrderRequest({ ...orders, user }, headers))
       )}
       className="px-4 w-full xl:w-11/12 flex flex-col xl:flex-row mx-auto"
     >

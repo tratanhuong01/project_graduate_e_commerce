@@ -1,99 +1,99 @@
 import api from "../Utils/api";
 
-const token =
-  localStorage && localStorage.getItem("userToken")
-    ? { Authorization: localStorage.getItem("userToken") }
-    : {};
-
-export const getProductFullByIdProduct = (idProduct) => {
+export const getProductFullByIdProduct = (idProduct, headers) => {
   //
-  return api(`products/full/${idProduct}`, "GET", null, token);
+  return api(`products/full/${idProduct}`, "GET", null, headers);
   //
 };
 
-export const getProductFullBySlug = (idProduct) => {
+export const getProductFullBySlug = (idProduct, headers) => {
   //
-  return api(`getProductBySlug/${idProduct}`, "GET", null, token);
-  //
-};
-
-export const getProductFullBySlugFDT = (formData) => {
-  //
-  return api(`getProductBySlug`, "POST", formData, token);
+  return api(`getProductBySlug/${idProduct}`, "GET", null, headers);
   //
 };
 
-export const getProductByIdProduct = (idProduct) => {
+export const getProductFullBySlugFDT = (formData, headers) => {
   //
-  return api(`products/${idProduct}`, "GET", null, token);
+  return api(`getProductBySlug`, "POST", formData, headers);
   //
 };
 
-export const getProductAllCategory = (limit, index, type) => {
+export const getProductByIdProduct = (idProduct, headers) => {
+  //
+  return api(`products/${idProduct}`, "GET", null, headers);
+  //
+};
+
+export const getProductAllCategory = (limit, index, type, headers) => {
   //
   return api(
     `productsAll/main/?offset=${0}&limit=${12}&type=${type}`,
     "GET",
     null,
-    token
+    headers
   );
   //
 };
 
-export const getProductIndex = () => {
+export const getProductIndex = (headers) => {
   //
-  return api("getProductIndex", "GET", null, token);
+  return api("getProductIndex", "GET", null, headers);
   //
 };
 
-export const updateItemCurrentAndItemSold = (amount, idProduct) => {
+export const updateItemCurrentAndItemSold = (amount, idProduct, headers) => {
   return api(
     `infoProducts/update/?amount=${amount}&idProduct=${idProduct}`,
     "GET",
     null,
-    token
+    headers
   );
 };
 
-export const getItemCurrentByIdProduct = (idProduct) => {
+export const getItemCurrentByIdProduct = (idProduct, headers) => {
   return api(
     `infoProducts/itemCurrent/?idProduct=${idProduct}`,
     "GET",
     null,
-    token
+    headers
   );
 };
 
-export const getAllCategoryProduct = () => {
-  return api("categoryProductsAll", "GET", null, token);
+export const getAllCategoryProduct = (headers) => {
+  return api("categoryProductsAll", "GET", null, headers);
 };
 
-export const getAllGroupProduct = () => {
-  return api("groupProductsAll", "GET", null, token);
+export const getAllGroupProduct = (headers) => {
+  return api("groupProductsAll", "GET", null, headers);
 };
 
-export const getProductByCategory = (id) => {
-  return api(`getProductByCategory/${id}`, "GET", null, token);
+export const getProductByCategory = (id, headers) => {
+  return api(`getProductByCategory/${id}`, "GET", null, headers, headers);
 };
 
-export const getProductFilterByGroupProduct = (slug, query) => {
+export const getProductFilterByGroupProduct = (slug, query, headers) => {
   return api(
     `productsFilter?data=1&${slug ? "slugGroupProduct=" + slug : ""}${query}`,
     "GET",
     null,
-    token
+    headers
   );
 };
 
-export const groupProductsBySlugCategory = (categorySlug) => {
-  return api(`groupProductsBySlugCategory/${categorySlug}`, "GET", null, token);
+export const groupProductsBySlugCategory = (categorySlug, headers) => {
+  return api(
+    `groupProductsBySlugCategory/${categorySlug}`,
+    "GET",
+    null,
+    headers
+  );
 };
 
-export const updateReviewProduct = (idProduct, review) => {
+export const updateReviewProduct = (idProduct, review, headers) => {
   return api(
     `infoProducts/review/update/?idProduct=${idProduct}&review=${review}`,
     "PUT",
     null,
-    token
+    headers
   );
 };

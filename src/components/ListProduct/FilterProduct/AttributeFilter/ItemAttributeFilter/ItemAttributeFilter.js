@@ -7,8 +7,8 @@ function ItemAttributeFilter(props) {
   //
   return (
     <div
-      className={`mx-2 px-2 mb-2 py-0.5 rounded flex items-center relative border-2 border-solid z-0
-      shadow-sm cursor-pointer border-gray-300 ${
+      className={`mx-2 px-2 mb-2 py-0.5 rounded flex items-center relative border-2 border-solid
+      shadow-sm cursor-pointer border-gray-300 zIndex__${index} ${
         index === indexCurrent ? "bg-gray-100" : "hover:bg-gray-100"
       } text-gray-800`}
     >
@@ -23,7 +23,7 @@ function ItemAttributeFilter(props) {
         <i className="bx bx-chevron-down ml-1 mt-1 text-xl"></i>
       </div>
       {index === indexCurrent && (
-        <PopupItemAttributeFilter slug={slug}>
+        <PopupItemAttributeFilter slug={slug} index={index}>
           {props.children}
         </PopupItemAttributeFilter>
       )}

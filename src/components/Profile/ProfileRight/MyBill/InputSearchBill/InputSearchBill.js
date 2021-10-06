@@ -5,9 +5,10 @@ import * as billsAction from "../../../../../actions/bill/index";
 function InputSearchBill(props) {
   //
   const { data } = props;
-  const { user } = useSelector((state) => {
+  const { user, headers } = useSelector((state) => {
     return {
       user: state.user,
+      headers: state.headers,
     };
   });
   const [keyword, setKeyword] = useState("");
@@ -27,20 +28,26 @@ function InputSearchBill(props) {
             timeOut = setTimeout(() => {
               if (event.target.value.length === 0)
                 dispatch(
-                  billsAction.loadBillsUserRequest({
-                    user,
-                    type: data.type,
-                    index: 0,
-                    keyword,
-                  })
+                  billsAction.loadBillsUserRequest(
+                    {
+                      user,
+                      type: data.type,
+                      index: 0,
+                      keyword,
+                    },
+                    headers
+                  )
                 );
               else
                 dispatch(
-                  billsAction.searchBillRequest({
-                    user,
-                    index: 0,
-                    keyword,
-                  })
+                  billsAction.searchBillRequest(
+                    {
+                      user,
+                      index: 0,
+                      keyword,
+                    },
+                    headers
+                  )
                 );
             }, 500);
           }

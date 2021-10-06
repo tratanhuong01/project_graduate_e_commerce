@@ -12,13 +12,18 @@ import {
 function Bank(props) {
   //
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const { headers, user } = useSelector((state) => {
+    return {
+      headers: state.headers,
+      user: state.user,
+    };
+  });
   const [banks, setBanks] = useState(null);
   useEffect(() => {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await profilesApi.getBankByIdUser(user.id);
+      const result = await profilesApi.getBankByIdUser(user.id, headers);
       if (unmounted) return;
       setBanks(result.data);
     }

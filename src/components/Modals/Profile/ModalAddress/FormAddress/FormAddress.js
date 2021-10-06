@@ -75,23 +75,31 @@ function FormAddress(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [isDefault, setIsDefault] = useState(address ? address.isDefault : 0);
-  const user = useSelector((state) => state.user);
+  const { user, headers } = useSelector((state) => {
+    return {
+      user: state.user,
+      headers: state.headers,
+    };
+  });
   const dispatch = useDispatch();
   const addAddress = async (data) => {
-    const result = await profileApi.addAddressByIdUser({
-      id: address ? address.id : null,
-      addressUser: user,
-      cityProvince: JSON.stringify(data.cityProvince),
-      district: JSON.stringify(data.district),
-      wards: JSON.stringify(JSON.parse(data.wards)),
-      details: data.details,
-      infoAddress: data.details + " ," + generalContent(),
-      statusAddress: 1,
-      fullName: data.fullName,
-      phone: data.phone,
-      typeAddress: data.typeAddress,
-      isDefault: data.isDefault ? 1 : 0,
-    });
+    const result = await profileApi.addAddressByIdUser(
+      {
+        id: address ? address.id : null,
+        addressUser: user,
+        cityProvince: JSON.stringify(data.cityProvince),
+        district: JSON.stringify(data.district),
+        wards: JSON.stringify(JSON.parse(data.wards)),
+        details: data.details,
+        infoAddress: data.details + " ," + generalContent(),
+        statusAddress: 1,
+        fullName: data.fullName,
+        phone: data.phone,
+        typeAddress: data.typeAddress,
+        isDefault: data.isDefault ? 1 : 0,
+      },
+      headers
+    );
     setAddresses([...result.data]);
     dispatch(modalsAction.closeModal());
   };

@@ -11,21 +11,25 @@ function CommentPost(props) {
   //
   const { newsDetail } = props;
   const dispatch = useDispatch();
-  const states = useSelector((state) => {
+  const { user, news, headers } = useSelector((state) => {
     return {
       user: state.user,
       news: state.news,
+      headers: state.headers,
     };
   });
-  const { user, news } = states;
   useEffect(() => {
     //
     async function fetch() {
-      const result_1 = await commentApi.getAllCommentByNews(newsDetail.news.id);
+      const result_1 = await commentApi.getAllCommentByNews(
+        newsDetail.news.id,
+        headers
+      );
       const result_2 = await commentApi.getCommentByNewsLimit(
         newsDetail.news.id,
         0,
-        5
+        5,
+        headers
       );
       dispatch(
         newsAction.loadNewsData({
@@ -80,6 +84,7 @@ function CommentPost(props) {
                   newsAction.loadNewsIndexPageRequest({
                     index,
                     news: news.news,
+                    headers,
                   })
                 );
               }}

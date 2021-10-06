@@ -8,18 +8,23 @@ import * as voucherApi from "../../../../api/voucherApi";
 function ApplyCode(props) {
   //
   const dispatch = useDispatch();
-  const { user, orders } = useSelector((state) => {
+  const { user, orders, headers } = useSelector((state) => {
     return {
       user: state.user,
       orders: state.orders,
+      headers: state.headers,
     };
   });
   const [loading, setLoading] = useState(false);
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
   const appleCode = async () => {
-    const valid = await voucherApi.checkDiscountCodeValid(code);
-    const isUsed = await voucherApi.checkDiscountCodeIsUsed(code, user.id);
+    const valid = await voucherApi.checkDiscountCodeValid(code, headers);
+    const isUsed = await voucherApi.checkDiscountCodeIsUsed(
+      code,
+      user.id,
+      headers
+    );
     if (
       valid.data === "" ||
       isUsed.data ||

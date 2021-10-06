@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import api from "../../../Utils/api";
 import CloseModal from "../../General/CloseModal/CloseModal";
 import LoadingModal from "../../General/Loading/LoadingModal/LoadingModal";
@@ -10,6 +11,7 @@ function ModalInfoDetailProduct(props) {
   const { idLineProduct } = props;
   const [data, setData] = useState(null);
   const [index, setIndex] = useState(1);
+  const headers = useSelector((state) => state.headers);
   useEffect(() => {
     //
     let unmounted = false;
@@ -17,9 +19,15 @@ function ModalInfoDetailProduct(props) {
       const result_1 = await api(
         `attributeProducts/${idLineProduct}`,
         "GET",
-        null
+        null,
+        headers
       );
-      const result_2 = await api(`imageOthers/${idLineProduct}`, "GET", null);
+      const result_2 = await api(
+        `imageOthers/${idLineProduct}`,
+        "GET",
+        null,
+        headers
+      );
       if (unmounted) return;
       setData({ attributes: result_1.data, images: result_2.data });
     }

@@ -7,7 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 function FilterProduct(props) {
   //
-  const listProduct = useSelector((state) => state.listProduct);
+  const { listProduct, headers } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
   const dispatch = useDispatch();
   useEffect(() => {}, [listProduct.filters, listProduct.slug]);
   //
@@ -25,17 +30,20 @@ function FilterProduct(props) {
                 onClick={() => {
                   dispatch(listProductsAction.loadListProduct());
                   dispatch(
-                    listProductsAction.removeFilterProductRequest({
-                      filters: listProduct.filters,
-                      item: {
-                        id: item.data.id,
-                        data: item.data,
-                        name: item.data.name,
+                    listProductsAction.removeFilterProductRequest(
+                      {
+                        filters: listProduct.filters,
+                        item: {
+                          id: item.data.id,
+                          data: item.data,
+                          name: item.data.name,
+                        },
+                        typeProduct: listProduct.typeProduct,
+                        sorter: listProduct.sorter,
+                        slug: listProduct.slug,
                       },
-                      typeProduct: listProduct.typeProduct,
-                      sorter: listProduct.sorter,
-                      slug: listProduct.slug,
-                    })
+                      headers
+                    )
                   );
                 }}
               />
@@ -44,7 +52,10 @@ function FilterProduct(props) {
           <div
             onClick={() =>
               dispatch(
-                listProductsAction.resetFilterProductRequest(listProduct.slug)
+                listProductsAction.resetFilterProductRequest(
+                  listProduct.slug,
+                  headers
+                )
               )
             }
             className={`border-2 border-solid border-organce text-white h-8 px-1 py-0.5 rounded-lg font-semibold text-sm bg-organce cursor-pointer flex items-center`}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as cartsAction from "../../../actions/cart/index";
 import InfoProductCart from "./InfoProductCart/InfoProductCart";
@@ -7,8 +7,12 @@ function ItemCartMain(props) {
   //
   const { cart, carts, status } = props;
   const dispatch = useDispatch();
-  const [number, setNumber] = useState(cart.amount);
-  const user = useSelector((state) => state.user);
+  const { headers, user } = useSelector((state) => {
+    return {
+      headers: state.headers,
+      user: state.user,
+    };
+  });
   //
   return (
     <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white lg:h-28">
@@ -48,7 +52,7 @@ function ItemCartMain(props) {
                 className="w-28 p-3 border-2 border-solid border-gray-300 
                   rounded-full text-center font-semibold dark:bg-dark-third dark:border-dark-third"
                 min="1"
-                value={number}
+                value={cart.amount}
                 onChange={(event) => {
                   let data = event.target.value;
                   if (data > 50) data = 50;
@@ -56,14 +60,16 @@ function ItemCartMain(props) {
                     data = 1;
                   } else data = event.target.value;
                   dispatch(
-                    cartsAction.changeAmountCartRequest({
-                      amount: data,
-                      idCart: cart.idCart,
-                      user: user,
-                      status: status,
-                    })
+                    cartsAction.changeAmountCartRequest(
+                      {
+                        amount: data,
+                        idCart: cart.idCart,
+                        user: user,
+                        status: status,
+                      },
+                      headers
+                    )
                   );
-                  setNumber(data);
                   const index = carts.main.findIndex(
                     (item) => item.idCart === cart.idCart
                   );
@@ -102,10 +108,13 @@ function ItemCartMain(props) {
             <i
               onClick={() => {
                 dispatch(
-                  cartsAction.deleteCartRequest({
-                    user: user,
-                    idCart: cart.idCart,
-                  })
+                  cartsAction.deleteCartRequest(
+                    {
+                      user: user,
+                      idCart: cart.idCart,
+                    },
+                    headers
+                  )
                 );
                 const index = carts.main.findIndex(
                   (item) => item.idCart === cart.idCart

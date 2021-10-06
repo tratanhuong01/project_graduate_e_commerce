@@ -11,7 +11,7 @@ function ItemImageChildTopSell(props) {
         src={item.src}
         className={`w-full p-1 cursor-pointer border-2 border-solid 
         ${
-          image.id === item.id
+          image.id !== item.id
             ? "border-gray-300 dark:border-dark-second"
             : "hover:border-gray-300 dark:hover:border-dark-second border-white"
         }`}

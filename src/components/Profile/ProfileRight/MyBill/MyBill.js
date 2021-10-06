@@ -12,10 +12,11 @@ import NotBill from "../DetailBill/NotBill/NotBill";
 
 function MyBill(props) {
   //
-  const { bills, user } = useSelector((state) => {
+  const { bills, user, headers } = useSelector((state) => {
     return {
       user: state.user,
       bills: state.bills,
+      headers: state.headers,
     };
   });
   const dispatch = useDispatch();
@@ -34,11 +35,14 @@ function MyBill(props) {
     dispatch(billsAction.setLoadingBillUser(true));
     const timeOut = setTimeout(() => {
       dispatch(
-        billsAction.loadBillsUserRequest({
-          user,
-          type: data.type,
-          index: 0,
-        })
+        billsAction.loadBillsUserRequest(
+          {
+            user,
+            type: data.type,
+            index: 0,
+          },
+          headers
+        )
       );
     }, 500);
 
@@ -76,11 +80,14 @@ function MyBill(props) {
                   dispatch({ type: SET_LOADING_BILL_USER, status: true });
                   const timeOut = setTimeout(() => {
                     dispatch(
-                      billsAction.loadBillsUserByIndexRequest({
-                        user,
-                        type: data.type,
-                        index,
-                      })
+                      billsAction.loadBillsUserByIndexRequest(
+                        {
+                          user,
+                          type: data.type,
+                          index,
+                        },
+                        headers
+                      )
                     );
                   }, 500);
                   return () => {

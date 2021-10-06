@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router";
 import { PAGE_SEARCH } from "../../../../constants/Config";
 import api from "../../../../Utils/api";
@@ -9,6 +10,7 @@ function InputSearch(props) {
   const { data, keyword, setKeyword } = props;
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(false);
+  const headers = useSelector((state) => state.headers);
   useEffect(() => {
     //
     let timeOut;
@@ -17,7 +19,8 @@ function InputSearch(props) {
         const result = await api(
           `products/search/?keyword=${keyword}&slug=${data.id}&type=1&limit=5&offset=0`,
           "GET",
-          null
+          null,
+          headers
         );
         if (result.data.length > 0) setProducts(result.data);
         else setProducts(null);

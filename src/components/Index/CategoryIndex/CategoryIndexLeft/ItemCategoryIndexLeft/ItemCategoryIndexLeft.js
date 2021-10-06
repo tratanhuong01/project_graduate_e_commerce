@@ -12,7 +12,7 @@ function ItemCategoryIndexLeft(props) {
       <Link
         to={`${Config.PAGE_PRODUCT}/${groups.categoryProduct.slugCategoryProduct}`}
         className="w-full flex items-center p-2  border-b border-solid border-gray-200 
-        cursor-pointer hover:text-organce dark:border-dark-third text-gray-700"
+        cursor-pointer hover:text-organce dark:border-dark-third text-gray-700 dark:text-white"
       >
         <span className={`${icon} text-2xl mr-3 `}></span>
         <span className="font-semibold">{label}</span>

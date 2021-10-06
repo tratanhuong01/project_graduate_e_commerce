@@ -6,7 +6,12 @@ function WishListStatus(props) {
   //
   const { user, idProduct } = props;
   const dispatch = useDispatch();
-  const wishLists = useSelector((state) => state.wishLists);
+  const { headers, wishLists } = useSelector((state) => {
+    return {
+      headers: state.headers,
+      wishLists: state.wishLists,
+    };
+  });
   const index = wishLists.findIndex(
     (wishList) => wishList.idProduct === idProduct
   );
@@ -16,10 +21,13 @@ function WishListStatus(props) {
     <div
       onClick={() =>
         dispatch(
-          wishListsAction.addWishListRequest({
-            user: user,
-            idProduct: idProduct,
-          })
+          wishListsAction.addWishListRequest(
+            {
+              user: user,
+              idProduct: idProduct,
+            },
+            headers
+          )
         )
       }
       className="w-14 h-14 rounded-full bg-gray-100 flex items-center 

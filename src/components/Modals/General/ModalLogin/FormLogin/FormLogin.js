@@ -18,7 +18,8 @@ class FormLogin extends Component {
   }
 
   onSubmitFormLogin = async (data) => {
-    const { closeModal, loginAccount, loadCartRequest } = this.props;
+    const { closeModal, loginAccount, loadCartRequest, updateHeaders } =
+      this.props;
     const result = await api("checkLoginJWT", "POST", data);
     if (result.data === null || result.data === "") {
       this.setState({
@@ -27,6 +28,7 @@ class FormLogin extends Component {
     } else {
       closeModal();
       loginAccount(result.data);
+      updateHeaders(result.data.token);
       loadCartRequest(result.data.user);
     }
   };
@@ -110,6 +112,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     loadCartRequest: (carts) => {
       dispatch(cartsAction.loadCartRequest(carts));
+    },
+    updateHeaders: (headers) => {
+      dispatch(usersAction.updateHeaders(headers));
     },
   };
 };

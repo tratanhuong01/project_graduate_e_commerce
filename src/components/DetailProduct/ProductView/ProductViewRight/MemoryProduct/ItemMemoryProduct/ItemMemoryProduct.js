@@ -7,12 +7,12 @@ import * as productsAction from "../../../../../../actions/product/index";
 function ItemMemoryProduct(props) {
   //
   const { memoryData, memoryCurrent, products } = props;
-  const states = useSelector((state) => {
+  const { product, headers } = useSelector((state) => {
     return {
       product: state.product,
+      headers: state.headers,
     };
   });
-  const { product } = states;
   const dispatch = useDispatch();
   const history = useHistory();
   const change = async () => {
@@ -23,17 +23,21 @@ function ItemMemoryProduct(props) {
     );
     formData.append("idMemory", memoryData.id);
     formData.append("idLineProduct", products.idLineProduct);
-    let result = await api(`getSlug`, "POST", formData);
+    let result = await api(`getSlug`, "POST", formData, headers);
     if (product.typeDisplay === 0) history.push(result.data);
     dispatch(
-      productsAction.loadProductChooseRequest(result.data, product.typeDisplay)
+      productsAction.loadProductChooseRequest(
+        result.data,
+        product.typeDisplay,
+        headers
+      )
     );
   };
   //
   return (
     <div
       onClick={() => change()}
-      className={` px-4 py-2.5 rounded-full m-1 flex justify-center border-2 border-solid bg-white rounded-full cursor-pointer ${
+      className={` px-4 py-2.5 m-1 flex justify-center border-2 border-solid bg-white rounded-full cursor-pointer ${
         memoryData.id === memoryCurrent.id
           ? " text-organce border-orangce "
           : " border-gray-300"

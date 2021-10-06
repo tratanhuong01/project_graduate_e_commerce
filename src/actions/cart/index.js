@@ -4,14 +4,14 @@ import * as modalsAction from "../../actions/modal/index";
 import * as cartApi from "../../api/cartApi";
 import * as productApi from "../../api/productApi";
 
-export const loadCartRequest = (user) => {
+export const loadCartRequest = (user, headers) => {
   return async (dispatch) => {
     if (user === null)
       if (localStorage && localStorage.getItem("carts"))
         dispatch(loadCart(JSON.parse(localStorage.getItem("carts"))));
       else dispatch(loadCart([]));
     else {
-      const carts = await cartApi.getAllCartByIdUser(user.id);
+      const carts = await cartApi.getAllCartByIdUser(user.id, headers);
       dispatch(loadCart(carts.data, true));
     }
   };
@@ -25,9 +25,12 @@ export const loadCart = (carts, status) => {
   };
 };
 
-export const addCartRequest = (data) => {
+export const addCartRequest = (data, headers) => {
   return async (dispatch) => {
-    const result = await productApi.getProductFullByIdProduct(data.idProduct);
+    const result = await productApi.getProductFullByIdProduct(
+      data.idProduct,
+      headers
+    );
     if (data.user === null) {
       let listCart = [];
       if (localStorage && localStorage.getItem("carts")) {
@@ -71,23 +74,36 @@ export const addCartRequest = (data) => {
       localStorage.setItem("carts", JSON.stringify(listCart));
       dispatch(loadCart(listCart));
     } else {
-      const cartCheck = await cartApi.checkCart(data.user.id, data.idProduct);
+      const cartCheck = await cartApi.checkCart(
+        data.user.id,
+        data.idProduct,
+        headers
+      );
       if (cartCheck.data === "" || cartCheck.data === null) {
-        const product = await productApi.getProductByIdProduct(data.idProduct);
-        const cart = await cartApi.addCartByIdUser({
-          id: 0,
-          userCart: data.user,
-          productCart: product.data,
-          amount: data.amount,
-          timeCreated: "",
-        });
+        const product = await productApi.getProductByIdProduct(
+          data.idProduct,
+          headers
+        );
+        const cart = await cartApi.addCartByIdUser(
+          {
+            id: 0,
+            userCart: data.user,
+            productCart: product.data,
+            amount: data.amount,
+            timeCreated: "",
+          },
+          headers
+        );
         dispatch(loadCart(cart.data));
       } else {
-        const carts = await cartApi.updateCartByIdUser({
-          amount: data.amount + cartCheck.data.amount,
-          idUser: data.user.id,
-          idCart: cartCheck.data.id,
-        });
+        const carts = await cartApi.updateCartByIdUser(
+          {
+            amount: data.amount + cartCheck.data.amount,
+            idUser: data.user.id,
+            idCart: cartCheck.data.id,
+          },
+          headers
+        );
         dispatch(loadCart(carts.data));
       }
     }
@@ -103,10 +119,10 @@ export const addCart = (data) => {
   };
 };
 
-export const deleteCartRequest = (data) => {
+export const deleteCartRequest = (data, headers) => {
   return async (dispatch) => {
     if (data.user) {
-      const result = await cartApi.deleteCartByIdUser(data);
+      const result = await cartApi.deleteCartByIdUser(data, headers);
       dispatch(loadCart(result.data));
     } else {
       let carts = JSON.parse(localStorage.getItem("carts"));
@@ -122,14 +138,17 @@ export const deleteCartRequest = (data) => {
   };
 };
 
-export const changeAmountCartRequest = (data) => {
+export const changeAmountCartRequest = (data, headers) => {
   return async (dispatch) => {
     if (data.user) {
-      const carts = await cartApi.updateCartByIdUser({
-        amount: data.amount,
-        idUser: data.user.id,
-        idCart: data.idCart,
-      });
+      const carts = await cartApi.updateCartByIdUser(
+        {
+          amount: data.amount,
+          idUser: data.user.id,
+          idCart: data.idCart,
+        },
+        headers
+      );
       dispatch(loadCart(carts.data));
     } else {
       let listCart = JSON.parse(localStorage.getItem("carts"));

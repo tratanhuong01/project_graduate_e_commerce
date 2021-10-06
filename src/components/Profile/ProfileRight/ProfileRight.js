@@ -61,10 +61,7 @@ function ProfileRight(props) {
   const { profile } = states;
   useEffect(() => {
     //
-    let unmounted = false;
-    if (unmounted) return;
     dispatch(profilesAction.returnProfile());
-    return () => (unmounted = true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
   //

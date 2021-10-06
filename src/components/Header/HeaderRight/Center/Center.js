@@ -8,17 +8,17 @@ import * as cartsAction from "../../../../actions/cart/index";
 function Center(props) {
   //
   const dispatch = useDispatch();
-  const states = useSelector((state) => {
+  const { user, carts, headers } = useSelector((state) => {
     return {
       carts: state.carts,
       user: state.user,
+      headers: state.headers,
     };
   });
-  const { carts, user } = states;
 
   useEffect(() => {
     //
-    dispatch(cartsAction.loadCartRequest(user));
+    dispatch(cartsAction.loadCartRequest(user, headers));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 

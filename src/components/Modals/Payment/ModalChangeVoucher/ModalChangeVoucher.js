@@ -7,13 +7,21 @@ import ItemChangeVoucher from "./ItemChangeVoucher/ItemChangeVoucher";
 function ModalChangeVoucher(props) {
   //
   const [vouchers, setVouchers] = useState([]);
-  const user = useSelector((state) => state.user);
+  const { user, headers } = useSelector((state) => {
+    return {
+      user: state.user,
+      headers: state.headers,
+    };
+  });
   useEffect(() => {
     //
     let unmounted = false;
     async function fetch() {
       const result = await api(
-        `discountCodeUsers?idUser=${user.id}&isUsed=0&type=${0}`
+        `discountCodeUsers?idUser=${user.id}&isUsed=0&type=${0}`,
+        "GET",
+        null,
+        headers
       );
       if (unmounted) return;
       setVouchers(result.data);

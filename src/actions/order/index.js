@@ -33,14 +33,15 @@ export const updateAddressPayment = (item, index) => {
   };
 };
 
-export const checkOrderIsOutOfStockRequest = (carts) => {
+export const checkOrderIsOutOfStockRequest = (carts, headers) => {
   return async (dispatch) => {
     let count = 0;
     let orders = [];
     for (let index = 0; index < carts.length; index++) {
       const element = carts[index];
       const result = await productApi.getItemCurrentByIdProduct(
-        element.idProduct
+        element.idProduct,
+        headers
       );
       if (element.amount > 5 || element.amount > result.data) {
         count++;
@@ -77,47 +78,57 @@ export const updateVoucherOrders = (voucher, remove) => {
   };
 };
 
-export const addOrderRequest = (data) => {
+export const addOrderRequest = (data, headers) => {
   return async (dispatch) => {
-    const order = await billApi.addBill({
-      id: null,
-      billUser: data.user,
-      status: 0,
-      paymentMethodBill: {
-        id: 1,
-        namePaymentMethod: "Thanh toán khi nhận hàng",
-        typePaymentMethod: 0,
-        isShow: 0,
-      },
-      fullName: data.infoPayment.fullName,
-      phone: data.infoPayment.phone,
-      bank: null,
-      address: `${data.infoPayment.address} , ${
-        JSON.parse(data.infoPayment.ward).WardName
-      } , ${JSON.parse(data.infoPayment.district).DistrictName} , 
+    const order = await billApi.addBill(
+      {
+        id: null,
+        billUser: data.user,
+        status: 0,
+        paymentMethodBill: {
+          id: 1,
+          namePaymentMethod: "Thanh toán khi nhận hàng",
+          typePaymentMethod: 0,
+          isShow: 0,
+        },
+        fullName: data.infoPayment.fullName,
+        phone: data.infoPayment.phone,
+        bank: null,
+        address: `${data.infoPayment.address} , ${
+          JSON.parse(data.infoPayment.ward).WardName
+        } , ${JSON.parse(data.infoPayment.district).DistrictName} , 
       ${JSON.parse(data.infoPayment.cityProvince).ProvinceName}`,
-      note: data.infoPayment.note,
-      sale: data.sale,
-      fee: data.fee,
-      total: data.money + data.fee - data.sale,
-      timeCreated: null,
-      timeCompleted: null,
-      timeIntend: null,
-      timeApproval: null,
-    });
+        note: data.infoPayment.note,
+        sale: data.sale,
+        fee: data.fee,
+        total: data.money + data.fee - data.sale,
+        timeCreated: null,
+        timeCompleted: null,
+        timeIntend: null,
+        timeApproval: null,
+      },
+      headers
+    );
     for (let index = 0; index < data.list.length; index++) {
       const item = data.list[index];
-      const product = await productApi.getProductByIdProduct(item.idProduct);
-      billApi.addBillDetail({
-        id: null,
-        billDetail: order.data,
-        productDetailBill: product.data,
-        price: item.priceOutput * ((100 - item.sale) / 100),
-        amount: item.amount,
-      });
+      const product = await productApi.getProductByIdProduct(
+        item.idProduct,
+        headers
+      );
+      await billApi.addBillDetail(
+        {
+          id: null,
+          billDetail: order.data,
+          productDetailBill: product.data,
+          price: item.priceOutput * ((100 - item.sale) / 100),
+          amount: item.amount,
+        },
+        headers
+      );
       await productApi.updateItemCurrentAndItemSold(
         item.amount,
-        item.idProduct
+        item.idProduct,
+        headers
       );
     }
     if (data.voucher) {
@@ -125,13 +136,15 @@ export const addOrderRequest = (data) => {
         await api(
           `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.discountCode.id}&idUser=${data.voucher.userDiscountCode.id}&isUsed=1`,
           "GET",
-          null
+          null,
+          headers
         );
       else
         await api(
           `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.id}&idUser=${data.user.id}&isUsed=1`,
           "GET",
-          null
+          null,
+          headers
         );
     }
     dispatch({ type: Types.ORDER_SUCCESS });

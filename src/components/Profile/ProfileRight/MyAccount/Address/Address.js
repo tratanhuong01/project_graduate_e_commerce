@@ -9,10 +9,11 @@ import {
   PROFILE_ADDRESS,
 } from "../../../../../constants/Config";
 
-async function deleteAddress(address) {
+async function deleteAddress(address, headers) {
   const result = await profileApi.deleteAddress(
     address.id,
-    address.addressUser.id
+    address.addressUser.id,
+    headers
   );
   return result.data;
 }
@@ -20,16 +21,17 @@ async function deleteAddress(address) {
 function Address(props) {
   //
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => {
+  const { user, headers } = useSelector((state) => {
     return {
       user: state.user,
+      headers: state.headers,
     };
   });
   const [addresses, setAddresses] = useState(null);
   useEffect(() => {
     let unmounted = false;
     async function fetch() {
-      const result = await profileApi.getAddressByIdUser(user.id);
+      const result = await profileApi.getAddressByIdUser(user.id, headers);
       // In case the component was mounted, cancel set state here. Because it's not effect
       if (unmounted) return;
       setAddresses(result.data);

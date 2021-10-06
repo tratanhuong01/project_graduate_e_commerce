@@ -45,11 +45,19 @@ export const logoutAccount = () => {
   };
 };
 
-export const loadUserRequest = () => {
+export const loadUserRequest = (headers) => {
   return async (dispatch) => {
     if (localStorage && localStorage.getItem("userToken")) {
-      const user = await userApi.getInfoUserFromTokenJWT();
+      const user = await userApi.getInfoUserFromTokenJWT(headers);
       dispatch(loginAccount(user.data));
+      dispatch(updateHeaders(user.data.token));
     }
+  };
+};
+
+export const updateHeaders = (headers) => {
+  return {
+    type: Types.UPDATE_HEADERS,
+    headers,
   };
 };

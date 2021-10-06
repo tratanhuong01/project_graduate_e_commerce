@@ -7,7 +7,12 @@ function Brand(props) {
 
   const { setIndex } = props;
   const [brands, setBrands] = useState([]);
-  const listProduct = useSelector((state) => state.listProduct);
+  const { headers, listProduct } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
   useEffect(() => {
     //
     let unmounted = false;
@@ -17,7 +22,8 @@ function Brand(props) {
           ? `brands/slugGroupProduct/${listProduct.slug}`
           : `brandsAll`,
         "GET",
-        null
+        null,
+        headers
       );
       if (unmounted) return;
       setBrands(result.data);

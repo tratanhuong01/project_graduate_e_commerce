@@ -1,34 +1,29 @@
 import api from "../Utils/api";
 
-const token =
-  localStorage && localStorage.getItem("userToken")
-    ? { Authorization: localStorage.getItem("userToken") }
-    : {};
-
-export const addUser = (user) => {
+export const addUser = (user, headers) => {
   //
-  return api("users", "POST", user, token);
+  return api("users", "POST", user, headers);
   //
 };
 
-export const sendCodeEmail = (user) => {
+export const sendCodeEmail = (user, headers) => {
   //
-  return api("sendCodeEmail", "POST", user, token);
+  return api("sendCodeEmail", "POST", user, headers);
   //
 };
 
-export const getTeleSupport = () => {
-  return api(`getTeleSupport`, "GET", null, token);
+export const getTeleSupport = (headers) => {
+  return api(`getTeleSupport`, "GET", null, headers);
 };
 
-export const getUserByIdUser = (idUser) => {
-  return api(`users/${idUser}`, "GET", null, token);
+export const getUserByIdUser = (idUser, headers) => {
+  return api(`users/${idUser}`, "GET", null, headers);
 };
 
-export const checkLoginJWT = (data) => {
-  return api(`checkLoginJWT`, "POST", data, token);
+export const checkLoginJWT = (data, headers) => {
+  return api(`checkLoginJWT`, "POST", data, headers);
 };
 
-export const getInfoUserFromTokenJWT = () => {
-  return api(`getUserFromJWT`, "POST", token.Authorization, token);
+export const getInfoUserFromTokenJWT = (headers) => {
+  return api(`getUserFromJWT`, "POST", headers.Authorization, headers);
 };

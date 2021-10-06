@@ -8,17 +8,22 @@ function SupportLiveRight(props) {
   //
   const { setInfoChat } = props;
   const [send, setSend] = useState(false);
-  const messages = useSelector((state) => state.messages);
+  const { messages, headers } = useSelector((state) => {
+    return {
+      messages: state.messages,
+      headers: state.headers,
+    };
+  });
   const dispatch = useDispatch();
   useEffect(() => {
     //
-    dispatch(messagesAction.loadMessageRequest(messages.group));
+    dispatch(messagesAction.loadMessageRequest(messages.group, headers));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [send]);
   useEffect(() => {
     //
     messages.socket.on(`receiveMessage.${messages.group.id}`, () => {
-      dispatch(messagesAction.loadMessageRequest(messages.group));
+      dispatch(messagesAction.loadMessageRequest(messages.group, headers));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [send]);

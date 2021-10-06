@@ -5,14 +5,20 @@ import { useSelector } from "react-redux";
 
 function GroupProduct(props) {
   //
-  const listProduct = useSelector((state) => state.listProduct);
+  const { headers, listProduct } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
   const [groupProducts, setGroupProduct] = useState(null);
   useEffect(() => {
     //
     let unmounted = false;
     async function fetch() {
       const result = await productApi.groupProductsBySlugCategory(
-        listProduct.slug
+        listProduct.slug,
+        headers
       );
       if (unmounted) return;
       setGroupProduct(result.data);
@@ -21,7 +27,7 @@ function GroupProduct(props) {
     return () => {
       unmounted = true;
     };
-    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listProduct.slug]);
   //
   return (

@@ -13,7 +13,12 @@ import api from "../../../../../../Utils/api";
 
 function FormChangePassword(props) {
   //
-  const user = useSelector((state) => state.user);
+  const { headers, user } = useSelector((state) => {
+    return {
+      headers: state.headers,
+      user: state.user,
+    };
+  });
   const dispatch = useDispatch();
   const validationSchema = Yup.object().shape({
     passwordCurrent: Yup.string()
@@ -22,7 +27,8 @@ function FormChangePassword(props) {
         const result = await api(
           `users/password/?idUser=${user.id}&password=${value}`,
           "GET",
-          null
+          null,
+          headers
         );
         return result.data;
       }),
@@ -54,7 +60,8 @@ function FormChangePassword(props) {
         await api(
           `users/password/update/?idUser=${user.id}&password=${data.passwordConfirmation}`,
           "GET",
-          null
+          null,
+          headers
         );
         setValue("passwordCurrent", "");
         setValue("passwordNew", "");

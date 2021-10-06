@@ -10,8 +10,8 @@ function ItemCategoryProduct(props) {
     <div className="w-full relative flex-wrap">
       <div
         onClick={() => setShow(!show)}
-        className="w-full flex items-center p-2.5 flex border-2 border-solid border-gray-200 
-        cursor-pointer hover:text-organce flex md:hidden dark:border-dark-third"
+        className="w-full flex items-center p-2.5 border-2 border-solid border-gray-200 
+        cursor-pointer hover:text-organce md:hidden dark:border-dark-third"
       >
         <span className={`${icon} text-2xl mr-3 `}></span>
         <span className="font-semibold">{label}</span>

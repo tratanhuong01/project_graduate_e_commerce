@@ -7,7 +7,12 @@ import * as voucherApi from "../../../../../api/voucherApi";
 function HistoryVoucher(props) {
   //
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const { headers, user } = useSelector((state) => {
+    return {
+      user: state.user,
+      headers: state.headers,
+    };
+  });
   const [data, setData] = useState(0);
   const [vouchers, setVouchers] = useState(null);
   useEffect(() => {
@@ -17,7 +22,8 @@ function HistoryVoucher(props) {
       const result = await voucherApi.getDiscountCodeByIdUser(
         user.id,
         data,
-        data === 0 ? 1 : 0
+        data === 0 ? 1 : 0,
+        headers
       );
       if (unmounted) return;
       setVouchers(result.data);

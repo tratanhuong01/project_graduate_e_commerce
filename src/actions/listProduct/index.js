@@ -23,14 +23,14 @@ export const loadListProduct = (products) => {
   };
 };
 
-export const loadListProductRequest = (slug) => {
+export const loadListProductRequest = (slug, headers) => {
   return async (dispatch) => {
     let products = null;
     if (
       typeof slug.slugGroupProduct === "undefined" &&
       typeof slug.slugCategoryProduct === "undefined"
     ) {
-      const all = await productApi.getProductAllCategory(12, 0, 1);
+      const all = await productApi.getProductAllCategory(12, 0, 1, headers);
       dispatch(loadListProduct(all.data));
       dispatch(loadSlugCondition(null, null, false));
     } else {
@@ -52,14 +52,16 @@ export const loadListProductRequest = (slug) => {
             : false;
         if (type)
           products = await productApi.getProductByCategory(
-            category.data[indexCategory].id
+            category.data[indexCategory].id,
+            headers
           );
         else
           products = await productApi.getProductFilterByGroupProduct(
             category.data[indexCategory].typeCategoryProduct === 0
               ? slug.slugGroupProduct
               : slug.slugCategoryProduct,
-            ""
+            "",
+            headers
           );
         const slugAction =
           category.data[indexCategory].typeCategoryProduct === 0
@@ -85,9 +87,13 @@ export const loadSlugCondition = (slug, name, typeCategory) => {
   };
 };
 
-export const resetFilterProductRequest = (slug) => {
+export const resetFilterProductRequest = (slug, headers) => {
   return async (dispatch) => {
-    const result = await productApi.getProductFilterByGroupProduct(slug, "");
+    const result = await productApi.getProductFilterByGroupProduct(
+      slug,
+      "",
+      headers
+    );
     dispatch(loadListProduct(result.data));
     dispatch(resetFilterProduct());
   };
@@ -99,7 +105,7 @@ export const resetFilterProduct = () => {
   };
 };
 
-export const addFilterProductRequest = (data) => {
+export const addFilterProductRequest = (data, headers) => {
   return async (dispatch) => {
     const { filters, item, slug, typeProduct, sorter } = data;
     const index = filters.findIndex((filter) => filter.id === item.id);
@@ -118,7 +124,8 @@ export const addFilterProductRequest = (data) => {
 
       const result = await productApi.getProductFilterByGroupProduct(
         slug,
-        returnStringQuery({ filters: clone, typeProduct, sorter })
+        returnStringQuery({ filters: clone, typeProduct, sorter }),
+        headers
       );
       dispatch(loadListProduct(result.data));
       dispatch(loadingListProduct(false));
@@ -126,13 +133,14 @@ export const addFilterProductRequest = (data) => {
   };
 };
 
-export const removeFilterProductRequest = (data) => {
+export const removeFilterProductRequest = (data, headers) => {
   return async (dispatch) => {
     const { filters, item, slug, typeProduct, sorter } = data;
     let clone = filters.filter((filter) => filter.id !== item.id);
     const result = await productApi.getProductFilterByGroupProduct(
       slug,
-      returnStringQuery({ filters: clone, typeProduct, sorter })
+      returnStringQuery({ filters: clone, typeProduct, sorter }),
+      headers
     );
     dispatch(loadListProduct(result.data));
     dispatch(removeFilterProduct(clone));
@@ -167,12 +175,13 @@ export const loadingListProduct = (loading = false) => {
   };
 };
 
-export const loadListProductSorterRequest = (data) => {
+export const loadListProductSorterRequest = (data, headers) => {
   return async (dispatch) => {
     const { filters, sorter, slug, typeProduct } = data;
     const result = await productApi.getProductFilterByGroupProduct(
       slug,
-      returnStringQuery({ filters, typeProduct, sorter })
+      returnStringQuery({ filters, typeProduct, sorter }),
+      headers
     );
     dispatch(loadListProduct(result.data));
     dispatch(loadingListProduct(false));
@@ -180,7 +189,7 @@ export const loadListProductSorterRequest = (data) => {
   };
 };
 
-export const loadListProductByTypeProductRequest = (data) => {
+export const loadListProductByTypeProductRequest = (data, headers) => {
   return async (dispatch) => {
     const { filters, sorter, slug, typeProduct, type, item } = data;
     let clone = [...typeProduct];
@@ -189,7 +198,8 @@ export const loadListProductByTypeProductRequest = (data) => {
     dispatch(loadListProductByTypeProduct(clone));
     const result = await productApi.getProductFilterByGroupProduct(
       slug,
-      returnStringQuery({ filters, typeProduct: clone, sorter })
+      returnStringQuery({ filters, typeProduct: clone, sorter }),
+      headers
     );
     dispatch(loadListProduct(result.data));
     dispatch(loadingListProduct(false));

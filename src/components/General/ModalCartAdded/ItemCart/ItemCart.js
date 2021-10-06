@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as cartsAction from "../../../../actions/cart/index";
 import * as Config from "../../../../constants/Config";
@@ -7,6 +7,7 @@ import * as Config from "../../../../constants/Config";
 function ItemCart(props) {
   //
   const { cart, carts, user } = props;
+  const headers = useSelector((state) => state.headers);
   const dispatch = useDispatch();
   //
   return (
@@ -36,10 +37,13 @@ function ItemCart(props) {
           <span
             onClick={() => {
               dispatch(
-                cartsAction.deleteCartRequest({
-                  user: user,
-                  idCart: cart.idCart,
-                })
+                cartsAction.deleteCartRequest(
+                  {
+                    user: user,
+                    idCart: cart.idCart,
+                  },
+                  headers
+                )
               );
               const index = carts.main.findIndex(
                 (item) => item.idCart === cart.idCart

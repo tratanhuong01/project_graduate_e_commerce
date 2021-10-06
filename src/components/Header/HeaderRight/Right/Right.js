@@ -7,15 +7,16 @@ import * as wishListsAction from "../../../../actions/wishList/index";
 function Right(props) {
   //
   const dispatch = useDispatch();
-  const { user, wishLists } = useSelector((state) => {
+  const { user, wishLists, headers } = useSelector((state) => {
     return {
       wishLists: state.wishLists,
       user: state.user,
+      headers: state.headers,
     };
   });
   useEffect(() => {
     //
-    dispatch(wishListsAction.loadWishListRequest(user));
+    dispatch(wishListsAction.loadWishListRequest(user, headers));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   //

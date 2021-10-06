@@ -1,18 +1,13 @@
 import api from "../Utils/api";
 
-const token =
-  localStorage && localStorage.getItem("userToken")
-    ? { Authorization: localStorage.getItem("userToken") }
-    : {};
-
-export const getMessageByIdGroupChat = (idGroupChat) => {
-  return api(`messages/group/${idGroupChat}`, "GET", null, token);
+export const getMessageByIdGroupChat = (idGroupChat, headers) => {
+  return api(`messages/group/${idGroupChat}`, "GET", null, headers);
 };
 
-export const addGroupChat = (groupChat) => {
-  return api(`groupChats`, "POST", groupChat, token);
+export const addGroupChat = (groupChat, headers) => {
+  return api(`groupChats`, "POST", groupChat, headers);
 };
 
-export const addMessages = (messages) => {
-  return api(`messages`, "POST", messages, token);
+export const addMessages = (messages, headers) => {
+  return api(`messages`, "POST", messages, headers);
 };

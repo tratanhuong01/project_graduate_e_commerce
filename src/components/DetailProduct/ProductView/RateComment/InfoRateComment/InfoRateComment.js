@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Star from "../Star/Star";
 import ItemNumberStar from "./ItemNumberStar/ItemNumberStar";
 import ButtonSendRate from "../ButtonSendRate/ButtonSendRate";
@@ -8,6 +8,7 @@ function InfoRateComment(props) {
   //
   const dispatch = useDispatch();
   const { products, reviewAll, active } = props;
+  const headers = useSelector((state) => state.headers);
   const percent = () => {
     let result = "";
     result =
@@ -82,11 +83,14 @@ function InfoRateComment(props) {
                 active={active}
                 onClick={() => {
                   dispatch(
-                    reviewProductsAction.loadReviewProductActiveStarRequest({
-                      star,
-                      products,
-                      reviewAll,
-                    })
+                    reviewProductsAction.loadReviewProductActiveStarRequest(
+                      {
+                        star,
+                        products,
+                        reviewAll,
+                      },
+                      headers
+                    )
                   );
                 }}
                 star={star}

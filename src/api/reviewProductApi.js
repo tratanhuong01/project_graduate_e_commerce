@@ -1,30 +1,34 @@
 import api from "../Utils/api";
 
-const token =
-  localStorage && localStorage.getItem("userToken")
-    ? { Authorization: localStorage.getItem("userToken") }
-    : {};
-
-export const addReviewProductByProduct = (idProduct, reviewProduct) => {
+export const addReviewProductByProduct = (
+  idProduct,
+  reviewProduct,
+  headers
+) => {
   //
-  return api(`reviewProducts/${idProduct}`, "POST", reviewProduct, token);
+  return api(`reviewProducts/${idProduct}`, "POST", reviewProduct, headers);
   //
 };
 
-export const getAllReviewProductByProduct = (query, idProduct, star) => {
+export const getAllReviewProductByProduct = (
+  query,
+  idProduct,
+  star,
+  headers
+) => {
   //
   return api(
     star === -1 ? `${query}/${idProduct}` : `${query}/${idProduct}/${star}`,
     "GET",
     null,
-    token
+    headers
   );
   //
 };
 
-export const getReviewProductByProductMain = (idProduct) => {
+export const getReviewProductByProductMain = (idProduct, headers) => {
   //
-  return api(`reviewProductsAll/${idProduct}`, "GET", null, token);
+  return api(`reviewProductsAll/${idProduct}`, "GET", null, headers);
   //
 };
 
@@ -33,7 +37,8 @@ export const getReviewProductByProductLimitPage = (
   active,
   offset,
   limit,
-  all
+  all,
+  headers
 ) => {
   //
   const endPoint =
@@ -42,7 +47,7 @@ export const getReviewProductByProductLimitPage = (
       : `reviewProductByStar${all ? "All" : ""}/${idProduct}/${active}${
           all ? "" : `/${offset}/${limit}`
         }`;
-  return api(endPoint, "GET", null, token);
+  return api(endPoint, "GET", null, headers);
   //
 };
 
@@ -51,7 +56,8 @@ export const getReviewProductByProductLimitStar = (
   star,
   idProduct,
   offset,
-  limit
+  limit,
+  headers
 ) => {
   //
   return api(
@@ -60,7 +66,7 @@ export const getReviewProductByProductLimitStar = (
       : `${query}/${idProduct}/${star}/${offset}/${limit}`,
     "GET",
     null,
-    token
+    headers
   );
   //
 };

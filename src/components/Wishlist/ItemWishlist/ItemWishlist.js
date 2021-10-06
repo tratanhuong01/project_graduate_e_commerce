@@ -7,7 +7,12 @@ import * as cartsAction from "../.././../actions/cart/index";
 
 function ItemWishlist(props) {
   //
-  const user = useSelector((state) => state.user);
+  const { user, headers } = useSelector((state) => {
+    return {
+      user: state.user,
+      headers: state.headers,
+    };
+  });
   const dispatch = useDispatch();
   const { wishList } = props;
   //
@@ -71,11 +76,14 @@ function ItemWishlist(props) {
             <span
               onClick={() =>
                 dispatch(
-                  cartsAction.addCartRequest({
-                    user: user,
-                    amount: 1,
-                    idProduct: wishList.idProduct,
-                  })
+                  cartsAction.addCartRequest(
+                    {
+                      user: user,
+                      amount: 1,
+                      idProduct: wishList.idProduct,
+                    },
+                    headers
+                  )
                 )
               }
               className="md:flex hidden text-xs md:text-sm"
@@ -91,10 +99,13 @@ function ItemWishlist(props) {
           <span
             onClick={() =>
               dispatch(
-                wishListsAction.deleteWishListRequest({
-                  idCart: wishList.idCart,
-                  user: user,
-                })
+                wishListsAction.deleteWishListRequest(
+                  {
+                    idCart: wishList.idCart,
+                    user: user,
+                  },
+                  headers
+                )
               )
             }
             className="bx bx-trash-alt text-2xl md:text-3xl text-gray-800 cursor-pointer 

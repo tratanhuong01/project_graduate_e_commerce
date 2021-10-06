@@ -10,14 +10,16 @@ export const loadReviewProductData = (data) => {
   };
 };
 
-export const loadReviewProductByIndexPageRequest = (data) => {
+export const loadReviewProductByIndexPageRequest = (data, headers) => {
   return async (dispatch) => {
     const { index, products, active } = data;
     const result = await reviewProductApi.getReviewProductByProductLimitPage(
       products.idProduct,
       active,
       index * 5,
-      5
+      5,
+      false,
+      headers
     );
     dispatch(
       loadReviewProductByIndexPage({
@@ -43,7 +45,7 @@ export const loadReviewProductByIndexPage = (data) => {
   };
 };
 
-export const loadReviewProductActiveStarRequest = (data) => {
+export const loadReviewProductActiveStarRequest = (data, headers) => {
   return async (dispatch) => {
     const { star, products, reviewAll } = data;
     const result_1 = await reviewProductApi.getReviewProductByProductLimitStar(
@@ -51,12 +53,14 @@ export const loadReviewProductActiveStarRequest = (data) => {
       star.star,
       products.idProduct,
       0,
-      5
+      5,
+      headers
     );
     const result_2 = await reviewProductApi.getAllReviewProductByProduct(
       star.query.all,
       products.idProduct,
-      star.star
+      star.star,
+      headers
     );
     let clone = { ...reviewAll };
     if (star.star === -1) clone.sumReview = result_2.data.sumReview;
@@ -80,7 +84,7 @@ export const loadReviewProductActiveStar = (data) => {
   };
 };
 
-export const addReviewProductRequest = (data) => {
+export const addReviewProductRequest = (data, headers) => {
   return async (dispatch) => {
     const { user, fullName, email, content, indexStar, products, active } =
       data;
@@ -102,17 +106,20 @@ export const addReviewProductRequest = (data) => {
     };
     await reviewProductApi.addReviewProductByProduct(
       products.idProduct,
-      reviewProduct
+      reviewProduct,
+      headers
     );
     const result_1 = await reviewProductApi.getReviewProductByProductLimitPage(
       products.idProduct,
       active,
       0,
       5,
-      true
+      true,
+      headers
     );
     const result_2 = await reviewProductApi.getReviewProductByProductMain(
-      products.idProduct
+      products.idProduct,
+      headers
     );
     let result =
       (result_2.data.oneStar * 5 * 1 +
@@ -129,7 +136,8 @@ export const addReviewProductRequest = (data) => {
         5);
     await productApi.updateReviewProduct(
       products.idProduct,
-      ((result * 10) / 2).toFixed(1) * 10
+      ((result * 10) / 2).toFixed(1) * 10,
+      headers
     );
     dispatch(modalsAction.closeModal());
     dispatch(
@@ -145,7 +153,7 @@ export const addReviewProduct = (data) => {
   };
 };
 
-export const replyReviewProduct = (data) => {
+export const replyReviewProduct = (data, headers) => {
   return async (dispatch) => {
     const { user, fullName, email, content, products, active, review } = data;
     const reviewProduct = {
@@ -166,16 +174,20 @@ export const replyReviewProduct = (data) => {
     };
     await reviewProductApi.addReviewProductByProduct(
       products.idProduct,
-      reviewProduct
+      reviewProduct,
+      headers
     );
     const result_1 = await reviewProductApi.getReviewProductByProductLimitPage(
       products.idProduct,
       active,
       0,
-      5
+      5,
+      false,
+      headers
     );
     const result_2 = await reviewProductApi.getReviewProductByProductMain(
-      products.idProduct
+      products.idProduct,
+      headers
     );
     dispatch(modalsAction.closeModal());
     dispatch(

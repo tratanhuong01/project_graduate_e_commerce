@@ -8,14 +8,16 @@ import Rule from "./containers/General/Rule";
 import Modal from "./containers/Modal";
 import Notify from "./containers/Notify";
 import * as usersAction from "./actions/user/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function MainApp(props) {
   //
   const dispatch = useDispatch();
+  const headers = useSelector((state) => state.headers);
   useEffect(() => {
     //
-    dispatch(usersAction.loadUserRequest());
+    if (localStorage && localStorage.getItem("userToken"))
+      dispatch(usersAction.loadUserRequest(headers));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   //

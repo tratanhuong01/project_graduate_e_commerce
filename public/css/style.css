@@ -7,6 +7,70 @@ button:focus {
 * {
   font-size: 14px;
 }
+.zIndex__20 {
+  z-index: 0;
+}
+.zIndex__19 {
+  z-index: 1;
+}
+.zIndex__18 {
+  z-index: 2;
+}
+.zIndex__17 {
+  z-index: 3;
+}
+.zIndex__16 {
+  z-index: 4;
+}
+.zIndex__15 {
+  z-index: 5;
+}
+.zIndex__14 {
+  z-index: 6;
+}
+.zIndex__13 {
+  z-index: 7;
+}
+.zIndex__12 {
+  z-index: 8;
+}
+.zIndex__11 {
+  z-index: 9;
+}
+.zIndex__10 {
+  z-index: 10;
+}
+.zIndex__9 {
+  z-index: 11;
+}
+.zIndex__8 {
+  z-index: 12;
+}
+.zIndex__7 {
+  z-index: 13;
+}
+.zIndex__6 {
+  z-index: 14;
+}
+.zIndex__5 {
+  z-index: 15;
+}
+.zIndex__4 {
+  z-index: 16;
+}
+.zIndex__3 {
+  z-index: 17;
+}
+.zIndex__2 {
+  z-index: 18;
+}
+.zIndex__1 {
+  z-index: 19;
+}
+.zIndex__0 {
+  z-index: 20;
+}
+
 .item__horizontal__category:hover .item__horizontal__category--circle {
   border-color: #f36438;
   -webkit-animation: spin 1.2s linear infinite;

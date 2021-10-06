@@ -1,14 +1,15 @@
 import * as Types from "../../constants/ActionTypes";
 import * as billApi from "../../api/billApi";
 
-export const loadBillsUserRequest = (data) => {
+export const loadBillsUserRequest = (data, headers) => {
   return async (dispatch) => {
-    const list = await billApi.getBillMain(data.type, data.user.id);
+    const list = await billApi.getBillMain(data.type, data.user.id, headers);
     const listCurrent = await billApi.getBillLimit(
       data.type,
       data.user.id,
       data.index,
-      5
+      5,
+      headers
     );
     dispatch(loadBillsUser(list.data, listCurrent.data, data.index));
     dispatch(setLoadingBillUser(false));
@@ -31,20 +32,21 @@ export const setLoadingBillUser = (status) => {
   };
 };
 
-export const cancelOrderRequest = (data) => {
+export const cancelOrderRequest = (data, headers) => {
   return async (dispatch) => {
-    await billApi.cancelBill(data.bill.bill.id);
-    dispatch(loadBillsUserRequest(data));
+    await billApi.cancelBill(data.bill.bill.id, headers);
+    dispatch(loadBillsUserRequest(data, headers));
   };
 };
 
-export const loadBillsUserByIndexRequest = (data) => {
+export const loadBillsUserByIndexRequest = (data, headers) => {
   return async (dispatch) => {
     const result = await billApi.getBillLimit(
       data.type,
       data.user.id,
       data.index,
-      5
+      5,
+      headers
     );
     dispatch(loadBillsUserByIndex(data.index, result.data));
     dispatch(setLoadingBillUser(false));
@@ -59,14 +61,19 @@ export const loadBillsUserByIndex = (index, list) => {
   };
 };
 
-export const searchBillRequest = (data) => {
+export const searchBillRequest = (data, headers) => {
   return async (dispatch) => {
-    const list = await billApi.searchBillMain(data.keyword, data.user.id);
+    const list = await billApi.searchBillMain(
+      data.keyword,
+      data.user.id,
+      headers
+    );
     const listCurrent = await billApi.searchBillLimit(
       data.keyword,
       data.user.id,
       0,
-      5
+      5,
+      headers
     );
     dispatch(loadBillsUser(list.data, listCurrent.data, 0));
     dispatch(setLoadingBillUser(false));

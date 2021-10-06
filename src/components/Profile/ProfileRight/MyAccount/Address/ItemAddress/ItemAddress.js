@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as modalsAction from "../../../../../../actions/modal/index";
 import AddressMain from "../../../../../General/AddressMain/AddressMain";
 import * as profileApi from "../../../../../../api/profileApi";
@@ -7,6 +7,7 @@ import * as profileApi from "../../../../../../api/profileApi";
 function ItemAddress(props) {
   //
   const { address, deleteAddress, setAddresses, user } = props;
+  const headers = useSelector((state) => state.headers);
   const dispatch = useDispatch();
   //
   return (
@@ -44,7 +45,8 @@ function ItemAddress(props) {
               async function fetch() {
                 const result = await profileApi.setDefaultAddressByIdUser(
                   user.id,
-                  address.id
+                  address.id,
+                  headers
                 );
                 if (unmounted) return;
                 setAddresses(result.data);

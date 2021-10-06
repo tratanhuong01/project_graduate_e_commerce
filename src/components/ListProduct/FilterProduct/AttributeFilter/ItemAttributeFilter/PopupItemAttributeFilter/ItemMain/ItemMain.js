@@ -5,11 +5,16 @@ import * as listProductsAction from "../../../../../../../actions/listProduct/in
 function ItemMain(props) {
   //
   const { list, name, setIndex } = props;
-  const listProduct = useSelector((state) => state.listProduct);
+  const { listProduct, headers } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
   const dispatch = useDispatch();
   //
   return (
-    <div className="w-full flex flex-wrap">
+    <div className="w-full flex flex-wrap z-0">
       {list.map((item, index) => {
         const state = listProduct.filters.findIndex((dt) => dt.id === item.id);
         return (
@@ -19,18 +24,21 @@ function ItemMain(props) {
               dispatch(listProductsAction.loadingListProduct(true));
               const timeOut = setTimeout(() => {
                 dispatch(
-                  listProductsAction.addFilterProductRequest({
-                    filters: listProduct.filters,
-                    item: {
-                      id: item.id,
-                      data: item,
-                      name: item.nameFunctionProduct,
-                      query: "feature",
+                  listProductsAction.addFilterProductRequest(
+                    {
+                      filters: listProduct.filters,
+                      item: {
+                        id: item.id,
+                        data: item,
+                        name: item.nameFunctionProduct,
+                        query: "feature",
+                      },
+                      sorter: listProduct.sorter,
+                      typeProduct: listProduct.typeProduct,
+                      slug: listProduct.slug,
                     },
-                    sorter: listProduct.sorter,
-                    typeProduct: listProduct.typeProduct,
-                    slug: listProduct.slug,
-                  })
+                    headers
+                  )
                 );
               }, 500);
               return () => {

@@ -7,9 +7,13 @@ function DetailRateComment(props) {
   //
   const { reviews } = props;
   const dispatch = useDispatch();
-  const { products, active, index, reviewAll } = useSelector(
-    (state) => state.reviewProduct
-  );
+  const { reviewProduct, headers } = useSelector((state) => {
+    return {
+      reviewProduct: state.reviewProduct,
+      headers: state.headers,
+    };
+  });
+  const { products, active, index, reviewAll } = reviewProduct;
   //
   return (
     <>
@@ -36,11 +40,14 @@ function DetailRateComment(props) {
             limit={5}
             dispatch={(index) => {
               dispatch(
-                reviewProductsAction.loadReviewProductByIndexPageRequest({
-                  index,
-                  active,
-                  products,
-                })
+                reviewProductsAction.loadReviewProductByIndexPageRequest(
+                  {
+                    index,
+                    active,
+                    products,
+                  },
+                  headers
+                )
               );
             }}
           />

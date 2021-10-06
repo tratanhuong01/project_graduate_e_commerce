@@ -1,7 +1,7 @@
 import * as Types from "../../constants/ActionTypes";
 import * as commentApi from "../../api/commentApi";
 
-export const addCommentRequest = (data) => {
+export const addCommentRequest = (data, headers) => {
   return async (dispatch) => {
     const { user, fullName, email, news, content } = data;
     const comment = {
@@ -16,8 +16,13 @@ export const addCommentRequest = (data) => {
       timeCreated: "",
     };
     await commentApi.addCommentByNews(comment);
-    const result_1 = await commentApi.getCommentByNewsLimit(news.id, 0, 5);
-    const result_2 = await commentApi.getAllCommentByNews(news.id);
+    const result_1 = await commentApi.getCommentByNewsLimit(
+      news.id,
+      0,
+      5,
+      headers
+    );
+    const result_2 = await commentApi.getAllCommentByNews(news.id, headers);
     dispatch(
       addComment({
         comments: result_1.data,
@@ -41,13 +46,14 @@ export const loadNewsData = (data) => {
   };
 };
 
-export const loadNewsIndexPageRequest = (data) => {
+export const loadNewsIndexPageRequest = (data, headers) => {
   return async (dispatch) => {
     const { index, news } = data;
     const result = await commentApi.getCommentByNewsLimit(
       news.id,
       index * 5,
-      5
+      5,
+      headers
     );
     dispatch(
       loadNewsIndexPage({
@@ -65,7 +71,7 @@ export const loadNewsIndexPage = (data) => {
   };
 };
 
-export const replyCommentRequest = (data) => {
+export const replyCommentRequest = (data, headers) => {
   return async (dispatch) => {
     const { user, fullName, email, news, content, commentReply, index } = data;
     const comment = {
@@ -79,13 +85,14 @@ export const replyCommentRequest = (data) => {
       content: content,
       timeCreated: "",
     };
-    await commentApi.addCommentByNews(comment);
+    await commentApi.addCommentByNews(comment, headers);
     const result_1 = await commentApi.getCommentByNewsLimit(
       news.id,
       index * 5,
-      5
+      5,
+      headers
     );
-    const result_2 = await commentApi.getAllCommentByNews(news.id);
+    const result_2 = await commentApi.getAllCommentByNews(news.id, headers);
     dispatch(
       addComment({
         comments: result_1.data,

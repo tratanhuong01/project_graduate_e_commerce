@@ -13,10 +13,10 @@ function FilterVoucher(props) {
         }}
         className="w-60 border-2 border-solid border-gray-200 py-2 px-0.5"
       >
-        <option value={0} selected={data === 0 ? true : false}>
+        <option value={0} defaultValue={data}>
           Mới nhất
         </option>
-        <option value={2} selected={data === 2 ? true : false}>
+        <option value={2} defaultValue={data}>
           Sắp hết hạn
         </option>
       </select>

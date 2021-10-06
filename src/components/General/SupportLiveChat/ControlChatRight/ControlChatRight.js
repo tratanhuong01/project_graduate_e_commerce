@@ -4,19 +4,27 @@ import * as messagesApi from "../../../../api/messagesApi";
 function ControlChatRight(props) {
   //
   const { send, setSend, scrollBottomContent } = props;
-  const messages = useSelector((state) => state.messages);
+  const { messages, headers } = useSelector((state) => {
+    return {
+      messages: state.messages,
+      headers: state.headers,
+    };
+  });
   const [content, setContent] = useState("");
   const sendMessage = async () => {
-    await messagesApi.addMessages({
-      id: null,
-      userMessages: null,
-      groupChatMessages: messages.group,
-      guest: null,
-      content: content,
-      images: null,
-      timeCreated: null,
-      typeMessages: 0,
-    });
+    await messagesApi.addMessages(
+      {
+        id: null,
+        userMessages: null,
+        groupChatMessages: messages.group,
+        guest: null,
+        content: content,
+        images: null,
+        timeCreated: null,
+        typeMessages: 0,
+      },
+      headers
+    );
     setSend(!send);
     setContent("");
     scrollBottomContent();

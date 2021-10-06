@@ -12,13 +12,13 @@ function ProductViewRight(props) {
   //
   const { products, imageData } = props;
   const dispatch = useDispatch();
-  const states = useSelector((state) => {
+  const { product, user, headers } = useSelector((state) => {
     return {
       product: state.product,
       user: state.user,
+      headers: state.headers,
     };
   });
-  const { product, user } = states;
   const [number, setNumber] = useState(1);
   //
   return (
@@ -134,14 +134,17 @@ function ProductViewRight(props) {
             <button
               onClick={() =>
                 dispatch(
-                  cartsAction.addCartRequest({
-                    user: user,
-                    amount: number,
-                    idProduct:
-                      product.typeDisplay === 0
-                        ? product.view.idProduct
-                        : product.modal.idProduct,
-                  })
+                  cartsAction.addCartRequest(
+                    {
+                      user: user,
+                      amount: number,
+                      idProduct:
+                        product.typeDisplay === 0
+                          ? product.view.idProduct
+                          : product.modal.idProduct,
+                    },
+                    headers
+                  )
                 )
               }
               type="button"

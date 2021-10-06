@@ -3,15 +3,23 @@ import { v4 as uuidv4 } from "uuid";
 import * as wishListApi from "../../api/wishListApi";
 import * as productApi from "../../api/productApi";
 
-export const loadWishListRequest = (user) => {
+export const loadWishListRequest = (user, headers) => {
   return async (dispatch) => {
-    if (user === null) {
+    if (!headers.Authorization) {
       if (localStorage && localStorage.getItem("wishLists"))
         dispatch(loadWishList(JSON.parse(localStorage.getItem("wishLists"))));
       else dispatch(loadWishList([]));
     } else {
-      const wishLists = await wishListApi.getAllWishListByIdUser(user.id);
-      dispatch(loadWishList(wishLists.data));
+      if (user) {
+        const wishLists = await wishListApi.getAllWishListByIdUser(
+          user.id,
+          headers
+        );
+        dispatch(loadWishList(wishLists.data));
+      } else {
+        if (localStorage && localStorage.getItem("wishLists"))
+          dispatch(loadWishList(JSON.parse(localStorage.getItem("wishLists"))));
+      }
     }
   };
 };
@@ -23,11 +31,14 @@ export const loadWishList = (wishLists) => {
   };
 };
 
-export const addWishListRequest = (data) => {
+export const addWishListRequest = (data, headers) => {
   return async (dispatch) => {
     let formData = new FormData();
     formData.append("slug", data.idProduct);
-    const result = await productApi.getProductFullByIdProduct(data.idProduct);
+    const result = await productApi.getProductFullByIdProduct(
+      data.idProduct,
+      headers
+    );
     if (data.user === null) {
       let listWishList = [];
       if (localStorage && localStorage.getItem("wishLists")) {
@@ -74,17 +85,24 @@ export const addWishListRequest = (data) => {
     } else {
       const wishListCheck = await wishListApi.checkWishList(
         data.user.id,
-        data.idProduct
+        data.idProduct,
+        headers
       );
       if (wishListCheck.data === "" || wishListCheck.data === null) {
-        const product = await productApi.getProductByIdProduct(data.idProduct);
-        const wishLists = await wishListApi.addWishListByIdUser({
-          id: 0,
-          wishListUser: data.user,
-          wishListProduct: product.data,
-          amount: data.amount,
-          timeCreated: "",
-        });
+        const product = await productApi.getProductByIdProduct(
+          data.idProduct,
+          headers
+        );
+        const wishLists = await wishListApi.addWishListByIdUser(
+          {
+            id: 0,
+            wishListUser: data.user,
+            wishListProduct: product.data,
+            amount: data.amount,
+            timeCreated: "",
+          },
+          headers
+        );
         dispatch(loadWishList(wishLists.data));
       } else {
         dispatch(
@@ -105,12 +123,13 @@ export const addWishList = (data) => {
   };
 };
 
-export const deleteWishListRequest = (data) => {
+export const deleteWishListRequest = (data, headers) => {
   return async (dispatch) => {
     if (data.user) {
       const result = await wishListApi.deleteWishListByIdUser(
         data.user.id,
-        data.idCart
+        data.idCart,
+        headers
       );
       dispatch(loadWishList(result.data));
     } else {

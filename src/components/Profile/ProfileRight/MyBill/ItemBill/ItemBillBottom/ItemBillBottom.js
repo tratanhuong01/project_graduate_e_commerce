@@ -8,10 +8,11 @@ import * as billsAction from "../../../../../../actions/bill/index";
 function ItemBillBottom(props) {
   //
   const { bill, data } = props;
-  const { user, bills } = useSelector((state) => {
+  const { user, bills, headers } = useSelector((state) => {
     return {
       user: state.user,
       bills: state.bills,
+      headers: state.headers,
     };
   });
   const dispatch = useDispatch();
@@ -44,12 +45,15 @@ function ItemBillBottom(props) {
             onClick={() => {
               dispatch({ type: SET_LOADING_BILL_USER, status: true });
               dispatch(
-                billsAction.cancelOrderRequest({
-                  user,
-                  index: bills.index,
-                  type: data.type,
-                  bill: bill,
-                })
+                billsAction.cancelOrderRequest(
+                  {
+                    user,
+                    index: bills.index,
+                    type: data.type,
+                    bill: bill,
+                  },
+                  headers
+                )
               );
             }}
             className="border-2 ml-6 border-solid border-organce px-4 py-2 font-semibold text-sm"

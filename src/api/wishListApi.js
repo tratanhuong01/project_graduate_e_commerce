@@ -1,30 +1,25 @@
 import api from "../Utils/api";
 
-const token =
-  localStorage && localStorage.getItem("userToken")
-    ? { Authorization: localStorage.getItem("userToken") }
-    : {};
-
-export const getAllWishListByIdUser = (idUser) => {
+export const getAllWishListByIdUser = (idUser, headers) => {
   //
-  return api(`getAllWishListByIdUser/${idUser}`, "GET", null, token);
+  return api(`getAllWishListByIdUser/${idUser}`, "GET", null, headers);
   //
 };
 
-export const checkWishList = (idUser, idProduct) => {
+export const checkWishList = (idUser, idProduct, headers) => {
   //
-  return api(`checkWishList/${idUser}/${idProduct}`, "GET", null, token);
-  //
-};
-
-export const addWishListByIdUser = (wishList) => {
-  //
-  return api(`wishLists`, "POST", wishList, token);
+  return api(`checkWishList/${idUser}/${idProduct}`, "GET", null, headers);
   //
 };
 
-export const deleteWishListByIdUser = (idUser, idCart) => {
+export const addWishListByIdUser = (wishList, headers) => {
   //
-  return api(`wishLists/${idUser}/${idCart}`, "DELETE", token);
+  return api(`wishLists`, "POST", wishList, headers);
+  //
+};
+
+export const deleteWishListByIdUser = (idUser, idCart, headers) => {
+  //
+  return api(`wishLists/${idUser}/${idCart}`, "DELETE", null, headers);
   //
 };

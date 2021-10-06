@@ -11,7 +11,7 @@ import reviewProduct from "./reviewProduct";
 import news from "./news";
 import bills from "./bills";
 import messages from "./messages";
-
+import headers from "./headers";
 const myReducer = combineReducers({
   modal,
   user,
@@ -25,6 +25,7 @@ const myReducer = combineReducers({
   news,
   bills,
   messages,
+  headers,
 });
 
 export default myReducer;

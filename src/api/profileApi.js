@@ -1,46 +1,41 @@
 import api from "../Utils/api";
 
-const token =
-  localStorage && localStorage.getItem("userToken")
-    ? { Authorization: localStorage.getItem("userToken") }
-    : {};
-
-export const deleteAddress = (idAddress, idUser) => {
+export const deleteAddress = (idAddress, idUser, headers) => {
   //
   return api(
     `addresses?idAddress=${idAddress}&idUser=${idUser}`,
     "DELETE",
     null,
-    token
+    headers
   );
   //
 };
 
-export const getAddressByIdUser = (idUser) => {
+export const getAddressByIdUser = (idUser, headers) => {
   //
-  return api(`addresses/${idUser}`, "GET", null, token);
-  //
-};
-
-export const setDefaultAddressByIdUser = (idUser, idAddress) => {
-  //
-  return api(`setDefaultAddress/${idUser}/${idAddress}`, "PUT", null, token);
+  return api(`addresses/${idUser}`, "GET", null, headers);
   //
 };
 
-export const addAddressByIdUser = (address) => {
+export const setDefaultAddressByIdUser = (idUser, idAddress, headers) => {
+  //
+  return api(`setDefaultAddress/${idUser}/${idAddress}`, "PUT", null, headers);
+  //
+};
+
+export const addAddressByIdUser = (address, headers) => {
   //
   return api(
     `addresses?idUser=${address.addressUser.id}`,
     "POST",
     address,
-    token
+    headers
   );
   //
 };
 
-export const getBankByIdUser = (idUser) => {
+export const getBankByIdUser = (idUser, headers) => {
   //
-  return api(`banks/${idUser}`, "GET", null, token);
+  return api(`banks/${idUser}`, "GET", null, headers);
   //
 };

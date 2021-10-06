@@ -10,7 +10,7 @@ function TitleCart(props) {
   return (
     <div className="w-full bg-white hidden md:flex dark:bg-dark-second">
       <div
-        className="w-10 flex justify-center border-2 border-solid border-gray-100  dark:border-dark-third
+        className="w-10 flex justify-center border-2 border-solid border-gray-100 dark:border-dark-third 
         p-3 relative"
       >
         <input
@@ -26,6 +26,7 @@ function TitleCart(props) {
               ? true
               : false
           }
+          disabled={carts.list.length === 0 ? true : false}
         />
       </div>
       <div

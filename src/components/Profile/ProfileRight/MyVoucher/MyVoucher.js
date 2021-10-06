@@ -14,14 +14,24 @@ import * as voucherApi from "../../../../api/voucherApi";
 function MyVoucher(props) {
   //
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const { user, headers } = useSelector((state) => {
+    return {
+      user: state.user,
+      headers: state.headers,
+    };
+  });
   const [vouchers, setVouchers] = useState(null);
   const [data, setData] = useState(0);
   useEffect(() => {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await voucherApi.getDiscountCodeByIdUser(user.id, 0, data);
+      const result = await voucherApi.getDiscountCodeByIdUser(
+        user.id,
+        0,
+        data,
+        headers
+      );
       if (unmounted) return;
       setVouchers(result.data);
     }

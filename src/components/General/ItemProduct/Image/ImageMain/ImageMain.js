@@ -8,6 +8,7 @@ function ImageMain(props) {
     <img
       src={typeof image !== "undefined" ? image.src : ""}
       className="w-full h-64 object-contain"
+      loading="lazy"
       alt=""
     />
   );

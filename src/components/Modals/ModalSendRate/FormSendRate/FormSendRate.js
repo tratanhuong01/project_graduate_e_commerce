@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputFieldFC from "../../../General/InputField/InputFieldFC";
 import TextAreaFieldFC from "../../../General/TextAreaField/TextAreaFieldFC";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as reviewProductsAction from "../../../../actions/reviewProduct/index";
 function FormSendRate(props) {
   const validationSchema = Yup.object().shape({
@@ -26,6 +26,7 @@ function FormSendRate(props) {
     shouldUnregister: false,
   });
   const { user, indexStar, products, reviewProduct } = props;
+  const headers = useSelector((state) => state.headers);
   const dispatch = useDispatch();
   const onSendRate = (data) => {
     dispatch(
@@ -35,7 +36,8 @@ function FormSendRate(props) {
           indexStar,
           products,
           active: reviewProduct.active,
-        })
+        }),
+        headers
       )
     );
   };

@@ -6,10 +6,11 @@ import InputFieldFC from "../../../../General/InputField/InputFieldFC";
 import { useDispatch, useSelector } from "react-redux";
 import * as reviewProductsAction from "../../../../../actions/reviewProduct/index";
 function FormReplyReview(props) {
-  const { user, reviewProduct } = useSelector((state) => {
+  const { user, reviewProduct, headers } = useSelector((state) => {
     return {
       user: state.user,
       reviewProduct: state.reviewProduct,
+      headers: state.headers,
     };
   });
   const dispatch = useDispatch();
@@ -45,7 +46,8 @@ function FormReplyReview(props) {
           products: reviewProduct.products,
           active: reviewProduct.active,
           review,
-        })
+        }),
+        headers
       )
     );
     setShow(false);

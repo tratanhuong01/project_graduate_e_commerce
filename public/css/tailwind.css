@@ -14,7 +14,14 @@
   --tw-bg-opacity: 1;
   background-color: rgba(36, 37, 38, var(--tw-bg-opacity));
 }
-
+.dark .dark\:border-dark-third {
+  --tw-bg-opacity: 1;
+  border-color: rgba(58, 59, 60, var(--tw-bg-opacity));
+}
+.dark .dark\:hover\:border-dark-third:hover {
+  --tw-bg-opacity: 1;
+  border-color: rgba(58, 59, 60, var(--tw-bg-opacity));
+}
 .dark .dark\:bg-dark-third {
   --tw-bg-opacity: 1;
   background-color: rgba(58, 59, 60, var(--tw-bg-opacity));

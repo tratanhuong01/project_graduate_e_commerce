@@ -8,19 +8,27 @@ function ListProduct(props) {
   //
   const dispatch = useDispatch();
   const { slugCategoryProduct, slugGroupProduct } = props.match.match.params;
-  const listProduct = useSelector((state) => state.listProduct);
+  const { headers, listProduct } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
   useEffect(() => {
     //
     dispatch(listProductsAction.loadListProduct(null));
     const timeOut = setTimeout(() => {
       dispatch(
-        listProductsAction.loadListProductRequest({
-          slugCategoryProduct: slugCategoryProduct,
-          slugGroupProduct:
-            typeof slugGroupProduct === "undefined"
-              ? slugCategoryProduct
-              : slugGroupProduct,
-        })
+        listProductsAction.loadListProductRequest(
+          {
+            slugCategoryProduct: slugCategoryProduct,
+            slugGroupProduct:
+              typeof slugGroupProduct === "undefined"
+                ? slugCategoryProduct
+                : slugGroupProduct,
+          },
+          headers
+        )
       );
     }, 500);
     return () => clearTimeout(timeOut);

@@ -1,3 +1,7 @@
+//
+export const UPDATE_HEADERS = "UPDATE_HEADERS";
+//
+
 // --------load modal-------- //
 export const ON_LOADING_MODAL = "ON_LOADING_MODAL";
 //

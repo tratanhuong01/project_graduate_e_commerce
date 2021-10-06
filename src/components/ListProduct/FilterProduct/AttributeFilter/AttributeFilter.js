@@ -6,9 +6,15 @@ import Brand from "./ItemAttributeFilter/PopupItemAttributeFilter/Brand/Brand";
 import ItemMain from "./ItemAttributeFilter/PopupItemAttributeFilter/ItemMain/ItemMain";
 import Price from "./ItemAttributeFilter/PopupItemAttributeFilter/Price/Price";
 import * as listProductsAction from "../../../../actions/listProduct/index";
+import ColorRamRom from "./ColorRamRom/ColorRamRom";
 function AttributeFilter(props) {
   //
-  const listProduct = useSelector((state) => state.listProduct);
+  const { listProduct, headers } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
   const { slug } = listProduct;
   const [filters, setFilters] = useState([]);
   const [index, setIndex] = useState(-1);
@@ -20,14 +26,19 @@ function AttributeFilter(props) {
     if (slug) {
       async function fetch() {
         dispatch(listProductsAction.resetAllFilterSorterSearchListProduct());
-        const result = await api(`getFilterByGroupProduct/${slug}`);
+        const result = await api(
+          `getFilterByGroupProduct/${slug}`,
+          "GET",
+          null,
+          headers
+        );
         if (unmounted) return;
         setFilters(result.data);
       }
       fetch();
     }
     return () => {
-      unmounted = false;
+      unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
@@ -55,13 +66,19 @@ function AttributeFilter(props) {
           </ItemAttributeFilter>
         </>
       )}
+      <ColorRamRom
+        slug={slug}
+        listProduct={listProduct}
+        setIndex={setIndex}
+        index={index}
+      />
       {filters.map((item, pos) => {
         return (
           <ItemAttributeFilter
             key={pos}
             onClick={(index) => setIndex(index)}
             name={item.groupFilterProduct.nameGroupFilterProduct}
-            index={pos + 2}
+            index={pos + 5}
             indexCurrent={index}
           >
             <ItemMain

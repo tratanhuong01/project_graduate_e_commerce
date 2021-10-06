@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import api from "../../../../Utils/api";
 import ItemTechnicalData from "../../../Modals/ModalInfoDetailProduct/TechnicalData/ItemTechnicalData/ItemTechnicalData";
 import * as modalsAction from "../../../../actions/modal/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 function TechnicalDataSmall(props) {
   //
   const dispatch = useDispatch();
   const { products } = props;
+  const headers = useSelector((state) => state.headers);
   const [data, setData] = useState(null);
   useEffect(() => {
     //
@@ -15,7 +16,8 @@ function TechnicalDataSmall(props) {
       const result = await api(
         `attributeProducts/${products.idLineProduct}`,
         "GET",
-        null
+        null,
+        headers
       );
       if (unmounted) return;
       setData(result.data);

@@ -1,29 +1,24 @@
 import api from "../Utils/api";
 
-const token =
-  localStorage && localStorage.getItem("userToken")
-    ? { Authorization: localStorage.getItem("userToken") }
-    : {};
-
-export const addCommentByNews = (comment) => {
+export const addCommentByNews = (comment, headers) => {
   //
-  return api("comments", "POST", comment, token);
+  return api("comments", "POST", comment, headers);
   //
 };
 
-export const getAllCommentByNews = (idNews) => {
+export const getAllCommentByNews = (idNews, headers) => {
   //
-  return api(`commentsAll/${idNews}`, "GET", null, token);
+  return api(`commentsAll/${idNews}`, "GET", null, headers);
   //
 };
 
-export const getCommentByNewsLimit = (idNews, index, limit) => {
+export const getCommentByNewsLimit = (idNews, index, limit, headers) => {
   //
   return api(
     `comments/${idNews}/${index * limit}/${limit}`,
     "GET",
     null,
-    token
+    headers
   );
   //
 };

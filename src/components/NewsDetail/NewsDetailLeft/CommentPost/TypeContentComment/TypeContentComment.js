@@ -18,19 +18,21 @@ function TypeContentComment(props) {
     resolver: yupResolver(validationSchema),
     shouldUnregister: false,
   });
-  const { user, news, level } = useSelector((state) => {
+  const { user, news, headers } = useSelector((state) => {
     return {
       user: state.user,
       news: state.news,
+      headers: state.headers,
     };
   });
-  const { comment, setShow } = props;
+  const { comment, setShow, level } = props;
   const dispatch = useDispatch();
   const sendComment = (data) => {
     if (level === 1)
       dispatch(
         newsAction.addCommentRequest(
-          Object.assign(data, { user, news: news.news, commentReply: comment })
+          Object.assign(data, { user, news: news.news, commentReply: comment }),
+          headers
         )
       );
     else
@@ -41,7 +43,8 @@ function TypeContentComment(props) {
             news: news.news,
             commentReply: comment,
             index: news.index,
-          })
+          }),
+          headers
         )
       );
     setValue("content", "");

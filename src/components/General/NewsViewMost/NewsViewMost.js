@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import ItemNewsViewMost from "./ItemNewsViewMost/ItemNewsViewMost";
 import * as newsApi from "../../../api/newsApi";
+import { useSelector } from "react-redux";
 
 function NewsViewMost(props) {
   const [news, setNews] = useState(null);
+  const headers = useSelector((state) => state.headers);
   useEffect(() => {
     //
     let unmounted = false;
     const fetch = async () => {
-      const result = await newsApi.getListNewsMostView();
+      const result = await newsApi.getListNewsMostView(headers);
       if (unmounted) return;
       setNews(result.data);
     };
