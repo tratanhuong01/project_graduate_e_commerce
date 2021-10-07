@@ -15,10 +15,10 @@ function SliderProductRight(props) {
     >
       <div className="flex flex-col">
         <p className="text-organce font-semibold text-xm md:text-2xl mb-4 ">
-          {current.slideProduct.lineProduct.groupProduct.nameGroupProduct}
+          {current.slideProduct.groupProduct.nameGroupProduct}
         </p>
         <p className="text-gray-700 dark:text-white font-bold text-2xl md:text-5xl mb-2">
-          {current.slideProduct.lineProduct.nameLineProduct}
+          {current.slideProduct.nameLineProduct}
         </p>
         <p className="text-gray-500 dark:text-gray-300 font-semibold text-sm md:text-xl mb-6">
           {current.slogan}

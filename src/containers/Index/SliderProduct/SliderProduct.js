@@ -13,7 +13,7 @@ function SliderProduct(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api("slides", "GET", null);
+      const result = await api("getSlidesActive", "GET", null);
       if (unmounted) return;
       setSliders(result.data);
       setCurrent(result.data[0]);
