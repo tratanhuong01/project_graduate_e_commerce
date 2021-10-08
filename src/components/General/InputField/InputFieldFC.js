@@ -43,7 +43,7 @@ function InputFieldFC(props) {
             }`
           }
           onChange={(e) => {
-            onChange(e.target.value);
+            if (typeof onChange === "function") onChange(e.target.value);
             if (typeof register === "function") Field.onChange(e);
           }}
           placeholder={placeHolder}

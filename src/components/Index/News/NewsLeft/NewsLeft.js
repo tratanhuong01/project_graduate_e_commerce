@@ -50,6 +50,7 @@ function NewsLeft(props) {
         src={newData.thumbnail}
         className="w-full max-h-148 h-full object-cover"
         alt=""
+        loading="lazy"
       />
       <div
         className={`absolute ${

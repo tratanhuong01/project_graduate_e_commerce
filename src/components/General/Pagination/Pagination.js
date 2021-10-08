@@ -40,11 +40,11 @@ function Pagination(props) {
           dispatch(index + 1);
         }}
         className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5
-      border-solid border-gray-500 flex justify-center items-center ${
-        index === Math.ceil(length / limit) - 1 || length === 0
-          ? "opacity-50 cursor-not-allowed"
-          : " cursor-pointer "
-      }`}
+        border-solid border-gray-500 flex justify-center items-center ${
+          index === Math.ceil(length / limit) - 1 || length === 0
+            ? "opacity-50 cursor-not-allowed"
+            : " cursor-pointer "
+        }`}
       >
         <i className="bx bxs-chevrons-right"></i>
       </li>
