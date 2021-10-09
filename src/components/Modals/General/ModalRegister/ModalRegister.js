@@ -6,12 +6,7 @@ import { useSelector } from "react-redux";
 
 function ModalRegister(props) {
   //
-  const states = useSelector((state) => {
-    return {
-      modal: state.modal,
-    };
-  });
-  const { modal } = states;
+  const modal = useSelector((state) => state.modal);
   //
   return (
     <div

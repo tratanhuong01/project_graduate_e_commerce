@@ -84,6 +84,12 @@ class FormRegister extends Component {
           birthday: "",
           password: "",
           type: 0,
+          userRole: {
+            id: "CUSTOMER",
+            nameRole: "Khách hàng",
+            typeRole: 0,
+            timeCreated: "10-04-2021 08:05:05",
+          },
           codeEmail: "",
           codePhone: "",
           isVerifyEmail: 0,

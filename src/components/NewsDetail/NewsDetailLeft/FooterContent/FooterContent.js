@@ -1,17 +1,23 @@
 import React from "react";
-
+import { FacebookShareButton } from "react-share";
 function FooterContent(props) {
   return (
     <div className="w-full flex items-center my-6">
-      <div
-        className=" px-2 py-1.5 text-white flex mr-3 cursor-pointer hover:bg-organce-important"
-        style={{ backgroundColor: "#3b5998" }}
+      <FacebookShareButton
+        url={"https://www.youtube.com/watch?v=eHhPDRaTraU"}
+        quote={"Share with facebook"}
       >
-        <span className="bx bxl-facebook-circle mr-2 text-2xl flex"></span>
-        <span className="flex items-center text-sm font-semibold">
-          Facebook
-        </span>
-      </div>
+        <div
+          className=" px-2 py-1.5 text-white flex mr-3 cursor-pointer hover:bg-organce-important"
+          style={{ backgroundColor: "#3b5998" }}
+        >
+          <span className="bx bxl-facebook-circle mr-2 text-2xl flex"></span>
+          <span className="flex items-center text-sm font-semibold">
+            Facebook
+          </span>
+        </div>
+      </FacebookShareButton>
+
       <div
         className=" px-2 py-1.5 text-white flex mr-3 cursor-pointer hover:bg-organce-important"
         style={{ backgroundColor: "#1da1f2" }}
