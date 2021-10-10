@@ -8,8 +8,7 @@ function TechnicalData(props) {
   //
   return (
     <div
-      className={`${"w-2/3"} mx-auto pt-16 overflow-y-auto scrollbar-css`}
-      style={{ height: "calc(90vh - 48px)", maxHeight: "calc(90vh - 48px)" }}
+      className={`${"w-2/3"} mx-auto overflow-y-auto scrollbar-css h-full max-h-full`}
     >
       {attributes &&
         attributes.map((attribute, index) => {

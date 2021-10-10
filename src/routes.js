@@ -15,6 +15,7 @@ import AddData from "./AddData";
 import ContentWrite from "./ContentWrite";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import Profile from "./pages/Profile/Profile";
+import Login from "./pages/Login/Login";
 
 const routes = [
   {
@@ -117,6 +118,12 @@ const routes = [
     path: `${Config.PAGE_PRODUCT}/:slugCategoryProduct/:slugGroupProduct`,
     exact: true,
     main: (match) => <ListProduct match={match} />,
+    once: false,
+  },
+  {
+    path: Config.PAGE_LOGIN,
+    exact: true,
+    main: () => <Login />,
     once: false,
   },
   {

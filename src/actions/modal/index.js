@@ -137,3 +137,9 @@ export const orderSuccess = () => {
     type: Types.ORDER_SUCCESS,
   };
 };
+
+export const openModalForgotPassword = () => {
+  return {
+    type: Types.OPEN_MODAL_FORGOT_PASSWORD,
+  };
+};

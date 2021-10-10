@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import CloseModal from "../../General/CloseModal/CloseModal";
+import ModalWrapper from "../../../containers/ModalWrapper";
 import FormSendRate from "./FormSendRate/FormSendRate";
 
 function ModalSendRate(props) {
@@ -17,14 +17,13 @@ function ModalSendRate(props) {
   const { products } = props;
   //
   return (
-    <div
+    <ModalWrapper
+      title="Đánh giá sản phẩm"
       className="w-11/12 xl:w-5/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
       rounded-lg z-50 animate__animated animate__fadeIn bg-white overflow-y-auto scrollbar-css"
       style={{ maxHeight: "90vh" }}
     >
-      <CloseModal />
-      <div className="w-full mb-1 mt-8 flex justify-center flex-col text-center">
-        <p className="text-xm">Đánh giá sản phẩm</p>
+      <div className="w-full mb-1 flex justify-center flex-col text-center">
         <p className="text-xl font-bold mt-1 mb-3">
           {products.nameLineProduct}
         </p>
@@ -58,7 +57,7 @@ function ModalSendRate(props) {
         reviewProduct={reviewProduct}
         user={user}
       />
-    </div>
+    </ModalWrapper>
   );
 }
 

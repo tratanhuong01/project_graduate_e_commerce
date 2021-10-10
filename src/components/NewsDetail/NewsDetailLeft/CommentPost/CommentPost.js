@@ -52,7 +52,7 @@ function CommentPost(props) {
       )}
       {news.comments ? (
         <div className="w-full p-2 my-5">
-          <div className="flex text-xl my-3">
+          <div className="flex text-xl my-3" id="position__comment">
             <p
               className="p-2 border-b-2 border-solid border-organce 
               text-gray-700 flex items-center dark:text-white"

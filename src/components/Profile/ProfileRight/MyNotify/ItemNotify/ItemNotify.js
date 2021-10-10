@@ -5,6 +5,7 @@ import * as profilesAction from "../../../../../actions/profile/index";
 function ItemNotify(props) {
   //
   const dispatch = useDispatch();
+  const { notify } = props;
   //
   return (
     <div
@@ -13,19 +14,16 @@ function ItemNotify(props) {
     >
       <div className="w-3/4 flex items-center">
         <img
-          src="https://cf.shopee.vn/file/30cfbf2972827fc710796675e7c4f281"
+          src={notify.image}
           alt=""
           className="w-24 h-24 p-1 object-cover rounded-lg"
         />
         <div className="flex text-gray-600 flex-col pl-4 dark:text-white">
           <p className="font-semibold text-xm text-green-500 mb-1">
-            Giao hàng thành công
+            {notify.nameNotify}
           </p>
-          <p className="font-semibold mb-1 text-sm">
-            Kiện hàng EF496076619VN của đơn hàng 210421KXWSW8C0 đã giao thành
-            công đến bạn.
-          </p>
-          <p className="font-semibold text-xs">20:15 18-08-2021</p>
+          <p className="font-semibold mb-1 text-sm">{notify.description}</p>
+          <p className="font-semibold text-xs"> {notify.timeCreated}</p>
         </div>
       </div>
       <div className="w-1/4 flex items-center justify-end">
@@ -33,7 +31,7 @@ function ItemNotify(props) {
           className="border-2 border-solid border-gray-300 font-semibold dark:text-white  
           text-gray-600 px-4 py-1.5 text-sm hover:border-organce hover:text-organce"
         >
-          Xem chi tiết đơn hàng
+          Xem chi tiết
         </button>
       </div>
     </div>

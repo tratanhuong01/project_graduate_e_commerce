@@ -6,7 +6,9 @@ function Button(props) {
   //
   return (
     <button
-      onClick={() => onClick()}
+      onClick={() => {
+        if (typeof onClick === "function") onClick();
+      }}
       type="button"
       className={`${
         disabled === true ? "cursor-not-allowed" : "cursor-pointer"

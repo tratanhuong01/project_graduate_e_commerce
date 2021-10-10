@@ -1,5 +1,5 @@
 import React from "react";
-import CloseModal from "../../../General/CloseModal/CloseModal";
+import ModalWrapper from "../../../../containers/ModalWrapper";
 import ItemChangeAddressPayment from "./ItemChangeAddressPayment/ItemChangeAddressPayment";
 
 function ModalChangeAddressPayment(props) {
@@ -7,19 +7,13 @@ function ModalChangeAddressPayment(props) {
   const { addresses, address, setAddress } = props;
   //
   return (
-    <div
+    <ModalWrapper
+      title="Thay đổi địa chỉ"
       className="w-11/12 xl:w-5/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-        rounded-lg z-50 animate__animated animate__fadeIn bg-white overflow-y-auto scrollbar-css 
-        dark:bg-dark-main"
-      style={{ maxHeight: "70vh" }}
+        rounded-lg z-50 animate__animated animate__fadeIn bg-white dark:bg-dark-main"
+      styleChildren={{ height: "61vh", maxHeight: "85vh" }}
     >
-      <div className="w-full sticky pb-2 top-0 z-50 bg-white shadow-lg">
-        <div className="w-full py-3 font-semibold text-xl text-center relative">
-          Thay đổi địa chỉ
-          <CloseModal />
-        </div>
-      </div>
-      <div className="w-full">
+      <div className="w-full h-full overflow-y-auto overflow-x-hidden scrollbar-css">
         {addresses.map((item, index) => {
           return (
             <ItemChangeAddressPayment
@@ -31,7 +25,7 @@ function ModalChangeAddressPayment(props) {
           );
         })}
       </div>
-    </div>
+    </ModalWrapper>
   );
 }
 

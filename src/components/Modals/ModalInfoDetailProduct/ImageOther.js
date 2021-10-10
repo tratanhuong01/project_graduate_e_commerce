@@ -8,10 +8,7 @@ function ImageOther(props) {
   useEffect(() => {}, [images]);
   //
   return (
-    <div
-      className="w-full flex flex-wrap pt-20"
-      style={{ height: "calc(90vh - 10px)" }}
-    >
+    <div className="w-full flex flex-wrap h-full">
       {images && (
         <>
           <div className="w-full flex items-center mt-10">

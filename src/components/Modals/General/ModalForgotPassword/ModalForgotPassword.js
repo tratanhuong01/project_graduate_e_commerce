@@ -1,21 +1,16 @@
 import React from "react";
-import CloseModal from "../../../General/CloseModal/CloseModal";
+import ModalWrapper from "../../../../containers/ModalWrapper";
 import Button from "../Button/Button";
 
 function ModalForgotPassword(props) {
   return (
-    <div
-      className="w-11/12 absolute top-1/2 left-1/2 py-4 px-4 opacity-100 bg-white z-50 border-2 border-solid 
+    <ModalWrapper
+      title="Lấy lại tài khoản"
+      className="w-11/12 absolute top-1/2 left-1/2 py-4 opacity-100 bg-white z-50 border-2 border-solid 
     border-gray-300 sm:w-4/5 sm:mt-12 lg:w-3/5 xl:w-2/5 xl:mt-4 transform -translate-x-1/2 -translate-y-1/2 
-    rounded-lg z-50"
+    rounded-lg"
     >
-      <div className="w-full">
-        <div className="w-full text-center">
-          <p className="text-2xl font-semibold p-2.5 ">Lấy lại tài khoản</p>
-          <CloseModal />
-        </div>
-      </div>
-      <div className="w-full flex">
+      <div className="w-full flex px-4">
         <div
           className=" border-2 border-solid border-gray-200"
           style={{ width: "70%" }}
@@ -27,7 +22,8 @@ function ModalForgotPassword(props) {
             <input type="radio" name="choose" className="m-2.5" />
             <div className="px-2.5">
               <div className="my-1 font-semibold">
-                <i className="fas fa-envelope-open-text"></i>Gởi mã qua email
+                <i className="fas fa-envelope-open-text mr-3"></i>Gởi mã qua
+                email
               </div>
               <p className="">tratanhuong01@gmail.com</p>
             </div>
@@ -36,7 +32,8 @@ function ModalForgotPassword(props) {
             <input type="radio" name="choose" className="m-2.5" />
             <div className="px-2.5">
               <div className="my-1 font-semibold">
-                <i className="fas fa-mobile-alt"></i>Gởi mã qua số điện thoại
+                <i className="fas fa-mobile-alt mr-3"></i>Gởi mã qua số điện
+                thoại
               </div>
               <p className="">0354114665</p>
             </div>
@@ -55,7 +52,7 @@ function ModalForgotPassword(props) {
         </div>
       </div>
       <hr className="mt-4" />
-      <div className="text-right">
+      <div className="text-right px-4">
         <Button
           backgroundColor="bg-gray-500"
           color="text-white"
@@ -75,7 +72,7 @@ function ModalForgotPassword(props) {
           addClass=""
         />
       </div>
-    </div>
+    </ModalWrapper>
   );
 }
 

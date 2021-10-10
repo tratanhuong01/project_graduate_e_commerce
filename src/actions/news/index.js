@@ -61,6 +61,14 @@ export const loadNewsIndexPageRequest = (data, headers) => {
         index: index,
       })
     );
+    if (document.getElementById(`position__comment`))
+      window.scrollTo(
+        0,
+        document.getElementById(`position__comment`).getBoundingClientRect()
+          .top +
+          window.scrollY -
+          100
+      );
   };
 };
 

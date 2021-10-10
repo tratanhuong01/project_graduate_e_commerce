@@ -10,17 +10,20 @@ function ItemChangeAddressPayment(props) {
   const { address, addressCurrent, setAddress } = props;
   //
   return (
-    <div className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600">
+    <div
+      onClick={() => {
+        dispatch(ordersAction.loadInfoAddressPayment(address));
+        dispatch(modalsAction.closeModal());
+        setAddress(address);
+      }}
+      className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600 hover:bg-gray-200 cursor-pointer"
+    >
       <div className="w-2/12 flex items-center justify-center">
         <input
           type="radio"
           name="address"
-          onChange={() => {
-            dispatch(ordersAction.loadInfoAddressPayment(address));
-            dispatch(modalsAction.closeModal());
-            setAddress(address);
-          }}
           className="transform scale-150 "
+          onChange={() => setAddress(address)}
           checked={address.id === addressCurrent.id ? true : false}
         />
       </div>

@@ -1,53 +1,49 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import CloseModal from "../../../General/CloseModal/CloseModal";
 import Button from "../Button/Button";
 import * as modalsAction from "../../../../actions/modal/index";
+import ModalWrapper from "../../../../containers/ModalWrapper";
 function ModalSearchGetAccount(props) {
   //
   const dispatch = useDispatch();
   //
   return (
-    <div
-      className="wrapper-scrollbar w-11/12 fixed top-1/2 left-1/2 p-4 opacity-100 bg-white z-50 
+    <ModalWrapper
+      title="Quên tài khoản"
+      className="wrapper-scrollbar w-11/12 fixed top-1/2 left-1/2 opacity-100 bg-white z-50 
         border-2 border-solid border-gray-300 sm:w-4/5 sm:mt-12 lg:w-3/5 xl:w-5/12 xl:mt-4 transform 
         -translate-y-1/2 -translate-x-1/2 rounded-lg"
     >
-      <div className="w-full">
-        <div className="w-full">
-          <div className="w-full text-center">
-            <p className="text-2xl font-semibold p-2.5 dark:text-white">
-              Quên tài khoản
-            </p>
-            <CloseModal />
-          </div>
-        </div>
-        <div className="w-70per my-4 mx-auto">
-          <p>Vui lòng nhập số điện thoại hoặc email để lấy mật khẩu</p>
-          <input
-            className="w-full p-4 my-4"
-            type="text"
-            placeholder="Email hoặc số điện thoại"
-          />
-        </div>
-        <p className="w-70per text-red-600 font-semibold  py-4 mx-auto"></p>
-        <hr />
-        <div className="w-full mt-4 text-right">
-          <Button
-            backgroundColor={"bg-organce"}
-            color={" text-white "}
-            label={"Tìm Kiếm"}
-            addclassName={"mr-4"}
-          />
-          <Button
-            onClick={() => dispatch(modalsAction.closeModal())}
-            backgroundColor={""}
-            color={"text-gray-800"}
-            label={"Hủy"}
-          />
-        </div>
+      <div className="w-4/5 my-4 mx-auto px-3">
+        <p className="pl-4">
+          Vui lòng nhập số điện thoại hoặc email để lấy mật khẩu
+        </p>
+        <input
+          className="w-full p-4 my-4 border-2 border-solid border-gray-200 focus:border-blue-500 
+          rounded-full"
+          type="text"
+          placeholder="Email hoặc số điện thoại"
+          spellCheck={false}
+        />
       </div>
-    </div>
+      <p className="w-4/5 text-red-600 font-semibold  py-4 mx-auto px-4"></p>
+      <hr />
+      <div className="w-full my-4 text-right px-4">
+        <Button
+          backgroundColor={"bg-organce"}
+          color={" text-white "}
+          label={"Tìm Kiếm"}
+          onClick={() => dispatch(modalsAction.openModalForgotPassword())}
+          addclassName={"mr-4"}
+        />
+        <Button
+          onClick={() => dispatch(modalsAction.closeModal())}
+          backgroundColor={"bg-gray-600 ml-4"}
+          color={"text-white"}
+          label={"Hủy"}
+        />
+      </div>
+    </ModalWrapper>
   );
 }
 

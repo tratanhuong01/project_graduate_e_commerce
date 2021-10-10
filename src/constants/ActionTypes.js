@@ -3,6 +3,8 @@ export const UPDATE_HEADERS = "UPDATE_HEADERS";
 //
 
 // --------load modal-------- //
+export const OPEN_MODAL_FORGOT_PASSWORD = "OPEN_MODAL_FORGOT_PASSWORD";
+//
 export const ON_LOADING_MODAL = "ON_LOADING_MODAL";
 //
 export const OFF_LOADING_MODAL = "OFF_LOADING_MODAL";

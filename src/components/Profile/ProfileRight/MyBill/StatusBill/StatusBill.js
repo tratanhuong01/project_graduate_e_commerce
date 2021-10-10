@@ -11,7 +11,10 @@ function StatusBill(props) {
   //
   return (
     <>
-      <div className="w-full text-gray-600  dark:text-white  shadow-md hidden sm:flex">
+      <div
+        id="status__bill__"
+        className="w-full text-gray-600  dark:text-white  shadow-md hidden sm:flex"
+      >
         {status.map((item, index) => {
           return (
             <ItemStatusBill
