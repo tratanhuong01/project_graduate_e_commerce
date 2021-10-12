@@ -78,6 +78,8 @@ export const LOADING_LIST_PRODUCT = "LOADING_LIST_PRODUCT";
 export const LOAD_LIST_PRODUCT_SORTER = "LOAD_LIST_PRODUCT_SORTER";
 //
 export const LOAD_LIST_PRODUCT_TYPE_PRODUCT = "LOAD_LIST_PRODUCT_TYPE_PRODUCT";
+//
+export const UPDATE_INDEX_LIST_PRODUCT = "UPDATE_INDEX_LIST_PRODUCT";
 // --------prodocut-------- //
 
 // --------cart-------- //

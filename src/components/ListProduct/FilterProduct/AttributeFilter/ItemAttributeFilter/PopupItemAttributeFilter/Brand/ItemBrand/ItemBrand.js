@@ -1,10 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as listProductsAction from "../../../../../../../../actions/listProduct/index";
 function ItemBrand(props) {
   //
-  const { brand, state, setIndex, listProduct } = props;
+  const { brand, state, setIndex } = props;
   const dispatch = useDispatch();
+  const { headers, listProduct } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
   //
   return (
     <div
@@ -13,18 +19,22 @@ function ItemBrand(props) {
         dispatch(listProductsAction.loadingListProduct(true));
         const timeOut = setTimeout(() => {
           dispatch(
-            listProductsAction.addFilterProductRequest({
-              filters: listProduct.filters,
-              item: {
-                id: brand.id,
-                data: brand,
-                name: brand.nameBrand,
-                query: "brand",
+            listProductsAction.addFilterProductRequest(
+              {
+                filters: listProduct.filters,
+                item: {
+                  id: brand.id,
+                  data: brand,
+                  name: brand.nameBrand,
+                  query: "brand",
+                },
+                typeProduct: listProduct.typeProduct,
+                sorter: listProduct.sorter,
+                slug: listProduct.slug,
+                index: listProduct.index,
               },
-              typeProduct: listProduct.typeProduct,
-              sorter: listProduct.sorter,
-              slug: listProduct.slug,
-            })
+              headers
+            )
           );
         }, 500);
         return () => {

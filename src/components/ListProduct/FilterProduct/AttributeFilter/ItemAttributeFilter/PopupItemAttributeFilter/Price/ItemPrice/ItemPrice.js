@@ -32,6 +32,7 @@ function ItemPrice(props) {
                 sorter: listProduct.sorter,
                 typeProduct: listProduct.typeProduct,
                 slug: listProduct.slug,
+                index: listProduct.index,
               },
               headers
             )

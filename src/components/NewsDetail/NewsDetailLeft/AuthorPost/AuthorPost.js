@@ -1,10 +1,12 @@
 import React from "react";
 
-function AuthorPost(props) {
+function AuthorPost({ newsDetail }) {
+  //
+  //
   return (
     <div className="w-full flex my-3 p-3 border-2 border-solid border-gray-200 dark:text-white">
       <img
-        src="http://www.thetahmid.com/themes/tennews-v1.1/images/author.jpg"
+        src={newsDetail.userNews.avatar}
         alt=""
         className="w-32 h-32 rounded-lg items-center flex"
       />
@@ -12,7 +14,7 @@ function AuthorPost(props) {
         <div className="mb-2 font-semibold text-gray-500 dark:text-white">
           AUTHOR :{" "}
           <span className="font-bold text-gray-700  dark:text-white">
-            TRÀ HƯỞNG
+            {`${newsDetail.userNews.firstName} ${newsDetail.userNews.lastName}`}
           </span>
         </div>
         <div className="mb-2">

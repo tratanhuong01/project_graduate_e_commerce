@@ -10,6 +10,8 @@ const initialState = {
   name: "",
   type: 0,
   loading: true,
+  index: 0,
+  length: 0,
 };
 
 const myReducer = (state = initialState, action) => {
@@ -43,6 +45,11 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.LOAD_LIST_PRODUCT_TYPE_PRODUCT:
       state.typeProduct = action.typeProduct;
+      console.log(state.typeProduct);
+      return { ...state };
+    case Types.UPDATE_INDEX_LIST_PRODUCT:
+      state.index = action.index;
+      state.length = action.length;
       return { ...state };
     default:
       return state;

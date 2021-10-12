@@ -12,8 +12,10 @@ function MainNewsDetail(props) {
   return (
     <div className="w-full">
       <div className="w-full">
-        <BreadcrumbsItem to={`${PAGE_NEWS}/${newsDetail.news.slug}`}>
-          {newsDetail.news.title}
+        <BreadcrumbsItem
+          to={`${PAGE_NEWS}/${newsDetail.news && newsDetail.news.slug}`}
+        >
+          {newsDetail.news && newsDetail.news.title}
         </BreadcrumbsItem>
         <LevelUrl />
         <hr className="my-2"></hr>

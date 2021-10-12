@@ -14,7 +14,7 @@ function FilterProduct(props) {
     };
   });
   const dispatch = useDispatch();
-  useEffect(() => {}, [listProduct.filters, listProduct.slug]);
+  useEffect(() => {}, [listProduct, listProduct.slug]);
   //
   return (
     <div className="w-full mx-auto z-0">
@@ -28,7 +28,6 @@ function FilterProduct(props) {
                 key={index}
                 item={item}
                 onClick={() => {
-                  dispatch(listProductsAction.loadListProduct());
                   dispatch(
                     listProductsAction.removeFilterProductRequest(
                       {
@@ -41,6 +40,7 @@ function FilterProduct(props) {
                         typeProduct: listProduct.typeProduct,
                         sorter: listProduct.sorter,
                         slug: listProduct.slug,
+                        index: listProduct.index,
                       },
                       headers
                     )

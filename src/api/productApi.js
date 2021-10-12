@@ -26,12 +26,14 @@ export const getProductByIdProduct = (idProduct, headers) => {
 
 export const getProductAllCategory = (limit, index, type, headers) => {
   //
-  return api(
-    `productsAll/main/?offset=${0}&limit=${12}&type=${type}`,
-    "GET",
-    null,
-    headers
-  );
+  if (type === 0) return api(`productsAll/main/all/`, "GET", null, headers);
+  else
+    return api(
+      `productsAll/main/limit/?offset=${index}&limit=${limit}`,
+      "GET",
+      null,
+      headers
+    );
   //
 };
 
@@ -68,10 +70,34 @@ export const getAllGroupProduct = (headers) => {
 };
 
 export const getProductByCategory = (id, headers) => {
-  return api(`getProductByCategory/${id}`, "GET", null, headers, headers);
+  return api(`getProductByCategory/${id}`, "GET", null, headers);
 };
 
-export const getProductFilterByGroupProduct = (slug, query, headers) => {
+export const getProductByCategoryAll = (id, headers) => {
+  return api(`getProductByCategoryAll/${id}`, "GET", null, headers);
+};
+
+export const getProductByCategoryLimit = (id, index, headers) => {
+  return api(
+    `getProductByCategoryLimit/${id}/?offset=${index}&limit=${12}`,
+    "GET",
+    null,
+    headers
+  );
+};
+
+export const getProductFilterByGroupProductAll = (slug, query, headers) => {
+  return api(
+    `productsFilterAll?data=1&${
+      slug ? "slugGroupProduct=" + slug : ""
+    }${query}`,
+    "GET",
+    null,
+    headers
+  );
+};
+
+export const getProductFilterByGroupProductLimit = (slug, query, headers) => {
   return api(
     `productsFilter?data=1&${slug ? "slugGroupProduct=" + slug : ""}${query}`,
     "GET",

@@ -1,9 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as listProductsAction from "../../../../../../../../actions/listProduct/index";
 function ItemColor(props) {
   //
   const { color, state, setIndex, listProduct } = props;
+  const headers = useSelector((state) => state.headers);
   const dispatch = useDispatch();
   //
   return (
@@ -13,18 +14,22 @@ function ItemColor(props) {
         dispatch(listProductsAction.loadingListProduct(true));
         const timeOut = setTimeout(() => {
           dispatch(
-            listProductsAction.addFilterProductRequest({
-              filters: listProduct.filters,
-              item: {
-                id: color.id,
-                data: color,
-                name: color.description,
-                query: "color",
+            listProductsAction.addFilterProductRequest(
+              {
+                filters: listProduct.filters,
+                item: {
+                  id: color.id,
+                  data: color,
+                  name: color.description,
+                  query: "color",
+                },
+                typeProduct: listProduct.typeProduct,
+                sorter: listProduct.sorter,
+                slug: listProduct.slug,
+                index: listProduct.index,
               },
-              typeProduct: listProduct.typeProduct,
-              sorter: listProduct.sorter,
-              slug: listProduct.slug,
-            })
+              headers
+            )
           );
         }, 500);
         return () => {

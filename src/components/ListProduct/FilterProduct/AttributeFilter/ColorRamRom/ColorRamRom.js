@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import ItemAttributeFilter from "../ItemAttributeFilter/ItemAttributeFilter";
 import Ram from "../ItemAttributeFilter/PopupItemAttributeFilter/Ram/Ram";
 import Rom from "../ItemAttributeFilter/PopupItemAttributeFilter/Rom/Rom";
-import Color from "../ItemAttributeFilter/PopupItemAttributeFilter/Color/Color";
 
 function ColorRamRom(props) {
   //
@@ -30,15 +29,6 @@ function ColorRamRom(props) {
         slug={slug}
       >
         <Rom setIndex={setIndex} slug={slug} />
-      </ItemAttributeFilter>
-      <ItemAttributeFilter
-        onClick={(index) => setIndex(index)}
-        name="Màu sắc"
-        index={4}
-        indexCurrent={index}
-        slug={slug}
-      >
-        <Color setIndex={setIndex} slug={slug} />
       </ItemAttributeFilter>
     </>
   ) : (

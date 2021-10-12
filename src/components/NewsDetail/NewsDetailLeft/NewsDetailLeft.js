@@ -8,8 +8,12 @@ function NewsDetailLeft(props) {
   //
   return (
     <div className="w-full lg:w-2/3">
-      <ContentNewsDetail newsDetail={newsDetail.news} />
-      <CommentPost newsDetail={newsDetail} />
+      {newsDetail.news && (
+        <>
+          <ContentNewsDetail newsDetail={newsDetail.news} />
+          <CommentPost newsDetail={newsDetail} />{" "}
+        </>
+      )}
     </div>
   );
 }

@@ -15,11 +15,12 @@ function ChatBot(props) {
     //
     let timeOut;
     if (messages.group === null)
-      if (infoChat) {
-        timeOut = setTimeout(() => {
-          dispatch(messagesAction.randomUserSupportLiveRequest());
-        }, 2000);
-      }
+      if (infoChat)
+        if (!messages.admin)
+          timeOut = setTimeout(() => {
+            dispatch(messagesAction.randomUserSupportLiveRequest());
+          }, 2000);
+
     return () => {
       clearTimeout(timeOut);
     };

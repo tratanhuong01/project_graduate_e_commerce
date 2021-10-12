@@ -18,21 +18,21 @@ function MainSearch(props) {
     let unmounted = false;
     async function fetch() {
       const list = await api(
-        `products/search/?keyword=${keyword}&slug=${
+        `products/search/page/all/?keyword=${keyword}&slug=${
           slug === "tat-ca" ? "" : slug
-        }&type=1&limit=${0}&offset=${0}`,
+        }`,
         "GET",
         null
       );
       const listCurrent = await api(
-        `products/search/?keyword=${keyword}&slug=${
+        `products/search/page/limit/?keyword=${keyword}&slug=${
           slug === "tat-ca" ? "" : slug
-        }&type=0&limit=${12}&offset=${index * 12}`,
+        }&limit=${12}&offset=${index * 12}`,
         "GET",
         null
       );
       if (unmounted) return;
-      setLength(list.data.length);
+      setLength(list.data);
       setProducts(listCurrent.data);
     }
     fetch();
@@ -56,7 +56,7 @@ function MainSearch(props) {
             </div>
           ) : (
             <>
-              <NotifyNumberProductSearch products={products} />
+              <NotifyNumberProductSearch length={length} />
               <div className="w-full flex flex-wrap">
                 {products.map((product, index) => (
                   <ItemProduct product={product} key={index} />
@@ -66,7 +66,10 @@ function MainSearch(props) {
                 <Pagination
                   index={index}
                   length={length}
-                  dispatch={(index) => setIndex(index)}
+                  dispatch={(index) => {
+                    setIndex(index);
+                    window.scrollTo(0, 160);
+                  }}
                   limit={12}
                 />
               </div>

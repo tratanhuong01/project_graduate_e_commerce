@@ -15,7 +15,7 @@ function ItemCartMain(props) {
   });
   //
   return (
-    <div className="w-full my-3 mb-5 flex md:bg-white dark:bg-dark-second dark:text-white lg:h-28">
+    <div className="w-full my-3 py-2 lg:py-0 mb-5 flex bg-white dark:bg-dark-second dark:text-white lg:h-28">
       <div className="w-10 flex justify-center px-3 relative">
         <input
           type="checkbox"
@@ -35,10 +35,10 @@ function ItemCartMain(props) {
           checked={status}
         />
       </div>
-      <div className="w-1/4 md:w-2/12 flex justify-center pb-1 md:p-3">
+      <div className="w-1/4 md:w-2/12 flex justify-center pb-1 md:p-3 items-center">
         <img
           src={cart.image.src}
-          className="w-full md:w-11/12 sm:px-3 object-contain"
+          className="w-full md:w-11/12 sm:px-3 h-28 lg:h-36 object-contain"
           alt=""
         />
       </div>

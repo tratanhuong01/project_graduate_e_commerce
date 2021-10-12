@@ -24,6 +24,7 @@ function ItemRam(props) {
               typeProduct: listProduct.typeProduct,
               sorter: listProduct.sorter,
               slug: listProduct.slug,
+              index: listProduct.index,
             })
           );
         }, 500);

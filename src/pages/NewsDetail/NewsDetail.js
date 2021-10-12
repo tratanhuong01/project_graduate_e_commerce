@@ -14,7 +14,7 @@ function NewsDetail(props) {
       window.scrollTo(0, 0);
       await newsApi.updateViewNews(match.match.params.slug);
       const result = await newsApi.getNewsBySlug(match.match.params.slug);
-      if (result.data) document.title = result.data.news.title;
+      if (result.data.news) document.title = result.data.news.title;
       setNewsDetail(result.data);
     };
     if (mounted) fetch();

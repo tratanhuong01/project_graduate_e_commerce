@@ -7,6 +7,7 @@ import ItemMain from "./ItemAttributeFilter/PopupItemAttributeFilter/ItemMain/It
 import Price from "./ItemAttributeFilter/PopupItemAttributeFilter/Price/Price";
 import * as listProductsAction from "../../../../actions/listProduct/index";
 import ColorRamRom from "./ColorRamRom/ColorRamRom";
+import Color from "../AttributeFilter/ItemAttributeFilter/PopupItemAttributeFilter/Color/Color";
 function AttributeFilter(props) {
   //
   const { listProduct, headers } = useSelector((state) => {
@@ -21,7 +22,6 @@ function AttributeFilter(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     //
-
     let unmounted = false;
     if (slug) {
       async function fetch() {
@@ -63,6 +63,15 @@ function AttributeFilter(props) {
             indexCurrent={index}
           >
             <Price setIndex={setIndex} />
+          </ItemAttributeFilter>
+          <ItemAttributeFilter
+            onClick={(index) => setIndex(index)}
+            name="Màu sắc"
+            index={4}
+            indexCurrent={index}
+            slug={slug}
+          >
+            <Color setIndex={setIndex} slug={slug} />
           </ItemAttributeFilter>
         </>
       )}

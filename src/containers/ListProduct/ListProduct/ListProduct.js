@@ -2,10 +2,18 @@ import React from "react";
 import ItemProduct from "../../../components/General/ItemProduct/ItemProduct";
 import LoadingListProduct from "./LoadingListProduct/LoadingListProduct";
 import no__result from "../../../assets/images/no__result.gif";
-
+import Pagination from "../../../components/General/Pagination/Pagination";
+import * as listProductsAction from "../../../actions/listProduct/index";
+import { useDispatch, useSelector } from "react-redux";
 function ListProduct(props) {
   //
-  const { listProduct } = props;
+  const { listProduct, headers } = useSelector((state) => {
+    return {
+      listProduct: state.listProduct,
+      headers: state.headers,
+    };
+  });
+  const dispatch = useDispatch();
   //
   return !listProduct.loading ? (
     listProduct.products.length > 0 ? (
@@ -15,7 +23,27 @@ function ListProduct(props) {
             return <ItemProduct product={product} key={index} />;
           })}
         </div>
-        <div className="w-full flex justify-center my-2"></div>
+        <div className="w-full flex justify-center my-2">
+          <Pagination
+            index={listProduct.index}
+            length={listProduct.length}
+            limit={12}
+            dispatch={(item) =>
+              dispatch(
+                listProductsAction.filterProductPaginationIndexRequest(
+                  {
+                    filters: listProduct.filters,
+                    sorter: listProduct.sorter,
+                    typeProduct: listProduct.typeProduct,
+                    index: item,
+                    slug: listProduct.slug,
+                  },
+                  headers
+                )
+              )
+            }
+          />
+        </div>
       </div>
     ) : (
       <div className="w-full flex flex-col my-5 items-center h-80 justify-center">

@@ -4,68 +4,61 @@ import * as listProductsAction from "../../../../actions/listProduct/index";
 
 function FooterFilterProduct(props) {
   //
+  const headers = useSelector((state) => state.headers);
   const listProduct = useSelector((state) => state.listProduct);
   const dispatch = useDispatch();
-  const check = (item) => {
-    const index = listProduct.typeProduct.findIndex((dt) => dt === item);
-    return index !== -1 ? true : false;
-  };
   //
   return (
     <div className="w-full flex">
       <div className="w-2/3 flex items-center">
         <ul className="w-full flex">
           <li className="pr-3 font-semibold mr-3">
-            {listProduct.products ? listProduct.products.length : "..."}{" "}
+            {listProduct.length}{" "}
             {listProduct.name ? listProduct.name : "sản phẩm"}
           </li>
           <li className="pr-3 mr-3 flex items-center">
             <input
               onChange={(event) => {
-                dispatch(listProductsAction.loadingListProduct());
-                const timeOut = setTimeout(() => {
-                  dispatch(
-                    listProductsAction.loadListProductByTypeProductRequest({
+                dispatch(
+                  listProductsAction.loadListProductByTypeProductRequest(
+                    {
                       filters: listProduct.filters,
                       type: event.target.checked ? 0 : 1,
                       slug: listProduct.slug,
                       typeProduct: listProduct.typeProduct,
                       item: 0,
-                    })
-                  );
-                }, 500);
-                return () => {
-                  clearTimeout(timeOut);
-                };
+                      index: 0,
+                    },
+                    headers
+                  )
+                );
               }}
               type="checkbox"
               className="transform scale-150 mr-2"
-              checked={check(0)}
+              checked={listProduct.typeProduct.includes(0)}
             />
             <span>Mới</span>
           </li>
           <li className="pr-3 mr-3 flex items-center">
             <input
               onChange={(event) => {
-                dispatch(listProductsAction.loadingListProduct());
-                const timeOut = setTimeout(() => {
-                  dispatch(
-                    listProductsAction.loadListProductByTypeProductRequest({
+                dispatch(
+                  listProductsAction.loadListProductByTypeProductRequest(
+                    {
                       filters: listProduct.filters,
                       type: event.target.checked ? 0 : 1,
                       slug: listProduct.slug,
                       typeProduct: listProduct.typeProduct,
                       item: 1,
-                    })
-                  );
-                }, 500);
-                return () => {
-                  clearTimeout(timeOut);
-                };
+                      index: 0,
+                    },
+                    headers
+                  )
+                );
               }}
               type="checkbox"
               className="transform scale-150 mr-2"
-              checked={check(1)}
+              checked={listProduct.typeProduct.includes(1)}
             />
             <span>Cũ</span>
           </li>
@@ -74,20 +67,18 @@ function FooterFilterProduct(props) {
       <div className="w-1/3 flex justify-end items-center">
         <select
           onChange={(event) => {
-            dispatch(listProductsAction.loadingListProduct());
-            const timeOut = setTimeout(() => {
-              dispatch(
-                listProductsAction.loadListProductSorterRequest({
+            dispatch(
+              listProductsAction.loadListProductSorterRequest(
+                {
                   filters: listProduct.filters,
                   sorter: event.target.value,
                   slug: listProduct.slug,
                   typeProduct: listProduct.typeProduct,
-                })
-              );
-            }, 500);
-            return () => {
-              clearTimeout(timeOut);
-            };
+                  index: 0,
+                },
+                headers
+              )
+            );
           }}
           className="py-1 pr-4 pl-1 rounded-sm border-2 border-solid border-gray-300"
         >

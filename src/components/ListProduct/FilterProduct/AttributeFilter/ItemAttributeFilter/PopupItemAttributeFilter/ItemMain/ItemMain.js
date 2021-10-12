@@ -21,7 +21,6 @@ function ItemMain(props) {
           <div
             onClick={() => {
               setIndex(-1);
-              dispatch(listProductsAction.loadingListProduct(true));
               const timeOut = setTimeout(() => {
                 dispatch(
                   listProductsAction.addFilterProductRequest(
@@ -36,6 +35,7 @@ function ItemMain(props) {
                       sorter: listProduct.sorter,
                       typeProduct: listProduct.typeProduct,
                       slug: listProduct.slug,
+                      index: listProduct.index,
                     },
                     headers
                   )

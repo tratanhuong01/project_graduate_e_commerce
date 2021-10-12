@@ -106,10 +106,13 @@ export const addWishListRequest = (data, headers) => {
         dispatch(loadWishList(wishLists.data));
       } else {
         dispatch(
-          deleteWishListRequest({
-            user: data.user,
-            idCart: wishListCheck.data.id,
-          })
+          deleteWishListRequest(
+            {
+              user: data.user,
+              idCart: wishListCheck.data.id,
+            },
+            headers
+          )
         );
       }
     }
