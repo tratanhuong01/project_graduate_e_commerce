@@ -15,7 +15,12 @@ function InfoTopSell(props) {
           to={`${Config.PAGE_DETAIL_PRODUCT}/${products.slug}`}
           className="text-2xl"
         >
-          {products.nameLineProduct}
+          {products.nameLineProduct +
+            ` ${products.memory ? products.memory.nameMemory + " " : ""}${
+              products.color
+                ? "màu " + products.color.description.toLowerCase()
+                : ""
+            }`}
         </Link>
       </p>
       <p className="pt-5">
@@ -31,12 +36,19 @@ function InfoTopSell(props) {
         )}{" "}
         <u>đ</u>
       </p>
-      <p className="py-1">Kích thước màn hình: 1.65"</p>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      {/* <p className="py-1">Kích thước màn hình: 1.65"</p>
       <p className="py-1">Độ phân giải màn hình: 390 x 312pixels</p>
       <p className="py-1">Luôn hiển thị: Không</p>
       <p className="py-1">Mật độ điểm ảnh : 303pixels</p>
       <p className="py-1">Multi-touch: Có</p>
-      <p className="py-1">Loại màn hình: AMOLED</p>
+      <p className="py-1">Loại màn hình: AMOLED</p> */}
     </div>
   );
 }
