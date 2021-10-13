@@ -1,5 +1,5 @@
 import React from "react";
-
+import chat__bot__image__waiting from "../../../../../assets/images/chat__bot__image__waiting.png";
 function WaitingUserSupport(props) {
   //
   //
@@ -8,17 +8,19 @@ function WaitingUserSupport(props) {
       className="fixed right-8 bottom-8 z-second"
       style={{ width: 380, height: 510 }}
     >
-      <div className="w-full rounded-lg bg-white shadow-lg">
+      <div className="w-full rounded-lg bg-white dark:bg-dark-third shadow-lg">
         <div
           className="w-full p-2 flex justify-between h-16 items-center border-2 border-solid 
-        border-gray-200 shadow-lg"
+        border-gray-200 dark:border-gray-300 dark:text-white shadow-lg"
         >
           <div className="flex items-center">
             <i className="fas fa-sync fa-spin text-organce text-2xl mr-4"></i>
             <div>
               <span className="font-semibold">Đang chờ nhân viên hổ trợ</span>
               <br></br>
-              <span className="text-xs text-gray-600">Vui lòng chờ...</span>
+              <span className="text-xs text-gray-600 dark:text-gray-300">
+                Vui lòng chờ...
+              </span>
             </div>
           </div>
           <div className="text-gray-600 pr-2 relative flex items-center justify-end">
@@ -32,7 +34,7 @@ function WaitingUserSupport(props) {
         <div className="w-full py-2 px-3" style={{ height: 360 }}>
           <div className="w-full my-2 relative flex items-center justify-center h-full">
             <img
-              src="https://us.123rf.com/450wm/lankogal/lankogal1711/lankogal171100019/90692824-happy-male-helpline-operator-with-headset-consulting-a-client-online-global-tech-support-24-7-operat.jpg?ver=6"
+              src={chat__bot__image__waiting}
               alt=""
               className="w-11/12 object-cover"
             />

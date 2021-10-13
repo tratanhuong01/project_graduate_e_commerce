@@ -23,7 +23,7 @@ function DescribeChild(props) {
           so với giá niêm yết
         </div>
       )}
-      <div className="mb-3 flex">
+      <div className="mb-3 flex dark:text-gray-300">
         <p>
           <span
             className="text-gray-700 px-2 border-l-2 border-solid 

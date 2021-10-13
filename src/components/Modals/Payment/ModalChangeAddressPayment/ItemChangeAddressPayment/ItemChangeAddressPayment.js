@@ -16,7 +16,7 @@ function ItemChangeAddressPayment(props) {
         dispatch(modalsAction.closeModal());
         setAddress(address);
       }}
-      className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600 hover:bg-gray-200 cursor-pointer"
+      className="w-full flex items-center py-5 border-b-2 border-solid border-gray-200 relative  dark:text-white text-gray-600 hover:bg-gray-200 cursor-pointer dark:hover:bg-dark-main"
     >
       <div className="w-2/12 flex items-center justify-center">
         <input

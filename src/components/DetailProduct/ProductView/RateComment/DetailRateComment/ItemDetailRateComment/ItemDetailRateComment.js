@@ -17,6 +17,17 @@ function ItemDetailRateComment(props) {
           {review.reviewProduct.userReviewProduct
             ? `${review.reviewProduct.userReviewProduct.firstName} ${review.reviewProduct.userReviewProduct.lastName}`
             : review.reviewProduct.fullName}
+          {review.reviewProduct.userReviewProduct
+            ? review.reviewProduct.userReviewProduct.userRole
+              ? review.reviewProduct.userReviewProduct.userRole.id !==
+                  "CUSTOMER" && (
+                  <span className="px-2 rounded-full ml-3 py-1 border-2 border-solid border-organce font-semibold text-xs flex items-center">
+                    <span className="bx bxs-check-shield text-green-500 ml-1"></span>
+                    Quản trị viên
+                  </span>
+                )
+              : ""
+            : ""}
         </span>
         <div className="flex items-center text-yellow-500">
           <Star star={review.reviewProduct.star} />

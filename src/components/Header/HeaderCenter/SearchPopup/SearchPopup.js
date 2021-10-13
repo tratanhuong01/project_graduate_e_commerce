@@ -9,7 +9,7 @@ function SearchPopup(props) {
   //
   return (
     <div
-      className="absolute border-2 border-solid border-gray-200 shadow-xl top-full mt-1 left-0 bg-white dark:bg-dark-second rounded-b-lg w-full "
+      className="absolute border-2 border-solid border-gray-200 shadow-xl top-full mt-1 left-0 bg-white dark:bg-dark-second rounded-b-lg w-full dark:border-dark-third"
       id="search__popup"
     >
       {loading && (

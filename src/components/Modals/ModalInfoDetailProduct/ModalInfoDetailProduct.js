@@ -51,9 +51,9 @@ function ModalInfoDetailProduct(props) {
       data={{ setData: (index) => setIndex(index), data: index }}
       styleChildren={{ height: "calc(90vh - 10px)" }}
       className="w-11/12 xl:w-3/5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-        rounded-lg z-0 animate__animated animate__fadeIn bg-white"
+        rounded-lg z-0 animate__animated animate__fadeIn bg-white dark:bg-dark-third"
     >
-      <div className="w-full relative h-full">
+      <div className="w-full relative h-full dark:bg-dark-third">
         {data ? <Component /> : <LoadingModal />}
       </div>
     </ModalWrapper>

@@ -51,7 +51,7 @@ function RateComment(props) {
   return reviews && reviewAll ? (
     <div className="w-full">
       {reviewAll.sumAll === 0 ? (
-        <div className="w-full py-3 px-2.5 text-sm text-center bg-gray-100 pt-8">
+        <div className="w-full py-3 px-2.5 text-sm text-center bg-gray-100 dark:bg-dark-third pt-8">
           <p>
             Hiện tại sản phẩm chưa có đánh giá nào, bạn hãy trở thành người đầu
             tiên đánh giá cho sản phẩm này

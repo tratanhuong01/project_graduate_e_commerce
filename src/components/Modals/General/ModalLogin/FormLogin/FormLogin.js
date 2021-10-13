@@ -49,7 +49,7 @@ class FormLogin extends Component {
         {(formikProps) => {
           const { values, handleChange, handleBlur } = formikProps;
           return (
-            <Form>
+            <Form className="mt-4">
               <FastField
                 label="Email hoặc số điện thoại"
                 type="text"

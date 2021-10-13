@@ -64,12 +64,12 @@ function SelectCustom(props) {
         </span>
       </div>
       {show && (
-        <div className="w-full bg-white absolute top-full left-0 right-0 z-50">
+        <div className="w-full bg-white dark:bg-dark-third absolute top-full mt-1 left-0 right-0 z-50">
           <input
             type="text"
             placeholder={placeHolder}
             className={
-              "w-full p-2 border-l-2 border-r-2 border-t-2 border-solid border-blue-500 relative shadow-lg"
+              "w-full p-2 border-l-2 border-r-2 border-t-2 dark:border-gray-300 border-solid border-blue-500 relative shadow-lg dark:bg-dark-third"
             }
             value={value}
             onChange={(event) => {
@@ -86,7 +86,7 @@ function SelectCustom(props) {
               setListCurrent(listNew);
             }}
           />
-          <div className=" overflow-y-auto scrollbar-css max-h-48 w-full border-2 border-solid shadow-xl border-blue-500 py-3">
+          <div className=" overflow-y-auto scrollbar-css max-h-48 w-full border-2 border-solid shadow-xl border-blue-500  dark:border-gray-300">
             {listCurrent.length > 0 ? (
               listCurrent.map((item, index) => {
                 return (
@@ -99,7 +99,7 @@ function SelectCustom(props) {
                       setValue("");
                     }}
                     key={index}
-                    className={`w-full p-2 border-b-2 border-solid relative hover:bg-gray-200`}
+                    className={`w-full p-2.5 border-b-2 border-solid relative hover:bg-gray-200 dark:hover:bg-dark-second`}
                   >
                     {concat
                       ? `${item[attribute]} / ${
@@ -110,7 +110,7 @@ function SelectCustom(props) {
                 );
               })
             ) : (
-              <p className="w-full my-1 font-semibold text-gray-500">
+              <p className="w-full pl-2 py-4 font-semibold text-gray-500">
                 Không tìm thấy nội dung bạn cần tìm
               </p>
             )}

@@ -5,7 +5,7 @@ function HeaderInfoDetailProduct(props) {
   const { setIndex, index } = props;
   //
   return (
-    <div className="w-full h-16 border-n-2 border-solid border-gray-400 flex items-center justify-center bg-white rounded-t-lg sticky top-0 z-50">
+    <div className="w-full h-16 border-n-2 border-solid border-gray-400 flex items-center justify-center bg-white rounded-t-lg sticky top-0 z-50 dark:bg-dark-third">
       <ul className="flex justify-center items-center">
         <li
           onClick={() => setIndex(0)}
@@ -13,7 +13,7 @@ function HeaderInfoDetailProduct(props) {
       ${
         index === 0
           ? "border-organce  text-organce"
-          : "border-white  text-gray-800"
+          : "border-white  text-gray-800 dark:text-gray-300 dark:border-dark-third"
       }`}
         >
           Hình ảnh
@@ -24,7 +24,7 @@ function HeaderInfoDetailProduct(props) {
       ${
         index === 1
           ? "border-organce  text-organce"
-          : "border-white  text-gray-800"
+          : "border-white  text-gray-800 dark:text-gray-300 dark:border-dark-third"
       }`}
         >
           Thông số kỉ thuật

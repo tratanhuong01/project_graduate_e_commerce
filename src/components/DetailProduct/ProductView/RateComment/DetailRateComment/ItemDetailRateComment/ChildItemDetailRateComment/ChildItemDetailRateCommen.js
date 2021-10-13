@@ -8,10 +8,20 @@ function ChildItemDetailRateCommen(props) {
   return (
     <div className="w-full ml-auto pl-4 border-l-4 border-solid border-gray-400">
       <div className="w-full my-1 flex">
-        <span className="font-semibold mr-3">
+        <span className="font-semibold mr-3 flex items-center mt-2">
           {review.userReviewProduct
             ? `${review.userReviewProduct.firstName} ${review.userReviewProduct.lastName}`
             : review.fullName}
+          {review.userReviewProduct
+            ? review.userReviewProduct.userRole
+              ? review.userReviewProduct.userRole.id !== "CUSTOMER" && (
+                  <span className="px-2 rounded-full ml-3 py-1 border-2 border-solid border-organce font-semibold text-xs flex items-center">
+                    <span className="bx bxs-check-shield text-green-500 ml-1"></span>
+                    Quản trị viên
+                  </span>
+                )
+              : ""
+            : ""}
         </span>
       </div>
       <div className="w-full my-1 flex items-center">{review.content}</div>

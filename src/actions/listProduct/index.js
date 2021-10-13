@@ -128,11 +128,13 @@ export const loadSlugCondition = (slug, name, typeCategory) => {
 export const resetFilterProductRequest = (slug, headers) => {
   return async (dispatch) => {
     dispatch(loadingListProduct(true));
+    dispatch(resetFilterProduct());
     const result_1 = await productApi.getProductFilterByGroupProductAll(
       slug,
       "",
       headers
     );
+    dispatch(updateIndexListProduct(0, result_1.data));
     const result_2 = await productApi.getProductFilterByGroupProductLimit(
       slug,
       returnStringQueryLimit({
@@ -143,9 +145,7 @@ export const resetFilterProductRequest = (slug, headers) => {
       }),
       headers
     );
-    dispatch(updateIndexListProduct(0, result_1.data));
     dispatch(loadListProduct(result_2.data));
-    dispatch(resetFilterProduct());
     dispatch(loadingListProduct(false));
   };
 };
@@ -159,7 +159,7 @@ export const resetFilterProduct = () => {
 export const addFilterProductRequest = (data, headers) => {
   return async (dispatch) => {
     dispatch(loadingListProduct(true));
-    const { filters, item, slug, typeProduct, sorter, index } = data;
+    const { filters, item, slug, typeProduct, sorter } = data;
     const pos = filters.findIndex(
       (filter) => filter.id === item.id && filter.name === item.name
     );
@@ -180,13 +180,18 @@ export const addFilterProductRequest = (data, headers) => {
         returnStringQueryAll({ filters: clone, typeProduct, sorter }),
         headers
       );
+      dispatch(updateIndexListProduct(0, result_1.data));
       const result_2 = await productApi.getProductFilterByGroupProductLimit(
         slug,
-        returnStringQueryLimit({ filters: clone, typeProduct, sorter, index }),
+        returnStringQueryLimit({
+          filters: clone,
+          typeProduct,
+          sorter,
+          index: 0,
+        }),
         headers
       );
       dispatch(loadListProduct(result_2.data));
-      dispatch(updateIndexListProduct(index, result_1.data));
       dispatch(loadingListProduct(false));
     } else dispatch(removeFilterProductRequest(data));
   };
@@ -194,21 +199,22 @@ export const addFilterProductRequest = (data, headers) => {
 
 export const filterProductPaginationIndexRequest = (data, headers) => {
   return async (dispatch) => {
+    dispatch(loadingListProduct(true));
+    window.scrollTo(0, 176);
     const { filters, slug, typeProduct, sorter, index } = data;
     const result_1 = await productApi.getProductFilterByGroupProductAll(
       slug,
       returnStringQueryAll({ filters, typeProduct, sorter }),
       headers
     );
+    dispatch(updateIndexListProduct(index, result_1.data));
     const result_2 = await productApi.getProductFilterByGroupProductLimit(
       slug,
       returnStringQueryLimit({ filters, typeProduct, sorter, index }),
       headers
     );
     dispatch(loadListProduct(result_2.data));
-    dispatch(updateIndexListProduct(index, result_1.data));
     dispatch(loadingListProduct(false));
-    window.scrollTo(0, 176);
   };
 };
 
@@ -264,6 +270,8 @@ export const loadingListProduct = (loading = false) => {
 export const loadListProductSorterRequest = (data, headers) => {
   return async (dispatch) => {
     const { filters, sorter, slug, typeProduct, index } = data;
+    dispatch(loadingListProduct(true));
+    dispatch(loadListProductSorter(sorter));
     const result_1 = await productApi.getProductFilterByGroupProductAll(
       slug,
       returnStringQueryAll({ filters, typeProduct, sorter }),
@@ -277,7 +285,6 @@ export const loadListProductSorterRequest = (data, headers) => {
     dispatch(updateIndexListProduct(index, result_1.data));
     dispatch(loadListProduct(result_2.data));
     dispatch(loadingListProduct(false));
-    dispatch(loadListProductSorter(sorter));
   };
 };
 

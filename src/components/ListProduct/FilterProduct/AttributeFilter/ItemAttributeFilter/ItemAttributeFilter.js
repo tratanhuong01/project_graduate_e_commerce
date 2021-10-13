@@ -8,9 +8,11 @@ function ItemAttributeFilter(props) {
   return (
     <div
       className={`mx-2 px-2 mb-2 py-0.5 rounded flex items-center relative border-2 border-solid
-      shadow-sm cursor-pointer border-gray-300 zIndex__${index} ${
-        index === indexCurrent ? "bg-gray-100" : "hover:bg-gray-100"
-      } text-gray-800`}
+      shadow-sm cursor-pointer border-gray-300 dark:border-dark-third zIndex__${index} ${
+        index === indexCurrent
+          ? "bg-gray-100 dark:bg-dark-third"
+          : "hover:bg-gray-100 dark:hover:bg-dark-third"
+      } text-gray-800 dark:text-gray-300`}
     >
       <div
         onClick={() => {

@@ -9,8 +9,10 @@ function ItemProductViewLeft(props) {
       <img
         src={image.src}
         className={`w-full p-1 border-2 border-solid ${
-          imageData.id === image.id ? "border-orangce" : "hover:border-organce"
-        } cursor-pointer  object-contain
+          imageData.id === image.id
+            ? "border-orangce"
+            : "hover:border-organce dark:border-dark-second"
+        } cursor-pointer object-contain
          `}
         alt=""
       />

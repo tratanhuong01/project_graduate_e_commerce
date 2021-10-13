@@ -80,7 +80,7 @@ function FooterFilterProduct(props) {
               )
             );
           }}
-          className="py-1 pr-4 pl-1 rounded-sm border-2 border-solid border-gray-300"
+          className="py-1 pr-4 pl-1 rounded-sm border-2 border-solid border-gray-300 dark:bg-dark-second"
         >
           <option value="0">Tất cả</option>
           <option value="0">Mới nhất</option>

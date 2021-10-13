@@ -34,7 +34,7 @@ function SupportLiveRight(props) {
   //
   return (
     <div
-      className="fixed right-8 bottom-8 z-second overflow-auto bg-white"
+      className="fixed right-8 bottom-8 z-second overflow-auto bg-white dark:bg-dark-third "
       style={{ width: 380, maxHeight: 500, height: 500 }}
     >
       <div className="w-full h-full flex flex-col">

@@ -17,7 +17,7 @@ function ContentChatRight(props, refData) {
     <div
       ref={refData}
       className="w-full px-1 flex-1 flex items-start py-5 flex-col overflow-y-auto shadow-xl  
-        scrollbar-css overflow-x-hidden border-l-2 border-r-2 border-solid border-gray-100"
+        scrollbar-css overflow-x-hidden border-l-2 border-r-2 border-solid border-gray-100  dark:border-dark-third"
     >
       {messages.list.messagesList.map((item, index) => {
         if (messages.first) {

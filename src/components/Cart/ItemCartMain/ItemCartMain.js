@@ -92,7 +92,7 @@ function ItemCartMain(props) {
                 Tổng tiền
               </p>
               <p
-                className="mb-2 text-gray-700 text-base text-organce text-center 
+                className="mb-2 text-gray-700 dark:text-white text-base text-organce text-center 
                   cursor-pointer"
               >
                 {new Intl.NumberFormat("ban", "id").format(

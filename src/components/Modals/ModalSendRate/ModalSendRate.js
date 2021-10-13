@@ -24,12 +24,12 @@ function ModalSendRate(props) {
       style={{ maxHeight: "90vh" }}
     >
       <div className="w-full mb-1 flex justify-center flex-col text-center">
-        <p className="text-xl font-bold mt-1 mb-3">
+        <p className="text-xl font-bold mt-1 mb-3 dark:text-gray-300">
           {products.nameLineProduct}
         </p>
       </div>
       <div className="w-full my-1 flex px-9">
-        <span className="flex mr-3 items-center">
+        <span className="flex mr-3 items-center dark:text-gray-300">
           Đánh giá của bạn về sản phẩm :{" "}
         </span>
         <>

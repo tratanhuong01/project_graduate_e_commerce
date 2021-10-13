@@ -52,7 +52,7 @@ function MyVoucher(props) {
         Mã giảm giá
       </BreadcrumbsItem>
       <div className="w-full">
-        <div className="w-full flex font-semibold justify-between items-center">
+        <div className="w-full flex font-semibold justify-between items-center dark:text-gray-300">
           <div className="">Voucher</div>
           <div className="flex p-2">
             <span

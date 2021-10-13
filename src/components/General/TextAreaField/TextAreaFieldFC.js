@@ -5,7 +5,7 @@ function TextAreaFieldFC(props) {
   const Field = register(name);
   return (
     <>
-      <label className="w-full text-gray-800 px-2 text-xm font-semibold flex">
+      <label className="w-full text-gray-800 px-2 text-xm font-semibold flex dark:text-gray-300">
         {label}
       </label>
       <div className="w-full relative">
@@ -15,12 +15,11 @@ function TextAreaFieldFC(props) {
           className={
             className +
             `${
-              showError
-                ? " border-red-500"
-                : " border-gray-300 dark:bg-dark-third dark:border-dark-third"
-            }`
+              showError ? " border-red-500" : " border-gray-300 "
+            }  dark:bg-dark-third`
           }
           placeholder={placeHolder}
+          spellCheck={false}
         ></textarea>
       </div>
       <p className="m-2 text-red-500 font-semibold">

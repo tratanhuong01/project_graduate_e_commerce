@@ -20,7 +20,7 @@ function OutOfStock(props) {
           <i className="fas fa-exclamation-circle text-organce text-6xl"></i>
           <div className="px-6">
             <p className="font-semibold mb-2">Thông báo</p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-white">
               Một số sản phẩm trong giỏ hàng không còn đủ số lượng đặt hàng của
               quý khách vui lòng đặt số lượng mặt hàng còn lại của mặt hàng đó .
               Chúng tôi xin lỗi vì sự bất tiện này.
@@ -78,7 +78,7 @@ function OutOfStock(props) {
           </p>
         </div>
         <hr className="bg-gray-200"></hr>
-        <p className="text-gray-600 font-semibold text-right my-3">
+        <p className="text-gray-600 font-semibold text-right my-3 dark:text-gray-300">
           Cảm ơn quý khách đã tin tưởng và sử dụng HSmart
         </p>
       </div>

@@ -37,7 +37,7 @@ function ItemMemoryProduct(props) {
   return (
     <div
       onClick={() => change()}
-      className={` px-4 py-2.5 m-1 flex justify-center border-2 border-solid bg-white rounded-full cursor-pointer ${
+      className={` px-4 py-2.5 m-1 flex justify-center border-2 border-solid bg-white dark:bg-dark-second  rounded-full cursor-pointer ${
         memoryData.id === memoryCurrent.id
           ? " text-organce border-orangce "
           : " border-gray-300"

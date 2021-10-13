@@ -65,7 +65,7 @@ function FormInfoPayment(props) {
       <SelectCustom
         list={orders.service}
         className={
-          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 relative"
+          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 dark:border-dark-third relative"
         }
         attribute={"short_name"}
         placeHolder={"Dịch vụ vận chuyển"}
@@ -89,7 +89,7 @@ function FormInfoPayment(props) {
         }
       />
       <textarea
-        className="w-full p-2.5 rounded-lg mb-3 border-2 border-solid border-gray-200 resize-none h-20 dark:bg-dark-third dark:border-dark-third"
+        className="w-full p-2.5 rounded-lg mb-3 border-2 border-solid border-gray-200 dark:border-dark-third resize-none h-20 dark:bg-dark-third dark:border-dark-third"
         placeholder="Ghi chú (tùy chọn).."
         onChange={(event) => {
           if (event.target.value.length > 300)

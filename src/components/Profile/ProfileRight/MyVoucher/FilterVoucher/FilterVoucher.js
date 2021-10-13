@@ -11,7 +11,7 @@ function FilterVoucher(props) {
           setVouchers(null);
           setData(event.target.value);
         }}
-        className="w-60 border-2 border-solid border-gray-200 py-2 px-0.5"
+        className="w-60 border-2 border-solid border-gray-200 dark:bg-dark-third dark:text-white  dark:border-dark-third py-2 px-0.5"
       >
         <option value={0} defaultValue={data}>
           Mới nhất

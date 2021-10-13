@@ -40,7 +40,7 @@ function HistoryVoucher(props) {
   //
   return (
     <div className="w-full">
-      <div className="font-semibold mb-3 w-full flex justify-between">
+      <div className="font-semibold mb-3 w-full flex justify-between dark:text-gray-300">
         <div
           onClick={() => dispatch(profilesAction.returnProfile())}
           className="flex items-center cursor-pointer"
@@ -60,7 +60,7 @@ function HistoryVoucher(props) {
           ${
             data === 0
               ? "border-organce text-organce"
-              : "border-white text-gray-600 "
+              : "border-white text-gray-600  dark:text-gray-300 dark:border-dark-second"
           }`}
         >
           Hết hiệu lực
@@ -74,7 +74,7 @@ function HistoryVoucher(props) {
           ${
             data === 1
               ? "border-organce text-organce"
-              : "border-white text-gray-600 "
+              : "border-white text-gray-600  dark:text-gray-300 dark:border-dark-second"
           }`}
         >
           Đã sử dụng

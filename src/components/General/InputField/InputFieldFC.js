@@ -24,7 +24,7 @@ function InputFieldFC(props) {
             className={`${
               showError
                 ? "text-red-500 z-50 dark:bg-dark-second bg-white"
-                : "text-gray-800 dark:text-white bg-white"
+                : "text-gray-800 dark:text-white bg-white dark:bg-dark-second"
             } text-xs px-1 absolute top-0 left-3 font-semibold flex`}
           >
             {label}
@@ -39,7 +39,7 @@ function InputFieldFC(props) {
             ` dark:bg-dark-third dark:text-white ${
               showError
                 ? " text-red-500 border-red-500"
-                : " border-gray-300 dark:border-dark-third focus:border-blue-500"
+                : " border-gray-300 focus:border-blue-500"
             }`
           }
           onChange={(e) => {

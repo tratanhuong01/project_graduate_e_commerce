@@ -18,7 +18,7 @@ function ItemOutOfStock(props) {
           </p>
         </div>
       </div>
-      <div className="w-1/5 justify-end flex items-center text-gray-600 font-semibold">
+      <div className="w-1/5 justify-end flex items-center text-gray-600 font-semibold dark:text-gray-300">
         {order.item.amount}
         <i className="bx bx-right-arrow-alt mx-1"></i>
         {order.itemCurrent}

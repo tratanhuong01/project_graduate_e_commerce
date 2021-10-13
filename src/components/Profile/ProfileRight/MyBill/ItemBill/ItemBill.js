@@ -9,8 +9,8 @@ function ItemBill(props) {
   //
   return (
     <div
-      className="w-full bg-gray-50 border-2 border-solid border-gray-200 shadow-lg 
-    p-2 mb-5"
+      className="w-full bg-gray-50 border-2 border-solid border-gray-200 shadow-lg dark:bg-dark-third 
+    p-2 mb-5 dark:border-dark-second"
     >
       <ItemBillTop bill={bill} />
       <hr className="my-3" />

@@ -44,7 +44,7 @@ function TechnicalDataSmall(props) {
           {data.map((attribute, index) => {
             return <ItemTechnicalData key={index} attribute={attribute} />;
           })}
-          <div className="w-full absolute bottom-0 p-7 bg-white bg-opacity-70 flex items-center justify-center">
+          <div className="w-full absolute bottom-0 p-7 bg-white bg-opacity-30 flex items-center justify-center">
             <button
               onClick={() =>
                 dispatch(

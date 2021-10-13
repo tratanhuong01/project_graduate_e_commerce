@@ -37,7 +37,7 @@ function ControlChatRight(props) {
         type="text"
         placeholder="Nhập tin nhắn...."
         className="w-10/12 p-2.5 border-2 border-solid border-gray-200 shadow-sm focus:border-blue-500 
-        rounded-sm"
+        rounded-sm dark:bg-dark-third dark:border-gray-300 dark:text-white"
         onKeyUp={(event) => {
           if (event.keyCode === 13) sendMessage();
         }}
@@ -45,9 +45,9 @@ function ControlChatRight(props) {
         value={content}
         onChange={(event) => setContent(event.target.value)}
       />
-      <div className=" flex items-center py-2  justify-around w-20">
-        <i className="bx bx-smile text-gray-500 text-2xl"></i>
-        <i className="bx bx-link-alt text-gray-500 text-2xl"></i>
+      <div className=" flex items-center py-2 px-1  justify-around w-20">
+        <i className="bx bx-smile text-gray-500 dark:text-gray-300 text-2xl"></i>
+        <i className="bx bx-link-alt text-gray-500 dark:text-gray-300 text-2xl"></i>
       </div>
       <button
         onClick={() => sendMessage()}

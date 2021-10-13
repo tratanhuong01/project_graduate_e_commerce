@@ -35,7 +35,7 @@ function AddressPayment(props) {
         // concat={"Tỉnh "}
         list={cityProvinces}
         className={
-          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 relative"
+          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 dark:border-dark-third relative"
         }
         attribute={"ProvinceName"}
         placeHolder={"Nhập tỉnh / thành phố"}
@@ -66,7 +66,7 @@ function AddressPayment(props) {
       <SelectCustom
         list={districts ? districts : []}
         className={
-          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 relative"
+          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 dark:border-dark-third relative"
         }
         attribute={"DistrictName"}
         placeHolder={"Nhập quận / huyện"}
@@ -97,7 +97,7 @@ function AddressPayment(props) {
       <SelectCustom
         list={wards ? wards : []}
         className={
-          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 relative"
+          "w-full rounded-lg p-2.5 border-2 border-solid border-gray-200 dark:border-dark-third relative"
         }
         attribute={"WardName"}
         placeHolder={"Nhập phường / xã"}

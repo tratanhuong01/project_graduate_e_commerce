@@ -26,7 +26,7 @@ function ProductViewRight(props) {
       <div className="w-full flex mb-2">
         <div className="w-full pl-4 pt-1 relative">
           <WishListStatus user={user} idProduct={products.idProduct} />
-          <p className="text-2xl font-semibold cursor-pointer hover:text-organce mb-3">
+          <p className="text-2xl font-semibold cursor-pointer hover:text-organce mb-3 dark:text-gray-300">
             {`${products.nameLineProduct} ${
               products.memory === null ? "" : products.memory.nameMemory
             } ${
@@ -96,7 +96,7 @@ function ProductViewRight(props) {
                 }}
                 className="w-1/4 py-3.5 text-center cursor-pointer"
               >
-                <i className="bx bx-minus color-black"></i>
+                <i className="bx bx-minus dark:text-gray-300"></i>
               </span>
               <input
                 type="text"
@@ -104,7 +104,7 @@ function ProductViewRight(props) {
                 value={number}
                 min={1}
                 max={30}
-                className="w-1/2 py-3.5 text-center font-semibold dark:bg-dark-second"
+                className="w-1/2 py-3.5 text-center font-semibold dark:bg-dark-second dark:text-gray-300"
                 onChange={(event) => {
                   setNumber(event.target.value);
                   dispatch(
@@ -128,7 +128,7 @@ function ProductViewRight(props) {
                 }}
                 className="w-1/4 text-center py-3.5 cursor-pointer"
               >
-                <i className="bx bx-plus"></i>
+                <i className="bx bx-plus dark:text-gray-300"></i>
               </span>
             </div>
             <button

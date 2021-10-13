@@ -32,7 +32,7 @@ class InputField extends Component {
             className={`${
               showError || isset !== null
                 ? "text-red-500 z-50 dark:bg-dark-second bg-white"
-                : "text-gray-800 dark:text-white bg-white"
+                : "text-gray-800 dark:text-white bg-white dark:bg-dark-second"
             } text-xs px-1 absolute top-0 left-3 font-semibold flex`}
           >
             {label}

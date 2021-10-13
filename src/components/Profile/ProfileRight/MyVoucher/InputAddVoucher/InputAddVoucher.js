@@ -7,12 +7,12 @@ function InputAddVoucher(props) {
   return (
     <div className="w-full flex items-center justify-center py-10 h-20">
       <div className="w-3/4 p-2 flex items-center justify-center">
-        <span>Mã giảm giá</span>
+        <span className="dark:text-gray-300">Mã giảm giá</span>
         <input
           type="text"
           placeholder="Mã giảm giá"
           className="w-2/3 focus:border-blue-500 border-2 border-solid border-gray-200 rounded-sm  
-          mx-2 p-2.5"
+          mx-2 p-2.5 dark:bg-dark-third dark:text-white dark:border-dark-third shadow-lg"
           value={code}
           onChange={(event) => setCode(event.target.value)}
         />

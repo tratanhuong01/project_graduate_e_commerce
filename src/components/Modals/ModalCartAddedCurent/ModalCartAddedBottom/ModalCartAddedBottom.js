@@ -25,7 +25,7 @@ function ModalCartAddedBottom(props) {
         <div className="w-3/4 flex pl-4">
           <div className="flex flex-wrap items-center w-full">
             <div className="">
-              <p className="w-full mb-2 text-gray-700 cursor-pointer text-xl font-semibold">
+              <p className="w-full mb-2 text-gray-700 cursor-pointer text-xl font-semibold dark:text-gray-300">
                 {product.nameLineProduct}
               </p>
               <p className="text-organce">
@@ -40,7 +40,7 @@ function ModalCartAddedBottom(props) {
       </div>
       <div className="w-full p-4 flex my-3">
         <div className="w-1/2 flex">
-          <p className="flex items-center hover:text-organce text-gray-700 cursor-pointer">
+          <p className="flex items-center hover:text-organce text-gray-700 dark:text-gray-300 cursor-pointer">
             <i className="bx bx-caret-right mr-3"></i>
             Giỏ hàng của bạn hiện có (<span>{carts.list.length}</span>) sản phẩm
           </p>

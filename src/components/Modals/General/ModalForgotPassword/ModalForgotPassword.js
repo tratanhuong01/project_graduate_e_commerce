@@ -7,7 +7,7 @@ function ModalForgotPassword(props) {
     <ModalWrapper
       title="Lấy lại tài khoản"
       className="w-11/12 absolute top-1/2 left-1/2 py-4 opacity-100 bg-white z-50 border-2 border-solid 
-    border-gray-300 sm:w-4/5 sm:mt-12 lg:w-3/5 xl:w-2/5 xl:mt-4 transform -translate-x-1/2 -translate-y-1/2 
+    border-gray-300 dark:border-dark-third shadow-lg sm:w-4/5 sm:mt-12 lg:w-3/5 xl:w-2/5 xl:mt-4 transform -translate-x-1/2 -translate-y-1/2 
     rounded-lg"
     >
       <div className="w-full flex px-4">

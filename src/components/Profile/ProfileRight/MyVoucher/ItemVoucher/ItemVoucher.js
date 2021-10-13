@@ -41,7 +41,9 @@ function ItemVoucher(props) {
       </div>
       <div className="flex items-center pl-3 ">
         <div className="flex-col flex justify-items-start">
-          <span className="mb-1">{voucher.discountCode.nameDiscountCode}</span>
+          <span className={`mb-1 ${disabled ? "" : "dark:text-gray-300"}`}>
+            {voucher.discountCode.nameDiscountCode}
+          </span>
           <span className="w-28 border-2 border-solid border-organce text-organce px-2 -ml-0.5 mb-1 py-0.5 text-xs rounded-full">
             Đơn hàng từ 0đ
           </span>

@@ -19,7 +19,7 @@ function AvatarUser(props) {
         <span className="mb-1 text-xm">{`${user.firstName} ${user.lastName}`}</span>
         <Link
           to={`${Config.PAGE_PROFILE_USER}/${Config.PROFILE_INFO}`}
-          className="text-sm text-gray-600"
+          className="text-sm text-gray-600 dark:text-gray-300"
         >
           <i className="bx bxs-edit-alt mr-2"></i>Chỉnh sửa
         </Link>

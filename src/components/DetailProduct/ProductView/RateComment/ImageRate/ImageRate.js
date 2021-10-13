@@ -30,7 +30,7 @@ function ImageRate(props) {
             className="bx bxs-image-add text-3xl flex items-center 
           text-organce mr-4"
           ></span>
-          <span className="text-gray-700 font-semibold">
+          <span className="text-gray-700 font-semibold dark:text-gray-300">
             Đính kèm hình ảnh (chọn tối đa 3 hình ảnh)
           </span>
         </label>

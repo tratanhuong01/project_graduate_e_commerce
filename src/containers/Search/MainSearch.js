@@ -50,7 +50,7 @@ function MainSearch(props) {
           products.length <= 0 ? (
             <div className="w-full flex flex-col my-5 items-center h-80 justify-center">
               <img src={no__result} alt="" className="w-80 object-cover" />
-              <p className="text-center mt-3 text-gray-600 font-semibold">
+              <p className="text-center mt-3 text-gray-600 font-semibold dark:text-gray-300">
                 Không tìm thấy sản phẩm cho từ khóa " {keyword} "
               </p>
             </div>

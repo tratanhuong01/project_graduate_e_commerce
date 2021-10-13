@@ -28,7 +28,7 @@ function ItemProductPayment(props) {
                   </Link>
                 </p>
                 {item.color && (
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-gray-300">
                     Màu : {item.color.description}
                   </p>
                 )}

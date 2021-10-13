@@ -26,7 +26,7 @@ function EndFormLogin(props) {
         </span>
         <span
           onClick={() => dispatch(modalsAction.openModalRegister())}
-          className="text-xm cursor-pointer"
+          className="text-xm cursor-pointer dark:text-gray-300"
         >
           Đăng kí
         </span>

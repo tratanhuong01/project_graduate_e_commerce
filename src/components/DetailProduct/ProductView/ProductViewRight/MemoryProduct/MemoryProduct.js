@@ -6,7 +6,7 @@ function MemoryProduct(props) {
   const { memories, memory, products } = props;
   //
   return (
-    <div className="w-full my-3">
+    <div className="w-full my-3 dark:text-gray-300">
       <p className="font-bold text-xl mb-1">BỘ NHỚ :</p>
       <div className="w-full flex">
         {memories.map((memoryData, index) => {

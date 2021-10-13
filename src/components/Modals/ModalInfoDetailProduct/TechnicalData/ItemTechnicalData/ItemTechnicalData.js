@@ -5,8 +5,8 @@ function ItemTechnicalData(props) {
   const { attribute } = props;
   //
   return (
-    <div className="w-full mx-auto border-l-2 border-r-2 border-solid border-gray-200 text-gray-700">
-      <div className="w-full text-xm p-3 bg-gray-100 font-bold flex items-center">
+    <div className="w-full mx-auto border-l-2 border-r-2 border-solid border-gray-200 text-gray-700 dark:text-gray-300 dark:border-dark-third">
+      <div className="w-full text-xm p-3 bg-gray-100 font-bold flex items-center dark:bg-dark-second">
         {attribute.groupAttribute.nameGroupAttribute}
       </div>
       {attribute.attributeProductList.map((item, index) => {
@@ -21,7 +21,7 @@ function ItemTechnicalData(props) {
             <div
               className={`w-2/3 p-2.5 flex items-center ${
                 item.valueAttributeProduct.split("@").length === 1
-                  ? "text-gray-800"
+                  ? "text-gray-800 dark:text-gray-300"
                   : "text-blue-500"
               }`}
             >

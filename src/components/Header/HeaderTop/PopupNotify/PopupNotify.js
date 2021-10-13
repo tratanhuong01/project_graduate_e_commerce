@@ -49,22 +49,34 @@ function PopupNotify(props) {
         }}
       >
         {notifies ? (
-          <>
-            {" "}
-            <div className="w-full relative z-50">
-              {notifies.map((notify, index) => {
-                return <ItemPopupNotify key={index} notify={notify} />;
-              })}
+          notifies.length ? (
+            <>
+              <div className="w-full relative z-50">
+                {notifies.map((notify, index) => {
+                  return <ItemPopupNotify key={index} notify={notify} />;
+                })}
+              </div>
+              <div className="flex items-center justify-center dark:bg-dark-main py-3">
+                <Link
+                  to={`${Config.PAGE_PROFILE_USER}/${Config.PROFILE_NOTIFY}`}
+                  className="text-blue-500 text-font-semibold"
+                >
+                  Xem tất cả
+                </Link>
+              </div>{" "}
+            </>
+          ) : (
+            <div className="w-full p-3 flex items-center justify-center h-32 bg-white dark:bg-dark-second flex-wrap">
+              <div className="w-full flex justify-center">
+                <img
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/5fafbb923393b712b96488590b8f781f.png"
+                  alt=""
+                  className="w-16 h-16 rounded-full object-contain"
+                />
+              </div>
+              Không có bất kì thông báo nào.
             </div>
-            <div className="flex items-center justify-center my-3">
-              <Link
-                to={`${Config.PAGE_PROFILE_USER}/${Config.PROFILE_NOTIFY}`}
-                className="text-blue-500 text-font-semibold"
-              >
-                Xem tất cả
-              </Link>
-            </div>{" "}
-          </>
+          )
         ) : (
           <div className="w-full p-3 flex items-center justify-center h-80">
             <i className="fas fa-circle-notch fa-spin text-4xl text-organce"></i>

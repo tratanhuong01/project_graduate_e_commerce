@@ -36,7 +36,7 @@ function Brand(props) {
   }, [listProduct.slug]);
   //
   return (
-    <div className="w-full flex flex-wrap">
+    <div className="w-full flex flex-wrap dark:bg-dark-second">
       {brands.length > 0 ? (
         brands.map((brand, index) => {
           const state = listProduct.filters.findIndex(

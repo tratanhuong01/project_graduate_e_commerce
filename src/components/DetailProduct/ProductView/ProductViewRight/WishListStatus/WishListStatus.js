@@ -30,7 +30,7 @@ function WishListStatus(props) {
           )
         )
       }
-      className="w-14 h-14 rounded-full bg-gray-100 flex items-center 
+      className="w-14 h-14 rounded-full bg-gray-100 dark:bg-dark-third flex items-center 
     justify-center absolute top-10 right-1 cursor-pointer"
     >
       <span

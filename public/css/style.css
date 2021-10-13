@@ -79,9 +79,9 @@ button:focus {
 
 .item__horizontal__category:hover .item__horizontal__category--circle {
   border-color: #f36438;
-  -webkit-animation: spin 1.2s linear infinite;
-  -moz-animation: spin 1.2s linear infinite;
-  animation: spin 1.2s linear infinite;
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 @-moz-keyframes spin {
   100% {
@@ -136,6 +136,15 @@ button:focus {
   right: 20px;
   border: 10px solid;
   border-color: transparent transparent white transparent;
+}
+.dark .dark\:arrow__popup::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  z-index: 0;
+  right: 20px;
+  border: 10px solid;
+  border-color: transparent transparent #18191a transparent;
 }
 #notify__popup {
   display: none;
@@ -240,7 +249,33 @@ button:focus {
   top: -12px;
   left: 24px;
 }
-
+.dark .dark\:bg-black {
+  background-color: black;
+}
+.dark .dark\:arrow-up-popup-main {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid;
+  border-bottom-color: rgba(24, 25, 26, var(--tw-bg-opacity));
+  top: -12px;
+  left: 24px;
+}
+.dark .dark\:arrow-up-popup-second {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid;
+  border-bottom-color: rgba(36, 37, 38, var(--tw-bg-opacity));
+  top: -12px;
+  left: 24px;
+}
+.dark .dark\:arrow-up-popup-third {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid;
+  border-bottom-color: rgba(58, 59, 60, var(--tw-bg-opacity));
+  top: -12px;
+  left: 24px;
+}
 .element__show {
   display: none;
 }

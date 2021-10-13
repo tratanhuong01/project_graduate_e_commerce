@@ -41,7 +41,7 @@ function ItemBrand(props) {
           clearTimeout(timeOut);
         };
       }}
-      className={`w-21% border-2 border-solid  px-1 py-2 rounded-full 
+      className={`w-21% border-2 border-solid bg-white  px-1 py-2 rounded-full 
       m-2 ${
         state === -1 ? "hover:border-organce border-gray-300" : "border-organce"
       }`}

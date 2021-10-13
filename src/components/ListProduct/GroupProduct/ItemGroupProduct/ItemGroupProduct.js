@@ -17,7 +17,7 @@ function ItemGroupProduct(props) {
             `${PAGE_PRODUCT}/${listProduct.slug}/${groupProduct.slugGroupProduct}`
           )
         }
-        className="w-16 h-16 bg-gray-100 flex justify-center items-center rounded-full border-2 border-solid hover:border-organce cursor-pointer shadow-lg"
+        className="w-16 h-16 bg-gray-100 flex justify-center items-center rounded-full border-2 border-solid hover:border-organce cursor-pointer shadow-lg dark:bg-dark-second dark:border-dark-third"
       >
         <img
           src="https://cdn.tgdd.vn/Category/60/icon-op-lung-100x100-60x60.png"
@@ -31,7 +31,7 @@ function ItemGroupProduct(props) {
             `${PAGE_PRODUCT}/${listProduct.slug}/${groupProduct.slugGroupProduct}`
           )
         }
-        className="text-gray-600 font-semibold text-sm my-2 cursor-pointer hover:text-organce hover:font-bold w-full max-w-full overflow-hidden whitespace-nowrap inline-block text-center overflow-ellipsis"
+        className="text-gray-600 font-semibold text-sm my-2 cursor-pointer hover:text-organce hover:font-bold w-full max-w-full overflow-hidden whitespace-nowrap inline-block text-center overflow-ellipsis dark:text-gray-300"
       >
         {groupProduct.nameGroupProduct}
       </p>

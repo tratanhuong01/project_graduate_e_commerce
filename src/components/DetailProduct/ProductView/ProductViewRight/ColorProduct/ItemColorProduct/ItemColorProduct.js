@@ -55,7 +55,7 @@ function ItemColorProduct(props) {
         ${
           imageData.id === image.id
             ? "border-organce"
-            : "border-gray-300 hover:border-organce"
+            : "border-gray-300 dark:border-dark-second hover:border-organce"
         }`}
         alt=""
       />

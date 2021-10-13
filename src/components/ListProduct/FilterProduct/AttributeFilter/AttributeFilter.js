@@ -44,7 +44,7 @@ function AttributeFilter(props) {
   }, [slug]);
   //
   return (
-    <div className="w-full flex flex-wrap mb-3 -ml-2 z-0">
+    <div className="w-full flex flex-wrap mb-3 -ml-2 z-0 ">
       {listProduct.products && (
         <>
           <ItemAttributeFilter

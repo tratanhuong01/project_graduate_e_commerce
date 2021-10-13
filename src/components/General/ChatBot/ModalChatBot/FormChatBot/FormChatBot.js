@@ -58,7 +58,7 @@ function FormChatBot(props) {
       />
       <div className={`w-full my-3 relative`}>
         <label
-          className={`text-gray-800 dark:text-white bg-white text-sm px-1 mb-2 font-semibold flex`}
+          className={`text-gray-800 dark:text-white text-sm px-1 mb-2 font-semibold flex dark:bg-dark-third`}
         >
           {"Tên của quý khách là*"}
         </label>
@@ -68,13 +68,13 @@ function FormChatBot(props) {
         register={register}
         showError={errors["nameCustomer"]}
         name="nameCustomer"
-        className="w-full p-2 text-sm mr-5 flex bg-white relative border-2 border-solid px-2 rounded-lg"
+        className="w-full p-2 text-sm mr-5 flex  relative border-2 border-solid px-2 rounded-lg dark:border-gray-300"
         onChange={() => ""}
         placeHolder="Nhập tên của quý khách ..."
       />
       <div className={`w-full my-3 relative`}>
         <label
-          className={`text-gray-800 dark:text-white bg-white text-sm px-1 mb-2 font-semibold flex`}
+          className={`text-gray-800 dark:text-white  text-sm px-1 mb-2 font-semibold flex`}
         >
           {"Số điện thoại của quý khách là*"}
         </label>
@@ -90,7 +90,7 @@ function FormChatBot(props) {
       />
       <div className={`w-full my-3 relative`}>
         <label
-          className={`text-gray-800 dark:text-white bg-white text-sm px-1 mb-2 font-semibold flex`}
+          className={`text-gray-800 dark:text-white text-sm px-1 mb-2 font-semibold flex`}
         >
           {"Nội dung*"}
         </label>
@@ -100,7 +100,7 @@ function FormChatBot(props) {
         register={register}
         showError={errors["content"]}
         name="content"
-        className="w-full p-2 text-sm flex bg-white relative border-2 border-solid px-2 rounded-lg"
+        className="w-full p-2 text-sm flex relative border-2 border-solid px-2 rounded-lg"
         onChange={() => ""}
         placeHolder="Nội dung"
       />

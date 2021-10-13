@@ -15,7 +15,7 @@ function ProductViewLeft(props) {
     >
       <ul className="w-2/12">
         <li className="text-center cursor-pointer">
-          <i className="bx bx-caret-up text-2xl text-gray-700"></i>
+          <i className="bx bx-caret-up text-2xl text-gray-700 dark:text-gray-300"></i>
         </li>
         <ScrollContainer
           className="w-full scrollbar-css"
@@ -33,7 +33,7 @@ function ProductViewLeft(props) {
           })}
         </ScrollContainer>
         <li className="text-center cursor-pointer">
-          <i className="bx bx-caret-down text-2xl text-gray-700"></i>
+          <i className="bx bx-caret-down text-2xl text-gray-700 dark:text-gray-300"></i>
         </li>
       </ul>
       <div className="w-10/12 pr-4 relative">

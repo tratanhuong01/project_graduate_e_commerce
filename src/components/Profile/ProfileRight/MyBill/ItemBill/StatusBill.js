@@ -6,7 +6,11 @@ function StatusBill(props) {
   const Status = () => {
     switch (status) {
       case -1:
-        return <span className="text-gray-600 font-semibold flex">ĐÃ HỦY</span>;
+        return (
+          <span className="text-gray-600 dark:text-white font-semibold flex">
+            ĐÃ HỦY
+          </span>
+        );
       case 0:
         return (
           <span className="text-yellow-600 font-semibold flex">

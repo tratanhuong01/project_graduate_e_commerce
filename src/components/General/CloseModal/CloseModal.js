@@ -13,7 +13,7 @@ function CloseModal(props) {
       className={`rounded-full w-10 h-10 font-bold text-xl bg-gray-300 cursor-pointer ${
         fixed ? "z-main" : "z-50"
       }
-      hover:bg-gray-500 hover:text-white flex justify-center items-center absolute ${
+      hover:bg-gray-500 dark:hover:bg-dark-second hover:text-white dark:bg-dark-main text-white flex justify-center items-center absolute ${
         fixed ? "-top-2 right-2" : "top-3 right-3"
       } `}
     >

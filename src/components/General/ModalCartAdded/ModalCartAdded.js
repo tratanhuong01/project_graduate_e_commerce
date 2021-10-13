@@ -24,11 +24,11 @@ function ModalCartAdded(props) {
     <div
       className="w-80 rounded-lg absolute animate__animated animate__zoomIn 
       text-gray-700  modal__cart__added border-2 border-solid dark:border-dark-second
-      border-gray-200 shadow-lg dark:bg-dark-main dark:text-white z-main arrow__popup"
+      border-gray-200 shadow-lg dark:bg-dark-main dark:text-white z-main "
       style={{ right: "-16px", top: "80px" }}
     >
       <div
-        className="w-full rounded-lg bg-white relative shadow-lg dark:bg-dark-main dark:text-white z-main arrow__popup"
+        className="w-full rounded-lg bg-white relative shadow-lg dark:bg-dark-main dark:text-white z-main arrow__popup dark:arrow__popup"
         style={{
           boxShadow: "0 2px 20px rgb(0 0 0 / 50%)",
         }}
