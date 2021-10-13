@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 import * as cartsAction from "../../../../actions/cart/index";
 import * as Config from "../../../../constants/Config";
 
-function ItemCart(props) {
+function ItemCart({ cart }) {
   //
-  const { cart, carts, user } = props;
-  const headers = useSelector((state) => state.headers);
+  const { headers, user, carts } = useSelector((state) => {
+    return {
+      headers: state.headers,
+      user: state.user,
+      carts: state.carts,
+    };
+  });
   const dispatch = useDispatch();
   //
   return (
@@ -35,25 +40,20 @@ function ItemCart(props) {
             <u className="mr-2">đ</u>x{cart.amount}
           </p>
           <span
-            onClick={() => {
+            onClick={() =>
               dispatch(
                 cartsAction.deleteCartRequest(
                   {
                     user: user,
                     idCart: cart.idCart,
+                    carts: carts.main.filter(
+                      (item) => item.idCart !== cart.idCart
+                    ),
                   },
                   headers
                 )
-              );
-              const index = carts.main.findIndex(
-                (item) => item.idCart === cart.idCart
-              );
-              if (index !== -1) {
-                let cloneCartPayment = [...carts.main];
-                cloneCartPayment.splice(index, 1);
-                dispatch(cartsAction.loadCartMain(cloneCartPayment));
-              }
-            }}
+              )
+            }
             className="text-2xl font-semibold hover:text-organce 
             absolute right-2 bottom-2"
           >

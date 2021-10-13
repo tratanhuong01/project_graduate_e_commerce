@@ -16,17 +16,15 @@ function TitleCart(props) {
         <input
           type="checkbox"
           className="transform scale-125 absolute top-1/3 left-2"
-          onChange={(event) => {
-            if (event.target.checked)
-              dispatch(cartsAction.loadCartMain([...carts.list]));
-            else dispatch(cartsAction.loadCartMain([]));
-          }}
-          checked={
-            carts.list.length === carts.main.length && carts.list.length > 0
-              ? true
-              : false
+          onChange={(event) =>
+            dispatch(
+              cartsAction.loadCartMain(
+                event.target.checked ? [...carts.list] : []
+              )
+            )
           }
-          disabled={carts.list.length === 0 ? true : false}
+          checked={carts.list.length === carts.main.length && carts.list.length}
+          disabled={carts.list.length === 0 && true}
         />
       </div>
       <div

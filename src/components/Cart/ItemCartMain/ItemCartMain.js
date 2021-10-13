@@ -24,12 +24,11 @@ function ItemCartMain(props) {
             if (event.target.checked)
               dispatch(cartsAction.loadCartMain([...carts.main, cart]));
             else {
-              const index = carts.main.findIndex(
-                (item) => item.idCart === cart.idCart
+              dispatch(
+                cartsAction.loadCartMain(
+                  carts.main.filter((item) => item.idCart !== cart.idCart)
+                )
               );
-              let cloneCartPayment = [...carts.main];
-              cloneCartPayment.splice(index, 1);
-              dispatch(cartsAction.loadCartMain(cloneCartPayment));
             }
           }}
           checked={status}
@@ -50,15 +49,12 @@ function ItemCartMain(props) {
               <input
                 type="number"
                 className="w-28 p-3 border-2 border-solid border-gray-300 
-                  rounded-full text-center font-semibold dark:bg-dark-third dark:border-dark-third"
-                min="1"
+                rounded-full text-center font-semibold dark:bg-dark-third dark:border-dark-third"
                 value={cart.amount}
                 onChange={(event) => {
                   let data = event.target.value;
                   if (data > 50) data = 50;
-                  else if (data < 1) {
-                    data = 1;
-                  } else data = event.target.value;
+                  if (data < 1) data = 1;
                   dispatch(
                     cartsAction.changeAmountCartRequest(
                       {
@@ -87,7 +83,7 @@ function ItemCartMain(props) {
       <div className="w-1/4 md:w-3/12 flex flex-col sm:flex-row justify-center">
         <div className="w-full sm:w-2/3 flex justify-center pb-1 md:p-3">
           <div className="flex items-center">
-            <div className="">
+            <div>
               <p className="mb-2 font-semibold md:hidden text-center">
                 Tổng tiền
               </p>
@@ -106,25 +102,20 @@ function ItemCartMain(props) {
         <div className="w-full sm:w-1/3 flex justify-center pb-1 md:p-3">
           <div className="flex items-center">
             <i
-              onClick={() => {
+              onClick={() =>
                 dispatch(
                   cartsAction.deleteCartRequest(
                     {
                       user: user,
                       idCart: cart.idCart,
+                      carts: carts.main.filter(
+                        (item) => item.idCart !== cart.idCart
+                      ),
                     },
                     headers
                   )
-                );
-                const index = carts.main.findIndex(
-                  (item) => item.idCart === cart.idCart
-                );
-                if (index !== -1) {
-                  let cloneCartPayment = [...carts.main];
-                  cloneCartPayment.splice(index, 1);
-                  dispatch(cartsAction.loadCartMain(cloneCartPayment));
-                }
-              }}
+                )
+              }
               className="bx bx-trash-alt text-3xl mb-3 cursor-pointer 
               hover:text-organce"
             ></i>

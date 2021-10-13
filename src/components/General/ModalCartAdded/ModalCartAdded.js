@@ -1,24 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
 import * as Config from "../../../constants/Config";
 import * as ordersAction from "../../../actions/order/index";
+import Button from "../../Button/Button";
 
-function ModalCartAdded(props) {
+function ModalCartAdded() {
   //
-  const history = useHistory();
+  const carts = useSelector((state) => state.carts);
   const dispatch = useDispatch();
-  const { carts, user } = props;
-  const sum = () => {
-    let sum = 0;
-    carts.list.forEach((element) => {
-      sum +=
-        element.priceOutput * ((100 - element.sale) / 100) * element.amount;
-    });
-    return sum;
-  };
-
   //
   return (
     <div
@@ -41,16 +32,14 @@ function ModalCartAdded(props) {
               </p>
               <div
                 className="flex justify-center items-center text-blue-500 
-            font-semibold"
+                font-semibold"
               >
                 <Link to="">Xem thêm sản phẩm</Link>
               </div>
             </>
           ) : (
             carts.list.map((cart, index) => {
-              return (
-                <ItemCart cart={cart} key={index} carts={carts} user={user} />
-              );
+              return <ItemCart cart={cart} key={index} />;
             })
           )}
         </div>
@@ -58,15 +47,15 @@ function ModalCartAdded(props) {
         <div className="w-full flex p-2 h-12">
           <div
             className="w-1/2 float-left justify-start flex items-center 
-        font-semibold text-base"
+            font-semibold text-base"
           >
             Thành tiền :
           </div>
           <div
             className="w-1/2 float-right justify-end flex items-center 
-        text-organce pr-4"
+            text-organce pr-4"
           >
-            {new Intl.NumberFormat(["ban", "id"]).format(sum())} <u>đ</u>
+            {new Intl.NumberFormat(["ban", "id"]).format(carts.money)} <u>đ</u>
           </div>
         </div>
 
@@ -82,21 +71,18 @@ function ModalCartAdded(props) {
             Giỏ hàng
           </Link>
 
-          <button
-            onClick={() => {
-              if (sum() === 0) return;
-              else {
-                dispatch(ordersAction.loadOrder(carts.list));
-                history.push(Config.PAGE_PAYMENT);
-              }
-            }}
+          <Button
+            linkUseOnClick={true}
+            to={Config.PAGE_PAYMENT}
+            onClick={() => dispatch(ordersAction.loadOrder(carts.list))}
+            disabled={carts.money === 0 && true}
             className="px-6 py-2 rounded-full hover:bg-organce 
             bg-white border-white border-2 border-solid hover:text-white
             hover:border-white shadow-lg float-right flex items-center font-semibold 
             text-black ml-2 dark:text-black"
           >
             Thanh toán
-          </button>
+          </Button>
         </div>
       </div>
     </div>

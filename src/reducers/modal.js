@@ -13,7 +13,7 @@ import ModalChangeVoucher from "../components/Modals/Payment/ModalChangeVoucher/
 import ModalOrderSuccess from "../components/Modals/Payment/ModalOrderSuccess/ModalOrderSuccess";
 import ModalAddress from "../components/Modals/Profile/ModalAddress/ModalAddress";
 import * as Types from "../constants/ActionTypes";
-import ModalViewFastProduct from "../containers/General/ModalViewFastProduct/ModalViewFastProduct";
+import ModalViewFastProduct from "../components/Modals/ModalViewFastProduct";
 
 const initialState = {
   data: null,

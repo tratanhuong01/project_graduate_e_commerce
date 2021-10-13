@@ -15,7 +15,7 @@ function ShowMore(props) {
           window.scrollTo(0, 777);
         }}
         className="px-5 py-2.5 rounded-full border-2 border-solid font-semibold 
-        border-gray-500 flex justify-center flex items-center hover:bg-gray-300"
+        border-gray-500 justify-center flex items-center hover:bg-gray-300"
       >
         {minHeight === null ? (
           <>

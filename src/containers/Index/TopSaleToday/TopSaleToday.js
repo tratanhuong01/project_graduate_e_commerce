@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import BannerTopSaleToday from "../../../components/Banner/BannerIndex/BannerSmartWatch/BannerTopSaleToday";
 import ItemProductIndex from "../../../components/General/ItemProduct/ItemProductIndex";
+import BannerTopSaleToday from "../../../components/Index/BannerSmartWatch/BannerTopSaleToday";
 import api from "../../../Utils/api";
 
 function TopSaleToday(props) {

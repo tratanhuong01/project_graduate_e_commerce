@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";  
+import { useSelector } from "react-redux";
 import ItemCartMain from "../ItemCartMain/ItemCartMain";
 
 function ContentCart(props) {
-  const { headers, carts } = useSelector((state) => {
-    return {
-      carts: state.carts,
-      headers: state.headers,
-    };
-  });
-  const check = (item) => {
-    const index = carts.main.findIndex((data) => data.idCart === item.idCart);
-    if (index !== -1) return true;
-    return false;
-  };
+  const carts = useSelector((state) => state.carts);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const timeOut = setTimeout(() => {
@@ -28,19 +18,18 @@ function ContentCart(props) {
       <i className="fas fa-circle-notch fa-spin text-4xl text-organce"></i>
     </div>
   ) : (
-    <>
-      {carts.list.map((cart, index) => {
-        return (
-          <ItemCartMain
-            cart={cart}
-            key={index}
-            carts={carts}
-            status={check(cart)}
-            headers={headers}
-          />
-        );
-      })}
-    </>
+    carts.list.map((cart, index) => {
+      return (
+        <ItemCartMain
+          cart={cart}
+          key={index}
+          carts={carts}
+          status={
+            carts.main.filter((dt) => dt.idCart === cart.idCart).length > 0
+          }
+        />
+      );
+    })
   );
 }
 

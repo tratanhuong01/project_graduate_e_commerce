@@ -1,27 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../constants/Config";
 import ModalCartAdded from "../../../General/ModalCartAdded/ModalCartAdded";
-import * as cartsAction from "../../../../actions/cart/index";
 
 function Center(props) {
   //
-  const dispatch = useDispatch();
-  const { user, carts, headers } = useSelector((state) => {
-    return {
-      carts: state.carts,
-      user: state.user,
-      headers: state.headers,
-    };
-  });
-
-  useEffect(() => {
-    //
-    dispatch(cartsAction.loadCartRequest(user, headers));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
-
+  const carts = useSelector((state) => state.carts);
   //
   return (
     <li className="py-6 px-2 flex dark:text-gray-300 relative cursor-pointer toggel__hover__cart_show">
@@ -35,7 +20,7 @@ function Center(props) {
       >
         {carts.list.length}
       </span>
-      <ModalCartAdded carts={carts} user={user} />
+      <ModalCartAdded carts={carts} />
     </li>
   );
 }

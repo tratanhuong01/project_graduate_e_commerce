@@ -135,6 +135,7 @@ export const deleteCartRequest = (data, headers) => {
         dispatch(loadCart(carts));
       }
     }
+    dispatch(loadCartMain(data.carts));
   };
 };
 

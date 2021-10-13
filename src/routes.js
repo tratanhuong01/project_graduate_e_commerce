@@ -1,21 +1,19 @@
 import React from "react";
-import Index from "./pages/Index/Index";
-import ListProduct from "./pages/ListProduct/ListProduct";
-import DetailProduct from "./pages/DetailProduct/DetailProduct";
-import Cart from "./pages/Cart/Cart";
-import Payment from "./pages/Payment/Payment";
-import NotFound from "./pages/NotFound/NotFound";
-import About from "./pages/About/About";
-import News from "./pages/News/News";
-import Contact from "./pages/Contact/Contact";
-import Search from "./pages/Search/Search";
+import Index from "./pages/Index";
+import ListProduct from "./pages/ListProduct";
+import DetailProduct from "./pages/DetailProduct";
+import Cart from "./pages/Cart";
+import Payment from "./pages/Payment";
+import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import News from "./pages/News";
+import Contact from "./pages/Contact";
+import Search from "./pages/Search";
 import * as Config from "./constants/Config";
-import NewsDetail from "./pages/NewsDetail/NewsDetail";
-import AddData from "./AddData";
-import ContentWrite from "./ContentWrite";
-import Wishlist from "./pages/Wishlist/Wishlist";
-import Profile from "./pages/Profile/Profile";
-import Login from "./pages/Login/Login";
+import NewsDetail from "./pages/NewsDetail";
+import Wishlist from "./pages/Wishlist";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 
 const routes = [
   {
@@ -124,18 +122,6 @@ const routes = [
     path: Config.PAGE_LOGIN,
     exact: true,
     main: () => <Login />,
-    once: false,
-  },
-  {
-    path: "/Form/Add",
-    exact: true,
-    main: () => <AddData />,
-    once: false,
-  },
-  {
-    path: "/write",
-    exact: true,
-    main: () => <ContentWrite />,
     once: false,
   },
   {

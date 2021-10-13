@@ -9,21 +9,6 @@ function NewsDetailProduct(props) {
         <div className="item__news__detail py-0.5 px-2 mr-2 my-2 relative">
           <ItemNews />
         </div>
-        <div className="item__news__detail  py-0.5 px-2 mr-2 my-2 relative">
-          <ItemNews />
-        </div>
-        <div className="item__news__detail  py-0.5 px-2 mr-2 my-2 relative">
-          <ItemNews />
-        </div>
-        <div className="item__news__detail  py-0.5 px-2 mr-2 my-2 relative">
-          <ItemNews />
-        </div>
-        <div className="item__news__detail  py-0.5 px-2 mr-2 my-2 relative">
-          <ItemNews />
-        </div>
-        <div className="item__news__detail  py-0.5 px-2 mr-2 my-2 relative">
-          <ItemNews />
-        </div>
       </div>
     </>
   );

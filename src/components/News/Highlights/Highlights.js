@@ -28,7 +28,6 @@ function Highlights(props) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
-  console.log(length);
   //
   return news ? (
     <div className="w-full lg:w-2/3">
