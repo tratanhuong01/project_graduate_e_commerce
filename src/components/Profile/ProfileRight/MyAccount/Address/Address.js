@@ -10,12 +10,18 @@ import {
 } from "../../../../../constants/Config";
 
 async function deleteAddress(address, headers) {
-  const result = await profileApi.deleteAddress(
-    address.id,
-    address.addressUser.id,
-    headers
-  );
-  return result.data;
+  let data = null;
+  try {
+    const result = await profileApi.deleteAddress(
+      address.id,
+      address.addressUser.id,
+      headers
+    );
+    data = result.data;
+  } catch (error) {
+    throw error;
+  }
+  return data;
 }
 
 function Address(props) {
@@ -31,10 +37,14 @@ function Address(props) {
   useEffect(() => {
     let unmounted = false;
     async function fetch() {
-      const result = await profileApi.getAddressByIdUser(user.id, headers);
-      // In case the component was mounted, cancel set state here. Because it's not effect
-      if (unmounted) return;
-      setAddresses(result.data);
+      try {
+        const result = await profileApi.getAddressByIdUser(user.id, headers);
+        // In case the component was mounted, cancel set state here. Because it's not effect
+        if (unmounted) return;
+        setAddresses(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     const timeOut = setTimeout(() => {
       fetch();

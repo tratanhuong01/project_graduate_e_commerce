@@ -17,16 +17,20 @@ function Brand(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        listProduct.slug
-          ? `brands/slugGroupProduct/${listProduct.slug}`
-          : `brandsAll`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      setBrands(result.data);
+      try {
+        const result = await api(
+          listProduct.slug
+            ? `brands/slugGroupProduct/${listProduct.slug}`
+            : `brandsAll`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        setBrands(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

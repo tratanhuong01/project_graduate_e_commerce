@@ -8,7 +8,7 @@ function TechnicalData(props) {
   //
   return (
     <div
-      className={`${"w-2/3"} mx-auto overflow-y-auto scrollbar-css h-full max-h-full`}
+      className={`w-full px-1 lg:w-2/3 mx-auto overflow-y-auto scrollbar-css h-full max-h-full`}
     >
       {attributes &&
         attributes.map((attribute, index) => {

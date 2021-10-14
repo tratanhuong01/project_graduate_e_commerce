@@ -17,21 +17,25 @@ function ItemCategoryNews(props) {
     let unmounted = false;
     async function fetch() {
       let data = null;
-      if (!length)
-        data = await api(
-          `news/categoryNewsAll?idCategoryNews=${category.id}`,
-          "GET",
-          null,
-          headers
+      try {
+        if (!length)
+          data = await api(
+            `news/categoryNewsAll?idCategoryNews=${category.id}`,
+            "GET",
+            null,
+            headers
+          );
+        const result = await api(
+          `news/categoryNews?idCategoryNews=${category.id}&limit=${4}&offset=${
+            index * 4
+          }`
         );
-      const result = await api(
-        `news/categoryNews?idCategoryNews=${category.id}&limit=${4}&offset=${
-          index * 4
-        }`
-      );
-      if (unmounted) return;
-      if (data) setLength(data.data);
-      setNews(result.data);
+        if (unmounted) return;
+        if (data) setLength(data.data);
+        setNews(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

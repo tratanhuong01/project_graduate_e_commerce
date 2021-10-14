@@ -7,9 +7,9 @@ function EndFooter(props) {
   return (
     <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto px-4 py-7 dark:text-gray-300">
       <div className="w-full text-center md:text-left md:w-1/4 px-2">
-        <div className="w-full flex h-32 items-center">
-          <Link to="">
-            <img src={logo} alt="" className="w-3/4 -ml-5 object-contain" />
+        <div className="w-full flex h-32 items-center justify-center">
+          <Link to="" className="w-1/2 lg:w-3/4 mx-auto ">
+            <img src={logo} alt="" className="w-full object-contain" />
           </Link>
         </div>
         <p className="w-full flex flex-wrap mb-5">

@@ -26,14 +26,18 @@ function MyVoucher(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await voucherApi.getDiscountCodeByIdUser(
-        user.id,
-        0,
-        data,
-        headers
-      );
-      if (unmounted) return;
-      setVouchers(result.data);
+      try {
+        const result = await voucherApi.getDiscountCodeByIdUser(
+          user.id,
+          0,
+          data,
+          headers
+        );
+        if (unmounted) return;
+        setVouchers(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     const timeOut = setTimeout(() => {
       fetch();

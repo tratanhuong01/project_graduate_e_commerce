@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  // LOGOUT_USER,
+  LOGOUT_USER,
   // OPEN_MODAL_LOGIN,
   OPEN_MODAL_SEARCH_GET_ACCOUNT,
 } from "../../../../../../constants/ActionTypes";
@@ -11,14 +11,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import InputFieldFC from "../../../../../General/InputField/InputFieldFC";
 import api from "../../../../../../Utils/api";
 
-function FormChangePassword(props) {
+function FormChangePassword({ user }) {
   //
-  const { headers, user } = useSelector((state) => {
-    return {
-      headers: state.headers,
-      user: state.user,
-    };
-  });
+  const headers = useSelector((state) => state.headers);
   const dispatch = useDispatch();
   const validationSchema = Yup.object().shape({
     passwordCurrent: Yup.string()
@@ -57,17 +52,20 @@ function FormChangePassword(props) {
   return (
     <form
       onSubmit={handleSubmit(async (data) => {
-        await api(
-          `users/password/update/?idUser=${user.id}&password=${data.passwordConfirmation}`,
-          "GET",
-          null,
-          headers
-        );
-        setValue("passwordCurrent", "");
-        setValue("passwordNew", "");
-        setValue("passwordConfirmation", "");
-        // dispatch({ type: LOGOUT_USER });
-        // dispatch({ type: OPEN_MODAL_LOGIN });
+        try {
+          await api(
+            `users/password/update/?idUser=${user.id}&password=${data.passwordConfirmation}`,
+            "GET",
+            null,
+            headers
+          );
+          setValue("passwordCurrent", "");
+          setValue("passwordNew", "");
+          setValue("passwordConfirmation", "");
+          dispatch({ type: LOGOUT_USER });
+        } catch (error) {
+          throw error;
+        }
       })}
       className="w-full text-gray-600 dark:text-white pt-6"
     >

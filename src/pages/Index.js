@@ -15,9 +15,13 @@ function Index(props) {
   useEffect(() => {
     //
     const fetch = async () => {
-      dispatch(modalsAction.setPopupAds());
-      const result = await productApi.getProductIndex(headers);
-      setDataIndex(result.data);
+      try {
+        dispatch(modalsAction.setPopupAds());
+        const result = await productApi.getProductIndex(headers);
+        setDataIndex(result.data);
+      } catch (error) {
+        throw error;
+      }
     };
     fetch();
     return () => setDataIndex(null);

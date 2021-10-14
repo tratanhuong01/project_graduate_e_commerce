@@ -37,22 +37,26 @@ export const checkOrderIsOutOfStockRequest = (carts, headers) => {
   return async (dispatch) => {
     let count = 0;
     let orders = [];
-    for (let index = 0; index < carts.length; index++) {
-      const element = carts[index];
-      const result = await productApi.getItemCurrentByIdProduct(
-        element.idProduct,
-        headers
-      );
-      if (element.amount > 5 || element.amount > result.data) {
-        count++;
-        orders.push({
-          item: element,
-          itemCurrent: result.data <= 5 ? result.data : 5,
-        });
+    try {
+      for (let index = 0; index < carts.length; index++) {
+        const element = carts[index];
+        const result = await productApi.getItemCurrentByIdProduct(
+          element.idProduct,
+          headers
+        );
+        if (element.amount > 5 || element.amount > result.data) {
+          count++;
+          orders.push({
+            item: element,
+            itemCurrent: result.data <= 5 ? result.data : 5,
+          });
+        }
       }
+      if (count > 0) dispatch(checkOrderIsOutOfStock(orders));
+      else dispatch(checkOrderIsOutOfStock([]));
+    } catch (error) {
+      throw error;
     }
-    if (count > 0) dispatch(checkOrderIsOutOfStock(orders));
-    else dispatch(checkOrderIsOutOfStock([]));
   };
 };
 

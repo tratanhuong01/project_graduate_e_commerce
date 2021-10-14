@@ -1,5 +1,6 @@
 import React from "react";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import { useSelector } from "react-redux";
 import {
   PAGE_PROFILE_USER,
   PROFILE_CHANGE_PASSWORD,
@@ -7,6 +8,9 @@ import {
 import FormChangePassword from "./FormChangePassword/FormChangePassword";
 
 function ChangePassword(props) {
+  //
+  const user = useSelector((state) => state.user);
+  //
   return (
     <div className="w-full text-gray-800 dark:text-white ml-0 md:ml-4 lg:pl-0">
       <BreadcrumbsItem to={`${PAGE_PROFILE_USER}/${PROFILE_CHANGE_PASSWORD}`}>
@@ -18,7 +22,7 @@ function ChangePassword(props) {
       </p>
       <hr className="mb-3" />
       <div className="w-full text-gray-600 dark:text-white">
-        <FormChangePassword />
+        <FormChangePassword user={user} />
       </div>
     </div>
   );

@@ -10,8 +10,8 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import EmailPhone from "./EmailPhone/EmailPhone";
 import InputFieldFC from "../../../../General/InputField/InputFieldFC";
 import api from "../../../../../Utils/api";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import * as usersAction from "../../../../../actions/user/index";
 function FormAccount(props) {
   //
   const { user } = props;
@@ -47,6 +47,7 @@ function FormAccount(props) {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const dispatch = useDispatch();
   const headers = useSelector((state) => state.headers);
   const updateInfoUser = async (data) => {
     let clone = { ...user };
@@ -55,6 +56,7 @@ function FormAccount(props) {
     clone.lastName = data.lastName;
     clone.birthday = data.birthday;
     await api("users", "PUT", clone, headers);
+    dispatch(usersAction.loadUserRequest(headers));
   };
   //
   return (

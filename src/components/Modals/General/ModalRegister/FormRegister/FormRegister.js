@@ -83,6 +83,8 @@ class FormRegister extends Component {
           sex: dataSex,
           birthday: "",
           password: "",
+          avatar:
+            "https://res.cloudinary.com/tratahuong01/image/upload/v1634171061/E-Commerce/Config/ysqnou7sj7apnbpb75kb.png",
           type: 0,
           userRole: {
             id: "CUSTOMER",
@@ -94,7 +96,7 @@ class FormRegister extends Component {
           codePhone: "",
           isVerifyEmail: 0,
           isVerifyPhone: 0,
-          timeCreated: "",
+          timeCreated: null,
         }}
         validationSchema={validationSchema}
         onSubmit={this.onSubmitRegister}

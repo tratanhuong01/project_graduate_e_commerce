@@ -39,6 +39,9 @@ export const OPEN_MODAL_INFO_DETAIL_PRODUCT = "OPEN_MODAL_INFO_DETAIL_PRODUCT";
 export const OPEN_MODAL_CHANGE_VOUCHER = "OPEN_MODAL_CHANGE_VOUCHER";
 //
 export const ORDER_SUCCESS = "ORDER_SUCCESS";
+//
+export const OPEN_MODAL_CHANGE_PASSWORD_FORGET =
+  "OPEN_MODAL_CHANGE_PASSWORD_FORGET";
 // --------modal-------- //
 
 // --------user-------- //
@@ -80,7 +83,7 @@ export const LOAD_LIST_PRODUCT_SORTER = "LOAD_LIST_PRODUCT_SORTER";
 export const LOAD_LIST_PRODUCT_TYPE_PRODUCT = "LOAD_LIST_PRODUCT_TYPE_PRODUCT";
 //
 export const UPDATE_INDEX_LIST_PRODUCT = "UPDATE_INDEX_LIST_PRODUCT";
-// --------prodocut-------- //
+// --------product-------- //
 
 // --------cart-------- //
 export const LOAD_CART = "LOAD_CART";

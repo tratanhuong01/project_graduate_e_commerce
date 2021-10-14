@@ -19,24 +19,30 @@ function ApplyCode(props) {
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
   const appleCode = async () => {
-    const valid = await voucherApi.checkDiscountCodeValid(code, headers);
-    const isUsed = await voucherApi.checkDiscountCodeIsUsed(
-      code,
-      user.id,
-      headers
-    );
-    if (
-      valid.data === "" ||
-      isUsed.data ||
-      valid.data.min > orders.money ||
-      valid.data.max > orders.money
-    )
-      setError("Mã giảm giá không hợp lệ hoặc đã được sử dụng !");
-    else {
-      setError(null);
-      dispatch(ordersAction.updateVoucherOrders({ discountCode: valid.data }));
+    try {
+      const valid = await voucherApi.checkDiscountCodeValid(code, headers);
+      const isUsed = await voucherApi.checkDiscountCodeIsUsed(
+        code,
+        user.id,
+        headers
+      );
+      if (
+        valid.data === "" ||
+        isUsed.data ||
+        valid.data.min > orders.money ||
+        valid.data.max > orders.money
+      )
+        setError("Mã giảm giá không hợp lệ hoặc đã được sử dụng !");
+      else {
+        setError(null);
+        dispatch(
+          ordersAction.updateVoucherOrders({ discountCode: valid.data })
+        );
+      }
+      setLoading(false);
+    } catch (error) {
+      throw error;
     }
-    setLoading(false);
   };
   useEffect(() => {}, [user, orders.infoPayment.voucher]);
   //

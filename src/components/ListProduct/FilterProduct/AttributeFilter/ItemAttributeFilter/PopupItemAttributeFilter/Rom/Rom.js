@@ -17,14 +17,18 @@ function Rom(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        listProduct.slug ? `memoriesAll` : `memoriesAll`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      setMemories(result.data);
+      try {
+        const result = await api(
+          listProduct.slug ? `memoriesAll` : `memoriesAll`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        setMemories(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

@@ -13,20 +13,27 @@ export const loadProductChooseRequest = (slug, typeDisplay, headers) => {
   return async (dispatch) => {
     let formData = new FormData();
     formData.append("slug", slug);
-    const result = await productApi.getProductFullBySlugFDT(formData, headers);
-    dispatch(
-      loadProductChoose({
-        data: {
-          amount: 1,
-          idProduct: result.data.idProduct,
-          color: result.data.color,
-          memory: result.data.memory,
-          productCurrent: result.data,
-          slug: slug,
-        },
-        typeDisplay: typeDisplay,
-      })
-    );
+    try {
+      const result = await productApi.getProductFullBySlugFDT(
+        formData,
+        headers
+      );
+      dispatch(
+        loadProductChoose({
+          data: {
+            amount: 1,
+            idProduct: result.data.idProduct,
+            color: result.data.color,
+            memory: result.data.memory,
+            productCurrent: result.data,
+            slug: slug,
+          },
+          typeDisplay: typeDisplay,
+        })
+      );
+    } catch (error) {
+      throw error;
+    }
   };
 };
 

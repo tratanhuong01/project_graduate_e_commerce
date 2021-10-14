@@ -16,14 +16,18 @@ function Ram(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        listProduct.slug ? `ramsAll` : `ramsAll`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      setRams(result.data);
+      try {
+        const result = await api(
+          listProduct.slug ? `ramsAll` : `ramsAll`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        setRams(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

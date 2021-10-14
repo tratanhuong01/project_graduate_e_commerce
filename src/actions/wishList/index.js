@@ -11,14 +11,19 @@ export const loadWishListRequest = (user, headers) => {
       else dispatch(loadWishList([]));
     } else {
       if (user) {
-        const wishLists = await wishListApi.getAllWishListByIdUser(
-          user.id,
-          headers
-        );
-        dispatch(loadWishList(wishLists.data));
+        try {
+          const wishLists = await wishListApi.getAllWishListByIdUser(
+            user.id,
+            headers
+          );
+          dispatch(loadWishList(wishLists.data));
+        } catch (error) {
+          throw error;
+        }
       } else {
         if (localStorage && localStorage.getItem("wishLists"))
           dispatch(loadWishList(JSON.parse(localStorage.getItem("wishLists"))));
+        else dispatch(loadWishList([]));
       }
     }
   };

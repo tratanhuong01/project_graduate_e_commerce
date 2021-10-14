@@ -52,65 +52,74 @@ export const loadListProductRequest = (slug, headers) => {
       typeof slug.slugGroupProduct === "undefined" &&
       typeof slug.slugCategoryProduct === "undefined"
     ) {
-      const all = await productApi.getProductAllCategory(12, 0, 0, headers);
-      const limit = await productApi.getProductAllCategory(12, 0, 1, headers);
-      dispatch(loadListProduct(limit.data));
-      dispatch(updateIndexListProduct(0, all.data));
-      dispatch(loadSlugCondition(null, null, false));
+      try {
+        const all = await productApi.getProductAllCategory(12, 0, 0, headers);
+        const limit = await productApi.getProductAllCategory(12, 0, 1, headers);
+        dispatch(loadListProduct(limit.data));
+        dispatch(updateIndexListProduct(0, all.data));
+        dispatch(loadSlugCondition(null, null, false));
+      } catch (error) {
+        throw error;
+      }
     } else {
-      const category = await productApi.getAllCategoryProduct();
-      const group = await productApi.getAllGroupProduct();
-      const indexCategory = category.data.findIndex(
-        (item) => item.slugCategoryProduct === slug.slugCategoryProduct
-      );
-      const indexGroup = group.data.findIndex(
-        (item) =>
-          item.slugGroupProduct === slug.slugCategoryProduct ||
-          item.slugGroupProduct === slug.slugGroupProduct
-      );
-      if (indexCategory !== -1) {
-        const type =
-          category.data[indexCategory].typeCategoryProduct === 0 &&
-          slug.slugGroupProduct === slug.slugCategoryProduct
-            ? true
-            : false;
-        if (type) {
-          productsAll = await productApi.getProductByCategoryAll(
-            category.data[indexCategory].id,
-            headers
-          );
-          productsLimit = await productApi.getProductByCategoryLimit(
-            category.data[indexCategory].id,
-            0,
-            headers
-          );
-        } else {
-          productsAll = await productApi.getProductFilterByGroupProductAll(
+      try {
+        const category = await productApi.getAllCategoryProduct();
+        const group = await productApi.getAllGroupProduct();
+        const indexCategory = category.data.findIndex(
+          (item) => item.slugCategoryProduct === slug.slugCategoryProduct
+        );
+        const indexGroup = group.data.findIndex(
+          (item) =>
+            item.slugGroupProduct === slug.slugCategoryProduct ||
+            item.slugGroupProduct === slug.slugGroupProduct
+        );
+        if (indexCategory !== -1) {
+          const type =
+            category.data[indexCategory].typeCategoryProduct === 0 &&
+            slug.slugGroupProduct === slug.slugCategoryProduct
+              ? true
+              : false;
+          if (type) {
+            productsAll = await productApi.getProductByCategoryAll(
+              category.data[indexCategory].id,
+              headers
+            );
+            productsLimit = await productApi.getProductByCategoryLimit(
+              category.data[indexCategory].id,
+              0,
+              headers
+            );
+          } else {
+            productsAll = await productApi.getProductFilterByGroupProductAll(
+              category.data[indexCategory].typeCategoryProduct === 0
+                ? slug.slugGroupProduct
+                : slug.slugCategoryProduct,
+              "",
+              headers
+            );
+            productsLimit =
+              await productApi.getProductFilterByGroupProductLimit(
+                category.data[indexCategory].typeCategoryProduct === 0
+                  ? slug.slugGroupProduct
+                  : slug.slugCategoryProduct,
+                "&offset=0&limit=12",
+                headers
+              );
+          }
+          const slugAction =
             category.data[indexCategory].typeCategoryProduct === 0
               ? slug.slugGroupProduct
-              : slug.slugCategoryProduct,
-            "",
-            headers
-          );
-          productsLimit = await productApi.getProductFilterByGroupProductLimit(
-            category.data[indexCategory].typeCategoryProduct === 0
-              ? slug.slugGroupProduct
-              : slug.slugCategoryProduct,
-            "&offset=0&limit=12",
-            headers
-          );
-        }
-        const slugAction =
-          category.data[indexCategory].typeCategoryProduct === 0
-            ? slug.slugGroupProduct
-            : slug.slugCategoryProduct;
-        const nameAction = group.data[indexGroup]
-          ? group.data[indexGroup].nameGroupProduct
-          : category.data[indexCategory].nameCategoryProduct;
-        dispatch(loadListProduct(productsLimit.data));
-        dispatch(updateIndexListProduct(0, productsAll.data));
-        dispatch(loadSlugCondition(slugAction, nameAction, type));
-      } else dispatch(loadListProduct([]));
+              : slug.slugCategoryProduct;
+          const nameAction = group.data[indexGroup]
+            ? group.data[indexGroup].nameGroupProduct
+            : category.data[indexCategory].nameCategoryProduct;
+          dispatch(loadListProduct(productsLimit.data));
+          dispatch(updateIndexListProduct(0, productsAll.data));
+          dispatch(loadSlugCondition(slugAction, nameAction, type));
+        } else dispatch(loadListProduct([]));
+      } catch (error) {
+        throw error;
+      }
     }
     dispatch(loadingListProduct(false));
   };
@@ -127,26 +136,30 @@ export const loadSlugCondition = (slug, name, typeCategory) => {
 
 export const resetFilterProductRequest = (slug, headers) => {
   return async (dispatch) => {
-    dispatch(loadingListProduct(true));
-    dispatch(resetFilterProduct());
-    const result_1 = await productApi.getProductFilterByGroupProductAll(
-      slug,
-      "",
-      headers
-    );
-    dispatch(updateIndexListProduct(0, result_1.data));
-    const result_2 = await productApi.getProductFilterByGroupProductLimit(
-      slug,
-      returnStringQueryLimit({
-        filters: [],
-        typeProduct: [],
-        sorter: null,
-        index: 0,
-      }),
-      headers
-    );
-    dispatch(loadListProduct(result_2.data));
-    dispatch(loadingListProduct(false));
+    try {
+      dispatch(loadingListProduct(true));
+      dispatch(resetFilterProduct());
+      const result_1 = await productApi.getProductFilterByGroupProductAll(
+        slug,
+        "",
+        headers
+      );
+      dispatch(updateIndexListProduct(0, result_1.data));
+      const result_2 = await productApi.getProductFilterByGroupProductLimit(
+        slug,
+        returnStringQueryLimit({
+          filters: [],
+          typeProduct: [],
+          sorter: null,
+          index: 0,
+        }),
+        headers
+      );
+      dispatch(loadListProduct(result_2.data));
+      dispatch(loadingListProduct(false));
+    } catch (error) {
+      throw error;
+    }
   };
 };
 
@@ -175,12 +188,69 @@ export const addFilterProductRequest = (data, headers) => {
         },
       ];
       dispatch(addFilterProduct(clone));
+      try {
+        const result_1 = await productApi.getProductFilterByGroupProductAll(
+          slug,
+          returnStringQueryAll({ filters: clone, typeProduct, sorter }),
+          headers
+        );
+        dispatch(updateIndexListProduct(0, result_1.data));
+        const result_2 = await productApi.getProductFilterByGroupProductLimit(
+          slug,
+          returnStringQueryLimit({
+            filters: clone,
+            typeProduct,
+            sorter,
+            index: 0,
+          }),
+          headers
+        );
+        dispatch(loadListProduct(result_2.data));
+        dispatch(loadingListProduct(false));
+      } catch (error) {
+        throw error;
+      }
+    } else dispatch(removeFilterProductRequest(data));
+  };
+};
+
+export const filterProductPaginationIndexRequest = (data, headers) => {
+  return async (dispatch) => {
+    try {
+      dispatch(loadingListProduct(true));
+      window.scrollTo(0, 176);
+      const { filters, slug, typeProduct, sorter, index } = data;
+      const result_1 = await productApi.getProductFilterByGroupProductAll(
+        slug,
+        returnStringQueryAll({ filters, typeProduct, sorter }),
+        headers
+      );
+      dispatch(updateIndexListProduct(index, result_1.data));
+      const result_2 = await productApi.getProductFilterByGroupProductLimit(
+        slug,
+        returnStringQueryLimit({ filters, typeProduct, sorter, index }),
+        headers
+      );
+      dispatch(loadListProduct(result_2.data));
+      dispatch(loadingListProduct(false));
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+export const removeFilterProductRequest = (data, headers) => {
+  return async (dispatch) => {
+    try {
+      dispatch(loadingListProduct(true));
+      const { filters, item, slug, typeProduct, sorter, index } = data;
+      let clone = filters.filter((filter) => filter.id !== item.id);
+      dispatch(removeFilterProduct(clone));
       const result_1 = await productApi.getProductFilterByGroupProductAll(
         slug,
         returnStringQueryAll({ filters: clone, typeProduct, sorter }),
         headers
       );
-      dispatch(updateIndexListProduct(0, result_1.data));
       const result_2 = await productApi.getProductFilterByGroupProductLimit(
         slug,
         returnStringQueryLimit({
@@ -192,51 +262,11 @@ export const addFilterProductRequest = (data, headers) => {
         headers
       );
       dispatch(loadListProduct(result_2.data));
+      dispatch(updateIndexListProduct(index, result_1.data));
       dispatch(loadingListProduct(false));
-    } else dispatch(removeFilterProductRequest(data));
-  };
-};
-
-export const filterProductPaginationIndexRequest = (data, headers) => {
-  return async (dispatch) => {
-    dispatch(loadingListProduct(true));
-    window.scrollTo(0, 176);
-    const { filters, slug, typeProduct, sorter, index } = data;
-    const result_1 = await productApi.getProductFilterByGroupProductAll(
-      slug,
-      returnStringQueryAll({ filters, typeProduct, sorter }),
-      headers
-    );
-    dispatch(updateIndexListProduct(index, result_1.data));
-    const result_2 = await productApi.getProductFilterByGroupProductLimit(
-      slug,
-      returnStringQueryLimit({ filters, typeProduct, sorter, index }),
-      headers
-    );
-    dispatch(loadListProduct(result_2.data));
-    dispatch(loadingListProduct(false));
-  };
-};
-
-export const removeFilterProductRequest = (data, headers) => {
-  return async (dispatch) => {
-    dispatch(loadingListProduct(true));
-    const { filters, item, slug, typeProduct, sorter, index } = data;
-    let clone = filters.filter((filter) => filter.id !== item.id);
-    dispatch(removeFilterProduct(clone));
-    const result_1 = await productApi.getProductFilterByGroupProductAll(
-      slug,
-      returnStringQueryAll({ filters: clone, typeProduct, sorter }),
-      headers
-    );
-    const result_2 = await productApi.getProductFilterByGroupProductLimit(
-      slug,
-      returnStringQueryLimit({ filters: clone, typeProduct, sorter, index: 0 }),
-      headers
-    );
-    dispatch(loadListProduct(result_2.data));
-    dispatch(updateIndexListProduct(index, result_1.data));
-    dispatch(loadingListProduct(false));
+    } catch (error) {
+      throw error;
+    }
   };
 };
 
@@ -269,46 +299,54 @@ export const loadingListProduct = (loading = false) => {
 
 export const loadListProductSorterRequest = (data, headers) => {
   return async (dispatch) => {
-    const { filters, sorter, slug, typeProduct, index } = data;
-    dispatch(loadingListProduct(true));
-    dispatch(loadListProductSorter(sorter));
-    const result_1 = await productApi.getProductFilterByGroupProductAll(
-      slug,
-      returnStringQueryAll({ filters, typeProduct, sorter }),
-      headers
-    );
-    const result_2 = await productApi.getProductFilterByGroupProductLimit(
-      slug,
-      returnStringQueryLimit({ filters, typeProduct, sorter, index }),
-      headers
-    );
-    dispatch(updateIndexListProduct(index, result_1.data));
-    dispatch(loadListProduct(result_2.data));
-    dispatch(loadingListProduct(false));
+    try {
+      const { filters, sorter, slug, typeProduct, index } = data;
+      dispatch(loadingListProduct(true));
+      dispatch(loadListProductSorter(sorter));
+      const result_1 = await productApi.getProductFilterByGroupProductAll(
+        slug,
+        returnStringQueryAll({ filters, typeProduct, sorter }),
+        headers
+      );
+      const result_2 = await productApi.getProductFilterByGroupProductLimit(
+        slug,
+        returnStringQueryLimit({ filters, typeProduct, sorter, index }),
+        headers
+      );
+      dispatch(updateIndexListProduct(index, result_1.data));
+      dispatch(loadListProduct(result_2.data));
+      dispatch(loadingListProduct(false));
+    } catch (error) {
+      throw error;
+    }
   };
 };
 
 export const loadListProductByTypeProductRequest = (data, headers) => {
   return async (dispatch) => {
-    dispatch(loadingListProduct(true));
-    const { filters, sorter, slug, typeProduct, type, item, index } = data;
-    let clone = [...typeProduct];
-    if (type !== 1) clone.push(item);
-    else clone = clone.filter((dt) => dt !== item);
-    dispatch(loadListProductByTypeProduct(clone));
-    const result_1 = await productApi.getProductFilterByGroupProductAll(
-      slug,
-      returnStringQueryAll({ filters, typeProduct: clone, sorter }),
-      headers
-    );
-    const result_2 = await productApi.getProductFilterByGroupProductLimit(
-      slug,
-      returnStringQueryLimit({ filters, typeProduct: clone, sorter, index }),
-      headers
-    );
-    dispatch(updateIndexListProduct(index, result_1.data));
-    dispatch(loadListProduct(result_2.data));
-    dispatch(loadingListProduct(false));
+    try {
+      dispatch(loadingListProduct(true));
+      const { filters, sorter, slug, typeProduct, type, item, index } = data;
+      let clone = [...typeProduct];
+      if (type !== 1) clone.push(item);
+      else clone = clone.filter((dt) => dt !== item);
+      dispatch(loadListProductByTypeProduct(clone));
+      const result_1 = await productApi.getProductFilterByGroupProductAll(
+        slug,
+        returnStringQueryAll({ filters, typeProduct: clone, sorter }),
+        headers
+      );
+      const result_2 = await productApi.getProductFilterByGroupProductLimit(
+        slug,
+        returnStringQueryLimit({ filters, typeProduct: clone, sorter, index }),
+        headers
+      );
+      dispatch(updateIndexListProduct(index, result_1.data));
+      dispatch(loadListProduct(result_2.data));
+      dispatch(loadingListProduct(false));
+    } catch (error) {
+      throw error;
+    }
   };
 };
 

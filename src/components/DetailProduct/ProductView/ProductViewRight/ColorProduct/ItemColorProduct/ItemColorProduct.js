@@ -27,15 +27,19 @@ function ItemColorProduct(props) {
       );
     else formData.append("idMemory", "");
     formData.append("idLineProduct", products.idLineProduct);
-    let result = await api(`getSlug`, "POST", formData, headers);
-    if (product.typeDisplay === 0) history.push(result.data);
-    dispatch(
-      productsAction.loadProductChooseRequest(
-        result.data,
-        product.typeDisplay,
-        headers
-      )
-    );
+    try {
+      let result = await api(`getSlug`, "POST", formData, headers);
+      if (product.typeDisplay === 0) history.push(result.data);
+      dispatch(
+        productsAction.loadProductChooseRequest(
+          result.data,
+          product.typeDisplay,
+          headers
+        )
+      );
+    } catch (error) {
+      throw error;
+    }
   };
   useEffect(() => {}, [products]);
   //

@@ -18,22 +18,26 @@ function PopupNotify(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        `notifies?idUser=${user.id}&limit=5&offset=0`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      setNotifies(result.data);
-      setAmount(result.data.length);
+      try {
+        const result = await api(
+          `notifies?idUser=${user.id}&limit=5&offset=0`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        setNotifies(result.data);
+        setAmount(result.data.length);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {
       unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user, headers]);
   //
   return (
     <div

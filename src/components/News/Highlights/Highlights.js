@@ -15,12 +15,17 @@ function Highlights(props) {
     let unmounted = false;
     async function fetch() {
       let data = null;
-      if (!length) data = await api(`newsPaginationAll`, "GET", null, headers);
-      const result = await api(`newsPagination?limit=${9}&offset=${index}`);
-      if (unmounted) return;
-      if (data) setLength(data.data);
-      setNews(result.data);
-      if (length) window.scrollTo(0, 700);
+      try {
+        if (!length)
+          data = await api(`newsPaginationAll`, "GET", null, headers);
+        const result = await api(`newsPagination?limit=${9}&offset=${index}`);
+        if (unmounted) return;
+        if (data) setLength(data.data);
+        setNews(result.data);
+        if (length) window.scrollTo(0, 700);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

@@ -23,9 +23,13 @@ function Bank(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await profilesApi.getBankByIdUser(user.id, headers);
-      if (unmounted) return;
-      setBanks(result.data);
+      try {
+        const result = await profilesApi.getBankByIdUser(user.id, headers);
+        if (unmounted) return;
+        setBanks(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     const timeOut = setTimeout(() => {
       fetch();

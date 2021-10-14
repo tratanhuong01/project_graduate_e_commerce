@@ -16,15 +16,19 @@ function InputSearch(props) {
     let timeOut;
     if (keyword.length > 0) {
       timeOut = setTimeout(async () => {
-        const result = await api(
-          `products/search/?keyword=${keyword}&slug=${data.id}&type=1&limit=5&offset=0`,
-          "GET",
-          null,
-          headers
-        );
-        if (result.data.length > 0) setProducts(result.data);
-        else setProducts(null);
-        setLoading(false);
+        try {
+          const result = await api(
+            `products/search/?keyword=${keyword}&slug=${data.id}&type=1&limit=5&offset=0`,
+            "GET",
+            null,
+            headers
+          );
+          if (result.data.length > 0) setProducts(result.data);
+          else setProducts(null);
+          setLoading(false);
+        } catch (error) {
+          throw error;
+        }
       }, 300);
     } else {
       setProducts(null);

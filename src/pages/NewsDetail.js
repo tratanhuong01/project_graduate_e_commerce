@@ -15,12 +15,16 @@ function NewsDetail(props) {
     //
     let unmounted = false;
     const fetch = async () => {
-      window.scrollTo(0, 0);
-      await newsApi.updateViewNews(match.match.params.slug);
-      const result = await newsApi.getNewsBySlug(match.match.params.slug);
-      if (unmounted) return;
-      if (result.data.news) document.title = result.data.news.title;
-      setNewsDetail(result.data);
+      try {
+        window.scrollTo(0, 0);
+        await newsApi.updateViewNews(match.match.params.slug);
+        const result = await newsApi.getNewsBySlug(match.match.params.slug);
+        if (unmounted) return;
+        if (result.data.news) document.title = result.data.news.title;
+        setNewsDetail(result.data);
+      } catch (error) {
+        throw error;
+      }
     };
 
     fetch();

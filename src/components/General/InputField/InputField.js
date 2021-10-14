@@ -33,7 +33,7 @@ class InputField extends Component {
               showError || isset !== null
                 ? "text-red-500 z-50 dark:bg-dark-second bg-white"
                 : "text-gray-800 dark:text-white bg-white dark:bg-dark-second"
-            } text-xs px-1 absolute top-0 left-3 font-semibold flex`}
+            } text-xs px-1 absolute top-0 left-3 font-semibold flex z-0`}
           >
             {label}
           </label>
@@ -58,6 +58,7 @@ class InputField extends Component {
               handleChange(event);
               if (typeof setDataIsset !== "undefined") setDataIsset();
             }}
+            autoComplete="on"
           />
           <i
             className={

@@ -4,56 +4,64 @@ import * as userApi from "../../api/userApi";
 
 export const startChatSupportLiveRequest = (data, headers) => {
   return async (dispatch) => {
-    const groupChat = await messagesApi.addGroupChat(
-      {
-        id: null,
-        fullName: data.name,
-        phone: data.phone,
-        sex: data.nickName,
-        avatar: "https://vacpa.edu.vn/Content/images/avatar/avatar.png",
-        typeGroupChat: 0,
-        timeCreated: null,
-      },
-      headers
-    );
-    await messagesApi.addMessages(
-      {
-        id: null,
-        userMessages: null,
-        groupChatMessages: groupChat.data,
-        guest: null,
-        content: data.content,
-        images: null,
-        timeCreated: null,
-        typeMessages: 0,
-      },
-      headers
-    );
-    await messagesApi.addMessages(
-      {
-        id: null,
-        userMessages: data.admin,
-        groupChatMessages: groupChat.data,
-        guest: null,
-        content: `🥰🥰 Chào mừng ${data.nickName} đã đến với hsmart , ${data.nickName} cần hổ trợ gì ạ ? 🥰🥰 `,
-        images: null,
-        timeCreated: null,
-        typeMessages: 1,
-      },
-      headers
-    );
-    dispatch(updateGroupSupportLive(groupChat.data));
-    data.socket.emit("chatMessage", data.admin.id);
+    try {
+      const groupChat = await messagesApi.addGroupChat(
+        {
+          id: null,
+          fullName: data.name,
+          phone: data.phone,
+          sex: data.nickName,
+          avatar: "https://vacpa.edu.vn/Content/images/avatar/avatar.png",
+          typeGroupChat: 0,
+          timeCreated: null,
+        },
+        headers
+      );
+      await messagesApi.addMessages(
+        {
+          id: null,
+          userMessages: null,
+          groupChatMessages: groupChat.data,
+          guest: null,
+          content: data.content,
+          images: null,
+          timeCreated: null,
+          typeMessages: 0,
+        },
+        headers
+      );
+      await messagesApi.addMessages(
+        {
+          id: null,
+          userMessages: data.admin,
+          groupChatMessages: groupChat.data,
+          guest: null,
+          content: `🥰🥰 Chào mừng ${data.nickName} đã đến với hsmart , ${data.nickName} cần hổ trợ gì ạ ? 🥰🥰 `,
+          images: null,
+          timeCreated: null,
+          typeMessages: 1,
+        },
+        headers
+      );
+      dispatch(updateGroupSupportLive(groupChat.data));
+      data.socket.emit("chatMessage", data.admin.id);
+    } catch (error) {
+      throw error;
+    }
   };
 };
 
 export const loadMessageRequest = (groupChat, headers) => {
   return async (dispatch) => {
-    const result = await messagesApi.getMessageByIdGroupChat(
-      groupChat.id,
-      headers
-    );
-    dispatch(loadMessage(result.data));
+    try {
+      const result = await messagesApi.getMessageByIdGroupChat(
+        groupChat.id,
+        headers
+      );
+      dispatch(loadMessage(result.data));
+    } catch (error) {
+      throw error;
+    }
   };
 };
 
@@ -66,8 +74,12 @@ export const loadMessage = (list) => {
 
 export const randomUserSupportLiveRequest = (headers) => {
   return async (dispatch) => {
-    const admin = await userApi.getTeleSupport();
-    dispatch(randomUserSupportLive(admin.data, headers));
+    try {
+      const admin = await userApi.getTeleSupport();
+      dispatch(randomUserSupportLive(admin.data, headers));
+    } catch (error) {
+      throw error;
+    }
   };
 };
 

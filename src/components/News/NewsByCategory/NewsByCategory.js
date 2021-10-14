@@ -11,9 +11,13 @@ function NewsByCategory(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(`categoryNews`, "GET", null, headers);
-      if (unmounted) return;
-      setCategories(result.data);
+      try {
+        const result = await api(`categoryNews`, "GET", null, headers);
+        if (unmounted) return;
+        setCategories(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

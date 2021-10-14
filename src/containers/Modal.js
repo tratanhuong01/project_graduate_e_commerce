@@ -3,12 +3,7 @@ import { useSelector } from "react-redux";
 
 function Modal(props) {
   //
-  const states = useSelector((state) => {
-    return {
-      modal: state.modal,
-    };
-  });
-  const { modal } = states;
+  const modal = useSelector((state) => state.modal);
   useEffect(() => {
     if (modal.data)
       document.getElementsByTagName("body")[0].classList.add("overflow-hidden");

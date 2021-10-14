@@ -23,15 +23,19 @@ function ItemMemoryProduct(props) {
     );
     formData.append("idMemory", memoryData.id);
     formData.append("idLineProduct", products.idLineProduct);
-    let result = await api(`getSlug`, "POST", formData, headers);
-    if (product.typeDisplay === 0) history.push(result.data);
-    dispatch(
-      productsAction.loadProductChooseRequest(
-        result.data,
-        product.typeDisplay,
-        headers
-      )
-    );
+    try {
+      let result = await api(`getSlug`, "POST", formData, headers);
+      if (product.typeDisplay === 0) history.push(result.data);
+      dispatch(
+        productsAction.loadProductChooseRequest(
+          result.data,
+          product.typeDisplay,
+          headers
+        )
+      );
+    } catch (error) {
+      throw error;
+    }
   };
   //
   return (

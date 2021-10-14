@@ -25,15 +25,19 @@ function AttributeFilter(props) {
     let unmounted = false;
     if (slug) {
       async function fetch() {
-        dispatch(listProductsAction.resetAllFilterSorterSearchListProduct());
-        const result = await api(
-          `getFilterByGroupProduct/${slug}`,
-          "GET",
-          null,
-          headers
-        );
-        if (unmounted) return;
-        setFilters(result.data);
+        try {
+          dispatch(listProductsAction.resetAllFilterSorterSearchListProduct());
+          const result = await api(
+            `getFilterByGroupProduct/${slug}`,
+            "GET",
+            null,
+            headers
+          );
+          if (unmounted) return;
+          setFilters(result.data);
+        } catch (error) {
+          throw error;
+        }
       }
       fetch();
     }

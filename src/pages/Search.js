@@ -21,21 +21,25 @@ function Search(props) {
     async function fetch() {
       const slug = params.get("slug") === "tat-ca" ? "" : params.get("slug");
       const query = params.get("query");
-      const list = await api(
-        `products/search/page/all/?keyword=${query}&slug=${slug}`,
-        "GET",
-        null
-      );
-      const listCurrent = await api(
-        `products/search/page/limit/?keyword=${query}&slug=${slug}&limit=${12}&offset=${
-          index * 12
-        }`,
-        "GET",
-        null
-      );
-      if (unmounted) return;
-      setLength(list.data);
-      setProducts(listCurrent.data);
+      try {
+        const list = await api(
+          `products/search/page/all/?keyword=${query}&slug=${slug}`,
+          "GET",
+          null
+        );
+        const listCurrent = await api(
+          `products/search/page/limit/?keyword=${query}&slug=${slug}&limit=${12}&offset=${
+            index * 12
+          }`,
+          "GET",
+          null
+        );
+        if (unmounted) return;
+        setLength(list.data);
+        setProducts(listCurrent.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

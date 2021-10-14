@@ -16,9 +16,13 @@ function About(props) {
     window.scrollTo(0, 0);
     let unmounted = false;
     async function fetch() {
-      const result = await api(`configWebsites/type/0`, "GET", null, headers);
-      if (unmounted) return;
-      setAbout(result.data);
+      try {
+        const result = await api(`configWebsites/type/0`, "GET", null, headers);
+        if (unmounted) return;
+        setAbout(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps

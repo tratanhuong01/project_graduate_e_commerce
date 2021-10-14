@@ -39,7 +39,7 @@ function SelectCustom(props) {
         <i className="bx bx-chevron-down absolute right-3 top-4"></i>
         {icon && <i className={`${icon} absolute left-3 text-xl top-3.5`}></i>}
         {modal && (
-          <div className="w-full bg-white border-2 border-solid border-gray-200 p-1 font-bold absolute top-full left-0 shadow-lg z-50 dark:bg-dark-second dark:border-dark-third">
+          <div className="w-full bg-white border-2 border-solid border-gray-200 p-1 font-bold absolute top-full left-0 shadow-lg z-50 dark:bg-dark-second dark:border-dark-third z-main">
             {showData}
           </div>
         )}

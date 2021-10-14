@@ -16,5 +16,5 @@ export default function useCartAndWishList() {
     dispatch(wishListsAction.loadWishListRequest(user, headers));
     dispatch(cartsAction.loadCartRequest(user, headers));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [headers, user]);
+  }, [user]);
 }

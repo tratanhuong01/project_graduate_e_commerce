@@ -1,7 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CloseModal from "../components/General/CloseModal/CloseModal";
 import LoadingModal from "../components/General/Loading/LoadingModal/LoadingModal";
+import { OFF_LOADING_MODAL } from "../constants/ActionTypes";
 
 function ModalWrapper(props) {
   //
@@ -18,6 +19,12 @@ function ModalWrapper(props) {
     notHeader,
     fixed,
   } = props;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //
+    dispatch({ type: OFF_LOADING_MODAL });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   //
   return (
     <div className={className} style={style}>

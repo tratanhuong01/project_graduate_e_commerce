@@ -1,30 +1,54 @@
 import * as Types from "../../constants/ActionTypes";
 import * as modalsAction from "../../actions/modal/index";
 import * as userApi from "../../api/userApi";
+import api from "../../Utils/api";
 
 export const registerAccount = (data) => {
   return async (dispatch) => {
     dispatch(modalsAction.onLoadingModal());
-    const user = await userApi.addUser(data.user);
-    dispatch(
-      sendCodeRegister({
-        user: user.data,
-        emailOrPhone: data.emailOrPhone,
-      })
-    );
+    try {
+      const user = await userApi.addUser(data.user);
+      dispatch(
+        sendCodeRegister({
+          user: user.data,
+          emailOrPhone: data.emailOrPhone,
+        })
+      );
+    } catch (error) {
+      throw error;
+    }
   };
 };
 
-export const sendCodeRegister = (data) => {
+export const sendCodeRegister = (data, forget) => {
   return async (dispatch) => {
-    if (data.emailOrPhone === "Email") {
-      const code = await userApi.sendCodeEmail(data.user);
-      dispatch(modalsAction.offLoadingModal());
-      dispatch(
-        modalsAction.openModalTypeCode(data.user, data.user.email, code.data)
-      );
-    } else {
-    }
+    if (data.emailOrPhone === "Email")
+      try {
+        const code = await userApi.sendCodeEmail(data.user);
+        if (forget)
+          await api(
+            `passwordResets`,
+            "POST",
+            {
+              id: null,
+              passwordResetUser: data.user,
+              code: code.data,
+              timeCreated: null,
+            },
+            null
+          );
+        dispatch(modalsAction.offLoadingModal());
+        dispatch(
+          modalsAction.openModalTypeCode(
+            data.user,
+            data.user.email,
+            code.data,
+            forget
+          )
+        );
+      } catch (error) {
+        throw error;
+      }
   };
 };
 
@@ -47,11 +71,14 @@ export const logoutAccount = () => {
 
 export const loadUserRequest = (headers) => {
   return async (dispatch) => {
-    if (localStorage && localStorage.getItem("userToken")) {
-      const user = await userApi.getInfoUserFromTokenJWT(headers);
-      dispatch(loginAccount(user.data));
-      dispatch(updateHeaders(user.data.token));
-    }
+    if (localStorage && localStorage.getItem("userToken"))
+      try {
+        const user = await userApi.getInfoUserFromTokenJWT(headers);
+        dispatch(loginAccount(user.data));
+        dispatch(updateHeaders(user.data.token));
+      } catch (error) {
+        throw error;
+      }
   };
 };
 

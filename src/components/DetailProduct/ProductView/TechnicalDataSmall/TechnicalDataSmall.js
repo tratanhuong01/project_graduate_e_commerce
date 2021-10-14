@@ -13,14 +13,18 @@ function TechnicalDataSmall(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        `attributeProducts/${products.idLineProduct}`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      setData(result.data);
+      try {
+        const result = await api(
+          `attributeProducts/${products.idLineProduct}`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        setData(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

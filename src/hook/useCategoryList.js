@@ -9,13 +9,17 @@ export default function useCategoryList(props) {
   useEffect(() => {
     //
     const fetch = async () => {
-      const categoryResult = await api(
-        "getCategoryByGroupProducts",
-        "GET",
-        null,
-        headers
-      );
-      setCategorys(categoryResult.data);
+      try {
+        const categoryResult = await api(
+          "getCategoryByGroupProducts",
+          "GET",
+          null,
+          headers
+        );
+        setCategorys(categoryResult.data);
+      } catch (error) {
+        throw error;
+      }
     };
     fetch();
     return () => setCategorys([]);

@@ -16,12 +16,16 @@ function GroupProduct(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await productApi.groupProductsBySlugCategory(
-        listProduct.slug,
-        headers
-      );
-      if (unmounted) return;
-      setGroupProduct(result.data);
+      try {
+        const result = await productApi.groupProductsBySlugCategory(
+          listProduct.slug,
+          headers
+        );
+        if (unmounted) return;
+        setGroupProduct(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

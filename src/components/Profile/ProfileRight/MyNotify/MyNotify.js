@@ -21,14 +21,18 @@ function MyNotify(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        `notifies?idUser=${user.id}&limit=5&offset=0`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      setNotifies(result.data);
+      try {
+        const result = await api(
+          `notifies?idUser=${user.id}&limit=5&offset=0`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        setNotifies(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {
@@ -52,9 +56,22 @@ function MyNotify(props) {
       </div>
       <hr className="my-3" />
       {notifies ? (
-        notifies.map((notify, index) => (
-          <ItemNotify key={index} notify={notify} />
-        ))
+        notifies.length > 0 ? (
+          notifies.map((notify, index) => (
+            <ItemNotify key={index} notify={notify} />
+          ))
+        ) : (
+          <div className="w-full p-3 flex items-center justify-center h-48 bg-white dark:bg-dark-second flex-wrap text-gray-600 font-semibold dark:text-white">
+            <div className="w-full flex justify-center">
+              <img
+                src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/5fafbb923393b712b96488590b8f781f.png"
+                alt=""
+                className="w-24 h-24 rounded-full object-contain mb-3"
+              />
+            </div>
+            Không có bất kì thông báo nào.
+          </div>
+        )
       ) : (
         <div className="w-full p-3 flex items-center justify-center h-80">
           <i className="fas fa-circle-notch fa-spin text-4xl text-organce"></i>

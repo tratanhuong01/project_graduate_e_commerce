@@ -14,6 +14,7 @@ import ModalOrderSuccess from "../components/Modals/Payment/ModalOrderSuccess/Mo
 import ModalAddress from "../components/Modals/Profile/ModalAddress/ModalAddress";
 import * as Types from "../constants/ActionTypes";
 import ModalViewFastProduct from "../components/Modals/ModalViewFastProduct";
+import ModalChangePassword from "../components/Modals/General/ModalChangePassword/ModalChangePassword";
 
 const initialState = {
   data: null,
@@ -33,7 +34,7 @@ const myReducer = (state = initialState, action) => {
       state.data = <ModalLogin />;
       return { ...state };
     case Types.OPEN_MODAL_FORGOT_PASSWORD:
-      state.data = <ModalForgotPassword />;
+      state.data = <ModalForgotPassword user={action.user} />;
       return { ...state };
     case Types.OPEN_MODAL_SEARCH_GET_ACCOUNT:
       state.data = <ModalSearchGetAccount />;
@@ -47,6 +48,7 @@ const myReducer = (state = initialState, action) => {
           user={action.user}
           data={action.data}
           code={action.code}
+          forget={action.forget}
         />
       );
       return { ...state };
@@ -60,7 +62,7 @@ const myReducer = (state = initialState, action) => {
       state.loading = true;
       return { ...state };
     case Types.OFF_LOADING_MODAL:
-      state.loading = true;
+      state.loading = false;
       return { ...state };
     case Types.SET_POPUP_ADS:
       state.data = <PopupAds />;
@@ -95,6 +97,9 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.ORDER_SUCCESS:
       state.data = <ModalOrderSuccess />;
+      return { ...state };
+    case Types.OPEN_MODAL_CHANGE_PASSWORD_FORGET:
+      state.data = <ModalChangePassword user={action.user} />;
       return { ...state };
     default:
       return state;

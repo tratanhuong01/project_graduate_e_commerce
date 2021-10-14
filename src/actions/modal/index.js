@@ -25,12 +25,13 @@ export const openModalSearchGetAccount = () => {
   };
 };
 
-export const openModalTypeCode = (user, data, code) => {
+export const openModalTypeCode = (user, data, code, forget) => {
   return {
     type: Types.OPEN_MODAL_TYPE_CODE,
     user,
     data,
     code,
+    forget,
   };
 };
 
@@ -138,8 +139,16 @@ export const orderSuccess = () => {
   };
 };
 
-export const openModalForgotPassword = () => {
+export const openModalForgotPassword = (user) => {
   return {
     type: Types.OPEN_MODAL_FORGOT_PASSWORD,
+    user,
+  };
+};
+
+export const openModalChangePasswordForget = (user) => {
+  return {
+    type: Types.OPEN_MODAL_CHANGE_PASSWORD_FORGET,
+    user,
   };
 };

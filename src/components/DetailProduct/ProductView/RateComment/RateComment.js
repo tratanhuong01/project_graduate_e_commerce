@@ -20,26 +20,30 @@ function RateComment(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result_1 = await api(
-        `reviewProductsAll/${products.idProduct}`,
-        "GET",
-        null,
-        headers
-      );
-      const result_2 = await api(
-        `reviewProducts/${products.idProduct}/0/5`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      dispatch(
-        reviewProductsAction.loadReviewProductData({
-          reviews: result_2.data,
-          reviewAll: result_1.data,
-          products: products,
-        })
-      );
+      try {
+        const result_1 = await api(
+          `reviewProductsAll/${products.idProduct}`,
+          "GET",
+          null,
+          headers
+        );
+        const result_2 = await api(
+          `reviewProducts/${products.idProduct}/0/5`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        dispatch(
+          reviewProductsAction.loadReviewProductData({
+            reviews: result_2.data,
+            reviewAll: result_1.data,
+            products: products,
+          })
+        );
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {

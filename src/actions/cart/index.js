@@ -11,8 +11,12 @@ export const loadCartRequest = (user, headers) => {
         dispatch(loadCart(JSON.parse(localStorage.getItem("carts"))));
       else dispatch(loadCart([]));
     else {
-      const carts = await cartApi.getAllCartByIdUser(user.id, headers);
-      dispatch(loadCart(carts.data, true));
+      try {
+        const carts = await cartApi.getAllCartByIdUser(user.id, headers);
+        dispatch(loadCart(carts.data, true));
+      } catch (error) {
+        throw error;
+      }
     }
   };
 };
@@ -27,10 +31,15 @@ export const loadCart = (carts, status) => {
 
 export const addCartRequest = (data, headers) => {
   return async (dispatch) => {
-    const result = await productApi.getProductFullByIdProduct(
-      data.idProduct,
-      headers
-    );
+    let result = null;
+    try {
+      result = await productApi.getProductFullByIdProduct(
+        data.idProduct,
+        headers
+      );
+    } catch (error) {
+      throw error;
+    }
     if (data.user === null) {
       let listCart = [];
       if (localStorage && localStorage.getItem("carts")) {
@@ -74,37 +83,41 @@ export const addCartRequest = (data, headers) => {
       localStorage.setItem("carts", JSON.stringify(listCart));
       dispatch(loadCart(listCart));
     } else {
-      const cartCheck = await cartApi.checkCart(
-        data.user.id,
-        data.idProduct,
-        headers
-      );
-      if (cartCheck.data === "" || cartCheck.data === null) {
-        const product = await productApi.getProductByIdProduct(
+      try {
+        const cartCheck = await cartApi.checkCart(
+          data.user.id,
           data.idProduct,
           headers
         );
-        const cart = await cartApi.addCartByIdUser(
-          {
-            id: 0,
-            userCart: data.user,
-            productCart: product.data,
-            amount: data.amount,
-            timeCreated: "",
-          },
-          headers
-        );
-        dispatch(loadCart(cart.data));
-      } else {
-        const carts = await cartApi.updateCartByIdUser(
-          {
-            amount: data.amount + cartCheck.data.amount,
-            idUser: data.user.id,
-            idCart: cartCheck.data.id,
-          },
-          headers
-        );
-        dispatch(loadCart(carts.data));
+        if (cartCheck.data === "" || cartCheck.data === null) {
+          const product = await productApi.getProductByIdProduct(
+            data.idProduct,
+            headers
+          );
+          const cart = await cartApi.addCartByIdUser(
+            {
+              id: 0,
+              userCart: data.user,
+              productCart: product.data,
+              amount: data.amount,
+              timeCreated: "",
+            },
+            headers
+          );
+          dispatch(loadCart(cart.data));
+        } else {
+          const carts = await cartApi.updateCartByIdUser(
+            {
+              amount: data.amount + cartCheck.data.amount,
+              idUser: data.user.id,
+              idCart: cartCheck.data.id,
+            },
+            headers
+          );
+          dispatch(loadCart(carts.data));
+        }
+      } catch (error) {
+        throw error;
       }
     }
     window.scrollTo(0, 0);
@@ -122,8 +135,12 @@ export const addCart = (data) => {
 export const deleteCartRequest = (data, headers) => {
   return async (dispatch) => {
     if (data.user) {
-      const result = await cartApi.deleteCartByIdUser(data, headers);
-      dispatch(loadCart(result.data));
+      try {
+        const result = await cartApi.deleteCartByIdUser(data, headers);
+        dispatch(loadCart(result.data));
+      } catch (error) {
+        throw error;
+      }
     } else {
       let carts = JSON.parse(localStorage.getItem("carts"));
       if (carts.length === 1) {
@@ -142,15 +159,19 @@ export const deleteCartRequest = (data, headers) => {
 export const changeAmountCartRequest = (data, headers) => {
   return async (dispatch) => {
     if (data.user) {
-      const carts = await cartApi.updateCartByIdUser(
-        {
-          amount: data.amount,
-          idUser: data.user.id,
-          idCart: data.idCart,
-        },
-        headers
-      );
-      dispatch(loadCart(carts.data));
+      try {
+        const carts = await cartApi.updateCartByIdUser(
+          {
+            amount: data.amount,
+            idUser: data.user.id,
+            idCart: data.idCart,
+          },
+          headers
+        );
+        dispatch(loadCart(carts.data));
+      } catch (error) {
+        throw error;
+      }
     } else {
       let listCart = JSON.parse(localStorage.getItem("carts"));
       let index = listCart.findIndex((item) => item.idCart === data.idCart);

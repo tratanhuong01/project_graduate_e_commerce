@@ -7,7 +7,6 @@ import InputField from "../../../../General/InputField/InputField";
 import EndFormLogin from "./EndFormLogin/EndFormLogin";
 import * as modalsAction from "../../../../../actions/modal/index";
 import * as usersAction from "../../../../../actions/user/index";
-import * as cartsAction from "../../../../../actions/cart/index";
 
 class FormLogin extends Component {
   constructor(props) {
@@ -18,18 +17,24 @@ class FormLogin extends Component {
   }
 
   onSubmitFormLogin = async (data) => {
-    const { closeModal, loginAccount, loadCartRequest, updateHeaders } =
-      this.props;
+    const {
+      closeModal,
+      loginAccount,
+      updateHeaders,
+      onLoadingModal,
+      offLoadingModal,
+    } = this.props;
+    onLoadingModal();
     const result = await api("checkLoginJWT", "POST", data);
-    if (result.data === null || result.data === "") {
+    if (!result.data.user) {
+      offLoadingModal();
       this.setState({
-        message: "Thông tin đăng nhập không chính xác!!",
+        message: result.data.message,
       });
     } else {
       closeModal();
       loginAccount(result.data);
       updateHeaders(result.data.token);
-      loadCartRequest(result.data.user);
     }
   };
   render() {
@@ -104,15 +109,21 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    onLoadingModal: () => {
+      dispatch(modalsAction.onLoadingModal());
+    },
+    offLoadingModal: () => {
+      dispatch(modalsAction.offLoadingModal());
+    },
     loginAccount: (user) => {
       dispatch(usersAction.loginAccount(user));
     },
     closeModal: () => {
       dispatch(modalsAction.closeModal());
     },
-    loadCartRequest: (carts) => {
-      dispatch(cartsAction.loadCartRequest(carts));
-    },
+    // loadCartRequest: (carts) => {
+    //   dispatch(cartsAction.loadCartRequest(carts));
+    // },
     updateHeaders: (headers) => {
       dispatch(usersAction.updateHeaders(headers));
     },

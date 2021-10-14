@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import ModalWrapper from "../../../../containers/ModalWrapper";
 import Button from "../Button/Button";
-
+import * as usersAction from "../../../../actions/user/index";
+import * as modalsAction from "../../../../actions/modal/index";
+import api from "../../../../Utils/api";
 function ModalTypeCode(props) {
   //
   const [codeVerify, setCodeVerify] = useState("");
   const [message, setMessage] = useState(null);
-  const { data, code } = props;
+  const [send, setSend] = useState(true);
+  const { data, code, user, forget } = props;
   let [time, setTime] = useState("");
+  const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
     //
+    setDisabled(true);
     let time = 120;
     let interval = setInterval(() => {
       time--;
@@ -27,11 +33,28 @@ function ModalTypeCode(props) {
       clearInterval(interval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const verify = () => {
+  }, [send]);
+  const verify = async () => {
     if (code.toString() === codeVerify.toString()) {
       setMessage(null);
-      alert("Register Succeess !!");
+      //update here
+
+      //
+      if (forget) dispatch(modalsAction.openModalChangePasswordForget(user));
+      else {
+        try {
+          const result = await api("checkLoginJWT", "POST", {
+            emailOrPhone: user.email,
+            passsword: user.password,
+          });
+          if (result.data) {
+            dispatch(usersAction.loginAccount(result.data));
+            dispatch(usersAction.updateHeaders(result.data.token));
+          }
+        } catch (error) {
+          throw error;
+        }
+      }
     } else {
       if (codeVerify.length === 0)
         setMessage("Mã xác nhận không được để trống !!");
@@ -76,6 +99,17 @@ function ModalTypeCode(props) {
             {`Thời gian gửi lại :  ${time}`}
           </span>
           <Button
+            onClick={async () => {
+              dispatch(modalsAction.onLoadingModal());
+              await dispatch(
+                usersAction.sendCodeRegister({
+                  user: user,
+                  emailOrPhone: "Email",
+                })
+              );
+              dispatch(modalsAction.offLoadingModal());
+              setSend(!send);
+            }}
             backgroundColor="bg-gray-500"
             color="text-white"
             label="Gửi lại"

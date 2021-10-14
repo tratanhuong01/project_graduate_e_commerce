@@ -17,14 +17,18 @@ function Color(props) {
     //
     let unmounted = false;
     async function fetch() {
-      const result = await api(
-        listProduct.slug ? `colorsAll` : `colorsAll`,
-        "GET",
-        null,
-        headers
-      );
-      if (unmounted) return;
-      setColors(result.data);
+      try {
+        const result = await api(
+          listProduct.slug ? `colorsAll` : `colorsAll`,
+          "GET",
+          null,
+          headers
+        );
+        if (unmounted) return;
+        setColors(result.data);
+      } catch (error) {
+        throw error;
+      }
     }
     fetch();
     return () => {
