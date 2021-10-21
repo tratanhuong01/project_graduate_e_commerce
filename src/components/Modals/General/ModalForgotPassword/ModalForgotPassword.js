@@ -5,14 +5,14 @@ import Button from "../Button/Button";
 import * as modalsAction from "../../../../actions/modal/index";
 import * as usersAction from "../../../../actions/user/index";
 import api from "../../../../Utils/api";
-function ModalForgotPassword({ user }) {
+function ModalForgotPassword({ user, verify }) {
   //
   const dispatch = useDispatch();
   const [message, setMessage] = useState(null);
   //
   return (
     <ModalWrapper
-      title="Lấy lại tài khoản"
+      title={`${verify ? "Xác minh tài khoản" : "Lấy lại tài khoản"}`}
       className="w-11/12 absolute top-1/2 left-1/2 py-4 opacity-100 bg-white z-50 border-2 border-solid 
     border-gray-300 dark:border-dark-third shadow-lg sm:w-4/5 sm:mt-12 lg:w-3/5 xl:w-2/5 xl:mt-4 transform -translate-x-1/2 -translate-y-1/2 rounded-lg"
     >
@@ -89,7 +89,7 @@ function ModalForgotPassword({ user }) {
                     emailOrPhone: "Email",
                     user: user,
                   },
-                  true
+                  verify ? false : true
                 )
               );
             } else

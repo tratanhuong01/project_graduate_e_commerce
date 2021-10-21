@@ -52,6 +52,15 @@ export const updateItemCurrentAndItemSold = (amount, idProduct, headers) => {
   );
 };
 
+export const removeItemCurrentAndItemSold = (amount, idProduct, headers) => {
+  return api(
+    `infoProducts/remove/?amount=${amount}&idProduct=${idProduct}`,
+    "GET",
+    null,
+    headers
+  );
+};
+
 export const getItemCurrentByIdProduct = (idProduct, headers) => {
   return api(
     `infoProducts/itemCurrent/?idProduct=${idProduct}`,

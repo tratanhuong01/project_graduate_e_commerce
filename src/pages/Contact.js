@@ -14,7 +14,7 @@ function Contact(props) {
   return (
     <div className="w-full bg-gray-100 dark:bg-dark-second dark:text-white">
       <BreadcrumbsItem glyph="" to={PAGE_CONTACT}>
-        Tin tức
+        Liên hệ
       </BreadcrumbsItem>
       <LevelUrl />
       <div className="xl:w-4/5 w-full mx-auto p-4">

@@ -28,7 +28,7 @@ function WaitingUserSupport(props) {
             <i className="bx bx-x text-4xl ml-6 cursor-pointer"></i>
           </div>
         </div>
-        <div className="w-full py-2 text-xl text-gray-600 px-4 text-center border-b-2 border-solid border-gray-300">
+        <div className="w-full py-2 text-xl text-gray-600 px-4 text-center border-b-2 border-solid border-gray-300 dark:text-gray-300">
           Xin chào mừng quý khách đến với hỗ trợ trực tuyến
         </div>
         <div className="w-full py-2 px-3" style={{ height: 360 }}>

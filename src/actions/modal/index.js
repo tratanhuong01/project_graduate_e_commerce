@@ -139,10 +139,11 @@ export const orderSuccess = () => {
   };
 };
 
-export const openModalForgotPassword = (user) => {
+export const openModalForgotPassword = (user, verify) => {
   return {
     type: Types.OPEN_MODAL_FORGOT_PASSWORD,
     user,
+    verify,
   };
 };
 

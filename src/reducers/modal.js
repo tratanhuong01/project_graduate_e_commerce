@@ -34,7 +34,9 @@ const myReducer = (state = initialState, action) => {
       state.data = <ModalLogin />;
       return { ...state };
     case Types.OPEN_MODAL_FORGOT_PASSWORD:
-      state.data = <ModalForgotPassword user={action.user} />;
+      state.data = (
+        <ModalForgotPassword user={action.user} verify={action.verify} />
+      );
       return { ...state };
     case Types.OPEN_MODAL_SEARCH_GET_ACCOUNT:
       state.data = <ModalSearchGetAccount />;

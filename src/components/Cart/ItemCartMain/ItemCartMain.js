@@ -15,7 +15,7 @@ function ItemCartMain(props) {
   });
   //
   return (
-    <div className="w-full my-3 py-2 lg:py-0 mb-5 flex bg-white dark:bg-dark-second dark:text-white lg:h-28">
+    <div className="w-full my-3 py-2 lg:py-0 mb-5 flex bg-white dark:bg-dark-second dark:text-white lg:h-36">
       <div className="w-10 flex justify-center px-3 relative">
         <input
           type="checkbox"

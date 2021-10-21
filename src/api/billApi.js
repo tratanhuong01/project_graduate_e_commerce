@@ -32,6 +32,10 @@ export const cancelBill = (idBill, headers) => {
   );
 };
 
+export const getBillById = (id) => {
+  return api(`bills/${id}`, "GET", null);
+};
+
 export const searchBillMain = (keyword, idUser, headers) => {
   return api(
     `bills/search/?keyword=${keyword}&idUser=${idUser}&type=${-2}&offset=${0}&limit=5&type=${0}`,

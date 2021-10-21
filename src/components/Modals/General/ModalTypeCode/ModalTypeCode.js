@@ -5,6 +5,10 @@ import Button from "../Button/Button";
 import * as usersAction from "../../../../actions/user/index";
 import * as modalsAction from "../../../../actions/modal/index";
 import api from "../../../../Utils/api";
+import {
+  CLOSE_MODAL,
+  ON_LOADING_MODAL,
+} from "../../../../constants/ActionTypes";
 function ModalTypeCode(props) {
   //
   const [codeVerify, setCodeVerify] = useState("");
@@ -37,19 +41,21 @@ function ModalTypeCode(props) {
   const verify = async () => {
     if (code.toString() === codeVerify.toString()) {
       setMessage(null);
-      //update here
-
-      //
       if (forget) dispatch(modalsAction.openModalChangePasswordForget(user));
       else {
         try {
-          const result = await api("checkLoginJWT", "POST", {
+          dispatch({ type: ON_LOADING_MODAL });
+          const result = await api("verifyAccountJWT", "POST", {
             emailOrPhone: user.email,
-            passsword: user.password,
+            password: user.password,
           });
-          if (result.data) {
+          if (result.data.user) {
+            let userClone = { ...user };
+            userClone.isVerifyEmail = 1;
+            await api(`users`, "PUT", userClone);
             dispatch(usersAction.loginAccount(result.data));
             dispatch(usersAction.updateHeaders(result.data.token));
+            dispatch({ type: CLOSE_MODAL });
           }
         } catch (error) {
           throw error;

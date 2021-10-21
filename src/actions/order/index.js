@@ -84,10 +84,37 @@ export const updateVoucherOrders = (voucher, remove) => {
 
 export const addOrderRequest = (data, headers) => {
   return async (dispatch) => {
+    let user = null;
+    if (!data.user)
+      user = await api(`users`, "POST", {
+        id: null,
+        firstName: "",
+        lastName: "",
+        phone: null,
+        email: null,
+        sex: null,
+        birthday: "12-12-1999 00:00:00",
+        password: 1,
+        avatar: null,
+        type: 0,
+        userRole: {
+          id: "CUSTOMER",
+          nameRole: "Khách hàng",
+          typeRole: 0,
+          timeCreated: "10-04-2021 08:05:05",
+        },
+        codeEmail: null,
+        codePhone: null,
+        isVerifyEmail: 0,
+        isVerifyPhone: 0,
+        timeCreated: null,
+        status: 0,
+        isRegister: 0,
+      });
     const order = await billApi.addBill(
       {
         id: null,
-        billUser: data.user,
+        billUser: data.user ? data.user : user.data,
         status: 0,
         paymentMethodBill: {
           id: 1,
@@ -132,6 +159,24 @@ export const addOrderRequest = (data, headers) => {
       await productApi.updateItemCurrentAndItemSold(
         item.amount,
         item.idProduct,
+        headers
+      );
+    }
+    if (data.user) {
+      await api(
+        `notifies`,
+        "POST",
+        {
+          id: null,
+          userNotify: data.user,
+          nameNotify: "Đơn hàng của bạn đã đặt thành công",
+          url: null,
+          image:
+            "https://cf.shopee.vn/file/fed467fc00192be487e1aa69720a432d_tn",
+          description: "🌀 Vui lòng chờ cho bên cửa hàng duyệt 🌀",
+          timeCreated: null,
+          isRead: 0,
+        },
         headers
       );
     }

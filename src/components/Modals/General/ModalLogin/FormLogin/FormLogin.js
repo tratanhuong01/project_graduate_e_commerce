@@ -23,14 +23,22 @@ class FormLogin extends Component {
       updateHeaders,
       onLoadingModal,
       offLoadingModal,
+      openModalForgotPassword,
     } = this.props;
     onLoadingModal();
     const result = await api("checkLoginJWT", "POST", data);
-    if (!result.data.user) {
-      offLoadingModal();
-      this.setState({
-        message: result.data.message,
-      });
+    if (!result.data.token) {
+      if (result.data.status === 201) {
+        this.setState({
+          message: result.data.message,
+        });
+        openModalForgotPassword(result.data.user, true);
+      } else {
+        offLoadingModal();
+        this.setState({
+          message: result.data.message,
+        });
+      }
     } else {
       closeModal();
       loginAccount(result.data);
@@ -121,9 +129,9 @@ const mapDispatchToProps = (dispatch, props) => {
     closeModal: () => {
       dispatch(modalsAction.closeModal());
     },
-    // loadCartRequest: (carts) => {
-    //   dispatch(cartsAction.loadCartRequest(carts));
-    // },
+    openModalForgotPassword: (user, verify) => {
+      dispatch(modalsAction.openModalForgotPassword(user, verify));
+    },
     updateHeaders: (headers) => {
       dispatch(usersAction.updateHeaders(headers));
     },

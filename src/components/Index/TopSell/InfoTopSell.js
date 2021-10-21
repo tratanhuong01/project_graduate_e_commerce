@@ -36,19 +36,12 @@ function InfoTopSell(props) {
         )}{" "}
         <u>đ</u>
       </p>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      {/* <p className="py-1">Kích thước màn hình: 1.65"</p>
+      <p className="py-1">Kích thước màn hình: 1.65"</p>
       <p className="py-1">Độ phân giải màn hình: 390 x 312pixels</p>
       <p className="py-1">Luôn hiển thị: Không</p>
       <p className="py-1">Mật độ điểm ảnh : 303pixels</p>
       <p className="py-1">Multi-touch: Có</p>
-      <p className="py-1">Loại màn hình: AMOLED</p> */}
+      <p className="py-1">Loại màn hình: AMOLED</p>
     </div>
   );
 }

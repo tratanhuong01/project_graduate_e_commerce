@@ -97,6 +97,8 @@ class FormRegister extends Component {
           isVerifyEmail: 0,
           isVerifyPhone: 0,
           timeCreated: null,
+          status: 0,
+          isRegister: 1,
         }}
         validationSchema={validationSchema}
         onSubmit={this.onSubmitRegister}

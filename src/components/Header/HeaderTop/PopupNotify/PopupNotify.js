@@ -19,15 +19,17 @@ function PopupNotify(props) {
     let unmounted = false;
     async function fetch() {
       try {
-        const result = await api(
-          `notifies?idUser=${user.id}&limit=5&offset=0`,
-          "GET",
-          null,
-          headers
-        );
-        if (unmounted) return;
-        setNotifies(result.data);
-        setAmount(result.data.length);
+        if (user && headers) {
+          const result = await api(
+            `notifies?idUser=${user.id}&limit=5&offset=0`,
+            "GET",
+            null,
+            headers
+          );
+          if (unmounted) return;
+          setNotifies(result.data);
+          setAmount(result.data.length);
+        }
       } catch (error) {
         throw error;
       }
@@ -37,16 +39,16 @@ function PopupNotify(props) {
       unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, headers]);
+  }, [headers, user]);
   //
   return (
     <div
       style={{ width: 380 }}
-      className="rounded-sm absolute mt-10 mx-5 right-0  z-main animate__animated animate__zoomIn"
+      className="rounded-sm absolute mx-5 top-0 right-0  z-main animate__animated animate__zoomIn"
       id="notify__popup"
     >
       <div
-        className="rounded-sm mt-36 z-main border-2 border-solid 
+        className="rounded-sm mt-10 z-main border-2 border-solid 
       border-gray-200 bg-white relative arrow__popup"
         style={{
           boxShadow: "0 2px 20px rgb(0 0 0 / 50%)",

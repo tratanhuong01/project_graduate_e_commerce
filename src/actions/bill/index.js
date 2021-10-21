@@ -1,5 +1,7 @@
 import * as Types from "../../constants/ActionTypes";
 import * as billApi from "../../api/billApi";
+import * as productApi from "../../api/productApi";
+import api from "../../Utils/api";
 
 export const loadBillsUserRequest = (data, headers) => {
   return async (dispatch) => {
@@ -40,6 +42,30 @@ export const cancelOrderRequest = (data, headers) => {
   return async (dispatch) => {
     try {
       await billApi.cancelBill(data.bill.bill.id, headers);
+      const result = await billApi.getBillById(data.bill.bill.id);
+      for (let index = 0; index < result.data.billDetailList.length; index++) {
+        const element = result.data.billDetailList[index];
+        await productApi.removeItemCurrentAndItemSold(
+          element.billDetail.amount,
+          element.productFull.idProduct
+        );
+      }
+      await api(
+        `notifies`,
+        "POST",
+        {
+          id: null,
+          userNotify: data.bill.bill.billUser,
+          nameNotify: "Bạn đã hủy đơn hàng !",
+          data: null,
+          image:
+            "https://cf.shopee.vn/file/fed467fc00192be487e1aa69720a432d_tn",
+          description: "🌀 Rất bạn về sự bất tiện này 🌀",
+          timeCreated: null,
+          isRead: 0,
+        },
+        headers
+      );
       dispatch(loadBillsUserRequest(data, headers));
     } catch (error) {
       throw error;
