@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -24,6 +24,7 @@ function FormChatBot(props) {
   });
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -31,8 +32,25 @@ function FormChatBot(props) {
     resolver: yupResolver(validationSchema),
     shouldUnregister: false,
   });
-  const messages = useSelector((state) => state.messages);
+  const { user, messages } = useSelector((state) => {
+    return {
+      messages: state.messages,
+      user: state.user,
+    };
+  });
   const dispatch = useDispatch();
+  useEffect(() => {
+    //
+    if (user) {
+      setValue(
+        "nickName",
+        user.sex === "Khác" ? (user.sex === "Nam" ? "Anh" : "Chị") : null
+      );
+      setValue("nameCustomer", `${user.lastName}`);
+      setValue("numberCustomer", user.phone);
+    }
+    //
+  }, [user]);
   return (
     <form
       onSubmit={handleSubmit((data) => {

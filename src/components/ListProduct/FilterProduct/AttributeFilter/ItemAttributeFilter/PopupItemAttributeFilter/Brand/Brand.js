@@ -44,7 +44,7 @@ function Brand(props) {
       {brands.length > 0 ? (
         brands.map((brand, index) => {
           const state = listProduct.filters.findIndex(
-            (dt) => dt.id === brand.id
+            (dt) => dt.id === brand.id && dt.name === brand.name
           );
           return (
             <ItemBrand

@@ -16,7 +16,9 @@ function ItemMain(props) {
   return (
     <div className="w-full flex flex-wrap z-0">
       {list.map((item, index) => {
-        const state = listProduct.filters.findIndex((dt) => dt.id === item.id);
+        const state = listProduct.filters.findIndex(
+          (dt) => dt.id === item.id && dt.name === item.name
+        );
         return (
           <div
             onClick={() => {

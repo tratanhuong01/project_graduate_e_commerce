@@ -40,7 +40,9 @@ function Ram(props) {
     <div className="w-full flex flex-wrap">
       {rams.length > 0 ? (
         rams.map((ram, index) => {
-          const state = listProduct.filters.findIndex((dt) => dt.id === ram.id);
+          const state = listProduct.filters.findIndex(
+            (dt) => dt.id === ram.id && dt.name === ram.name
+          );
           return (
             <ItemRam
               ram={ram}

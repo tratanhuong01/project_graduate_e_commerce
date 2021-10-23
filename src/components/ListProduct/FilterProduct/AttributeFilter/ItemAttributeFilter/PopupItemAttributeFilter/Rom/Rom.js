@@ -42,7 +42,7 @@ function Rom(props) {
       {memories.length > 0 ? (
         memories.map((memory, index) => {
           const state = listProduct.filters.findIndex(
-            (dt) => dt.id === memory.id
+            (dt) => dt.id === memory.id && dt.name === memory.name
           );
           return (
             <ItemRom

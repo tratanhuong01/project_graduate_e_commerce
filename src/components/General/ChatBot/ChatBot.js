@@ -10,11 +10,16 @@ function ChatBot(props) {
   //
   const [infoChat, setInfoChat] = useState(false);
   const dispatch = useDispatch();
-  const messages = useSelector((state) => state.messages);
+  const { user, messages } = useSelector((state) => {
+    return {
+      messages: state.messages,
+      user: state.user,
+    };
+  });
   useEffect(() => {
     //
     let timeOut;
-    if (messages.group === null)
+    if (!messages.group)
       if (infoChat)
         if (!messages.admin)
           timeOut = setTimeout(() => {

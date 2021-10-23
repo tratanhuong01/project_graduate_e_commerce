@@ -74,7 +74,7 @@ function Price(props) {
       <div className="w-full flex flex-wrap">
         {prices.map((price, index) => {
           const state = listProduct.filters.findIndex(
-            (dt) => dt.id === price.id
+            (dt) => dt.id === price.id && dt.name === price.name
           );
           return (
             <ItemPrice

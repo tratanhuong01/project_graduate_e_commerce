@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Select(props) {
   //
   const { name, register, showError, label } = props;
+  useEffect(() => {
+    //
+    console.log("Oke");
+    //
+  }, [register]);
   //
   return (
     <div className={`w-full my-2 relative`}>
