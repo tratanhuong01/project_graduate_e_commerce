@@ -49,7 +49,7 @@ function FormChatBot(props) {
       setValue("nameCustomer", `${user.lastName}`);
       setValue("numberCustomer", user.phone);
     }
-    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   return (
     <form

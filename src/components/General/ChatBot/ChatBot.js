@@ -10,12 +10,7 @@ function ChatBot(props) {
   //
   const [infoChat, setInfoChat] = useState(false);
   const dispatch = useDispatch();
-  const { user, messages } = useSelector((state) => {
-    return {
-      messages: state.messages,
-      user: state.user,
-    };
-  });
+  const messages = useSelector((state) => state.messages);
   useEffect(() => {
     //
     let timeOut;
