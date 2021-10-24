@@ -3,17 +3,20 @@ import * as modalsAction from "../../actions/modal/index";
 import * as userApi from "../../api/userApi";
 import api from "../../Utils/api";
 
-export const registerAccount = (data) => {
+export const registerAccount = (data, notSend) => {
   return async (dispatch) => {
     dispatch(modalsAction.onLoadingModal());
     try {
       const user = await userApi.addUser(data.user);
-      dispatch(
-        sendCodeRegister({
-          user: user.data,
-          emailOrPhone: data.emailOrPhone,
-        })
-      );
+      if (notSend) {
+      } else {
+        dispatch(
+          sendCodeRegister({
+            user: user.data,
+            emailOrPhone: data.emailOrPhone,
+          })
+        );
+      }
     } catch (error) {
       throw error;
     }

@@ -2,7 +2,10 @@ import api from "../Utils/api";
 
 export const addUser = (user, headers) => {
   //
-  return api("users", "POST", user, headers);
+  return api("users", "POST", user, {
+    ...headers,
+    "Content-Type": "application/json",
+  });
   //
 };
 

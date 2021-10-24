@@ -99,6 +99,9 @@ class FormRegister extends Component {
           timeCreated: null,
           status: 0,
           isRegister: 1,
+          token: null,
+          googleId: null,
+          facebookId: null,
         }}
         validationSchema={validationSchema}
         onSubmit={this.onSubmitRegister}

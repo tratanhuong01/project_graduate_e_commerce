@@ -41,9 +41,9 @@ function FormAccount(props) {
     setValue("sex", user.sex);
     setValue(
       "birthday",
-      `${user.birthday.split(" ")[0].split("-")[2]}-${
-        user.birthday.split(" ")[0].split("-")[0]
-      }-${user.birthday.split(" ")[0].split("-")[1]}`
+      `${user.birthday.split(" ")[0].split("-")[0]}-${
+        user.birthday.split(" ")[0].split("-")[1]
+      }-${user.birthday.split(" ")[0].split("-")[2]}`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

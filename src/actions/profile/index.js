@@ -13,15 +13,17 @@ export const returnProfile = () => {
   };
 };
 
-export const loadEmailEdit = () => {
+export const loadEmailEdit = (email) => {
   return {
     type: Types.LOAD_EMAIL_EDIT,
+    email,
   };
 };
 
-export const loadPhoneEdit = () => {
+export const loadPhoneEdit = (phone) => {
   return {
     type: Types.LOAD_PHONE_EDIT,
+    phone,
   };
 };
 
