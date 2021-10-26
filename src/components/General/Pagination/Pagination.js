@@ -10,45 +10,47 @@ function Pagination(props) {
   useEffect(() => {}, [index]);
   //
   return (
-    <ul className="flex justify-center items-center dark:text-white">
-      <li
-        onClick={() => {
-          if (index === 0) return;
-          dispatch(index - 1);
-        }}
-        className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5
+    length > 0 && (
+      <ul className="flex justify-center items-center dark:text-white">
+        <li
+          onClick={() => {
+            if (index === 0) return;
+            dispatch(index - 1);
+          }}
+          className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5
+    border-solid border-gray-500 flex justify-center items-center ${
+      index === 0 ? "opacity-50 cursor-not-allowed" : " cursor-pointer "
+    }`}
+        >
+          <i className="bx bxs-chevrons-left"></i>
+        </li>
+        {array.map((item, pos) => {
+          return (
+            <ItemPagination
+              key={pos}
+              item={item}
+              index={pos}
+              indexCurrent={index}
+              dispatch={dispatch}
+            />
+          );
+        })}
+        <li
+          onClick={() => {
+            if (index === Math.ceil(length / limit) - 1 || length === 0) return;
+            dispatch(index + 1);
+          }}
+          className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5
       border-solid border-gray-500 flex justify-center items-center ${
-        index === 0 ? "opacity-50 cursor-not-allowed" : " cursor-pointer "
+        index === Math.ceil(length / limit) - 1 || length === 0
+          ? "opacity-50 cursor-not-allowed"
+          : " cursor-pointer "
       }`}
-      >
-        <i className="bx bxs-chevrons-left"></i>
-      </li>
-      {array.map((item, pos) => {
-        return (
-          <ItemPagination
-            key={pos}
-            item={item}
-            index={pos}
-            indexCurrent={index}
-            dispatch={dispatch}
-          />
-        );
-      })}
-      <li
-        onClick={() => {
-          if (index === Math.ceil(length / limit) - 1 || length === 0) return;
-          dispatch(index + 1);
-        }}
-        className={`w-10 h-10 rounded-full text-sm font-semibold border-2 m-0.5
-        border-solid border-gray-500 flex justify-center items-center ${
-          index === Math.ceil(length / limit) - 1 || length === 0
-            ? "opacity-50 cursor-not-allowed"
-            : " cursor-pointer "
-        }`}
-      >
-        <i className="bx bxs-chevrons-right"></i>
-      </li>
-    </ul>
+        >
+          <i className="bx bxs-chevrons-right"></i>
+        </li>
+      </ul>
+    )
   );
 }
 

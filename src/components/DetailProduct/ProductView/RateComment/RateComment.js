@@ -1,54 +1,36 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../../../../Utils/api";
 import ButtonSendRate from "./ButtonSendRate/ButtonSendRate";
 import DetailRateComment from "./DetailRateComment/DetailRateComment";
 import InfoRateComment from "./InfoRateComment/InfoRateComment";
 import * as reviewProductsAction from "../../../../actions/reviewProduct/index";
+
 function RateComment(props) {
   //
   const dispatch = useDispatch();
   const { products, slug } = props;
-  const { reviewProduct, headers } = useSelector((state) => {
+  const { reviewProduct, socket, headers } = useSelector((state) => {
     return {
       reviewProduct: state.reviewProduct,
+      socket: state.socket,
       headers: state.headers,
     };
   });
   const { reviews, reviewAll, active, index } = reviewProduct;
   useEffect(() => {
     //
-    let unmounted = false;
-    async function fetch() {
-      try {
-        const result_1 = await api(
-          `reviewProductsAll/${products.idProduct}`,
-          "GET",
-          null,
-          headers
-        );
-        const result_2 = await api(
-          `reviewProducts/${products.idProduct}/0/5`,
-          "GET",
-          null,
-          headers
-        );
-        if (unmounted) return;
-        dispatch(
-          reviewProductsAction.loadReviewProductData({
-            reviews: result_2.data,
-            reviewAll: result_1.data,
-            products: products,
-          })
-        );
-      } catch (error) {
-        throw error;
-      }
-    }
-    fetch();
-    return () => {
-      unmounted = true;
-    };
+    dispatch(
+      reviewProductsAction.loadReviewProductRequest({ products, headers })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products, slug]);
+  useEffect(() => {
+    //
+    socket.on(`reviewProduct.${products.id}`, () => {
+      dispatch(
+        reviewProductsAction.loadReviewProductRequest({ products, headers })
+      );
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products, slug]);
   //

@@ -18,11 +18,12 @@ function TypeContentComment(props) {
     resolver: yupResolver(validationSchema),
     shouldUnregister: false,
   });
-  const { user, news, headers } = useSelector((state) => {
+  const { user, news, headers, socket } = useSelector((state) => {
     return {
       user: state.user,
       news: state.news,
       headers: state.headers,
+      socket: state.socket,
     };
   });
   const { comment, setShow, level } = props;
@@ -31,7 +32,12 @@ function TypeContentComment(props) {
     if (level === 1)
       dispatch(
         newsAction.addCommentRequest(
-          Object.assign(data, { user, news: news.news, commentReply: comment }),
+          Object.assign(data, {
+            user,
+            news: news.news,
+            commentReply: comment,
+            socket,
+          }),
           headers
         )
       );
@@ -43,6 +49,7 @@ function TypeContentComment(props) {
             news: news.news,
             commentReply: comment,
             index: news.index,
+            socket,
           }),
           headers
         )
@@ -57,7 +64,7 @@ function TypeContentComment(props) {
           <img
             src={user.avatar}
             alt=""
-            className="w-14 h-14 rounded-full mr-4"
+            className="w-14 h-14 rounded-full mr-4 object-cover"
           />
           <input
             {...register("content")}

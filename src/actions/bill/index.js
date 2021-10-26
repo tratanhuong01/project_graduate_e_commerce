@@ -2,6 +2,7 @@ import * as Types from "../../constants/ActionTypes";
 import * as billApi from "../../api/billApi";
 import * as productApi from "../../api/productApi";
 import api from "../../Utils/api";
+import { IMAGE_BILL_CANCEL } from "../../constants/Config";
 
 export const loadBillsUserRequest = (data, headers) => {
   return async (dispatch) => {
@@ -58,8 +59,7 @@ export const cancelOrderRequest = (data, headers) => {
           userNotify: data.bill.bill.billUser,
           nameNotify: "Bạn đã hủy đơn hàng !",
           data: null,
-          image:
-            "https://cf.shopee.vn/file/fed467fc00192be487e1aa69720a432d_tn",
+          image: IMAGE_BILL_CANCEL,
           description: "🌀 Rất bạn về sự bất tiện này 🌀",
           timeCreated: null,
           isRead: 0,

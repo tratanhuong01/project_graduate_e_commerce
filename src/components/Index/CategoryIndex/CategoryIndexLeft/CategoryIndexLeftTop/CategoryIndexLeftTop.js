@@ -1,42 +1,51 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import {
+  PAGE_PROFILE_USER,
+  PROFILE_INFO,
+} from "../../../../../constants/Config";
+import * as modalsAction from "../../../../../actions/modal/index";
+import { LOGOUT_USER } from "../../../../../constants/ActionTypes";
 function CategoryIndexLeftTop(props) {
   //
-  const states = useSelector((state) => {
-    return {
-      user: state.user,
-    };
-  });
-  const { user } = states;
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const { setMenu, menu } = props;
   //
   return (
     <>
       <li className="p-2 flex">
-        {user !== null ? (
+        {user ? (
           <div className="flex items-center">
             <img
-              src="/images/avatar.jpg"
-              className="w-8 h-8 rounded-full mr-3"
+              src={user.avatar}
+              className="w-10 h-10 object-cover rounded-full mr-3"
               alt=""
             />
-            <span className="font-semibold text-xm mr-1">{`${user.firstName} ${user.lastName}`}</span>
+            <Link
+              to={`${PAGE_PROFILE_USER}/${PROFILE_INFO}`}
+              className="font-semibold text-xm mr-1"
+            >{`${user.firstName} ${user.lastName}`}</Link>
             <i className="bx bxs-chevron-down"></i>
-            <i
-              className="bx bx-exit text-2xl bg-white ml-3 text-black p-1.5 border-2 border-solid
-              rounded-full cursor-pointer hover:bg-organce hover:border-white hover:text-white"
-            ></i>
+            <div
+              onClick={() => dispatch({ type: LOGOUT_USER })}
+              className="w-10 h-10 rounded-full border-2 border-solid border-gray-300 bg-white text-black cursor-pointer hover:bg-organce hover:border-white hover:text-white flex justify-center ml-5"
+            >
+              <i className="bx bx-exit text-2xl self-center "></i>
+            </div>
           </div>
         ) : (
           <div className="flex items-center flex-wrap">
             <p
+              onClick={() => dispatch(modalsAction.openModalRegister())}
               className="cursor-pointer mr-3 text-xm py-2 rounded-full hover:bg-organce hover:border-white
               bg-white border-orangce text-gray-700 px-6 font-semibold border-2 border-solid hover:text-gray-100"
             >
               Đăng kí
             </p>
             <p
+              onClick={() => dispatch(modalsAction.openModalLogin())}
               className="cursor-pointer mr-3 text-xm py-2 rounded-full hover:bg-organce hover:border-white
               bg-white border-orangce text-gray-700 px-6 font-semibold border-2 border-solid hover:text-gray-100"
             >

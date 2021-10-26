@@ -39,7 +39,7 @@ function InputFieldFC(props) {
             ` dark:bg-dark-third dark:text-white ${
               showError
                 ? " text-red-500 border-red-500"
-                : " border-gray-300 focus:border-blue-500"
+                : " border-gray-300 focus:border-blue-500 focus:shadow-lg"
             }`
           }
           onChange={(e) => {
@@ -49,7 +49,7 @@ function InputFieldFC(props) {
           placeholder={placeHolder}
           disabled={disabled}
           autoComplete={autoComplete ? "on" : "off"}
-          spellCheck={true}
+          spellCheck={false}
         />
         <i
           className={

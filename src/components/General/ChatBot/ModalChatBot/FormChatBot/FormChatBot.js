@@ -32,10 +32,11 @@ function FormChatBot(props) {
     resolver: yupResolver(validationSchema),
     shouldUnregister: false,
   });
-  const { user, messages } = useSelector((state) => {
+  const { user, messages, socket } = useSelector((state) => {
     return {
       messages: state.messages,
       user: state.user,
+      socket: state.socket,
     };
   });
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ function FormChatBot(props) {
             phone: data.numberCustomer,
             content: data.content,
             admin: messages.admin,
-            socket: messages.socket,
+            socket,
           })
         );
       })}

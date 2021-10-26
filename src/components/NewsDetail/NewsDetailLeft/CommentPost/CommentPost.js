@@ -5,42 +5,29 @@ import FormCommentNews from "../FormCommentNews/FormCommentNews";
 import ItemCommentPost from "./ItemCommentPost/ItemCommentPost";
 import TypeContentComment from "./TypeContentComment/TypeContentComment";
 import * as newsAction from "../../../../actions/news/index";
-import * as commentApi from "../../../../api/commentApi";
 
 function CommentPost(props) {
   //
   const { newsDetail } = props;
   const dispatch = useDispatch();
-  const { user, news, headers } = useSelector((state) => {
+  const { user, news, headers, socket } = useSelector((state) => {
     return {
       user: state.user,
       news: state.news,
       headers: state.headers,
+      socket: state.socket,
     };
   });
   useEffect(() => {
     //
-    async function fetch() {
-      const result_1 = await commentApi.getAllCommentByNews(
-        newsDetail.news.id,
-        headers
-      );
-      const result_2 = await commentApi.getCommentByNewsLimit(
-        newsDetail.news.id,
-        0,
-        5,
-        headers
-      );
-      dispatch(
-        newsAction.loadNewsData({
-          commentsAll: result_1.data,
-          comments: result_2.data,
-          news: newsDetail.news,
-        })
-      );
-    }
-    fetch();
-    return () => {};
+    dispatch(newsAction.loadCommentNewsRequest({ newsDetail, headers }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newsDetail]);
+  useEffect(() => {
+    //
+    socket.on(`commentNews.${newsDetail.news.id}`, () => {
+      dispatch(newsAction.loadCommentNewsRequest({ newsDetail, headers }));
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newsDetail]);
   const [show, setShow] = useState(true);

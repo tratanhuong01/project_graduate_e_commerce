@@ -3,6 +3,7 @@ import * as productApi from "../../api/productApi";
 import * as billApi from "../../api/billApi";
 import api from "../../Utils/api";
 import * as addressApi from "../../api/addressApi";
+import { IMAGE_BILL_CREATED } from "../../constants/Config";
 
 export const loadOrder = (orders) => {
   return {
@@ -171,8 +172,7 @@ export const addOrderRequest = (data, headers) => {
           userNotify: data.user,
           nameNotify: "Đơn hàng của bạn đã đặt thành công",
           url: null,
-          image:
-            "https://cf.shopee.vn/file/fed467fc00192be487e1aa69720a432d_tn",
+          image: IMAGE_BILL_CREATED,
           description: "🌀 Vui lòng chờ cho bên cửa hàng duyệt 🌀",
           timeCreated: null,
           isRead: 0,

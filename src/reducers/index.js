@@ -12,6 +12,7 @@ import news from "./news";
 import bills from "./bills";
 import messages from "./messages";
 import headers from "./headers";
+import socket from "./socket";
 const myReducer = combineReducers({
   modal,
   user,
@@ -26,6 +27,7 @@ const myReducer = combineReducers({
   bills,
   messages,
   headers,
+  socket,
 });
 
 export default myReducer;

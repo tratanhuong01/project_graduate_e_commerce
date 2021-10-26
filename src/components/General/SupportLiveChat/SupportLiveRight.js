@@ -8,10 +8,11 @@ function SupportLiveRight(props) {
   //
   const { setInfoChat } = props;
   const [send, setSend] = useState(false);
-  const { messages, headers } = useSelector((state) => {
+  const { messages, headers, socket } = useSelector((state) => {
     return {
       messages: state.messages,
       headers: state.headers,
+      socket: state.socket,
     };
   });
   const dispatch = useDispatch();
@@ -22,11 +23,11 @@ function SupportLiveRight(props) {
   }, [send]);
   useEffect(() => {
     //
-    messages.socket.on(`receiveMessage.${messages.group.id}`, () => {
+    socket.on(`receiveMessage.${messages.group.id}`, () => {
       dispatch(messagesAction.loadMessageRequest(messages.group, headers));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [send]);
+  }, []);
   const ref = createRef(null);
   const scrollBottomContent = () => {
     if (ref.current) ref.current.scrollTop = ref.current.scrollHeight;

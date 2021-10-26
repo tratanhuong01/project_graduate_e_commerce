@@ -8,12 +8,14 @@ function PopupNotify(props) {
   //
   const { setAmount } = props;
   const [notifies, setNotifies] = useState(null);
-  const { user, headers } = useSelector((state) => {
+  const { user, headers, socket } = useSelector((state) => {
     return {
       user: state.user,
       headers: state.headers,
+      socket: state.socket,
     };
   });
+
   useEffect(() => {
     //
     let unmounted = false;
@@ -40,6 +42,36 @@ function PopupNotify(props) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headers, user]);
+
+  useEffect(() => {
+    //
+    let unmounted = false;
+    async function fetch() {
+      try {
+        if (user && headers) {
+          const result = await api(
+            `notifies?idUser=${user.id}&limit=5&offset=0`,
+            "GET",
+            null,
+            headers
+          );
+          if (unmounted) return;
+          setNotifies(result.data);
+          setAmount(result.data.length);
+        }
+      } catch (error) {
+        throw error;
+      }
+    }
+    socket.on(`notifyUser.${user.id}`, () => {
+      fetch();
+    });
+    return () => {
+      unmounted = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [headers, user]);
+
   //
   return (
     <div

@@ -4,10 +4,11 @@ import * as messagesApi from "../../../../api/messagesApi";
 function ControlChatRight(props) {
   //
   const { send, setSend, scrollBottomContent } = props;
-  const { messages, headers } = useSelector((state) => {
+  const { messages, headers, socket } = useSelector((state) => {
     return {
       messages: state.messages,
       headers: state.headers,
+      socket: state.socket,
     };
   });
   const [content, setContent] = useState("");
@@ -28,7 +29,7 @@ function ControlChatRight(props) {
     setSend(!send);
     setContent("");
     scrollBottomContent();
-    messages.socket.emit("chatMessage", messages.admin.id);
+    socket.emit("chatMessage", messages.admin.id);
   };
   //
   return (

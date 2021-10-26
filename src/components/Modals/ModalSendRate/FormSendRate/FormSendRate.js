@@ -26,7 +26,12 @@ function FormSendRate(props) {
     shouldUnregister: false,
   });
   const { user, indexStar, products, reviewProduct } = props;
-  const headers = useSelector((state) => state.headers);
+  const { headers, socket } = useSelector((state) => {
+    return {
+      socket: state.socket,
+      headers: state.headers,
+    };
+  });
   const dispatch = useDispatch();
   const onSendRate = (data) => {
     dispatch(
@@ -36,6 +41,7 @@ function FormSendRate(props) {
           indexStar,
           products,
           active: reviewProduct.active,
+          socket,
         }),
         headers
       )

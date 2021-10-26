@@ -16,7 +16,7 @@ function TextAreaFieldFC(props) {
             className +
             `${
               showError ? " border-red-500" : " border-gray-300 "
-            }  dark:bg-dark-third`
+            }  dark:bg-dark-third focus:border-blue-500 focus:shadow-lg`
           }
           placeholder={placeHolder}
           spellCheck={false}

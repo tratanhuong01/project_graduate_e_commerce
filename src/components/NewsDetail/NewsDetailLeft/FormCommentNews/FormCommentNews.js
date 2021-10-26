@@ -27,11 +27,12 @@ function FormCommentNews(props) {
     shouldUnregister: false,
   });
   const { level, setShow, setShowReply, comment } = props;
-  const { user, news, headers } = useSelector((state) => {
+  const { user, news, headers, socket } = useSelector((state) => {
     return {
       user: state.user,
       news: state.news,
       headers: state.headers,
+      socket: state.socket,
     };
   });
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function FormCommentNews(props) {
     if (level === 1)
       dispatch(
         newsAction.addCommentRequest(
-          Object.assign(data, { user, news: news.news }),
+          Object.assign(data, { user, news: news.news, socket }),
           headers
         )
       );
@@ -51,6 +52,7 @@ function FormCommentNews(props) {
             news: news.news,
             commentReply: comment,
             index: news.index,
+            socket,
           }),
           headers
         )

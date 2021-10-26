@@ -2,6 +2,7 @@ import * as Types from "../../constants/ActionTypes";
 import * as modalsAction from "../../actions/modal/index";
 import * as reviewProductApi from "../../api/reviewProductApi";
 import * as productApi from "../../api/productApi";
+import api from "../../Utils/api";
 
 export const loadReviewProductData = (data) => {
   return {
@@ -95,8 +96,16 @@ export const loadReviewProductActiveStar = (data) => {
 
 export const addReviewProductRequest = (data, headers) => {
   return async (dispatch) => {
-    const { user, fullName, email, content, indexStar, products, active } =
-      data;
+    const {
+      user,
+      fullName,
+      email,
+      content,
+      indexStar,
+      products,
+      active,
+      socket,
+    } = data;
     const reviewProduct = {
       id: -1,
       userReviewProduct: user,
@@ -154,6 +163,7 @@ export const addReviewProductRequest = (data, headers) => {
       dispatch(
         addReviewProduct({ reviews: result_1.data, reviewAll: result_2.data })
       );
+      socket.emit("reviewProduct", products.idProduct);
     } catch (error) {
       throw error;
     }
@@ -169,7 +179,8 @@ export const addReviewProduct = (data) => {
 
 export const replyReviewProduct = (data, headers) => {
   return async (dispatch) => {
-    const { user, fullName, email, content, products, active, review } = data;
+    const { user, fullName, email, content, products, active, review, socket } =
+      data;
     try {
       const reviewProduct = {
         id: -1,
@@ -208,6 +219,38 @@ export const replyReviewProduct = (data, headers) => {
       dispatch(modalsAction.closeModal());
       dispatch(
         addReviewProduct({ reviews: result_1.data, reviewAll: result_2.data })
+      );
+      socket.emit("reviewProduct", products.idProduct);
+    } catch (error) {
+      throw error;
+    }
+  };
+};
+
+export const loadReviewProductRequest = (data) => {
+  return async (dispatch) => {
+    //
+    const { products, headers } = data;
+    //
+    try {
+      const result_1 = await api(
+        `reviewProductsAll/${products.idProduct}`,
+        "GET",
+        null,
+        headers
+      );
+      const result_2 = await api(
+        `reviewProducts/${products.idProduct}/0/5`,
+        "GET",
+        null,
+        headers
+      );
+      dispatch(
+        loadReviewProductData({
+          reviews: result_2.data,
+          reviewAll: result_1.data,
+          products: products,
+        })
       );
     } catch (error) {
       throw error;

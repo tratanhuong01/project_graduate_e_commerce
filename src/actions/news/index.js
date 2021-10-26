@@ -4,7 +4,7 @@ import * as commentApi from "../../api/commentApi";
 export const addCommentRequest = (data, headers) => {
   return async (dispatch) => {
     try {
-      const { user, fullName, email, news, content } = data;
+      const { user, fullName, email, news, content, socket } = data;
       const comment = {
         id: -1,
         commentUser: user,
@@ -30,6 +30,7 @@ export const addCommentRequest = (data, headers) => {
           commentsAll: result_2.data,
         })
       );
+      socket.emit(`commentNews`, news.id);
     } catch (error) {
       throw error;
     }
@@ -90,8 +91,16 @@ export const loadNewsIndexPage = (data) => {
 export const replyCommentRequest = (data, headers) => {
   return async (dispatch) => {
     try {
-      const { user, fullName, email, news, content, commentReply, index } =
-        data;
+      const {
+        user,
+        fullName,
+        email,
+        news,
+        content,
+        commentReply,
+        index,
+        socket,
+      } = data;
       const comment = {
         id: -1,
         commentUser: user,
@@ -117,8 +126,34 @@ export const replyCommentRequest = (data, headers) => {
           commentsAll: result_2.data,
         })
       );
+      socket.emit("commentNews", news.id);
     } catch (error) {
       throw error;
     }
+  };
+};
+
+export const loadCommentNewsRequest = (data) => {
+  return async (dispatch) => {
+    //
+    const { newsDetail, headers } = data;
+    //
+    const result_1 = await commentApi.getAllCommentByNews(
+      newsDetail.news.id,
+      headers
+    );
+    const result_2 = await commentApi.getCommentByNewsLimit(
+      newsDetail.news.id,
+      0,
+      5,
+      headers
+    );
+    dispatch(
+      loadNewsData({
+        commentsAll: result_1.data,
+        comments: result_2.data,
+        news: newsDetail.news,
+      })
+    );
   };
 };

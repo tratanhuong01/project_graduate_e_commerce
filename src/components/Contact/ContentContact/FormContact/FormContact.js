@@ -1,53 +1,98 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { REGEX_NUMBER_PHONE } from "../../../../constants/Config";
+import api from "../../../../Utils/api";
+import InputFieldFC from "../../../General/InputField/InputFieldFC";
+import TextAreaFieldFC from "../../../General/TextAreaField/TextAreaFieldFC";
 
 function FormContact(props) {
+  //
+  const validationSchema = Yup.object().shape({
+    fullName: Yup.string().required("Họ tên không được để trống!!"),
+    phone: Yup.string()
+      .matches(REGEX_NUMBER_PHONE, "Số điện thoại không đúng định dạng !!")
+      .required("Số điện thoại không được để trống !!"),
+    email: Yup.string()
+      .required("Email không được để trống!!")
+      .email("Email không đúng định dạng"),
+    content: Yup.string().required("Nội dung không được để trống!!"),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(validationSchema),
+    shouldUnregister: false,
+  });
+  const { setIsSend } = props;
+  const submit = async (data) => {
+    await api(`contacts`, "POST", {
+      id: null,
+      email: data.email,
+      phone: data.phone,
+      fullName: data.fullName,
+      content: data.content,
+      timeCreated: null,
+    });
+    setIsSend(true);
+    window.scrollTo(0, 510);
+  };
+  //
   return (
-    <div className="w-full xl:w-2/3 xl:pr-6 ">
-      <p className="font-semibold text-3xl mb-2">Liên hệ với chúng tôi</p>
-      <p className="text-xm text-gray-700 dark:text-gray-300">
-        Để liên hệ và nhận các thông in khuyến mại sớm nhất, xin vui lòng điền
-        đầy đủ thông tin của bạn vào form dưới đây. Chúng tôi sẽ liên lạc lại
-        với bạn trong thời gian sớm nhất
-      </p>
-      <form className="w-full my-4 py-2" action="" method="">
-        <div className="w-full my-6 flex">
-          <input
+    <form className="w-full my-4 py-2" onSubmit={handleSubmit(submit)}>
+      <div className="w-full my-6 flex">
+        <div className="w-1/2 mr-5">
+          <InputFieldFC
+            register={register}
+            showError={errors["fullName"]}
+            name="fullName"
             type="text"
-            placeholder="Họ tên"
-            className="w-1/2 mr-5 p-3 rounded-full border-2 border-solid border-gray-200 
-            dark:bg-dark-third dark:border-dark-second"
-          />
-          <input
-            type="text"
-            placeholder="Số điện thoại"
-            className="w-1/2 mr-5 p-3 rounded-full border-2 border-solid border-gray-200 
+            placeHolder="Họ tên"
+            className="w-full p-3 rounded-full border-2 border-solid border-gray-200 
             dark:bg-dark-third dark:border-dark-second"
           />
         </div>
-        <div className="w-full mb-6 flex">
-          <input
+        <div className="w-1/2">
+          <InputFieldFC
+            register={register}
+            showError={errors["phone"]}
+            name="phone"
             type="text"
-            placeholder="Email"
-            className="w-full mr-5 p-3 rounded-full border-2 border-solid border-gray-200 
+            placeHolder="Số điện thoại"
+            className="w-full p-3 rounded-full border-2 border-solid border-gray-200 
             dark:bg-dark-third dark:border-dark-second"
           />
         </div>
-        <div className="w-full mb-6 flex">
-          <textarea
-            placeholder="Email"
-            className="w-full mr-5 p-3 rounded-xl border-2 border-solid border-gray-200 
-            dark:bg-dark-third dark:border-dark-second resize-none h-32 max-h-32"
-          ></textarea>
-        </div>
-        <button
-          type="button"
-          className="w-32 p-3 rounded-full text-white bg-organce font-semibold hover:bg-white 
-          border-2 border-solid border-white hover:border-organce dark:bg-dark-second mt-4 dark:hover:bg-dark-third dark:hover:text-white"
-        >
-          Gửi liên hệ
-        </button>
-      </form>
-    </div>
+      </div>
+      <div className="w-full mb-6 flex">
+        <InputFieldFC
+          register={register}
+          showError={errors["email"]}
+          name="email"
+          placeHolder="Email"
+          className="w-full mr-5 p-3 rounded-full border-2 border-solid border-gray-200 
+            dark:bg-dark-third dark:border-dark-second"
+        />
+      </div>
+      <TextAreaFieldFC
+        register={register}
+        showError={errors["content"]}
+        name="content"
+        placeHolder="Nội dung liên hệ"
+        className="w-full mr-5 p-3 rounded-xl border-2 border-solid border-gray-200 
+        dark:bg-dark-third dark:border-dark-second resize-none h-32 max-h-32"
+      />
+      <button
+        type="submit"
+        className="w-32 p-3 rounded-full text-white bg-organce hover:text-organce font-semibold hover:bg-white border-2 border-solid border-white hover:border-organce dark:bg-dark-second mt-4 dark:hover:bg-dark-third dark:hover:text-white"
+      >
+        Gửi liên hệ
+      </button>
+    </form>
   );
 }
 

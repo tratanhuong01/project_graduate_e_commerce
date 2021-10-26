@@ -65,3 +65,9 @@ export const URL_API_GHN_ORDER_SERVICE =
 
 export const URL_API_GHN_ORDER_DELIVERY_TIME =
   "https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/leadtime";
+
+export const IMAGE_BILL_CANCEL =
+  "https://res.cloudinary.com/huongdev2k1/image/upload/v1635207313/E-Commerce/Config/cancel_jxit9u.png";
+
+export const IMAGE_BILL_CREATED =
+  "https://res.cloudinary.com/huongdev2k1/image/upload/v1635207313/E-Commerce/Config/ordered_khvxeg.jpg";

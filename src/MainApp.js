@@ -9,17 +9,36 @@ import Modal from "./containers/Modal";
 import Notify from "./containers/Notify";
 import * as usersAction from "./actions/user/index";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 function MainApp(props) {
   //
   const dispatch = useDispatch();
-  const headers = useSelector((state) => state.headers);
+  const history = useHistory();
+  const { headers, socket, user } = useSelector((state) => {
+    return {
+      headers: state.headers,
+      socket: state.socket,
+      user: state.user,
+    };
+  });
   useEffect(() => {
     //
     if (localStorage && localStorage.getItem("userToken"))
       dispatch(usersAction.loadUserRequest(headers));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    //
+    if (user) {
+      socket.on(`updateStatusUser.${user.id}`, () => {
+        dispatch(usersAction.logoutAccount());
+        history.push("");
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   //
   return (
     <>
