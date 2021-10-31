@@ -42,7 +42,12 @@ function MainPayment(props) {
       if (result.data.length > 0) {
         const index = result.data.findIndex((item) => item.isDefault === 1);
         if (index !== -1) setAddress(result.data[index]);
-        dispatch(ordersAction.loadInfoAddressPayment(result.data[index]));
+        dispatch(
+          ordersAction.loadInfoAddressPayment(
+            result.data[index],
+            user ? user.email : ""
+          )
+        );
       }
     }
     if (user) fetch();

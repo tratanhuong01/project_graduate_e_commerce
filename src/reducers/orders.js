@@ -15,6 +15,7 @@ const initialState = {
     status: false,
     fullName: "",
     phone: "",
+    email: "",
   },
   paymentMethod: 0,
   outOfStock: false,
@@ -51,6 +52,7 @@ const myReducer = (state = initialState, action) => {
         state.infoPayment.address = action.address.details;
         state.infoPayment.fullName = action.address.fullName;
         state.infoPayment.phone = action.address.phone;
+        state.infoPayment.email = action.email;
         state.infoPayment.status = true;
         state.sale = 0;
       } else {
@@ -64,6 +66,7 @@ const myReducer = (state = initialState, action) => {
           status: false,
           fullName: "",
           phone: "",
+          email: "",
         };
       }
       return { ...state };
@@ -103,6 +106,9 @@ const myReducer = (state = initialState, action) => {
           break;
         case 6:
           state.infoPayment.phone = action.item;
+          break;
+        case 7:
+          state.infoPayment.email = action.item;
           break;
         default:
           break;

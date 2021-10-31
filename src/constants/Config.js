@@ -70,4 +70,4 @@ export const IMAGE_BILL_CANCEL =
   "https://res.cloudinary.com/huongdev2k1/image/upload/v1635207313/E-Commerce/Config/cancel_jxit9u.png";
 
 export const IMAGE_BILL_CREATED =
-  "https://res.cloudinary.com/huongdev2k1/image/upload/v1635207313/E-Commerce/Config/ordered_khvxeg.jpg";
+  "https://res.cloudinary.com/huongdev2k1/image/upload/v1635208327/E-Commerce/Config/ordered-removebg-preview_ua0w4r.png";

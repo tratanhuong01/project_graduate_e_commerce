@@ -63,10 +63,9 @@ function PopupNotify(props) {
         throw error;
       }
     }
-    socket.on(`notifyUser.${user.id}`, () => {
-      fetch();
-    });
+    socket.on(`notifyUser.${user.id}`, fetch);
     return () => {
+      socket.off(`notifyUser.${user.id}`, fetch);
       unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

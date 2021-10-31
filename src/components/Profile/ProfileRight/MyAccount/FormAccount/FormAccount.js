@@ -54,7 +54,10 @@ function FormAccount(props) {
     clone.sex = data.sex;
     clone.firstName = data.firstName;
     clone.lastName = data.lastName;
-    clone.birthday = data.birthday;
+    let date = new Date(data.birthday);
+    clone.birthday = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     await api("users", "PUT", clone, headers);
     dispatch(usersAction.loadUserRequest(headers));
   };

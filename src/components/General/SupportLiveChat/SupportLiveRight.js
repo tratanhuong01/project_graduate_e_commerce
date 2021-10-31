@@ -23,9 +23,13 @@ function SupportLiveRight(props) {
   }, [send]);
   useEffect(() => {
     //
-    socket.on(`receiveMessage.${messages.group.id}`, () => {
+    const onEvent = () => {
       dispatch(messagesAction.loadMessageRequest(messages.group, headers));
-    });
+    };
+    socket.on(`receiveMessage.${messages.group.id}`, onEvent);
+    return () => {
+      socket.off(`receiveMessage.${messages.group.id}`, onEvent);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const ref = createRef(null);

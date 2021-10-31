@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as profilesAction from "../../../../../actions/profile/index";
 import ItemVoucher from "../ItemVoucher/ItemVoucher";
 import * as voucherApi from "../../../../../api/voucherApi";
+import NotVoucher from "../NotVoucher/NotVoucher";
 
 function HistoryVoucher(props) {
   //
@@ -13,7 +14,10 @@ function HistoryVoucher(props) {
       headers: state.headers,
     };
   });
-  const [data, setData] = useState(0);
+  const [data, setData] = useState({
+    isUsed: 0,
+    type: 1,
+  });
   const [vouchers, setVouchers] = useState(null);
   useEffect(() => {
     //
@@ -21,8 +25,8 @@ function HistoryVoucher(props) {
     async function fetch() {
       const result = await voucherApi.getDiscountCodeByIdUser(
         user.id,
-        data,
-        data === 0 ? 1 : 0,
+        data.isUsed,
+        data.type,
         headers
       );
       if (unmounted) return;
@@ -54,11 +58,14 @@ function HistoryVoucher(props) {
         <button
           onClick={() => {
             setVouchers(null);
-            setData(0);
+            setData({
+              isUsed: 0,
+              type: 1,
+            });
           }}
           className={`px-3 py-1.5 border-b-2 border-solid font-semibold 
           ${
-            data === 0
+            data.type === 1
               ? "border-organce text-organce"
               : "border-white text-gray-600  dark:text-gray-300 dark:border-dark-second"
           }`}
@@ -68,11 +75,14 @@ function HistoryVoucher(props) {
         <button
           onClick={() => {
             setVouchers(null);
-            setData(1);
+            setData({
+              isUsed: 1,
+              type: 3,
+            });
           }}
           className={`px-3 py-1.5 border-b-2 border-solid font-semibold mx-5 
           ${
-            data === 1
+            data.type === 3
               ? "border-organce text-organce"
               : "border-white text-gray-600  dark:text-gray-300 dark:border-dark-second"
           }`}
@@ -81,13 +91,17 @@ function HistoryVoucher(props) {
         </button>
       </div>
       {vouchers ? (
-        <div className="w-full flex flex-wrap">
-          {vouchers.map((voucher, index) => {
-            return (
-              <ItemVoucher disabled={true} voucher={voucher} key={index} />
-            );
-          })}
-        </div>
+        vouchers.length > 0 ? (
+          <div className="w-full flex flex-wrap">
+            {vouchers.map((voucher, index) => {
+              return (
+                <ItemVoucher disabled={true} voucher={voucher} key={index} />
+              );
+            })}
+          </div>
+        ) : (
+          <NotVoucher />
+        )
       ) : (
         <div className="w-full h-80 flex items-center justify-center">
           <i className="fas fa-circle-notch fa-spin text-4xl text-organce"></i>

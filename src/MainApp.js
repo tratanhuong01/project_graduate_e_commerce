@@ -31,12 +31,14 @@ function MainApp(props) {
 
   useEffect(() => {
     //
-    if (user) {
-      socket.on(`updateStatusUser.${user.id}`, () => {
-        dispatch(usersAction.logoutAccount());
-        history.push("");
-      });
-    }
+    const onEvent = () => {
+      dispatch(usersAction.logoutAccount());
+      history.push("");
+    };
+    if (user) socket.on(`updateStatusUser.${user.id}`, onEvent);
+    return () => {
+      if (user) socket.off(`updateStatusUser.${user.id}`, onEvent);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   //

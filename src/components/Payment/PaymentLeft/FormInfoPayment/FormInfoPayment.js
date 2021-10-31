@@ -20,6 +20,7 @@ function FormInfoPayment(props) {
     setValue("fullName", orders.infoPayment.fullName);
     setValue("phone", orders.infoPayment.phone);
     setValue("address", orders.infoPayment.address);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orders, user]);
   //
@@ -47,6 +48,18 @@ function FormInfoPayment(props) {
         placeHolder="Nhập số điện thoại"
         onChange={(item) =>
           dispatch(ordersAction.updateAddressPayment(item, 6))
+        }
+      />
+      <InputFieldFC
+        type="text"
+        className="w-full p-2.5 rounded-lg border-2 border-solid border-gray-200 dark:bg-dark-third 
+        dark:border-dark-third"
+        name="email"
+        register={register}
+        showError={errors["email"]}
+        placeHolder="Nhập email"
+        onChange={(item) =>
+          dispatch(ordersAction.updateAddressPayment(item, 7))
         }
       />
       <InputFieldFC

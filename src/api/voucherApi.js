@@ -6,7 +6,7 @@ export const checkDiscountCodeValid = (code, headers) => {
 
 export const checkDiscountCodeIsUsed = (code, idUser, headers) => {
   return api(
-    `discountCodes/check/isUsed/?code=${code}&idUser=${idUser}&isUsed=1`,
+    `discountCodes/check/isUsed/?code=${code}&idUser=${idUser}`,
     "GET",
     null,
     headers

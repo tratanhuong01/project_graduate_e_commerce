@@ -9,14 +9,19 @@ import * as productApi from "../api/productApi";
 function Index(props) {
   //
   const dispatch = useDispatch();
-  const headers = useSelector((state) => state.headers);
+  const { modal, headers } = useSelector((state) => {
+    return {
+      headers: state.headers,
+      modal: state.modal,
+    };
+  });
   const [dataIndex, setDataIndex] = useState(null);
   useResetPage("Trang chủ");
   useEffect(() => {
     //
     const fetch = async () => {
       try {
-        dispatch(modalsAction.setPopupAds());
+        if (!modal.data) dispatch(modalsAction.setPopupAds());
         const result = await productApi.getProductIndex(headers);
         setDataIndex(result.data);
       } catch (error) {

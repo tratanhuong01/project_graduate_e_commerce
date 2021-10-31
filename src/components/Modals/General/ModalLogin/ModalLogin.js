@@ -4,8 +4,6 @@ import FormLogin from "./FormLogin/FormLogin";
 import LoginWith from "./LoginWith/LoginWith";
 
 function ModalLogin(props) {
-  //
-  //
   return (
     <ModalWrapper
       title="Đăng nhập"

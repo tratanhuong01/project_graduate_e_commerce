@@ -14,6 +14,7 @@ import NewsDetail from "./pages/NewsDetail";
 import Wishlist from "./pages/Wishlist";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
+import AccessToken from "./pages/AccessToken";
 
 const routes = [
   {
@@ -128,6 +129,12 @@ const routes = [
     path: "",
     exact: true,
     main: () => <NotFound />,
+    once: false,
+  },
+  {
+    path: "/verify/account/register",
+    exact: true,
+    main: () => <AccessToken />,
     once: false,
   },
 ];

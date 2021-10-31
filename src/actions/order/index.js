@@ -19,10 +19,11 @@ export const loadMoneyOrder = (orders) => {
   };
 };
 
-export const loadInfoAddressPayment = (address) => {
+export const loadInfoAddressPayment = (address, email) => {
   return {
     type: Types.LOAD_INFO_ADDRESS_PAYMENT,
     address,
+    email,
   };
 };
 
@@ -94,7 +95,7 @@ export const addOrderRequest = (data, headers) => {
         phone: null,
         email: null,
         sex: null,
-        birthday: "12-12-1999 00:00:00",
+        birthday: "1999-01-01 00:00:00",
         password: 1,
         avatar: null,
         type: 0,
@@ -163,7 +164,7 @@ export const addOrderRequest = (data, headers) => {
         headers
       );
     }
-    if (data.user) {
+    if (data.user)
       await api(
         `notifies`,
         "POST",
@@ -179,7 +180,13 @@ export const addOrderRequest = (data, headers) => {
         },
         headers
       );
-    }
+    else
+      await api(
+        `sendMailOrders?idBill=${order.data.id}&email=${data.infoPayment.email}`,
+        "GET",
+        null,
+        { "Content-Type": "application/json" }
+      );
     if (data.voucher) {
       if (data.voucher.discountCode)
         await api(
@@ -195,7 +202,13 @@ export const addOrderRequest = (data, headers) => {
           null,
           headers
         );
+      let discountCodeData = data.voucher.discountCode
+        ? data.voucher.discountCode
+        : data.voucher;
+      discountCodeData.amount -= 1;
+      await api(`discountCodes`, "PUT", discountCodeData, headers);
     }
+
     dispatch({ type: Types.ORDER_SUCCESS });
   };
 };

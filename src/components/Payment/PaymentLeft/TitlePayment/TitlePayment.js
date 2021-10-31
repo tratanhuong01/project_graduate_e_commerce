@@ -24,7 +24,7 @@ function TitlePayment(props) {
             <img
               src={user.avatar}
               alt=""
-              className="mr-3 w-8 h-8 rounded-full"
+              className="mr-3 w-8 h-8 rounded-full object-cover"
             />
             {`${user.firstName} ${user.lastName}`}
           </Link>

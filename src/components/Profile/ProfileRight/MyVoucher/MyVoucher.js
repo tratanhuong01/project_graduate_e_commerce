@@ -10,6 +10,7 @@ import InputAddVoucher from "./InputAddVoucher/InputAddVoucher";
 import ItemVoucher from "./ItemVoucher/ItemVoucher";
 import * as profilesAction from "../../../../actions/profile/index";
 import * as voucherApi from "../../../../api/voucherApi";
+import NotVoucher from "./NotVoucher/NotVoucher";
 
 function MyVoucher(props) {
   //
@@ -61,28 +62,30 @@ function MyVoucher(props) {
           <div className="flex p-2">
             <span
               onClick={() => dispatch(profilesAction.viewHistoryVoucher())}
-              className="mx-2 px-2 border-r-2 border-solid border-gray-300 text-organce 
-              cursor-pointer"
+              className="mx-2 px-2 text-organce cursor-pointer"
             >
               Xem lịch sử Voucher
             </span>
-            <span>Tìm hiểu thêm</span>
           </div>
         </div>
-        <InputAddVoucher />
+        <InputAddVoucher setVouchers={setVouchers} />
         <FilterVoucher
           setData={setData}
           setVouchers={setVouchers}
           data={data}
         />
         {vouchers ? (
-          <>
-            <div className="w-full flex flex-wrap">
-              {vouchers.map((voucher, index) => {
-                return <ItemVoucher voucher={voucher} key={index} />;
-              })}
-            </div>
-          </>
+          vouchers.length > 0 ? (
+            <>
+              <div className="w-full flex flex-wrap">
+                {vouchers.map((voucher, index) => {
+                  return <ItemVoucher voucher={voucher} key={index} />;
+                })}
+              </div>
+            </>
+          ) : (
+            <NotVoucher />
+          )
         ) : (
           <div className="w-full h-20 flex items-center justify-center">
             <i className="fas fa-circle-notch fa-spin text-4xl text-organce"></i>
