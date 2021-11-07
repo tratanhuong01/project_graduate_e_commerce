@@ -15,6 +15,7 @@ import Wishlist from "./pages/Wishlist";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import AccessToken from "./pages/AccessToken";
+import ProcessBill from "./pages/verify/ProcessBill";
 
 const routes = [
   {
@@ -126,15 +127,21 @@ const routes = [
     once: false,
   },
   {
-    path: "",
-    exact: true,
-    main: () => <NotFound />,
-    once: false,
-  },
-  {
     path: "/verify/account/register",
     exact: true,
     main: () => <AccessToken />,
+    once: false,
+  },
+  {
+    path: "/verify/bill/customer",
+    exact: true,
+    main: () => <ProcessBill />,
+    once: true,
+  },
+  {
+    path: "",
+    exact: true,
+    main: () => <NotFound />,
     once: false,
   },
 ];

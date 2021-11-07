@@ -3,7 +3,7 @@ import * as modalsAction from "../../actions/modal/index";
 import * as reviewProductApi from "../../api/reviewProductApi";
 import * as productApi from "../../api/productApi";
 import api from "../../Utils/api";
-
+import { v4 as uuidv4 } from "uuid";
 export const loadReviewProductData = (data) => {
   return {
     type: Types.LOAD_REVIEW_PRODUCT_DATA,
@@ -105,28 +105,44 @@ export const addReviewProductRequest = (data, headers) => {
       products,
       active,
       socket,
+      images,
     } = data;
+    let imageUpload = [];
+    if (images)
+      if (images.length > 0)
+        for (let index = 0; index < images.length; index++) {
+          const image = images[index];
+          const formData = new FormData();
+          const id = uuidv4();
+          formData.append("id", id);
+          formData.append("multipartFile", image);
+          formData.append("publicId", "E-Commerce/ImageRate/");
+          const imageResult = await api(`updateImageSingle`, "POST", formData, {
+            "Content-Type": "multipart/form-data",
+          });
+          imageUpload.push({ id: id, src: imageResult.data.url });
+        }
     const reviewProduct = {
-      id: -1,
+      id: null,
       userReviewProduct: user,
       productReview: null,
       fullName: user ? null : fullName,
       email: user ? null : email,
       content: content,
-      image: null,
+      image: imageUpload.length === 0 ? null : JSON.stringify(imageUpload),
       star: indexStar,
       useful: 0,
       violate: 0,
       level: 1,
       reply: null,
       type: 1,
-      timeCreated: "08-29-2021 08:40:09",
+      timeCreated: null,
     };
     try {
       await reviewProductApi.addReviewProductByProduct(
         products.idProduct,
         reviewProduct,
-        headers
+        { ...headers, "Content-Type": "application/json" }
       );
       const result_1 =
         await reviewProductApi.getReviewProductByProductLimitPage(
@@ -135,11 +151,11 @@ export const addReviewProductRequest = (data, headers) => {
           0,
           5,
           true,
-          headers
+          { ...headers, "Content-Type": "application/json" }
         );
       const result_2 = await reviewProductApi.getReviewProductByProductMain(
         products.idProduct,
-        headers
+        { ...headers, "Content-Type": "application/json" }
       );
       let result =
         (result_2.data.oneStar * 5 * 1 +
@@ -157,7 +173,7 @@ export const addReviewProductRequest = (data, headers) => {
       await productApi.updateReviewProduct(
         products.idProduct,
         ((result * 10) / 2).toFixed(1) * 10,
-        headers
+        { ...headers, "Content-Type": "application/json" }
       );
       dispatch(modalsAction.closeModal());
       dispatch(

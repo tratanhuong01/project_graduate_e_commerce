@@ -35,12 +35,17 @@ function LoginWith(props) {
             typeRole: 0,
             timeCreated: "10-04-2021 08:05:05",
           },
-          firstName: info.data.names[0].familyName,
-          lastName: info.data.names[0].givenName,
-          birthday: `${info.data.birthdays[0].date.year}-${info.data.birthdays[0].date.month}-${info.data.birthdays[0].date.day} 00:00:00`,
-          avatar: info.data.photos[0].url,
-          sex: info.data.genders[0].formattedValue,
-          email: info.data.emailAddresses[0].value,
+          firstName: info.data.names ? info.data.names[0].familyName : "",
+          lastName: info.data.names ? info.data.names[0].givenName : "",
+          birthday:
+            info.data.birthday && info.data.birthday.length > 0
+              ? `${info.data.birthdays[0].date.year}-${info.data.birthdays[0].date.month}-${info.data.birthdays[0].date.day} 00:00:00`
+              : null,
+          avatar: info.data.photos ? info.data.photos[0].url : null,
+          sex: info.data.genders ? info.data.genders[0].formattedValue : null,
+          email: info.data.emailAddresses
+            ? info.data.emailAddresses[0].value
+            : null,
           phone: null,
           password: null,
           codeEmail: null,

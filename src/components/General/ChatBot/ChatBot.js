@@ -43,7 +43,7 @@ function ChatBot(props) {
       )}
       {infoChat ? (
         messages.admin === null || messages.admin === "" ? (
-          <WaitingUserSupport />
+          <WaitingUserSupport setInfoChat={setInfoChat} />
         ) : messages.group ? (
           <SupportLiveRight setInfoChat={setInfoChat} />
         ) : (

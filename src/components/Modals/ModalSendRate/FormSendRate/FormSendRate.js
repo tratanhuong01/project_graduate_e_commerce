@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ImageRate from "../../../DetailProduct/ProductView/RateComment/ImageRate/ImageRate";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import InputFieldFC from "../../../General/InputField/InputFieldFC";
 import TextAreaFieldFC from "../../../General/TextAreaField/TextAreaFieldFC";
 import { useDispatch, useSelector } from "react-redux";
 import * as reviewProductsAction from "../../../../actions/reviewProduct/index";
+import { ON_LOADING_MODAL } from "../../../../constants/ActionTypes";
 function FormSendRate(props) {
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required("Họ tên không được để trống!!"),
@@ -33,7 +34,9 @@ function FormSendRate(props) {
     };
   });
   const dispatch = useDispatch();
-  const onSendRate = (data) => {
+  const [images, setImages] = useState([]);
+  const onSendRate = async (data) => {
+    dispatch({ type: ON_LOADING_MODAL });
     dispatch(
       reviewProductsAction.addReviewProductRequest(
         Object.assign(data, {
@@ -42,6 +45,7 @@ function FormSendRate(props) {
           products,
           active: reviewProduct.active,
           socket,
+          images,
         }),
         headers
       )
@@ -87,7 +91,7 @@ function FormSendRate(props) {
         placeHolder="Nhập nội dung"
         isset={null}
       />
-      <ImageRate />
+      <ImageRate images={images} setImages={setImages} />
       <div className="w-full mb-8 mt-4 flex justify-center items-center">
         <button
           type="submit"

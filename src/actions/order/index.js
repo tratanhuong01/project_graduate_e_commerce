@@ -110,7 +110,7 @@ export const addOrderRequest = (data, headers) => {
         isVerifyEmail: 0,
         isVerifyPhone: 0,
         timeCreated: null,
-        status: 0,
+        status: data.user ? 0 : -3,
         isRegister: 0,
       });
     const order = await billApi.addBill(

@@ -26,29 +26,6 @@ function ChildItemDetailRateCommen(props) {
       </div>
       <div className="w-full my-1 flex items-center">{review.content}</div>
       <div className="w-full flex my-1">
-        <Zoom>
-          <img
-            src="https://bizweb.dktcdn.net/100/420/160/files/co-nen-mua-poco-x3-pro-1.jpg?v=1623732159363"
-            alt=""
-            className="w-20 h-20 m-1 rounded-lg object-cover"
-          />
-        </Zoom>
-        <Zoom>
-          <img
-            src="https://bizweb.dktcdn.net/100/420/160/files/co-nen-mua-poco-x3-pro-1.jpg?v=1623732159363"
-            alt=""
-            className="w-20 h-20 m-1 rounded-lg object-cover"
-          />
-        </Zoom>
-        <Zoom>
-          <img
-            src="https://bizweb.dktcdn.net/100/420/160/files/co-nen-mua-poco-x3-pro-1.jpg?v=1623732159363"
-            alt=""
-            className="w-20 h-20 m-1 rounded-lg object-cover"
-          />
-        </Zoom>
-      </div>
-      <div className="w-full flex my-1">
         <ul className="flex font-semibold">
           <li className="flex mx-1 items-center">
             <span className="flex items-center w-1.5 h-1.5 rounded-full bg-gray-500"></span>

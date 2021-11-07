@@ -36,29 +36,19 @@ function ItemDetailRateComment(props) {
       <div className="w-full my-1 flex items-center">
         {review.reviewProduct.content}
       </div>
-      <div className="w-full my-1 hidden">
-        <Zoom>
-          <img
-            src="https://bizweb.dktcdn.net/100/420/160/files/co-nen-mua-poco-x3-pro-1.jpg?v=1623732159363"
-            alt=""
-            className="w-20 h-20 m-1 rounded-lg object-cover"
-          />
-        </Zoom>
-        <Zoom>
-          <img
-            src="https://bizweb.dktcdn.net/100/420/160/files/co-nen-mua-poco-x3-pro-1.jpg?v=1623732159363"
-            alt=""
-            className="w-20 h-20 m-1 rounded-lg object-cover"
-          />
-        </Zoom>
-        <Zoom>
-          <img
-            src="https://bizweb.dktcdn.net/100/420/160/files/co-nen-mua-poco-x3-pro-1.jpg?v=1623732159363"
-            alt=""
-            className="w-20 h-20 m-1 rounded-lg object-cover"
-          />
-        </Zoom>
-      </div>
+      {review.reviewProduct.image && (
+        <div className="w-full my-1">
+          {JSON.parse(review.reviewProduct.image).map((image) => (
+            <Zoom key={image.id}>
+              <img
+                src={image.src}
+                alt=""
+                className="w-20 h-20 m-1 rounded-lg object-cover"
+              />
+            </Zoom>
+          ))}
+        </div>
+      )}
       <div className="w-full flex my-1">
         <ul className="flex font-semibold">
           <li

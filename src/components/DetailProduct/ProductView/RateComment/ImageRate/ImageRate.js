@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ItemImageRate from "./ItemImageRate/ItemImageRate";
 
-function ImageRate(props) {
+function ImageRate({ images, setImages }) {
   //
-  const [images, setImages] = useState([]);
+
   //
   return (
     <>

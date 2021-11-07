@@ -1,15 +1,24 @@
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ItemCart from "./ItemCart/ItemCart";
 import * as Config from "../../../constants/Config";
 import * as ordersAction from "../../../actions/order/index";
 import Button from "../../Button/Button";
-
+import { useHistory } from "react-router-dom";
 function ModalCartAdded() {
   //
   const carts = useSelector((state) => state.carts);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const money = useMemo(() => {
+    let sum = 0;
+    carts.list.forEach((element) => {
+      sum +=
+        element.priceOutput * ((100 - element.sale) / 100) * element.amount;
+    });
+    return sum;
+  }, [carts]);
   //
   return (
     <div
@@ -55,7 +64,7 @@ function ModalCartAdded() {
             className="w-1/2 float-right justify-end flex items-center 
             text-organce pr-4"
           >
-            {new Intl.NumberFormat(["ban", "id"]).format(carts.money)} <u>đ</u>
+            {new Intl.NumberFormat(["ban", "id"]).format(money)} <u>đ</u>
           </div>
         </div>
 
@@ -72,10 +81,16 @@ function ModalCartAdded() {
           </Link>
 
           <Button
-            linkUseOnClick={true}
-            to={Config.PAGE_PAYMENT}
-            onClick={() => dispatch(ordersAction.loadOrder(carts.list))}
-            disabled={carts.money === 0 && true}
+            linkUseOnClick={false}
+            onClick={() => {
+              console.log(carts.list);
+              if (money === 0) return;
+              else {
+                dispatch(ordersAction.loadOrder(carts.list));
+                history.push(Config.PAGE_PAYMENT);
+              }
+            }}
+            disabled={money === 0 && true}
             className="px-6 py-2 rounded-full hover:bg-organce 
             bg-white border-white border-2 border-solid hover:text-white
             hover:border-white shadow-lg float-right flex items-center font-semibold 
@@ -89,4 +104,4 @@ function ModalCartAdded() {
   );
 }
 
-export default ModalCartAdded;
+export default memo(ModalCartAdded);

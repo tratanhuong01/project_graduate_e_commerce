@@ -1,6 +1,6 @@
 import React from "react";
 import chat__bot__image__waiting from "../../../../../assets/images/chat__bot__image__waiting.png";
-function WaitingUserSupport(props) {
+function WaitingUserSupport({ setInfoChat }) {
   //
   //
   return (
@@ -24,8 +24,10 @@ function WaitingUserSupport(props) {
             </div>
           </div>
           <div className="text-gray-600 pr-2 relative flex items-center justify-end">
-            <i className="fas fa-search text-xl cursor-pointer"></i>
-            <i className="bx bx-x text-4xl ml-6 cursor-pointer"></i>
+            <i
+              onClick={() => setInfoChat(false)}
+              className="bx bx-x text-4xl ml-6 cursor-pointer"
+            ></i>
           </div>
         </div>
         <div className="w-full py-2 text-xl text-gray-600 px-4 text-center border-b-2 border-solid border-gray-300 dark:text-gray-300">
