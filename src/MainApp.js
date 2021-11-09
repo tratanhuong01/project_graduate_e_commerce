@@ -10,7 +10,7 @@ import Notify from "./containers/Notify";
 import * as usersAction from "./actions/user/index";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-
+import jwt_decode from "jwt-decode";
 function MainApp(props) {
   //
   const dispatch = useDispatch();
@@ -24,8 +24,14 @@ function MainApp(props) {
   });
   useEffect(() => {
     //
-    if (localStorage && localStorage.getItem("userToken"))
-      dispatch(usersAction.loadUserRequest(headers));
+    if (localStorage && localStorage.getItem("userToken")) {
+      const token = jwt_decode(localStorage.getItem("userToken"));
+      if (token.exp < Date.now() / 1000) {
+        localStorage.removeItem("userToken");
+      } else {
+        dispatch(usersAction.loadUserRequest(headers));
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

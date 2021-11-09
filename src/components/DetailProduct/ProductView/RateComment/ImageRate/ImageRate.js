@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemImageRate from "./ItemImageRate/ItemImageRate";
 
 function ImageRate({ images, setImages }) {
