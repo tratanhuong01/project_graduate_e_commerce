@@ -41,7 +41,7 @@ function Ram(props) {
       {rams.length > 0 ? (
         rams.map((ram, index) => {
           const state = listProduct.filters.findIndex(
-            (dt) => dt.id === ram.id && dt.name === ram.name
+            (dt) => dt.id === ram.id && dt.name === ram.nameRam
           );
           return (
             <ItemRam

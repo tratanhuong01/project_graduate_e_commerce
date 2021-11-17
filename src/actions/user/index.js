@@ -9,6 +9,15 @@ export const registerAccount = (data, notSend) => {
     try {
       const user = await userApi.addUser(data.user);
       if (notSend) {
+        const result = await api(
+          `checkEmailHave`,
+          "POST",
+          data.user.email,
+          { "Content-Type": "application/json" }
+        );
+        dispatch(loginAccount(result.data));
+        dispatch(updateHeaders(result.data.token));
+        dispatch({ type: Types.CLOSE_MODAL });
       } else {
         dispatch(
           sendCodeRegister({

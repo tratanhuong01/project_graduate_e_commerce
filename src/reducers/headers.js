@@ -2,7 +2,12 @@ import * as Types from "../constants/ActionTypes";
 
 let initialState = {};
 if (localStorage && localStorage.getItem("userToken"))
-  initialState = { Authorization: localStorage.getItem("userToken") };
+  {
+    const token = localStorage.getItem('userToken');
+    if (token) {
+      initialState = { Authorization: localStorage.getItem("userToken") };
+    }
+  }
 
 const myReducer = (state = initialState, action) => {
   switch (action.type) {

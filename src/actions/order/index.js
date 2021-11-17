@@ -136,6 +136,7 @@ export const addOrderRequest = (data, headers) => {
         fee: data.fee,
         total: data.money + data.fee - data.sale,
         timeCreated: null,
+        email : data.infoPayment.email,
         timeCompleted: null,
         timeIntend: null,
         timeApproval: null,

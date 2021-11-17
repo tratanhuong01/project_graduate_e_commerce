@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import ModalWrapper from "../../../../containers/ModalWrapper";
 
 function ModalOrderSuccess(props) {
   //
@@ -21,7 +22,7 @@ function ModalOrderSuccess(props) {
   }, [time]);
   //
   return (
-    <div
+    <ModalWrapper
       className="w-11/12 xl:w-5/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
     rounded-lg z-50 animate__animated animate__fadeIn bg-white overflow-y-auto scrollbar-css 
     dark:bg-dark-main"
@@ -48,7 +49,7 @@ function ModalOrderSuccess(props) {
           <i className="fas fa-sync fa-spin text-2xl text-organce my-2"></i>
         </div>
       </div>
-    </div>
+    </ModalWrapper>
   );
 }
 

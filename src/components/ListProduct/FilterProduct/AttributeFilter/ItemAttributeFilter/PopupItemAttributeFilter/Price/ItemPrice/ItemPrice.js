@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as listProductsAction from "../../../../../../../../actions/listProduct/index";
 function ItemPrice(props) {
   //
-  const { price, setIndex } = props;
+  const { price, setIndex,state } = props;
   const { listProduct, headers } = useSelector((state) => {
     return {
       listProduct: state.listProduct,
@@ -42,8 +42,13 @@ function ItemPrice(props) {
           clearTimeout(timeOut);
         };
       }}
-      className="px-2 m-2 rounded-full p-1 border-2 border-solid border-gray-300 hover:border-organce 
-    text-sm"
+      className={`px-2 m-2 rounded-full p-1 border-2 border-solid 
+      ${
+        state === -1
+          ? " border-gray-300 hover:border-organce hover:text-organce "
+          : " border-organce text-organce "
+      }
+    text-sm`}
     >
       {price.name}
     </div>

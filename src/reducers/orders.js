@@ -65,8 +65,8 @@ const myReducer = (state = initialState, action) => {
           note: "",
           status: false,
           fullName: "",
-          phone: "",
-          email: "",
+          phone: action.email,
+          email: ""
         };
       }
       return { ...state };

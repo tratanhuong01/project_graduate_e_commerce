@@ -36,6 +36,7 @@ function FormContact(props) {
       phone: data.phone,
       fullName: data.fullName,
       content: data.content,
+      status : 0,
       timeCreated: null,
     });
     setIsSend(true);

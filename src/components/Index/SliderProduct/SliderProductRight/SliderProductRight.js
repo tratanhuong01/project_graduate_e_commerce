@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import * as Config from "../../../../constants/Config";
+import api from "../../../../Utils/api";
 
 function SliderProductRight(props) {
   //
@@ -24,10 +25,16 @@ function SliderProductRight(props) {
           {current.slogan}
         </p>
         <button
-          onClick={() =>
-            history.push(
-              `${Config.PAGE_DETAIL_PRODUCT}/${current.slideProduct.slug}`
-            )
+          onClick={ async () =>
+            {
+              const result = await api('getProductByLineProductFirst?idLineProduct='+
+              current.slideProduct.id,'GET',null,{});
+              if (result.data) {
+                history.push(
+                  `${Config.PAGE_DETAIL_PRODUCT}/${result.data.slug}`
+                )
+              }
+            }
           }
           className="w-32 py-1.5 md:w-40 md:py-2.5 text-xs md:text-sm rounded-full border-2 border-white border-solid dark:bg-dark-main bg-organce text-white font-semibold"
         >

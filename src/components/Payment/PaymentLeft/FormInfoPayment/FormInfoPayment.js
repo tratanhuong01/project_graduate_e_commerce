@@ -20,7 +20,7 @@ function FormInfoPayment(props) {
     setValue("fullName", orders.infoPayment.fullName);
     setValue("phone", orders.infoPayment.phone);
     setValue("address", orders.infoPayment.address);
-
+    setValue("email", orders.infoPayment.email);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orders, user]);
   //

@@ -42,7 +42,7 @@ function Color(props) {
       {colors.length > 0 ? (
         colors.map((color, index) => {
           const state = listProduct.filters.findIndex(
-            (dt) => dt.id === color.id && dt.name === color.name
+            (dt) => dt.id === color.id && dt.name === color.description
           );
           return (
             <ItemColor
