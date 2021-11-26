@@ -15,7 +15,7 @@ function StatusDetailBill(props) {
         right: true,
         statusLineLeft: true,
         statusLineRight: false,
-        time: " ",
+        time: bill.bill.timeCreated,
         visible: null,
         invisible: false,
       },
@@ -27,7 +27,7 @@ function StatusDetailBill(props) {
         right: true,
         statusLineLeft: false,
         statusLineRight: false,
-        time: " ",
+        time: bill.bill.timeApproval,
         visible: null,
         invisible: false,
       },
@@ -63,7 +63,7 @@ function StatusDetailBill(props) {
         right: false,
         statusLineLeft: false,
         statusLineRight: false,
-        time: " ",
+        time: bill.bill.timeCompleted,
         visible: null,
         invisible: false,
       },
@@ -97,7 +97,7 @@ function StatusDetailBill(props) {
     return arrayStatus;
   };
 
-  useEffect(() => {}, [bill]);
+  useEffect(() => { }, [bill]);
   //
   return (
     <>
@@ -109,6 +109,7 @@ function StatusDetailBill(props) {
               left={item.left}
               right={item.right}
               label={item.name}
+              time={item.time}
               statusLineLeft={item.statusLineLeft}
               statusLineRight={item.statusLineRight}
               icon={item.icon}

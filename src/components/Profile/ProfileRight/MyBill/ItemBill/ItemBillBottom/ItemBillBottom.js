@@ -21,7 +21,7 @@ function ItemBillBottom(props) {
     <div className="w-full flex items-center text-gray-600 dark:text-gray-300 mb-5">
       <div className="w-1/3 flex py-1 font-semibold flex-col">
         <span className="text-xs">Sản phẩm này sẽ được gửi đi trước</span>
-        <span className="text-green-500 text-xs">20-08-2021</span>
+        <span className="text-green-500 text-xs">{bill.bill.timeIntend.split(" ")[0]}</span>
       </div>
       <div className="w-2/3 flex justify-end items-center">
         {bill.bill.status === 3 && (

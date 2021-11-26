@@ -86,7 +86,18 @@ export const updateVoucherOrders = (voucher, remove) => {
 
 export const addOrderRequest = (data, headers) => {
   return async (dispatch) => {
+    dispatch({ type: Types.ON_LOADING_MODAL })
+    dispatch({ type: Types.ORDER_SUCCESS });
     let user = null;
+    const timeIntend = () => {
+      if (data.deliveryTime) {
+        const deliveryTime = data.deliveryTime.split("/");
+        if (deliveryTime.length === 3) {
+          return `${data.deliveryTime.replaceAll('/', '-')} 00:00:00`;
+        }
+      }
+      return null;
+    }
     if (!data.user)
       user = await api(`users`, "POST", {
         id: null,
@@ -127,18 +138,17 @@ export const addOrderRequest = (data, headers) => {
         fullName: data.infoPayment.fullName,
         phone: data.infoPayment.phone,
         bank: null,
-        address: `${data.infoPayment.address} , ${
-          JSON.parse(data.infoPayment.ward).WardName
-        } , ${JSON.parse(data.infoPayment.district).DistrictName} , 
+        address: `${data.infoPayment.address} , ${JSON.parse(data.infoPayment.ward).WardName
+          } , ${JSON.parse(data.infoPayment.district).DistrictName} , 
       ${JSON.parse(data.infoPayment.cityProvince).ProvinceName}`,
         note: data.infoPayment.note,
         sale: data.sale,
         fee: data.fee,
         total: data.money + data.fee - data.sale,
         timeCreated: null,
-        email : data.infoPayment.email,
+        email: data.infoPayment.email,
         timeCompleted: null,
-        timeIntend: null,
+        timeIntend: timeIntend(),
         timeApproval: null,
       },
       headers
@@ -209,8 +219,7 @@ export const addOrderRequest = (data, headers) => {
       discountCodeData.amount -= 1;
       await api(`discountCodes`, "PUT", discountCodeData, headers);
     }
-
-    dispatch({ type: Types.ORDER_SUCCESS });
+    dispatch({ type: Types.OFF_LOADING_MODAL })
   };
 };
 
@@ -254,8 +263,7 @@ export const calcalatorFeeRequestTwo = (data) => {
     const dateArray = date.toLocaleDateString("en-US").split("/");
     dispatch(
       calcalatorFee(
-        `${dateArray[1] < 10 ? `0${dateArray[1]}` : dateArray[1]}/${
-          dateArray[0] < 10 ? `0${dateArray[0]}` : dateArray[0]
+        `${dateArray[1] < 10 ? `0${dateArray[1]}` : dateArray[1]}/${dateArray[0] < 10 ? `0${dateArray[0]}` : dateArray[0]
         }/${dateArray[2]}`,
         3
       )

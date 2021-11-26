@@ -13,7 +13,8 @@ function Search(props) {
   useResetPage("Tìm kiếm");
   const [length, setLength] = useState(0);
   const [index, setIndex] = useState(0);
-  const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState([]);
   const location = useLocation();
   useEffect(() => {
     //
@@ -28,13 +29,13 @@ function Search(props) {
           null
         );
         const listCurrent = await api(
-          `products/search/page/limit/?keyword=${query}&slug=${slug}&limit=${12}&offset=${
-            index * 12
+          `products/search/page/limit/?keyword=${query}&slug=${slug}&limit=${12}&offset=${index * 12
           }`,
           "GET",
           null
         );
         if (unmounted) return;
+        setLoading(false);
         setLength(list.data);
         setProducts(listCurrent.data);
       } catch (error) {
@@ -46,12 +47,12 @@ function Search(props) {
       unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname, products, index]);
+  }, [location, index]);
   //
   return (
     <div className="w-full ">
       <div className="xl:w-4/5 w-full mx-auto p-4">
-        {products ? (
+        {!loading ? (
           products.length <= 0 ? (
             <div className="w-full flex flex-col my-5 items-center h-80 justify-center">
               <img src={no__result} alt="" className="w-80 object-cover" />
@@ -61,7 +62,7 @@ function Search(props) {
             </div>
           ) : (
             <>
-              <p className="font-semibold text-2xl p-2 py-5 bg-white mt-3 mb-6">
+              <p className="font-semibold text-2xl p-2 py-5 dark:text-gray-300 mt-3 mb-6">
                 {`CÓ ${length} KẾT QUẢ TÌM KIẾM PHÙ HỢP`}
               </p>
               <div className="w-full flex flex-wrap">

@@ -52,6 +52,7 @@ function ControlChatRight(props) {
       </div>
       <button
         onClick={() => sendMessage()}
+        onKeyUp={(event) => event.preventDefault()}
         className="flex p-2 bg-organce items-center justify-center text-white font-semibold rounded-sm px-2 ml-4"
       >
         Gửi <i className="bx bx-send text-2xl ml-4"></i>

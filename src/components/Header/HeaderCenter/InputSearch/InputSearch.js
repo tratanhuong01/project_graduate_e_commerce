@@ -54,7 +54,6 @@ function InputSearch(props) {
         value={keyword}
         onKeyUp={(event) => {
           if (event.keyCode === 13) {
-            setKeyword("");
             setProducts(null);
             history.push(`${PAGE_SEARCH}?query=${keyword}&slug=${data.slug}`);
           }

@@ -9,12 +9,11 @@ function ItemNumberStar(props) {
       onClick={() => {
         onClick();
       }}
-      className={`px-6 m-1 py-2 rounded-lg border-2 border-solid 
-      ${
-        star.star === active
+      className={`px-3 m-1.5 py-2 rounded-lg border-2 border-solid 
+      ${star.star === active
           ? "border-organce text-organce font-semibold"
           : "border-gray-300 dark:text-white font-semibold text-gray-700"
-      }`}
+        }`}
     >
       {star.name}
     </button>

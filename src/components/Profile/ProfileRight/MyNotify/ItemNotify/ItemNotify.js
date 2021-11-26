@@ -16,7 +16,7 @@ function ItemNotify(props) {
         <img
           src={notify.image}
           alt=""
-          className="w-24 h-24 p-1 object-cover rounded-lg"
+          className="w-20 h-20 p-1 object-contain rounded-lg"
         />
         <div className="flex text-gray-600 flex-col pl-4 dark:text-white">
           <p className="font-semibold text-xm text-green-500 mb-1">

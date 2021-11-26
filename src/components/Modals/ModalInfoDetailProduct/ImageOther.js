@@ -5,7 +5,7 @@ function ImageOther(props) {
   //
   const { images } = props;
   const [index, setIndex] = useState(0);
-  useEffect(() => {}, [images]);
+  useEffect(() => { }, [images]);
   //
   return (
     <div className="w-full flex flex-wrap h-full">
@@ -22,9 +22,9 @@ function ImageOther(props) {
                       (index - 1) * document.getElementById("slide").scrollLeft;
                   }
                 }}
-                className="w-12 h-12 rounded-full bg-gray-300 flex justify-center items-center cursor-pointer"
+                className="w-12 h-12 rounded-full bg-gray-300 dark:bg-dark-second flex justify-center items-center cursor-pointer"
               >
-                <span className="bx bx-arrow-left text-2xl"></span>
+                <span className="bx bx-chevron-left text-2xl dark:text-white text-black"></span>
               </div>
             </div>
             <div className="w-3/5 relative flex " id="slide">
@@ -34,7 +34,7 @@ function ImageOther(props) {
                 <img
                   src={images[index].src}
                   alt=""
-                  className={`w-full h-80 object-cover z-0 rounded-lg  flex flex-shrink-0`}
+                  className={`w-full h-80 object-contain z-0 rounded-lg  flex flex-shrink-0`}
                 />
               </ScrollContainer>
             </div>
@@ -48,9 +48,9 @@ function ImageOther(props) {
                       (index + 1) * document.getElementById("slide").scrollLeft;
                   }
                 }}
-                className="w-12 h-12 rounded-full bg-gray-300 flex justify-center items-center cursor-pointer"
+                className="w-12 h-12 rounded-full dark:bg-dark-second  bg-gray-300 flex justify-center items-center cursor-pointer"
               >
-                <span className="bx bx-arrow-left text-2xl"></span>
+                <span className="bx bx-chevron-right text-2xl dark:text-white text-black"></span>
               </div>
             </div>
           </div>
@@ -63,11 +63,10 @@ function ImageOther(props) {
                     key={pos}
                     src={image.src}
                     alt=""
-                    className={`w-36 h-28 mx-2 object-contain rounded-lg border-solid border-2 p-2  ${
-                      index === pos
-                        ? "border-gray-300"
-                        : "hover:border-gray-300 border-white"
-                    }`}
+                    className={`w-36 h-28 mx-2 object-contain rounded-lg border-solid border-2 p-2  ${index === pos
+                      ? "border-gray-300 dark:border-white"
+                      : "hover:border-gray-300 dark:border-dark-third"
+                      }`}
                   />
                 );
               })}

@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { PAGE_CART } from "../../../../constants/Config";
 import ModalWrapper from "../../../../containers/ModalWrapper";
 
 function ModalOrderSuccess(props) {
   //
   const [time, setTime] = useState(5);
+  const modal = useSelector((state) => state.modal)
   const history = useHistory();
   useEffect(() => {
     //
-    if (time === 0) {
-      history.push("");
-      return;
+    let interval;
+    if (!modal.loading) {
+      if (time === 0) {
+        history.push(PAGE_CART);
+        return;
+      }
+      interval = setInterval(() => {
+        setTime(time - 1);
+      }, 1000);
     }
-    const interval = setInterval(() => {
-      setTime(time - 1);
-    }, 1000);
     return () => {
       clearInterval(interval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [time]);
+  }, [time, modal.loading]);
   //
   return (
     <ModalWrapper
@@ -28,7 +34,7 @@ function ModalOrderSuccess(props) {
     dark:bg-dark-main"
       style={{ maxHeight: "70vh", height: "70vh" }}
     >
-      <div className="w-full flex flex-col -mt-5 items-center justify-center">
+      <div className="w-full flex flex-col -mt-8 items-center justify-center">
         <img
           src="https://media.istockphoto.com/vectors/male-hand-holding-megaphone-with-congrats-speech-bubble-loudspeaker-vector-id1197835415?b=1&k=20&m=1197835415&s=612x612&w=0&h=hHTEMcbYjLkkCYn1bpykolM_uTNnbAB2WbvDxqRvCEk="
           alt=""
@@ -44,7 +50,7 @@ function ModalOrderSuccess(props) {
           như khách hàng và bên cửa hàng.
         </div>
         <div className="font-semibold text-xl text-center mt-5 text-gray-700">
-          Hệ thống sẽ điều hướng về trang chủ sau {time} giây
+          Hệ thống sẽ điều hướng về giỏ hàng sau {time} giây
           <br />
           <i className="fas fa-sync fa-spin text-2xl text-organce my-2"></i>
         </div>

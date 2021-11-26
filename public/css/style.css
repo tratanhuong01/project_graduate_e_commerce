@@ -144,7 +144,7 @@ button:focus {
   z-index: 0;
   right: 20px;
   border: 10px solid;
-  border-color: transparent transparent #18191a transparent;
+  border-color: transparent transparent rgba(58, 59, 60, var(--tw-bg-opacity)) transparent;
 }
 #notify__popup {
   display: none;

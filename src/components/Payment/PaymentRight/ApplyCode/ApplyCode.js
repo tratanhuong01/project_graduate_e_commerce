@@ -44,7 +44,7 @@ function ApplyCode(props) {
       throw error;
     }
   };
-  useEffect(() => {}, [user, orders.infoPayment.voucher]);
+  useEffect(() => { }, [user, orders.infoPayment.voucher]);
   //
   return (
     <>
@@ -88,8 +88,8 @@ function ApplyCode(props) {
               onClick={() =>
                 dispatch(ordersAction.updateVoucherOrders(null, true))
               }
-              className="w-5 h-5 rounded-full text-xl flex items-center cursor-pointer z-50 
-              justify-center absolute -top-2 -right-2 hover:bg-gray-200 bg-gray-50"
+              className="w-5 h-5 rounded-full text-xm flex items-center cursor-pointer z-50 dark:bg-dark-third 
+              justify-center absolute -top-2 -right-2 hover:bg-gray-200 bg-gray-50 dark:hover:bg-dark-main"
             >
               &times;
             </span>

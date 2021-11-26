@@ -40,15 +40,14 @@ function TechnicalDataSmall(props) {
       )}
       {data && (
         <div
-          className={`w-full overflow-y-hidden relative " ${
-            data.length > 0 ? "" : "hidden"
-          }`}
+          className={`w-full overflow-y-hidden relative " ${data.length > 0 ? "" : "hidden"
+            }`}
           style={{ maxHeight: 500 }}
         >
           {data.map((attribute, index) => {
             return <ItemTechnicalData key={index} attribute={attribute} />;
           })}
-          <div className="w-full absolute bottom-0 p-7 bg-white bg-opacity-30 flex items-center justify-center">
+          <div className="w-full absolute bottom-0 p-7 bg-gray-300 bg-opacity-50 flex items-center justify-center">
             <button
               onClick={() =>
                 dispatch(
@@ -58,7 +57,7 @@ function TechnicalDataSmall(props) {
                 )
               }
               className="text-sm text-organce font-semibold px-4 py-2 rounded-full border-2
-              border-solid border-organce bg-white hover:bg-organce hover:text-white"
+              border-solid border-organce bg-white hover:bg-organce hover:text-white dark:bg-dark-main"
             >
               Xem thêm cấu hình chi tiết
             </button>

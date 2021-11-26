@@ -70,7 +70,7 @@ function Bank(props) {
         ) : (
           <div
             className="w-full h-80 flex items-center justify-center text-xl 
-        text-gray-600"
+        text-gray-600 dark:text-gray-300"
           >
             Bạn chưa thêm bất kì thẻ nào
           </div>
@@ -79,7 +79,7 @@ function Bank(props) {
         <div className="w-full relative">
           <i
             className="fas fa-circle-notch fa-spin text-5xl text-organce absolute top-32 left-1/2 transform 
-    -translate-x-1/2"
+          -translate-x-1/2"
           ></i>
         </div>
       )}

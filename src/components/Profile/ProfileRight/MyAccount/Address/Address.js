@@ -96,7 +96,7 @@ function Address(props) {
         ) : (
           <div
             className="w-full h-80 flex items-center justify-center text-xl 
-        text-gray-600"
+        text-gray-600 dark:text-gray-300"
           >
             Bạn chưa thêm bất kì địa chỉ nào
           </div>

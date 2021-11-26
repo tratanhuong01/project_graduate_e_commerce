@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function InfoTransport(props) {
   //
   const orders = useSelector((state) => state.orders);
-  useEffect(() => {}, [orders]);
+  useEffect(() => { }, [orders]);
   //
   return (
     <>
@@ -30,20 +30,17 @@ function InfoTransport(props) {
             <div className="flex py-0.5 items-center">
               Địa chỉ :
               {` ${orders.infoPayment.address} , 
-                ${
-                  orders.infoPayment.ward
-                    ? JSON.parse(orders.infoPayment.ward).WardName
-                    : "..."
+                ${orders.infoPayment.ward
+                  ? JSON.parse(orders.infoPayment.ward).WardName
+                  : "..."
                 } ,  
-                ${
-                  orders.infoPayment.district
-                    ? JSON.parse(orders.infoPayment.district).DistrictName
-                    : "..."
+                ${orders.infoPayment.district
+                  ? JSON.parse(orders.infoPayment.district).DistrictName
+                  : "..."
                 } , 
-                ${
-                  orders.infoPayment.cityProvince
-                    ? JSON.parse(orders.infoPayment.cityProvince).ProvinceName
-                    : "..."
+                ${orders.infoPayment.cityProvince
+                  ? JSON.parse(orders.infoPayment.cityProvince).ProvinceName
+                  : "..."
                 }`}
             </div>
             {orders.serviceChoose && (

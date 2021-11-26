@@ -8,7 +8,7 @@ function NotBill(props) {
         alt=""
         className="w-32 h-32 mx-auto"
       />
-      <p className="text-center font-semibold text-gray-600 my-3">
+      <p className="text-center font-semibold text-gray-600 my-3 dark:text-gray-300">
         Chưa có đơn hàng
       </p>
     </div>

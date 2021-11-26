@@ -47,7 +47,7 @@ function ItemVoucher(props) {
           <span className="w-28 border-2 border-solid border-organce text-organce px-2 -ml-0.5 mb-1 py-0.5 text-xs rounded-full">
             Đơn hàng từ 0đ
           </span>
-          <span className="w-full text-sm text-gray-500">
+          <span className="w-full text-sm text-gray-500 dark:text-gray-300">
             HSD : {voucher.discountCode.timeExpired}
           </span>
         </div>

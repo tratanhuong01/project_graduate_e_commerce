@@ -15,7 +15,7 @@ function WishListStatus(props) {
   const index = wishLists.findIndex(
     (wishList) => wishList.idProduct === idProduct
   );
-  useEffect(() => {}, [wishLists]);
+  useEffect(() => { }, [wishLists]);
   //
   return (
     <div
@@ -30,13 +30,12 @@ function WishListStatus(props) {
           )
         )
       }
-      className="w-14 h-14 rounded-full bg-gray-100 dark:bg-dark-third flex items-center 
+      className="w-14 h-14 rounded-full bg-gray-100 dark:bg-dark-main flex items-center 
     justify-center absolute top-10 right-1 cursor-pointer"
     >
       <span
-        className={`${
-          index !== -1 ? "bx bxs-heart" : "bx bx-heart"
-        } text-3xl text-red-500 flex`}
+        className={`${index !== -1 ? "bx bxs-heart" : "bx bx-heart"
+          } text-3xl text-red-600 flex`}
       ></span>
     </div>
   );

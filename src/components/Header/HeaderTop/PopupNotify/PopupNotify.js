@@ -79,8 +79,8 @@ function PopupNotify(props) {
       id="notify__popup"
     >
       <div
-        className="rounded-sm mt-10 z-main border-2 border-solid 
-      border-gray-200 bg-white relative arrow__popup"
+        className="rounded-sm mt-10 z-main border-2 border-solid dark:border-dark-third 
+      border-gray-200 bg-white relative arrow__popup dark:arrow__popup"
         style={{
           boxShadow: "0 2px 20px rgb(0 0 0 / 50%)",
         }}
