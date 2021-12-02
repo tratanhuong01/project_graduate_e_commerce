@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as modalsAction from "../../../actions/modal/index";
+import api from "../../../Utils/api";
 
 function PopupAds(props) {
   //
   const dispatch = useDispatch();
+  const [popup, setPopup] = useState(null);
+  useEffect(() => {
+    //
+    let unmounted = false;
+    const fetch = async () => {
+      const result = await api(`getPopupAdsNew`, 'GET', null);
+      if (unmounted) return;
+      setPopup(result.data);
+    }
+    fetch();
+    return () => {
+      unmounted = true;
+    }
+    //
+  }, []);
   //
   return (
     <div
@@ -20,10 +36,15 @@ function PopupAds(props) {
           &times;
         </span>
         <img
-          src="https://cf.shopee.vn/file/a9825e88bb54c824feb6def6e57bd0c4_xxhdpi"
+          src={popup ? popup.image : ""}
           alt=""
           className="w-full h-120 object-contain cursor-pointer"
         />
+        {/* <img
+          src="https://cf.shopee.vn/file/a9825e88bb54c824feb6def6e57bd0c4_xxhdpi"
+          alt=""
+          className="w-full h-120 object-contain cursor-pointer"
+        /> */}
       </div>
     </div>
   );
