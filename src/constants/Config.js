@@ -50,6 +50,8 @@ export const PROFILE_VOUCHER = "ma-giam-gia";
 
 export const TOKEN = "24a1c366-1817-11ec-8b9b-3a2e6f5c2d91";
 
+export const SERVER_NODE = "http://localhost:4444";
+
 export const PAGE_LOGIN = "/dang-nhap";
 
 export const SHOP_ID = 2030745;

@@ -16,7 +16,7 @@ function News(props) {
       <BreadcrumbsItem to={PAGE_NEWS}>Tin tức</BreadcrumbsItem>
       <LevelUrl />
       <hr className="my-2"></hr>
-      <div className="xl:w-4/5 w-full mx-auto p-4">
+      <div className="xl:w-4/5 w-full mx-auto p-4 hidden">
         <InfoNews />
       </div>
       <div className="xl:w-4/5 w-full flex flex-col lg:flex-row mx-auto px-4 justify-center">

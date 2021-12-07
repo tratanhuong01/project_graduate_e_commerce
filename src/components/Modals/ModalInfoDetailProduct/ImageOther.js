@@ -9,9 +9,9 @@ function ImageOther(props) {
   //
   return (
     <div className="w-full flex flex-wrap h-full">
-      {images && (
+      {images.length > 0 && (
         <>
-          <div className="w-full flex items-center mt-10">
+          <div className="w-full flex items-center mt-3">
             <div className="w-1/5 flex items-center justify-end pr-6">
               <div
                 onClick={() => {
@@ -54,7 +54,7 @@ function ImageOther(props) {
               </div>
             </div>
           </div>
-          <div className="w-full flex justify-center items-end">
+          <div className="w-full flex pb-8 justify-center items-end">
             <div className="flex">
               {images.map((image, pos) => {
                 return (
@@ -63,9 +63,10 @@ function ImageOther(props) {
                     key={pos}
                     src={image.src}
                     alt=""
-                    className={`w-36 h-28 mx-2 object-contain rounded-lg border-solid border-2 p-2  ${index === pos
-                      ? "border-gray-300 dark:border-white"
-                      : "hover:border-gray-300 dark:border-dark-third"
+                    className={`w-36 h-28 mx-2 object-contain rounded-lg border-solid border-2 border-white 
+                    dark:border-dark-third p-2  ${index === pos
+                        ? "border-gray-300 dark:border-white"
+                        : "hover:border-gray-300 dark:border-dark-third"
                       }`}
                   />
                 );

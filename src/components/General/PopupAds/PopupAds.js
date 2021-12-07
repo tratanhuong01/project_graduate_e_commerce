@@ -35,11 +35,12 @@ function PopupAds(props) {
         >
           &times;
         </span>
-        <img
-          src={popup ? popup.image : ""}
+        {popup ? <img
+          src={popup.image}
           alt=""
           className="w-full h-120 object-contain cursor-pointer"
         />
+          : <div className="h-120 w-full"></div>}
         {/* <img
           src="https://cf.shopee.vn/file/a9825e88bb54c824feb6def6e57bd0c4_xxhdpi"
           alt=""

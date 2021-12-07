@@ -60,11 +60,11 @@ function ItemNews(props) {
             {newData.title.substring(0, 65).replace(",", "") + "..."}
           </Link>
           <p className="text-gray-500 w-full flex mt-2">
-            <button className="bg-organce mr-3 px-3 py-1 rounded-full text-xs text-gray-100 font-semibold">
+            <button className="bg-organce mr-2 px-1 py-1 rounded-full text-xs text-gray-100 font-semibold">
               {newData.categoryNews.nameCategoryNews}
             </button>
-            <span className="flex items-center text-sm font-semibold dark:text-gray-300">
-              {newData.timeCreated}
+            <span className="flex items-center text-xs font-semibold dark:text-gray-300">
+              {newData.timeCreated ? newData.timeCreated.split(" ")[0] : ""}
             </span>
           </p>
         </div>

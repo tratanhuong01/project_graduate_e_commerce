@@ -53,9 +53,8 @@ function NewsLeft(props) {
         loading="lazy"
       />
       <div
-        className={`absolute ${
-          subClass__ ? subClass__ : "bottom-0"
-        } left-0 w-full bg-transparent p-3
+        className={`absolute ${subClass__ ? subClass__ : "bottom-0"
+          } left-0 w-full bg-transparent p-3
         bg-black bg-opacity-50 ${news__view}`}
       >
         <div className="w-full h-12 flex items-center">
@@ -66,12 +65,12 @@ function NewsLeft(props) {
             {newData.title.substring(0, 65).replace(",", "") + "..."}
           </Link>
         </div>
-        <div className="flex">
-          <button className="mt-2 bg-organce px-5 py-1.5 rounded-full text-sm text-gray-100 font-semibold">
+        <div className="flex items-center mt-2 ">
+          <button className=" bg-organce px-2 py-1.5 rounded-full text-xs text-gray-100 font-semibold">
             {newData.categoryNews.nameCategoryNews}
           </button>
-          <span className="text-gray-100 font-semibold flex items-center text-sm mx-4">
-            {newData.timeCreated}
+          <span className="text-gray-100 font-semibold flex items-center text-xs mx-4">
+            {newData.timeCreated ? newData.timeCreated.split(" ")[0] : newData.timeCreated}
           </span>
         </div>
       </div>

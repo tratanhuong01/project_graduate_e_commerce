@@ -26,8 +26,7 @@ function ItemCategoryNews(props) {
             headers
           );
         const result = await api(
-          `news/categoryNews?idCategoryNews=${category.id}&limit=${4}&offset=${
-            index * 4
+          `news/categoryNews?idCategoryNews=${category.id}&limit=${4}&offset=${index * 4
           }`
         );
         if (unmounted) return;
@@ -59,9 +58,8 @@ function ItemCategoryNews(props) {
               if (index === 0) return;
               setIndex(index - 1);
             }}
-            className={`w-6 h-6 rounded-full border-2 border-solid items-center border-gray-300 hover:bg-organce mx-0.5 flex justify-center hover:text-white ${
-              index === 0 ? "cursor-not-allowed hover:bg-gray-500" : ""
-            }`}
+            className={`w-6 h-6 rounded-full border-2 border-solid items-center border-gray-300 hover:bg-organce mx-0.5 flex justify-center hover:text-white ${index === 0 ? "cursor-not-allowed hover:bg-gray-500" : ""
+              }`}
             disabled={index === 0 ? true : false}
           >
             <i className="bx bx-chevron-left"></i>
@@ -71,11 +69,10 @@ function ItemCategoryNews(props) {
               if (index + 1 * 4 >= length) return;
               setIndex(index + 1);
             }}
-            className={`w-6 h-6 rounded-full border-2 border-solid items-center border-gray-300 hover:bg-organce mx-0.5 flex justify-center hover:text-white ${
-              index + 1 * 4 >= length
-                ? "cursor-not-allowed hover:bg-gray-500 "
-                : ""
-            }`}
+            className={`w-6 h-6 rounded-full border-2 border-solid items-center border-gray-300 hover:bg-organce mx-0.5 flex justify-center hover:text-white ${index + 1 * 4 >= length
+              ? "cursor-not-allowed hover:bg-gray-500 "
+              : ""
+              }`}
             disabled={index + 1 * 4 >= length ? true : false}
           >
             <i className="bx bx-chevron-right"></i>

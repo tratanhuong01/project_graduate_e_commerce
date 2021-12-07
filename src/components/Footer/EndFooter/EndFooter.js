@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import notify from "../../../assets/images/notify.png";
 import payment from "../../../assets/images/payment.png";
-import logo from "../../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import api from "../../../Utils/api";
 import { PAGE_ABOUT, PAGE_CONTACT, PAGE_INDEX, PAGE_NEWS, PAGE_PRODUCT } from "../../../constants/Config";
