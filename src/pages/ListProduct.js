@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MainListProduct from "../containers/ListProduct/MainListProduct";
-import Loading from "../components/General/Loading/Loading";
+import ListProductWrapper from "../containers/ListProduct/ListProduct/ListProduct";
 import * as listProductsAction from "../actions/listProduct/index";
 import useResetPage from "../hook/useResetPage";
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import { PAGE_PRODUCT } from "../constants/Config";
+import GroupProduct from "../components/ListProduct/GroupProduct/GroupProduct";
+import CategoryProduct from "../components/ListProduct/CategoryProduct/CategoryProduct";
+import FilterProduct from "../components/ListProduct/FilterProduct/FilterProduct";
+import LevelUrl from "../components/General/LevelUrl/LevelUrl";
 function ListProduct(props) {
   //
   const dispatch = useDispatch();
@@ -16,35 +21,44 @@ function ListProduct(props) {
   });
   useEffect(() => {
     //
+    dispatch(listProductsAction.loadingListProduct(true));
     dispatch(listProductsAction.loadListProduct(null));
-    const timeOut = setTimeout(() => {
-      dispatch(
-        listProductsAction.loadListProductRequest(
-          {
-            slugCategoryProduct: slugCategoryProduct,
-            slugGroupProduct:
-              typeof slugGroupProduct === "undefined"
-                ? slugCategoryProduct
-                : slugGroupProduct,
-          },
-          headers
-        )
-      );
-    }, 500);
-    return () => clearTimeout(timeOut);
+    dispatch(
+      listProductsAction.loadListProductRequest(
+        {
+          slugCategoryProduct: slugCategoryProduct,
+          slugGroupProduct:
+            typeof slugGroupProduct === "undefined"
+              ? slugCategoryProduct
+              : slugGroupProduct,
+        },
+        headers
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slugCategoryProduct, slugGroupProduct, listProduct.slug]);
   useResetPage("Sản phẩm");
 
   //
   return (
-    <>
-      {listProduct.products ? (
-        <MainListProduct slug={listProduct.slug} />
-      ) : (
-        <Loading />
-      )}
-    </>
+    <div className="w-full dark:bg-dark-second dark:text-gray-300">
+      <BreadcrumbsItem to={PAGE_PRODUCT}>Sản phẩm</BreadcrumbsItem>
+      <BreadcrumbsItem to={`${PAGE_PRODUCT}/${listProduct.slug}`}>
+        {listProduct.name}
+      </BreadcrumbsItem>
+      <LevelUrl />
+      <hr className="w-full xl:w-4/5  mx-auto my-2"></hr>
+      <div className="w-full xl:w-4/5 mx-auto p-4">
+        <div className="w-full mx-auto mb-2">
+          {listProduct.slug && (
+            <>{listProduct.type === true && !listProduct.loading && <GroupProduct />}</>
+          )}
+          {!listProduct.slug === null || !listProduct !== "" ? < CategoryProduct /> : ""}
+          {listProduct.products && <FilterProduct />}
+          <ListProductWrapper />
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ItemProductViewLeft from "../ProductViewLeft/ItemProductViewLeft/ItemProductViewLeft";
 // import Zoom from "react-medium-image-zoom";
 // import "react-medium-image-zoom/dist/styles.css";
 import ScrollContainer from "react-indiana-drag-scroll";
+import api from "../../../../Utils/api";
 
 function ProductViewLeft(props) {
   //
-  const { products, imageData, setImageData } = props;
+  const { imageData, setImageData, products } = props;
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    //
+    let unmounted = false;
+    const fetch = async () => {
+      const result = await api(`getImageByIdLineProduct?idLineProduct=${products.idLineProduct}`, 'GET', null, {});
+      if (unmounted) return;
+      setImages(result.data);
+    }
+    fetch();
+    return () => {
+      unmounted = true;
+    }
+    //
+  }, [products.idLineProduct]);
   //
   return (
     <div
@@ -21,7 +37,7 @@ function ProductViewLeft(props) {
           className="w-full scrollbar-css"
           style={{ maxHeight: "calc(100% - 50px)" }}
         >
-          {products.imageList.map((image, index) => {
+          {images.map((image, index) => {
             return (
               <ItemProductViewLeft
                 image={image}

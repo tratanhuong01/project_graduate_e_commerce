@@ -27,11 +27,9 @@ function ProductViewRight(props) {
         <div className="w-full pl-4 pt-1 relative">
           <WishListStatus user={user} idProduct={products.idProduct} />
           <p className="text-2xl font-semibold cursor-pointer hover:text-organce mb-3 dark:text-gray-300">
-            {`${products.nameLineProduct} ${
-              products.memory === null ? "" : products.memory.nameMemory
-            } ${
-              products.color === null ? "" : `Màu ${products.color.description}`
-            }`}
+            {`${products.nameLineProduct} ${products.memory === null ? "" : products.memory.nameMemory
+              } ${products.color === null ? "" : `Màu ${products.color.description}`
+              }`}
           </p>
           <DescribeChild
             products={products}
@@ -46,22 +44,16 @@ function ProductViewRight(props) {
             </p>
           )}
           {/* <PromotionGift /> */}
-          {products.colorList.length > 0 && (
-            <ColorProduct
-              colors={products.colorList}
-              colorData={products.color}
-              images={products.imageList}
-              imageData={imageData}
-              products={products}
-            />
-          )}
-          {products.memoryList.length > 0 && (
-            <MemoryProduct
-              memories={products.memoryList}
-              memory={products.memory}
-              products={products}
-            />
-          )}
+          <ColorProduct
+            colorData={products.color}
+            imageData={imageData}
+            products={products}
+          />
+          {products.memory && <MemoryProduct
+            memory={products.memory}
+            products={products}
+          />
+          }
           <div className="w-full my-2 hidden">
             <div
               className="w-full rounded-full p-1 mx-2 bg-white hover:bg-organce hover:text-white 
