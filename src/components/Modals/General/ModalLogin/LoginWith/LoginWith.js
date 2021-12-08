@@ -38,9 +38,9 @@ function LoginWith(props) {
           firstName: info.data.names ? info.data.names[0].familyName : "",
           lastName: info.data.names ? info.data.names[0].givenName : "",
           birthday:
-            info.data.birthday && info.data.birthday.length > 0
+            info.data.birthdays ? info.data.birthdays.length > 0
               ? `${info.data.birthdays[0].date.year}-${info.data.birthdays[0].date.month}-${info.data.birthdays[0].date.day} 00:00:00`
-              : null,
+              : null : null,
           avatar: info.data.photos ? info.data.photos[0].url : null,
           sex: info.data.genders ? info.data.genders[0].formattedValue : null,
           email: info.data.emailAddresses

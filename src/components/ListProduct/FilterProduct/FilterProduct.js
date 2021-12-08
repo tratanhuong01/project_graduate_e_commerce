@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AttributeFilter from "./AttributeFilter/AttributeFilter";
 import ItemSelected from "./AttributeFilter/ItemSelected/ItemSelected";
 import FooterFilterProduct from "./FooterFilterProduct/FooterFilterProduct";
@@ -14,7 +14,6 @@ function FilterProduct(props) {
     };
   });
   const dispatch = useDispatch();
-  useEffect(() => {}, [listProduct, listProduct.slug]);
   //
   return (
     <div className="w-full mx-auto z-0">

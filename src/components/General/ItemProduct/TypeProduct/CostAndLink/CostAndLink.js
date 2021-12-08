@@ -17,13 +17,12 @@ function CostAndLink(props) {
           {typeof product !== "undefined" && (
             <Link to={`${Config.PAGE_DETAIL_PRODUCT}/${product.slug}`}>
               {product.nameLineProduct.length > 50
-                ? product.nameLineProduc.substring(0, 50) + "..."
+                ? product.nameLineProduct.substring(0, 50) + "..."
                 : product.nameLineProduct +
-                  ` ${product.memory ? product.memory.nameMemory + " " : ""}${
-                    product.color
-                      ? "Màu " + product.color.description.toLowerCase()
-                      : ""
-                  }`}
+                ` ${product.memory ? product.memory.nameMemory + " " : ""}${product.color
+                  ? "Màu " + product.color.description.toLowerCase()
+                  : ""
+                }`}
             </Link>
           )}
         </span>
@@ -37,7 +36,7 @@ function CostAndLink(props) {
       >
         {new Intl.NumberFormat().format(
           typeof product !== "undefined" &&
-            product.priceOutput * ((100 - product.sale) / 100)
+          product.priceOutput * ((100 - product.sale) / 100)
         )}
         <u>đ</u>&nbsp;
         {typeof product !== "undefined" && product.sale > 0 && (

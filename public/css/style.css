@@ -413,7 +413,7 @@ button:focus {
     width: calc(25% - 28px) !important;
   }
   .item__child__news__item {
-    width: 29%;
+    width: calc(32% - 20px) !important;
   }
 }
 

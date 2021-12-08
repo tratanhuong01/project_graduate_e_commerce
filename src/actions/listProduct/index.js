@@ -76,7 +76,7 @@ export const loadListProductRequest = (slug, headers) => {
         if (indexCategory !== -1) {
           const type =
             category.data[indexCategory].typeCategoryProduct === 0 &&
-            slug.slugGroupProduct === slug.slugCategoryProduct
+              slug.slugGroupProduct === slug.slugCategoryProduct
               ? true
               : false;
           if (type) {
