@@ -1,5 +1,6 @@
 import * as Types from "../constants/ActionTypes";
 import socketIOClient from "socket.io-client";
+import { SERVER_NODE } from "../constants/Config";
 
 const initialState = {
   admin: null,
@@ -8,7 +9,7 @@ const initialState = {
   list: [],
   group: null,
   first: false,
-  socket: socketIOClient.connect("http://localhost:4444"),
+  socket: socketIOClient.connect(SERVER_NODE),
 };
 
 const myReducer = (state = initialState, action) => {
