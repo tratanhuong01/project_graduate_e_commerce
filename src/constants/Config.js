@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:3333";
+export const API_URL = "https://api-hsmart.herokuapp.com";
 
 export const LOGO =
   "https://upload.wikimedia.org/wikipedia/commons/1/1e/SMART-LOGO.jpg";
