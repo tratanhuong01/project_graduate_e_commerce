@@ -26,9 +26,10 @@ function ApplyCode(props) {
         user.id,
         headers
       );
+      console.log(isUsed);
       if (
         valid.data === "" ||
-        isUsed.data ||
+        isUsed.data === "" ||
         valid.data.min > orders.money ||
         valid.data.max > orders.money
       )

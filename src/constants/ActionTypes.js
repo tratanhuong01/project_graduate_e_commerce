@@ -110,9 +110,7 @@ export const LOAD_DETAIL_BILL = "LOAD_DETAIL_BILL";
 //
 export const RETURN_PROFILE = "RETURN_PROFILE";
 //
-export const LOAD_EMAIL_EDIT = "LOAD_EMAIL_EDIT";
-//
-export const LOAD_PHONE_EDIT = "LOAD_PHONE_EDIT";
+export const LOAD_EMAIL_OR_PHONE_EDIT = "LOAD_EMAIL_OR_PHONE_EDIT";
 //
 export const VIEW_HISTORY_VOUCHER = "VIEW_HISTORY_VOUCHER";
 //-------- profile -------- //
@@ -160,6 +158,8 @@ export const UPDATE_ORDER_IS_OUT_OF_STOCK = "UPDATE_ORDER_IS_OUT_OF_STOCK";
 export const UPDATE_VOUCHER_ORDERS = "UPDATE_VOUCHER_ORDERS";
 //
 export const UPDATE_FEE_OR_SERVICE_ORDER = "UPDATE_FEE_OR_SERVICE_ORDER";
+//
+export const LOAD_INFO_USER_PAYMENT = "LOAD_INFO_USER_PAYMENT";
 // -------- orders --------- //
 
 // -------- bills --------- //

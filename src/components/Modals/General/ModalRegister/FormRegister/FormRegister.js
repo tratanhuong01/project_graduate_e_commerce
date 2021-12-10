@@ -193,6 +193,12 @@ class FormRegister extends Component {
                     dataSex: data,
                   })
                 }
+                setEmailOrPhone={(value) => {
+                  this.setState({
+                    emailOrPhone: value
+                  })
+                }}
+                emailOrPhone={this.state.emailOrPhone}
               />
               <FastField
                 isset={null}

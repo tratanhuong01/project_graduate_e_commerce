@@ -13,19 +13,14 @@ export const returnProfile = () => {
   };
 };
 
-export const loadEmailEdit = (email) => {
+export const loadEmailOrPhoneEdit = (data, emailOrPhone) => {
   return {
-    type: Types.LOAD_EMAIL_EDIT,
-    email,
+    type: Types.LOAD_EMAIL_OR_PHONE_EDIT,
+    data,
+    emailOrPhone
   };
 };
 
-export const loadPhoneEdit = (phone) => {
-  return {
-    type: Types.LOAD_PHONE_EDIT,
-    phone,
-  };
-};
 
 export const viewHistoryVoucher = () => {
   return {

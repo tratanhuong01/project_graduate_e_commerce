@@ -34,7 +34,7 @@ function ModalOrderSuccess(props) {
     dark:bg-dark-main"
       style={{ maxHeight: "70vh", height: "70vh" }}
     >
-      <div className="w-full flex flex-col -mt-8 items-center justify-center">
+      <div className="w-full flex flex-col -mt-16 items-center justify-center">
         <img
           src="https://media.istockphoto.com/vectors/male-hand-holding-megaphone-with-congrats-speech-bubble-loudspeaker-vector-id1197835415?b=1&k=20&m=1197835415&s=612x612&w=0&h=hHTEMcbYjLkkCYn1bpykolM_uTNnbAB2WbvDxqRvCEk="
           alt=""

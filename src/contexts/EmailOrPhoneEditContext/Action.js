@@ -10,14 +10,14 @@ export const updateItem = (key, value) => {
     }
 }
 
-export const checkEmailIssetRequest = async (email, user, headers, dispatch) => {
+export const checkEmailOrPhoneIssetRequest = async (data, user, headers, dispatch, emailOrPhone) => {
     dispatch({ type: constants.UPDATE_ITEM, key: "loadingSendCode", value: true });
-    const result = await api(`searchUserByEmailOrPhone`, "POST", email, {
+    const result = await api(`searchUserByEmailOrPhone`, "POST", data, {
         ...headers,
         "Content-Type": "application/json",
     });
     if (!result.data) {
-        dispatch(sendCodeEmail(email, user, headers, dispatch));
+        dispatch(sendCodeEmailOrPhone(data, user, headers, dispatch, emailOrPhone));
     }
     else {
         dispatch({ type: constants.UPDATE_ITEM, key: "errorEmail", value: result.data ? "Email đã được sử dụng !!" : "" });
@@ -25,10 +25,14 @@ export const checkEmailIssetRequest = async (email, user, headers, dispatch) => 
     }
 }
 
-export const sendCodeEmail = async (email, user, headers, dispatch) => {
+export const sendCodeEmailOrPhone = async (data, user, headers, dispatch, emailOrPhone) => {
     dispatch({ type: constants.UPDATE_ITEM, key: "loadingSendCode", value: true });
-    user.email = email;
-    const codeSent = await userApi.sendCodeEmail(user, headers);
+    user[emailOrPhone.toLowerCase()] = data;
+    let codeSent = "";
+    if (emailOrPhone === "Email")
+        codeSent = await userApi.sendCodeEmail(user, headers);
+    else
+        codeSent = await userApi.sendCodePhone(user, headers);
     await api(
         `passwordResets`,
         "POST",

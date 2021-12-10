@@ -46,19 +46,17 @@ function ModalTypeCode(props) {
     //
     const onEvent = () => setAccess(true);
     socket.on(
-      `verifyAccount.${
-        localStorage && localStorage.getItem("verifyData")
-          ? localStorage.getItem("verifyData")
-          : ""
+      `verifyAccount.${localStorage && localStorage.getItem("verifyData")
+        ? localStorage.getItem("verifyData")
+        : ""
       }`,
       onEvent
     );
     return () => {
       socket.off(
-        `verifyAccount.${
-          localStorage && localStorage.getItem("verifyData")
-            ? localStorage.getItem("verifyData")
-            : ""
+        `verifyAccount.${localStorage && localStorage.getItem("verifyData")
+          ? localStorage.getItem("verifyData")
+          : ""
         }`,
         onEvent
       );
@@ -127,11 +125,10 @@ function ModalTypeCode(props) {
             </p>
             <input
               className={`w-full p-4 my-4 border-2 border-solid rounded-full 
-            ${
-              message === null
-                ? "border-gray-400 text-black"
-                : "border-red-500 text-red-500"
-            } `}
+            ${message === null
+                  ? "border-gray-400 text-black"
+                  : "border-red-500 text-red-500"
+                } `}
               type="text"
               placeholder="Nhập mã có 8 chữ số.."
               onChange={(event) => setCodeVerify(event.target.value)}

@@ -23,6 +23,7 @@ const initialState = {
   service: [],
   serviceChoose: null,
   loading: true,
+  addressCount: 0,
   deliveryTime: null,
 };
 
@@ -69,6 +70,7 @@ const myReducer = (state = initialState, action) => {
           email: ""
         };
       }
+      state.addressCount = 1;
       return { ...state };
     case Types.UPDATE_ADDRESS_PAYMENT:
       let count = 0;
@@ -165,6 +167,15 @@ const myReducer = (state = initialState, action) => {
           break;
         default:
           break;
+      }
+      return { ...state };
+    case Types.LOAD_INFO_USER_PAYMENT:
+      if (action.user) {
+        state.infoPayment.address = "";
+        state.infoPayment.fullName = `${action.user.firstName} ${action.user.lastName}`;
+        state.infoPayment.email = action.user.email;
+        state.infoPayment.phone = action.user.phone;
+        state.addressCount = 0;
       }
       return { ...state };
     default:

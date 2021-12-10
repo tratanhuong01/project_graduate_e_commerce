@@ -48,15 +48,6 @@ function ModalChangeVoucher(props) {
         {vouchers.map((voucher, index) => {
           return <ItemChangeVoucher voucher={voucher} key={index} />;
         })}
-        {vouchers.map((voucher, index) => {
-          return <ItemChangeVoucher voucher={voucher} key={index} />;
-        })}
-        {vouchers.map((voucher, index) => {
-          return <ItemChangeVoucher voucher={voucher} key={index} />;
-        })}
-        {vouchers.map((voucher, index) => {
-          return <ItemChangeVoucher voucher={voucher} key={index} />;
-        })}
       </div>
     </ModalWrapper>
   );

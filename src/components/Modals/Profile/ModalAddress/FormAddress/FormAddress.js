@@ -49,15 +49,13 @@ function FormAddress(props) {
   };
   const generalContent = () => {
     if (checkNull()) return "Tỉnh/thành phố, Quận/huyện , Phường/xã";
-    return `${
-      getValues("cityProvince")
-        ? "Tỉnh " + JSON.parse(getValues("cityProvince")).ProvinceName + " , "
-        : ""
-    }${
-      getValues("district")
+    return `${getValues("cityProvince")
+      ? "Tỉnh " + JSON.parse(getValues("cityProvince")).ProvinceName + " , "
+      : ""
+      }${getValues("district")
         ? JSON.parse(getValues("district")).DistrictName + " , "
         : ""
-    }${getValues("wards") ? JSON.parse(getValues("wards")).WardName : ""}`;
+      }${getValues("wards") ? JSON.parse(getValues("wards")).WardName : ""}`;
   };
   const [fullAddress, setFullAddressData] = useState(generalContent());
   const setFullAddress = () => setFullAddressData(generalContent());

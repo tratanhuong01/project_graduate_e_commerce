@@ -34,6 +34,7 @@ function MainPayment(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     //
+    dispatch(ordersAction.loadInfoAddressPayment(null));
     let unmounted = false;
     async function fetch() {
       const result = await profileApi.getAddressByIdUser(user.id, headers);
@@ -48,6 +49,9 @@ function MainPayment(props) {
             user ? user.email : ""
           )
         );
+      }
+      else {
+        dispatch(ordersAction.loadInfoUserPayment(user));
       }
     }
     if (user) fetch();
@@ -70,7 +74,7 @@ function MainPayment(props) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, orders.infoPayment.ward, address]);
-  useEffect(() => {}, [orders.loading]);
+  useEffect(() => { }, [orders.loading]);
   //
   return orders.loading ? (
     <Loading />

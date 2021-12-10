@@ -4,6 +4,7 @@ import * as billApi from "../../api/billApi";
 import api from "../../Utils/api";
 import * as addressApi from "../../api/addressApi";
 import { IMAGE_BILL_CREATED } from "../../constants/Config";
+import * as profileApi from "../../api/profileApi";
 
 export const loadOrder = (orders) => {
   return {
@@ -26,6 +27,14 @@ export const loadInfoAddressPayment = (address, email) => {
     email,
   };
 };
+
+export const loadInfoUserPayment = (user) => {
+  return {
+    type: Types.LOAD_INFO_USER_PAYMENT,
+    user,
+  };
+};
+
 
 export const updateAddressPayment = (item, index) => {
   return {
@@ -128,7 +137,7 @@ export const addOrderRequest = (data, headers) => {
       {
         id: null,
         billUser: data.user ? data.user : user.data,
-        status: 0,
+        status: data.user ? 0 : -3,
         paymentMethodBill: {
           id: 1,
           namePaymentMethod: "Thanh toán khi nhận hàng",
@@ -175,7 +184,7 @@ export const addOrderRequest = (data, headers) => {
         headers
       );
     }
-    if (data.user)
+    if (data.user) {
       await api(
         `notifies`,
         "POST",
@@ -191,6 +200,31 @@ export const addOrderRequest = (data, headers) => {
         },
         headers
       );
+      const generalContent = () => {
+        return `${"Tỉnh " + JSON.parse(data.infoPayment.cityProvince).ProvinceName + " , "
+          }${JSON.parse(data.infoPayment.district).DistrictName + " , "
+          }${JSON.parse(data.infoPayment.wards).WardName}`;
+      };
+      if (data.addressCount === 0) {
+        await profileApi.addAddressByIdUser(
+          {
+            id: -1,
+            addressUser: data.user,
+            cityProvince: data.infoPayment.cityProvince,
+            district: data.infoPayment.district,
+            wards: data.infoPayment.ward,
+            details: data.infoPayment.address,
+            infoAddress: data.infoPayment.address + " ," + generalContent(),
+            statusAddress: 1,
+            fullName: data.fullName,
+            phone: data.user.phone,
+            typeAddress: 0,
+            isDefault: 1,
+          },
+          headers
+        );
+      }
+    }
     else
       await api(
         `sendMailOrders?idBill=${order.data.id}&email=${data.infoPayment.email}`,
@@ -198,14 +232,16 @@ export const addOrderRequest = (data, headers) => {
         null,
         { "Content-Type": "application/json" }
       );
+
     if (data.voucher) {
-      if (data.voucher.discountCode)
-        await api(
-          `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.discountCode.id}&idUser=${data.voucher.userDiscountCode.id}&isUsed=1`,
-          "GET",
-          null,
-          headers
-        );
+      if (!data.voucher.userDiscountCode) {
+        await api('discountCodeUsers', 'POST', {
+          discountCode: data.voucher.discountCode,
+          id: -1,
+          isUsed: 1,
+          userDiscountCode: data.user
+        }, headers);
+      }
       else
         await api(
           `discountCodeUsers/update/isUsed/?idDiscountCode=${data.voucher.id}&idUser=${data.user.id}&isUsed=1`,

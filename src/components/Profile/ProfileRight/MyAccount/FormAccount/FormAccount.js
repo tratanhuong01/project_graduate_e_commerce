@@ -42,9 +42,8 @@ function FormAccount(props) {
     setValue(
       "birthday",
       user.birthday
-        ? `${user.birthday.split(" ")[0].split("-")[0]}-${
-            user.birthday.split(" ")[0].split("-")[1]
-          }-${user.birthday.split(" ")[0].split("-")[2]}`
+        ? `${user.birthday.split(" ")[0].split("-")[0]}-${user.birthday.split(" ")[0].split("-")[1]
+        }-${user.birthday.split(" ")[0].split("-")[2]}`
         : null
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,9 +56,8 @@ function FormAccount(props) {
     clone.firstName = data.firstName;
     clone.lastName = data.lastName;
     let date = new Date(data.birthday);
-    clone.birthday = `${date.getFullYear()}-${
-      date.getMonth() + 1
-    }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    clone.birthday = `${date.getFullYear()}-${date.getMonth() + 1
+      }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     await api("users", "PUT", clone, headers);
     dispatch(usersAction.loadUserRequest(headers));
   };
@@ -87,7 +85,7 @@ function FormAccount(props) {
               showError={errors["firstName"]}
               type="text"
               className="w-full p-2 border border-solid dark:bg-dark-third dark:border-dark-second 
-            border-gray-300"
+              border-gray-300"
               onChange={() => ""}
               name="firstName"
               placeholder="Nhập họ"
@@ -100,7 +98,7 @@ function FormAccount(props) {
               onChange={() => ""}
               type="text"
               className="w-full p-2 border border-solid dark:bg-dark-third dark:border-dark-second 
-            border-gray-300"
+              border-gray-300"
               name="lastName"
               placeholder="Nhập tên"
             />

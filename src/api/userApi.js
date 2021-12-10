@@ -15,6 +15,13 @@ export const sendCodeEmail = (user, headers) => {
   //
 };
 
+export const sendCodePhone = (user, headers) => {
+  //
+  user.phone = `+84${user.phone ? user.phone.substring(1) : ""}`;
+  return api("sendCodePhone", "POST", user, headers);
+  //
+};
+
 export const getTeleSupport = (headers) => {
   return api(`getTeleSupport`, "GET", null, headers);
 };

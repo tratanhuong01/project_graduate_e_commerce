@@ -9,6 +9,8 @@ function ModalForgotPassword({ user, verify }) {
   //
   const dispatch = useDispatch();
   const [message, setMessage] = useState(null);
+  const [emailOrPhone, setEmailOrPhone] = useState("Email");
+
   //
   return (
     <ModalWrapper
@@ -25,7 +27,9 @@ function ModalForgotPassword({ user, verify }) {
             <b>Bạn muốn nhận mã để đặt lại tài khoản bằng cách nào ?</b>
           </p>
           <div className="w-full flex py-2.5">
-            <input type="radio" name="choose" className="m-2.5" />
+            <input type="radio" name="choose" className="m-2.5" value={"Email"}
+              onChange={(e) => setEmailOrPhone(e.target.value)}
+              checked={emailOrPhone === "Email" ? true : false} />
             <div className="px-2.5">
               <div className="my-1 font-semibold">
                 <i className="fas fa-envelope-open-text mr-3"></i>Gởi mã qua
@@ -35,7 +39,9 @@ function ModalForgotPassword({ user, verify }) {
             </div>
           </div>
           <div className="w-full flex py-2.5">
-            <input type="radio" name="choose" className="m-2.5" />
+            <input type="radio" name="choose" className="m-2.5" value={"Phone"}
+              onChange={(e) => setEmailOrPhone(e.target.value)}
+              checked={emailOrPhone === "Phone" ? true : false} />
             <div className="px-2.5">
               <div className="my-1 font-semibold">
                 <i className="fas fa-mobile-alt mr-3"></i>Gởi mã qua số điện
@@ -86,8 +92,8 @@ function ModalForgotPassword({ user, verify }) {
               await dispatch(
                 usersAction.sendCodeRegister(
                   {
-                    emailOrPhone: "Email",
-                    user: user,
+                    emailOrPhone,
+                    user,
                   },
                   verify ? false : true
                 )

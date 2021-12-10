@@ -25,7 +25,8 @@ function ProcessBill(props) {
             if (bill.data.bill) {
               if (
                 bill.data.bill.status === Number(typeToken.jti) ||
-                bill.data.bill.status === -1
+                bill.data.bill.status === -1 ||
+                bill.data.bill.status === 0
               )
                 alert("Token không hợp lệ!!");
               else {

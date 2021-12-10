@@ -4,7 +4,7 @@ import ItemSelectCustom from "./ItemSelectCustom/ItemSelectCustom";
 function SelectCustom(props) {
   //
   const [modal, setModal] = useState(false);
-  const { array, setData, data, label } = props;
+  const { array, setData, data, label, setEmailOrPhone, emailOrPhone } = props;
   const [icon, setIcon] = useState(array[0].icon);
   const showData = array.map((item, index) => {
     return data === item.data ? (
@@ -24,14 +24,24 @@ function SelectCustom(props) {
   return (
     <>
       {label && (
-        <label className="w-full text-gray-800 dark:text-white px-2 text-xm font-semibold">
-          {label}
-        </label>
+        <div className="w-full relative">
+          <label className="w-full text-gray-800 dark:text-white px-2 text-xm font-semibold">
+            {label}
+          </label>
+          <div className="flex items-center mt-1 absolute bottom-0 right-0">
+            <span className="mr-1 font-semibold">Gửi mã</span>
+            <input type="radio" className="mx-1" name="selectEmailOrPhone"
+              value={"Email"} onChange={(e) => setEmailOrPhone(e.target.value)}
+              checked={emailOrPhone === "Email"} /> Email
+            <input type="radio" className="mx-2" name="selectEmailOrPhone"
+              value={"Phone"} onChange={(e) => setEmailOrPhone(e.target.value)}
+              checked={emailOrPhone === "Phone"} /> Số điện thoại
+          </div>
+        </div>
       )}
       <div
-        className={`w-full p-2.5 my-3 border-2 border-solid ${
-          icon && " pl-10 "
-        } mt-2 relative dark:bg-dark-third dark:border-dark-third rounded-lg border-gray-300 cursor-pointer bg-gray-100 font-semibold`}
+        className={`w-full p-2.5 my-3 border-2 border-solid ${icon && " pl-10 "
+          } mt-2 relative dark:bg-dark-third dark:border-dark-third rounded-lg border-gray-300 cursor-pointer bg-gray-100 font-semibold`}
       >
         <p onClick={() => setModal(!modal)} className="items-center">
           {data}

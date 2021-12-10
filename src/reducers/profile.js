@@ -1,6 +1,5 @@
 import DetailBill from "../components/Profile/ProfileRight/DetailBill/DetailBill";
-import EmailEdit from "../components/Profile/ProfileRight/MyAccount/FormAccount/EmailEdit/EmailEdit";
-import PhoneEdit from "../components/Profile/ProfileRight/MyAccount/FormAccount/PhoneEdit/PhoneEdit";
+import EmailOrPhoneEdit from "../components/Profile/ProfileRight/MyAccount/FormAccount/EmailOrPhoneEdit/EmailOrPhoneEdit";
 import HistoryVoucher from "../components/Profile/ProfileRight/MyVoucher/HistoryVoucher/HistoryVoucher";
 import * as Types from "../constants/ActionTypes";
 
@@ -14,11 +13,8 @@ const myReducer = (state = initialState, action) => {
     case Types.LOAD_DETAIL_BILL:
       state.data = <DetailBill billProps={action.billProps} />;
       return { ...state };
-    case Types.LOAD_EMAIL_EDIT:
-      state.data = <EmailEdit email={action.email} />;
-      return { ...state };
-    case Types.LOAD_PHONE_EDIT:
-      state.data = <PhoneEdit phone={action.phone} />;
+    case Types.LOAD_EMAIL_OR_PHONE_EDIT:
+      state.data = <EmailOrPhoneEdit data={action.data} emailOrPhone={action.emailOrPhone} />;
       return { ...state };
     case Types.RETURN_PROFILE:
       state.data = null;

@@ -34,38 +34,41 @@ export const registerAccount = (data, notSend) => {
 
 export const sendCodeRegister = (data, forget) => {
   return async (dispatch) => {
-    if (data.emailOrPhone === "Email")
-      try {
-        const code = await userApi.sendCodeEmail(data.user);
-        if (forget)
-          await api(
-            `passwordResets`,
-            "POST",
-            {
-              id: null,
-              passwordResetUser: data.user,
-              code: code.data,
-              timeCreated: null,
-            },
-            null
-          );
-        dispatch(modalsAction.offLoadingModal());
-        dispatch(
-          modalsAction.openModalTypeCode(
-            data.user,
-            data.user.email,
-            code.data,
-            forget
-          )
+    try {
+      let code = "";
+      if (data.emailOrPhone === "Email")
+        code = await userApi.sendCodeEmail(data.user);
+      else
+        code = await userApi.sendCodePhone(data.user);
+      if (forget)
+        await api(
+          `passwordResets`,
+          "POST",
+          {
+            id: null,
+            passwordResetUser: data.user,
+            code: code.data,
+            timeCreated: null,
+          },
+          null
         );
-      } catch (error) {
-        throw error;
-      }
+      dispatch(modalsAction.offLoadingModal());
+      dispatch(
+        modalsAction.openModalTypeCode(
+          data.user,
+          data.emailOrPhone === "Email" ? data.user.email : data.user.phone,
+          code.data,
+          forget
+        )
+      );
+    } catch (error) {
+      throw error;
+    }
   };
 };
 
 export const loginAccountRequest = (data) => {
-  return (dispatch) => {};
+  return (dispatch) => { };
 };
 
 export const loginAccount = (user) => {

@@ -1,3 +1,5 @@
+import { REGEX_NUMBER_PHONE } from "../constants/Config";
+
 export const removeVietnameseTones = (str) => {
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -36,5 +38,12 @@ export const validateEmail = (email) => {
     .toLowerCase()
     .match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+export const validatePhone = (phone) => {
+  return String(phone)
+    .toLowerCase()
+    .match(
+      REGEX_NUMBER_PHONE
     );
 };

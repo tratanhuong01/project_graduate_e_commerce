@@ -14,7 +14,7 @@ function EmailPhone(props) {
           ? `${user.email.substring(0, 2)}*********@gmail.com`
           : "Chưa có email"}
         <span
-          onClick={() => dispatch(profilesAction.loadEmailEdit(user.email))}
+          onClick={() => dispatch(profilesAction.loadEmailOrPhoneEdit(user.email, "Email"))}
           className="text-blue-500 cursor-pointer ml-3 font-semibold"
         >
           {user.email ? "Chỉnh sửa" : "Thêm email"}
@@ -23,12 +23,12 @@ function EmailPhone(props) {
       <div className="flex py-3 items-center">
         {user.phone
           ? `${user.phone.substring(0, 2)}**********${user.phone.substring(
-              7,
-              9
-            )}`
+            7,
+            9
+          )}`
           : "Chưa có số điện thoại"}
         <span
-          onClick={() => dispatch(profilesAction.loadPhoneEdit(user.phone))}
+          onClick={() => dispatch(profilesAction.loadEmailOrPhoneEdit(user.phone, "Phone"))}
           className="text-blue-500 cursor-pointer ml-3 font-semibold"
         >
           {user.phone ? "Chỉnh sửa" : "Thêm số điện thọai"}
