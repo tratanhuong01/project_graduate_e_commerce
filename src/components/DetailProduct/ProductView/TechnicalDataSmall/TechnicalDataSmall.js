@@ -28,7 +28,7 @@ function TechnicalDataSmall(props) {
     }
     fetch();
     return () => {
-      unmounted = false;
+      unmounted = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);

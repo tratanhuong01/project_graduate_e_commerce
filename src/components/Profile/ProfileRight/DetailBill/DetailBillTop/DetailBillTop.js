@@ -7,7 +7,7 @@ function DetailBillTop(props) {
   //
   const dispatch = useDispatch();
   const { bill } = props;
-  useEffect(() => {}, [bill]);
+  useEffect(() => { }, [bill]);
   //
   return (
     <div className="w-full flex mb-3 items-center">
@@ -16,7 +16,10 @@ function DetailBillTop(props) {
       dark:text-white"
       >
         <div
-          onClick={() => dispatch(profilesAction.returnProfile())}
+          onClick={() => {
+            dispatch(profilesAction.returnProfile());
+            dispatch(profilesAction.updateIdBillProfile());
+          }}
           className="flex items-center"
         >
           <span className="bx bx-left-arrow-alt mr-2 text-xl"></span>

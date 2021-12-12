@@ -23,7 +23,7 @@ function ProductViewRight(props) {
   //
   return (
     <div className="w-full xl:w-5/12">
-      <div className="w-full flex mb-2">
+      <div className="w-full flex mb-2 pr-8">
         <div className="w-full pl-4 pt-1 relative">
           <WishListStatus user={user} idProduct={products.idProduct} />
           <p className="text-2xl font-semibold cursor-pointer hover:text-organce mb-3 dark:text-gray-300">

@@ -1,16 +1,22 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as profilesAction from "../../../../../actions/profile/index";
+import * as Config from "../../../../../constants/Config";
 
 function ItemNotify(props) {
   //
   const dispatch = useDispatch();
+  const history = useHistory();
   const { notify } = props;
   //
   return (
     <div
-      onClick={() => dispatch(profilesAction.loadDetailBill(null))}
-      className="w-full my-2 p-2 flex items-center hover:bg-gray-100 dark:hover:bg-dark-third cursor-pointer"
+      onClick={() => {
+        history.push(`${`${Config.PAGE_PROFILE_USER}/${Config.PROFILE_BILL}`}`);
+        dispatch(profilesAction.updateIdBillProfile(notify.data));
+      }}
+      className={`w-full my-2 p-2 flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-third`}
     >
       <div className="w-3/4 flex items-center">
         <img

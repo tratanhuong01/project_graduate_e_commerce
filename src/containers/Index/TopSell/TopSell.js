@@ -8,13 +8,17 @@ function TopSell(props) {
   //
   const [products, setProducts] = useState(null);
   const [image, setImage] = useState(null);
+  const [images, setImages] = useState([]);
   useEffect(() => {
     let unmounted = false;
     const fetch = async () => {
       const result = await api(`getProductTopSell`, 'GET', null, {});
+      const resultImage = await api(`getImageByIdLineProduct?idLineProduct=${result.data ? result.data.idLineProduct :
+        ""}`, 'GET', null, {});
       if (unmounted) return;
       setProducts(result.data);
       setImage(result.data ? result.data.image : null);
+      setImages(resultImage.data);
     }
     fetch();
     return () => {
@@ -31,6 +35,7 @@ function TopSell(props) {
         </>
       </div>
       <ImageChildTopSell
+        images={images}
         image={image}
         setImage={setImage}
         products={products}

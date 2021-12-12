@@ -30,7 +30,7 @@ function Right(props) {
         border-organce flex justify-center items-center font-bold 
         absolute right-2.5 bg-organce bottom-5 text-xs"
       >
-        {wishLists.length}
+        {wishLists.length >= 10 ? `9+` : wishLists.length}
       </span>
     </li>
   );

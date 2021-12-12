@@ -52,7 +52,7 @@ function ModalForgotPassword({ user, verify }) {
           </div>
         </div>
         <div className="text-center py-4 px-2 " style={{ width: "30%" }}>
-          <img className="w-16 h-16 mx-auto" src={user.avatar} alt="" />
+          <img className="w-16 h-16 mx-auto object-cover" src={user.avatar} alt="" />
           <br />
           <b>{`${user.firstName} ${user.lastName}`}</b>
           <br />

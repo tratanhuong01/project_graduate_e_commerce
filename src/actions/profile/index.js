@@ -27,3 +27,11 @@ export const viewHistoryVoucher = () => {
     type: Types.VIEW_HISTORY_VOUCHER,
   };
 };
+
+
+export const updateIdBillProfile = (idBill) => {
+  return {
+    type: Types.UPDATE_BILL_ID_PROFILE,
+    idBill
+  }
+}

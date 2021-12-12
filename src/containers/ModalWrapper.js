@@ -16,6 +16,7 @@ function ModalWrapper(props) {
     styleChildren,
     Component,
     data,
+    bgBlack,
     notHeader,
     fixed,
   } = props;
@@ -31,11 +32,11 @@ function ModalWrapper(props) {
       className={className}
       style={modal.loading ? { ...style, overflow: "hidden" } : style}
     >
-      <div className="w-full relative rounded-lg bg-white dark:bg-dark-second z-50">
+      <div className={`w-full relative rounded-lg ${bgBlack ? bgBlack : 'bg-white'} dark:bg-dark-second z-50`}>
         {!notHeader && (
           <div
-            className="w-full fixed top-0 bg-white dark:bg-dark-third z-50 h-16 flex items-center justify-center 
-            rounded-lg"
+            className={`w-full fixed top-0 ${bgBlack ? bgBlack : 'bg-white'} dark:bg-dark-third z-50 h-16 flex items-center justify-center 
+            rounded-lg`}
           >
             {data ? (
               <Component setIndex={data.setData} index={data.data} />
@@ -47,11 +48,10 @@ function ModalWrapper(props) {
           </div>
         )}
         <div
-          className={`w-full ${notHeader ? "" : "pt-16"} relative  +  ${
-            modal.loading
-              ? "overflow-hidden"
-              : "overflow-x-hidden overflow-y-auto scrollbar-css"
-          } `}
+          className={`w-full ${notHeader ? "" : "pt-16"} relative  +  ${modal.loading
+            ? "overflow-hidden"
+            : "overflow-x-hidden overflow-y-auto scrollbar-css"
+            } `}
           style={styleChildren}
         >
           {children}

@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Config from "../../../../constants/Config";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 function AvatarUser(props) {
   //
@@ -9,12 +11,14 @@ function AvatarUser(props) {
   //
   return (
     <div className="w-full relative items-center hidden md:flex">
-      <img
-        src={user.avatar}
-        alt=""
-        className="w-16 h-16 rounded-full object-cover 
+      <Zoom>
+        <img
+          src={user.avatar}
+          alt=""
+          className="w-16 h-16 rounded-full object-cover 
         border-solid border-white border-4"
-      />
+        />
+      </Zoom>
       <div className="my-2 flex-col flex ml-5 font-semibold">
         <span className="mb-1 text-xm">{`${user.firstName} ${user.lastName}`}</span>
         <Link

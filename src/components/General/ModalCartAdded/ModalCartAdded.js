@@ -43,7 +43,7 @@ function ModalCartAdded() {
                 className="flex justify-center items-center text-blue-500 
                 font-semibold"
               >
-                <Link to="">Xem thêm sản phẩm</Link>
+                <Link to={Config.PAGE_PRODUCT}>Xem thêm sản phẩm</Link>
               </div>
             </>
           ) : (

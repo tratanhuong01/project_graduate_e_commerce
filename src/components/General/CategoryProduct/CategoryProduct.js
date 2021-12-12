@@ -6,7 +6,7 @@ import PaginationListProduct from "./PaginationListProduct/PaginationListProduct
 
 function CategoryProduct(props) {
   //
-  const { products } = props;
+  const { products, title } = props;
   const [active, setActive] = useState(0);
   //
   return (
@@ -14,7 +14,7 @@ function CategoryProduct(props) {
       className="xl:w-4/5 w-full mx-auto p-4 relative element__hover"
       id={`${products.idCategoryProduct}`}
     >
-      <LabelCategoryProduct products={products} />
+      <LabelCategoryProduct products={products} title={title} />
 
       {products.listProductCategory.length > 3 && (
         <div
@@ -27,11 +27,10 @@ function CategoryProduct(props) {
                 ).scrollLeft = (active - 1) * 4 * 290;
             }
           }}
-          className={`w-12 h-12 ${
-            active === 0
-              ? "bg-gray-300 bg-opacity-50 cursor-not-allowed "
-              : " bg-organce-second bg-opacity-50 cursor-pointer text-white shadow-lg-organce"
-          } rounded-full absolute top-1/2 transform -translate-y-1/2 -left-6 z-50 flex justify-center items-center element__show`}
+          className={`w-12 h-12 ${active === 0
+            ? "bg-gray-300 bg-opacity-50 cursor-not-allowed "
+            : " bg-organce-second bg-opacity-50 cursor-pointer text-white shadow-lg-organce"
+            } rounded-full absolute top-1/2 transform -translate-y-1/2 -left-6 z-50 flex justify-center items-center element__show`}
         >
           <span className="bx bx-chevron-left text-4xl flex"></span>
         </div>
@@ -60,11 +59,10 @@ function CategoryProduct(props) {
                 ).scrollLeft = (active + 1) * 4 * 290;
             }
           }}
-          className={`w-12 h-12 ${
-            active === Math.ceil(products.listProductCategory.length / 4) - 1
-              ? "bg-gray-300 bg-opacity-50 cursor-not-allowed"
-              : " bg-organce-second bg-opacity-50 cursor-pointer text-white  shadow-lg-organce"
-          } rounded-full absolute top-1/2 transform -translate-y-1/2 -right-6 z-50 flex justify-center items-center element__show`}
+          className={`w-12 h-12 ${active === Math.ceil(products.listProductCategory.length / 4) - 1
+            ? "bg-gray-300 bg-opacity-50 cursor-not-allowed"
+            : " bg-organce-second bg-opacity-50 cursor-pointer text-white  shadow-lg-organce"
+            } rounded-full absolute top-1/2 transform -translate-y-1/2 -right-6 z-50 flex justify-center items-center element__show`}
         >
           <span className="bx bx-chevron-right text-4xl flex"></span>
         </div>

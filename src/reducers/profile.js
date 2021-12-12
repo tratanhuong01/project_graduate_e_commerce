@@ -5,6 +5,7 @@ import * as Types from "../constants/ActionTypes";
 
 const initialState = {
   data: null,
+  idBill: null,
   loading: false,
 };
 
@@ -21,6 +22,9 @@ const myReducer = (state = initialState, action) => {
       return { ...state };
     case Types.VIEW_HISTORY_VOUCHER:
       state.data = <HistoryVoucher />;
+      return { ...state };
+    case Types.UPDATE_BILL_ID_PROFILE:
+      state.idBill = action.idBill;
       return { ...state };
     default:
       return state;

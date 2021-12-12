@@ -15,7 +15,7 @@ function ItemNotify(props) {
       </div>
       <span
         className="text-xm font-bold absolute top-1 right-2 
-      cursor-pointer"
+        cursor-pointer"
       >
         &times;
       </span>

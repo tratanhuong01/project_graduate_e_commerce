@@ -25,7 +25,7 @@ function NewsDetailProduct(props) {
   //
   return (
     <>
-      <p className="font-bold text-2xl px-2 ">Tin tức nổi bật</p>
+      <p className="font-bold text-2xl px-2 mt-4">Tin tức nổi bật</p>
       {news && (
         <div className="w-full flex flex-wrap">
           <div className="item__news__detail py-0.5 px-2 mr-2 my-2 relative">

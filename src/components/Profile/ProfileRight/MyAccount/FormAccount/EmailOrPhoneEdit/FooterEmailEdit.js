@@ -54,6 +54,9 @@ export default function FooterEmailOrPhoneEdit(props) {
                             else {
                                 if (user[`isVerify${props.emailOrPhone}`] === 0) {
                                     let clone = { ...user };
+                                    if (props.emailOrPhone === "Phone") {
+                                        clone.phone = clone.phone ? clone.phone.replace("+84", "0") : null;
+                                    }
                                     clone[`isVerify${props.emailOrPhone}`] = 1;
                                     await api("users", "PUT", clone, headers);
                                     dispatch(usersAction.loadUserRequest(headers));

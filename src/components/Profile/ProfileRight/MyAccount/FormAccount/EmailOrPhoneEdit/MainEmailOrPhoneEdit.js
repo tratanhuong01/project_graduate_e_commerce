@@ -34,9 +34,11 @@ export default function MainEmailOrPhoneEdit(props) {
                         <span className="">{user[props.emailOrPhone.toLowerCase()]}</span>
                         {!code && loadingSendCode ? <i className="fas ml-5 fa-circle-notch fa-spin text-xl text-organce"></i> : (
                             <>
-                                <SendCode onClick={() => emailOrPhoneEditDispatch(emailOrPhoneEditActions.sendCodeEmailOrPhone(
-                                    props.data, user, headers, emailOrPhoneEditDispatch, props.emailOrPhone
-                                ))} />
+                                <SendCode onClick={() => {
+                                    emailOrPhoneEditDispatch(emailOrPhoneEditActions.sendCodeEmailOrPhone(
+                                        props.data, user, headers, emailOrPhoneEditDispatch, props.emailOrPhone
+                                    ))
+                                }} />
                                 {user[`isVerify${props.emailOrPhone}`] === 0 && <span className="p-1.5 ml-3 rounded-full text-sm font-semibold text-white 
                                 bg-red-500">Chưa xác nhận</span>}
                             </>
@@ -69,8 +71,17 @@ export default function MainEmailOrPhoneEdit(props) {
                                             "Email không đúng định dạng !!"));
                                     }
                                     else {
-                                        emailOrPhoneEditDispatch(emailOrPhoneEditActions.checkEmailOrPhoneIssetRequest(emailOrPhoneNew, user, headers,
-                                            emailOrPhoneEditDispatch, props.emailOrPhone))
+                                        if (user[`isVerify${props.emailOrPhone}`] === 0 && !user[`${props.emailOrPhone.toLowerCase()}`]) {
+                                            emailOrPhoneEditDispatch(emailOrPhoneEditActions.checkEmailOrPhoneIssetRequest(
+                                                emailOrPhoneNew, user, headers,
+                                                emailOrPhoneEditDispatch, props.emailOrPhone
+                                            ))
+                                        }
+                                        else {
+                                            emailOrPhoneEditDispatch(emailOrPhoneEditActions.sendCodeEmailOrPhone(
+                                                props.data, user, headers, emailOrPhoneEditDispatch, props.emailOrPhone
+                                            ))
+                                        }
                                     }
                                 }}
                                 />

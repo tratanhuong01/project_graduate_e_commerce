@@ -18,7 +18,13 @@ function Center(props) {
             border-organce flex justify-center items-center font-bold 
             absolute right-0.5 bg-organce bottom-5 text-xs"
       >
-        {carts.list.length}
+        {carts.list ? (() => {
+          let amount = 0;
+          carts.list.forEach(cart => {
+            amount += cart.amount;
+          });
+          return amount >= 10 ? `9+` : amount;
+        })() : 0}
       </span>
       <ModalCartAdded carts={carts} />
     </li>

@@ -8,11 +8,11 @@ function ImageOther(props) {
   useEffect(() => { }, [images]);
   //
   return (
-    <div className="w-full flex flex-wrap h-full">
+    <div className="w-full h-full">
       {images.length > 0 && (
         <>
-          <div className="w-full flex items-center mt-3">
-            <div className="w-1/5 flex items-center justify-end pr-6">
+          <div className="w-full flex items-start" style={{ height: "calc(100% - 133px)" }}>
+            {index !== 0 && images.length !== 0 ? <div className="w-1/5 h-full flex items-center justify-end pr-6">
               <div
                 onClick={() => {
                   if (index === 0) return;
@@ -26,19 +26,15 @@ function ImageOther(props) {
               >
                 <span className="bx bx-chevron-left text-2xl dark:text-white text-black"></span>
               </div>
+            </div> : <div className="w-1/5"></div>}
+            <div className="w-3/5 relative h-full" id="slide">
+              <img
+                src={images[index].src}
+                alt=""
+                className={`w-full h-full object-contain z-0 rounded-sm`}
+              />
             </div>
-            <div className="w-3/5 relative flex " id="slide">
-              <ScrollContainer
-                className={`w-full max-w-full flex overflow-hidden scrollbar-css`}
-              >
-                <img
-                  src={images[index].src}
-                  alt=""
-                  className={`w-full h-80 object-contain z-0 rounded-lg  flex flex-shrink-0`}
-                />
-              </ScrollContainer>
-            </div>
-            <div className="w-1/5 flex items-center justify-start pl-6">
+            {index < images.length - 1 && images.length !== 1 ? <div className="w-1/5 flex h-full items-center justify-start pl-6">
               <div
                 onClick={() => {
                   if (index === images.length - 1) return;
@@ -52,10 +48,10 @@ function ImageOther(props) {
               >
                 <span className="bx bx-chevron-right text-2xl dark:text-white text-black"></span>
               </div>
-            </div>
+            </div> : <div className="w-1/5"></div>}
           </div>
-          <div className="w-full flex pb-8 justify-center items-end">
-            <div className="flex">
+          <div className="w-full flex justify-center items-end">
+            <ScrollContainer className="flex w-full justify-center max-w-full overflow-x-auto scrollbar-css">
               {images.map((image, pos) => {
                 return (
                   <img
@@ -63,7 +59,7 @@ function ImageOther(props) {
                     key={pos}
                     src={image.src}
                     alt=""
-                    className={`w-36 h-28 mx-2 object-contain rounded-lg border-solid border-2 border-white 
+                    className={`w-36 h-28 -pt-5 mx-2 object-contain rounded-lg border-solid border-2 border-white 
                     dark:border-dark-third p-2  ${index === pos
                         ? "border-gray-300 dark:border-white"
                         : "hover:border-gray-300 dark:border-dark-third"
@@ -71,11 +67,12 @@ function ImageOther(props) {
                   />
                 );
               })}
-            </div>
+            </ScrollContainer>
           </div>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 

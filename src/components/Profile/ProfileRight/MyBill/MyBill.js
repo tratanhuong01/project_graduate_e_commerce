@@ -9,14 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../../General/Pagination/Pagination";
 import { SET_LOADING_BILL_USER } from "../../../../constants/ActionTypes";
 import NotBill from "../DetailBill/NotBill/NotBill";
+import * as profilesAction from "../../../../actions/profile/index";
 
 function MyBill(props) {
   //
-  const { bills, user, headers } = useSelector((state) => {
+  const { bills, user, headers, profile } = useSelector((state) => {
     return {
       user: state.user,
       bills: state.bills,
       headers: state.headers,
+      profile: state.profile
     };
   });
   const dispatch = useDispatch();
@@ -33,24 +35,33 @@ function MyBill(props) {
     //
     window.scrollTo(0, 0);
     dispatch(billsAction.setLoadingBillUser(true));
-    const timeOut = setTimeout(() => {
-      dispatch(
-        billsAction.loadBillsUserRequest(
-          {
-            user,
-            type: data.type,
-            index: 0,
-          },
-          headers
-        )
-      );
-    }, 500);
-
+    let timeOut;
+    if (!profile.idBill) {
+      timeOut = setTimeout(() => {
+        dispatch(
+          billsAction.loadBillsUserRequest(
+            {
+              user,
+              type: data.type,
+              index: 0,
+            },
+            headers
+          )
+        );
+      }, 500);
+    }
     return () => {
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
+  useEffect(() => {
+    //
+    if (profile.idBill) {
+      dispatch(profilesAction.loadDetailBill(profile.idBill));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   //
   return (
     <div className="w-full dark:text-white">

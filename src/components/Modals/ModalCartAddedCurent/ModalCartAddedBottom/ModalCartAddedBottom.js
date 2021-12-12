@@ -42,7 +42,13 @@ function ModalCartAddedBottom(props) {
         <div className="w-1/2 flex">
           <p className="flex items-center hover:text-organce text-gray-700 dark:text-gray-300 cursor-pointer">
             <i className="bx bx-caret-right mr-3"></i>
-            Giỏ hàng của bạn hiện có (<span>{carts.list.length}</span>) sản phẩm
+            Giỏ hàng của bạn hiện có (<span>{carts.list ? (() => {
+              let amount = 0;
+              carts.list.forEach(cart => {
+                amount += cart.amount;
+              });
+              return amount;
+            })() : 0}</span>) sản phẩm
           </p>
         </div>
         <div className=" w-1/2 flex justify-end">

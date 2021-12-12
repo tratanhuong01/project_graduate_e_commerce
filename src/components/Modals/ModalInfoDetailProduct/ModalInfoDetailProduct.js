@@ -47,13 +47,15 @@ function ModalInfoDetailProduct(props) {
   //
   return (
     <ModalWrapper
-      Component={HeaderInfoDetailProduct}
+      styleChildren={{ height: "calc(100vh)" }}
+      Component={() => <HeaderInfoDetailProduct bgBlack={"bg-black bg-opacity-80"}
+        index={index} setIndex={setIndex} />}
       data={{ setData: (index) => setIndex(index), data: index }}
-      styleChildren={{ height: "calc(90vh - 10px)" }}
-      className="w-11/12 xl:w-3/5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-        rounded-lg z-0 animate__animated animate__fadeIn bg-white dark:bg-dark-third"
+      bgBlack={"bg-black bg-opacity-80"}
+      className="w-full absolute top-0 left-0 h-screen fixed z-50 animate__animated animate__fadeIn 
+      bg-black dark:bg-dark-third"
     >
-      <div className="w-full relative h-full dark:bg-dark-third">
+      <div className="w-10/12 mx-auto relative h-full bg-white dark:bg-dark-third">
         {data ? <Component /> : <LoadingModal />}
       </div>
     </ModalWrapper>

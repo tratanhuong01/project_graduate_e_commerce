@@ -113,6 +113,9 @@ export const RETURN_PROFILE = "RETURN_PROFILE";
 export const LOAD_EMAIL_OR_PHONE_EDIT = "LOAD_EMAIL_OR_PHONE_EDIT";
 //
 export const VIEW_HISTORY_VOUCHER = "VIEW_HISTORY_VOUCHER";
+//
+export const UPDATE_BILL_ID_PROFILE = "UPDATE_BILL_ID_PROFILE";
+//
 //-------- profile -------- //
 
 //-------- profile -------- //

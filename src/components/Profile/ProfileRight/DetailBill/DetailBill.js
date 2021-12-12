@@ -11,18 +11,39 @@ import {
   PROFILE_BILL,
   PROFILE_DETAIL_BILL,
 } from "../../../../constants/Config";
+import api from "../../../../Utils/api";
+import { useDispatch, useSelector } from "react-redux";
+import * as profilesAction from "../../../../actions/profile/index";
 
 function DetailBill(props) {
   //
   const { billProps } = props;
+  const dispatch = useDispatch();
+  const headers = useSelector(state => state.headers);
   const [bill, setBill] = useState(null);
   useEffect(() => {
     //
+    let unmounted = false;
+
     const timeOut = setTimeout(() => {
-      setBill(billProps);
+      if (billProps) {
+        if (billProps.bill) {
+          setBill(billProps);
+        }
+        else {
+          const fetch = async () => {
+            const result = await api(`bills/${billProps}`, 'GET', null, headers);
+            if (unmounted) return;
+            setBill(result.data);
+          }
+          fetch();
+        }
+        dispatch(profilesAction.updateIdBillProfile());
+      }
       window.scrollTo(0, 0);
-    }, 500);
+    }, 200);
     return () => {
+      unmounted = true;
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

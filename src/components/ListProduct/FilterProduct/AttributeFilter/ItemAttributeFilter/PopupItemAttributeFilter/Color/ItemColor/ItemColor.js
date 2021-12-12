@@ -37,11 +37,10 @@ function ItemColor(props) {
         };
       }}
       className={`w-11 h-11 m-2 rounded-full border-2 border-solid text-sm 
-      ${
-        state === -1
+      ${state === -1
           ? " border-gray-300 hover:border-organce hover:text-organce "
           : " border-organce text-organce "
-      }`}
+        }`}
       style={{ backgroundColor: color.code }}
     ></div>
   );

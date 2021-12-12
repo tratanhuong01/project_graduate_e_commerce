@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from "react";
-import api from "../../../../Utils/api";
+import React from "react";
+import useInfoWebsite from "../../../../hook/useInfoWebsite";
 
 function InfoContact(props) {
   //
-  const [info, setInfo] = useState(null);
-  useEffect(() => {
-    //
-    let unmounted = false;
-    const fetch = async () => {
-      const resultInfo = await api(`configWebsites/type/${2}`, 'GET', null);
-      if (unmounted) return;
-      let data = {};
-      if (resultInfo.data) {
-        setInfo(Object.assign(data, JSON.parse(resultInfo.data.content).data));
-      }
-    }
-    fetch();
-    return () => {
-      unmounted = false;
-    }
-    //
-  }, []);
+  const info = useInfoWebsite(2);
   //
   return (
     <div className="w-full xl:w-1/3">

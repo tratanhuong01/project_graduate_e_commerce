@@ -14,8 +14,7 @@ export const getBillMain = (type, idUser, headers) => {
 
 export const getBillLimit = (type, idUser, index, limit, headers) => {
   return api(
-    `bills?type=${type}&idUser=${idUser}&offset=${
-      index * limit
+    `bills?type=${type}&idUser=${idUser}&offset=${index * limit
     }&limit=${limit}`,
     "GET",
     null,
@@ -47,8 +46,7 @@ export const searchBillMain = (keyword, idUser, headers) => {
 
 export const searchBillLimit = (keyword, idUser, index, limit, headers) => {
   return api(
-    `bills/search/?keyword=${keyword}&idUser=${idUser}&offset=${
-      index * limit
+    `bills/search/?keyword=${keyword}&idUser=${idUser}&offset=${index * limit
     }&limit=${limit}&type=${0}`,
     "GET",
     null,

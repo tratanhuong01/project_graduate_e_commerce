@@ -20,7 +20,7 @@ export const checkEmailOrPhoneIssetRequest = async (data, user, headers, dispatc
         dispatch(sendCodeEmailOrPhone(data, user, headers, dispatch, emailOrPhone));
     }
     else {
-        dispatch({ type: constants.UPDATE_ITEM, key: "errorEmail", value: result.data ? "Email đã được sử dụng !!" : "" });
+        dispatch({ type: constants.UPDATE_ITEM, key: "errorEmailOrPhone", value: result.data ? "Email đã được sử dụng !!" : "" });
         dispatch({ type: constants.UPDATE_ITEM, key: "loadingSendCode", value: false });
     }
 }

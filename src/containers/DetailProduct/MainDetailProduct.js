@@ -7,6 +7,7 @@ import RateComment from "../../components/DetailProduct/ProductView/RateComment/
 import TechnicalDataSmall from "../../components/DetailProduct/ProductView/TechnicalDataSmall/TechnicalDataSmall";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { PAGE_DETAIL_PRODUCT } from "../../constants/Config";
+import ProductSame from "../../components/DetailProduct/ProductSame/ProductSame";
 function MainDetailProduct(props) {
   //
   const { products, slug } = props;
@@ -24,10 +25,9 @@ function MainDetailProduct(props) {
       </BreadcrumbsItem>
       <BreadcrumbsItem to={`${PAGE_DETAIL_PRODUCT}/${products.slug}`}>
         {products.nameLineProduct +
-          ` ${products.memory ? products.memory.nameMemory + " " : ""}${
-            products.color
-              ? "Màu " + products.color.description.toLowerCase()
-              : ""
+          ` ${products.memory ? products.memory.nameMemory + " " : ""}${products.color
+            ? "Màu " + products.color.description.toLowerCase()
+            : ""
           }`}
       </BreadcrumbsItem>
       <LevelUrl />
@@ -44,6 +44,7 @@ function MainDetailProduct(props) {
           </div>
         </div>
       </div>
+      <ProductSame />
     </div>
   );
 }

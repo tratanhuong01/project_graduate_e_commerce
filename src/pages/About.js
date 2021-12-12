@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { useSelector } from "react-redux";
 import LevelUrl from "../components/General/LevelUrl/LevelUrl";
 import { PAGE_ABOUT } from "../constants/Config";
+import useInfoWebsite from "../hook/useInfoWebsite";
 import useResetPage from "../hook/useResetPage";
-import api from "../Utils/api";
 
 function About(props) {
   //
-  const [about, setAbout] = useState(null);
   const headers = useSelector((state) => state.headers);
   useResetPage("Giới thiệu");
-  useEffect(() => {
-    //
-    window.scrollTo(0, 0);
-    let unmounted = false;
-    async function fetch() {
-      try {
-        const result = await api(`configWebsites/type/0`, "GET", null, headers);
-        if (unmounted) return;
-        setAbout(result.data);
-      } catch (error) {
-        throw error;
-      }
-    }
-    fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const about = useInfoWebsite(0, headers);
   //
   return (
     <>
@@ -41,7 +25,7 @@ function About(props) {
           <div
             className="w-full mx-auto mt-5 mb-2 post"
             dangerouslySetInnerHTML={{
-              __html: about && JSON.parse(about.content).data,
+              __html: about,
             }}
           ></div>
         </div>

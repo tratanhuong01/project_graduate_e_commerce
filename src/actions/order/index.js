@@ -203,7 +203,7 @@ export const addOrderRequest = (data, headers) => {
       const generalContent = () => {
         return `${"Tỉnh " + JSON.parse(data.infoPayment.cityProvince).ProvinceName + " , "
           }${JSON.parse(data.infoPayment.district).DistrictName + " , "
-          }${JSON.parse(data.infoPayment.wards).WardName}`;
+          }${JSON.parse(data.infoPayment.ward).WardName}`;
       };
       if (data.addressCount === 0) {
         await profileApi.addAddressByIdUser(

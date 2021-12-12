@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import * as Config from "../../../constants/Config";
-import React from "react";
-import logo from "../../../assets/images/logo.png";
+import useInfoWebsite from "../../../hook/useInfoWebsite";
 function HeaderLeft(props) {
   //
+  const info = useInfoWebsite(1);
   //
   return (
     <div className="w-3/5 md:w-3/12 lg:w-1/5 flex justify-center">
@@ -11,7 +11,7 @@ function HeaderLeft(props) {
         to={Config.PAGE_INDEX}
         className="w-8/12 md:w-full lg:w-10/12 flex items-center cursor-pointer"
       >
-        <img src={logo} alt="" className="w-full" />
+        <img src={info} alt="" className="w-full" />
       </Link>
     </div>
   );

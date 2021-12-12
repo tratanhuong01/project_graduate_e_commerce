@@ -38,7 +38,6 @@ function ListProduct(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slugCategoryProduct, slugGroupProduct, listProduct.slug]);
   useResetPage("Sản phẩm");
-
   //
   return (
     <div className="w-full dark:bg-dark-second dark:text-gray-300">
@@ -53,7 +52,7 @@ function ListProduct(props) {
           {listProduct.slug && (
             <>{listProduct.type === true && !listProduct.loading && <GroupProduct />}</>
           )}
-          {!listProduct.slug === null || !listProduct !== "" ? < CategoryProduct /> : ""}
+          {!listProduct.slug === null && !listProduct !== "" ? < CategoryProduct /> : !listProduct.slug && < CategoryProduct />}
           {listProduct.products && <FilterProduct />}
           <ListProductWrapper />
         </div>
