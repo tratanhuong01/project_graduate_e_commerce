@@ -99,17 +99,19 @@ function FormChangePassword({ user }) {
       <div className="w-full flex my-3">
         <div className="w-1/3 lg:w-1/4 flex mt-2 justify-end">Mật khẩu mới</div>
         <div className="w-2/3 lg:w-3/4 ml-6 flex items-center">
-          <InputFieldFC
-            register={register}
-            showError={errors["passwordNew"]}
-            onChange={() => ""}
-            type="password"
-            className="w-2/3 lg:w-1/2 p-2 border border-solid border-gray-300 dark:border-dark-second 
+          <div className="w-2/3 lg:w-1/2">
+            <InputFieldFC
+              register={register}
+              showError={errors["passwordNew"]}
+              onChange={() => ""}
+              type="password"
+              className="w-full p-2 border border-solid border-gray-300 dark:border-dark-second 
                 dark:bg-dark-third"
-            name="passwordNew"
-            placeholder=""
-            autoComplete={true}
-          />
+              name="passwordNew"
+              placeholder=""
+              autoComplete={true}
+            />
+          </div>
         </div>
       </div>
 
@@ -117,18 +119,20 @@ function FormChangePassword({ user }) {
         <div className="w-1/3 lg:w-1/4 flex mt-2 justify-end">
           Xác nhận mật khẩu
         </div>
-        <div className="w-2/3 lg:w-3/4 ml-6 flex items-center">
-          <InputFieldFC
-            register={register}
-            showError={errors["passwordConfirmation"]}
-            onChange={() => ""}
-            type="password"
-            className="w-2/3 lg:w-1/2 p-2 border border-solid border-gray-300 dark:border-dark-second 
+        <div className="w-2/3 lg:w-3/4 ml-6 flex items-center relative">
+          <div className="w-2/3 lg:w-1/2">
+            <InputFieldFC
+              register={register}
+              showError={errors["passwordConfirmation"]}
+              onChange={() => ""}
+              type="password"
+              className="w-full p-2 border border-solid border-gray-300 dark:border-dark-second 
                 dark:bg-dark-third"
-            name="passwordConfirmation"
-            placeholder=""
-            autoComplete={true}
-          />
+              name="passwordConfirmation"
+              placeholder=""
+              autoComplete={true}
+            />
+          </div>
         </div>
       </div>
 
@@ -137,9 +141,8 @@ function FormChangePassword({ user }) {
         <div className="w-2/3 lg:w-3/4 ml-6">
           <button
             type="submit"
-            className={`bg-organce ${
-              formState.isValid ? "" : "opacity-50 cursor-not-allowed"
-            } px-6 py-2 my-3 text-white font-semibold`}
+            className={`bg-organce ${formState.isValid ? "" : "opacity-50 cursor-not-allowed"
+              } px-6 py-2 my-3 text-white font-semibold`}
             disabled={formState.isValid ? false : true}
           >
             Lưu

@@ -35,7 +35,6 @@ export const loadInfoUserPayment = (user) => {
   };
 };
 
-
 export const updateAddressPayment = (item, index) => {
   return {
     type: Types.UPDATE_ADDRESS_PAYMENT,
@@ -159,6 +158,7 @@ export const addOrderRequest = (data, headers) => {
         timeCompleted: null,
         timeIntend: timeIntend(),
         timeApproval: null,
+        timeCancel: null,
       },
       headers
     );
@@ -192,7 +192,7 @@ export const addOrderRequest = (data, headers) => {
           id: null,
           userNotify: data.user,
           nameNotify: "Đơn hàng của bạn đã đặt thành công",
-          url: null,
+          data: order.data ? order.data.id : null,
           image: IMAGE_BILL_CREATED,
           description: "🌀 Vui lòng chờ cho bên cửa hàng duyệt 🌀",
           timeCreated: null,
@@ -232,7 +232,6 @@ export const addOrderRequest = (data, headers) => {
         null,
         { "Content-Type": "application/json" }
       );
-
     if (data.voucher) {
       if (!data.voucher.userDiscountCode) {
         await api('discountCodeUsers', 'POST', {

@@ -38,7 +38,7 @@ function GroupProduct(props) {
     <div className="w-full mb-3 mx-auto flex ">
       {groupProducts ? (
         groupProducts.map((groupProduct, index) => {
-          return <ItemGroupProduct groupProduct={groupProduct} key={index} />;
+          return <ItemGroupProduct groupProduct={groupProduct} key={index} index={index} />;
         })
       ) : (
         <div className="w-full h-16 flex items-center justify-center">

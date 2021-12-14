@@ -21,7 +21,7 @@ function ItemAttributeFilter(props) {
         className="flex ml-1 items-center"
       >
         {name}
-        <i className="bx bx-chevron-down ml-1 mt-1 text-xl"></i>
+        <i className="bx bx-chevron-down ml-1 mt-0 text-xl"></i>
       </div>
       {index === indexCurrent && (
         <PopupItemAttributeFilter slug={slug} index={index}>

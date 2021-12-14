@@ -72,8 +72,8 @@ export const loadNewsIndexPageRequest = (data, headers) => {
           0,
           document.getElementById(`position__comment`).getBoundingClientRect()
             .top +
-            window.scrollY -
-            100
+          window.scrollY -
+          100
         );
     } catch (error) {
       throw error;

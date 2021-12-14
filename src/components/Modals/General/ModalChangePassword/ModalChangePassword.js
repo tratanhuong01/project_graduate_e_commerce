@@ -59,6 +59,7 @@ function ModalChangePassword(props) {
           <div className="w-1/3 flex mt-2 justify-end">Mật khẩu mới</div>
           <div className="w-2/3 ml-3 flex items-center">
             <InputFieldFC
+              specifical={true}
               register={register}
               showError={errors["passwordNew"]}
               onChange={() => ""}
@@ -76,6 +77,7 @@ function ModalChangePassword(props) {
           <div className="w-1/3  flex mt-2 justify-end">Xác nhận mật khẩu</div>
           <div className="w-2/3 ml-3 flex items-center">
             <InputFieldFC
+              specifical={true}
               register={register}
               showError={errors["passwordConfirmation"]}
               onChange={() => ""}
@@ -101,9 +103,8 @@ function ModalChangePassword(props) {
             </button>
             <button
               type="submit"
-              className={`bg-organce ${
-                formState.isValid ? "" : "opacity-50 cursor-not-allowed"
-              } px-6 py-3 my-3 text-white font-semibold`}
+              className={`bg-organce ${formState.isValid ? "" : "opacity-50 cursor-not-allowed"
+                } px-6 py-3 my-3 text-white font-semibold`}
               disabled={formState.isValid ? false : true}
             >
               Lưu

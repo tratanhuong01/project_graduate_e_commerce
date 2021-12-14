@@ -22,7 +22,7 @@ function Highlights(props) {
         if (unmounted) return;
         if (data) setLength(data.data);
         setNews(result.data);
-        if (length) window.scrollTo(0, 700);
+        if (length) window.scrollTo(0, 170);
       } catch (error) {
         throw error;
       }

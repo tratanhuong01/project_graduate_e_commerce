@@ -78,10 +78,12 @@ function StatusDetailBill(props) {
       if (bill.bill.status === -1) {
         arrayStatus[0].statusLineRight = true;
         arrayStatus[0].invisible = true;
+
         arrayStatus[arrayStatus.length - 1].statusLineLeft = true;
         arrayStatus[arrayStatus.length - 1].invisible = true;
         arrayStatus[arrayStatus.length - 1].name = "Đơn hàng đã bị hủy";
         arrayStatus[arrayStatus.length - 1].icon = "far fa-times-circle";
+        arrayStatus[arrayStatus.length - 1].time = bill.bill.timeCancel;
       } else
         for (let index = 0; index <= pos; index++) {
           if (index === 0) arrayStatus[index].statusLineRight = true;

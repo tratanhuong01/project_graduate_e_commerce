@@ -17,12 +17,14 @@ function ItemGroupProduct(props) {
             `${PAGE_PRODUCT}/${listProduct.slug}/${groupProduct.slugGroupProduct}`
           )
         }
-        className="w-16 h-16 bg-gray-100 flex justify-center items-center rounded-full border-2 border-solid hover:border-organce cursor-pointer shadow-lg dark:bg-dark-second dark:border-dark-third"
+        className={`w-16 h-16 bg-gray-100 flex justify-center items-center rounded-full border-2 
+        border-solid hover:border-organce cursor-pointer shadow-lg dark:bg-dark-second 
+        dark:border-dark-third p-1`}
       >
         <img
-          src="https://cdn.tgdd.vn/Category/60/icon-op-lung-100x100-60x60.png"
+          src={groupProduct.image}
           alt=""
-          className="w-14 h-14 rounded-full "
+          className="w-14 h-14 rounded-full object-contain "
         />
       </div>
       <p

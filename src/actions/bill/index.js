@@ -58,7 +58,7 @@ export const cancelOrderRequest = (data, headers) => {
           id: null,
           userNotify: data.bill.bill.billUser,
           nameNotify: "Bạn đã hủy đơn hàng !",
-          data: null,
+          data: data.bill.bill.id,
           image: IMAGE_BILL_CANCEL,
           description: "🌀 Rất bạn về sự bất tiện này 🌀",
           timeCreated: null,

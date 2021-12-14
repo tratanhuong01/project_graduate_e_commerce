@@ -20,12 +20,13 @@ function News(props) {
     }
     //
   }, []);
+  console.log(news);
   //
   return (
     news ? news.length > 0 && (
       <div className="xl:w-4/5 w-full flex flex-col sm:flex-row mx-auto p-4">
         <NewsLeft newData={news[0]} subClass={"lg:w-7/12 mr-10"} />
-        <NewsRight news={news.length > 0 ? [...news].splice(0, 1) : null} subClass={"lg:w-5/12"} />
+        <NewsRight news={news.length > 0 ? [...news].splice(1, 4) : null} subClass={"lg:w-5/12"} />
       </div>
     ) : ""
   );
