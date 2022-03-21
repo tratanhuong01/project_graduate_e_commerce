@@ -77,6 +77,9 @@ function ModalTypeCode(props) {
           });
           if (result.data.user) {
             let userClone = { ...user };
+            //
+            userClone.phone = userClone.phone ? userClone.phone.replace("+84", "0") : null;
+            //
             userClone.isVerifyEmail = 1;
             await api(`users`, "PUT", userClone);
             dispatch(usersAction.loginAccount(result.data));
