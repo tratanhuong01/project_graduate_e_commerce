@@ -17,6 +17,9 @@ function EndFormLogin(props) {
           Đăng nhập
         </button>
       </div>
+      <p className="mb-1 font-bold text-center">Demo</p>
+      <p className="mb-1 text-sm">Email or phone : tratanhuong01@gmail.com</p>
+      <p className="mb-1 text-sm">Password : huongtra2001</p>
       <div className="w-full mb-5 text-xm font-semibold flex justify-center">
         <span
           onClick={() => dispatch(modalsAction.openModalSearchGetAccount())}
